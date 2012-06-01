@@ -1,0 +1,101 @@
+These are developer notes, and probably will not make much sense to anyone
+other than John B. Cole (jcole@funjackals.com).  Read at your own risk.
+
+* indicates data read from input file.
+| indicates data read from file or calculated by PyPedal.
+- indicates data calculated by PyPedal.
+[] indicates data that may be included in input file, but which is not required.
+
+Animal:
+	Attributes:
+		* Animal ID
+		* Sire ID
+		* Dam ID
+		| [Sex]
+		| [Birthyear]
+		| [Generation]
+		| [Coefficient of inbreeding]
+		- [Original Animal ID (if renumbered)]
+		- [Original Sire ID (if renumbered)]
+		- [Original Dam ID (if renumbered)]
+		- Founder (flag)
+
+Pedigree:
+	Attributes:
+		Original file name
+		Current file name
+		Name
+		Description
+		Format
+		Reordered (flag)
+		Renumbered (flag)
+		LIST or DICT of animal OBJECTS
+		DICT of metadata:
+			n_animals
+			n_sires
+			n_dams
+			n_offspring
+			n_birthyears
+			n_generations
+			n_males
+			n_females
+			n_nosex
+			LIST of animal IDs
+			LIST of sire IDs
+			LIST of dam IDs
+			LIST of offspring IDs
+			LIST of male IDs
+			LIST of female IDs
+			LIST of nosex IDs
+			LIST of birthyears
+			LIST of generations
+			OBJECT nrm
+	Methods:
+		ped_n_animals()
+		ped_n_sires()
+		ped_n_dams()
+		ped_n_offspring()
+		ped_n_birthyears()
+		ped_n_generations()
+		ped_n_males()
+		ped_n_females()
+		ped_n_nosex()
+		ped_n_founders()
+
+		ped_print_animals()
+		ped_print_sires()
+		ped_print_dams()
+		ped_print_offspring()
+		ped_print_birthyears()
+		ped_print_generations()
+		ped_print_males()
+		ped_print_females()
+		ped_print_nosex()
+		ped_print_founders()
+
+		ped_metric_eff_f()		Effective founder number
+		ped_metric_eff_a()		Effective ancestor number
+		ped_metric_eff_p()		Effective population size
+
+		ped_graph_connected()		Is pedigree fully connected?
+
+		ped_get_family()		Get subset (family)
+		ped_get_ancest()		Get ancestors of an animal
+		ped_get_descend()		Get descendants of an animal
+
+		ped_dummy_generations()		If the pedigree is in a format which
+						does not include generations codes,
+						iterate through the pedigree and assign
+						dummy generations.  This is ecessary for
+						the <foo>_effective_ancestor() functions.
+
+		ped_a_forma()			Form NRM
+
+A_matrix:
+	Methods:
+		a_inv()				Invert A
+		a_decompose()			Decompose A
+		a_write()			Write A to a file
+		a_read()			Read A from a file (destructive read?)
+		a_rel()				Coefficients of relationship
+		a_inbr()			Coefficients of inbreeding

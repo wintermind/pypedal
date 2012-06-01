@@ -1,0 +1,78 @@
+pyp\_io\index[func]{pyp_io} contains several procedures for writing structures to and reading them from disc (e.g. using pickle() to store and retrieve A and A-inverse). It also includes a set of functions used to render strings as HTML or plaintext for use in generating output files.
+
+\subsection*{Module Contents}
+
+\begin{description}
+\item[\textbf{a\_inverse\_from\_file(inputfile)} $\Rightarrow$ matrix]\index[func]{pyp_io!a\_inverse\_from\_file()}
+a\_inverse\_from\_file() uses the Python pickle system for persistent objects to read the inverse of a relationship matrix from a file.
+\begin{description}
+\item[\emph{inputfile}] The name of the input file.
+\item[Returns:] The inverse of a numerator relationship matrix.
+\end{description}
+
+\item[\textbf{a\_inverse\_to\_file(pedobj, ainv='')}]\index[func]{pyp_io!a\_inverse\_to\_file()}
+a\_inverse\_to\_file() uses the Python pickle system for persistent objects to write the inverse of a relationship matrix to a file.
+\begin{description}
+\item[\emph{pedobj}] A PyPedal pedigree object.
+\item[\emph{filetag}] A descriptor prepended to output file names.
+\end{description}
+
+\item[\textbf{dissertation\_pedigree\_to\_file(pedobj)}]\index[func]{pyp_io!dissertation\_pedigree\_to\_file()}
+dissertation\_pedigree\_to\_file() takes a pedigree in 'asdxfg' format and writes is to a file.
+\begin{description}
+\item[\emph{pedobj}] A PyPedal pedigree object.
+\end{description}
+
+\item[\textbf{dissertation\_pedigree\_to\_pedig\_format(pedobj)}]\index[func]{pyp_io!dissertation\_pedigree\_to\_pedig\_format()}
+dissertation\_pedigree\_to\_pedig\_format() takes a pedigree in 'asdbxfg' format, formats it into the form used by Didier Boichard's 'pedig' suite of programs, and writes it to a file.
+\begin{description}
+\item[\emph{pedobj}] A PyPedal pedigree object.
+\end{description}
+
+\item[\textbf{dissertation\_pedigree\_to\_pedig\_format\_mask(pedobj)}]\index[func]{pyp_io!dissertation\_pedigree\_to\_pedig\_format\_mask()}
+dissertation\_pedigree\_to\_pedig\_format\_mask() Takes a pedigree in 'asdbxfg' format, formats it into the form used by Didier Boichard's 'pedig' suite of programs, and writes it to a file. THIS FUNCTION MASKS THE GENERATION ID WITH A FAKE BIRTH YEAR AND WRITES THE FAKE BIRTH YEAR TO THE FILE INSTEAD OF THE TRUE BIRTH YEAR. THIS IS AN ATTEMPT TO FOOL PEDIG TO GET f\_e, f\_a et al. BY GENERATION.
+\begin{description}
+\item[\emph{pedobj}] A PyPedal pedigree object.
+\end{description}
+
+\item[\textbf{dissertation\_pedigree\_to\_pedig\_interest\_format(pedobj)}]\index[func]{pyp_io!dissertation\_pedigree\_to\_pedig\_interest\_format()}
+dissertation\_pedigree\_to\_pedig\_interest\_format() takes a pedigree in 'asdbxfg' format, formats it into the form used by Didier Boichard's parente program for the studied individuals file.
+\begin{description}
+\item[\emph{pedobj}] A PyPedal pedigree object.
+\end{description}
+
+\item[\textbf{pickle\_pedigree(pedobj, filename='')} $\Rightarrow$ integer]\index[func]{pyp_io!pickle\_pedigree()}
+pickle\_pedigree() pickles a pedigree.
+\begin{description}
+\item[\emph{pedobj}] An instance of a PyPedal pedigree object.
+\item[\emph{filename}] The name of the file to which the pedigree object should be pickled (optional).
+\item[Returns:] A 1 on success, a 0 otherwise.
+\end{description}
+
+\item[\textbf{pyp\_file\_footer(ofhandle, caller=''Unknown PyPedal routine'')} $\Rightarrow$ None]\index[func]{pyp_io!pyp\_file\_footer()}
+pyp\_file\_footer()
+\begin{description}
+\item[\emph{ofhandle}] A Python file handle.
+\item[\emph{caller}] A string indicating the name of the calling routine.
+\item[Returns:] None
+\end{description}
+
+\item[\textbf{pyp\_file\_header(ofhandle, caller=''Unknown PyPedal routine'')} $\Rightarrow$ integer]
+pyp\_file\_header()\index[func]{pyp_io!pyp\_file\_header()}
+\begin{description}
+\item[\emph{ofhandle}] A Python file handle.
+\item[\emph{caller}] A string indicating the name of the calling routine.
+\item[Returns:] None
+\end{description}
+
+\item[\textbf{renderTitle(title\_string, title\_level=''1'')} $\Rightarrow$ integer]\index[func]{pyp_io!renderTitle()}
+renderTitle() ... Produced HTML output by default.
+
+\item[\textbf{unpickle\_pedigree(filename='')} $\Rightarrow$ object]\index[func]{pyp_io!unpickle\_pedigree()}
+unpickle\_pedigree() reads a pickled pedigree in from a file and returns the unpacked pedigree object.
+\begin{description}
+\item[\emph{filename}] The name of the pickle file.
+\item[Returns:] An instance of a NewPedigree object on success, a 0 otherwise.
+\end{description}
+
+\end{description}

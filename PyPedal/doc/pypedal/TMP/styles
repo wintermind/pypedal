@@ -1,0 +1,17 @@
+manual letterpaper, hyperref, titlepage,
+amsmath 
+amssymb 
+inputenc latin1
+textcomp 
+fullpage 
+graphicx 
+url 
+index 
+chicago 
+xtab 
+multirow 
+courier 
+fullpage 
+color 
+hyperref     breaklinks=true,    colorlinks=true,  urlcolor=blue,  linkcolor=darkorange,  citecolor=darkgreen,  
+listings 

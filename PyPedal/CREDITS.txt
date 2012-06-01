@@ -1,0 +1,19 @@
+CREDITS - PyPedal Version 2.0.0
+-------------------------------
+
+This file lists the people known to be responsible for the
+PyPedal package for pedigree analysis.
+
+CORE DEVELOPERS
+
+The following people do the day-to-day development of PyPedal:
+
+John B. Cole (jcole@lsu.edu)
+
+OTHER CONTRIBUTORS
+
+The following people have contributed fixes or enhancements
+for PyPedal, or offered suggestions which were incorporated
+into PyPedal:
+
+Kathy Hanford

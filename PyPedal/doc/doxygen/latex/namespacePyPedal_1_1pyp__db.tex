@@ -1,0 +1,215 @@
+\hypertarget{namespacePyPedal_1_1pyp__db}{
+\section{Package Py\-Pedal.pyp\_\-db}
+\label{namespacePyPedal_1_1pyp__db}\index{PyPedal.pyp_db@{PyPedal.pyp\_\-db}}
+}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__db_cad3d0a6a0c643e81c8135aff1d1ad37}{connect\-To\-Database}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__db_cad3d0a6a0c643e81c8135aff1d1ad37}{connect\-To\-Database()} opens a connection to a user-specified database. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__db_7c8d70a4ec6c7f537291d79fb4118573}{create\-Pedigree\-Table}
+\begin{CompactList}\small\item\em create\-Pedigree\-Database() creates a new pedigree table in a database. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__db_5c8b6cc2ea0230b94b0f42f3dfb8556b}{delete\-Table}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__db_5c8b6cc2ea0230b94b0f42f3dfb8556b}{delete\-Table()} drops a table from a database -- this can cause data loss if used carelessly! \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__db_bdfacecb7932eb4036f2dcfb4c39a534}{populate\-Pedigree\-Table}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__db_bdfacecb7932eb4036f2dcfb4c39a534}{populate\-Pedigree\-Table()} takes a Py\-Pedal pedigree object and loads the animal records in that pedigree into a database table. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__db_069600ee470533394697567dc1601e96}{does\-Table\-Exist}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__db_069600ee470533394697567dc1601e96}{does\-Table\-Exist()} queries the database to determine whether or not a table exists. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__db_f72099782c3e8cc304dcada96aa77d21}{table\-Count\-Rows}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__db_f72099782c3e8cc304dcada96aa77d21}{table\-Count\-Rows()} returns the number of rows in a table. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__db_b164d7c09eb9d86560432668b491a467}{table\-Drop\-Rows}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__db_b164d7c09eb9d86560432668b491a467}{table\-Drop\-Rows()} deletes the rows from an existing table \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__db_cad3d0a6a0c643e81c8135aff1d1ad37}{
+\index{PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}!connectToDatabase@{connectToDatabase}}
+\index{connectToDatabase@{connectToDatabase}!PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}}
+\subsubsection[connectToDatabase]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-db.connect\-To\-Database ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__db_cad3d0a6a0c643e81c8135aff1d1ad37}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__db_cad3d0a6a0c643e81c8135aff1d1ad37}{connect\-To\-Database()} opens a connection to a user-specified database. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em An}]ADOdb connection on success, False otherwise.
+
+\footnotesize\begin{verbatim}connectToDatabase() opens a connection to a user-specified database.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 35 of file pyp\_\-db.py.\hypertarget{namespacePyPedal_1_1pyp__db_7c8d70a4ec6c7f537291d79fb4118573}{
+\index{PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}!createPedigreeTable@{createPedigreeTable}}
+\index{createPedigreeTable@{createPedigreeTable}!PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}}
+\subsubsection[createPedigreeTable]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-db.create\-Pedigree\-Table ( {\em pedobj},  {\em conn} = {\tt False},  {\em drop} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__db_7c8d70a4ec6c7f537291d79fb4118573}
+
+
+create\-Pedigree\-Database() creates a new pedigree table in a database. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em conn}]An existing ADOdb connection or False to create one \item[{\em drop}]Boolean indicating if the data should be dropped from an existing table with the same name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em True}]on success, False otherwise.
+
+\footnotesize\begin{verbatim}createPedigreeTable() creates a new pedigree table in a database. Note that the table has a simple,
+fixed structure that may not include all attributes of a NewAnimal object.
+
+If the table already exists in the specified database a warning will be issued and the table will
+not be created. If the drop parameter is set to True then an existing table will be dropped and
+a new one created -- this may cause loss of data!
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 85 of file pyp\_\-db.py.\hypertarget{namespacePyPedal_1_1pyp__db_5c8b6cc2ea0230b94b0f42f3dfb8556b}{
+\index{PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}!deleteTable@{deleteTable}}
+\index{deleteTable@{deleteTable}!PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}}
+\subsubsection[deleteTable]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-db.delete\-Table ( {\em pedobj},  {\em tablename} = {\tt False},  {\em conn} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__db_5c8b6cc2ea0230b94b0f42f3dfb8556b}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__db_5c8b6cc2ea0230b94b0f42f3dfb8556b}{delete\-Table()} drops a table from a database -- this can cause data loss if used carelessly! 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em tablename}]The name of the table to delete. \item[{\em conn}]An existing ADOdb connection or False to create one \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em True}]on success, False otherwise.
+
+\footnotesize\begin{verbatim}deleteTable() drops a table from a database, which can cause data loss if used carelessly!
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 176 of file pyp\_\-db.py.\hypertarget{namespacePyPedal_1_1pyp__db_bdfacecb7932eb4036f2dcfb4c39a534}{
+\index{PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}!populatePedigreeTable@{populatePedigreeTable}}
+\index{populatePedigreeTable@{populatePedigreeTable}!PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}}
+\subsubsection[populatePedigreeTable]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-db.populate\-Pedigree\-Table ( {\em pedobj},  {\em conn} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__db_bdfacecb7932eb4036f2dcfb4c39a534}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__db_bdfacecb7932eb4036f2dcfb4c39a534}{populate\-Pedigree\-Table()} takes a Py\-Pedal pedigree object and loads the animal records in that pedigree into a database table. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em conn}]An existing ADOdb connection or False to create one \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em True}]on success, False otherwise.
+
+\footnotesize\begin{verbatim}populatePedigreeTable() takes a PyPedal pedigree object and loads
+the animal records in that pedigree into a database table.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 219 of file pyp\_\-db.py.\hypertarget{namespacePyPedal_1_1pyp__db_069600ee470533394697567dc1601e96}{
+\index{PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}!doesTableExist@{doesTableExist}}
+\index{doesTableExist@{doesTableExist}!PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}}
+\subsubsection[doesTableExist]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-db.does\-Table\-Exist ( {\em pedobj},  {\em tablename} = {\tt False},  {\em conn} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__db_069600ee470533394697567dc1601e96}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__db_069600ee470533394697567dc1601e96}{does\-Table\-Exist()} queries the database to determine whether or not a table exists. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em tablename}]The name of the table to delete. \item[{\em conn}]An existing ADOdb connection or False to create one \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em True}]on success, False otherwise.
+
+\footnotesize\begin{verbatim}doesTableExist() queries the database to determine whether or not a table exists.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 279 of file pyp\_\-db.py.\hypertarget{namespacePyPedal_1_1pyp__db_f72099782c3e8cc304dcada96aa77d21}{
+\index{PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}!tableCountRows@{tableCountRows}}
+\index{tableCountRows@{tableCountRows}!PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}}
+\subsubsection[tableCountRows]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-db.table\-Count\-Rows ( {\em pedobj},  {\em conn} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__db_f72099782c3e8cc304dcada96aa77d21}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__db_f72099782c3e8cc304dcada96aa77d21}{table\-Count\-Rows()} returns the number of rows in a table. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em conn}]An existing ADOdb connection or False to create one \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em An}]integer on success, 0 otherwise
+
+\footnotesize\begin{verbatim}tableCountRows() returns the number of rows in a table.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 318 of file pyp\_\-db.py.\hypertarget{namespacePyPedal_1_1pyp__db_b164d7c09eb9d86560432668b491a467}{
+\index{PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}!tableDropRows@{tableDropRows}}
+\index{tableDropRows@{tableDropRows}!PyPedal::pyp_db@{Py\-Pedal::pyp\_\-db}}
+\subsubsection[tableDropRows]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-db.table\-Drop\-Rows ( {\em pedobj},  {\em tablename} = {\tt False},  {\em conn} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__db_b164d7c09eb9d86560432668b491a467}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__db_b164d7c09eb9d86560432668b491a467}{table\-Drop\-Rows()} deletes the rows from an existing table 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em tablename}]The name of the table to delete. \item[{\em conn}]An existing ADOdb connection or False to create one \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em True}]on success, False otherwise.
+
+\footnotesize\begin{verbatim}tableDropRows() deletes the rows from an existing table
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 358 of file pyp\_\-db.py.

@@ -1,0 +1,30 @@
+PyPedal 2 CHANGELOG
+===================
+"---" indicates a known bug;
+"+++" indicates a feature addition;
+"***" indicates an API change or a major bugfix;
+"'''" indicates a minor bugfix or feature enhancement.
+"???" indicates a possible problem (i.e. bug) that has
+      not been verified.
+"XXX" indicates a feature that has been deprecated or removed.
+"!!!" indicates a feature that is planned or stubbed, but is not yet working.
+"###" indicates a note or idea I don't want to forget.
+
+CHANGES in PyPedal 2.0.0rc9 (Vetinari)
+======================================
++++ 09/01/2010  Updated documentation to include information about the
+    new GENES I/O.
++++ 09/01/2010  Added the NewPedigree::savegenes() method to support
+    easy export to GENES studbook files.
+*** 09/01/2010  The function pyp_io.save_to_genes() is now working.
+    It has been only lightly tested because I don't have good test cases,
+    so be careful when using.
+''' 08/31/2010  Docstring work and improved comments in most modules.
+''' 08/31/2010  Restored try-except blocks in many functions that had
+    been disabled for debugging. This means that people need to actually
+    look at their log files when they have problems because, for the most
+    part, there won't be traces from unhandled exceptions dumped to STDOUT.
+*** 08/31/2010  The function pyp_io.read_from_genes() actually now works,
+    so the 'genesfile' pedsource also works. You can test it using the
+    SAMPLE.DBF file that Robert Lacy distributes with GENES 1.20.
+*** 08/31/2010  The function pyp_io.save_from_genes() now works.

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="prev" href="node107.html" />
+<link rel="parent" href="node105.html" />
+<link rel="next" href="node109.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>9.1.3 Visualizing Numerator Relationship Matrices</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="9.1.2 Drawing Line Graphs"
+  href="node107.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="9.1 PyPedal Graphics"
+  href="node105.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="10. Report Generation"
+  href="node109.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node107.html">9.1.2 Drawing Line Graphs</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node105.html">9.1 PyPedal Graphics</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node109.html">10. Report Generation</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION049130000000000000000"></A>
+<A NAME="sec:graphics-visualizing-nrm"></A><a id='l2h-110' xml:id='l2h-110'></a>
+<BR>
+9.1.3 Visualizing Numerator Relationship Matrices
+</H2>
+Two routines are provided for visualization of numerator relationship matrices (NRM), <tt class="function">rmuller_pcolor_matrix_pil()</tt> and <tt class="function">rmuller_spy_matrix_pil()</tt>.
+
+<P>
+As an example, we will consider the NRM for the pedigree in Figure <A HREF="node106.html#fig:boichard2-pedigree">9.1</A>.  The matrix is square and symmetric; the diagonal values correspond to <SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ 1 + f_a$"></SPAN>
+, where <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ f_a$"></SPAN>
+ is an animal's coefficient of inbreeding; animals with a diagonal element <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.png"
+ ALT="$ &gt;1$"></SPAN>
+ are inbred.
+<P><!-- MATH
+ \begin{displaymath}
+\scriptsize
+    \left[ \begin{array}{llllllllllllllllllll}
+        1. & 0. & 0. & 0. & 0.5 & 0. & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 1. & 0. & 0. & 0.5 & 0. & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 1. & 0. & 0.  & 0.5 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0. & 1. & 0. & 0.5 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.5 & 0.5 & 0. & 0. & 1. & 0. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0.5 & 0.5 & 0. & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 1. & 0. & 0.5 & 0.5 & 0.5 & 0.5 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 1. & 0.5 & 0.5 & 0.5 & 0.5 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 1. & 0.5 & 0.75 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.5 & 1. & 0.75 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.75 & 0.75 & 1.25 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.75 & 0.75 & 0.75 & 1.25
+    \end{array} \right]
+    \normalsize
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="767" HEIGHT="271" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.png"
+ ALT="$\displaystyle \scriptsize
+\left[ \begin{array}{llllllllllllllllllll}
+1. &amp; 0. &amp; ...
+.... &amp; 0. &amp; 0.5 &amp; 0.5 &amp; 0.75 &amp; 0.75 &amp; 0.75 &amp; 1.25
+\end{array} \right]
+\normalsize
+$">
+</DIV><P>
+</P>
+Note that the array only contains six distinct values: 0., 0.25, 0.5, 0.75, 1.0, and 1.25.  These six values will be used to create the color map used by <tt class="function">rmuller_pcolor_matrix_pil()</tt>.
+
+<P>
+<tt class="function">rmuller_pcolor_matrix_pil()</tt> produces pseudocolor plots from NRM.  A pseudocolor plot is an array of cells that are colored based on the values the corresponding cells in the NRM. The minimum and maximum values in the NRM are assigned the first and last colors in the colormap; other cells are colored by mapping their values to colormap elements.  In the example above, the minimum value is 0.0 and the maximum value is 1.0 (Figure <A HREF="#fig:boichard2-pseudocolor">9.6</A>).  The two inbred animals in the population are easily identified as the yellow diagonal elements in the bottom-left corner of the matrix.
+
+<DIV ALIGN="CENTER"><A NAME="fig:boichard2-pseudocolor"></A><A NAME="2861"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.6:</STRONG>
+Pseudocolored NRM from the Boichard et al. (1997) pedigree</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<tt class="function">rmuller_spy_matrix_pil()</tt> is similar to <tt class="function">rmuller_pcolor_matrix_pil()</tt>, but it is used to visualize the sparsity of a matrix.  Cells are either filled, indicating that the value is non-zero, or not filled, indicating that the cell's value is zero.  In Figure <A HREF="#fig:boichard2-sparsity">9.7</A> it is easy to see the two separate families in the pedigree.
+
+<DIV ALIGN="CENTER"><A NAME="fig:boichard2-sparsity"></A><A NAME="2871"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.7:</STRONG>
+Sparsity of the NRM from the Boichard et al. (1997) pedigree</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="9.1.2 Drawing Line Graphs"
+  href="node107.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="9.1 PyPedal Graphics"
+  href="node105.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="10. Report Generation"
+  href="node109.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node107.html">9.1.2 Drawing Line Graphs</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node105.html">9.1 PyPedal Graphics</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node109.html">10. Report Generation</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

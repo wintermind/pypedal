@@ -1,0 +1,139 @@
+\hypertarget{namespacePyPedal_1_1pyp__jbc}{
+\section{Package Py\-Pedal.pyp\_\-jbc}
+\label{namespacePyPedal_1_1pyp__jbc}\index{PyPedal.pyp_jbc@{PyPedal.pyp\_\-jbc}}
+}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__jbc_684ddf07aa8b4275b4de4025306bb8ac}{get\_\-color\_\-32}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__jbc_684ddf07aa8b4275b4de4025306bb8ac}{get\_\-color\_\-32()} Converts a float value to one of a continuous range of colors using recipe 9.10 from the Python Cookbook. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__jbc_dbc1c88a0fcf403645e7310f6b6da99f}{color\_\-pedigree}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__jbc_dbc1c88a0fcf403645e7310f6b6da99f}{color\_\-pedigree()} forms a graph object from a pedigree object and determines the proportion of animals in a pedigree that are descendants of each animal in the pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__jbc_dd01c0570f87aaac52c6cc89e39dacdb}{draw\_\-colored\_\-pedigree}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__jbc_dd01c0570f87aaac52c6cc89e39dacdb}{draw\_\-colored\_\-pedigree()} uses the pydot bindings to the graphviz library to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__jbc_3b775faed2b4c51293a105869000d32e}{new\_\-draw\_\-colored\_\-pedigree}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__jbc_3b775faed2b4c51293a105869000d32e}{new\_\-draw\_\-colored\_\-pedigree()} uses the pyygraphviz to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__jbc_684ddf07aa8b4275b4de4025306bb8ac}{
+\index{PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}!get_color_32@{get\_\-color\_\-32}}
+\index{get_color_32@{get\_\-color\_\-32}!PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}}
+\subsubsection[get\_\-color\_\-32]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-jbc.get\_\-color\_\-32 ( {\em a},  {\em cmin},  {\em cmax})}}
+\label{namespacePyPedal_1_1pyp__jbc_684ddf07aa8b4275b4de4025306bb8ac}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__jbc_684ddf07aa8b4275b4de4025306bb8ac}{get\_\-color\_\-32()} Converts a float value to one of a continuous range of colors using recipe 9.10 from the Python Cookbook. 
+
+Returns 32-bit colors rather than 16-bit colors. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]Float value to convert to a color. \item[{\em cmin}]Minimum value in array (?). \item[{\em cmax}]Maximum value in array (?). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em An}]RGB triplet.
+
+\footnotesize\begin{verbatim}Convert a float value to one of a continuous range of colors.
+Rewritten to use recipe 9.10 from the O'Reilly Python Cookbook.
+Returns 32-bit colors rather than 16-bit colors.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 31 of file pyp\_\-jbc.py.\hypertarget{namespacePyPedal_1_1pyp__jbc_dbc1c88a0fcf403645e7310f6b6da99f}{
+\index{PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}!color_pedigree@{color\_\-pedigree}}
+\index{color_pedigree@{color\_\-pedigree}!PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}}
+\subsubsection[color\_\-pedigree]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-jbc.color\_\-pedigree ( {\em pedobj},  {\em metric} = {\tt 'descendants'},  {\em places} = {\tt 2},  {\em drawer} = {\tt 'new'},  {\em kw})}}
+\label{namespacePyPedal_1_1pyp__jbc_dbc1c88a0fcf403645e7310f6b6da99f}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__jbc_dbc1c88a0fcf403645e7310f6b6da99f}{color\_\-pedigree()} forms a graph object from a pedigree object and determines the proportion of animals in a pedigree that are descendants of each animal in the pedigree. 
+
+The results will be used to feed \hyperlink{namespacePyPedal_1_1pyp__jbc_dd01c0570f87aaac52c6cc89e39dacdb}{draw\_\-colored\_\-pedigree()}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em metric}]Count for coloring nodes in the pedigree (descendants$|$sons). \item[{\em places}]Number of decimal palces to carry when rounding proportions. \item[{\em drawer}]Routine to use for drawing the pedigree (new$|$old). \item[{\em $\ast$$\ast$kw}]Optional keywork arguments passed through to other functions. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}color_pedigree() forms a graph object from a pedigree object and determines the
+proportion of animals in a pedigree that are descendants of each animal in the
+pedigree.  The results will be used to feed draw_colored_pedigree().
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 66 of file pyp\_\-jbc.py.\hypertarget{namespacePyPedal_1_1pyp__jbc_dd01c0570f87aaac52c6cc89e39dacdb}{
+\index{PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}!draw_colored_pedigree@{draw\_\-colored\_\-pedigree}}
+\index{draw_colored_pedigree@{draw\_\-colored\_\-pedigree}!PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}}
+\subsubsection[draw\_\-colored\_\-pedigree]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-jbc.draw\_\-colored\_\-pedigree ( {\em pedobj},  {\em shading},  {\em gfilename} = {\tt 'pedigree'},  {\em gtitle} = {\tt 'My\_\-Pedigree'},  {\em gformat} = {\tt 'jpg'},  {\em gsize} = {\tt 'f'},  {\em gdot} = {\tt '1'},  {\em gorient} = {\tt 'l'},  {\em gdirec} = {\tt ''},  {\em gname} = {\tt 0},  {\em gfontsize} = {\tt 10},  {\em garrow} = {\tt 1},  {\em gtitloc} = {\tt 'b'},  {\em gtitjust} = {\tt 'c'},  {\em ghatch} = {\tt 'hatch'},  {\em gprog} = {\tt 'dot'})}}
+\label{namespacePyPedal_1_1pyp__jbc_dd01c0570f87aaac52c6cc89e39dacdb}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__jbc_dd01c0570f87aaac52c6cc89e39dacdb}{draw\_\-colored\_\-pedigree()} uses the pydot bindings to the graphviz library to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. 
+
+If there is more than one generation in the pedigree as determind by the \char`\"{}gen\char`\"{} attributes of the animals in the pedigree, draw\_\-pedigree() will use subgraphs to try and group animals in the same generation together in the drawing. Nodes will be colored based on the number of outgoing connections (number of offspring). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em shading}]A dictionary mapping animal IDs to levels that will be used to color nodes. \item[{\em gfilename}]The name of the file to which the pedigree should be drawn. \item[{\em gtitle}]The title of the graph. \item[{\em gformat}]The format in which the output file should be written (JPG$|$PNG$|$PS). \item[{\em gsize}]The size of the graph: 'f': full-size, 'l': letter-sized page. \item[{\em gdot}]Whether or not to write the dot code for the pedigree graph to a file (can produce large files). \item[{\em gorient}]The orientation of the graph: 'p': portrait, 'l': landscape. \item[{\em gdirec}]Direction of flow from parents to offspring: 'TB': top-bottom, 'LR': left-right, 'RL': right-left. \item[{\em gname}]Flag indicating whether ID numbers (0) or names (1) should be used to label nodes. \item[{\em gfontsize}]Integer indicating the typeface size to be used in labelling nodes. \item[{\em garrow}]Flag indicating whether or not arrowheads should be drawn. \item[{\em gtitloc}]Indicates if the title be drawn or above ('t') or below ('b') the graph. \item[{\em gtitjust}]Indicates if the title should be center- ('c'), left- ('l'), or right-justified ('r'). \item[{\em ghatch}]Shade a node if the value of its user\-Field attribute is equal to ghatch. \item[{\em gprog}]Program to use to layout graph ('dot'$|$'neato'). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}draw_colored_pedigree() uses the pydot bindings to the graphviz library to produce a
+directed graph of your pedigree with paths of inheritance as edges and animals as
+nodes.  If there is more than one generation in the pedigree as determind by the "gen"
+attributes of the animals in the pedigree, draw_pedigree() will use subgraphs to try
+and group animals in the same generation together in the drawing.  Nodes will be
+colored based on the number of outgoing connections (number of offspring).
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 119 of file pyp\_\-jbc.py.\hypertarget{namespacePyPedal_1_1pyp__jbc_3b775faed2b4c51293a105869000d32e}{
+\index{PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}!new_draw_colored_pedigree@{new\_\-draw\_\-colored\_\-pedigree}}
+\index{new_draw_colored_pedigree@{new\_\-draw\_\-colored\_\-pedigree}!PyPedal::pyp_jbc@{Py\-Pedal::pyp\_\-jbc}}
+\subsubsection[new\_\-draw\_\-colored\_\-pedigree]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-jbc.new\_\-draw\_\-colored\_\-pedigree ( {\em pedobj},  {\em shading},  {\em gfilename} = {\tt 'pedigree'},  {\em gtitle} = {\tt ''},  {\em gformat} = {\tt 'jpg'},  {\em gsize} = {\tt 'f'},  {\em gdot} = {\tt 1},  {\em gorient} = {\tt 'p'},  {\em gdirec} = {\tt ''},  {\em gname} = {\tt 0},  {\em garrow} = {\tt 1},  {\em gtitloc} = {\tt 'b'},  {\em gtitjust} = {\tt 'c'},  {\em gshowall} = {\tt 1},  {\em gprog} = {\tt 'dot'},  {\em ghatch} = {\tt 'hatch'})}}
+\label{namespacePyPedal_1_1pyp__jbc_3b775faed2b4c51293a105869000d32e}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__jbc_3b775faed2b4c51293a105869000d32e}{new\_\-draw\_\-colored\_\-pedigree()} uses the pyygraphviz to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. 
+
+If there is more than one generation in the pedigree as determind by the \char`\"{}gen\char`\"{} attributes of the animals in the pedigree, draw\_\-pedigree() will use subgraphs to try and group animals in the same generation together in the drawing. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em shading}]A dictionary mapping animal IDs to levels that will be used to color nodes. \item[{\em gfilename}]The name of the file to which the pedigree should be drawn \item[{\em gtitle}]The title of the graph. \item[{\em gformat}]The format in which the output file should be written (JPG$|$PNG$|$PS). \item[{\em gsize}]The size of the graph: 'f': full-size, 'l': letter-sized page. \item[{\em gdot}]Whether or not to write the dot code for the pedigree graph to a file (can produce large files). \item[{\em gorient}]The orientation of the graph: 'p': portrait, 'l': landscape. \item[{\em gdirec}]Direction of flow from parents to offspring: 'TB': top-bottom, 'LR': left-right, 'RL': right-left. \item[{\em gname}]Flag indicating whether ID numbers (0) or names (1) should be used to label nodes. \item[{\em garrow}]Flag indicating whether or not arrowheads should be drawn. \item[{\em gtitloc}]Indicates if the title be drawn or above ('t') or below ('b') the graph. \item[{\em gtitjust}]Indicates if the title should be center- ('c'), left- ('l'), or right-justified ('r'). \item[{\em gshowall}]Draws animals with no links to other ancestors in the pedigree (1) or suppresses them (0). \item[{\em gprog}]Specify which program should be used to position and render the graph. \item[{\em ghatch}]Shade a node if the value of its user\-Field attribute is equal to ghatch. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}draw_pedigree() uses the pydot bindings to the graphviz library -- if they
+are available on your system -- to produce a directed graph of your pedigree
+with paths of inheritance as edges and animals as nodes.  If there is more than
+one generation in the pedigree as determind by the "gen" attributes of the animals
+in the pedigree, draw_pedigree() will use subgraphs to try and group animals in the
+same generation together in the drawing.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 349 of file pyp\_\-jbc.py.

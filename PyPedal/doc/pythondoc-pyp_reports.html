@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_reports Module</title>
+</head>
+<body>
+<h1>The pyp_reports Module</h1>
+<p>pyp_reports contains a set of procedures for ...</p>
+<h2>Module Contents</h2>
+<dl>
+<dt><a id='pyp_reports._pdfCreateTitlePage-function' name='pyp_reports._pdfCreateTitlePage-function'><b>_pdfCreateTitlePage(canv, _pdfSettings, reporttitle='', reportauthor='')</b></a> &rArr; None [<a href='#pyp_reports._pdfCreateTitlePage-function'>#</a>]</dt>
+<dd>
+<p>_pdfCreateTitlePage() adds a title page to a ReportLab canvas object.</p>
+<dl>
+<dt><i>canv</i></dt>
+<dd>
+An instance of a ReportLab Canvas object.</dd>
+<dt><i>_pdfSettings</i></dt>
+<dd>
+An options dictionary created by _pdfInitialize().</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_reports._pdfDrawPageFrame-function' name='pyp_reports._pdfDrawPageFrame-function'><b>_pdfDrawPageFrame(canv, _pdfSettings)</b></a> &rArr; None [<a href='#pyp_reports._pdfDrawPageFrame-function'>#</a>]</dt>
+<dd>
+<p>_pdfDrawPageFrame() nicely frames page contents and includes the
+document title in a header and the page number in a footer.</p>
+<dl>
+<dt><i>canv</i></dt>
+<dd>
+An instance of a ReportLab Canvas object.</dd>
+<dt><i>_pdfSettings</i></dt>
+<dd>
+An options dictionary created by _pdfInitialize().</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_reports._pdfInitialize-function' name='pyp_reports._pdfInitialize-function'><b>_pdfInitialize(pedobj)</b></a> &rArr; dictionary [<a href='#pyp_reports._pdfInitialize-function'>#</a>]</dt>
+<dd>
+<p>_pdfInitialize() returns a dictionary of metadata that is used for report
+generation.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of metadata that is used for report generation.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_reports.meanMetricBy-function' name='pyp_reports.meanMetricBy-function'><b>meanMetricBy(pedobj, metric='fa', byvar='by', createpdf=0)</b></a> &rArr; dictionary [<a href='#pyp_reports.meanMetricBy-function'>#</a>]</dt>
+<dd>
+<p>meanMetricBy() returns a dictionary of means keyed by levels of the 'byvar' that
+can be used to draw graphs or prepare reports of summary statistics.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>metric</i></dt>
+<dd>
+The variable to summarize on a BY variable.</dd>
+<dt><i>byvar</i></dt>
+<dd>
+The variable on which to group the metric.</dd>
+<dt><i>createpdf</i></dt>
+<dd>
+Flag indicating whether or not a PDF version of the report should be created.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary containing means for the metric variable keyed to levels of the byvar.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_reports.pdf3GenPed-function' name='pyp_reports.pdf3GenPed-function'><b>pdf3GenPed(animalID, pedobj, titlepage=0, reporttitle='', reportauthor='', reportfile='')</b></a> &rArr; integer [<a href='#pyp_reports.pdf3GenPed-function'>#</a>]</dt>
+<dd>
+<p>pdf3GenPed() draws a three-generation pedigree for animal 'animalID'.</p>
+<dl>
+<dt><i>animalID</i></dt>
+<dd>
+An animal ID or list of animal IDs.</dd>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>titlepage</i></dt>
+<dd>
+Show (1) or hide (0) the title page.</dd>
+<dt><i>reporttitle</i></dt>
+<dd>
+Title of report; if '', _pdfTitle is used.</dd>
+<dt><i>reportauthor</i></dt>
+<dd>
+Author/preparer of report.</dd>
+<dt><i>reportfile</i></dt>
+<dd>
+Optional name of file to which the report should be written.</dd>
+<dt>Returns:</dt>
+<dd>
+1 on success, 0 on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_reports.pdfMeanMetricBy-function' name='pyp_reports.pdfMeanMetricBy-function'><b>pdfMeanMetricBy(pedobj, results, titlepage=0, reporttitle='', reportauthor='', reportfile='')</b></a> &rArr; integer [<a href='#pyp_reports.pdfMeanMetricBy-function'>#</a>]</dt>
+<dd>
+<p>pdfMeanMetricBy() returns a dictionary of means keyed by levels of the 'byvar' that
+can be used to draw graphs or prepare reports of summary statistics.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>results</i></dt>
+<dd>
+A dictionary containing means for the metric variable keyed to levels of the byvar.</dd>
+<dt><i>titlepage</i></dt>
+<dd>
+Show (1) or hide (0) the title page.</dd>
+<dt><i>reporttitle</i></dt>
+<dd>
+Title of report; if '', _pdfTitle is used.</dd>
+<dt><i>reportauthor</i></dt>
+<dd>
+Author/preparer of report.</dd>
+<dt><i>reportfile</i></dt>
+<dd>
+Optional name of file to which the report should be written.</dd>
+<dt>Returns:</dt>
+<dd>
+1 on success, 0 on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_reports.pdfPedigreeMetadata-function' name='pyp_reports.pdfPedigreeMetadata-function'><b>pdfPedigreeMetadata(pedobj, titlepage=0, reporttitle='', reportauthor='', reportfile='')</b></a> &rArr; integer [<a href='#pyp_reports.pdfPedigreeMetadata-function'>#</a>]</dt>
+<dd>
+<p>pdfPedigreeMetadata() produces a report, in PDF format, of the metadata from
+the input pedigree.  It is intended for use as a template for custom printed
+reports.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>titlepage</i></dt>
+<dd>
+Show (1) or hide (0) the title page.</dd>
+<dt><i>reporttitle</i></dt>
+<dd>
+Title of report; if '', _pdfTitle is used.</dd>
+<dt><i>reportauthor</i></dt>
+<dd>
+Author/preparer of report.</dd>
+<dt><i>reportfile</i></dt>
+<dd>
+Optional name of file to which the report should be written.</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 on success, 0 otherwise.</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>

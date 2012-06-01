@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>PyPedal: Python Pedigree Analysis</title>
+</head>
+<body>
+<table style="text-align: center; width: 100%;" border="0"
+ cellspacing="0" cellpadding="2">
+  <tbody>
+    <tr>
+      <td colspan="2"
+ style="text-align: left; vertical-align: middle; width: 30%;"><img
+ style="width: 416px; height: 41px;"
+ alt="PyPedal: Python Pedigree Analysis" src="pypedal_logo_white.jpg"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 30%; vertical-align: top;">
+      <table style="text-align: left; width: 100%;" border="0"
+ cellspacing="0" cellpadding="2">
+        <tbody>
+          <tr style="font-weight: bold;">
+            <td
+ style="vertical-align: top; width: 25%; background-color: rgb(204, 204, 255); text-align: center;">Links</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><a
+ href="http://sourceforge.net/projects/pypedal/">Download PyPedal</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><a
+ href="http://www.funjackals.com/blog/?tag=pypedal" title="PyPedal blog entries at Funjackals!">PyPedal Blog</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><a
+ href="https://sourceforge.net/project/screenshots.php?group_id=106679" title="Screenshots of PyPedal graphics">Screenshots</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><b>Manuscript</b>
+        [<A href="http://dx.doi.org/10.1016/j.compag.2007.02.002" title="PyPedal: A computer program for pedigree analysis">Paper on COMPAG website</A>,
+        <a href="manuscript/pypedal_cae_manuscript_website.html" title="Accepted COMPAG paper in HTML format">HTML</a>,
+        <a href="manuscript/pypedal_cae_manuscript_website.pdf" title="Accepted COMPAG paper in PDF format">PDF</a>,
+        <a href="manuscript/greens_dingo_pedigree.png" title="Figure 1 from COMPAG paper in PNG format">Figure 1 (PNG)</a>,
+        <a href="manuscript/ay_coi_by_year.png" title="Figure 2 from COMPAG paper in PNG format">Figure 2 (PNG)</a>,
+        <a href="manuscript/horse_pedigree.png" title="Figure 3 from COMPAG paper in PNG format">Figure 3 (PNG)</a>]<br>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><b>Manual</b>
+		[<a href="manual/index.html" title="PyPedal manual in HTML format">HTML</a>,
+		<a href="doc/pypedal.pdf" title="PyPedal manual in PDF format">PDF</a>,
+		<a href="doc/pypedal.ps" title="PyPedal manual in PostScript (PS) format">PS</a>]<br>
+            </td>
+          </tr>
+	  <tr>
+	    <td style="vertical-align: top; width: 25%;"><b>Installation</b>
+		[<a href="manual/node14.html" title="PyPedal installation: Overview">Overview</a>,
+		<a href="manual/node18.html" title="PyPedal installation: Generic Linux">Generic Linux</a>,
+        <a href="http://ggorjan.blogspot.com/2007/04/installing-pypedal-under-debian.html"  title="PyPedal installation: Debian Linux">Debian Linux</a>,
+        <a href="manual/node19.html" title="PyPedal installation: MS Windows">Windows</a>]<br>
+	    </td>
+	  </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><b>API</b>
+		[<a href="doxygen/index.html">Index</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__db.html">db</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__demog.html">demog</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__graphics.html">graphics</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__io.html">io</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__metrics.html">metric</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__network.html">network</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__newclasses.html">newclasses</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__nrm.html">nrm</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__reports.html">reports</a>,
+		<a href="doxygen/namespacePyPedal_1_1pyp__utils.html">utils</a>]<br>
+            </td>
+          </tr>
+	  <tr>
+            <td style="vertical-align: top; width: 25%;"><b>Other</b>
+		[<a href="doc/AUTHORS.txt">AUTHORS.txt</a>,
+		<a href="doc/CHANGES.txt">CHANGES.txt</a>,
+		<a href="doc/LICENSE.txt">LICENSE.txt</a>,
+		<a href="doc/OPTIONS.txt">OPTIONS.txt</a>,
+		<a href="doc/PEDIGREE_FORMAT_CODES.txt">PEDIGREE FORMAT CODES.txt</a>]<br />
+	    </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><br>
+            </td>
+          </tr>
+	  <tr>
+            <td style="vertical-align: top; width: 25%;"><a
+ href="http://www.funjackals.com/">Personal Website</a><br>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top; width: 25%;"><br>
+            </td>
+          </tr>
+          <tr style="vertical-align: top; width: 25%;">
+		<td><a href="http://sourceforge.net/donate/index.php?group_id=106679"><img src="http://sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project"></a>
+		</td>
+	  </tr>
+        </tbody>
+      </table>
+      <br>
+      </td>
+      <td style="vertical-align: top;">
+      <table style="text-align: left; width: 100%;" border="0"
+ cellspacing="0" cellpadding="2">
+        <tbody>
+          <tr>
+            <td
+ style="vertical-align: top; background-color: rgb(204, 204, 255); text-align: center;"><span
+ style="font-weight: bold;">News</span><br>
+            </td>
+          </tr>
+      <tr>
+          <td style="vertical-align: top;"><p><b>05/07/2008</b>: Release candidzte 7 is out. This includes a number of fixes to routines in <strong>pyp_nrm</strong> and <strong>pyp_graphics</strong>, and all of the example programs have been checked for correctness. See <a href="http://www.funjackals.com/blog/?tag=pypedal" title="PyPedal blog entries at Funjackals!">the blog</a> for details.</p>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+          <td style="vertical-align: top;"><p><b>05/01/2008</b>: Release candidzte 6 is out. This includes a fix for the logging module, which I broke a version or two ago and a few other small bugfixex. See <a href="http://www.funjackals.com/blog/?tag=pypedal" title="PyPedal blog entries at Funjackals!">the blog</a> for details.</p>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+          <td style="vertical-align: top;"><p><b>04/09/2008</b>: Release candidzte 4 is out. This includes improvements to the installation process. See <a href="http://www.funjackals.com/blog/?tag=pypedal" title="PyPedal blog entries at Funjackals!">the blog</a> for details.</p>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+          <td style="vertical-align: top;"><p><b>03/28/2008</b>: Release candidzte 3 is out. This includes a bugfix to the <strong>inbreeding_vanraden()</strong> routine and a major refactoring of the database support. See <a
+ href="http://www.funjackals.com/blog/?tag=pypedal" title="PyPedal blog entries at Funjackals!">the blog</a> for details.</p>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+            <td style="vertical-align: top;"><p><b>03/11/2008</b>: Release candidzte 2 released. This includes a major bugfix to the inbreeding routines. See <a
+ href="http://www.funjackals.com/blog/?tag=pypedal" title="PyPedal blog entries at Funjackals!">the blog</a> for details.</p>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+            <td style="vertical-align: top;"><p><b>03/03/2008</b>: This afternoon I released beta23, which is the last beta release. From now on changes will be limited to bugfixes, and the next release will be tagged rc1 (release candidate 1). The API documentation was removed from the manual but can be found on the website courtesy of Doxygen. Note that I've removed all of the GUI components and have no plans to implement a graphical interface for Python. I also made a few small changes to support loading pedigreed from strings, which is a web services-type feature requested by Dan Cieslak, who is now outed as a PyPedal user. :-) Feedback and bug reports are welcome.</p>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+            <td style="vertical-align: top;"><p><b>02/08/2008</b>: Despite the absence of any new posts PyPedal is alive and well. I've added a link on the left to <a
+ href="http://www.funjackals.com/blog/?tag=pypedal" title="PyPedal blog entries at Funjackals!">all of the entries on my blog tagged with PyPedal</a> that may help people keep up with what's going on. The big news is that I finally got the <a href="http://www.vortex9.org/partinbrdef.html" title="Definition and equations for Partial Inbreeding Coefficients">partial inbreeding calculations</a> working this morning. A side effect of that is that the <strong>reorder()</strong> routine now moves all founders to the beginning of the pedigree. In the past, founders were guaranteed to precede their offspring, but they were not guaranteed to be guaranteed to precede other animals with known parents. I'm also close to having the code done to support <a href="http://en.wikipedia.org/wiki/GEDCOM" title="GEDCOM [Wikipedia]">GEDCOM 5.5</a> files, which is widely-used by the human geneaology community, although support will be provided for only a small subset of the formal specification.</p>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+            <td style="vertical-align: top;"><p><b>04/17/2007</b>: Gregor Gorjanc has written a nice tutorial on <a href="http://ggorjan.blogspot.com/2007/04/installing-pypedal-under-debian.html" title="Installing PyPedal under Debian">installing PyPedal under Debian</a> (I've linked to it under <b>Installation</a>, too). </b> He's done a nice job with that, and I'd like to thank him for it. His tutorial will be included in the documentation as a HOWTO when I package the nect release.</p></td>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+            <td style="vertical-align: top;"><p><b>04/09/2007</b>: The bug in handling ASD pedigrees on 32-bit platforms has been fixed in Beta 21, which is available for download. The fix has been tested on 64-bit Linux (JBC) and 32-bit Windows XP and Mac OS/X (Matt Kelly). Many thanks to Matt for finding the bug in the first place and testing the fix on several machines to make sure it's working as advertised.</p>
+            <p>For the technically-minded: The old algorithm was using sys.maxint in the hash, which is platform specific. It's a much larger number on 64-bit hardware (obviously). I guess that led to a better distribution of keys or something on the 64-bit machine. I've implemented a new approach using the MD5 module in the Python core library.</p></td>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+            <td style="vertical-align: top;"><p><b>04/05/2007</b>: I've discovered a bug in the handling of ASD pedigrees (pedigrees in which the animal, sire, and dam names are strings rather than numerical IDs) that affects PyPedal running on the Microsoft Windows and Apple OS/X operating systems. The problem <b>does not</b> affect Linux. I hope to fix the problem in the next day or so.</p>
+            <p>For the technically-minded: I think that the problem is in the algorithm that PyPedal uses to hash (convert) strings to integers. I don't yet know why there is a platform-specific difference, and I also don't know if the algorithm is colliding or what.</p></td>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+            <td style="vertical-align: top;"><p><b>03/23/2007</b>: I've posted links to HTML and PDF versions of the forthcoming paper on PyPedal that's to appear in <a href="http://www.elsevier.com/wps/find/journaldescription.cws_home/503304/description#description" title="Computers and Electronics in Agriculture">Computers and Electronics in Agriculture</a>. The version I've posted is my own file, not the fancy typeset version from the publisher, but the content is identical to Elsevier's version.</p>
+            <p>PyPedal was recently mentioned on CANGEN-L, a canine genetics e-mail discussion list. If you've come here from there, welcome. Links to <b>Installation instructions</b> are provided over on the left. I've written PyPedal for use in my research program, and that perhaps shows in the lack-of-ease of the installation process and the console-based interface, but it's available free-of-charge under the terms of the <a href="http://www.gnu.org/licenses/lgpl.html" title="GNU Lesser General Public License">GNU LGPL</a> for anyone who wants to use it. I make no promises of support, but it's been my practice in the past to provide assistance within a reasonable amount of time. I will continue to do so as long as I'm able. Bug reports and feature requests can be made directly to me, but I'd prefer that you use <a href="http://sourceforge.net/projects/pypedal/" title="PyPedal Project Page on Sourceforge">the tools provided by Sourceforge for that purpose</a>. I don't aways do a great job of keeping up with my e-mails, and I've got a very aggressive spam filter.</p></td>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>11/02/2006</b>: Reviewer comments are back on the manuscript describing PyPedal that I submitted to <a href="http://www.elsevier.com/wps/find/journaldescription.cws_home/503304/description#description" title="Computers and Electronics in Agriculture">Computers and Electronics in Agriculture</a>. Based on feedback from the reviewers I've updated some of the material on this website and I hope to post a new installation guide for Windows users by the end of the day. Windows installs should be pretty easy now thanks to the nice folks over at Enthought. Their <a href="http://code.enthought.com/enthon/" title="Python-Enthought Edition">Python Enthought Edition</a> contains all of the prequisites needed by PyPedal with the exception of ReportLab. Fernando Perez posted a nice LaTeX preamble on the NumPy e-mail list that I've used to greatly improve the PDF version of the PyPedal manual.</td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>07/18/2005</b>: No new version yet.  I am adding in <a href="http://peak.telecommunity.com/DevCenter/setuptools">setuptools</a> support.  This should (I hope) make it easier for people to get PyPedal installed and running on their systems.  I also found a project called <a href="http://mfgraph.sourceforge.net/">mfGraph</a> which may allow me to package an interactive pedigree viewer with a reasonable amount of work, although I am not making any guarantees on that front.  Somehow I managed to lose a bunch of changes made to <b>pyp_metrics</b> in response to little bugs exposed by the unit testing.  I hope to get that sorted out tomorrow, finish a few more half-implemented features, and get back to work on the unit tests and the documentation for a release in the near future. Also note that I have made this page much sorter; if you want to see older posts you will have to read the <a href="full_index.html">Full index/changelog</a>.</td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>06/20/2005</b>: One day I need to clean this page up.  You know, some sort of actual CMS.  Anyway.  No new release yet.  Today I started working on a unit testing framework, and the unit test for a single routine (<strong>pyp_metrics/effective_founders_lacy()</strong>) found several small errors.  Some of them are a direct result of the big push to convert everything to the new object model which was called done in <b>2.0.0a17</b> and required a little backing-off in that area.  Specifically, <strong>pyp_nrm/fast_a_matrix()</strong> cannot be converted to the new model.  It is used by several metrics which quietly pass subpedigrees, lists of NewAnimal() objects rather than actual NewPedigree() objects, causing breakage.</td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>05/18/2005</b>: Version <b>2.0.0a17</b> has been released.  The use of strings for animal, sire, and dam IDs is now supported; see <a href="doc/PEDIGREE_FORMAT_CODES">PEDIGREE FORMAT CODES</a> for the appropriate format codes to use.  This feature has been gently tested, but needs a good workout to catch any lingering bugs.  Most of the work in this release went into cleaning-up code; all of the routines in PyPedal have now been updated to use the new-for-2.0.0 object model.  I also seem to recall adding a new item or two to <a href="doc/OPTIONS">OPTIONS</a>.  Note that these changes have NOT been well-tested and I did a lot of the work this morning.  Since I went to see "Revenge of the Sith" last night and only got four hours sleep there are almost certainly typos.  Of course, the distribution RPMs won't build if there are obvious errors (screwed-up tabs, etc.) so maybe I got lucky.  The big push for the next release will be some sort of testing framework, as well as adding logging functionality to most of the routines in PyPedal.</td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>05/03/2005</b>: Version <b>2.0.0a16</b> has been released.  The big new feature in this release is a wrapper class, <b>NewAMatrix</b> for handling numerator relationship matrices; the object has <b>save()</b>, <b>load()</b>, and <b>info()</b> methods.  Matrices are stored in a binary format as described in the Numarray documentation.  This provides the user with an easy way to store NRM for later work, such as visualization or computation of CoI/CoR.  I also added a new option, <b>missing_parent</b>, that can used to specify the value assigned to missing parents in the input pedigree file.<br /><br />The other noteworthy bit of news is that I have [finally] started working on documentation again.  The PDF and PS manuals posted over on the left are up-to-date, but they are not complete.  As usuall, all API docs are up-to-date.  Note that the typography of the manuals is kind of dodgy in places, which reflects in part the questionable LaTeX generated by html2latex (used to get the API docs into the manual).  I will put updated HTML manuals up tomorrow after I install latex2html.<br /><br />Please read the <b>AUTHORS</b> file over on the left sometime.  It's where I give credit and thanks to the people who have helped make PyPedal useable.  Any flaws or faults in the software are my own and do not reflect poorly on those who have helped me.</td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>04/27/2005</b>: Version <b>2.0.0a14</b> has been released.  The changelog is now linked over on the left under <b>Other</b>.  This is an important release as it deals with a potentially serious bug in <b>pyp_utils/fast_reorder()</b> procedure that affects pedigree in which (i) animals are not guaranteed to have larger IDs than their parents and (ii) pedigrees in which birth dates/years are either not provided or which contain errors.  <b>pyp_newclasses/NewPedigree.load()</b> has been changed to use a newly-rewritten <b>pyp_utils/reorder()</b> procedure that is a fair bit slower than fast_reorder() but much faster than the previous version of reorder().  This default behavior can be overridden using an <a href="doc/OPTIONS">OPTION</a> by users who are willing to risk it.</td>
+	  </tr>
+	  <tr><td>&nbsp;</td></tr>
+          <tr>
+            <td style="vertical-align: top;"><b>04/26/2005</b>: <b>CHANGELOG for PyPedal 2.0.0a13</b>
+            <ul>
+                <li>In pyp_newclasses/NewPedigree.save() accepts an option, idformat, that specifies which animal, sire, and dam IDs are written.  The 'o' (original) option writes a pedigree with the original IDs as read from the original input pedigree file.  The 'r' (renumbered) option will write a pedigree file containing renumbered animal, sire,  and dam IDs.</li>
+		<li>In pyp_newclasses/NewPedigree.save() accepts an option, outformat, that specifies how the saved pedigree is written.  The 'o' (original) option writes a pedigree with the same pedformat as the original input pedigree file; this is useful if you have computed CoI, inferred sex, and that kind of thing.  The 'l' (long) option will write a pedigree file containing all known fields in the animal object for which there is are pedigree format codes (see the file PEDIGREE_FORMAT_CODES).</li>
+		<li>In pyp_newclasses/NewPedigree.__init__() the default logfile name is now self.kw['filetag'].log.</li>
+		<li>Some changes were made to layout options in  pyp_graphics/draw_pedigree().  Pedigrees are now drawn landscaped on US letter-sized pages (8.5 in x 11 in) and will, in theory, be tiled across pages if they cannot fit on a single page.  This does not work as well as hoped, but I am working on it.</li>
+		<li>pyp_graphics/draw_pedigree() now takes an optional parameter, gdot, that tells draw_pedigree() whether or not write the raw (dot language) representation of the pedigree to a file.  Code is written to a file named gfilename_pedigree.dot.</li>
+		<li>pyp_graphics/draw_pedigree() now takes an optional parameter, gsize, that tells draw_pedigree() whether or not write the raw (dot language) representation of the pedigree to a file.</li>
+		<li>pyp_graphics/draw_pedigree() now takes an optional parameter, gsize, that specifies the size of the resulting graphic: 'f' (default) produces as large a graph as necessary to accomodate the layout and 'l' produces a diagram scaled to fit on a letter-sized sheet of paper.</li>
+		<li>Added a new method, save(), to pyp_newclasses/NewPedigree().  This long-overdue feature lets you easily save a pedigree after, for example, computing CoI.  It eliminates the need to perform time-consuming computations on pedigrees every time they are accessed by making it easy to store a "large format" PyPedal pedigree.</li>
+		<li>Fixed a bug in pyp_newclasses/NewPedigree.preprocess() in which records for sires and dams that appear in a pedigree, but which do not have individual entries in the pedigree file, were assigned birth years of 0 when dummy records were inserted into the pedigree.  This was causing pyp_newclasses/NewAnimal.pad_id() to return a munged up paddedID that caused problems in pyp_utils/fast_reorder().  Tricky problem to find, that was.</li>
+		<li>Made a small change to pyp_newclasses/NewPedigree.preprocess() so that blank lines are caught and handled correctly.  Before this fix a blank line with, say, an embedded TAB character would cause a fatal error b/c it was treated as a "regular" record.</li>
+	      </ul>
+	    </td>
+	  </tr>
+          <tr><td>&nbsp;</td></tr>
+          <tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>04/15/2005</b>: PyPedal 2.0.0a11 has been released.  Since I have been working on the <b>pyp_graphics</b> module lately I <a href="https://sourceforge.net/project/screenshots.php?group_id=106679">posted a few screenshots</a>.  Note that the API documentation to the left has been updated; the <b>classes</b> module is deprecated in favor of the <b>newclasses</b> module.  Changes are as follows:<br /><br />
+	   <b>CHANGELOG for PyPedal 2.0.0a11</b>
+            <ul>
+                <li>I think that pyp_graphics/draw_pedigree() may be inserting a spurious node when drawing the pedigree, but I have not yet figured out where it is happening.</li>
+		<li>Removed references to "species" from pyp_newclasses/NewAnimal.printme() and pyp_newclasses/NewAnimal.stringme().</li>
+		<li>Tweaked pyp_newclasses/NewAnimal.pad_id() so that it casts values to INTs before concatenating them.</li>
+		<li>pyp_newclasses/NewPedigree.preprocess has been fixed to handle parents that do not have their own entry in the pedigree file.  They are added to the pedigree with an unknown sire and dam.</li>
+		<li>Changed pyp_nrm/inbreeding() so that the output file written contains the original ID, the renumbered ID, and the CoI (in that order).</li>
+		<li>Added a dictionary, "backmap", to pyp_newclasses/NewPedigree that maps renumbered IDs (keys) to original IDs (values).  It is the reverse direction of that provided by idmap.</li>
+		<li>Added pyp_graphics/plot_pct_founders_by_year() to plot the frequency of founders in each birth year.  NOTE: This requires <a href="http://matplotlib.sourceforge.net/">matplotlib</a>.  If matplotlib is not installed/cannot be imported, a value of 0 is returned.</li>
+                <li>Fixed pyp_graphics/draw_pedigree() so that it labels animals with their original IDs instead of their renumbered IDs.</li>
+                <li>Fixed pyp_graphics/draw_pedigree() so that it displays the gtitle.</li>
+                <li>Fixed a typo in pyp_newclasses/NewAnimal.__init__() that broke proper birthyear assignment.</li>
+                <li>Added pyp_graphics/plot_founders_by_year() to write a histogram of number-of-founders by year of birth.  NOTE: This requires <a href="http://matplotlib.sourceforge.net/">matplotlib</a>.  If matplotlib is not installed/cannot be imported, a value of 0 is returned.</li>
+                <li>Changed pyp_demog/BASE_DEMOGRAPHIC_YEAR from 1950 to 1900.  This brings it in line with the default birthyear of 1900 used in pyp_newclasses.</li>
+		<li>Added pyp_demog/founders_by_year() which provides a dictionary, keyed by birthyear, of the number of founders with each birthyear.</li>
+	    </td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+	    <td style="vertical-align: top;"><b>04/14/2005</b>: PyPedal 2.0.0a10 has been released.  There are only very minor changes in the package: disabled I18N (gettext) in <b>pyp_classes.py</b>, a <b>__version__.py</b> file was added, and a small fix was made to the MANIFEST file used to roll the distributions.  Thanks to Thomas von Hassel for reporting the gettext problem under FreeBSD.  Only one (1) method in <b>pyp_classes</b> used it anyway, so I am going to let that lie until I have some more time to work on it.</td>
+	  </tr>
+	  <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>03/30/2005</b>: I uploaded PyPedal 2.0.0a9 today for your edification.  Please note that updated documentation has <b>not</b> yet been posted. The CHANGELOG (see below) is posted on the SourceForge site and is included in the distribution; it is worth a read.  A bunch of code has been refactored, and 2.0.0a10 will include a lot more code cleanups.  If you are using PyPedal right now, please take a look at <b>examples/new_lacy.py</b> for an example of how to use the new object model.  One interesting thing to note is that <b>pyp_metrics/effective_founders_lacy()</b> (a rewrite of  <b>pyp_metrics/a_effective_founders_lacy()</b> to support large pedigrees and the new object model) is "smart" enough to accept and use NewPedigree objects, while <b>pyp_metrics/a_effective_founders_lacy()</b> knows nothing about the new classes and must be handed a pedigree-as-Python-list by hand.  I am thinking about how to migrate a lot more of the old functions to the new way of doing things, and I expect that I will probably keep all of the current code in a working state and write parallel code to accomodate the Version 2 stuff.  I expect that someone will eventually point out that I should consider using multimethods to hide that from the user.  Hm.  Maybe later.<br /><br />
+	    <b>CHANGELOG for PyPedal 2.0.0a9</b>
+	    <ul>
+		<li>pyp_io/pyp_file_header() and pyp_io/pyp_file_footer() now work.</li>
+		<li>Added pyp_metrics/effective_founders_lacy(), which is a re-write of pyp_metrics/a_effective_founders_lacy() that works with the new object model.  Correctness was verified by comparing results against Table 3 in Lacy (1989) and Tables I and II in Boichard et al. (1997).  You can use examples/new_lacy.py to verify the results.</li>
+		<li>Fixed a nasty bug in pyp_metrics/a_effective_ancestors_definite() that was due to an indentation screwup when moving from one editor to another.  Correctness was verified by comparing results against Tables I and II in Boichard et al. (1997).  You can use examples/new_lacy.py to verify the results.</li>
+		<li>Added pyp_utils/pyp_nice_time() which returns the current date and time as a nicely-formatted string.</li>
+		<li>Added pyp_metrics/descendants() and pyp_metrics/founder_descendants() to support the rewritten pyp_metrics/effective_founders_lacy() routine.</li>
+		<li>Added pyp_utils/assign_offspring(), which adds offspring of an animal to that animal's 'unks' list.</li>
+		<li>Stubbed pyp_io/pyp_file_header() and pyp_io/pyp_file_footer() in preparation for standardizing the output files written by PyPedal.</li>
+		<li>Added pyp_graphics module.  It currently includes three functions from the <a href="http://aspn.activestate.com/ASPN/Cookbook/Python/">ASPN Python Cookbook</a> for visualizing the sparsity and the elements of matrices.  I have also moved the draw_pedigree() function from pyp_utils to pyp_graphics.  From now on, any functions related to visualization will go in pyp_graphics.</li>
+		<li>It looks like the sons and daus lists get screwed up when the pedigree is renumbered, but I think that it is a consequence of the item below.</li>
+		<li>When a pedigree that needs renumbering is read, pyp_utils/preprocess() throws an exception when trying to assign sex codes because it uses the sire's and dam's original IDs as keys.  This represents fundamental breakage in the ordering of events in pedigree creation.  I have sort-of hacked around this for the moment, but the bug is still there.</li>
+		<li>Added a new pedigree format code, asdgb, to pyp_utils/preprocess().</li>
+		<li>Added pyp_metrics/generation_lengths_all() which computes the average generation interval in years for each of the four selection paths (sire-son, sire-daughter, dam-son, and dam-daughter) for all births of a parent's offspring.</li>
+		<li>Added pyp_utils/assign_sexes() which iterates over a renumbered PyPedal pedigree to update sexes of sires and dams based on knowledge of their sons and daughters.  This seems to catch cases that are missed in pyp_utils/preprocess(), which needs to e cleaned up.</li>
+		<li>Upon further examination, it seems like males and females are being correctly assigned.  Hm...OK.  Fixed a bug in pyp_utils/preprocess() that incorrectly assigned sires and dams with unknown parents to the sons and daus lists of the last animal in the pedigree.  This was fixed by casting to an INT before a comparison with 0.</li>
+		<li>See examples/generations.py -- sons and daughters are not being correctly assigned to foo.sons and foo.daus.</li>
+		<li>Need to fix a bug in pyp_utils/new_preprocesss() in which unknown sires and dams (animals with IDs of 0) were being put into male, female, son, and daughter lists.</li>
+		<li>Fixed a bug in pyp_utils/preprocesss() in which unknown sires and dams (animals with IDs of 0) were being put into male, female, son, and daughter lists.</li>
+		<li>Added pyp_metrics/generation_lengths() which computes the average generation interval in years for each of the four selection paths (sire-son, sire-daughter, dam-son, and dam-daughter) for the oldest (first-born) of parents.</li>
+		<li>Added pyp_metrics/num_traced_gens(), pyp_metrics/num_equiv_gens(), and pyp_metrics/pyp_partial_inbreeding().</li>
+		<li>Lots of code cleanup in pyp_classes.  Removed pad_id() and renamed pad_id_new() to pad_id().</li>
+		<li>Removed the originalID and species attributes from the Animal() class.</li>
+	    </ul>
+            </td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>03/09/2005</b>: A few of you may have figured out that I am not the fastest shoe in the closet when it comes to some software stuff.  I have been trying to be a good programmer and use CVS to track the codebase.  Well, no more.  When I opened <b>pyp_newclasses.py</b> this afternoon for a little bit of light hacking (after refreshing my local tree from the CVS server) I found all kinds of <b>diff</b>-looking stuff in the file.  I have had all I can stand of CVS, thank you very much.  I will stick with the boring but tried-and-true method of syncing my tree between machines by way of my trusty USB stick.  I think that perhaps the complexity of CVS, with which I am not comfortable, is just not worthwhile on a relatively small project such as PyPedal.
+            </td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+          <tr>
+            <td style="vertical-align: top;"><b>02/25/2005</b>: Made a commit to the CVS tree.  Migration to the new class system as outlined in <b>pyp_newclasses.py</b> is in full swing.  More later.
+            </td>
+          </tr>
+          <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>12/01/2004</b>: I suppose that this is my periodic reminder that PyPedal is not dead and it is not abandonware.  However, I have not had any time lately to work on the project.  I did a little profiling this morning and discovered that PyPedal requires a minimum of <b>717</b> bytes per animal record in a pedigree (!!!).  This is not really a big deal for a few hundred animals, but it is a big deal for 100,000 animals.  Back at the end of August I decided to add a bunch of new things, such as refactored classes and I18N support.  I think that I am going to have to back off of some of those changes in order to focus on more important (to me) performance issues.
+            </td>
+          </tr>
+	  <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>08/31/2004</b>: It took me all morning but I have a start on using <b>gettext</b> to provide support for I18N in PyPedal.  I have started on a German translation, but since I do not actually speak German it is based on Babelfish translations.  I do not yet know if that is good or bad.  :-)
+	    </td>
+	  </tr>
+	  <tr><td>&nbsp;</td></tr>
+	  <tr>
+            <td style="vertical-align: top;"><b>08/30/2004</b>: Lots of big changes are in the works for PyPedal.  Today I started working on the new class structure that will see the introduction of a <i>real</i> pedigree class with most of the computational routines as methods.  I also started tinkering with some custom exceptions for PyPedal but I think that's not a very productive way to spend my time.  Although I have not started coding on it, I am thinking about what needs to be done to enable translations in PyPedal.  I have a few ideas here and they make their way into Alpha 8.  One thing that <i>must</i> be done before I can make a Beta release is to write some unit tests.  The <b>examples</b> subdirectory is a mess and if I write some tests it will force me to clean that up.  I hope that unit testing does not reveal a bunch of unknown bugs.  :-)<br /><br />
+	    I am adding a configuration file that can be used to control the default options used by a lot of PyPedal procedures.  The idea here is to reduce the number of parameters that have to get passed around by the user.  At the moment, though, it is unclear to me how best to use the config file (thank Bob for the OptionsParser module).  I am adding <b>**kw</b> argument handling to the classes and methods, too.<br /><br />
+	    One of the hard things about this part of development is to stay focused on the little details that need attention.  It is much more interesting to add new features than to perfect older ones.  For example, there is still a nasty little bug in the new pedigree format code handling procedure that affects all columns following allelotypes in an input file.  It should not be very hard to fix, but still, boring.  :-)<br /><br />
+	    Anyway, what does this mean for the release schedule?  In short, I do not know.  I will probably keep releasing Alpha versions until I am happy with everything.  This will probably take until at least Christmas.  We are looking for a new place to live and I need to get at least two manuscripts written and submitted by then, so PyPedal is not first on my list of priorities.  Once unit tests and a basic GUI are completed I will start the Beta series of releases.  If I can recruit some people to bug-check then the Beta cycle may be relatively short.  Once the system is pretty well debugged I will freeze the codebase and start working on the documentation.  When there is documentation that is actually useful and I have not found any bugs that slipped through the testers I will release PyPedal 2.0.0.<br /><br />
+	    What can you do to help?  If you are interested in PyPedal, download it and use it.  If you think that you have found a bug enter it into <a href="http

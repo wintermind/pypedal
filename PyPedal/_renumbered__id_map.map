@@ -1,0 +1,52 @@
+# FILE: _renumbered__id_map.map
+# Renumbered ID to Old ID mapping produced by PyPedal.
+# The lefthand column contains the original IDs.
+# The righthand column contains the renumbered IDs.
+# Old ID	Renum ID
+113,8
+157,14
+156,13
+195,18
+194,17
+191,15
+193,16
+50,38
+115,10
+114,9
+88,6
+89,7
+64,22
+65,23
+66,21
+67,20
+68,42
+69,44
+80,5
+48,43
+49,40
+63,26
+51,36
+77,2
+121,12
+75,39
+74,37
+73,41
+72,47
+71,46
+70,45
+222,19
+79,4
+78,3
+60,28
+59,30
+58,33
+76,1
+55,29
+54,31
+57,27
+56,32
+61,24
+62,25
+53,35
+52,34
+116,11

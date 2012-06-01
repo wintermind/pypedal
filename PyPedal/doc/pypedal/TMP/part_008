@@ -1,0 +1,153 @@
+<tex2html_file>#./methodology.tex#
+\chapter<<1620>>Methodology<<1620>>
+\label<<1621>>cha:methodology<<1621>>
+\begin<<1622>>quote<<1622>>
+In this chapter, a high-level overview of PyPedal<<1623>><<1623>> is provided, giving
+the reader the definitions of the key components of the system. This section
+defines the concepts used by the remaining sections.
+\end<<1624>>quote<<1624>>
+\section<<1625>>Reordering and Renumbering<<1625>>
+\label<<1626>>sec:methodology-reordering-and-renumbering<<1626>>
+\index<<1627>>reordering and renumbering<<1627>>
+Many computations on pedigrees require that the pedigree be renumbered such that animal IDs are consecutive from 1 to \character<<1628>>n<<1628>>, where \character<<1629>>n<<1629>> is the total number of animalsin the pedigree.  The renumbering process requires that the pedigree be reordered such that parents always precede their offspring in the list of animal IDs.  The actual ID assigned to an animal is of no particular importance, and it is even possible for parents to have larger IDs than their ofspring.  PyPedal<<1630>><<1630>> can reorder any pedigree unless there is an error in it that would prevent unambiguously placing parents before offspring.  For example, a pedigree containing a keypunch error such that an animal is one of its own grandparents cannot be reordered because there is no way to unambiguously order the animals.  The \module<<1631>>pyp_utils<<1631>> module provides two routines for pedigree reordering, \function<<1632>>reorder()<<1632>> and \function<<1633>>fast\_reorder()<<1633>>.  By default, \function<<1634>>reorder()<<1634>> is used to reorder pedigrees in place.  It does this by maintaining a list of animal IDs that have been processed; whenever a parent that is not in the  list of encountered animals the offspring of that parent are moved to the end of the pedigree.  This ensures the pedigree is properly sorted such that all parents precede their offspring. Founders are also grouped together at the beginning of the pedigree. This procedure will always correctly reorder a pedigree but it can be quite inefficient as it is similar to an insertion sort, which has a worst-case runtime proportional to \begin<<1833>>tex2html_wrap_inline<<1833>>$n^<<1635>>2<<1635>>$\end<<1834>>tex2html_wrap_inline<<1834>>\space \cite<<1636>>Cormen2003<<1636>>.
+\begin<<1925>>tex2html_deferred<<1925>>\par\end<<1926>>tex2html_deferred<<1926>>
+\function<<1637>>fast\_reorder()<<1637>> provides a much faster means of reordering a pedigree, but can incorrectly reorder a pedigree in some cases.  When an instance of a \class<<1638>>NewAnimal<<1638>> object is created the \method<<1639>>pad_id()<<1639>> method is called.  \method<<1640>>pad_id()<<1640>> uses the animal ID and birth year to form an ID used by \function<<1641>>by pyp_utils/fast_reorder()<<1641>> for quick sorting; if your pedigree file is numbered such that offspring always have larger IDs than their parents and your birth years (if provided) are correct (that is, parents always born BEFORE offspring) then \function<<1642>>pyp_utils.fast_reorder()<<1642>> works as expected.  If you do not provide birth years in your pedigree file but your parent IDs are always smaller than your animal IDs, the reordering will be correct.  If you do not provide birth years, all animals in the pedigree will be assigned a default value of `1900'.  In that case, if parents have IDs larger than that of one or more of their offspring, the pedigree will be incorrecrly reordered by \function<<1643>>fast\_reorder()<<1643>>.  If your pedigree file contains birth years, or you know that parents always have smaller IDs than their offspring, then \function<<1644>>fast\_reorder()<<1644>> will correctly reorder your pedigree in linear time. Founders
+are not guaranteed to be grouped at the beginning of the pedigree when
+\function<<1645>>fast\_reorder()<<1645>> is used; if you are going to calculate coefficients of
+partial inbreeding (Section \ref<<1646>>sec:methodology-partial-inbreeding<<1646>>) then you should
+instead use \function<<1647>>reorder()<<1647>> to reorder your pedigree.
+\begin<<1927>>tex2html_deferred<<1927>>\par\end<<1928>>tex2html_deferred<<1928>>
+The performance difference between the two reordering routines is not very noticeable on pedigrees of a few hundred to a few thousand animals, but is quite dramatic for very large pedigrees. If your pedigree file is already reordered then there is essentially no performance difference between the two. When creating a pedigree file from data stored in a relational database, let the database perform the sort for you by using an \begin<<1929>>tex2html_deferred<<1929>>\samp<<1648>>ORDER BY<<1648>>\end<<1930>>tex2html_deferred<<1930>> statement.
+\section<<1649>>Animal Identification and Cross-References<<1649>>
+\label<<1650>>sec:methodology-id-mapping<<1650>>
+\index<<1651>>ID mapping<<1651>>
+There are a number of identification attributes associated with animal objects in  PyPedal<<1652>><<1652>> pedigrees. A description of those fields, as well as their default values, is provided in Table \ref<<1653>>tbl:objects-animal-objects-new-animal-attributes<<1653>>. This section describes the data structures provided for mapping between various animal IDs. Table \ref<<1654>>tbl:methodology-id-mapping<<1654>> lists the four structures provided for ID mapping and lists the default values for pedigrees with integral (\texttt<<1655>>asd<<1655>> formats) and string (\texttt<<1656>>ASD<<1656>> formats) IDs. Renumbered PyPedal<<1657>><<1657>> pedigree objects store animal objects in a list that is typically indexed by renumbered ID. When animal IDs are strings (see \ref<<1658>>sec:pedigree-format-codes<<1658>>) they are hashed to an integer and the original ID is stored in a name field. In renumbered pedigrees the original ID is stored and replaced by a renumbered ID.
+\begin<<1931>>tex2html_deferred<<1931>>\par\end<<1932>>tex2html_deferred<<1932>>
+Once your pedigree is renumbered it is quite easy to see how these maps can be used to convert between various IDs. The maps mean that you don't have to worry about renumbered IDs and can continue to think about your animals in terms of their original IDs, whether they be ID numbers or names. Consider the Newfoundland pedigree presented in Figure \ref<<1659>>fig:newfoundland-colored-pedigree<<1659>> -- it is much more convenient to think about the dog named Kaptn Kvols von Widdersdorf, rather than the dog whose name was hashed to the ID 5523557808241831142 amd renumbered to 48. For example, suppose you wanted to determine his coefficient of inbreeding. It is simple to do using the maps:
+\begin<<1660>>tex2html_preform<<1660>><tex2html_verbatim_mark>verbatim96#\end<<1661>>tex2html_preform<<1661>>
+\texttt<<1662>>example.namemap['Kaptn Kvols von Widdersdorf']<<1662>> returns the original ID assigned to the name, while \texttt<<1663>>example.idmap[...]<<1663>> converts from the original ID to the renumbered ID. This sort of ID/name mapping is sued in a number of places in  PyPedal<<1664>><<1664>>, such as in the three generation pedigree routine in the \module<<1665>>pyp\_reports<<1665>> module.
+\begin<<1933>>tex2html_deferred<<1933>>\par\end<<1934>>tex2html_deferred<<1934>>
+Note that if an animal has its original ID as its name, which is the default when integral IDs and no animal names are provided, the name is changed to the renumbered ID when the pedigree is renumbered.
+\begin<<1666>>center<<1666>>
+    \tablecaption<<1667>>Animal identification and cross-references.<<1667>>
+    \tablefirsthead<<1816>>\hline
+	\multirow<<1668>>2<<1668>><<1669>>15mm<<1669>><<1670>>Map name<<1670>> ;SPMamp; \multicolumn<<1671>>2<<1671>><<1672>>c|<<1672>><<1807>>\texttt<<1673>>asd<<1673>> format<<1807>> ;SPMamp; \multicolumn<<1674>>2<<1674>><<1675>>c|<<1675>><<1808>>\texttt<<1676>>ASD<<1676>> format<<1808>>  ;SPMamp; \multicolumn<<1677>>2<<1677>><<1678>>c<<1678>><<1679>>Renumbered<<1679>>\\ 
+	\cline<<1680>>2-7<<1680>>
+	 ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value \\ 
+	\hline<<1816>>
+    \begin<<1935>>tex2html_deferred<<1935>>\tablehead<<1817>>\hline
+	\multirow<<1681>>2<<1681>><<1682>>15mm<<1682>><<1683>>Map name<<1683>> ;SPMamp; \multicolumn<<1684>>2<<1684>><<1685>>c|<<1685>><<1809>>\texttt<<1686>>asd<<1686>> format<<1809>> ;SPMamp; \multicolumn<<1687>>2<<1687>><<1688>>c|<<1688>><<1810>>\texttt<<1689>>ASD<<1689>> format<<1810>>  ;SPMamp; \multicolumn<<1690>>2<<1690>><<1691>>c<<1691>><<1692>>Renumbered<<1692>>\\ 
+	\cline<<1693>>2-7<<1693>>
+	 ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value \\ 
+	\hline<<1817>>\end<<1936>>tex2html_deferred<<1936>>
+    \begin<<1937>>tex2html_deferred<<1937>>\tabletail<<1811>>\hline \multicolumn<<1694>>7<<1694>><<1695>>l<<1695>><<1696>>\small\sl continued on next page<<1696>> \\  \hline<<1811>>\end<<1938>>tex2html_deferred<<1938>>
+    \tablelasttail<<1697>>\hline<<1697>>
+    \label<<1698>>tbl:methodology-id-mapping<<1698>>
+    \begin<<1699>>xtabular<<1699>><<1700>>l|l|l|l|l|l|l<<1700>>
+	idmap ;SPMamp; animal ID ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; original ID ;SPMamp; renumbered ID \\ 
+	backmap ;SPMamp; animal ID ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; renumbered ID ;SPMamp; original ID \\ 
+	namemap ;SPMamp; name ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; name ;SPMamp; original ID \\ 
+	namebackmap ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; name ;SPMamp; original ID ;SPMamp; name \\ 
+    \end<<1701>>xtabular<<1701>>
+\end<<1702>>center<<1702>>
+\section<<1703>>Measures of Genetic Variation<<1703>>
+\label<<1704>>sec:methodology-genetic-variation<<1704>>
+\index<<1705>>measures of genetic variation<<1705>>
+Coefficients of inbreeding and relationship \cite<<1706>>Wright1922<<1706>> have been commonly used to describe the genetic diversity in livestock populations \cite<<1707>>ref351<<1707>>.  Inbreeding coefficients represent an individual's expected genetic homozygosity due to the relatedness of its parents. Coefficients of relationship describe the expected proportion of genes two individuals share due to their relatedness. These are relative measures that depend on such factors as the completeness and depth of pedigrees. Over time, these coefficients change in response to breeding and culling decisions, and they may be used as indicators of the genetic variability of a population. Rapid methods for calculating coefficients of inbreeding and relationship for large populations have been implemented \cite<<1708>>ref337<<1708>>.
+\begin<<1939>>tex2html_deferred<<1939>>\par\end<<1940>>tex2html_deferred<<1940>>
+Populations under study rarely conform to the theory established for the use of coefficients of inbreeding \cite<<1709>>Wright1931<<1709>>. Lacy \citeyear<<1710>>ref640<<1710>> and Boichard et al. \citeyear<<1711>>ref352<<1711>> proposed measures of genetic variation based on ideas from conservation genetics. Lacy \citeyear<<1712>>ref640<<1712>> proposed the idea of the number of founder equivalents in assessing populations. A founder is an ancestor whose parents are unknown. If all founders contribute to the population equally, then the founder equivalent is equal to the number of founders. When founders contribute unequally to the population, the number of founder equivalents decreases. Boichard et al. \citeyear<<1713>>ref352<<1713>> developed the idea of founder ancestor equivalents, which is the minimum number of ancestors necessary to explain the genetic diversity of the current population. Founder ancestor equivalents account for bottlenecks, unlike founder equivalents, and are more accurate in populations undergoing intense selection.  Caballero and Toro \citeyear<<1714>>ref817<<1714>> discussed the relationships among these and other measures of diversity in small populations, and demonstrate their use \cite<<1715>>ref435<<1715>>.
+\begin<<1941>>tex2html_deferred<<1941>>\par\end<<1942>>tex2html_deferred<<1942>>
+Roughsedge et al. \citeyear<<1716>>ref641<<1716>> used average coefficients of inbreeding, average coefficients of relationship, founder equivalent numbers, and founder ancestor numbers to document the decrease in genetic diversity in the British dairy cattle population over the last 25 years. Changes in founder equivalent number and founder ancestor number reflected the use of a small number of influential individuals to improve the genetic merit of that population. Accompanying changes in average inbreeding and relationship did not accurately reflect that loss of diversity. Such results highlight the need for additional tools when assessing complex populations.
+\section<<1717>>Computational Details<<1717>>
+\label<<1718>>sec:methodology-computational-details<<1718>>
+\index<<1719>>computational details<<1719>>
+\subsection<<1720>>Inbreeding and Related Measures<<1720>>
+\label<<1721>>sec:methodology-computation-inbreeding<<1721>>
+\index<<1722>>computational details!inbreeding and related measures<<1722>>
+Coefficients of relationship (\begin<<1835>>tex2html_wrap_inline<<1835>>$r_<<1723>>ij<<1723>>$\end<<1836>>tex2html_wrap_inline<<1836>>) and inbreeding (\begin<<1837>>tex2html_wrap_inline<<1837>>$f_<<1724>>i<<1724>>$\end<<1838>>tex2html_wrap_inline<<1838>>) are calculated using the method of Wiggans et al. \citeyear<<1725>>ref337<<1725>>.  An empty dictionary is created to store animal IDs and coefficients of inbreeding.  For each animal in the pedigree, working from youngest to oldest, the dictionary is queried for the animal ID.  If the animal does not have an entry in the dictonary, a subpedigree containing only relatives of that animal is extracted and the coefficients of inbreeding are calculated and stored in the dictionary.  A second dictionary keeps track of sire-dam combinations seen in the pedigree.  If a full-sib of an animal whose pedigree has already been processed is encountered the full-sib receives a COI identical to that of the animal already processed.  This approach allows for computation of COI for arbitrarily large populations because it does not require allocation of a single NRM of order \begin<<1839>>tex2html_wrap_inline<<1839>>$n^<<1726>>2<<1726>>$\end<<1840>>tex2html_wrap_inline<<1840>>, where \begin<<1841>>tex2html_wrap_inline<<1841>>$n$\end<<1842>>tex2html_wrap_inline<<1842>>\space is the size of the pedigreed population.  In most cases, the NRM for a subpedigree is on the order of 200, although this can vary with species and population data structure.
+\begin<<1943>>tex2html_deferred<<1943>>\par\end<<1944>>tex2html_deferred<<1944>>
+Average and maximum coefficients of inbreeding are computed for the entire population and for all individuals with non-zero inbreeding.  The average relationship among all individuals is also computed.  Theoretical and realized effective population
+sizes, \begin<<1843>>tex2html_wrap_inline<<1843>>$N_<<1727>>e(t)<<1727>>$\end<<1844>>tex2html_wrap_inline<<1844>>, and \begin<<1845>>tex2html_wrap_inline<<1845>>$N_<<1728>>e(r)<<1728>>$\end<<1846>>tex2html_wrap_inline<<1846>>, were estimated as \cite<<1729>>ref91<<1729>>:
+\begin<<1945>>tex2html_deferred<<1945>>\par\end<<1946>>tex2html_deferred<<1946>>
+\begin<<1819>>displaymath<<1819>> N_<<1730>>e(t)<<1730>> = \dfrac<<1731>> 4 N_m N_f <<1731>> <<1732>> N_m + N_f <<1732>> \end<<1826>>displaymath<<1826>>
+\begin<<1947>>tex2html_deferred<<1947>>\par\end<<1948>>tex2html_deferred<<1948>>
+and
+\begin<<1949>>tex2html_deferred<<1949>>\par\end<<1950>>tex2html_deferred<<1950>>
+\begin<<1820>>displaymath<<1820>> N_<<1733>>e(t)<<1733>> = \dfrac<<1734>>1<<1734>><<1735>>2 \Delta f<<1735>> \end<<1827>>displaymath<<1827>>
+\begin<<1951>>tex2html_deferred<<1951>>\par\end<<1952>>tex2html_deferred<<1952>>
+where \begin<<1847>>tex2html_wrap_inline<<1847>>$N_m$\end<<1848>>tex2html_wrap_inline<<1848>>\space and \begin<<1849>>tex2html_wrap_inline<<1849>>$N_f$\end<<1850>>tex2html_wrap_inline<<1850>>\space are the number of sires and dams in the population, respectively, and \begin<<1851>>tex2html_wrap_inline<<1851>>$\Delta f$\end<<1852>>tex2html_wrap_inline<<1852>>\space is the change in
+population average inbreeding between generations \textit<<1736>>t<<1736>> and \textit<<1737>>t+1<<1737>>.  Interpretation of \begin<<1853>>tex2html_wrap_inline<<1853>>$N_<<1738>>e(t)<<1738>>$\end<<1854>>tex2html_wrap_inline<<1854>>\space can be
+problematic when \begin<<1855>>tex2html_wrap_inline<<1855>>$\Delta f$\end<<1856>>tex2html_wrap_inline<<1856>>\space is calculated from incomplete or error-prone pedigrees.
+\subsection<<1739>>Ancestral Inbreeding<<1739>>
+\label<<1740>>sec:methodology-ancestral-inbreeding<<1740>>
+\index<<1741>>computational details!ancestral inbreeding<<1741>>
+Ballou \citeyear<<1742>>Ballou1997<<1742>> described ancestral inbreeding, the probability that an individual inherited an allele that had undergone inbreeding in the past at least once, in a study of purging recessives and inbreeding in conservation genetics. This is a different idea than the usual coefficient of inbreeding as an individual that is not inbred may carry alleles that have been exposed to substantial inbreeding; recall that an individual may have inbred parents, but if the parents are not related to one another then the resulting offspring will not be themselves inbred. It has been proposed that animals deriving from highly inbred lines may be less susceptible to inbreeding depression because deleterious recessive alleles have been purged from the population, but literature reports on extant populations are inconsistent. Ancestral inbreeding is calculated using a recursion equation as:
+\begin<<1857>>tex2html_wrap_inline<<1857>>$f_a = [f_<<1743>>a(s)<<1743>> + (1 - f_<<1744>>a(s)<<1744>>)f_s + f_<<1745>>a(d)<<1745>> + (1 - f_<<1746>>a(d)<<1746>>)f_d ]/2$\end<<1858>>tex2html_wrap_inline<<1858>>
+where \begin<<1859>>tex2html_wrap_inline<<1859>>$f_a$\end<<1860>>tex2html_wrap_inline<<1860>>\space is the ancestral inbreeding coefficient for an individual, \begin<<1861>>tex2html_wrap_inline<<1861>>$f$\end<<1862>>tex2html_wrap_inline<<1862>>\space is the usual coefficient of inbreeding, and subscripts \begin<<1863>>tex2html_wrap_inline<<1863>>$s$\end<<1864>>tex2html_wrap_inline<<1864>>\space and \begin<<1865>>tex2html_wrap_inline<<1865>>$d$\end<<1866>>tex2html_wrap_inline<<1866>>\space represent sires and dams, respectively. Calculations are from oldest to youngest in the population and require as inputs only coefficients of inbreeding.
+\begin<<1953>>tex2html_deferred<<1953>>\par\end<<1954>>tex2html_deferred<<1954>>
+Suwanlee et al. \citeyear<<1747>>SuwanleeBSC2007<<1747>> extended the concept by presenting a gene-dropping approach \cite<<1748>>ref1719<<1748>> for calculating ancestral inbreeding, as well as modifying Ballou's equation to account for non-independence between individual inbreeding coefficients and ancestral inbreeding coefficients. Gene dropping is also used in  PyPedal<<1749>><<1749>> for calculating founder genome equivalents (see: Section \ref<<1750>>sec:methodology-computation-founder-genome-equivalents<<1750>>), and the code used by the \function<<1751>>pyp_metrics.dropped_ancestral_inbreeding()<<1751>> and \function<<1752>>pyp_metrics.effective_founder_genomes()<<1752>> routines are similar, although the former drops an arbitrary number of unlinked biallelic loci through the pedigree while the latter drops only a single locus.
+\subsection<<1753>>Partial Inbreeding<<1753>>
+\label<<1754>>sec:methodology-partial-inbreeding<<1754>>
+\index<<1755>>computational details!partial inbreeding<<1755>>  
+Partial inbreeding coefficients, \begin<<1867>>tex2html_wrap_inline<<1867>>$F_<<1756>>ij<<1756>>$\end<<1868>>tex2html_wrap_inline<<1868>>, measure the probability that the alleles at an arbitrary locus in individual \begin<<1869>>tex2html_wrap_inline<<1869>>$i$\end<<1870>>tex2html_wrap_inline<<1870>>\space are identitical-by-descent and that the alleles were derived from an allele in founder \begin<<1871>>tex2html_wrap_inline<<1871>>$j$\end<<1872>>tex2html_wrap_inline<<1872>>\space \cite<<1757>>LacyAW1996<<1757>>; Gulisija et al. \citeyear<<1758>>GulisijaGWT2006<<1758>> provide an excellent description of the tabular method for calculating \begin<<1873>>tex2html_wrap_inline<<1873>>$F_<<1759>>ij<<1759>>$\end<<1874>>tex2html_wrap_inline<<1874>>. Computational requirements may be high for large pedigrees with a large number of founders because partial kinship matrices are calculated for each founder in the pedigree. The usual coefficients of inbreeding may be obtained by summing the coefficients of partial inbreeding over all founders common to the parents of animal \begin<<1875>>tex2html_wrap_inline<<1875>>$i$\end<<1876>>tex2html_wrap_inline<<1876>>, that is, \begin<<1877>>tex2html_wrap_inline<<1877>>$f_<<1760>>i<<1760>> = \sum_<<1761>>j<<1761>> F_<<1762>>ij<<1762>>$\end<<1878>>tex2html_wrap_inline<<1878>>.
+\begin<<1955>>tex2html_deferred<<1955>>\par\end<<1956>>tex2html_deferred<<1956>>
+For example, consider the pedigree presented in Figure 2 of Gulisija and Crow \citeyear <<1763>>GulisijaC2007<<1763>>. The individual of interest, \begin<<1879>>tex2html_wrap_inline<<1879>>$I$\end<<1880>>tex2html_wrap_inline<<1880>>, has an inbreeding coefficient of 0.375 and coefficients of partial inbreeding to founders J, K, and M of 0.21875,0.09375, and 0.0625, respectively. As asserted, \begin<<1881>>tex2html_wrap_inline<<1881>>$0.21875 + 0.09375 + 0.0625 = 0.375$\end<<1882>>tex2html_wrap_inline<<1882>>.
+\subsection<<1764>>Generation Coefficients<<1764>>
+\label<<1765>>sec:methodology-computation-generation-coefficients<<1765>>
+\index<<1766>>computational details!generation coefficients<<1766>>
+Generation coefficients are assigned using the method of \cite<<1767>>Pattie1965<<1767>>.  Founders, defined as individuals with unknown parents, are assigned generation codes of 0. All other animals are assigned generation codes as:
+\begin<<1957>>tex2html_deferred<<1957>>\par\end<<1958>>tex2html_deferred<<1958>>
+\begin<<1821>>displaymath<<1821>> GC_o = \dfrac<<1768>> ( GC_s + GC_d ) <<1768>> <<1769>> 2 <<1769>> + 1 \end<<1828>>displaymath<<1828>>
+\begin<<1959>>tex2html_deferred<<1959>>\par\end<<1960>>tex2html_deferred<<1960>>
+where \begin<<1883>>tex2html_wrap_inline<<1883>>$GC_o$\end<<1884>>tex2html_wrap_inline<<1884>>, \begin<<1885>>tex2html_wrap_inline<<1885>>$GC_s$\end<<1886>>tex2html_wrap_inline<<1886>>, \begin<<1887>>tex2html_wrap_inline<<1887>>$GC_d$\end<<1888>>tex2html_wrap_inline<<1888>>\space represent offspring, sire, and dam codes, respectively.
+\subsection<<1770>>Effective Founder Number<<1770>>
+\label<<1771>>sec:methodology-computation-effective-founder-number<<1771>>
+\index<<1772>>computational details!effective founder number<<1772>>
+The effective founder number (\begin<<1889>>tex2html_wrap_inline<<1889>>$f_e$\end<<1890>>tex2html_wrap_inline<<1890>>) was calculated as:
+\begin<<1961>>tex2html_deferred<<1961>>\par\end<<1962>>tex2html_deferred<<1962>>
+\begin<<1822>>displaymath<<1822>> f_e = \dfrac<<1773>> 1 <<1773>> <<1812>> \sum<<1774>> p_i^2 <<1774>> <<1812>> \end<<1829>>displaymath<<1829>>
+\begin<<1963>>tex2html_deferred<<1963>>\par\end<<1964>>tex2html_deferred<<1964>>
+where \begin<<1891>>tex2html_wrap_inline<<1891>>$p_i$\end<<1892>>tex2html_wrap_inline<<1892>>\space is the proportion of genes contributed by ancestor i to the current population \cite<<1775>>ref640<<1775>>. If all founders
+had contributed equally to the population, then \begin<<1893>>tex2html_wrap_inline<<1893>>$f_e$\end<<1894>>tex2html_wrap_inline<<1894>>\space would be the same as the actual number of founders.  When founders
+contribute to the population unequally, \begin<<1895>>tex2html_wrap_inline<<1895>>$f_e$\end<<1896>>tex2html_wrap_inline<<1896>>\space is smaller than the actual number of founders. The greater the inequity in
+founder contributions, the smaller the effective founder number.
+\begin<<1965>>tex2html_deferred<<1965>>\par\end<<1966>>tex2html_deferred<<1966>>
+A subpedigree approach, similar to that used for calculation of inbreeding (see \ref<<1776>>sec:methodology-computation-inbreeding<<1776>> for details), is also used for calculating \begin<<1897>>tex2html_wrap_inline<<1897>>$f_e$\end<<1898>>tex2html_wrap_inline<<1898>>.
+\subsection<<1777>>Founder Genome Equivalents<<1777>>
+\label<<1778>>sec:methodology-computation-founder-genome-equivalents<<1778>>
+\index<<1779>>computational details!founder genome equivalents<<1779>>
+Lacy \citeyear<<1780>>ref640<<1780>> also defined the number of founder genome equivalents (\begin<<1899>>tex2html_wrap_inline<<1899>>$f_g$\end<<1900>>tex2html_wrap_inline<<1900>>) as a measure of genetic diversity.  A
+founder genome equivalent is the number of founders that would produce a population with the same diversity of founder alleles
+as the pedigree population assuming all founders contributed equally to each generation of descendants. Founder genome
+equivalents are calculated as:
+\begin<<1967>>tex2html_deferred<<1967>>\par\end<<1968>>tex2html_deferred<<1968>>
+\begin<<1823>>displaymath<<1823>> f_g = \dfrac<<1781>> 1 <<1781>> <<1818>> \sum<<1813>> \dfrac<<1782>>p_i<<1782>> <<1783>>r_i<<1783>> <<1813>> <<1818>> \end<<1830>>displaymath<<1830>>
+\begin<<1969>>tex2html_deferred<<1969>>\par\end<<1970>>tex2html_deferred<<1970>>
+where \begin<<1901>>tex2html_wrap_inline<<1901>>$p_i$\end<<1902>>tex2html_wrap_inline<<1902>>\space is the proportion of genes contributed by ancestor \textit<<1784>>i<<1784>> to the current population and \begin<<1903>>tex2html_wrap_inline<<1903>>$r_i$\end<<1904>>tex2html_wrap_inline<<1904>>\space is the
+proportion of founder \textit<<1785>>i<<1785>>'s genes that are retained in the current population.  Like \begin<<1905>>tex2html_wrap_inline<<1905>>$f_e$\end<<1906>>tex2html_wrap_inline<<1906>>, \begin<<1907>>tex2html_wrap_inline<<1907>>$f_g$\end<<1908>>tex2html_wrap_inline<<1908>>\space accounts for
+unequal founder contributions.  Unlike \begin<<1909>>tex2html_wrap_inline<<1909>>$f_e$\end<<1910>>tex2html_wrap_inline<<1910>>, \begin<<1911>>tex2html_wrap_inline<<1911>>$f_g$\end<<1912>>tex2html_wrap_inline<<1912>>\space also accounts for the fraction of founder genomes lost from the
+pedigree through drift during bottlenecks. Although \begin<<1913>>tex2html_wrap_inline<<1913>>$f_g$\end<<1914>>tex2html_wrap_inline<<1914>>\space is the more accurate description of the amount of founder variation
+present in a population, it can only be calculated directly for simple pedigrees. For large or complex pedigrees, the number of
+founder genome equivalents must be approximated based on computer simulation of a large number of segregations through the
+pedigree. This is done by assigning each founder a unique pair of alleles and randomly transmitting those alleles through the
+pedigree \cite<<1786>>ref1719<<1786>>. The number of founder genome equivalents is similar to the effective founder number, but the former
+has been devalued based on the proportion of its genome that has probably been lost to drift \cite<<1787>>ref640<<1787>>.
+\subsection<<1788>>Effective Ancestor Number<<1788>>
+\label<<1789>>sec:methodology-computation-effective-ancestor-number<<1789>>
+\index<<1790>>computational details!effective ancestor number<<1790>>
+In populations that have undergone a bottleneck the effective number of founders computed using Lacy's \citeyear<<1791>>ref640<<1791>> approach is overestimated. Large contributions made by recent ancestors are more important to the population with respect to the loss of genetic diversity than equal contributions made long ago. Boichard et al. \citeyear<<1792>>ref352<<1792>> proposed a second measure of diversity to deal with such situations, the effective number of ancestors (\begin<<1915>>tex2html_wrap_inline<<1915>>$f_a$\end<<1916>>tex2html_wrap_inline<<1916>>), which considers the genetic contribution of all ancestors in the population, not just founders. The effective number of ancestors treats all ancestors in the population the same way, and is computed as:
+\begin<<1971>>tex2html_deferred<<1971>>\par\end<<1972>>tex2html_deferred<<1972>>
+\begin<<1824>>displaymath<<1824>>f_a = \dfrac<<1793>>1<<1793>><<1814>>\sum<<1794>>q_i^2<<1794>><<1814>>\end<<1831>>displaymath<<1831>>
+\begin<<1973>>tex2html_deferred<<1973>>\par\end<<1974>>tex2html_deferred<<1974>>
+where \begin<<1917>>tex2html_wrap_inline<<1917>>$q_i$\end<<1918>>tex2html_wrap_inline<<1918>>\space is the genetic contribution of the \textit<<1795>>i<<1795>>th ancestor not explained by the previous \textit<<1796>>i<<1796>>-1 ancestors.
+The ancestors with the greatest contributions are selected iteratively.  The number of ancestors with a positive genetic
+contribution is less than or equal to the actual number of founders.
+\subsection<<1797>>Pedigree Completeness<<1797>>
+\label<<1798>>sec:methodology-pedigre-completeness<<1798>>
+\index<<1799>>computational details!pedigree completeness<<1799>>
+Pedigree completeness \cite<<1800>>Cassell2003a<<1800>>, the proportion of known pedigree information for an arbitrary number of generations, is computed as:
+\begin<<1975>>tex2html_deferred<<1975>>\par\end<<1976>>tex2html_deferred<<1976>>
+\begin<<1825>>displaymath<<1825>> c_p = \dfrac<<1801>>a_k<<1801>><<1815>>\sum_<<1802>>i=1<<1802>>^g<<1803>>2^i<<1803>><<1815>> \end<<1832>>displaymath<<1832>>
+\begin<<1977>>tex2html_deferred<<1977>>\par\end<<1978>>tex2html_deferred<<1978>>
+where \begin<<1919>>tex2html_wrap_inline<<1919>>$c_p$\end<<1920>>tex2html_wrap_inline<<1920>>\space is pedigree completeness and \begin<<1921>>tex2html_wrap_inline<<1921>>$a_k$\end<<1922>>tex2html_wrap_inline<<1922>>\space is the number of known ancestors in \textit<<1804>>g<<1804>> generations.  The default (which may be overridden) is to compute four-generation pedigree completeness.  Low \begin<<1923>>tex2html_wrap_inline<<1923>>$c_p$\end<<1924>>tex2html_wrap_inline<<1924>>\space indicates that there is little pedigree information available for an individual, which may result in biased estimates of inbreeding and other measures of diversity. Pedigree completeness and ancestor loss coefficients\index<<1805>>ancestor loss coefficient<<1805>> (\begin<<1979>>tex2html_deferred<<1979>>\url<<1806>>http://www.newfoundlanddog-database.net/en/ahnen.php?num=0000025330<<1806>>\end<<1980>>tex2html_deferred<<1980>>), which are sometimes seen in dog breeding materials, are equivalent measures if the same number of generations were used in the calculations.
+<tex2html_endfile>#./methodology.tex#

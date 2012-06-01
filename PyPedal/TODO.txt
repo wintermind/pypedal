@@ -1,0 +1,3 @@
+TODO List for PyPedal 2.0.1
+===========================
+Allow fields in pedigree file to be in any order as long as there are asd/ASD fields in the file.

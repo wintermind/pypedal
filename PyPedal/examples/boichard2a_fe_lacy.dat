@@ -1,0 +1,11 @@
+--------------------------------------------------------------------------------
+Created by pyp_metrics.effective_founders_lacy at Tue Mar 22 14:39:27 2011
+--------------------------------------------------------------------------------
+14 animals in pedigree
+4 founders: set([1, 2, 3, 4])
+Founder contributions: {1: 0.5, 2: 0.5, 3: 0.5, 4: 0.5}
+Proportional founder contributions: {1: 0.25, 2: 0.25, 3: 0.25, 4: 0.25}
+Sum of founder contributions: 2.0
+Sum of squared proportional founder contributions: 0.25
+Effective founder number: 4.0
+--------------------------------------------------------------------------------

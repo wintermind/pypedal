@@ -1,0 +1,615 @@
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{
+\section{PyPedal.pyp\_\-newclasses.NewPedigree Class Reference}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+}
+
+
+The \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{NewPedigree} class is the main data structure for PyP 2.0.0Final.  
+
+
+
+
+Collaboration diagram for PyPedal.pyp\_\-newclasses.NewPedigree:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{classPyPedal_1_1pyp__newclasses_1_1NewPedigree__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ad6a2650eb959399a93d9c445b53a5b10}{\_\-\_\-init\_\-\_\-}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ad6a2650eb959399a93d9c445b53a5b10}{\_\-\_\-init\_\-\_\-()} initializes a \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{NewPedigree} object. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6f00326b1b20146f6c7ac15596a58448}{load}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6f00326b1b20146f6c7ac15596a58448}{load()} wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming lists of sires and dams, checking for common errors, setting ancestor flags, and renumbering the pedigree. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab7599a24c35efdfcd2caacae10f59ea2}{oldsave}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab7599a24c35efdfcd2caacae10f59ea2}{oldsave()} writes a PyPedal pedigree to a user-\/specified file. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab2c07236058bb89d5318a7453cb6db29}{save}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab2c07236058bb89d5318a7453cb6db29}{save()} writes a PyPedal pedigree to a user-\/specified file. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6babcd0407dd75ff3e5351c96da085aa}{savegraph}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6babcd0407dd75ff3e5351c96da085aa}{savegraph()} save a pedigree to a file as an adjacency list. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a4f3ef3055fd807086da58aac2c6499f7}{savegedcom}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a4f3ef3055fd807086da58aac2c6499f7}{savegedcom()} save a pedigree to a file in GEDCOM 5.5 format. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a41abde8769a72486d5d0e352072338d4}{savegenes}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a41abde8769a72486d5d0e352072338d4}{savegenes()} save a pedigree to a file in GENES 1.20 (dBase III) format. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_abe7890df1b04734981aa7e1e1e4054ec}{savedb}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_abe7890df1b04734981aa7e1e1e4054ec}{savedb()} saves a pedigree to a database table in ASDx format for NewAnimals and LightAnimals. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aa70701de178f69d9c7a3321448681a03}{preprocess}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aa70701de178f69d9c7a3321448681a03}{preprocess()} processes a pedigree file, which includes reading the animals into a list of animal objects, forming lists of sires and dams, and checking for common errors. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a9d014c1ead82bb6abe3085058086194a}{fromgraph}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a9d014c1ead82bb6abe3085058086194a}{fromgraph()} loads the animals to populate the pedigree from a DiGraph object. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a7b8f4dca3f231f6d487fee90e38e21c7}{tostream}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a7b8f4dca3f231f6d487fee90e38e21c7}{tostream()} creates a text stream from a pedigree. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aef198ff1c3c2ac1c666486deb2d2e92a}{renumber}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aef198ff1c3c2ac1c666486deb2d2e92a}{renumber()} updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6537e2f0a419e0736b500c560b9f6194}{addanimal}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6537e2f0a419e0736b500c560b9f6194}{addanimal()} adds a new animal of class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAnimal}{NewAnimal} to the pedigree. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a646940eb2010d378c761e3c8c0e584e6}{delanimal}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a646940eb2010d378c761e3c8c0e584e6}{delanimal()} deletes an animal from the pedigree. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a5f2e95dd43e8bf2b4bfa2907eebd62a1}{updateidmap}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a5f2e95dd43e8bf2b4bfa2907eebd62a1}{updateidmap()} updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ade3f012ba187d2a311e8e85b82167a3f}{printoptions}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ade3f012ba187d2a311e8e85b82167a3f}{printoptions()} prints the contents of the options dictionary. \item\end{DoxyCompactList}\item 
+def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a1d239866c3dacb51ad925bbdf9337001}{simulate}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a1d239866c3dacb51ad925bbdf9337001}{simulate()} simulates an arbitrary pedigree of size n with g generations starting from n\_\-s base sires and n\_\-d base dams. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a28eed1e3039de3a74d2597d556ac831f}{
+{\bfseries pedigree}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a28eed1e3039de3a74d2597d556ac831f}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aae0a246b4cad4a16fc6179a1b1c7548e}{
+{\bfseries nrm}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aae0a246b4cad4a16fc6179a1b1c7548e}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a607a73425bb9710fe4ca7f47f1ffc0fd}{
+{\bfseries metadata}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a607a73425bb9710fe4ca7f47f1ffc0fd}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aab4ab96d9bbce43c2d7c09977bd82d9a}{
+{\bfseries namemap}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aab4ab96d9bbce43c2d7c09977bd82d9a}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_adb79d76cbccbc5c03edc64c116f3f43a}{
+{\bfseries namebackmap}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_adb79d76cbccbc5c03edc64c116f3f43a}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ae1358ecde62705c1e68fef7a1d943d7e}{
+{\bfseries idmap}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ae1358ecde62705c1e68fef7a1d943d7e}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6b8ebfe1128f217497e0604e450066db}{
+{\bfseries backmap}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6b8ebfe1128f217497e0604e450066db}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a77c219cbbdbde1d31ae5fee662698c5b}{
+tuple {\bfseries pedformat\_\-in} = str(pedformat)}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a77c219cbbdbde1d31ae5fee662698c5b}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a09f9e630dcc8b1c1f5082deb9ec5c377}{
+string {\bfseries pedformat} = ''}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a09f9e630dcc8b1c1f5082deb9ec5c377}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a95d6943300b12758ebc4074eaf2154ce}{
+list {\bfseries sepchar} = self.kw\mbox{[}'sepchar'\mbox{]}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a95d6943300b12758ebc4074eaf2154ce}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a82a4ea979cfd080ad108bb9ad20e1215}{
+string {\bfseries filename} = '\%s\_\-saved.ped'}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a82a4ea979cfd080ad108bb9ad20e1215}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a45ee1c369ae5e31ebcbc4ac69de4286e}{
+tuple {\bfseries ofh} = file(filename,'w')}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a45ee1c369ae5e31ebcbc4ac69de4286e}
+
+\item 
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a4fc90a3db622e90771d674597da1cccf}{
+tuple {\bfseries value} = getattr(\_\-a, self.new\_\-animal\_\-attr\mbox{[}pf\mbox{]})}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a4fc90a3db622e90771d674597da1cccf}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{NewPedigree} class is the main data structure for PyP 2.0.0Final. 
+
+Definition at line 39 of file pyp\_\-newclasses.py.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ad6a2650eb959399a93d9c445b53a5b10}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ kw = {\ttfamily \{\}}, }
+\item[{}]{ kwfile = {\ttfamily 'pypedal.ini'}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ad6a2650eb959399a93d9c445b53a5b10}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ad6a2650eb959399a93d9c445b53a5b10}{\_\-\_\-init\_\-\_\-()} initializes a \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{NewPedigree} object. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to the current NewPedigree() object \item[{\em kw}]A dictionary of options. \item[{\em kwfile}]An optionsl configuration file name \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em An}]instance of a NewPedigree() object \begin{DoxyVerb}
+__init__() initializes a NewPedigree object.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 46 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6537e2f0a419e0736b500c560b9f6194}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!addanimal@{addanimal}}
+\index{addanimal@{addanimal}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{addanimal}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.addanimal (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ animalID, }
+\item[{}]{ sireID, }
+\item[{}]{ damID}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6537e2f0a419e0736b500c560b9f6194}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6537e2f0a419e0736b500c560b9f6194}{addanimal()} adds a new animal of class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAnimal}{NewAnimal} to the pedigree. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object. \item[{\em animalID}]ID of the new animal to be added to the pedigree. \item[{\em sireID}]Sire ID of the new animal to be added to the pedigree. \item[{\em damID}]Dam ID of the new animal to be added to the pedigree. \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 1}]on success, 0 on failure \end{DoxyRetVals}
+
+
+Definition at line 1327 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a646940eb2010d378c761e3c8c0e584e6}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!delanimal@{delanimal}}
+\index{delanimal@{delanimal}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{delanimal}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.delanimal (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ animalID}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a646940eb2010d378c761e3c8c0e584e6}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a646940eb2010d378c761e3c8c0e584e6}{delanimal()} deletes an animal from the pedigree. 
+
+Note that this method DOES not update the metadata attached to the pedigree and should only be used if that is not important. As of 04/10/2006 \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a646940eb2010d378c761e3c8c0e584e6}{delanimal()} is intended for use by pyp\_\-metrics/mating\_\-coi() rather than directly by users. 
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \item[{\em animalID}]ID of the animal to be deleted \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 1}]on success, 0 on failure \end{DoxyRetVals}
+
+
+Definition at line 1403 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a9d014c1ead82bb6abe3085058086194a}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!fromgraph@{fromgraph}}
+\index{fromgraph@{fromgraph}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{fromgraph}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.fromgraph (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ pedgraph}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a9d014c1ead82bb6abe3085058086194a}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a9d014c1ead82bb6abe3085058086194a}{fromgraph()} loads the animals to populate the pedigree from a DiGraph object. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object. \item[{\em pedgraph}]DiGraph object containing a pedigree. \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+fromgraph() loads the animals to populate the pedigree from an
+DiGraph object.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 1228 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6f00326b1b20146f6c7ac15596a58448}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!load@{load}}
+\index{load@{load}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.load (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ pedsource = {\ttfamily 'file'}, }
+\item[{}]{ pedgraph = {\ttfamily 0}, }
+\item[{}]{ pedstream = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6f00326b1b20146f6c7ac15596a58448}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6f00326b1b20146f6c7ac15596a58448}{load()} wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming lists of sires and dams, checking for common errors, setting ancestor flags, and renumbering the pedigree. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object. \item[{\em pedsource}]Source of the pedigree ('file'$|$'graph'$|$'graphfile'$|$'db'). \item[{\em pedgraph}]DiGraph from which to load the pedigree. \item[{\em pedstream}]Stream of text from which to load the pedigree. \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+load() wraps several processes useful for loading and preparing a pedigree for
+use in an analysis, including reading the animals into a list of animal objects,
+forming lists of sires and dams, checking for common errors, setting ancestor
+flags, and renumbering the pedigree.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 273 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab7599a24c35efdfcd2caacae10f59ea2}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!oldsave@{oldsave}}
+\index{oldsave@{oldsave}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{oldsave}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.oldsave (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ filename = {\ttfamily ''}, }
+\item[{}]{ outformat = {\ttfamily 'o'}, }
+\item[{}]{ idformat = {\ttfamily 'o'}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab7599a24c35efdfcd2caacae10f59ea2}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab7599a24c35efdfcd2caacae10f59ea2}{oldsave()} writes a PyPedal pedigree to a user-\/specified file. 
+
+The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. 
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object. \item[{\em filename}]The file to which the pedigree should be written. \item[{\em outformat}]The format in which the pedigree should be written: 'o' for original (as read) and 'l' for long version (all available variables). \item[{\em idformat}]Write 'o' (original) or 'r' (renumbered) animal, sire, and dam IDs. \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em A}]save status indicator (0: failed, 1: success) \begin{DoxyVerb}
+oldsave() writes a PyPedal pedigree to a user-specified file.  The saved pedigree
+includes all fields recognized by PyPedal, not just the original fields read
+from the input pedigree file.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 510 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aa70701de178f69d9c7a3321448681a03}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!preprocess@{preprocess}}
+\index{preprocess@{preprocess}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{preprocess}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.preprocess (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ textstream = {\ttfamily ''}, }
+\item[{}]{ dbstream = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aa70701de178f69d9c7a3321448681a03}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aa70701de178f69d9c7a3321448681a03}{preprocess()} processes a pedigree file, which includes reading the animals into a list of animal objects, forming lists of sires and dams, and checking for common errors. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \item[{\em textstream}]String containing animal records \item[{\em dbstream}]List of tuples of animal records \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+Preprocess a pedigree file, which includes reading the animals into a list, forming lists of sires and dams, and checking for common errors.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 831 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ade3f012ba187d2a311e8e85b82167a3f}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!printoptions@{printoptions}}
+\index{printoptions@{printoptions}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{printoptions}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.printoptions (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ade3f012ba187d2a311e8e85b82167a3f}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ade3f012ba187d2a311e8e85b82167a3f}{printoptions()} prints the contents of the options dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+printoptions() prints the contents of the options dictionary.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 1456 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aef198ff1c3c2ac1c666486deb2d2e92a}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!renumber@{renumber}}
+\index{renumber@{renumber}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{renumber}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.renumber (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aef198ff1c3c2ac1c666486deb2d2e92a}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_aef198ff1c3c2ac1c666486deb2d2e92a}{renumber()} updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+renumber() updates the ID map after a pedigree has been renumbered so that all
+references are to renumbered rather than original IDs.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 1290 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab2c07236058bb89d5318a7453cb6db29}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!save@{save}}
+\index{save@{save}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.save (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ filename = {\ttfamily ''}, }
+\item[{}]{ pedformat = {\ttfamily 'asd'}, }
+\item[{}]{ sepchar = {\ttfamily '~'}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab2c07236058bb89d5318a7453cb6db29}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_ab2c07236058bb89d5318a7453cb6db29}{save()} writes a PyPedal pedigree to a user-\/specified file. 
+
+The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. 
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object. \item[{\em filename}]The file to which the pedigree should be written. \item[{\em pedformat}]Pedigree format string for the pedigree to be written. \item[{\em sepchar}]Character used to separate columns in the output pedigree file. \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em A}]save status indicator (0: failed, 1: success) \begin{DoxyVerb}
+save() writes a PyPedal pedigree to a user-specified file.  The saved pedigree
+includes all fields recognized by PyPedal, not just the original fields read
+from the input pedigree file.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 611 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_abe7890df1b04734981aa7e1e1e4054ec}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!savedb@{savedb}}
+\index{savedb@{savedb}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{savedb}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.savedb (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ drop = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_abe7890df1b04734981aa7e1e1e4054ec}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_abe7890df1b04734981aa7e1e1e4054ec}{savedb()} saves a pedigree to a database table in ASDx format for NewAnimals and LightAnimals. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object. \item[{\em drop}]Boolean indicating if existing data should be kept (False) or deleted (True); the default is False. \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em \_\-savedb\_\-status}]Boolean indicating if the pedigree was successfully saved. \begin{DoxyVerb}
+savedb() saves a pedigree to a database table in ASDx format
+for NewAnimals and LightAnimals.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 757 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a4f3ef3055fd807086da58aac2c6499f7}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!savegedcom@{savegedcom}}
+\index{savegedcom@{savegedcom}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{savegedcom}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.savegedcom (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ pedoutfile = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a4f3ef3055fd807086da58aac2c6499f7}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a4f3ef3055fd807086da58aac2c6499f7}{savegedcom()} save a pedigree to a file in GEDCOM 5.5 format. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \item[{\em pedoutfile}]Name of the file to which the graph is written \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+Save a pedigree to a file in GEDCOM 5.5 format.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 722 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a41abde8769a72486d5d0e352072338d4}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!savegenes@{savegenes}}
+\index{savegenes@{savegenes}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{savegenes}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.savegenes (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ pedoutfile = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a41abde8769a72486d5d0e352072338d4}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a41abde8769a72486d5d0e352072338d4}{savegenes()} save a pedigree to a file in GENES 1.20 (dBase III) format. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \item[{\em pedoutfile}]Name of the file to which the graph is written \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+Save a pedigree to a file in GENES 1.20 (dBase III) format.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 739 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6babcd0407dd75ff3e5351c96da085aa}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!savegraph@{savegraph}}
+\index{savegraph@{savegraph}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{savegraph}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.savegraph (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ pedoutfile = {\ttfamily 0}, }
+\item[{}]{ pedgraph = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6babcd0407dd75ff3e5351c96da085aa}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a6babcd0407dd75ff3e5351c96da085aa}{savegraph()} save a pedigree to a file as an adjacency list. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object. \item[{\em pedoutfile}]Name of the file to which the graph is written. \item[{\em pedgraph}]Graph object \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+Save a pedigree to a file as an adjacency list.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 698 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a1d239866c3dacb51ad925bbdf9337001}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!simulate@{simulate}}
+\index{simulate@{simulate}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{simulate}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.simulate (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a1d239866c3dacb51ad925bbdf9337001}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a1d239866c3dacb51ad925bbdf9337001}{simulate()} simulates an arbitrary pedigree of size n with g generations starting from n\_\-s base sires and n\_\-d base dams. 
+
+This method is based on the concepts and algorithms in the Pedigree.sample method from Matvec 1.1a. The arguments are read from the pedigree object's options dictionary. 
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+Simulate simulates an arbitrary pedigree of size n with g generations
+starting from n_s base sires and n_d base dams.  This method is based
+on the concepts and algorithms in the Pedigree::sample method from
+Matvec 1.1a (src/classes/pedigree.cpp), although all of the code in
+this implementation was written from scratch.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 1475 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a7b8f4dca3f231f6d487fee90e38e21c7}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!tostream@{tostream}}
+\index{tostream@{tostream}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{tostream}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.tostream (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a7b8f4dca3f231f6d487fee90e38e21c7}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a7b8f4dca3f231f6d487fee90e38e21c7}{tostream()} creates a text stream from a pedigree. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+tostream() creates a text stream from a pedigree.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 1261 of file pyp\_\-newclasses.py.
+
+\hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a5f2e95dd43e8bf2b4bfa2907eebd62a1}{
+\index{PyPedal::pyp\_\-newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}!updateidmap@{updateidmap}}
+\index{updateidmap@{updateidmap}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\-newclasses::NewPedigree}}
+\subsubsection[{updateidmap}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewPedigree.updateidmap (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a5f2e95dd43e8bf2b4bfa2907eebd62a1}
+
+
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree_a5f2e95dd43e8bf2b4bfa2907eebd62a1}{updateidmap()} updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em self}]Reference to current object \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em None}]\begin{DoxyVerb}
+updateidmap() updates the ID map after a pedigree has been renumbered so that
+all references are to renumbered rather than original IDs.
+\end{DoxyVerb}
+ \end{DoxyRetVals}
+
+
+Definition at line 1424 of file pyp\_\-newclasses.py.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+PyPedal/pyp\_\-newclasses.py\end{DoxyCompactItemize}

@@ -1,0 +1,100 @@
+<tex2html_file>#./reports.tex#
+\chapter<<2452>>Report Generation<<2452>>
+\label<<2453>>cha:reports<<2453>>
+\begin<<2454>>quote<<2454>>
+An overview of the report generation tools in PyPedal<<2455>><<2455>> is provided in this chapter.  The creation of a new, custom report
+is demonstrated.
+\end<<2456>>quote<<2456>>
+\section<<2457>>Overview<<2457>>
+\label<<2458>>sec:reports-overview<<2458>>
+\index<<2459>>report generation<<2459>>
+PyPedal<<2460>><<2460>> has a framework in place to support basic report generation.  This franework consists of two components: a database access module, \module<<2461>>pyp\_db<<2461>> (Section \ref<<2462>>sec:pyp-db<<2462>>), and a reporting module, \module<<2463>>pyp\_reports<<2463>> (Section \ref<<2464>>sec:pyp-reports<<2464>>).  The SQLite 3 database engine (\begin<<2568>>tex2html_deferred<<2568>>\url<<2465>>http://www.sqlite.org/<<2465>>\end<<2569>>tex2html_deferred<<2569>>) is used to store data and generate reports.  The ReportLab extension to Python (\begin<<2570>>tex2html_deferred<<2570>>\url<<2466>>http://www.reportlab.org/<<2466>>\end<<2571>>tex2html_deferred<<2571>>) allows users to create reports in the Adobe Portable Document Format (PDF).  As a result, there are two types of reports that can be produced: internal summaries that can be fed to other PyPedal<<2467>><<2467>> routines (e.g. the report produced by \function<<2468>>pyp\_reports.meanMetricBy()<<2468>> can be passed to \function<<2469>>pyp\_graphics.plot\_line\_xy()<<2469>> to produce a plot) and printed reports in PDF format.  When referencing the \module<<2470>>pyp\_reports<<2470>> API note that the convention used in PyPedal<<2471>><<2471>> is that procedures which produce PDFs are prepended with 'pdf'.  Sections \ref<<2472>>sec:reports-custom-internal-reports<<2472>> and \ref<<2473>>sec:reports-custom-printed-reports<<2473>> demonstrate how to create new or custom reports.  \module<<2474>>pyp\_reports<<2474>> was added to PyPedal<<2475>><<2475>> with the intention that end-users develop their own custom reports using \function<<2476>>pyp\_reports.meanMetricBy()<<2476>> as a template.  More material on adding new functionality to PyPedal<<2477>><<2477>> can be found in Chapter \ref<<2478>>cha:newfeatures<<2478>>.
+\begin<<2572>>tex2html_deferred<<2572>>\par\end<<2573>>tex2html_deferred<<2573>>
+Column names, data types, and descriptions of contents for pedigree tables are presented in Table
+\ref<<2479>>tbl:reports-db-column-names<<2479>>.  The \constant<<2480>>metric\_to\_column<<2480>> and \constant<<2481>>byvar\_to\_column<<2481>> dictionaries in
+\module<<2482>>pyp\_db<<2482>> are used to convert between convenient mnemonics and database column names.  You may need to refer
+to Table \ref<<2483>>tbl:reports-db-column-names<<2483>> for unmapped column names when writing custom reports.  If you happen
+to view a table scheme using the \textbf<<2484>>sqlite3<<2484>> command-line utility you will notice that the columns are ordered
+differently in the database than they are in the table; the table has been alphabetized for easy reference.
+\begin<<2485>>center<<2485>>
+    \tablecaption<<2486>>Columns in pedigree database tables.<<2486>>
+    \tablefirsthead<<2487>>\hline Name ;SPMamp; Type ;SPMamp; Note(s) \\  \hline<<2487>>
+    \begin<<2574>>tex2html_deferred<<2574>>\tablehead<<2488>>\hline Name ;SPMamp; Type ;SPMamp; Note(s) \\  \hline<<2488>>\end<<2575>>tex2html_deferred<<2575>>
+    \begin<<2576>>tex2html_deferred<<2576>>\tabletail<<2566>>\hline \multicolumn<<2489>>3<<2489>><<2490>>l<<2490>><<2491>>\small\sl continued on next page<<2491>> \\  \hline<<2566>>\end<<2577>>tex2html_deferred<<2577>>
+    \tablelasttail<<2492>>\hline<<2492>>
+    \label<<2493>>tbl:reports-db-column-names<<2493>>
+    \begin<<2494>>xtabular<<2494>><<2567>>llp<<2495>>2.5in<<2495>><<2567>>
+	age           ;SPMamp;   real          ;SPMamp;  Age of animal \\ 
+	alive         ;SPMamp;   char(1)       ;SPMamp;  Animal's mortality status \\ 
+	ancestor      ;SPMamp;   char(1)       ;SPMamp;  Ancestor status \\ 
+	animalID      ;SPMamp;   integer       ;SPMamp;  \textbf<<2496>>Must be unique!<<2496>> \\ 
+	animalName    ;SPMamp;   varchar(128)  ;SPMamp;  Animal name \\ 
+	birthyear     ;SPMamp;   integer       ;SPMamp;  Birth year \\ 
+	breed         ;SPMamp;   text          ;SPMamp;  Breed \\ 
+	coi           ;SPMamp;   real          ;SPMamp;  Coefficient of inbreeding \\ 
+	damID         ;SPMamp;   integer       ;SPMamp;  Dam's ID \\ 
+	founder       ;SPMamp;   char(1)       ;SPMamp;  Founder status \\ 
+	gencoeff      ;SPMamp;   real          ;SPMamp;  Pattie's generation coefficient \\ 
+	generation    ;SPMamp;   real          ;SPMamp;  Generation \\ 
+	herd          ;SPMamp;   integer       ;SPMamp;  Herd ID \\ 
+	infGeneration ;SPMamp;   real          ;SPMamp;  Inferred generation \\ 
+	num\_daus     ;SPMamp;   integer       ;SPMamp;  Number of daughters \\ 
+	num\_sons     ;SPMamp;   integer       ;SPMamp;  Number of sons \\ 
+	num\_unk      ;SPMamp;   integer       ;SPMamp;  Offspring of unknown sex \\ 
+	originalHerd  ;SPMamp;   varchar(128)  ;SPMamp;  Original herd ID \\ 
+	originalID    ;SPMamp;   text          ;SPMamp;  Animal's original ID \\ 
+	pedgreeComp   ;SPMamp;   real          ;SPMamp;  Pedigree completeness \\ 
+	renumberedID  ;SPMamp;   integer       ;SPMamp;  Animal's renumbered ID \\ 
+	sex           ;SPMamp;   char(1)       ;SPMamp;  Sex of animal \\ 
+	sireID        ;SPMamp;   integer       ;SPMamp;  Sire's ID \\ 
+    \end<<2497>>xtabular<<2497>>
+\end<<2498>>center<<2498>>
+\begin<<2578>>tex2html_deferred<<2578>>\par\end<<2579>>tex2html_deferred<<2579>>
+\subsection<<2499>>Three Generation Pedigrees<<2499>>
+\label<<2500>>sec:reports-three-gen-peds<<2500>>
+\index<<2501>>report generation!three generation pedigrees<<2501>>
+A report for producing three-generation pedigrees, \function<<2502>>pdf3GenPed()<<2502>>, is included in the \module<<2503>>pyp_reports<<2503>> module. The sample output shown in Figure \ref<<2504>>fig:reports-three-gen-ped<<2504>> contains output for one animal. However, if \function<<2505>>pdf3GenPed()<<2505>> is passed a list of animal IDs the resulting PDF will contain a pedigree for each animal that can be printed as a booklet. See Section \ref<<2506>>sec:pyp-reports-pdf-three-gen-ped<<2506>> for usage details.
+\begin<<2507>>figure<<2507>>
+  \begin<<2508>>center<<2508>>
+    \includegraphics[width=6in]<<2509>>greensDingoPedigree.eps<<2509>>
+    \begin<<2580>>tex2html_deferred<<2580>>\caption<<2510>>Example of a printed three generation pedigree.<<2510>>\end<<2581>>tex2html_deferred<<2581>>
+    \label<<2511>>fig:reports-three-gen-ped<<2511>>
+  \end<<2512>>center<<2512>>
+\end<<2513>>figure<<2513>>
+\begin<<2582>>tex2html_deferred<<2582>>\par\end<<2583>>tex2html_deferred<<2583>>
+\section<<2514>>Creating a Custom Internal Report<<2514>>
+\label<<2515>>sec:reports-custom-internal-reports<<2515>>
+\index<<2516>>report generation!creating custom internal reports<<2516>>
+Internal reports \index<<2517>>internal reports<<2517>> typically aggregate data such that the result can be handed off to another  PyPedal<<2518>><<2518>> routine for further processing.   To do this, the pedigree is loaded into a table in an SQLite database against which queries are made.  This is faster and more flexible than writing reporting routines that loop over the pedigree to construct reports, but it does require some knowledge of the Structured Query Language (SQL; \begin<<2584>>tex2html_deferred<<2584>>\url<<2519>>http://www.sql.org/<<2519>>\end<<2585>>tex2html_deferred<<2585>>).  The canonical example of this kind of report is the passing of the dictionary returned by \function<<2520>>pyp\_reports.meanMetricBy()<<2520>> to \function<<2521>>pyp\_graphics.plot\_line\_xy()<<2521>> (see \ref<<2522>>sec:graphics-drawing-pedigrees<<2522>>).  That approach is outlined in code below.
+\begin<<2523>>tex2html_preform<<2523>><tex2html_verbatim_mark>verbatim137#\end<<2524>>tex2html_preform<<2524>>
+You should always check to see if your pedigree has been loaded into the database before you try and make queries against the pedigree table or your program may crash.  \function<<2525>>inbreedingByYear()<<2525>> returns a dictionary containing average coefficients of inbreeding keyed to birth years.  The query result, \var<<2526>>myresult<<2526>>, is a list of tuples; each tuple in the list
+corresponds to one row in an SQL resultset. The tuples in \var<<2527>>myresult<<2527>> are unpacked into temporary variables that are then stored in the dictionary, \var<<2528>>result\_dict<<2528>> (for information on tuples see the Python Tutorial (\begin<<2586>>tex2html_deferred<<2586>>\url<<2529>>http://www.python.org/doc/tut/node7.html#SECTION007300000000000000000<<2529>>\end<<2587>>tex2html_deferred<<2587>>).  If the resultset is empty, \var<<2530>>result\_dict<<2530>> will also be empty.  As long as you can write a valid SQL query for the report you'd like to assemble, there is no limitation on the reports that can be prepared by PyPedal<<2531>><<2531>>.
+\section<<2532>>Creating a Custom Printed Report<<2532>>
+\label<<2533>>sec:reports-custom-printed-reports<<2533>>
+\index<<2534>>report generation!creating custom printed reports<<2534>>
+If you are interested in custom printed reports you should begin by opening the file \texttt<<2535>>pyp\_reports.py<<2535>> and reading
+through the code for the \function<<2536>>pdfPedigreeMetadata()<<2536>> report.  It has been heavily commented so that it can be used as
+a template for developing other reports.  ReportLab provides fairly low-level tools that you can use to assemble
+documents.  The basic idea is that you create a canvas on which your image will be drawn.  You then create text objects and
+draw them on the canvas.  When your report is assembled you save the canvas on which it's drawn to a file.  PyPedal<<2537>><<2537>> provides
+a few convenience functions for such commonly-used layouts as title pages and page ;SPMquot;frames;SPMquot;.  In the following sections of code I will discuss the creation of a \function<<2538>>pdfInbreedingByYear()<<2538>> printed report to accompany the
+\function<<2539>>inbreedingByYear()<<2539>> internal report written in Section \ref<<2540>>sec:reports-custom-internal-reports<<2540>>.  First, we import ReportLab and check to see if the user provided an output file name.  If they didn't, revert to a default.
+\begin<<2541>>tex2html_preform<<2541>><tex2html_verbatim_mark>verbatim138#\end<<2542>>tex2html_preform<<2542>>
+Next call \function<<2543>>\_pdfInitialize()<<2543>>, which returns a dictionary of settings, mostly related to page size and
+margin locations, that is used throughout the routine.  \function<<2544>>\_pdfInitialize()<<2544>> uses the \member<<2545>>paper\_size<<2545>> keyword
+in the pedigree's options dictionary, which is either `letter' or `A4', and the \member<<2546>>default\_unit<<2546>>, which is either
+`inch' or `cm' to populate the returned structure.  This should allow users to move between paper sizes without little
+or no work.  Once the PDF settings have been computed we instantiate a canvas object on which to draw.
+\begin<<2547>>tex2html_preform<<2547>><tex2html_verbatim_mark>verbatim139#\end<<2548>>tex2html_preform<<2548>>
+There is a hook in the code to toggle cover pages on and off.  It is arguably rather pointless to put a cover page on a one-page document, but all TPS reports require new coversheets.  The call to \function<<2549>>\_pdfDrawPageFrame()<<2549>> frames the page with a header and footer that includes the pedigree name, date and time the report was created, and the page number.
+\begin<<2550>>tex2html_preform<<2550>><tex2html_verbatim_mark>verbatim140#\end<<2551>>tex2html_preform<<2551>>
+The largest chunk of code in \function<<2552>>pdfInbreedingByYear()<<2552>> is dedicated to looping over the input dictionary, \var<<2553>>results<<2553>>, and writing its contents to text objects.  If you want to change the typeface for the rendered text, you need to make the appropriate changes to all calls to \texttt<<2554>>canv.setFont(;SPMquot;Times-Bold;SPMquot;, 12)<<2554>>.  The ReportLab documentation includes a discussion of available typefaces.
+\begin<<2555>>tex2html_preform<<2555>><tex2html_verbatim_mark>verbatim141#\end<<2556>>tex2html_preform<<2556>>
+Every printed report will have a section of code in which the input is processed and written to text objects. In this case, the code loops over the key-and-value pairs in \var<<2557>>results<<2557>>, determines the width of the key, and creates a string with the proper spacing between the key and its value.  That string is then written to a \method<<2558>>tx.textLine()<<2558>> object.
+\begin<<2559>>tex2html_preform<<2559>><tex2html_verbatim_mark>verbatim142#\end<<2560>>tex2html_preform<<2560>>
+ReportLab's text objects do not automatically paginate themselves.  If you write, say, ten pages of material to a text object and render it without manually paginating the object you're going to get a single page of chopped-off text.  The following section of code is where the actual pagination occurs, so careful cutting-and-pasting should make pagination seamless.
+\begin<<2561>>tex2html_preform<<2561>><tex2html_verbatim_mark>verbatim143#\end<<2562>>tex2html_preform<<2562>>
+Once we're done writing our text to text objects we need to draw the text object on the canvas and make the canvas visible.  If you omit this step, perhaps because of the kind of horrible cutting-and-pasting accident to which I am prone, your PDF will not be written to a file.
+\begin<<2563>>tex2html_preform<<2563>><tex2html_verbatim_mark>verbatim144#\end<<2564>>tex2html_preform<<2564>>
+While PyPedal<<2565>><<2565>> does not yet have any standard reports that include graphics, ReportLab does support adding graphics, such as a pedigree drawing, to a canvas.  Interested readers should refer to the ReportLab documentation.
+<tex2html_endfile>#./reports.tex#

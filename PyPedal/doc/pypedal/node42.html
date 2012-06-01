@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="prev" href="node41.html" />
+<link rel="parent" href="node37.html" />
+<link rel="next" href="node43.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>4.2.5 Text Streams</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="4.2.4 Text Files"
+  href="node41.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="4.2 Input"
+  href="node37.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="4.3 Output"
+  href="node43.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node41.html">4.2.4 Text Files</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node37.html">4.2 Input</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node43.html">4.3 Output</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION044250000000000000000"></A><A NAME="sec:io-input-text-streams"></A><a id='l2h-41' xml:id='l2h-41'></a>
+<BR>
+4.2.5 Text Streams
+</H2>
+There are some use cases, such as web services, for which it may be desirable to load pedigrees from strings rather than from files. This is done by passing the <tt class="function">pedsource</tt><a id='l2h-42' xml:id='l2h-42'></a> keyword to <tt class="function">pyp_newclasses.loadPedigree</tt> with a value of "<tt class="samp">textstream</tt>", along with a string named "<tt class="samp">pedstream</tt>":
+<div class="verbatim"><pre>
+options = {}
+options['pedfile'] = ''
+options['messages'] = 'verbose'
+options['pedformat'] = 'ASD'
+
+if __name__ == "__main__":
+    pedstream = 'a1,s1,d1\na2,s2,d2\na3,a1,a2\n'
+    test = pyp_newclasses.loadPedigree(options,pedsource='textstream',pedstream=pedstream)
+</pre></div>
+Only ASD-formatted pedigrees can be loaded this way, individual IDs are separated with commas, and successive records are separated by newlines. These restrictions are hard-coded into the <tt class="method">NewPedigree::load()</tt> method. All records must contain a newline, including the last record in the string! You must also set the "<tt class="samp">pedfile</tt>" option to some value, even if that value is just an empty string as in the example.
+
+<P>
+The expected use case is that the pedigree would be retrieved from a database, and the result set from the SQL query converted into a string. There is an upper bound on the size of pedigree that can be loaded from a stream based on the physical memory available on your platform, and extremely large pedigrees should be loaded from a text file. 
+
+<P>
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="4.2.4 Text Files"
+  href="node41.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="4.2 Input"
+  href="node37.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="4.3 Output"
+  href="node43.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node41.html">4.2.4 Text Files</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node37.html">4.2 Input</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node43.html">4.3 Output</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

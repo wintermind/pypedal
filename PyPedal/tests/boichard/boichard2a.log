@@ -1,0 +1,134 @@
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/boichard/boichard2a.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/boichard/boichard2a.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree for Family 1 from Figure 2 (p. 12) of:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): #   Boichard, D., L. Maignel, and E. Verrier.  1997.  The
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 3): #       value of using probabilities of gene origin to
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 4): #       measure genetic variability in a population.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 5): #       Genetics, Selection, Evolution.  29:5-23.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 6): # Used for unit testing of PyPedal.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/boichard/boichard2a.ped after reading 20 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Boichard Pedigree (Family 1 only)
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/boichard/boichard2b.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/boichard/boichard2b.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree for Family 2 from Figure 2 (p. 12) of:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): #   Boichard, D., L. Maignel, and E. Verrier.  1997.  The
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 3): #       value of using probabilities of gene origin to
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 4): #       measure genetic variability in a population.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 5): #       Genetics, Selection, Evolution.  29:5-23.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 6): # Used for unit testing of PyPedal.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/boichard/boichard2b.ped after reading 12 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Boichard Pedigree (Family 2 only)
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/boichard/boichard2.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/boichard/boichard2.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree for Families 1 and 2from Figure 2 (p. 12) of:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): #   Boichard, D., L. Maignel, and E. Verrier.  1997.  The
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 3): #       value of using probabilities of gene origin to
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 4): #       measure genetic variability in a population.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 5): #       Genetics, Selection, Evolution.  29:5-23.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 6): # Used for unit testing of PyPedal.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/boichard/boichard2.ped after reading 26 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Boichard Pedigree (Family 1 and 2)
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/boichard/boichard2a.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/boichard/boichard2a.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree for Family 1 from Figure 2 (p. 12) of:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): #   Boichard, D., L. Maignel, and E. Verrier.  1997.  The
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 3): #       value of using probabilities of gene origin to
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 4): #       measure genetic variability in a population.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 5): #       Genetics, Selection, Evolution.  29:5-23.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 6): # Used for unit testing of PyPedal.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/boichard/boichard2a.ped after reading 20 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Boichard Pedigree (Family 1 only)
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/boichard/boichard2b.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/boichard/boichard2b.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree for Family 2 from Figure 2 (p. 12) of:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): #   Boichard, D., L. Maignel, and E. Verrier.  1997.  The
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 3): #       value of using probabilities of gene origin to
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 4): #       measure genetic variability in a population.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 5): #       Genetics, Selection, Evolution.  29:5-23.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 6): # Used for unit testing of PyPedal.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/boichard/boichard2b.ped after reading 12 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Boichard Pedigree (Family 2 only)
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/boichard/boichard2.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/boichard/boichard2.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree for Families 1 and 2from Figure 2 (p. 12) of:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): #   Boichard, D., L. Maignel, and E. Verrier.  1997.  The
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 3): #       value of using probabilities of gene origin to
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 4): #       measure genetic variability in a population.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 5): #       Genetics, Selection, Evolution.  29:5-23.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 6): # Used for unit testing of PyPedal.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/boichard/boichard2.ped after reading 26 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Boichard Pedigree (Family 1 and 2)
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/lacy/lacy.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/lacy/lacy.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree from Figure 3 (p. 122) of:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): #   Lacy, R. C.  1989.  Analysis of founder representations in pedigrees:
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 3): #       founder equivalents and founder genome equivalents.  Zoo Biology.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 4): #       8:111-123.
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 5): # Used for unit testing of PyPedal.
+Tue, 19 Jul 2005 16:08:51 WARNING  Encountered deprecated pedigree format string (% asd
+) on line 6 of the pedigree file.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/lacy/lacy.ped after reading 13 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Untitled
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     Logfile tests/hartlandclark.log instantiated.
+Tue, 19 Jul 2005 16:08:51 INFO     Preprocessing tests/hartlandclark.ped
+Tue, 19 Jul 2005 16:08:51 INFO     Opening pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 1): # Pedigree from van Noordwijck and Scharloo (1981) as presented
+Tue, 19 Jul 2005 16:08:51 INFO     Pedigree comment (line 2): # in Hartl and Clark (1989), p. 242.
+Tue, 19 Jul 2005 16:08:51 WARNING  Reached end-of-line in tests/hartlandclark.ped after reading 17 lines.
+Tue, 19 Jul 2005 16:08:51 INFO     Closing pedigree file
+Tue, 19 Jul 2005 16:08:51 INFO     Forming numerator relationship matrix
+Tue, 19 Jul 2005 16:08:51 INFO     Forming A-matrix from pedigree
+Tue, 19 Jul 2005 16:08:51 INFO     Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()
+Tue, 19 Jul 2005 16:08:51 INFO     Assigning offspring
+Tue, 19 Jul 2005 16:08:51 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Untitled
+Tue, 19 Jul 2005 16:08:51 INFO     Creating pedigree metadata object
+Tue, 19 Jul 2005 16:08:51 INFO     [INFO]: You asked for more high and low COI, 5, than there are animals in the pedigree with non-zero COI, 4.  n was adjusted from 5 to 2.

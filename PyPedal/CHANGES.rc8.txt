@@ -1,0 +1,76 @@
+PyPedal 2 CHANGELOG
+===================
+"---" indicates a known bug;
+"+++" indicates a feature addition;
+"***" indicates an API change or a major bugfix;
+"'''" indicates a minor bugfix or feature enhancement.
+"???" indicates a possible problem (i.e. bug) that has
+      not been verified.
+"XXX" indicates a feature that has been deprecated or removed.
+"!!!" indicates a feature that is planned or stubbed, but is not yet working.
+"###" indicates a note or idea I don't want to forget.
+
+CHANGES in PyPedal 2.0.0rc8 (Vetinari)
+======================================
++++ 01/05/2009  Added a new value of pedsource, 'genesfile', which
+    loads a pedigree from the DBF file format used by GENES 1.20
+    (http://www.vortex9.org/genes.html), which is an accessory program to
+    the SPARKS software for studbook management. GENES also can be used as
+    a stand-alone program for pedigree analysis.
++++ 01/05/2009  Added two functions to pyp_io: read_from_genes()
+    parses GENES 1.2 .DBF files and write_to_genes() writes NewPedigree
+    objects to a GENES 1.2 .DBF file.
+''' 10/22/2008  pyp_nrm/fast_a_matrix() and pyp_nrm/fast_a_matrix_r()
+    now check for PySparse, and default to using dense NumPy arrays
+    if sparse matrices are not available.
+''' 10/22/2008  Apparently you can't write to the upper triangle of
+    a sparse matrix: "spmatrix.error: write operation to upper
+    triangle of symmetric matrix". Clearly, this needs to be fixed.
+--- 05/30/2008  Apparently you can't write to the upper triangle of
+    a sparse matrix: "spmatrix.error: write operation to upper
+    triangle of symmetric matrix". Clearly, this needs to be fixed.
+''' 05/30/2008 Custom SQL queries are allowed in NewPedigree::load()
+    to accommodate pre-existing databases that are not in ASDx
+    format using the new 'database_sql' option proposed by Matthew
+    Kelly.
+''' 05/30/2008  Added a new option, 'matrix_type', that's used by
+    the inbreeding routines in pyp_nrm.py. It takes the values
+    'dense' or 'sparse', which is passed to fast_a_matrix() to
+    specify that dense or sparse matrices be used. This may help
+    when very large pedigrees are processed. Modified inbreeding(),
+    inbreeding_tabular(), inbreeding_vanraden(), and
+    partial_inbreeding() to use 'matrix_type'.
+!!! 05/??/2008  Matthew Kelly code to handle NULLs in database
+    result sets.
+''' 05/15/2008  Added an entry for new_sqlite.py to the example
+    programs table in the Appendix of the manual.
+''' 05/15/2008  Documented the decomposition routines in pyp_nrm,
+    as well as examples/new_decompose.py.
+*** 05/15/2008  Changed the default renumbering option from 0 (do
+    not renumber) to 1 (renumber) in pyp_newclasses::__init__().
+''' 05/15/2008  Added material to the manual discussing when and why
+    pedigrees should be renumbered.
++++ 05/13/2008  Added a new example program, new_sqlite.py,
+    to demonstrate how to load pedigrees from databases.
+''' 05/13/2008  Made a small change to NewPedigree::preprocess()
+    to use the code provided by Matthew Kelly for loading from
+    a database. Apparently the dbstream.pop() didn't work for
+    him on OS/X 1.0.4. Tested it against new_db.py and it seems
+    to work.
+''' 05/13/2008  Added code to pyp_metrics/relationship() to
+    warn the user when the pedigree they'be provided is not
+    renumbered. Also added a keyword, 'renumber', that will
+    let the routine renumber the pedigree if it has not
+    already been renumbered; its default is 'False' to pre-
+    serve original behavior. Thanks to Matthew Kelly for
+    noting that the original behavior was unexpected.
+''' 05/09/2008  Modified pyp_graphics/plotxy() so that it
+    sorts the values to be plotted by the keys in the input
+    dictionary. The line plots now work as expected.
+''' 05/09/2008  Fixed a couple of typos in logging and error
+    messages in pyp_db.
+''' 05/09/2008  examples/new_graphics.py wasn't really broken,
+    but pyp_reports/mean_metric_by() was. I fixed it to work
+    with the new API in pyp_db. The graph it produces is
+    correct in stating that the mean COI by birth year is 0.0 --
+    there are no inbred animals in the pedigree file.

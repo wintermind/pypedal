@@ -1,0 +1,34 @@
+###############################################################################
+# NAME: AUTHORS
+# VERSION: 2.0.0rc9 (01SEPTEMBER2010)
+# AUTHOR: John B. Cole, PhD (john.cole@ars.usda.gov)
+# LICENSE: LGPL
+###############################################################################
+# This file lists the people who have contributed either code or files and
+# testing help to PyPedal.
+###############################################################################
+
+AUTHORS
+-------
+John B. Cole (john.cole@ars.usda.gov)
+
+TESTING/FEEDBACK
+----------------
+Matthieu Authier
+Dan Cieslak
+Al Gillis
+Gregor Gorjanc
+Edward H. Hagen (Institute for Theoretical Biology, Humboldt-Universit zu Berlin)
+Kathy Hanford (University of Nebraska, Lincoln)
+Thomas von Hassell
+Bradley J. Heins (University of Minnesota -- Twin Cities)
+Raymond Hettinger (Python Software Foundation)
+Ryan Kaulakis (Pennsylvanis State University)
+Blair Kelly (No known relation to Matthew Kelly)
+Matthew Kelly (Department of Animal and Poultry Science, University of Guelph)
+Claire Raisin (Durrell Institute of Conservation & Ecology, University of Kent)
+Gianluca Saba
+Ken Severin (University of Alaska -- Fairbanks)
+Bill Szkotnicki (Department of Animal and Poultry Science, University of Guelph)
+Paul VanRaden (USDA-ARS-AIPL)
+George Wiggans (USDA-ARS-AIPL)

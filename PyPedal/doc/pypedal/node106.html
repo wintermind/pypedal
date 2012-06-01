@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node107.html" />
+<link rel="prev" href="node105.html" />
+<link rel="parent" href="node105.html" />
+<link rel="next" href="node107.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>9.1.1 Drawing Pedigrees</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="9.1 PyPedal Graphics"
+  href="node105.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="9.1 PyPedal Graphics"
+  href="node105.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="9.1.2 Drawing Line Graphs"
+  href="node107.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node105.html">9.1 PyPedal Graphics</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node105.html">9.1 PyPedal Graphics</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node107.html">9.1.2 Drawing Line Graphs</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION049110000000000000000"></A>
+<A NAME="sec:graphics-drawing-pedigrees"></A><a id='l2h-108' xml:id='l2h-108'></a>
+<BR>
+9.1.1 Drawing Pedigrees
+</H2>
+The pedigree from Figure 2 in Boichard et al. ref352 is shown in Figure <A HREF="#fig:boichard2-pedigree">9.1</A>, and shows males enclosed in rectangles and females in ovals.  Figure <A HREF="#fig:new-ids2-pedigree-basic">9.2</A> shows a pedigree in which strings are used for animal IDs; animal are enclosed in ovals because sexes were not specified in the pedigree file and the <tt class="member">set_sexes</tt> option was not specified.  A more complex German Shepherd pedigree is presented in Figure <A HREF="#fig:doug-pedigree-basic">9.3</A>; the code used to create this pedigree is:
+<div class="verbatim"><pre>
+pyp_graphics.draw_pedigree(example, gfilename='doug_p_rl_notitle', gname=1,
+    gdirec='RL', gfontsize=12)
+</pre></div>
+
+<DIV ALIGN="CENTER"><A NAME="fig:boichard2-pedigree"></A><A NAME="2780"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.1:</STRONG>
+Pedigree 2 from Boichard et al. (1997)</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<DIV ALIGN="CENTER"><A NAME="fig:new-ids2-pedigree-basic"></A><A NAME="2787"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.2:</STRONG>
+A pedigree with strings as animal IDs</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<DIV ALIGN="CENTER"><A NAME="fig:doug-pedigree-basic"></A><A NAME="2794"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.3:</STRONG>
+German Shepherd pedigree</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+The resulting graphic is written to doug_p_rl_notitle.jpg; note from Table <A HREF="node105.html#tbl:pypedal-graphics-formats">9.1</A> that the default file format for <tt class="function">draw_pedigree()</tt> is <b>JPG</b> rather than <b>PNG</b>, as is the case for the other graphics routines.  To get a PNG simply pass the argument <var>gformat='png'</var> to <tt class="function">draw_pedigree()</tt>.  For details on the options taken by <tt class="function">draw_pedigree()</tt> please refer to the API documentation (Section <A HREF="#sec:pyp-graphics-draw-pedigree"><tex2html_cross_ref_visible_mark></A>). <tt class="function">draw_pedigree()</tt> uses rectangles to indicates known males, circles to indicate known females, and octagons to indicate animals of unknown sex.
+
+<P>
+Pedigrees can also be colored using the <tt class="function">color_pedigree()</tt> function in the <tt class="module">pyp_jbc</tt> module. At present, animals are shaded either by the number of sons produced or by the total number of descendants. The five-generation pedigree of the Newfoundland dog King von der D&#252;ssel is presented in Figure <A HREF="#fig:newfoundland-colored-pedigree">9.4</A> (<a class="url" href="http://www.newfoundlanddog-database.net/en/ahnen.php?num=0000025330">http://www.newfoundlanddog-database.net/en/ahnen.php?num=0000025330</a>, data used with permission), and the nodes are shaded based on number of descendants.
+
+<DIV ALIGN="CENTER"><A NAME="fig:newfoundland-colored-pedigree"></A><A NAME="2815"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.4:</STRONG>
+Newfoundland colored pedigree</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+ 
+<SPAN ID="hue2880">
+ <B>FIX</B>
+<!-- MATH
+ $\blacktriangleright \blacktriangleright \blacktriangleright$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \blacktriangleright \blacktriangleright \blacktriangleright$"></SPAN>
+
+<B>Windows users should set the <var>drawers</var> keyword to 'old' when calling <tt class="function">color_pedigree()</tt>. This will call <tt class="function">draw_colored_pedigree()</tt> rather than <tt class="function">new_draw_colored_pedigree()</tt>. The latter requires that PyGraphviz library be installed and there is not yet an easy way to install it on Windows.</B>
+<!-- MATH
+ $\blacktriangleleft \blacktriangleleft \blacktriangleleft$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ \blacktriangleleft \blacktriangleleft \blacktriangleleft $"></SPAN>
+  </SPAN>
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="9.1 PyPedal Graphics"
+  href="node105.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="9.1 PyPedal Graphics"
+  href="node105.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="9.1.2 Drawing Line Graphs"
+  href="node107.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node105.html">9.1 PyPedal Graphics</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node105.html">9.1 PyPedal Graphics</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node107.html">9.1.2 Drawing Line Graphs</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

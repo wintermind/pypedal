@@ -1,0 +1,312 @@
+\par pyp\_network contains a set of procedures for working with pedigrees as directed
+graphs.
+\subsection*{Module Contents}
+\begin{description}
+\item[\textbf{count\_offspring(pedgraph, anid)} ⇒ integer [\#]
+]
+\par count\_offspring() returns the number of offspring of an animal.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a networkx DiGraph.
+\item[\textit{anid}
+]
+The animal for whom offspring are to be counted.
+\item[Returns:
+]
+Count of offspring.
+\end{description}\\
+
+\item[\textbf{dyad\_census(pg, debug=0, debuglog=0)} ⇒ dictionary [\#]
+]
+\par dyad\_census() calculates the number of null, asymmetric, and
+mutual edges between all pairs of nodes in a directed graph.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[\textit{debug}
+]
+Flag to turn debugging messages on (1) or off (0).
+\item[\textit{debuglog}
+]
+Flag to turn debugging messages to the logfile  on (1) or off (0).
+\item[Returns:
+]
+A dictionary of counts.
+\end{description}\\
+
+\item[\textbf{find\_ancestors(pedgraph, anid, \_ancestors=[])} ⇒ list [\#]
+]
+\par find\_ancestors() identifies the ancestors of an animal and returns them in a list.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a networkx DiGraph.
+\item[\textit{anid}
+]
+The animal for whom ancestors are to be found.
+\item[\textit{\_ancestors}
+]
+The list of ancestors already found.
+\item[Returns:
+]
+List of ancestors of anid.
+\end{description}\\
+
+\item[\textbf{find\_ancestors\_g(pedgraph, anid, \_ancestors=\{\}, gens=3)} ⇒ list [\#]
+]
+\par find\_ancestors\_g() identifies the ancestors of an animal going back a user-specified number of generations and returns them in a list.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a networkx DiGraph.
+\item[\textit{anid}
+]
+The animal for whom ancestors are to be found.
+\item[\textit{\_ancestors}
+]
+The list of ancestors already found.
+\item[Returns:
+]
+List of ancestors of anid.
+\end{description}\\
+
+\item[\textbf{find\_descendants(pedgraph, anid, \_descendants=[])} ⇒ list [\#]
+]
+\par find\_descendants() identifies the descendants of an animal and returns them in a list.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a networkx DiGraph.
+\item[\textit{anid}
+]
+The animal for whom descendants are to be found.
+\item[\textit{\_descendants}
+]
+The list of descendants already found.
+\item[Returns:
+]
+List of descendants of anid.
+\end{description}\\
+
+\item[\textbf{get\_betweenness\_centrality(pg)} ⇒ dictionary [\#]
+]
+\par get\_betweenness\_centrality(pg) returns a dictionary of the
+betweenness centrality of each node in the graph.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[Returns:
+]
+A dictionary of closeness centralities.
+\end{description}\\
+
+\item[\textbf{get\_closeness\_centrality(pg)} ⇒ dictionary [\#]
+]
+\par get\_closeness\_centrality(pg) returns a dictionary of the closeness
+centrality (1/(average distance to all nodes from n)) for each
+node in the graph.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[Returns:
+]
+A dictionary of closeness centralities.
+\end{description}\\
+
+\item[\textbf{get\_clustering\_coefficient(pg)} ⇒ dictionary [\#]
+]
+\par get\_clustering\_coefficient(pg) returns a dictionary of the clustering
+coefficient of each node in the graph based on the definition of Watts
+and Strogatz (1998).
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[Returns:
+]
+A dictionary of clustering coefficients.
+\end{description}\\
+
+\item[\textbf{get\_founder\_descendants(pedgraph)} ⇒ dictionary [\#]
+]
+\par get\_founder\_descendants() returns a dictionary containing a list of descendants of
+each founder in the pedigree.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a NetworkX DiGraph.
+\item[Returns:
+]
+A dictionary containing a list of descendants for each founder in the graph.
+\end{description}\\
+
+\item[\textbf{get\_node\_betweenness(pg)} ⇒ dictionary [\#]
+]
+\par get\_node\_betweenness(pg) returns a dictionary of the
+number of shortest paths that go through each node in
+the graph.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[Returns:
+]
+A dictionary of node betweennesses.
+\end{description}\\
+
+\item[\textbf{get\_node\_degree\_histograms(node\_degrees)} ⇒ dictionary [\#]
+]
+\par get\_node\_degree\_histograms() returns a dictionary containing histograms of
+the number of vertices (nodes) in pg with a given number of incoming,
+outgoing, or total edges.
+\begin{description}
+\item[\textit{node\_degrees}
+]
+A dictionary of dictionaries of in, out, and total node degrees.
+\item[Returns:
+]
+A dictionary of dictionaries containing in, out, and total degree histograms.
+\end{description}\\
+
+\item[\textbf{get\_node\_degrees(pg)} ⇒ dictionary [\#]
+]
+\par get\_node\_degrees() returns a dictionary containing the number of
+vertices (nodes) in pg with a given number of incoming, outgoing,
+or total edges.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[Returns:
+]
+A dictionary of dictionaries containing in, out, and total node degrees.
+\end{description}\\
+
+\item[\textbf{graph\_density(pg)} ⇒ float [\#]
+]
+\par graph\_density() calculates the density of a digraph, which is the
+ratio of edges in the gaph to the maximum possible number of edges.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[Returns:
+]
+The density of the pedigree represented in pg.
+\end{description}\\
+
+\item[\textbf{immediate\_family(pedgraph, anid)} ⇒ list [\#]
+]
+\par immediate\_family() returns parents and offspring of an animal.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a networkx DiGraph.
+\item[\textit{anid}
+]
+The animal for whom immediate family are to be found.
+\item[Returns:
+]
+List of immediate family members of anid.
+\end{description}\\
+
+\item[\textbf{mean\_degree\_centrality(pg, normalize=0)} ⇒ dictionary [\#]
+]
+\par mean\_degree\_centrality(pg) calculates mean in- and out-degree
+centralities for directed graphs and simple degree-centralities
+for undirected graphs. If the normalize flag is set, each node's
+centralities are weighted by the number of edges in the (di)graph.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[\textit{normalize}
+]
+Flag to turn normalization on (1) or off (0).
+\item[Returns:
+]
+A dictionary of mean degree centralities.
+\end{description}\\
+
+\item[\textbf{mean\_geodesic(pg, debug=0)} ⇒ float [\#]
+]
+\par mean\_geodesic() calculates the mean geodesic (shortest) distance
+between two vertices in a network.
+\begin{description}
+\item[\textit{pg}
+]
+An instance of a NetworkX DiGraph.
+\item[\textit{debug}
+]
+Flag to turn debugging messages on (1) or off (0).
+\item[Returns:
+]
+The mean geodesic for the pedigree represented in pg.
+\end{description}\\
+
+\item[\textbf{mean\_value(mydict)} ⇒ float [\#]
+]
+\par mean\_value() calculates the mean from all values in a dictionary.
+\begin{description}
+\item[\textit{mydict}
+]
+A dictionary whose values are integers or reals.
+\item[Returns:
+]
+The mean of values in mydict.
+\end{description}\\
+
+\item[\textbf{most\_influential\_offspring(pedgraph, anid, resolve='all')} ⇒ dictionary [\#]
+]
+\par most\_influential\_offspring() returns the most influential offspring of an animal as measured by their number of offspring.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a networkx DiGraph.
+\item[\textit{anid}
+]
+The animal for whom the most influential offspring is to be found.
+\item[\textit{resolve}
+]
+Indicates how ties should be handled ('first'|'last'|'all').
+\item[Returns:
+]
+The most influential offspring of anid.
+\end{description}\\
+
+\item[\textbf{offspring\_influence(pedgraph, anid)} ⇒ dictionary [\#]
+]
+\par offspring\_influence() returns the number of grand-children by each child of a given animal.
+\begin{description}
+\item[\textit{pedgraph}
+]
+An instance of a networkx DiGraph.
+\item[\textit{anid}
+]
+The animal for whom grand-progeny are to be counted.
+\item[Returns:
+]
+A dictionary of counts of progeny per child.
+\end{description}\\
+
+\item[\textbf{ped\_to\_graph(pedobj, oid=0)} ⇒ graph [\#]
+]
+\par ped\_to\_graph() Takes a PyPedal pedigree object and returns a networkx XDiGraph
+object.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[\textit{oid}
+]
+Flag indicating if original (1) or renumbered (0) IDs should be used.
+\item[Returns:
+]
+DiGraph object
+\end{description}\\
+
+\end{description}

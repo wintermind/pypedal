@@ -1,0 +1,6 @@
+include ez_setup.py
+include PyPedal/*.txt
+include PyPedal/doc/pypedal.p*
+recursive-include PyPedal/tests *
+recursive-include PyPedal/tests/boichard *
+include PyPedal/examples/new_*.*

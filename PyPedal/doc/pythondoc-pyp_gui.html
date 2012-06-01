@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_gui Module</title>
+</head>
+<body>
+<h1>The pyp_gui Module</h1>
+<p>pyp_gui provides a simple graphical user interface for PyPedal using the wxPython
+(http://www.wxpython.org/) and Wax (http://sourceforge.net/projects/waxgui) extensions.</p>
+<h2>Module Contents</h2>
+<dl>
+<dt><b>MainWindow(parent, id, title)</b> (class) [<a href='#pyp_gui.MainWindow-class'>#</a>]</dt>
+<dd>
+<p>The MainFrame() class provides the main pyp_gui interface.</p>
+<p>For more information about this class, see <a href='#pyp_gui.MainWindow-class'><i>The MainWindow Class</i></a>.</p>
+</dd>
+</dl>
+<h2><a id='pyp_gui.MainWindow-class' name='pyp_gui.MainWindow-class'>The MainWindow Class</a></h2>
+<dl>
+<dt><b>MainWindow(parent, id, title)</b> (class) [<a href='#pyp_gui.MainWindow-class'>#</a>]</dt>
+<dd>
+<p>The MainFrame() class provides the main pyp_gui interface.</p>
+</dd>
+<dt><a id='pyp_gui.MainWindow._OpenFile-method' name='pyp_gui.MainWindow._OpenFile-method'><b>_OpenFile(filename)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow._OpenFile-method'>#</a>]</dt>
+<dd>
+<p>_OpenFile() actually loads a pedigree from a file.  Once the pedigree is
+loaded the pedigree metadata is written to the screen.</p>
+<dl>
+<dt><i>filename</i></dt>
+<dd>
+The pedigree file name.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnAbout-method' name='pyp_gui.MainWindow.OnAbout-method'><b>OnAbout(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnAbout-method'>#</a>]</dt>
+<dd>
+<p>OnAbout() produces an &quot;about this application&quot; dialogue box.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnAppExit-method' name='pyp_gui.MainWindow.OnAppExit-method'><b>OnAppExit(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnAppExit-method'>#</a>]</dt>
+<dd>
+<p>OnAppExit() produces a &quot;do you really want to exit this application&quot; dialogue box.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnFileOpenDialog-method' name='pyp_gui.MainWindow.OnFileOpenDialog-method'><b>OnFileOpenDialog(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnFileOpenDialog-method'>#</a>]</dt>
+<dd>
+<p>OnFileOpenDialog() produces the file dialog used to select a pedigree file to be opened.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnGraphInbreed-method' name='pyp_gui.MainWindow.OnGraphInbreed-method'><b>OnGraphInbreed(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnGraphInbreed-method'>#</a>]</dt>
+<dd>
+<p>OnGraphInbreed() produces a &quot;do you really want to exit this application&quot; dialogue box.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnMetricsEffectiveFounders-method' name='pyp_gui.MainWindow.OnMetricsEffectiveFounders-method'><b>OnMetricsEffectiveFounders(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnMetricsEffectiveFounders-method'>#</a>]</dt>
+<dd>
+<p>OnMetricsEffectiveFounders() writes effective founders information to the
+main textbox.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnMetricsInbreeding-method' name='pyp_gui.MainWindow.OnMetricsInbreeding-method'><b>OnMetricsInbreeding(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnMetricsInbreeding-method'>#</a>]</dt>
+<dd>
+<p>OnMetricsInbreeding() writes summary statistics for inbreeding to the main textbox.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnPedList-method' name='pyp_gui.MainWindow.OnPedList-method'><b>OnPedList(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnPedList-method'>#</a>]</dt>
+<dd>
+<p>OnPedList() presents a list of the animals in the pedigree.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnPedMeta-method' name='pyp_gui.MainWindow.OnPedMeta-method'><b>OnPedMeta(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnPedMeta-method'>#</a>]</dt>
+<dd>
+<p>OnPedMeta() produces the file dialog used when a pedigree file is to be saved.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnPedView-method' name='pyp_gui.MainWindow.OnPedView-method'><b>OnPedView(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnPedView-method'>#</a>]</dt>
+<dd>
+<p>OnPedView() uses pydot and graphviz to produce a drawing of the pedigree,
+if they are installed.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.OnSettingsViewLog-method' name='pyp_gui.MainWindow.OnSettingsViewLog-method'><b>OnSettingsViewLog(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.OnSettingsViewLog-method'>#</a>]</dt>
+<dd>
+<p>OnSettingsViewLog() dumps the logfile to a window.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.Save-method' name='pyp_gui.MainWindow.Save-method'><b>Save(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.Save-method'>#</a>]</dt>
+<dd>
+<p>Save() produces the file dialog used when a pedigree file is to be saved.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.SetFilename-method' name='pyp_gui.MainWindow.SetFilename-method'><b>SetFilename(filename)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.SetFilename-method'>#</a>]</dt>
+<dd>
+<p>SetFilename() writes the name of the opened pedigree file to the statusbar.</p>
+<dl>
+<dt><i>filename</i></dt>
+<dd>
+The pedigree file name.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_gui.MainWindow.ToDo-method' name='pyp_gui.MainWindow.ToDo-method'><b>ToDo(event)</b></a> &rArr; None [<a href='#pyp_gui.MainWindow.ToDo-method'>#</a>]</dt>
+<dd>
+<p>ToDo() produces a &quot;this feature has not yet been implemented&quot; dialogue box.</p>
+<dl>
+<dt><i>event</i></dt>
+<dd>
+The type of event causing invocation of this method.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>

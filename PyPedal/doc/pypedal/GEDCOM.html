@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="GENES.html" />
+<link rel="prev" href="node121.html" />
+<link rel="parent" href="module-pypedal.html" />
+<link rel="next" href="GENES.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>B. GEDCOM File Handling</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="A. Example Programs"
+  href="node121.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="List of Figures"
+  href="module-pypedal.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="C. GENES File Handling"
+  href="GENES.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node121.html">A. Example Programs</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="module-pypedal.html">List of Figures</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="GENES.html">C. GENES File Handling</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION0414000000000000000000"></A><A NAME="GEDCOM"></A><a id='l2h-125' xml:id='l2h-125'></a>
+<BR>
+B. GEDCOM File Handling
+</H1>
+ PyPedal is capable of importing from, and exporting to, GEDCOM 5.5 files using a subset
+of data record and tag types from the standard (Table 
+<A HREF="#tbl:gedcom-supported-records-and-tags-import_tbl:gedcom-supported-records-and-tags-export"><tex2html_cross_ref_visible_mark></A>).
+Most of the information that can be
+ exchanged in GEDCOM files has no direct use in PyPedal, so important information from PyPedal's point-of-view is not lost. However, it's important to note that <b>PyPedal's GEDCOM import and export is lossy</b>! This means that information in a GEDCOM file is lost when importing the file, and data from PyPedal pedigrees is lost when exporting. There are many free and commercial packages for doing human genealogy that take full advantage of GEDCOM, so you might want to look at one if you need more advanced GEDCOM support than PyPedal provides.
+<DIV ALIGN="CENTER">
+GEDCOM 5.5 data records and tags imported by PyPedal.
+    Data Record Type &amp; Supported Tags &amp; Description<A NAME="tex2html14"
+  HREF="#foot3247"><SUP>B.1</SUP></A> 
+<BR>
+
+    
+    <A NAME="tbl:gedcom-supported-records-and-tags-import"></A>    <BR>
+<IMG
+ WIDTH="620" HEIGHT="230" ALIGN="BOTTOM" BORDER="0"
+ SRC="img86.png"
+ ALT="\begin{xtabular}{l\vert p{1in}\vert p{3in}}
+Fam_Record &amp; {FAM} &amp; Alphanumeric w...
+...AMS &amp; Pointer to family in which this individual is a parent \\
+\end{xtabular}">
+<BR>
+</DIV>
+The list of recognized tags is hard-coded in a list named <var>known_tags</var> in <tt class="function">pyp_io.load_from_gedcom()</tt>.
+<DIV ALIGN="CENTER">
+GEDCOM 5.5 data records and tags exported by PyPedal.
+    Data Record Type &amp; Supported Tags &amp; Description<A NAME="tex2html15"
+  HREF="#foot3268"><SUP>B.2</SUP></A> 
+<BR>
+
+    
+    <A NAME="tbl:gedcom-supported-records-and-tags-export"></A>    <BR>
+<IMG
+ WIDTH="620" HEIGHT="441" ALIGN="BOTTOM" BORDER="0"
+ SRC="img87.png"
+ ALT="\begin{xtabular}{l\vert p{1in}\vert p{3in}}
+Header &amp; {HEAD} &amp; --- \\
+&amp; {SOUR}...
+...AMS &amp; Pointer to family in which this individual is a parent \\
+\end{xtabular}">
+<BR>
+</DIV>
+Some tags have slightly different connotatios in PyPedal than in GEDCOM. For example, in human genealogy marriages are important events, but that is not the case in animal pedigrees. PyPedal creates family records only for unique mating pairs, and marriage information is lost when importing a GEDCOM file. Similarly, no marriage information is exported, and you will not see any family records containing only HUSB and WIFE tags. Founders (animals with both parents unknown) will have individual records but no family records. The default birth year used by PyPedal is 1900; if you do not override that value then individuals with birth years of 1900 will not have BIRT/DATE tags written to their individual record. The same is true of default birth dates (01011900).
+
+<P>
+Importation is done by reading the GEDCOM file, parsing out the supported tags into ``family'' and ``individual'', and using Python dictionaries (hash tables) to map everything down to individual records. Those individual records are then written to a file, the pedigree format string and pedfile variables are updated for the new file. That file is then loaded automatically. The downside is that you end up with two copies of each pedigree file, but disc space is cheap. I won't add an option for automatic deletion of the original GEDCOM file becuase of the lossiness of the import procedure.
+
+<P>
+The export process is uncoupled from the import process. You can export any pedigree 
+that  PyPedal can read as a GEDCOM file regardless of the original source. Perhaps
+some human types will be interested in some of the calculations that PyPedal can do,
+or perhaps a dog breeder will do something unexpected, such as exporting to GEDCOM so
+that they can use GRAMPS or something like that to manipulate their data. Who knows. Anyway, PyPedal supports two-way data flow.
+
+<P>
+<BR><HR><H4>Footnotes</H4>
+<DL>
+<DT><A NAME="3247">... Description</A></DT>
+<DD>
+
+</DD>
+<DT><A NAME="3268">... Description</A></DT>
+<DD>
+
+</DD>
+</DL>
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="A. Example Programs"
+  href="node121.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="List of Figures"
+  href="module-pypedal.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="C. GENES File Handling"
+  href="GENES.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node121.html">A. Example Programs</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="module-pypedal.html">List of Figures</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="GENES.html">C. GENES File Handling</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

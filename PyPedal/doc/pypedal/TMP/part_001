@@ -1,0 +1,97 @@
+
+
+\documentclass[letterpaper,hyperref,titlepage]<<1>>manual<<1>>
+\begin<<76>>tex2html_deferred<<76>>\par\end<<77>>tex2html_deferred<<77>>
+\usepackage<<2>>amsmath<<2>>
+\usepackage<<3>>amssymb<<3>> 	
+\usepackage[latin1]<<4>>inputenc<<4>>
+\usepackage<<5>>textcomp<<5>>
+\usepackage<<6>>fullpage<<6>>
+\usepackage<<7>>graphicx<<7>>
+\graphicspath<<65>><<8>>./graphics/<<8>><<65>>
+\usepackage<<9>>url<<9>>
+\usepackage<<10>>index<<10>>
+\usepackage<<11>>chicago<<11>>
+\usepackage<<12>>xtab<<12>>
+\usepackage<<13>>multirow<<13>>
+\begin<<78>>tex2html_deferred<<78>>\par\end<<79>>tex2html_deferred<<79>>
+\begin<<80>>tex2html_deferred<<80>>\providedcommand<<14>>abs<<14>><<0>><<1>>\mathrm<<15>>abs<<15>><<1>><<0>>\end<<81>>tex2html_deferred<<81>>
+\begin<<82>>tex2html_deferred<<82>>\par\end<<83>>tex2html_deferred<<83>>
+\usepackage<<16>>courier<<16>>
+\usepackage<<17>>fullpage<<17>>
+\usepackage<<18>>color<<18>>  
+\begin<<84>>tex2html_deferred<<84>>\par\end<<85>>tex2html_deferred<<85>>
+\definecolor<<19>>darkorange<<19>><<20>>rgb<<20>><<21>>.71,0.21,0.01<<21>>
+\definecolor<<22>>darkgreen<<22>><<23>>rgb<<23>><<24>>.12,.54,.11<<24>>
+\begin<<86>>tex2html_deferred<<86>>\par\end<<87>>tex2html_deferred<<87>>
+\usepackage[    breaklinks=true,    colorlinks=true,  urlcolor=blue,  linkcolor=darkorange,  citecolor=darkgreen,  ]<<25>>hyperref<<25>>
+\begin<<88>>tex2html_deferred<<88>>\par\end<<89>>tex2html_deferred<<89>>
+\sloppy
+\begin<<90>>tex2html_deferred<<90>>\par\end<<91>>tex2html_deferred<<91>>
+\begin<<92>>tex2html_nowrap<<92>>
+\newedcommand<<26>>fixme<<26>>[1]<<71>>
+\textcolor<<27>>red<<27>><<70>>
+<<69>>\fbox<<66>> <<28>>\bf FIX<<28>>
+\begin<<72>>tex2html_wrap_inline<<72>>\ensuremath<<29>>\blacktriangleright \blacktriangleright \blacktriangleright<<29>>\end<<73>>tex2html_wrap_inline<<73>><<66>>
+<<30>>\bf #1<<30>>
+\fbox<<67>>\begin<<74>>tex2html_wrap_inline<<74>>\ensuremath<<31>> \blacktriangleleft \blacktriangleleft \blacktriangleleft <<31>>\end<<75>>tex2html_wrap_inline<<75>>
+<<67>> <<69>> <<70>>
+<<71>>\end<<93>>tex2html_nowrap<<93>> 
+\begin<<94>>tex2html_deferred<<94>>\par\end<<95>>tex2html_deferred<<95>>
+\definecolor<<32>>orange<<32>><<33>>cmyk<<33>><<34>>0,0.4,0.8,0.2<<34>>
+\usepackage<<35>>listings<<35>>
+\lstset<<68>>
+  language=Python,
+  basicstyle=\begin<<96>>tex2html_deferred<<96>>\small\end<<97>>tex2html_deferred<<97>>\begin<<98>>tex2html_deferred<<98>>\ttfamily\end<<99>>tex2html_deferred<<99>>,
+  commentstyle=\begin<<100>>tex2html_deferred<<100>>\ttfamily\end<<101>>tex2html_deferred<<101>>\begin<<102>>tex2html_deferred<<102>>\color<<36>>blue<<36>>\end<<103>>tex2html_deferred<<103>>,
+  stringstyle=\begin<<104>>tex2html_deferred<<104>>\ttfamily\end<<105>>tex2html_deferred<<105>>\begin<<106>>tex2html_deferred<<106>>\color<<37>>orange<<37>>\end<<107>>tex2html_deferred<<107>>,
+  showstringspaces=false,
+  breaklines=true,
+  postbreak = \space\dots
+<<68>>
+\begin<<108>>tex2html_deferred<<108>>\par\end<<109>>tex2html_deferred<<109>>
+\begin<<110>>tex2html_nowrap<<110>>
+\newedcommand<<38>>pypedal<<38>><<39>>PyPedal<<39>>\end<<111>>tex2html_nowrap<<111>> 
+\begin<<112>>tex2html_nowrap<<112>>
+\newedcommand<<40>>PyPedal<<40>><<41>>PyPedal<<41>>\end<<113>>tex2html_nowrap<<113>>   <tex2html_comment_mark>40
+\begin<<114>>tex2html_nowrap<<114>>
+\newedcommand<<42>>PYPEDAL<<42>><<43>>PyPedal<<43>>\end<<115>>tex2html_nowrap<<115>> 
+\begin<<116>>tex2html_nowrap<<116>>
+\newedcommand<<44>>python<<44>><<45>>Python<<45>>\end<<117>>tex2html_nowrap<<117>> 
+\begin<<118>>tex2html_deferred<<118>>\par\end<<119>>tex2html_deferred<<119>>
+\begin<<120>>tex2html_nowrap<<120>>
+\newedcommand<<46>>remark<<46>>[1]<<47>><<47>>\end<<121>>tex2html_nowrap<<121>> 
+\begin<<122>>tex2html_deferred<<122>>\par\end<<123>>tex2html_deferred<<123>>
+\title<<48>>A Manual for use of PyPedal\\ A software package for pedigree analysis<<48>>
+\begin<<124>>tex2html_deferred<<124>>\author<<49>>John B. Cole<<49>>\end<<125>>tex2html_deferred<<125>>
+\authoraddress<<50>>Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture, Room 306 Bldg 005 BARC-West, 10300 Baltimore Avenue, Beltsville, MD 20705-2350<<50>>
+\begin<<126>>tex2html_deferred<<126>>\par\end<<127>>tex2html_deferred<<127>>
+\date<<51>>November 29, 2005 \\  Revised \today<<51>>                   <tex2html_comment_mark>47
+\begin<<128>>tex2html_deferred<<128>>\par\end<<129>>tex2html_deferred<<129>>
+\release<<52>>2.0.0b23<<52>>              <tex2html_comment_mark>52
+\setshortversion<<53>>2.0<<53>>           <tex2html_comment_mark>53
+\makeindex                      <tex2html_comment_mark>54
+\newindex<<54>>func<<54>><<55>>fdx<<55>><<56>>fnd<<56>><<57>>Function Index<<57>>
+\begin<<130>>tex2html_deferred<<130>>\par\end<<131>>tex2html_deferred<<131>>
+\begin<<58>>document<<58>>
+\begin<<132>>tex2html_deferred<<132>>\par\end<<133>>tex2html_deferred<<133>>
+\maketitle
+\begin<<134>>tex2html_deferred<<134>>\par\end<<135>>tex2html_deferred<<135>>
+\begin<<59>>abstract<<59>>
+Cole, J.B.  2008.  A Manual for use of PyPedal: A software package for pedigree analysis.  Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture.
+\begin<<136>>tex2html_deferred<<136>>\par\end<<137>>tex2html_deferred<<137>>
+This manual in twelve chapters describes PyPedal (v 2.0), a software package for pedigree analysis, report generation, and data visualization.  Metrics include coefficients of inbreeding and relationship, effective founder and ancestor numbers, and founder genome equivalents.  Tools are provided for identifying ancestors and descendants, computing coefficients of inbreeding from potential matings, quantifying pedigree completeness, and visualizing pedigrees.  Scripting support is provided by the Python programming language; this language may be used to easily automate analyses and implement new features. Input and output files utilize plain-text formats.  The program has been used for the analysis of dairy cattle and working dog pedigrees.  PyPedal runs on the GNU/Linux and Microsoft Windows operating systems.  The program, documentation, and examples of usage are available at \begin<<138>>tex2html_deferred<<138>>\url<<60>>http://pypedal.sourceforge.net/<<60>>\end<<139>>tex2html_deferred<<139>>.
+\begin<<140>>tex2html_deferred<<140>>\par\end<<141>>tex2html_deferred<<141>>
+Mention of trade names or commercial products in this manual is solely for the purpose of providing specific information and does not imply recommendation or endorsement by the U.S. Department of Agriculture.
+\begin<<142>>tex2html_deferred<<142>>\par\end<<143>>tex2html_deferred<<143>>
+All programs and services of the U.S. Department of Agriculture are offered on a nondiscriminatory basis without regard to race, color, national origin, religion, sex, age, marital status, or handicap.
+\begin<<144>>tex2html_deferred<<144>>\par\end<<145>>tex2html_deferred<<145>>
+Revised \today
+\end<<61>>abstract<<61>>
+\begin<<146>>tex2html_deferred<<146>>\par\end<<147>>tex2html_deferred<<147>>
+\ifhtml
+\part*<<62>>General<<62>>
+\chapter*<<63>>Front Matter<<63>>
+\label<<64>>front<<64>>
+\fi
+\begin<<148>>tex2html_deferred<<148>>\par\end<<149>>tex2html_deferred<<149>>

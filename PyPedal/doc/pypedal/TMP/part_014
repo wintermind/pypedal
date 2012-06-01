@@ -1,0 +1,112 @@
+<tex2html_file>#./appendix.tex#
+\appendix
+\addcontentsline<<2710>>toc<<2710>><<2711>>chapter<<2711>><<2712>>Appendices<<2712>>
+\chapter<<2713>>Example Programs<<2713>>
+A number of example programs are distributed with  PyPedal<<2714>><<2714>>. Table \ref<<2715>>tbl:examples-program-list<<2715>> provides the name of each file, the configuration and pedigree files used by those programs, and a brief description of the concepts and techniques presented.
+\begin<<2716>>center<<2716>>
+    \tablecaption<<2817>>Example programs distributed with PyPedal<<2717>><<2717>>.<<2817>>
+    \tablefirsthead<<2718>>\hline Program Name ;SPMamp; Configuration File ;SPMamp; Pedigree File ;SPMamp; Description \\  \hline<<2718>>
+    \begin<<2831>>tex2html_deferred<<2831>>\tablehead<<2719>>\hline Program Name ;SPMamp; Configuration File ;SPMamp; Pedigree File ;SPMamp; Description \\  \hline<<2719>>\end<<2832>>tex2html_deferred<<2832>>
+    \begin<<2833>>tex2html_deferred<<2833>>\tabletail<<2818>>\hline \multicolumn<<2720>>4<<2720>><<2721>>l<<2721>><<2722>>\small\sl continued on next page<<2722>> \\  \hline<<2818>>\end<<2834>>tex2html_deferred<<2834>>
+    \tablelasttail<<2723>>\hline<<2723>>
+    \label<<2724>>tbl:examples-program-list<<2724>>
+    \begin<<2725>>xtabular<<2725>><<2819>>l|p<<2726>>1in<<2726>>|p<<2727>>1in<<2727>>|p<<2728>>3in<<2728>><<2819>>
+    new\_amatrix.py ;SPMamp; new\_amatrix.ini ;SPMamp; new\_amatrix.ped ;SPMamp; Create, save, load, and view information about NewAMatrix objects \\ 
+    new\_classes.py ;SPMamp; new\_classes.ini ;SPMamp; boichard2.ped ;SPMamp; ??? \\ 
+    new\_db.py ;SPMamp; new\_db.ini ;SPMamp; hartlandclark.ped ;SPMamp; Loading a pedigree into SQLite and creating a report of mean inbreeeding by birth year \\ 
+    new\_doug.py ;SPMamp; new\_doug.ini ;SPMamp; doug.ped ;SPMamp; Reading a pedigree in which names are strings, drawing pedigrees \\ 
+    new\_format.py ;SPMamp; new\_format.ini ;SPMamp; boichard2a.ped ;SPMamp; Reading a pedigree using the `skip column' format code (Z), printing pedigree metadata \\ 
+    new\_graphics.py ;SPMamp; new\_graphics.ini ;SPMamp; boichard2.ped ;SPMamp; Use of a number of routines from \module<<2729>>pyp_graphics<<2729>> \\ 
+    new\_hartl.py ;SPMamp; new\_hartl.ini ;SPMamp; hartlandclark.ped ;SPMamp; Demonstrates use of \function<<2730>>pyp_graphics.draw_pedigree()<<2730>> \\ 
+    new\_ids.py ;SPMamp; new\_ids.ini ;SPMamp; new\_ids2.ped ;SPMamp; Demonstrates reading tab-delimited files, using strings as animal IDs, overriding the default missing parent code, printing animal records \\ 
+    new\_inbreeding.py ;SPMamp; new\_inbreeding.ini ;SPMamp; new\_renumbering.ped ;SPMamp; Calculating coefficients of inbreeding \\ 
+    new\_inbreeding2.py ;SPMamp; new\_inbreeding2.ini, new\_inbreeding2multiple.ini ;SPMamp; new\_renumbering.ped, horse.ped ;SPMamp; Advanced .ini file techniques, computations on extremely inbred animals, calculation of summary statistics for coefficients of relationship \\ 
+    new\_jbc.py ;SPMamp; new\_jbc.ini ;SPMamp; new\_ids2.ped ;SPMamp; Using \function<<2731>>pyp_jbc.color_pedigree()<<2731>> to produce a weighted, colored pedigree \\ 
+    new\_lacy.py ;SPMamp; new\_lacy.ini, new\_format.ini ;SPMamp; new\_lacy.ped, boichard2a.ped ;SPMamp; Calculating effective ancestor and founder numbers \\ 
+    new\_methods.py ;SPMamp; new\_format.ini ;SPMamp; boichard2a.ped ;SPMamp; Use of \function<<2732>>pyp_metrics.related\_animals()<<2732>> and \function<<2733>>pyp_metrics.common\_ancestors()<<2733>> \\ 
+    new\_networkx.py ;SPMamp; new\_networkx.ini ;SPMamp; generations.ped ;SPMamp; Use of [algebraic] graph functions \\ 
+    new\_options.py ;SPMamp; new\_options.ini ;SPMamp; new\_lacy.ped ;SPMamp; Use of the configuration files \\ 
+    new\_renumbering.py ;SPMamp; new\_renumbering.ini ;SPMamp; new\_renumbering.ped ;SPMamp; Renumbering a pedigree, calculating inbreeding, pedigree drawing \\ 
+    new\_reporting.py ;SPMamp; new\_reporting.ini ;SPMamp; new\_renumbering.ped ;SPMamp; Use of reporting functions \\ 
+    new\_simulate.py ;SPMamp; new\_simulate.ini ;SPMamp; None ;SPMamp; Demonstrates how to create a random pedigree and produce a drawing of that pedigree. \\ 
+    \end<<2734>>xtabular<<2734>>
+\end<<2735>>center<<2735>>
+\begin<<2835>>tex2html_deferred<<2835>>\par\end<<2836>>tex2html_deferred<<2836>>
+\chapter<<2736>>GEDCOM File Handling<<2736>>\label<<2737>>GEDCOM<<2737>>\index<<2738>>GEDCOM files<<2738>>
+ PyPedal<<2739>><<2739>> is capable of importing from, and exporting to, GEDCOM 5.5 files using a subset
+of data record and tag types from the standard (Table 
+\ref<<2740>>tbl:gedcom-supported-records-and-tags-import,tbl:gedcom-supported-records-and-tags-export<<2740>>).
+Most of the information that can be
+ exchanged in GEDCOM files has no direct use in PyPedal<<2741>><<2741>>, so important information from PyPedal<<2742>><<2742>>'s point-of-view is not lost. However, it's important to note that \textbf<<2820>>PyPedal<<2743>><<2743>>'s GEDCOM import and export is lossy<<2820>>! This means that information in a GEDCOM file is lost when importing the file, and data from PyPedal<<2744>><<2744>> pedigrees is lost when exporting. There are many free and commercial packages for doing human genealogy that take full advantage of GEDCOM, so you might want to look at one if you need more advanced GEDCOM support than PyPedal<<2745>><<2745>> provides.
+\begin<<2746>>center<<2746>>
+    \tablecaption<<2821>>GEDCOM 5.5 data records and tags imported by PyPedal<<2747>><<2747>>.<<2821>>
+    \tablefirsthead<<2822>>\hline Data Record Type ;SPMamp; Supported Tags ;SPMamp; Description\begin<<2837>>tex2html_deferred<<2837>>\footnote<<2748>><<2748>>\end<<2838>>tex2html_deferred<<2838>> \\  \hline<<2822>>
+    \begin<<2839>>tex2html_deferred<<2839>>\tablehead<<2823>>\hline Data Record Type ;SPMamp; Supported Tags ;SPMamp; Description\footnote<<2749>><<2749>> \\  \hline<<2823>>\end<<2840>>tex2html_deferred<<2840>>
+    \begin<<2841>>tex2html_deferred<<2841>>\tabletail<<2824>>\hline \multicolumn<<2750>>3<<2750>><<2751>>l<<2751>><<2752>>\small\sl continued on next page<<2752>> \\  \hline<<2824>>\end<<2842>>tex2html_deferred<<2842>>
+    \tablelasttail<<2753>>\hline<<2753>>
+    \label<<2754>>tbl:gedcom-supported-records-and-tags-import<<2754>>
+    \begin<<2755>>xtabular<<2755>><<2825>>l|p<<2756>>1in<<2756>>|p<<2757>>3in<<2757>><<2825>>
+    Fam_Record ;SPMamp; <<2758>>FAM<<2758>> ;SPMamp; Alphanumeric with underscores; formed from parent IDs \\ 
+     ;SPMamp; <<2759>>HUSB<<2759>> ;SPMamp; Sire, if known \\ 
+     ;SPMamp; <<2760>>WIFE<<2760>> ;SPMamp; Dam, if known \\ 
+     ;SPMamp; <<2761>>CHIL<<2761>> ;SPMamp; Pointer to Individual_Record (one record per child) \\ 
+    Individual_Record ;SPMamp; <<2762>>INDI<<2762>> ;SPMamp; Individual ID \\ 
+     ;SPMamp; SEX ;SPMamp; M, F, or U (unknown) \\ 
+     ;SPMamp; NAME ;SPMamp; Individual's name, if known \\ 
+     ;SPMamp; BIRT ;SPMamp; Indicates that a birth date or year follows \\ 
+     ;SPMamp; DATE ;SPMamp; Birth date or birth year, if known \\ 
+     ;SPMamp; FAMC ;SPMamp; Pointer to family to which this individual belongs \\ 
+     ;SPMamp; FAMS ;SPMamp; Pointer to family in which this individual is a parent \\ 
+    \end<<2763>>xtabular<<2763>>
+\end<<2764>>center<<2764>>
+The list of recognized tags is hard-coded in a list named \var<<2765>>known\_tags<<2765>> in \function<<2766>>pyp\_io.load\_from\_gedcom()<<2766>>.
+\begin<<2767>>center<<2767>>
+    \tablecaption<<2826>>GEDCOM 5.5 data records and tags exported by PyPedal<<2768>><<2768>>.<<2826>>
+    \tablefirsthead<<2827>>\hline Data Record Type ;SPMamp; Supported Tags ;SPMamp; Description\begin<<2843>>tex2html_deferred<<2843>>\footnote<<2769>><<2769>>\end<<2844>>tex2html_deferred<<2844>> \\  \hline<<2827>>
+    \begin<<2845>>tex2html_deferred<<2845>>\tablehead<<2828>>\hline Data Record Type ;SPMamp; Supported Tags ;SPMamp; Description\footnote<<2770>><<2770>> \\  \hline<<2828>>\end<<2846>>tex2html_deferred<<2846>>
+    \begin<<2847>>tex2html_deferred<<2847>>\tabletail<<2829>>\hline \multicolumn<<2771>>3<<2771>><<2772>>l<<2772>><<2773>>\small\sl continued on next page<<2773>> \\  \hline<<2829>>\end<<2848>>tex2html_deferred<<2848>>
+    \tablelasttail<<2774>>\hline<<2774>>
+    \label<<2775>>tbl:gedcom-supported-records-and-tags-export<<2775>>
+    \begin<<2776>>xtabular<<2776>><<2830>>l|p<<2777>>1in<<2777>>|p<<2778>>3in<<2778>><<2830>>
+    Header ;SPMamp; <<2779>>HEAD<<2779>> ;SPMamp; --- \\ 
+     ;SPMamp; <<2780>>SOUR<<2780>> ;SPMamp; <<2781>>PYPEDAL<<2781>> \\ 
+     ;SPMamp; <<2782>>VERS<<2782>> ;SPMamp; V2.0 \\ 
+     ;SPMamp; <<2783>>CORP<<2783>> ;SPMamp; <<2784>>USDA-ARS-BA-ANRI-AIPL<<2784>> \\ 
+     ;SPMamp; <<2785>>DEST<<2785>> ;SPMamp; <<2786>>PYPEDAL<<2786>> \\ 
+     ;SPMamp; <<2787>>DATE<<2787>> ;SPMamp; Timestamp from time of file creation \\ 
+     ;SPMamp; <<2788>>FILE<<2788>> ;SPMamp; Filename provided by user \\ 
+     ;SPMamp; <<2789>>GEDC<<2789>> ;SPMamp; --- \\ 
+     ;SPMamp; <<2790>>VERS<<2790>> ;SPMamp; <<2791>>VERS 5.5<<2791>> \\ 
+     ;SPMamp; <<2792>>FORM<<2792>> ;SPMamp; Lineage-Linked \\ 
+     ;SPMamp; <<2793>>CHAR<<2793>> ;SPMamp; <<2794>>ASCII<<2794>> \\ 
+    Fam_Record ;SPMamp; <<2795>>FAM<<2795>> ;SPMamp; Alphanumeric with underscores; formed from parent IDs \\ 
+     ;SPMamp; <<2796>>HUSB<<2796>> ;SPMamp; Sire, if known \\ 
+     ;SPMamp; <<2797>>WIFE<<2797>> ;SPMamp; Dam, if known \\ 
+     ;SPMamp; <<2798>>CHIL<<2798>> ;SPMamp; Pointer to Individual_Record (one record per child) \\ 
+    Individual_Record ;SPMamp; <<2799>>INDI<<2799>> ;SPMamp; Individual ID \\ 
+     ;SPMamp; SEX ;SPMamp; M, F, or U (unknown) \\ 
+     ;SPMamp; NAME ;SPMamp; Individual's name, if known \\ 
+     ;SPMamp; BIRT ;SPMamp; Indicates that a birth date or year follows \\ 
+     ;SPMamp; DATE ;SPMamp; Birth date or birth year, if known \\ 
+     ;SPMamp; FAMC ;SPMamp; Pointer to family to which this individual belongs \\ 
+     ;SPMamp; FAMS ;SPMamp; Pointer to family in which this individual is a parent \\ 
+    \end<<2800>>xtabular<<2800>>
+\end<<2801>>center<<2801>>
+Some tags have slightly different connotatios in PyPedal<<2802>><<2802>> than in <<2803>>GEDCOM<<2803>>. For example, in human genealogy marriages are important events, but that is not the case in animal pedigrees. PyPedal<<2804>><<2804>> creates family records only for unique mating pairs, and marriage information is lost when importing a <<2805>>GEDCOM<<2805>> file. Similarly, no marriage information is exported, and you will not see any family records containing only HUSB and WIFE tags. Founders (animals with both parents unknown) will have individual records but no family records. The default birth year used by PyPedal<<2806>><<2806>> is 1900; if you do not override that value then individuals with birth years of 1900 will not have BIRT/DATE tags written to their individual record. The same is true of default birth dates (01011900).
+\begin<<2849>>tex2html_deferred<<2849>>\par\end<<2850>>tex2html_deferred<<2850>>
+Importation is done by reading the <<2807>>GEDCOM<<2807>> file, parsing out the supported tags into ``family'' and ``individual'', and using Python dictionaries (hash tables) to map everything down to individual records. Those individual records are then written to a file, the pedigree format string and pedfile variables are updated for the new file. That file is then loaded automatically. The downside is that you end up with two copies of each pedigree file, but disc space is cheap. I won't add an option for automatic deletion of the original <<2808>>GEDCOM<<2808>> file becuase of the lossiness of the import procedure.
+\begin<<2851>>tex2html_deferred<<2851>>\par\end<<2852>>tex2html_deferred<<2852>>
+The export process is uncoupled from the import process. You can export any pedigree 
+that  PyPedal<<2809>><<2809>> can read as a <<2810>>GEDCOM<<2810>> file regardless of the original source. Perhaps
+some human types will be interested in some of the calculations that PyPedal<<2811>><<2811>> can do,
+or perhaps a dog breeder will do something unexpected, such as exporting to <<2812>>GEDCOM<<2812>> so
+that they can use GRAMPS or something like that to manipulate their data. Who knows. Anyway, PyPedal<<2813>><<2813>> supports two-way data flow.
+<tex2html_endfile>#./appendix.tex#
+\begin<<2853>>tex2html_deferred<<2853>>\par\end<<2854>>tex2html_deferred<<2854>>
+\bibliographystyle<<2814>>chicago<<2814>>
+\bibliography<<2815>>references<<2815>>
+\begin<<2855>>tex2html_deferred<<2855>>\par\end<<2856>>tex2html_deferred<<2856>>
+\printindex
+\printindex[func]
+\begin<<2857>>tex2html_deferred<<2857>>\par\end<<2858>>tex2html_deferred<<2858>>
+\end<<2816>>document<<2816>>

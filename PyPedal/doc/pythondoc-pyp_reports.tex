@@ -1,0 +1,159 @@
+% This file was converted from HTML to LaTeX with
+% Tomasz Wegrzanowski's <maniek@beer.com> gnuhtml2latex program
+% Version : 0.1
+\documentclass{article}
+\begin{document}
+
+\section*{The pyp\_reports Module}
+\par pyp\_reports contains a set of procedures for ...
+\subsection*{Module Contents}
+\begin{description}
+\item[\textbf{\_pdfCreateTitlePage(canv, \_pdfSettings, reporttitle='', reportauthor='')} ⇒ None [\#]
+]
+\par \_pdfCreateTitlePage() adds a title page to a ReportLab canvas object.
+\begin{description}
+\item[\textit{canv}
+]
+An instance of a ReportLab Canvas object.
+\item[\textit{\_pdfSettings}
+]
+An options dictionary created by \_pdfInitialize().
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{\_pdfDrawPageFrame(canv, \_pdfSettings)} ⇒ None [\#]
+]
+\par \_pdfDrawPageFrame() nicely frames page contents and includes the
+document title in a header and the page number in a footer.
+\begin{description}
+\item[\textit{canv}
+]
+An instance of a ReportLab Canvas object.
+\item[\textit{\_pdfSettings}
+]
+An options dictionary created by \_pdfInitialize().
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{\_pdfInitialize(pedobj)} ⇒ dictionary [\#]
+]
+\par \_pdfInitialize() returns a dictionary of metadata that is used for report
+generation.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[Returns:
+]
+A dictionary of metadata that is used for report generation.
+\end{description}\\
+
+\item[\textbf{meanMetricBy(pedobj, metric='fa', byvar='by', createpdf=0)} ⇒ dictionary [\#]
+]
+\par meanMetricBy() returns a dictionary of means keyed by levels of the 'byvar' that
+can be used to draw graphs or prepare reports of summary statistics.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[\textit{metric}
+]
+The variable to summarize on a BY variable.
+\item[\textit{byvar}
+]
+The variable on which to group the metric.
+\item[\textit{createpdf}
+]
+Flag indicating whether or not a PDF version of the report should be created.
+\item[Returns:
+]
+A dictionary containing means for the metric variable keyed to levels of the byvar.
+\end{description}\\
+
+\item[\textbf{pdf3GenPed(animalID, pedobj, titlepage=0, reporttitle='', reportauthor='', reportfile='')} ⇒ integer [\#]
+]
+\par pdf3GenPed() draws a three-generation pedigree for animal 'animalID'.
+\begin{description}
+\item[\textit{animalID}
+]
+An animal ID or list of animal IDs.
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[\textit{titlepage}
+]
+Show (1) or hide (0) the title page.
+\item[\textit{reporttitle}
+]
+Title of report; if '', \_pdfTitle is used.
+\item[\textit{reportauthor}
+]
+Author/preparer of report.
+\item[\textit{reportfile}
+]
+Optional name of file to which the report should be written.
+\item[Returns:
+]
+1 on success, 0 on failure
+\end{description}\\
+
+\item[\textbf{pdfMeanMetricBy(pedobj, results, titlepage=0, reporttitle='', reportauthor='', reportfile='')} ⇒ integer [\#]
+]
+\par pdfMeanMetricBy() returns a dictionary of means keyed by levels of the 'byvar' that
+can be used to draw graphs or prepare reports of summary statistics.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[\textit{results}
+]
+A dictionary containing means for the metric variable keyed to levels of the byvar.
+\item[\textit{titlepage}
+]
+Show (1) or hide (0) the title page.
+\item[\textit{reporttitle}
+]
+Title of report; if '', \_pdfTitle is used.
+\item[\textit{reportauthor}
+]
+Author/preparer of report.
+\item[\textit{reportfile}
+]
+Optional name of file to which the report should be written.
+\item[Returns:
+]
+1 on success, 0 on failure
+\end{description}\\
+
+\item[\textbf{pdfPedigreeMetadata(pedobj, titlepage=0, reporttitle='', reportauthor='', reportfile='')} ⇒ integer [\#]
+]
+\par pdfPedigreeMetadata() produces a report, in PDF format, of the metadata from
+the input pedigree.  It is intended for use as a template for custom printed
+reports.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[\textit{titlepage}
+]
+Show (1) or hide (0) the title page.
+\item[\textit{reporttitle}
+]
+Title of report; if '', \_pdfTitle is used.
+\item[\textit{reportauthor}
+]
+Author/preparer of report.
+\item[\textit{reportfile}
+]
+Optional name of file to which the report should be written.
+\item[Returns:
+]
+A 1 on success, 0 otherwise.
+\end{description}\\
+
+\end{description}
+\end{document}

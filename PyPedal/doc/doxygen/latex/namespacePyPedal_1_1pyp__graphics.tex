@@ -1,0 +1,310 @@
+\hypertarget{namespacePyPedal_1_1pyp__graphics}{
+\section{Package Py\-Pedal.pyp\_\-graphics}
+\label{namespacePyPedal_1_1pyp__graphics}\index{PyPedal.pyp_graphics@{PyPedal.pyp\_\-graphics}}
+}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_025ff5088109e49fc7936da00a433d60}{rmuller\_\-spy\_\-matrix\_\-pil}
+\begin{CompactList}\small\item\em import matplotlib matplotlib.use('Agg') import pylab \hyperlink{namespacePyPedal_1_1pyp__graphics_025ff5088109e49fc7936da00a433d60}{rmuller\_\-spy\_\-matrix\_\-pil()} implements a matlab-like 'spy' function to display the sparsity of a matrix using the Python Imaging Library. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_b89e2534bdd5f0e0e57778f11e056007}{rmuller\_\-pcolor\_\-matrix\_\-pil}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__graphics_b89e2534bdd5f0e0e57778f11e056007}{rmuller\_\-pcolor\_\-matrix\_\-pil()} implements a matlab-like 'pcolor' function to display the large elements of a matrix in pseudocolor using the Python Imaging Library. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_3fb74d0dd1a9d4c263ac96c4deb92601}{rmuller\_\-get\_\-color}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__graphics_3fb74d0dd1a9d4c263ac96c4deb92601}{rmuller\_\-get\_\-color()} Converts a float value to one of a continuous range of colors using recipe 9.10 from the Python Cookbook. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_60eaf4bd218e2b1f32385ce9e6b8e066}{draw\_\-pedigree}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__graphics_60eaf4bd218e2b1f32385ce9e6b8e066}{draw\_\-pedigree()} uses the pydot bindings to the graphviz library -- if they are available on your system -- to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_3795b92107fa37e5416ed51e4decadb9}{plot\_\-founders\_\-by\_\-year}
+\begin{CompactList}\small\item\em founders\_\-by\_\-year() uses matplotlib -- if available on your system -- to produce a bar graph of the number (count) of founders in each birthyear. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_48dcfef58e6a02924d822a5f8b9e69de}{plot\_\-founders\_\-pct\_\-by\_\-year}
+\begin{CompactList}\small\item\em founders\_\-pct\_\-by\_\-year() uses matplotlib -- if available on your system -- to produce a line graph of the frequency (percentage) of founders in each birthyear. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_e02ac5f823a1ef850391ad396638ac7b}{pcolor\_\-matrix\_\-pylab}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__graphics_e02ac5f823a1ef850391ad396638ac7b}{pcolor\_\-matrix\_\-pylab()} implements a matlab-like 'pcolor' function to display the large elements of a matrix in pseudocolor using the Python Imaging Library. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_9ac93feea0e4389e3d1e08798fe5e105}{spy\_\-matrix\_\-pylab}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__graphics_9ac93feea0e4389e3d1e08798fe5e105}{spy\_\-matrix\_\-pylab()} implements a matlab-like 'pcolor' function to display the large elements of a matrix in pseudocolor using the Python Imaging Library. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_903c6e4a4b3fb7f015a9b827c26a3123}{plot\_\-line\_\-xy}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__graphics_903c6e4a4b3fb7f015a9b827c26a3123}{plot\_\-line\_\-xy()} uses matplotlib -- if available on your system -- to produce a line graph of the values in a dictionary for each level of key. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__graphics_d1890710e78d0f63351d24e84527c570}{new\_\-draw\_\-pedigree}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__graphics_d1890710e78d0f63351d24e84527c570}{new\_\-draw\_\-pedigree()} uses the pygraphviz to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__graphics_025ff5088109e49fc7936da00a433d60}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!rmuller_spy_matrix_pil@{rmuller\_\-spy\_\-matrix\_\-pil}}
+\index{rmuller_spy_matrix_pil@{rmuller\_\-spy\_\-matrix\_\-pil}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[rmuller\_\-spy\_\-matrix\_\-pil]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.rmuller\_\-spy\_\-matrix\_\-pil ( {\em A},  {\em fname} = {\tt 'tmp.png'},  {\em cutoff} = {\tt 0.1},  {\em do\_\-outline} = {\tt 0},  {\em height} = {\tt 300},  {\em width} = {\tt 300})}}
+\label{namespacePyPedal_1_1pyp__graphics_025ff5088109e49fc7936da00a433d60}
+
+
+import matplotlib matplotlib.use('Agg') import pylab \hyperlink{namespacePyPedal_1_1pyp__graphics_025ff5088109e49fc7936da00a433d60}{rmuller\_\-spy\_\-matrix\_\-pil()} implements a matlab-like 'spy' function to display the sparsity of a matrix using the Python Imaging Library. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em A}]Input Numpy matrix (such as a numerator relationship matrix). \item[{\em fname}]Output filename to which to dump the graphics (default 'tmp.png') \item[{\em cutoff}]Threshold value for printing an element (default 0.1) \item[{\em do\_\-outline}]Whether or not to print an outline around the block (default 0) \item[{\em height}]The height of the image (default 300) \item[{\em width}]The width of the image (default 300) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em None@verbatim}]\hyperlink{namespacePyPedal_1_1pyp__graphics_025ff5088109e49fc7936da00a433d60}{rmuller\_\-spy\_\-matrix\_\-pil()} implements a matlab-like 'spy' function to display the sparsity of a matrix using the Python Imaging Library.  \end{description}
+\end{Desc}
+
+
+Definition at line 81 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_b89e2534bdd5f0e0e57778f11e056007}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!rmuller_pcolor_matrix_pil@{rmuller\_\-pcolor\_\-matrix\_\-pil}}
+\index{rmuller_pcolor_matrix_pil@{rmuller\_\-pcolor\_\-matrix\_\-pil}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[rmuller\_\-pcolor\_\-matrix\_\-pil]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.rmuller\_\-pcolor\_\-matrix\_\-pil ( {\em A},  {\em fname} = {\tt 'tmp.png'},  {\em do\_\-outline} = {\tt 0},  {\em height} = {\tt 300},  {\em width} = {\tt 300})}}
+\label{namespacePyPedal_1_1pyp__graphics_b89e2534bdd5f0e0e57778f11e056007}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__graphics_b89e2534bdd5f0e0e57778f11e056007}{rmuller\_\-pcolor\_\-matrix\_\-pil()} implements a matlab-like 'pcolor' function to display the large elements of a matrix in pseudocolor using the Python Imaging Library. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em A}]Input Numpy matrix (such as a numerator relationship matrix). \item[{\em fname}]Output filename to which to dump the graphics (default 'tmp.png') \item[{\em do\_\-outline}]Whether or not to print an outline around the block (default 0) \item[{\em height}]The height of the image (default 300) \item[{\em width}]The width of the image (default 300) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of Animal() objects; a pedigree metadata object.
+
+\footnotesize\begin{verbatim}rmuller_pcolor_matrix_pil() implements a matlab-like 'pcolor' function to
+display the large elements of a matrix in pseudocolor using the Python Imaging
+Library.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 139 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_3fb74d0dd1a9d4c263ac96c4deb92601}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!rmuller_get_color@{rmuller\_\-get\_\-color}}
+\index{rmuller_get_color@{rmuller\_\-get\_\-color}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[rmuller\_\-get\_\-color]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.rmuller\_\-get\_\-color ( {\em a},  {\em cmin},  {\em cmax})}}
+\label{namespacePyPedal_1_1pyp__graphics_3fb74d0dd1a9d4c263ac96c4deb92601}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__graphics_3fb74d0dd1a9d4c263ac96c4deb92601}{rmuller\_\-get\_\-color()} Converts a float value to one of a continuous range of colors using recipe 9.10 from the Python Cookbook. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]Float value to convert to a color. \item[{\em cmin}]Minimum value in array. \item[{\em cmax}]Maximum value in array. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em An}]integer containins an RGB triplet.
+
+\footnotesize\begin{verbatim}Convert a float value to one of a continuous range of colors.
+Rewritten to use recipe 9.10 from the O'Reilly Python Cookbook.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 206 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_60eaf4bd218e2b1f32385ce9e6b8e066}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!draw_pedigree@{draw\_\-pedigree}}
+\index{draw_pedigree@{draw\_\-pedigree}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[draw\_\-pedigree]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.draw\_\-pedigree ( {\em pedobj},  {\em gfilename} = {\tt 'pedigree'},  {\em gtitle} = {\tt ''},  {\em gformat} = {\tt 'jpg'},  {\em gsize} = {\tt 'f'},  {\em gdot} = {\tt '1'},  {\em gorient} = {\tt 'p'},  {\em gdirec} = {\tt ''},  {\em gname} = {\tt 0},  {\em gfontsize} = {\tt 10},  {\em garrow} = {\tt 1},  {\em gtitloc} = {\tt 'b'},  {\em gtitjust} = {\tt 'c'},  {\em gshowall} = {\tt 1},  {\em gclusters} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__graphics_60eaf4bd218e2b1f32385ce9e6b8e066}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__graphics_60eaf4bd218e2b1f32385ce9e6b8e066}{draw\_\-pedigree()} uses the pydot bindings to the graphviz library -- if they are available on your system -- to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. 
+
+If there is more than one generation in the pedigree as determind by the \char`\"{}gen\char`\"{} attributes of the animals in the pedigree, \hyperlink{namespacePyPedal_1_1pyp__graphics_60eaf4bd218e2b1f32385ce9e6b8e066}{draw\_\-pedigree()} will use subgraphs to try and group animals in the same generation together in the drawing. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em gfilename}]The name of the file to which the pedigree should be drawn \item[{\em gtitle}]The title of the graph. \item[{\em gformat}]The format in which the output file should be written (JPG$|$PNG$|$PS). \item[{\em gsize}]The size of the graph: 'f': full-size, 'l': letter-sized page. \item[{\em gdot}]Whether or not to write the dot code for the pedigree graph to a file (can produce large files). \item[{\em gorient}]The orientation of the graph: 'p': portrait, 'l': landscape. \item[{\em gdirec}]Direction of flow from parents to offspring: 'TB': top-bottom, 'LR': left-right, 'RL': right-left. \item[{\em gname}]Flag indicating whether ID numbers (0) or names (1) should be used to label nodes. \item[{\em gfontsize}]Integer indicating the typeface size to be used in labelling nodes. \item[{\em garrow}]Flag indicating whether or not arrowheads should be drawn. \item[{\em gtitloc}]Indicates if the title be drawn or above ('t') or below ('b') the graph. \item[{\em gtitjust}]Indicates if the title should be center- ('c'), left- ('l'), or right-justified ('r'). \item[{\em gshowall}]Draws animals with no links to other ancestors in the pedigree (1) or suppresses them (0). \item[{\em gclusters}]Indicates if subgraph clusters should be used when drawing the pedigree, which may improve layout in some pedigrees. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}draw_pedigree() uses the pydot bindings to the graphviz library -- if they
+are available on your system -- to produce a directed graph of your pedigree
+with paths of inheritance as edges and animals as nodes.  If there is more than
+one generation in the pedigree as determind by the "gen" attributes of the animals
+in the pedigree, draw_pedigree() will use subgraphs to try and group animals in the
+same generation together in the drawing.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 243 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_3795b92107fa37e5416ed51e4decadb9}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!plot_founders_by_year@{plot\_\-founders\_\-by\_\-year}}
+\index{plot_founders_by_year@{plot\_\-founders\_\-by\_\-year}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[plot\_\-founders\_\-by\_\-year]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.plot\_\-founders\_\-by\_\-year ( {\em pedobj},  {\em gfilename} = {\tt 'founders\_\-by\_\-year'},  {\em gtitle} = {\tt 'Founders~by~Birthyear'})}}
+\label{namespacePyPedal_1_1pyp__graphics_3795b92107fa37e5416ed51e4decadb9}
+
+
+founders\_\-by\_\-year() uses matplotlib -- if available on your system -- to produce a bar graph of the number (count) of founders in each birthyear. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em gfilename}]The name of the file to which the pedigree should be drawn \item[{\em gtitle}]The title of the graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}founders_by_year() uses matplotlib -- if available on your system -- to produce a
+bar graph of the number (count) of founders in each birthyear.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 511 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_48dcfef58e6a02924d822a5f8b9e69de}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!plot_founders_pct_by_year@{plot\_\-founders\_\-pct\_\-by\_\-year}}
+\index{plot_founders_pct_by_year@{plot\_\-founders\_\-pct\_\-by\_\-year}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[plot\_\-founders\_\-pct\_\-by\_\-year]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.plot\_\-founders\_\-pct\_\-by\_\-year ( {\em pedobj},  {\em gfilename} = {\tt 'founders\_\-pct\_\-by\_\-year'},  {\em gtitle} = {\tt 'Founders~by~Birthyear'})}}
+\label{namespacePyPedal_1_1pyp__graphics_48dcfef58e6a02924d822a5f8b9e69de}
+
+
+founders\_\-pct\_\-by\_\-year() uses matplotlib -- if available on your system -- to produce a line graph of the frequency (percentage) of founders in each birthyear. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em gfilename}]The name of the file to which the pedigree should be drawn \item[{\em gtitle}]The title of the graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}founders_pct_by_year() uses matplotlib -- if available on your system -- to produce a
+line graph of the frequency (percentage) of founders in each birthyear.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 555 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_e02ac5f823a1ef850391ad396638ac7b}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!pcolor_matrix_pylab@{pcolor\_\-matrix\_\-pylab}}
+\index{pcolor_matrix_pylab@{pcolor\_\-matrix\_\-pylab}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[pcolor\_\-matrix\_\-pylab]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.pcolor\_\-matrix\_\-pylab ( {\em A},  {\em fname} = {\tt 'pcolor\_\-matrix\_\-matplotlib'})}}
+\label{namespacePyPedal_1_1pyp__graphics_e02ac5f823a1ef850391ad396638ac7b}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__graphics_e02ac5f823a1ef850391ad396638ac7b}{pcolor\_\-matrix\_\-pylab()} implements a matlab-like 'pcolor' function to display the large elements of a matrix in pseudocolor using the Python Imaging Library. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em A}]Input Numpy matrix (such as a numerator relationship matrix). \item[{\em fname}]Output filename to which to dump the graphics (default 'tmp.png') \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of New\-Animal() objects; a pedigree metadata object.
+
+\footnotesize\begin{verbatim}pcolor_matrix_pylab() implements a matlab-like 'pcolor' function to
+display the large elements of a matrix in pseudocolor using the Python Imaging
+Library.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 601 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_9ac93feea0e4389e3d1e08798fe5e105}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!spy_matrix_pylab@{spy\_\-matrix\_\-pylab}}
+\index{spy_matrix_pylab@{spy\_\-matrix\_\-pylab}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[spy\_\-matrix\_\-pylab]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.spy\_\-matrix\_\-pylab ( {\em A},  {\em fname} = {\tt 'spy\_\-matrix\_\-matplotlib'})}}
+\label{namespacePyPedal_1_1pyp__graphics_9ac93feea0e4389e3d1e08798fe5e105}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__graphics_9ac93feea0e4389e3d1e08798fe5e105}{spy\_\-matrix\_\-pylab()} implements a matlab-like 'pcolor' function to display the large elements of a matrix in pseudocolor using the Python Imaging Library. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em A}]Input Numpy matrix (such as a numerator relationship matrix). \item[{\em fname}]Output filename to which to dump the graphics (default 'tmp.png') \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of New\-Animal() objects; a pedigree metadata object.
+
+\footnotesize\begin{verbatim}spy_matrix_pylab() implements a matlab-like 'pcolor' function to
+display the large elements of a matrix in pseudocolor using the Python Imaging
+Library.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 651 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_903c6e4a4b3fb7f015a9b827c26a3123}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!plot_line_xy@{plot\_\-line\_\-xy}}
+\index{plot_line_xy@{plot\_\-line\_\-xy}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[plot\_\-line\_\-xy]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.plot\_\-line\_\-xy ( {\em xydict},  {\em gfilename} = {\tt 'plot\_\-line\_\-xy'},  {\em gtitle} = {\tt 'Value~by~key'},  {\em gxlabel} = {\tt 'X'},  {\em gylabel} = {\tt 'Y'},  {\em gformat} = {\tt 'png'})}}
+\label{namespacePyPedal_1_1pyp__graphics_903c6e4a4b3fb7f015a9b827c26a3123}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__graphics_903c6e4a4b3fb7f015a9b827c26a3123}{plot\_\-line\_\-xy()} uses matplotlib -- if available on your system -- to produce a line graph of the values in a dictionary for each level of key. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em xydict}]A Python dictionary of x- (keys) and y-values (values) to be plotted. \item[{\em gfilename}]The name of the file to which the figure should be written. \item[{\em gtitle}]The title of the graph. \item[{\em gxlabel}]The label for the x-axis. \item[{\em gylabel}]The label for the y-axis. \item[{\em gformat}]The format in which the output file should be written (JPG$|$PNG$|$PS). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}plot_line_xy() uses matplotlib -- if available on your system -- to produce a
+line graph of the values in a dictionary for each level of key.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 692 of file pyp\_\-graphics.py.\hypertarget{namespacePyPedal_1_1pyp__graphics_d1890710e78d0f63351d24e84527c570}{
+\index{PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}!new_draw_pedigree@{new\_\-draw\_\-pedigree}}
+\index{new_draw_pedigree@{new\_\-draw\_\-pedigree}!PyPedal::pyp_graphics@{Py\-Pedal::pyp\_\-graphics}}
+\subsubsection[new\_\-draw\_\-pedigree]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-graphics.new\_\-draw\_\-pedigree ( {\em pedobj},  {\em gfilename} = {\tt 'pedigree'},  {\em gtitle} = {\tt ''},  {\em gformat} = {\tt 'jpg'},  {\em gsize} = {\tt 'f'},  {\em gdot} = {\tt 1},  {\em gorient} = {\tt 'p'},  {\em gdirec} = {\tt ''},  {\em gname} = {\tt 0},  {\em garrow} = {\tt 1},  {\em gtitloc} = {\tt 'b'},  {\em gtitjust} = {\tt 'c'},  {\em gshowall} = {\tt 1},  {\em gprog} = {\tt 'dot'})}}
+\label{namespacePyPedal_1_1pyp__graphics_d1890710e78d0f63351d24e84527c570}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__graphics_d1890710e78d0f63351d24e84527c570}{new\_\-draw\_\-pedigree()} uses the pygraphviz to produce a directed graph of your pedigree with paths of inheritance as edges and animals as nodes. 
+
+If there is more than one generation in the pedigree as determind by the \char`\"{}gen\char`\"{} attributes of the animals in the pedigree, \hyperlink{namespacePyPedal_1_1pyp__graphics_60eaf4bd218e2b1f32385ce9e6b8e066}{draw\_\-pedigree()} will use subgraphs to try and group animals in the same generation together in the drawing. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em gfilename}]The name of the file to which the pedigree should be drawn \item[{\em gtitle}]The title of the graph. \item[{\em gformat}]The format in which the output file should be written (JPG$|$PNG$|$PS). \item[{\em gsize}]The size of the graph: 'f': full-size, 'l': letter-sized page. \item[{\em gdot}]Whether or not to write the dot code for the pedigree graph to a file (can produce large files). \item[{\em gorient}]The orientation of the graph: 'p': portrait, 'l': landscape. \item[{\em gdirec}]Direction of flow from parents to offspring: 'TB': top-bottom, 'LR': left-right, 'RL': right-left. \item[{\em gname}]Flag indicating whether ID numbers (0) or names (1) should be used to label nodes. \item[{\em garrow}]Flag indicating whether or not arrowheads should be drawn. \item[{\em gtitloc}]Indicates if the title be drawn or above ('t') or below ('b') the graph. \item[{\em gtitjust}]Indicates if the title should be center- ('c'), left- ('l'), or right-justified ('r'). \item[{\em gshowall}]Draws animals with no links to other ancestors in the pedigree (1) or suppresses them (0). \item[{\em gprog}]Specify which program should be used to position and render the graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 for success and a 0 for failure.
+
+\footnotesize\begin{verbatim}new_draw_pedigree() uses the pygraphviz to produce a directed graph of your
+pedigree with paths of inheritance as edges and animals as nodes.  If there
+is more than one generation in the pedigree as determind by the "gen"
+attributes of the animals in the pedigree, draw_pedigree() will use subgraphs
+to try and group animals in the same generation together in the drawing.
+
+Note that there is not (AFAIK) a nice way to get pygraphviz installed on vanilla
+Windows, so you'll have to make due with draw_pedigree() and plain old dot.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 755 of file pyp\_\-graphics.py.

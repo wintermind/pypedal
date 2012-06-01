@@ -1,0 +1,8 @@
+# FILE: tests/lacy/lacy_3_id_map.map
+# Renumbered ID to Old ID mapping produced by PyPedal.
+# The lefthand column contains the original IDs.
+# The righthand column contains the renumbered IDs.
+# Old ID	Renum ID
+3,1
+7,3
+6,2

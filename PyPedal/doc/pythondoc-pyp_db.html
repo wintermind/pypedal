@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_db Module</title>
+</head>
+<body>
+<h1>The pyp_db Module</h1>
+<p>pyp_db contains a set of procedures for ...</p>
+<dl>
+<dt><a id='pyp_db.createPedigreeDatabase-function' name='pyp_db.createPedigreeDatabase-function'><b>createPedigreeDatabase(dbname='pypedal')</b></a> &rArr; integer [<a href='#pyp_db.createPedigreeDatabase-function'>#</a>]</dt>
+<dd>
+<p>createPedigreeDatabase() creates a new database in SQLite.</p>
+<dl>
+<dt><i>dbname</i></dt>
+<dd>
+The name of the database to create.</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 on successful database creation, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.createPedigreeTable-function' name='pyp_db.createPedigreeTable-function'><b>createPedigreeTable(curs, tablename='example')</b></a> &rArr; integer [<a href='#pyp_db.createPedigreeTable-function'>#</a>]</dt>
+<dd>
+<p>createPedigreeDatabase() creates a new pedigree table in a SQLite
+database.</p>
+<dl>
+<dt><i>tablename</i></dt>
+<dd>
+The name of the table to create.</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 on successful table creation, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.databaseQuery-function' name='pyp_db.databaseQuery-function'><b>databaseQuery(sql, curs=0, dbname='pypedal')</b></a> &rArr; string [<a href='#pyp_db.databaseQuery-function'>#</a>]</dt>
+<dd>
+<p>databaseQuery() executes an SQLite query.  This is a wrapper function
+used by the reporting functions that need to fetch data from SQLite.
+I wrote it so that any changes that need to be made in the way PyPedal
+talks to SQLite will only need to be changed in one place.</p>
+<dl>
+<dt><i>sql</i></dt>
+<dd>
+A string containing an SQL query.</dd>
+<dt><i>_curs</i></dt>
+<dd>
+An [optional] SQLite cursor.</dd>
+<dt><i>dbname</i></dt>
+<dd>
+The database into which the pedigree will be loaded.</dd>
+<dt>Returns:</dt>
+<dd>
+The results of the query, or 0 if no resultset.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.getCursor-function' name='pyp_db.getCursor-function'><b>getCursor(dbname='pypedal')</b></a> &rArr; cursor [<a href='#pyp_db.getCursor-function'>#</a>]</dt>
+<dd>
+<p>getCursor() creates a database connection and returns a
+cursor on success or a 0 on failure.  It is very useful for
+non-trivial queries because it creates SQLite aggrefates
+before returning the cursor.  The reporting routines in pyp_reports
+make heavy use of getCursor().</p>
+<dl>
+<dt><i>dbname</i></dt>
+<dd>
+The database into which the pedigree will be loaded.</dd>
+<dt>Returns:</dt>
+<dd>
+An SQLite cursor if the database exists, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.getCursorSQA-function' name='pyp_db.getCursorSQA-function'><b>getCursorSQA(dbtype='sqlite', dbname='pypedal', dbuser='', dbpasswd='', dbserver='', dbdebug=False)</b></a> &rArr; engine [<a href='#pyp_db.getCursorSQA-function'>#</a>]</dt>
+<dd>
+<p>getCursorSQA() creates a database connection and returns a
+cursor on success or a 0 on failure. It uses SQLAlchemy.
+The reporting routines in pyp_reports make heavy use of
+getCursor().</p>
+<dl>
+<dt><i>dbtype</i></dt>
+<dd>
+Type of databsae to which to connect (any valid SQLAlchemy dbtype).</dd>
+<dt><i>dbname</i></dt>
+<dd>
+The database into which the pedigree will be loaded.</dd>
+<dt><i>dbuser</i></dt>
+<dd>
+Usernam to use when connecting to the database.</dd>
+<dt><i>dbpasswd</i></dt>
+<dd>
+Password to use when connecting to the database.</dd>
+<dt><i>dbserver</i></dt>
+<dd>
+Name of the server hosting the database.</dd>
+<dt><i>dbdebug</i></dt>
+<dd>
+TUrns debugging output on and off (True|False).</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of an SQLAlchemy database engine if the database exists, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.loadPedigreeTable-function' name='pyp_db.loadPedigreeTable-function'><b>loadPedigreeTable(pedobj)</b></a> &rArr; integer [<a href='#pyp_db.loadPedigreeTable-function'>#</a>]</dt>
+<dd>
+<p>loadPedigreeTable() takes a PyPedal pedigree object and loads
+the animal records in that pedigree into an SQLite table.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>dbname</i></dt>
+<dd>
+The database into which the pedigree will be loaded.</dd>
+<dt><i>tablename</i></dt>
+<dd>
+The table into which the pedigree will be loaded.</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 on successful table load, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><b>PypMean()</b> (class) [<a href='#pyp_db.PypMean-class'>#</a>]</dt>
+<dd>
+<p>PypMean is a user-defined aggregate for SQLite for returning means from queries.</p>
+<p>For more information about this class, see <a href='#pyp_db.PypMean-class'><i>The PypMean Class</i></a>.</p>
+</dd>
+<dt><b>PypSSD()</b> (class) [<a href='#pyp_db.PypSSD-class'>#</a>]</dt>
+<dd>
+<p>PypSSD is a user-defined aggregate for SQLite for returning sample standard deviations
+from queries.</p>
+<p>For more information about this class, see <a href='#pyp_db.PypSSD-class'><i>The PypSSD Class</i></a>.</p>
+</dd>
+<dt><b>PypSum()</b> (class) [<a href='#pyp_db.PypSum-class'>#</a>]</dt>
+<dd>
+<p>PypSum is a user-defined aggregate for SQLite for returning sums from queries.</p>
+<p>For more information about this class, see <a href='#pyp_db.PypSum-class'><i>The PypSum Class</i></a>.</p>
+</dd>
+<dt><b>PypSVar()</b> (class) [<a href='#pyp_db.PypSVar-class'>#</a>]</dt>
+<dd>
+<p>PypSVar is a user-defined aggregate for SQLite for returning sample variances
+from queries.</p>
+<p>For more information about this class, see <a href='#pyp_db.PypSVar-class'><i>The PypSVar Class</i></a>.</p>
+</dd>
+<dt><a id='pyp_db.tableCountRows-function' name='pyp_db.tableCountRows-function'><b>tableCountRows(dbname='pypedal', tablename='example')</b></a> &rArr; integer [<a href='#pyp_db.tableCountRows-function'>#</a>]</dt>
+<dd>
+<p>tableCountRows() returns the number of rows in a table.</p>
+<dl>
+<dt><i>dbname</i></dt>
+<dd>
+The database into which the pedigree will be loaded.</dd>
+<dt><i>tablename</i></dt>
+<dd>
+The table into which the pedigree will be loaded.</dd>
+<dt>Returns:</dt>
+<dd>
+The number of rows in the table 1 or 0.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.tableDropRows-function' name='pyp_db.tableDropRows-function'><b>tableDropRows(dbname='pypedal', tablename='example')</b></a> &rArr; integer [<a href='#pyp_db.tableDropRows-function'>#</a>]</dt>
+<dd>
+<p>tableDropRows() drops all of the data from an existing table.</p>
+<dl>
+<dt><i>dbname</i></dt>
+<dd>
+The database from which data will be dropped.</dd>
+<dt><i>tablename</i></dt>
+<dd>
+The table from which data will be dropped.</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 if the data were dropped, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.tableDropTable-function' name='pyp_db.tableDropTable-function'><b>tableDropTable(dbname='pypedal', tablename='example')</b></a> &rArr; integer [<a href='#pyp_db.tableDropTable-function'>#</a>]</dt>
+<dd>
+<p>tableDropTable() drops a table from the database.</p>
+<dl>
+<dt><i>dbname</i></dt>
+<dd>
+The database from which the table will be dropped.</dd>
+<dt><i>tablename</i></dt>
+<dd>
+The table which will be dropped.</dd>
+<dt>Returns:</dt>
+<dd>
+1</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.tableExists-function' name='pyp_db.tableExists-function'><b>tableExists(dbname='pypedal', tablename='example')</b></a> &rArr; integer [<a href='#pyp_db.tableExists-function'>#</a>]</dt>
+<dd>
+<p>tableExists() queries the sqlite_master view in an SQLite database to
+determine whether or not a table exists.</p>
+<dl>
+<dt><i>dbname</i></dt>
+<dd>
+The database into which the pedigree will be loaded.</dd>
+<dt><i>tablename</i></dt>
+<dd>
+The table into which the pedigree will be loaded.</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 if the table exists, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_db.tableExistsSQA-function' name='pyp_db.tableExistsSQA-function'><b>tableExistsSQA(db, dbtable)</b></a> &rArr; integer [<a href='#pyp_db.tableExistsSQA-function'>#</a>]</dt>
+<dd>
+<p>tableExistsSQA() queries the sqlite_master view in an SQLite database to
+determine whether or not a table exists.</p>
+<dl>
+<dt><i>db</i></dt>
+<dd>
+An instance of an SQLAlchemy database engine.</dd>
+<dt><i>dbtable</i></dt>
+<dd>
+Name of the table whose existence we're testing.</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 if the table exists, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_db.PypMean-class' name='pyp_db.PypMean-class'>The PypMean Class</a></h2>
+<dl>
+<dt><b>PypMean()</b> (class) [<a href='#pyp_db.PypMean-class'>#</a>]</dt>
+<dd>
+<p>PypMean is a user-defined aggregate for SQLite for returning means from queries.</p>
+</dd>
+</dl>
+<h2><a id='pyp_db.PypSSD-class' name='pyp_db.PypSSD-class'>The PypSSD Class</a></h2>
+<dl>
+<dt><b>PypSSD()</b> (class) [<a href='#pyp_db.PypSSD-class'>#</a>]</dt>
+<dd>
+<p>PypSSD is a user-defined aggregate for SQLite for returning sample standard deviations
+from queries.</p>
+</dd>
+</dl>
+<h2><a id='pyp_db.PypSum-class' name='pyp_db.PypSum-class'>The PypSum Class</a></h2>
+<dl>
+<dt><b>PypSum()</b> (class) [<a href='#pyp_db.PypSum-class'>#</a>]</dt>
+<dd>
+<p>PypSum is a user-defined aggregate for SQLite for returning sums from queries.</p>
+</dd>
+</dl>
+<h2><a id='pyp_db.PypSVar-class' name='pyp_db.PypSVar-class'>The PypSVar Class</a></h2>
+<dl>
+<dt><b>PypSVar()</b> (class) [<a href='#pyp_db.PypSVar-class'>#</a>]</dt>
+<dd>
+<p>PypSVar is a user-defined aggregate for SQLite for returning sample variances
+from queries.</p>
+</dd>
+</dl>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_demog Module</title>
+</head>
+<body>
+<h1>The pyp_demog Module</h1>
+<p>pyp_demog contains a set of procedures for demographic calculations on the
+population describe in a pedigree.</p>
+<h2>Module Contents</h2>
+<dl>
+<dt><a id='pyp_demog.age_distribution-function' name='pyp_demog.age_distribution-function'><b>age_distribution(pedobj, sex=1)</b></a> [<a href='#pyp_demog.age_distribution-function'>#</a>]</dt>
+<dd>
+<p>age_distribution() computes histograms of the age distribution of
+males and females in the population.  You can also stratify by
+sex to get individual histograms.</p>
+<dl>
+<dt><i>myped</i></dt>
+<dd>
+An instance of a PyPedal NewPedigree object.</dd>
+<dt><i>sex</i></dt>
+<dd>
+A flag which determines whether or not to stratify by sex.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_demog.founders_by_year-function' name='pyp_demog.founders_by_year-function'><b>founders_by_year(pedobj)</b></a> &rArr; dictionary [<a href='#pyp_demog.founders_by_year-function'>#</a>]</dt>
+<dd>
+<p>founders_by_year() returns a dictionary containing the number of founders in each
+birthyear.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+dict A dictionary containing entries for each sex/gender code defined in the global SEX_CODE_MAP.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_demog.set_age_units-function' name='pyp_demog.set_age_units-function'><b>set_age_units(units='year')</b></a> &rArr; None [<a href='#pyp_demog.set_age_units-function'>#</a>]</dt>
+<dd>
+<p>set_age_units() defines a global variable, BASE_DEMOGRAPHIC_UNIT.</p>
+<dl>
+<dt><i>units</i></dt>
+<dd>
+The base unit for age computations ('year'|'month'|'day').</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_demog.set_base_year-function' name='pyp_demog.set_base_year-function'><b>set_base_year(year=1900)</b></a> &rArr; None [<a href='#pyp_demog.set_base_year-function'>#</a>]</dt>
+<dd>
+<p>set_base_year() defines a global variable, BASE_DEMOGRAPHIC_YEAR.</p>
+<dl>
+<dt><i>year</i></dt>
+<dd>
+The year to be used as a base for computing ages.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_demog.sex_ratio-function' name='pyp_demog.sex_ratio-function'><b>sex_ratio(pedobj)</b></a> &rArr; dictionary [<a href='#pyp_demog.sex_ratio-function'>#</a>]</dt>
+<dd>
+<p>sex_ratio() returns a dictionary containing the proportion of males and females in the population.</p>
+<dl>
+<dt><i>myped</i></dt>
+<dd>
+An instance of a PyPedal NewPedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+dict A dictionary containing entries for each sex/gender code defined in the global SEX_CODE_MAP.</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>

@@ -1,0 +1,14 @@
+# This pedigree is taken from Boichard et al. (1997).
+animal1	animal0	animal0	dna	1	f
+animal2	animal0	animal0	no_dna	1	m
+animal3	animal0	animal0	dna	1	f
+animal4	animal0	animal0	dna	1	f
+animal5	animal2	animal3	no_dna	2	m
+animal6	animal0	animal0	no_dna	1	f
+animal7	animal5	animal6	no_dna	2	m
+animal8	animal0	animal0	dna	1	f
+animal9	animal1	animal2	dna	2	f
+animal10	animal4	animal5	no_dna	3	m
+animal11	animal7	animal8	dna	3	m
+animal12	animal7	animal8	no_dna	3	f
+animal13	animal7	animal8	dna	3	m

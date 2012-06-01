@@ -1,0 +1,673 @@
+\hypertarget{namespacePyPedal_1_1pyp__metrics}{
+\section{Package Py\-Pedal.pyp\_\-metrics}
+\label{namespacePyPedal_1_1pyp__metrics}\index{PyPedal.pyp_metrics@{PyPedal.pyp\_\-metrics}}
+}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_f92db7d70e697a1f299c1b01775e9378}{min\_\-max\_\-f}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_f92db7d70e697a1f299c1b01775e9378}{min\_\-max\_\-f()} takes a pedigree and returns a list of the individuals with the n largest and n smallest coefficients of inbreeding. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_3e7338b4892ff4cdedeb907a08114414}{a\_\-effective\_\-founders\_\-lacy}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_3e7338b4892ff4cdedeb907a08114414}{a\_\-effective\_\-founders\_\-lacy()} calculates the number of effective founders in a pedigree using the exact method of Lacy. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_7fd43aa5db477016b9a1cceb7f2eb52d}{effective\_\-founders\_\-lacy}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_7fd43aa5db477016b9a1cceb7f2eb52d}{effective\_\-founders\_\-lacy()} calculates the number of effective founders in a pedigree using the exact method of Lacy. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_2bd174a8cf151ec7b4ed7af7411858b0}{a\_\-effective\_\-founders\_\-boichard}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_2bd174a8cf151ec7b4ed7af7411858b0}{a\_\-effective\_\-founders\_\-boichard()} uses the algorithm in Appendix A of Boichard et al. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_8821be8acfb9095c5f3776906568110b}{a\_\-effective\_\-ancestors\_\-definite}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_8821be8acfb9095c5f3776906568110b}{a\_\-effective\_\-ancestors\_\-definite()} uses the algorithm in Appendix B of Boichard et al. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_dcfac272aea7f8f5d0e43ef9d400f6fa}{a\_\-effective\_\-ancestors\_\-indefinite}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_dcfac272aea7f8f5d0e43ef9d400f6fa}{a\_\-effective\_\-ancestors\_\-indefinite()} uses the approach outlined on pages 9 and 10 of Boichard et al. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_e298ad3dcbaf85dc2cbf946d188a5265}{a\_\-coefficients}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_e298ad3dcbaf85dc2cbf946d188a5265}{a\_\-coefficients()} writes population average coefficients of inbreeding and relationship to a file, as well as individual animal IDs and coefficients of inbreeding. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_b054b0e4d468ae4013645af61102f6f3}{fast\_\-a\_\-coefficients}
+\begin{CompactList}\small\item\em a\_\-fast\_\-coefficients() writes population average coefficients of inbreeding and relationship to a file, as well as individual animal IDs and coefficients of inbreeding. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_11dc9cb957ff03c709cecd2cbb996e33}{theoretical\_\-ne\_\-from\_\-metadata}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_11dc9cb957ff03c709cecd2cbb996e33}{theoretical\_\-ne\_\-from\_\-metadata()} computes the theoretical effective population size based on the number of sires and dams contained in a pedigree metadata object. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_9839b790d3161aaf080c649adcdaff26}{pedigree\_\-completeness}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_9839b790d3161aaf080c649adcdaff26}{pedigree\_\-completeness()} computes the proportion of known ancestors in the pedigree of each animal in the population for a user-determined number of generations. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_43a82ce2cfd34b53ddf6d29c4671d480}{common\_\-ancestors}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_43a82ce2cfd34b53ddf6d29c4671d480}{common\_\-ancestors()} returns a list of the ancestors that two animals share in common. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_ec3083eaf96d141f21de2ee947cdeee8}{related\_\-animals}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_ec3083eaf96d141f21de2ee947cdeee8}{related\_\-animals()} returns a list of the ancestors of an animal. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_84284c26af4c946ca9f49657b6d92fcf}{relationship}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_84284c26af4c946ca9f49657b6d92fcf}{relationship()} returns the coefficient of relationship for two animals, anim\_\-a and anim\_\-b. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_41c2baf2ca7fae116732adc32ff3a51b}{mating\_\-coi}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_41c2baf2ca7fae116732adc32ff3a51b}{mating\_\-coi()} returns the coefficient of inbreeding of offspring of a mating between two animals, anim\_\-a and anim\_\-b. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_e051130e25232f609ede648a4dea9986}{mating\_\-coi\_\-group}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_e051130e25232f609ede648a4dea9986}{mating\_\-coi\_\-group()} returns the coefficients of inbreeding of offspring of a series of matings, as well as a list of minimum-inbreeding matings. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_e86f472bfb3705f8a75323d161f6a358}{effective\_\-founder\_\-genomes}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_e86f472bfb3705f8a75323d161f6a358}{effective\_\-founder\_\-genomes()} simulates the random segregation of founder alleles through a pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_4fc7310e1c6484240ec0571a654cc64a}{generation\_\-intervals}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_4fc7310e1c6484240ec0571a654cc64a}{generation\_\-intervals()} computes the average age of parents at the time of birth of their first (oldest) offspring. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_553d55d2e917b00baf2f02a7cceacd70}{generation\_\-intervals\_\-all}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_553d55d2e917b00baf2f02a7cceacd70}{generation\_\-intervals\_\-all()} computes the average age of parents at the time of birth of their offspring. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_8bb9c8d14721828c6d87bcd0d4e24658}{founder\_\-descendants}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_8bb9c8d14721828c6d87bcd0d4e24658}{founder\_\-descendants()} returns a dictionary containing a list of descendants of each founder in the pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_132a4b6580f08cb10db3b376849a2bfe}{descendants}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_132a4b6580f08cb10db3b376849a2bfe}{descendants()} uses pedigree metadata to walk a pedigree and return a list of all of the descendants of a given animal. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_e1cfcdb6871cd70b61e99da591975b58}{dropped\_\-ancestral\_\-inbreeding}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_e1cfcdb6871cd70b61e99da591975b58}{dropped\_\-ancestral\_\-inbreeding()} uses a gene dropping approach to calculate ancestral inbreeding, the probability of an individual inheriting an allele that has undergone inbreeding in the past at least once. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__metrics_6185ce91b4815918ed935f1d4fb19714}{ballou\_\-ancestral\_\-inbreeding}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__metrics_6185ce91b4815918ed935f1d4fb19714}{ballou\_\-ancestral\_\-inbreeding()} calculates ancestral inbreeding, the probability of an individual inheriting an allele that has undergone inbreeding in the past at least once, using the method of Ballou (1997). \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__metrics_f92db7d70e697a1f299c1b01775e9378}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!min_max_f@{min\_\-max\_\-f}}
+\index{min_max_f@{min\_\-max\_\-f}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[min\_\-max\_\-f]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.min\_\-max\_\-f ( {\em pedobj},  {\em a} = {\tt ''},  {\em n} = {\tt 10},  {\em forma} = {\tt 'dense'})}}
+\label{namespacePyPedal_1_1pyp__metrics_f92db7d70e697a1f299c1b01775e9378}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_f92db7d70e697a1f299c1b01775e9378}{min\_\-max\_\-f()} takes a pedigree and returns a list of the individuals with the n largest and n smallest coefficients of inbreeding. 
+
+Individuals with Co\-I of zero are not included. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em a}]A numerator relationship matrix (optional). \item[{\em n}]An integer (optional, default is 10). \item[{\em forma}]If A must be formed should dense or sparse matrices be used? \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em Lists}]of the individuals with the n largest and the n smallest Co\-I in the pedigree as (ID, Co\-I) tuples.
+
+\footnotesize\begin{verbatim}Given a pedigree or relationship matrix, return a list of the
+individuals with the n largest and n smallest coefficients of
+inbreeding; individuals with CoI of zero are not included.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 63 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_3e7338b4892ff4cdedeb907a08114414}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!a_effective_founders_lacy@{a\_\-effective\_\-founders\_\-lacy}}
+\index{a_effective_founders_lacy@{a\_\-effective\_\-founders\_\-lacy}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[a\_\-effective\_\-founders\_\-lacy]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.a\_\-effective\_\-founders\_\-lacy ( {\em pedobj},  {\em a} = {\tt ''})}}
+\label{namespacePyPedal_1_1pyp__metrics_3e7338b4892ff4cdedeb907a08114414}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_3e7338b4892ff4cdedeb907a08114414}{a\_\-effective\_\-founders\_\-lacy()} calculates the number of effective founders in a pedigree using the exact method of Lacy. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em a}]A numerator relationship matrix (optional). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of results, including the effective founder number.
+
+\footnotesize\begin{verbatim}Calculate the number of effective founders in a pedigree using the exact method of Lacy.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 117 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_7fd43aa5db477016b9a1cceb7f2eb52d}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!effective_founders_lacy@{effective\_\-founders\_\-lacy}}
+\index{effective_founders_lacy@{effective\_\-founders\_\-lacy}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[effective\_\-founders\_\-lacy]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.effective\_\-founders\_\-lacy ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__metrics_7fd43aa5db477016b9a1cceb7f2eb52d}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_7fd43aa5db477016b9a1cceb7f2eb52d}{effective\_\-founders\_\-lacy()} calculates the number of effective founders in a pedigree using the exact method of Lacy. 
+
+This version of the routine \hyperlink{namespacePyPedal_1_1pyp__metrics_3e7338b4892ff4cdedeb907a08114414}{a\_\-effective\_\-founders\_\-lacy()} is designed to work with larger pedigrees as it forms \char`\"{}familywise\char`\"{} relationship matrices rather than a \char`\"{}populationwise\char`\"{} relationship matrix. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of results, including the effective founder number.
+
+\footnotesize\begin{verbatim}Calculate the number of effective founders in a pedigree using the exact method of Lacy.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 216 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_2bd174a8cf151ec7b4ed7af7411858b0}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!a_effective_founders_boichard@{a\_\-effective\_\-founders\_\-boichard}}
+\index{a_effective_founders_boichard@{a\_\-effective\_\-founders\_\-boichard}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[a\_\-effective\_\-founders\_\-boichard]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.a\_\-effective\_\-founders\_\-boichard ( {\em pedobj},  {\em a} = {\tt ''},  {\em gen} = {\tt ''})}}
+\label{namespacePyPedal_1_1pyp__metrics_2bd174a8cf151ec7b4ed7af7411858b0}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_2bd174a8cf151ec7b4ed7af7411858b0}{a\_\-effective\_\-founders\_\-boichard()} uses the algorithm in Appendix A of Boichard et al. 
+
+(1996) to compute the effective founder number for myped. Note that results from this function will not necessarily match those from \hyperlink{namespacePyPedal_1_1pyp__metrics_3e7338b4892ff4cdedeb907a08114414}{a\_\-effective\_\-founders\_\-lacy()}. Boichard's algorithm requires information about the GENERATION of animals. If you do not provide an input pedigree with generations things may not work. By default the most recent generation -- the generation with the largest generation ID -- will be used as the reference population. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em a}]A numerator relationship matrix (optional). \item[{\em gen}]Generation of interest. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]effective founder number.
+
+\footnotesize\begin{verbatim}The algorithm in Appendix A of Boichard et al. (1996) is not very well written.
+a_effective_founders_boichard() implements that algorithm (successfully, I hope).
+Note that answers from this function will not necessarily match those from
+a_effective_founders_lacy().
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 328 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_8821be8acfb9095c5f3776906568110b}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!a_effective_ancestors_definite@{a\_\-effective\_\-ancestors\_\-definite}}
+\index{a_effective_ancestors_definite@{a\_\-effective\_\-ancestors\_\-definite}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[a\_\-effective\_\-ancestors\_\-definite]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.a\_\-effective\_\-ancestors\_\-definite ( {\em pedobj},  {\em a} = {\tt ''},  {\em gen} = {\tt ''})}}
+\label{namespacePyPedal_1_1pyp__metrics_8821be8acfb9095c5f3776906568110b}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_8821be8acfb9095c5f3776906568110b}{a\_\-effective\_\-ancestors\_\-definite()} uses the algorithm in Appendix B of Boichard et al. 
+
+(1996) to compute the effective ancestor number for a myped pedigree. NOTE: One problem here is that if you pass a pedigree WITHOUT generations and error is not thrown. You simply end up wth a list of generations that contains the default value for Animal() objects, 0. Boichard's algorithm requires information about the GENERATION of animals. If you do not provide an input pedigree with generations things may not work. By default the most recent generation -- the generation with the largest generation ID -- will be used as the reference population. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em a}]A numerator relationship matrix (optional). \item[{\em gen}]Generation of interest. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]effective ancestor number.
+
+\footnotesize\begin{verbatim}The algorithm in Appendix B of Boichard et al. (1996) is not very well written.
+a_effective_ancestors_definite() implements that algorithm (successfully, I hope).
+
+NOTE: One problem here is that if you pass a pedigree WITHOUT generations an error
+is not thrown.  You simply end up wth a list of generations that contains the
+default value for Animal() objects, 0.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 477 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_dcfac272aea7f8f5d0e43ef9d400f6fa}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!a_effective_ancestors_indefinite@{a\_\-effective\_\-ancestors\_\-indefinite}}
+\index{a_effective_ancestors_indefinite@{a\_\-effective\_\-ancestors\_\-indefinite}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[a\_\-effective\_\-ancestors\_\-indefinite]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.a\_\-effective\_\-ancestors\_\-indefinite ( {\em pedobj},  {\em a} = {\tt ''},  {\em gen} = {\tt ''},  {\em n} = {\tt 25})}}
+\label{namespacePyPedal_1_1pyp__metrics_dcfac272aea7f8f5d0e43ef9d400f6fa}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_dcfac272aea7f8f5d0e43ef9d400f6fa}{a\_\-effective\_\-ancestors\_\-indefinite()} uses the approach outlined on pages 9 and 10 of Boichard et al. 
+
+(1996) to compute approximate upper and lower bounds for f\_\-a. This is much more tractable for large pedigrees than the exact computation provided in \hyperlink{namespacePyPedal_1_1pyp__metrics_8821be8acfb9095c5f3776906568110b}{a\_\-effective\_\-ancestors\_\-definite()}. NOTE: One problem here is that if you pass a pedigree WITHOUT generations an error is not thrown. You simply end up wth a list of generations that contains the default value for New\-Animal() objects, 0. NOTE: If you pass a value of n that is greater than the actual number of ancestors in the pedigree then strange things happen. As a stop-gap, \hyperlink{namespacePyPedal_1_1pyp__metrics_dcfac272aea7f8f5d0e43ef9d400f6fa}{a\_\-effective\_\-ancestors\_\-indefinite()} will detect that case and replace n with the number of founders - 1. Boichard's algorithm requires information about the GENERATION of animals. If you do not provide an input pedigree with generations things may not work. By default the most recent generation -- the generation with the largest generation ID -- will be used as the reference population. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em a}]A numerator relationship matrix (optional). \item[{\em gen}]Generation of interest. \item[{\em n}]The number of rounds to iterate for solutions. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]effective ancestor number.
+
+\footnotesize\begin{verbatim}a_effective_ancestors_indefinite() uses the approach outlined on pages 9 and 10 of
+Boichard et al. (1996) to compute approximate upper and lower bounds for f_a.  This
+is much more tractable for large pedigrees than the exact computation provided in
+a_effective_ancestors_definite().
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 745 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_e298ad3dcbaf85dc2cbf946d188a5265}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!a_coefficients@{a\_\-coefficients}}
+\index{a_coefficients@{a\_\-coefficients}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[a\_\-coefficients]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.a\_\-coefficients ( {\em pedobj},  {\em a} = {\tt ''},  {\em method} = {\tt 'nrm'})}}
+\label{namespacePyPedal_1_1pyp__metrics_e298ad3dcbaf85dc2cbf946d188a5265}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_e298ad3dcbaf85dc2cbf946d188a5265}{a\_\-coefficients()} writes population average coefficients of inbreeding and relationship to a file, as well as individual animal IDs and coefficients of inbreeding. 
+
+Some pedigrees are too large for fast\_\-a\_\-matrix() or fast\_\-a\_\-matrix\_\-r() -- an array that large cannot be allocated due to memory restrictions -- and will result in a value of -999.9 for all outputs. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em a}]A numerator relationship matrix (optional). \item[{\em method}]If no relationship matrix is passed, determines which procedure should be called to build one (nrm$|$frm). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of non-zero individual inbreeding coefficients.
+
+\footnotesize\begin{verbatim}Write population average coefficients of inbreeding and relationship to a
+file, as well as individual animal IDs and coefficients of inbreeding.  Some
+pedigrees are too large for fast_a_matrix() or fast_a_matrix_r()
+-- an array that large cannot be allocated due to memory restrictions -- and will
+result in a value of -999.9 for all outputs.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 997 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_b054b0e4d468ae4013645af61102f6f3}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!fast_a_coefficients@{fast\_\-a\_\-coefficients}}
+\index{fast_a_coefficients@{fast\_\-a\_\-coefficients}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[fast\_\-a\_\-coefficients]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.fast\_\-a\_\-coefficients ( {\em pedobj},  {\em a} = {\tt ''},  {\em method} = {\tt 'nrm'},  {\em debug} = {\tt 0},  {\em storage} = {\tt 'dense'})}}
+\label{namespacePyPedal_1_1pyp__metrics_b054b0e4d468ae4013645af61102f6f3}
+
+
+a\_\-fast\_\-coefficients() writes population average coefficients of inbreeding and relationship to a file, as well as individual animal IDs and coefficients of inbreeding. 
+
+It returns a list of non-zero individual Co\-I. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em a}]A numerator relationship matrix (optional). \item[{\em method}]If no relationship matrix is passed, determines which procedure should be called to build one (nrm$|$frm). \item[{\em debug}]Print deubgging messages if 1, don't print otherwise. \item[{\em storage}]Use dense or sparse matrix storage. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of non-zero individual inbreeding coefficients.
+
+\footnotesize\begin{verbatim}a_fast_coefficients() writes population average coefficients of inbreeding and
+relationship to a file, as well as individual animal IDs and coefficients of
+inbreeding.  It returns a list of non-zero individual CoI.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1124 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_11dc9cb957ff03c709cecd2cbb996e33}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!theoretical_ne_from_metadata@{theoretical\_\-ne\_\-from\_\-metadata}}
+\index{theoretical_ne_from_metadata@{theoretical\_\-ne\_\-from\_\-metadata}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[theoretical\_\-ne\_\-from\_\-metadata]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.theoretical\_\-ne\_\-from\_\-metadata ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__metrics_11dc9cb957ff03c709cecd2cbb996e33}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_11dc9cb957ff03c709cecd2cbb996e33}{theoretical\_\-ne\_\-from\_\-metadata()} computes the theoretical effective population size based on the number of sires and dams contained in a pedigree metadata object. 
+
+Writes results to an output file. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em True}](1) on success, false (0) on failure
+
+\footnotesize\begin{verbatim}theoretical_ne_from_metadata() computes the theoretical effective population
+size based on the number of sires and dams contained in a pedigree metadata
+object.  Writes results to an output file.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1249 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_9839b790d3161aaf080c649adcdaff26}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!pedigree_completeness@{pedigree\_\-completeness}}
+\index{pedigree_completeness@{pedigree\_\-completeness}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[pedigree\_\-completeness]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.pedigree\_\-completeness ( {\em pedobj},  {\em gens} = {\tt 4})}}
+\label{namespacePyPedal_1_1pyp__metrics_9839b790d3161aaf080c649adcdaff26}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_9839b790d3161aaf080c649adcdaff26}{pedigree\_\-completeness()} computes the proportion of known ancestors in the pedigree of each animal in the population for a user-determined number of generations. 
+
+Also, the mean pedcomps for all animals and for all animals that are not founders are computed as summary statistics. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em gens}]The number of generations the pedigree should be traced for completeness. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em Dictionary}]of summary statistics
+
+\footnotesize\begin{verbatim}pedigree_completeness() computes the proportion of known ancestors in the
+pedigree of each animal in the population for a user-determined number of
+generations. Also, the mean pedcomps for all animals and for all animals
+that are not founders are computed as summary statistics.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1290 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_43a82ce2cfd34b53ddf6d29c4671d480}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!common_ancestors@{common\_\-ancestors}}
+\index{common_ancestors@{common\_\-ancestors}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[common\_\-ancestors]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.common\_\-ancestors ( {\em anim\_\-a},  {\em anim\_\-b},  {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__metrics_43a82ce2cfd34b53ddf6d29c4671d480}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_43a82ce2cfd34b53ddf6d29c4671d480}{common\_\-ancestors()} returns a list of the ancestors that two animals share in common. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em anim\_\-a}]The renumbered ID of the first animal, a. \item[{\em anim\_\-b}]The renumbered ID of the second animal, b. \item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of animals related to anim\_\-a AND anim\_\-b
+
+\footnotesize\begin{verbatim}common_ancestors() returns a list of the ancestors that two animals share in common.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1414 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_ec3083eaf96d141f21de2ee947cdeee8}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!related_animals@{related\_\-animals}}
+\index{related_animals@{related\_\-animals}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[related\_\-animals]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.related\_\-animals ( {\em anim},  {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__metrics_ec3083eaf96d141f21de2ee947cdeee8}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_ec3083eaf96d141f21de2ee947cdeee8}{related\_\-animals()} returns a list of the ancestors of an animal. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em anim}]The renumbered ID of an animal, a. \item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of animals related to anim\_\-a
+
+\footnotesize\begin{verbatim}related_animals() returns a list of the ancestors of an animal.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1446 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_84284c26af4c946ca9f49657b6d92fcf}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!relationship@{relationship}}
+\index{relationship@{relationship}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[relationship]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.relationship ( {\em anim\_\-a},  {\em anim\_\-b},  {\em pedobj},  {\em renumber} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__metrics_84284c26af4c946ca9f49657b6d92fcf}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_84284c26af4c946ca9f49657b6d92fcf}{relationship()} returns the coefficient of relationship for two animals, anim\_\-a and anim\_\-b. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em anim\_\-a}]The renumbered ID of an animal, a. \item[{\em anim\_\-b}]The renumbered ID of an animal, b. \item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em renumber}]Renumber the pedigree if it has not yet been renumbered. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]coefficient of relationship of anim\_\-a and anim\_\-b
+
+\footnotesize\begin{verbatim}relationship() returns the coefficient of relationship for two
+animals, anim_a and anim_b.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1471 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_41c2baf2ca7fae116732adc32ff3a51b}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!mating_coi@{mating\_\-coi}}
+\index{mating_coi@{mating\_\-coi}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[mating\_\-coi]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.mating\_\-coi ( {\em anim\_\-a},  {\em anim\_\-b},  {\em pedobj},  {\em gens} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__metrics_41c2baf2ca7fae116732adc32ff3a51b}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_41c2baf2ca7fae116732adc32ff3a51b}{mating\_\-coi()} returns the coefficient of inbreeding of offspring of a mating between two animals, anim\_\-a and anim\_\-b. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em anim\_\-a}]The renumbered ID of an animal, a. \item[{\em anim\_\-b}]The renumbered ID of an animal, b. \item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em gens}]The number of generations from the pedigree to be used for calculating Co\-I. By default, gens=0. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]coefficient of inbreeding of the offpsring of anim\_\-a and anim\_\-b
+
+\footnotesize\begin{verbatim}mating_coi() returns the coefficient of inbreeding of offspring of a
+mating between two animals, anim_a and anim_b.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1557 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_e051130e25232f609ede648a4dea9986}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!mating_coi_group@{mating\_\-coi\_\-group}}
+\index{mating_coi_group@{mating\_\-coi\_\-group}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[mating\_\-coi\_\-group]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.mating\_\-coi\_\-group ( {\em matings},  {\em pedobj},  {\em names} = {\tt 0},  {\em gens} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__metrics_e051130e25232f609ede648a4dea9986}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_e051130e25232f609ede648a4dea9986}{mating\_\-coi\_\-group()} returns the coefficients of inbreeding of offspring of a series of matings, as well as a list of minimum-inbreeding matings. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matings}]A list of proposed matings \item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em names}]Indicates if the identifiers in 'matings' are names or animal\-IDs \item[{\em gens}]The number of generations from the pedigree to be used for calculating Co\-I. By default, gens=0. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]coefficient of inbreeding of the offpsring of anim\_\-a and anim\_\-b \end{description}
+\end{Desc}
+
+
+Definition at line 1690 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_e86f472bfb3705f8a75323d161f6a358}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!effective_founder_genomes@{effective\_\-founder\_\-genomes}}
+\index{effective_founder_genomes@{effective\_\-founder\_\-genomes}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[effective\_\-founder\_\-genomes]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.effective\_\-founder\_\-genomes ( {\em pedobj},  {\em rounds} = {\tt 10},  {\em chrometype} = {\tt 'autosome'},  {\em heterogametic} = {\tt 'm'},  {\em quiet} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__metrics_e86f472bfb3705f8a75323d161f6a358}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_e86f472bfb3705f8a75323d161f6a358}{effective\_\-founder\_\-genomes()} simulates the random segregation of founder alleles through a pedigree. 
+
+At present only two alleles are simulated for each founder. Summary statistics are computed on the most recent generation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em rounds}]The number of times to simulate segregation through the entire pedigree. \item[{\em chrometype}]The type of chromosome to simulate ('autosome'$|$'sex'). \item[{\em heterogametic}]The heterogametic sex in your species ('f'$|$'m'). \item[{\em quiet}]If False output is shown; if True output is not shown. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]effective number of founder genomes based on 'rounds' of gene-drop simulations.
+
+\footnotesize\begin{verbatim}effective_founder_genomes() simulates the random segregation of founder alleles
+through a pedigree.  At present only two alleles are simulated for each founder.
+Summary statistics are computed on the most recent generation.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1778 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_4fc7310e1c6484240ec0571a654cc64a}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!generation_intervals@{generation\_\-intervals}}
+\index{generation_intervals@{generation\_\-intervals}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[generation\_\-intervals]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.generation\_\-intervals ( {\em pedobj},  {\em units} = {\tt 'y'})}}
+\label{namespacePyPedal_1_1pyp__metrics_4fc7310e1c6484240ec0571a654cc64a}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_4fc7310e1c6484240ec0571a654cc64a}{generation\_\-intervals()} computes the average age of parents at the time of birth of their first (oldest) offspring. 
+
+This is implies that selection decisions are made at the time of birth of the first offspring. Average ages are computed for each of four paths: sire-son, sire-daughter, dam-son, and dam-daughter. An overall mean is computed, as well. IT IS IMPORTANT to note that if you DO NOT provide birthyears in your pedigree file that the returned dictionary will contain only zeroes! This is because when no birthyear is provided a default value (1900) is assigned to all animals in the pedigree. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em units}]A character indicating the units in which the generation lengths should be returned. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary containing the five average ages.
+
+\footnotesize\begin{verbatim}generation_intervals() computes the average age of parents at the time of
+birth of their first (oldest) offspring.  This is implies that selection
+decisions are made at the time of birth of the first offspring.  Average
+ages are computed for each of four paths: sire-son, sire-daughter, dam-son,
+and dam-daughter.  An overall mean is computed, as well.  IT IS IMPORTANT
+to note that if you DO NOT provide birthyears in your pedigree file that the
+returned dictionary will contain only zeroes!  This is because when no birthyear
+is provided a default value (1900) is assigned to all animals in the pedigree.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1980 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_553d55d2e917b00baf2f02a7cceacd70}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!generation_intervals_all@{generation\_\-intervals\_\-all}}
+\index{generation_intervals_all@{generation\_\-intervals\_\-all}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[generation\_\-intervals\_\-all]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.generation\_\-intervals\_\-all ( {\em pedobj},  {\em units} = {\tt 'y'})}}
+\label{namespacePyPedal_1_1pyp__metrics_553d55d2e917b00baf2f02a7cceacd70}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_553d55d2e917b00baf2f02a7cceacd70}{generation\_\-intervals\_\-all()} computes the average age of parents at the time of birth of their offspring. 
+
+The computation is made using birth years for all known offspring of sires and dams, which implies discrete generations. Average ages are computed for each of four paths: sire-son, sire-daughter, dam-son, and dam-daughter. An overall mean is computed, as well. IT IS IMPORTANT to note that if you DO NOT provide birthyears in your pedigree file that the returned dictionary will contain only zeroes! This is because when no birthyear is provided a default value (1900) is assigned to all animals in the pedigree. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em units}]A character indicating the units in which the generation lengths should be returned. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary containing the five average ages.
+
+\footnotesize\begin{verbatim}generation_intervals_all() computes the average age of parents at the time of
+birth of their offspring.  The computation is made using birth years for all
+known offspring of sires and dams, which implies discrete generations.  Average
+ages are computed for each of four paths: sire-son, sire-daughter, dam-son, and
+dam-daughter.  An overall mean is computed, as well. IT IS IMPORTANT to note that
+if you DO NOT provide birthyears in your pedigree file that the returned dictionary
+will contain only zeroes!  This is because when no birthyear is provided a default
+value (1900) is assigned to all animals in the pedigree.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 2173 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_8bb9c8d14721828c6d87bcd0d4e24658}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!founder_descendants@{founder\_\-descendants}}
+\index{founder_descendants@{founder\_\-descendants}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[founder\_\-descendants]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.founder\_\-descendants ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__metrics_8bb9c8d14721828c6d87bcd0d4e24658}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_8bb9c8d14721828c6d87bcd0d4e24658}{founder\_\-descendants()} returns a dictionary containing a list of descendants of each founder in the pedigree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]An instance of a Py\-Pedal New\-Pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary containing a list of descendants of each founder in the pedigree.
+
+\footnotesize\begin{verbatim}founder_descendants() returns a dictionary containing a list of descendants of
+each founder in the pedigree.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 2315 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_132a4b6580f08cb10db3b376849a2bfe}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!descendants@{descendants}}
+\index{descendants@{descendants}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[descendants]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.descendants ( {\em anid},  {\em pedobj},  {\em \_\-desc})}}
+\label{namespacePyPedal_1_1pyp__metrics_132a4b6580f08cb10db3b376849a2bfe}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_132a4b6580f08cb10db3b376849a2bfe}{descendants()} uses pedigree metadata to walk a pedigree and return a list of all of the descendants of a given animal. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em anid}]An animal ID \item[{\em pedobj}]A Python list of Py\-Pedal Animal() objects. \item[{\em \_\-desc}]A Python dictionary of descendants of animal anid. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of descendants of anid.
+
+\footnotesize\begin{verbatim}descendants() uses pedigree metadata to walk a pedigree and return a list of all
+of the descendants of a given animal.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 2337 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_e1cfcdb6871cd70b61e99da591975b58}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!dropped_ancestral_inbreeding@{dropped\_\-ancestral\_\-inbreeding}}
+\index{dropped_ancestral_inbreeding@{dropped\_\-ancestral\_\-inbreeding}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[dropped\_\-ancestral\_\-inbreeding]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.dropped\_\-ancestral\_\-inbreeding ( {\em pedobj},  {\em rounds} = {\tt 100},  {\em loci} = {\tt 100},  {\em frequency} = {\tt 0.05},  {\em seed} = {\tt 5048665})}}
+\label{namespacePyPedal_1_1pyp__metrics_e1cfcdb6871cd70b61e99da591975b58}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_e1cfcdb6871cd70b61e99da591975b58}{dropped\_\-ancestral\_\-inbreeding()} uses a gene dropping approach to calculate ancestral inbreeding, the probability of an individual inheriting an allele that has undergone inbreeding in the past at least once. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em rounds}]The number of times to simulate segregation through the entire pedigree. \item[{\em loci}]The number biallelic, unlinked loci to simulate. \item[{\em frequency}]The minor allele frequency. \item[{\em seed}]The seed for the RNG. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of ancestral inbreeding coefficients keyed to animal IDs.
+
+\footnotesize\begin{verbatim}dropped_ancestral_inbreeding() uses a gene dropping approach to calculate
+ancestral inbreeding, the probability of an individual inheriting an allele
+that has undergone inbreeding in the past at least once.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 2384 of file pyp\_\-metrics.py.\hypertarget{namespacePyPedal_1_1pyp__metrics_6185ce91b4815918ed935f1d4fb19714}{
+\index{PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}!ballou_ancestral_inbreeding@{ballou\_\-ancestral\_\-inbreeding}}
+\index{ballou_ancestral_inbreeding@{ballou\_\-ancestral\_\-inbreeding}!PyPedal::pyp_metrics@{Py\-Pedal::pyp\_\-metrics}}
+\subsubsection[ballou\_\-ancestral\_\-inbreeding]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-metrics.ballou\_\-ancestral\_\-inbreeding ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__metrics_6185ce91b4815918ed935f1d4fb19714}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__metrics_6185ce91b4815918ed935f1d4fb19714}{ballou\_\-ancestral\_\-inbreeding()} calculates ancestral inbreeding, the probability of an individual inheriting an allele that has undergone inbreeding in the past at least once, using the method of Ballou (1997). 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of ancestral inbreeding coefficients keyed to animal IDs.
+
+\footnotesize\begin{verbatim}ballou_ancestral_inbreeding() calculates ancestral inbreeding,
+the probability of an individual inheriting an allele that has
+undergone inbreeding in the past at least once, using the method
+of Ballou (1997).
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 2509 of file pyp\_\-metrics.py.

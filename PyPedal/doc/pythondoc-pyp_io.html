@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_io Module</title>
+</head>
+<body>
+<h1>The pyp_io Module</h1>
+<p>pyp_io contains several procedures for writing structures to and reading them from
+disc (e.g. using pickle() to store and retrieve A and A-inverse).  It also includes a set
+of functions used to render strings as HTML or plaintext for use in generating output
+files.</p>
+<dl>
+<dt><a id='pyp_io.a_inverse_from_file-function' name='pyp_io.a_inverse_from_file-function'><b>a_inverse_from_file(inputfile)</b></a> &rArr; matrix [<a href='#pyp_io.a_inverse_from_file-function'>#</a>]</dt>
+<dd>
+<p>a_inverse_from_file() uses the Python pickle system for persistent objects to read the inverse of
+a relationship matrix from a file.</p>
+<dl>
+<dt><i>inputfile</i></dt>
+<dd>
+The name of the input file.</dd>
+<dt>Returns:</dt>
+<dd>
+The inverse of a numerator relationship matrix.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.a_inverse_to_file-function' name='pyp_io.a_inverse_to_file-function'><b>a_inverse_to_file(pedobj, ainv='')</b></a> &rArr; integer [<a href='#pyp_io.a_inverse_to_file-function'>#</a>]</dt>
+<dd>
+<p>a_inverse_to_file() uses the Python pickle system for persistent objects to write the
+inverse of a relationship matrix to a file.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>filetag</i></dt>
+<dd>
+A descriptor prepended to output file names.</dd>
+<dt>Returns:</dt>
+<dd>
+True (1) on success, false (0) on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.dissertation_pedigree_to_file-function' name='pyp_io.dissertation_pedigree_to_file-function'><b>dissertation_pedigree_to_file(pedobj)</b></a> &rArr; integer [<a href='#pyp_io.dissertation_pedigree_to_file-function'>#</a>]</dt>
+<dd>
+<p>dissertation_pedigree_to_file() takes a pedigree in 'asdxfg' format and writes is to a file.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+True (1) on success, false (0) on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.dissertation_pedigree_to_pedig_format-function' name='pyp_io.dissertation_pedigree_to_pedig_format-function'><b>dissertation_pedigree_to_pedig_format(pedobj)</b></a> &rArr; integer [<a href='#pyp_io.dissertation_pedigree_to_pedig_format-function'>#</a>]</dt>
+<dd>
+<p>dissertation_pedigree_to_pedig_format() takes a pedigree in 'asdbxfg' format, formats it into
+the form used by Didier Boichard's 'pedig' suite of programs, and writes it to a file.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+True (1) on success, false (0) on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.dissertation_pedigree_to_pedig_format_mask-function' name='pyp_io.dissertation_pedigree_to_pedig_format_mask-function'><b>dissertation_pedigree_to_pedig_format_mask(pedobj)</b></a> &rArr; integer [<a href='#pyp_io.dissertation_pedigree_to_pedig_format_mask-function'>#</a>]</dt>
+<dd>
+<p>dissertation_pedigree_to_pedig_format_mask() Takes a pedigree in 'asdbxfg' format,
+formats it into the form used by Didier Boichard's 'pedig' suite of programs, and
+writes it to a file.  THIS FUNCTION MASKS THE GENERATION ID WITH A FAKE BIRTH YEAR
+AND WRITES THE FAKE BIRTH YEAR TO THE FILE INSTEAD OF THE TRUE BIRTH YEAR.  THIS IS
+AN ATTEMPT TO FOOL PEDIG TO GET f_e, f_a et al. BY GENERATION.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+True (1) on success, false (0) on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.dissertation_pedigree_to_pedig_interest_format-function' name='pyp_io.dissertation_pedigree_to_pedig_interest_format-function'><b>dissertation_pedigree_to_pedig_interest_format(pedobj)</b></a> &rArr; integer [<a href='#pyp_io.dissertation_pedigree_to_pedig_interest_format-function'>#</a>]</dt>
+<dd>
+<p>dissertation_pedigree_to_pedig_interest_format() takes a pedigree in 'asdbxfg' format,
+formats it into the form used by Didier Boichard's parente program for the studied
+individuals file.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+True (1) on success, false (0) on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.load_from_gedcom-function' name='pyp_io.load_from_gedcom-function'><b>load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='u', missing_parent=0, missing_name='Unknown Name', missing_byear='0001', debug=0)</b></a> &rArr; integer [<a href='#pyp_io.load_from_gedcom-function'>#</a>]</dt>
+<dd>
+<p>load_from_gedcom() reads and parses pedigree data that conform to
+a subset of the GEDCOM 5.5 specification. Not all valid GEDCOM
+are supported; unsupported tags are ignored.</p>
+<dl>
+<dt><i>infilename</i></dt>
+<dd>
+The file to which the matrix should be written.</dd>
+<dt><i>messages</i></dt>
+<dd>
+Controls output to the screen</dd>
+<dt><i>standalone</i></dt>
+<dd>
+Uses logging if called by a NewPedigree method</dd>
+<dt><i>missing_sex</i></dt>
+<dd>
+Value assigned to an animal with unknown sex</dd>
+<dt><i>missing_parent</i></dt>
+<dd>
+Value assigned to unknown parents</dd>
+<dt><i>missing_name</i></dt>
+<dd>
+Name assigned by default</dd>
+<dt><i>missing_byear</i></dt>
+<dd>
+VAlue assigned to unknown birth years</dd>
+<dt><i>debug</i></dt>
+<dd>
+Flag turning debugging messages on (1) and off (0)</dd>
+<dt>Returns:</dt>
+<dd>
+A save status indicator (0: failed, 1: success).</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.pickle_pedigree-function' name='pyp_io.pickle_pedigree-function'><b>pickle_pedigree(pedobj, filename='')</b></a> &rArr; integer [<a href='#pyp_io.pickle_pedigree-function'>#</a>]</dt>
+<dd>
+<p>pickle_pedigree() pickles a pedigree.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+An instance of a PyPedal pedigree object.</dd>
+<dt><i>filename</i></dt>
+<dd>
+The name of the file to which the pedigree object should be pickled (optional).</dd>
+<dt>Returns:</dt>
+<dd>
+A 1 on success, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.pyp_file_footer-function' name='pyp_io.pyp_file_footer-function'><b>pyp_file_footer(ofhandle, caller=&quot;Unknown PyPedal routine&quot;)</b></a> [<a href='#pyp_io.pyp_file_footer-function'>#</a>]</dt>
+<dd>
+<p>pyp_file_footer() writes a footer to a page of PyPedal output.</p>
+<dl>
+<dt><i>ofhandle</i></dt>
+<dd>
+A Python file handle.</dd>
+<dt><i>caller</i></dt>
+<dd>
+A string indicating the name of the calling routine.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.pyp_file_header-function' name='pyp_io.pyp_file_header-function'><b>pyp_file_header(ofhandle, caller=&quot;Unknown PyPedal routine&quot;)</b></a> [<a href='#pyp_io.pyp_file_header-function'>#</a>]</dt>
+<dd>
+<p>pyp_file_header() writes a header to a page of PyPedal output.</p>
+<dl>
+<dt><i>ofhandle</i></dt>
+<dd>
+A Python file handle.</dd>
+<dt><i>caller</i></dt>
+<dd>
+A string indicating the name of the calling routine.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.renderBodyText-function' name='pyp_io.renderBodyText-function'><b>renderBodyText(text_string)</b></a> [<a href='#pyp_io.renderBodyText-function'>#</a>]</dt>
+<dd>
+<p>renderBodyText() renders page contents (produces HTML output by default).</p>
+</dd>
+<dt><a id='pyp_io.renderTitle-function' name='pyp_io.renderTitle-function'><b>renderTitle(title_string, title_level=&quot;1&quot;)</b></a> [<a href='#pyp_io.renderTitle-function'>#</a>]</dt>
+<dd>
+<p>renderTitle() renders page titles (produces HTML output by default).</p>
+</dd>
+<dt><a id='pyp_io.save_from_gedcom-function' name='pyp_io.save_from_gedcom-function'><b>save_from_gedcom(outfilename, assembled)</b></a> &rArr; string [<a href='#pyp_io.save_from_gedcom-function'>#</a>]</dt>
+<dd>
+<p>save_from_gedcom() takes pedigree data parsed by load_from_gedcom() and
+writes it to a text file in an ASD format that PyPedal can easily read.</p>
+<dl>
+<dt><i>outfilename</i></dt>
+<dd>
+The file to which the matrix should be written.</dd>
+<dt><i>fam2ids</i></dt>
+<dd>
+Dictionary mapping family IDs to parents and offspring</dd>
+<dt><i>missing_parent</i></dt>
+<dd>
+Value assigned to unknown parents</dd>
+<dt><i>id2name</i></dt>
+<dd>
+Dictionary mapping IDs to names</dd>
+<dt><i>id2birth</i></dt>
+<dd>
+Dictionary mapping IDs to birth years</dd>
+<dt>Returns:</dt>
+<dd>
+A string containing the pedigree format code. 'xxxx' if there was a problem.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.save_ijk-function' name='pyp_io.save_ijk-function'><b>save_ijk(pedobj, nrm_filename)</b></a> &rArr; integer [<a href='#pyp_io.save_ijk-function'>#</a>]</dt>
+<dd>
+<p>save_ijk() saves an NRM to a file in the form &quot;animal A&quot; &quot;animal B&quot; &quot;rAB&quot;.</p>
+<dl>
+<dt><i>nrm_filename</i></dt>
+<dd>
+The file to which the matrix should be written.</dd>
+<dt>Returns:</dt>
+<dd>
+A save status indicator (0: failed, 1: success).</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.save_to_gedcom-function' name='pyp_io.save_to_gedcom-function'><b>save_to_gedcom(pedobj, outfilename)</b></a> &rArr; integer [<a href='#pyp_io.save_to_gedcom-function'>#</a>]</dt>
+<dd>
+<p>save_to_gedcom() writes a PyPedal NewPedigree object to a file in
+GEDCOM 5.5 format.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+An instance of a PyPedal NewPedigree object</dd>
+<dt><i>filename</i></dt>
+<dd>
+The file to which the matrix should be written</dd>
+<dt>Returns:</dt>
+<dd>
+A save status indicator (0: failed, 1: success).</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.summary_inbreeding-function' name='pyp_io.summary_inbreeding-function'><b>summary_inbreeding(f_metadata)</b></a> &rArr; string [<a href='#pyp_io.summary_inbreeding-function'>#</a>]</dt>
+<dd>
+<p>summary_inbreeding() returns a string representation of the data contained in
+the 'metadata' dictionary contained in the output dictionary returned by
+pyp_nrm/pyp_inbreeding().</p>
+<dl>
+<dt><i>f_metadata</i></dt>
+<dd>
+Dictionary of inbreeding metadata.</dd>
+<dt>Returns:</dt>
+<dd>
+A string on success, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_io.unpickle_pedigree-function' name='pyp_io.unpickle_pedigree-function'><b>unpickle_pedigree(filename='')</b></a> &rArr; object [<a href='#pyp_io.unpickle_pedigree-function'>#</a>]</dt>
+<dd>
+<p>unpickle_pedigree() reads a pickled pedigree in from a file and returns the unpacked
+pedigree object.</p>
+<dl>
+<dt><i>filename</i></dt>
+<dd>
+The name of the pickle file.</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a NewPedigree object on success, a 0 otherwise.</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>

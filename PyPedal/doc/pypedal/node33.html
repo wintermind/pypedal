@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node34.html" />
+<link rel="prev" href="node31.html" />
+<link rel="parent" href="node23.html" />
+<link rel="next" href="node34.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>3.7 Logging</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.6.1 Animal Identification"
+  href="node32.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.8 Simulating Pedigrees"
+  href="node34.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node32.html">3.6.1 Animal Identification</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node34.html">3.8 Simulating Pedigrees</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION043700000000000000000"></A>
+<A NAME="sec:logging"></A><a id='l2h-33' xml:id='l2h-33'></a>
+<BR>
+3.7 Logging
+</H1>
+PyPedal uses the <tt class="module">logging</tt> module that is part of the Python standard library to record events during pedigree processing.  Informative messages, as well as warnings and errors, are written to the logfile, which can be found in the directory from which you ran PyPedal.  An example of a log from a successful (error-free) run of a program is presented below:
+<div class="verbatim"><pre>
+Fri, 06 May 2005 10:27:22 INFO     Logfile boichard2.log instantiated.
+Fri, 06 May 2005 10:27:22 INFO     Preprocessing boichard2.ped
+Fri, 06 May 2005 10:27:22 INFO     Opening pedigree file
+Fri, 06 May 2005 10:27:22 INFO     Pedigree comment (line 1): # This pedigree is
+                                   taken from Boicherd et al. (1997).
+Fri, 06 May 2005 10:27:22 INFO     Pedigree comment (line 2): # It contains two
+                                   unrelated families.
+Fri, 06 May 2005 10:27:22 WARNING  Encountered deprecated pedigree format string
+                                   (% asdg) on line 3 of the pedigree file.
+Fri, 06 May 2005 10:27:22 WARNING  Reached end-of-line in boichard2.ped after reading
+                                   23 lines.
+Fri, 06 May 2005 10:27:22 INFO     Closing pedigree file
+Fri, 06 May 2005 10:27:22 INFO     Assigning offspring
+Fri, 06 May 2005 10:27:22 INFO     Creating pedigree metadata object
+Fri, 06 May 2005 10:27:22 INFO     Forming A-matrix from pedigree
+Fri, 06 May 2005 10:27:22 INFO     Formed A-matrix from pedigree
+</pre></div>
+The <TT>WARNING</TT>s let you know when something unexpected or unusual has happened, although you might argue that coming to the end of an input file is neither.  If you get unexpected results from your program make sure that you check the logfile for details - some subroutines return default values such as -999 when a problem occurs but do not halt the program.  Note that comments found in the pedigree file are written to the log, as are deprecated pedigree format strings used by earlier versions of PyPedal.  When an error from which PyPedal cannot recover occurs a message is written to both the screen and the logfile.  We can see from the following log that the number of columns in the pedigree file did not match the number of columns in the pedigree format string.
+<div class="verbatim"><pre>
+Thu, 04 Aug 2005 15:36:18 INFO     Logfile hartlandclark.log instantiated.
+Thu, 04 Aug 2005 15:36:18 INFO     Preprocessing hartlandclark.ped
+Thu, 04 Aug 2005 15:36:18 INFO     Opening pedigree file
+Thu, 04 Aug 2005 15:36:18 INFO     Pedigree comment (line 1): # Pedigree from van
+                                   Noordwijck and Scharloo (1981) as presented
+Thu, 04 Aug 2005 15:36:18 INFO     Pedigree comment (line 2): # in Hartl and Clark
+                                   (1989), p. 242.
+Thu, 04 Aug 2005 15:36:18 ERROR    The record on line 3 of file hartlandclark.ped
+                                   does not have the same number of columns (4) as
+                                   the pedigree format string (asd) says that it
+                                   should (3). Please check your pedigree file and
+                                   the pedigree format string for errors.
+</pre></div>
+There is no sensible ``best guess'' that PyPedal can make about handling this situation, so it halts.  There are some cases where PyPedal does ``guess'' how it should proceed in the face of ambiguity, which is why it is always a good idea to check for <TT>WARNING</TT>s in your logfiles.
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.6.1 Animal Identification"
+  href="node32.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.8 Simulating Pedigrees"
+  href="node34.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node32.html">3.6.1 Animal Identification</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node34.html">3.8 Simulating Pedigrees</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

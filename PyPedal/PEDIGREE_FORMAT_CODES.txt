@@ -1,0 +1,36 @@
+###############################################################################
+# NAME: PEDIGREE_FORMAT_CODES
+# VERSION: 2.0.0a20 (09NOVEMBER2005)
+# AUTHOR: John B. Cole, PhD (jcole@aipl.arsusda.gov)
+# LICENSE: LGPL
+###############################################################################
+# This file lists the codes that can be included in pedigree format strings. It
+# is important to remember that the codes are case-sensitive: 'a' is NOT the
+# same code as 'A'.
+###############################################################################
+
+a = animal
+b = birthyear (YYYY)
+d = dam
+e = age
+f = inbreeding
+g = generation
+h = herd / management group ID (integer)
+l = alive (1) or dead (0)
+n = name
+p = Pattie's (1965) generation coefficient
+r = breed
+s = sire
+u = user-defined field (string)
+x = sex
+y = birthdate in "MMDDYYYY" format
+A = animal as a string (any sequence containing a value other than numbers,
+        including blanks or spaces).
+S = sire as a string (any sequence containing a value other than numbers,
+        including blanks or spaces).
+D = sire as a string (any sequence containing a value other than numbers,
+        including blanks or spaces).
+H = herd / management group ID as a string (any sequence containing a value
+        other than numbers, including blanks or spaces).
+L = alleles (two alleles separated by a non-null character)
+Z = skip (ignore) this column (may be repeated)

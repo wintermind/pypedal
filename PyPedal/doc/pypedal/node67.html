@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node68.html" />
+<link rel="prev" href="node66.html" />
+<link rel="parent" href="node66.html" />
+<link rel="next" href="node68.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>7.1 Reordering and Renumbering</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="7. Methodology"
+  href="node66.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="7. Methodology"
+  href="node66.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="7.2 Animal Identification and"
+  href="node68.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node66.html">7. Methodology</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node66.html">7. Methodology</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node68.html">7.2 Animal Identification and</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION047100000000000000000"></A><A NAME="sec:methodology-reordering-and-renumbering"></A><a id='l2h-67' xml:id='l2h-67'></a>
+<BR>
+7.1 Reordering and Renumbering
+</H1>
+Many computations on pedigrees require that the pedigree be renumbered such that animal IDs are consecutive from 1 to "<tt class="character">n</tt>", where "<tt class="character">n</tt>" is the total number of animalsin the pedigree. By default, all pedigrees are renumbered at load time. If you pedigree is already renumbered and you do not want it renumbered again you must set the "<tt class="samp">renumber</tt>" option to 0. The renumbering process requires that the pedigree be reordered such that parents always precede their offspring in the list of animal IDs. The actual ID assigned to an animal is of no particular importance, and it is even possible for parents to have larger IDs than their ofspring.  PyPedal can reorder any pedigree unless there is an error in it that would prevent unambiguously placing parents before offspring.  For example, a pedigree containing a keypunch error such that an animal is one of its own grandparents cannot be reordered because there is no way to unambiguously order the animals.  The <tt class="module">pyp_utils</tt> module provides two routines for pedigree reordering, <tt class="function">reorder()</tt> and <tt class="function">fast_reorder()</tt>.  By default, <tt class="function">reorder()</tt> is used to reorder pedigrees in place.  It does this by maintaining a list of animal IDs that have been processed; whenever a parent that is not in the  list of encountered animals the offspring of that parent are moved to the end of the pedigree.  This ensures the pedigree is properly sorted such that all parents precede their offspring. Founders are also grouped together at the beginning of the pedigree. This procedure will always correctly reorder a pedigree but it can be quite inefficient as it is similar to an insertion sort, which has a worst-case runtime proportional to <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img29.png"
+ ALT="$ n^{2}$"></SPAN>
+ [<A
+ HREF="node124.html#Cormen2003">Cormen, Leiserson, Rivest, and SteinCormen
+  et&nbsp;al.2003</A>].
+
+<P>
+<tt class="function">fast_reorder()</tt> provides a much faster means of reordering a pedigree, but can incorrectly reorder a pedigree in some cases.  When an instance of a <tt class="class">NewAnimal</tt> object is created the <tt class="method">pad_id()</tt> method is called.  <tt class="method">pad_id()</tt> uses the animal ID and birth year to form an ID used by <tt class="function">by pyp_utils/fast_reorder()</tt> for quick sorting; if your pedigree file is numbered such that offspring always have larger IDs than their parents and your birth years (if provided) are correct (that is, parents always born BEFORE offspring) then <tt class="function">pyp_utils.fast_reorder()</tt> works as expected.  If you do not provide birth years in your pedigree file but your parent IDs are always smaller than your animal IDs, the reordering will be correct.  If you do not provide birth years, all animals in the pedigree will be assigned a default value of `1900'.  In that case, if parents have IDs larger than that of one or more of their offspring, the pedigree will be incorrecrly reordered by <tt class="function">fast_reorder()</tt>.  If your pedigree file contains birth years, or you know that parents always have smaller IDs than their offspring, then <tt class="function">fast_reorder()</tt> will correctly reorder your pedigree in linear time. Founders
+are not guaranteed to be grouped at the beginning of the pedigree when
+<tt class="function">fast_reorder()</tt> is used; if you are going to calculate coefficients of
+partial inbreeding (Section <A HREF="node73.html#sec:methodology-partial-inbreeding">7.4.3</A>) then you should
+instead use <tt class="function">reorder()</tt> to reorder your pedigree.
+
+<P>
+The performance difference between the two reordering routines is not very noticeable on pedigrees of a few hundred to a few thousand animals, but is quite dramatic for very large pedigrees. If your pedigree file is already reordered then there is essentially no performance difference between the two. When creating a pedigree file from data stored in a relational database, let the database perform the sort for you by using an "<tt class="samp">ORDER BY</tt>" statement.
+
+<P>
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="7. Methodology"
+  href="node66.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="7. Methodology"
+  href="node66.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="7.2 Animal Identification and"
+  href="node68.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node66.html">7. Methodology</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node66.html">7. Methodology</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node68.html">7.2 Animal Identification and</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

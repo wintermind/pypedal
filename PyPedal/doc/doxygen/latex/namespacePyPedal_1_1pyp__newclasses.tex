@@ -1,0 +1,65 @@
+\hypertarget{namespacePyPedal_1_1pyp__newclasses}{
+\section{Package Py\-Pedal.pyp\_\-newclasses}
+\label{namespacePyPedal_1_1pyp__newclasses}\index{PyPedal.pyp_newclasses@{PyPedal.pyp\_\-newclasses}}
+}
+
+
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{New\-Pedigree}
+\begin{CompactList}\small\item\em The \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{New\-Pedigree} class is the main data structure for Py\-P 2.0.0Final. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1SimAnimal}{Sim\-Animal}
+\begin{CompactList}\small\item\em The Sim\-Animal() class is a placeholder used for simulating animals. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAnimal}{New\-Animal}
+\begin{CompactList}\small\item\em The New\-Animal() class is holds animals records read from a pedigree file. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1LightAnimal}{Light\-Animal}
+\begin{CompactList}\small\item\em The Light\-Animal() class holds animals records read from a pedigree file. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1PedigreeMetadata}{Pedigree\-Metadata}
+\begin{CompactList}\small\item\em The Pedigree\-Metadata() class stores metadata about pedigrees. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix}{New\-AMatrix}
+\begin{CompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix}{New\-AMatrix} provides an instance of a numerator relationship matrix as a Numarray array of floats with some convenience methods. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1PyPedalError}{Py\-Pedal\-Error}
+\begin{CompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1PyPedalError}{Py\-Pedal\-Error} is the base class for exceptions in Py\-Pedal. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1PyPedalPedigreeInputFileNameError}{Py\-Pedal\-Pedigree\-Input\-File\-Name\-Error}
+\begin{CompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1PyPedalPedigreeInputFileNameError}{Py\-Pedal\-Pedigree\-Input\-File\-Name\-Error} is raised when a simulated pedigree is not requested and a pedigree file name is not provided. \item\end{CompactList}\item 
+class \hyperlink{classPyPedal_1_1pyp__newclasses_1_1tail__recursive}{tail\_\-recursive}
+\begin{CompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1tail__recursive}{tail\_\-recursive} is a tail recursion decorator that eliminates tail calls for recursive functions. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__newclasses_35a47ad1c56cecbe403dfa79c4bacb35}{load\-Pedigree}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__newclasses_35a47ad1c56cecbe403dfa79c4bacb35}{load\-Pedigree()} wraps pedigree creation and loading into a one-step process. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__newclasses_35a47ad1c56cecbe403dfa79c4bacb35}{
+\index{PyPedal::pyp_newclasses@{Py\-Pedal::pyp\_\-newclasses}!loadPedigree@{loadPedigree}}
+\index{loadPedigree@{loadPedigree}!PyPedal::pyp_newclasses@{Py\-Pedal::pyp\_\-newclasses}}
+\subsubsection[loadPedigree]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-newclasses.load\-Pedigree ( {\em options} = {\tt ''},  {\em optionsfile} = {\tt 'pypedal.ini'},  {\em pedsource} = {\tt 'file'},  {\em pedgraph} = {\tt 0},  {\em pedstream} = {\tt ''},  {\em debug\-Load} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__newclasses_35a47ad1c56cecbe403dfa79c4bacb35}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__newclasses_35a47ad1c56cecbe403dfa79c4bacb35}{load\-Pedigree()} wraps pedigree creation and loading into a one-step process. 
+
+If the user passes both a dictionary and a filename, the dictionary will be used instead of the filename unless the dictionary is empty. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em options}]Dictionary of pedigree options. \item[{\em optionsfile}]File from which pedigree options should be read. \item[{\em pedsource}]Source of the pedigree ('file'$|$'graph'$|$'graphfile'$|$'db'$|$'gedcomfile'$|$'genesfile'$|$'textstream'). \item[{\em pedgraph}]XDi\-Graph from which to load the pedigree. \item[{\em pedstream}]String of tuples to unpack into a pedigree. \item[{\em debug\-Load}]When True, print debugging messages while loading (True$|$False). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em An}]instance of a \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewPedigree}{New\-Pedigree} object on success, a 0 on failure.
+
+\footnotesize\begin{verbatim}loadPedigree() wraps pedigree creation and loading into a one-step
+process.  If the user passes both a dictionary and a filename, the
+dictionary will be used instead of the filename unless the dictionary
+is empty.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 2837 of file pyp\_\-newclasses.py.

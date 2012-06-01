@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_network Module</title>
+</head>
+<body>
+<h1>The pyp_network Module</h1>
+<p>pyp_network contains a set of procedures for working with pedigrees as directed
+graphs.</p>
+<h2>Module Contents</h2>
+<dl>
+<dt><a id='pyp_network.count_offspring-function' name='pyp_network.count_offspring-function'><b>count_offspring(pedgraph, anid)</b></a> &rArr; integer [<a href='#pyp_network.count_offspring-function'>#</a>]</dt>
+<dd>
+<p>count_offspring() returns the number of offspring of an animal.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a networkx DiGraph.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The animal for whom offspring are to be counted.</dd>
+<dt>Returns:</dt>
+<dd>
+Count of offspring.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.dyad_census-function' name='pyp_network.dyad_census-function'><b>dyad_census(pg, debug=0, debuglog=0)</b></a> &rArr; dictionary [<a href='#pyp_network.dyad_census-function'>#</a>]</dt>
+<dd>
+<p>dyad_census() calculates the number of null, asymmetric, and
+mutual edges between all pairs of nodes in a directed graph.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt><i>debug</i></dt>
+<dd>
+Flag to turn debugging messages on (1) or off (0).</dd>
+<dt><i>debuglog</i></dt>
+<dd>
+Flag to turn debugging messages to the logfile  on (1) or off (0).</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of counts.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.find_ancestors-function' name='pyp_network.find_ancestors-function'><b>find_ancestors(pedgraph, anid, _ancestors=[])</b></a> &rArr; list [<a href='#pyp_network.find_ancestors-function'>#</a>]</dt>
+<dd>
+<p>find_ancestors() identifies the ancestors of an animal and returns them in a list.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a networkx DiGraph.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The animal for whom ancestors are to be found.</dd>
+<dt><i>_ancestors</i></dt>
+<dd>
+The list of ancestors already found.</dd>
+<dt>Returns:</dt>
+<dd>
+List of ancestors of anid.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.find_ancestors_g-function' name='pyp_network.find_ancestors_g-function'><b>find_ancestors_g(pedgraph, anid, _ancestors={}, gens=3)</b></a> &rArr; list [<a href='#pyp_network.find_ancestors_g-function'>#</a>]</dt>
+<dd>
+<p>find_ancestors_g() identifies the ancestors of an animal going back a user-specified number of generations and returns them in a list.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a networkx DiGraph.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The animal for whom ancestors are to be found.</dd>
+<dt><i>_ancestors</i></dt>
+<dd>
+The list of ancestors already found.</dd>
+<dt>Returns:</dt>
+<dd>
+List of ancestors of anid.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.find_descendants-function' name='pyp_network.find_descendants-function'><b>find_descendants(pedgraph, anid, _descendants=[])</b></a> &rArr; list [<a href='#pyp_network.find_descendants-function'>#</a>]</dt>
+<dd>
+<p>find_descendants() identifies the descendants of an animal and returns them in a list.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a networkx DiGraph.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The animal for whom descendants are to be found.</dd>
+<dt><i>_descendants</i></dt>
+<dd>
+The list of descendants already found.</dd>
+<dt>Returns:</dt>
+<dd>
+List of descendants of anid.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.get_betweenness_centrality-function' name='pyp_network.get_betweenness_centrality-function'><b>get_betweenness_centrality(pg)</b></a> &rArr; dictionary [<a href='#pyp_network.get_betweenness_centrality-function'>#</a>]</dt>
+<dd>
+<p>get_betweenness_centrality(pg) returns a dictionary of the
+betweenness centrality of each node in the graph.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of closeness centralities.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.get_closeness_centrality-function' name='pyp_network.get_closeness_centrality-function'><b>get_closeness_centrality(pg)</b></a> &rArr; dictionary [<a href='#pyp_network.get_closeness_centrality-function'>#</a>]</dt>
+<dd>
+<p>get_closeness_centrality(pg) returns a dictionary of the closeness
+centrality (1/(average distance to all nodes from n)) for each
+node in the graph.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of closeness centralities.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.get_clustering_coefficient-function' name='pyp_network.get_clustering_coefficient-function'><b>get_clustering_coefficient(pg)</b></a> &rArr; dictionary [<a href='#pyp_network.get_clustering_coefficient-function'>#</a>]</dt>
+<dd>
+<p>get_clustering_coefficient(pg) returns a dictionary of the clustering
+coefficient of each node in the graph based on the definition of Watts
+and Strogatz (1998).</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of clustering coefficients.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.get_founder_descendants-function' name='pyp_network.get_founder_descendants-function'><b>get_founder_descendants(pedgraph)</b></a> &rArr; dictionary [<a href='#pyp_network.get_founder_descendants-function'>#</a>]</dt>
+<dd>
+<p>get_founder_descendants() returns a dictionary containing a list of descendants of
+each founder in the pedigree.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary containing a list of descendants for each founder in the graph.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.get_node_betweenness-function' name='pyp_network.get_node_betweenness-function'><b>get_node_betweenness(pg)</b></a> &rArr; dictionary [<a href='#pyp_network.get_node_betweenness-function'>#</a>]</dt>
+<dd>
+<p>get_node_betweenness(pg) returns a dictionary of the
+number of shortest paths that go through each node in
+the graph.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of node betweennesses.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.get_node_degree_histograms-function' name='pyp_network.get_node_degree_histograms-function'><b>get_node_degree_histograms(node_degrees)</b></a> &rArr; dictionary [<a href='#pyp_network.get_node_degree_histograms-function'>#</a>]</dt>
+<dd>
+<p>get_node_degree_histograms() returns a dictionary containing histograms of
+the number of vertices (nodes) in pg with a given number of incoming,
+outgoing, or total edges.</p>
+<dl>
+<dt><i>node_degrees</i></dt>
+<dd>
+A dictionary of dictionaries of in, out, and total node degrees.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of dictionaries containing in, out, and total degree histograms.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.get_node_degrees-function' name='pyp_network.get_node_degrees-function'><b>get_node_degrees(pg)</b></a> &rArr; dictionary [<a href='#pyp_network.get_node_degrees-function'>#</a>]</dt>
+<dd>
+<p>get_node_degrees() returns a dictionary containing the number of
+vertices (nodes) in pg with a given number of incoming, outgoing,
+or total edges.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of dictionaries containing in, out, and total node degrees.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.graph_density-function' name='pyp_network.graph_density-function'><b>graph_density(pg)</b></a> &rArr; float [<a href='#pyp_network.graph_density-function'>#</a>]</dt>
+<dd>
+<p>graph_density() calculates the density of a digraph, which is the
+ratio of edges in the gaph to the maximum possible number of edges.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt>Returns:</dt>
+<dd>
+The density of the pedigree represented in pg.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.immediate_family-function' name='pyp_network.immediate_family-function'><b>immediate_family(pedgraph, anid)</b></a> &rArr; list [<a href='#pyp_network.immediate_family-function'>#</a>]</dt>
+<dd>
+<p>immediate_family() returns parents and offspring of an animal.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a networkx DiGraph.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The animal for whom immediate family are to be found.</dd>
+<dt>Returns:</dt>
+<dd>
+List of immediate family members of anid.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.mean_degree_centrality-function' name='pyp_network.mean_degree_centrality-function'><b>mean_degree_centrality(pg, normalize=0)</b></a> &rArr; dictionary [<a href='#pyp_network.mean_degree_centrality-function'>#</a>]</dt>
+<dd>
+<p>mean_degree_centrality(pg) calculates mean in- and out-degree
+centralities for directed graphs and simple degree-centralities
+for undirected graphs. If the normalize flag is set, each node's
+centralities are weighted by the number of edges in the (di)graph.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt><i>normalize</i></dt>
+<dd>
+Flag to turn normalization on (1) or off (0).</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of mean degree centralities.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.mean_geodesic-function' name='pyp_network.mean_geodesic-function'><b>mean_geodesic(pg, debug=0)</b></a> &rArr; float [<a href='#pyp_network.mean_geodesic-function'>#</a>]</dt>
+<dd>
+<p>mean_geodesic() calculates the mean geodesic (shortest) distance
+between two vertices in a network.</p>
+<dl>
+<dt><i>pg</i></dt>
+<dd>
+An instance of a NetworkX DiGraph.</dd>
+<dt><i>debug</i></dt>
+<dd>
+Flag to turn debugging messages on (1) or off (0).</dd>
+<dt>Returns:</dt>
+<dd>
+The mean geodesic for the pedigree represented in pg.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.mean_value-function' name='pyp_network.mean_value-function'><b>mean_value(mydict)</b></a> &rArr; float [<a href='#pyp_network.mean_value-function'>#</a>]</dt>
+<dd>
+<p>mean_value() calculates the mean from all values in a dictionary.</p>
+<dl>
+<dt><i>mydict</i></dt>
+<dd>
+A dictionary whose values are integers or reals.</dd>
+<dt>Returns:</dt>
+<dd>
+The mean of values in mydict.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.most_influential_offspring-function' name='pyp_network.most_influential_offspring-function'><b>most_influential_offspring(pedgraph, anid, resolve='all')</b></a> &rArr; dictionary [<a href='#pyp_network.most_influential_offspring-function'>#</a>]</dt>
+<dd>
+<p>most_influential_offspring() returns the most influential offspring of an animal as measured by their number of offspring.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a networkx DiGraph.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The animal for whom the most influential offspring is to be found.</dd>
+<dt><i>resolve</i></dt>
+<dd>
+Indicates how ties should be handled ('first'|'last'|'all').</dd>
+<dt>Returns:</dt>
+<dd>
+The most influential offspring of anid.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.offspring_influence-function' name='pyp_network.offspring_influence-function'><b>offspring_influence(pedgraph, anid)</b></a> &rArr; dictionary [<a href='#pyp_network.offspring_influence-function'>#</a>]</dt>
+<dd>
+<p>offspring_influence() returns the number of grand-children by each child of a given animal.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+An instance of a networkx DiGraph.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The animal for whom grand-progeny are to be counted.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of counts of progeny per child.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_network.ped_to_graph-function' name='pyp_network.ped_to_graph-function'><b>ped_to_graph(pedobj, oid=0)</b></a> &rArr; graph [<a href='#pyp_network.ped_to_graph-function'>#</a>]</dt>
+<dd>
+<p>ped_to_graph() Takes a PyPedal pedigree object and returns a networkx XDiGraph
+object.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>oid</i></dt>
+<dd>
+Flag indicating if original (1) or renumbered (0) IDs should be used.</dd>
+<dt>Returns:</dt>
+<dd>
+DiGraph object</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>

@@ -1,0 +1,40 @@
+pyp\_demog\index[func]{pyp_demog} contains a set of procedures for demographic calculations on the population describe in a pedigree.
+\subsection*{Module Contents}
+
+\begin{description}
+\item[\textbf{age\_distribution(pedobj, sex=1)} $\Rightarrow$ None]\index[func]{pyp_demog!age\_distribution()}
+age\_distribution() computes histograms of the age distribution of males and females in the population. You can also stratify by sex to get individual histograms.
+\begin{description}
+\item[\emph{myped}] An instance of a PyPedal NewPedigree object.
+\item[\emph{sex}] A flag which determines whether or not to stratify by sex.
+\end{description}
+
+\item[\textbf{founders\_by\_year(pedobj)} $\Rightarrow$ dictionary]\index[func]{pyp_demog!founders\_by\_year()}
+founders\_by\_year() returns a dictionary containing the number of founders in each birthyear.
+\begin{description}
+\item[\emph{pedobj}] A PyPedal pedigree object.
+\item[Returns:] dict A dictionary containing entries for each sex/gender code defined in the global SEX\_CODE\_MAP.
+\end{description}
+
+\item[\textbf{set\_age\_units(units='year')} $\Rightarrow$ None]\index[func]{pyp_demog!set\_age\_units()}
+set\_age\_units() defines a global variable, BASE\_DEMOGRAPHIC\_UNIT.
+\begin{description}
+\item[\emph{units}] The base unit for age computations ('year'|'month'|'day').
+\item[Returns:] None
+\end{description}
+
+\item[\textbf{set\_base\_year(year=1950)} $\Rightarrow$ None]\index[func]{pyp_demog!age\_distribution()}
+set\_base\_year() defines a global variable, BASE\_DEMOGRAPHIC\_YEAR.
+\begin{description}
+\item[\emph{year}] The year to be used as a base for computing ages.
+\item[Returns:] None
+\end{description}
+
+\item[\textbf{sex\_ratio(pedobj)} $\Rightarrow$ dictionary]\index[func]{pyp_demog!sex\_ratio()}
+sex\_ratio() returns a dictionary containing the proportion of males and females in the population.
+\begin{description}
+\item[\emph{myped}] An instance of a PyPedal NewPedigree object.
+\item[Returns:] dict A dictionary containing entries for each sex/gender code defined in the global SEX\_CODE\_MAP.
+\end{description}
+
+\end{description}

@@ -1,0 +1,14 @@
+# Made-up pedigree for testing generation intervals code.
+1 0 0 1900 f
+2 0 0 1900 m
+3 0 0 1900 f
+6 2 1 1910 m
+7 2 3 1910 m
+4 0 0 1910 f
+5 0 0 1910 f
+8 6 4 1920 f
+9 6 4 1920 m
+10 6 4 1930 f
+11 7 5 1930 m
+12 7 5 1930 f
+13 7 5 1930 f

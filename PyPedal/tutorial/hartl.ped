@@ -1,0 +1,18 @@
+# Great tit pedigree from Hartl and Clark (1989), figure 5, p. 242.
+# Used in PyPedal tutorial.
+% asd
+1 0 0
+2 0 0
+3 0 0
+4 1 2
+5 1 2
+6 3 4
+7 3 4
+8 5 0
+9 0 6
+10 7 0
+11 8 0
+12 9 11
+13 7 12
+14 10 11
+15 13 14

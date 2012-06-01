@@ -1,0 +1,2399 @@
+# FILE: tests/lacy/lacy_gene_drop.out
+# Results from 250-round PyPedal gene-drop simulation.
+================================================================================
+Allele frequency data from gene drop simulation, round 1
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 2
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 3
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 4
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 5
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 6
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 7
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 8
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 9
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 10
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 11
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 12
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 13
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 14
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 15
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 16
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 17
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 18
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 19
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 20
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 21
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 22
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 23
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 24
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 25
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 26
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 27
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 28
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 29
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 30
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 31
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 32
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 33
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 34
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 35
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 36
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 37
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 38
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 39
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 40
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 41
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 42
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 43
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 44
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 45
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 46
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 47
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 48
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 49
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 50
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 51
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 52
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 53
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 54
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 55
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 56
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 57
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 58
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 59
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 60
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 61
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 62
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 63
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 64
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 65
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 66
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 67
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 68
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 69
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 70
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 71
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 72
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 73
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 74
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 75
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 76
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 77
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 78
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 79
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 80
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 81
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 82
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 83
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 84
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 85
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 86
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 87
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 88
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 89
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 90
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 91
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 92
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 93
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 94
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 95
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 96
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 97
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 98
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 99
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 100
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 101
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 102
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 103
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 104
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 105
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 106
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 107
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 108
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 109
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 110
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 111
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 112
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 113
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 114
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 115
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 116
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 117
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 118
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 119
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 120
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 121
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 122
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 123
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 124
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 125
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 126
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 127
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 128
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 129
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 130
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 131
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 132
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 133
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 134
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 135
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 136
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 137
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 138
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 139
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 140
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 141
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 142
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 143
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 144
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 145
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 146
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 147
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 148
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 149
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 150
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 151
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 152
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 153
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 154
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 155
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 156
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 157
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 158
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 159
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 160
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 161
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 162
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 163
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 164
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 165
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 166
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 167
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 168
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 169
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 170
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 171
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 172
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 173
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 174
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 175
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 176
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.33333333333
+================================================================================
+Allele frequency data from gene drop simulation, round 177
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 178
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 179
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 180
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 181
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 182
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 183
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 184
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 185
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 186
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 187
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 188
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 189
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 190
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 191
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 192
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 193
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 194
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 195
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 196
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 197
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 198
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 199
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 200
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 201
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 202
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 203
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 204
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 205
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 206
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 207
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 208
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 209
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 210
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 211
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 212
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 213
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 214
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 215
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 216
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 217
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 218
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 219
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 220
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 221
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 222
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 223
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 224
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 225
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.5 (0.25)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 226
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.25 (0.0625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 227
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 228
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 229
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 230
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 231
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 232
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 233
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 234
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 235
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 236
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 237
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.5 (0.25)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 238
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 239
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.66666666667
+================================================================================
+Allele frequency data from gene drop simulation, round 240
+	Number of distinct alleles: 3
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 241
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 242
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.25 (0.0625)
+		Allele 1900000000000000021__2:	0.25 (0.0625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 243
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.25 (0.0625)
+		Allele 1900000000000000011__1:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.77777777778
+================================================================================
+Allele frequency data from gene drop simulation, round 244
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 245
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 246
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.5 (0.25)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.25 (0.0625)
+	Effective number of founder genomes: 1.45454545455
+================================================================================
+Allele frequency data from gene drop simulation, round 247
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__2:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+================================================================================
+Allele frequency data from gene drop simulation, round 248
+	Number of distinct alleles: 6
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__2:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.125 (0.015625)
+	Effective number of founder genomes: 2.28571428571
+================================================================================
+Allele frequency data from gene drop simulation, round 249
+	Number of distinct alleles: 5
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.25 (0.0625)
+		Allele 1900000000000000011__2:	0.125 (0.015625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 2.0
+================================================================================
+Allele frequency data from gene drop simulation, round 250
+	Number of distinct alleles: 4
+	Number of alleles in latest generation: 8
+		Allele 1900000000000000031__2:	0.125 (0.015625)
+		Allele 1900000000000000011__1:	0.375 (0.140625)
+		Allele 1900000000000000031__1:	0.125 (0.015625)
+		Allele 1900000000000000021__1:	0.375 (0.140625)
+	Effective number of founder genomes: 1.6
+********************************************************************************
+Summary statistics from 250-round gene-drop simulation
+	Number of distinct founder alleles: 6
+	Mean allele count in latest generation: 8.0
+	Mean number of distinct alleles in latest generation: 4.536
+	Frequency of distinct alleles sampled:
+		Allele 1900000000000000031__2:	0.1315 (0.01729225)
+		Allele 1900000000000000011__1:	0.185 (0.034225)
+		Allele 1900000000000000011__2:	0.1915 (0.03667225)
+		Allele 1900000000000000031__1:	0.1185 (0.01404225)
+		Allele 1900000000000000021__2:	0.183 (0.033489)
+		Allele 1900000000000000021__1:	0.1905 (0.03629025)
+	Mean effective number of founder genomes: 1.7867570632

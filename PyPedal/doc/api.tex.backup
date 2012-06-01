@@ -1,0 +1,60 @@
+\chapter{API}
+\label{cha:api}
+\begin{quote}
+This chapter provides an overview of the \PYPEDAL{} Application Programming Interface (API).  More simply, it is a reference to the various classes, methods, and procedures that make up the \PYPEDAL{} module.
+\end{quote}
+\section{Some Background}
+A complete list of the core \PyPedal() modules is presented in Table \ref{tbl:pypedal-modules}.  Using the \PyPedal{} API is quite simple.  The following discussion assumes that you have imported each of the Python modules using, e.g.,  \samp{from PyPedal import pyp_utils} rather than \samp{from PyPedal.pyp_utils import *}.  The latter is poor style and can result in namespace pollution; this is not known to be a problem with \PyPedal{}, but I offer no guarantees that this will remain the case.  In order to access a function in the \module{pyp_utils} module, such as \function{pyp_nice_time()}, you use a dotted notation with a '.' separating the module name and the function name.  For example:
+\begin{verbatim}
+[jcole@aipl440 jcole]$ python
+Python 2.4 (#1, Feb 25 2005, 12:30:11)
+[GCC 3.3.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from PyPedal import pyp_utils
+>>> pyp_utils.pyp_nice_time()
+'Mon Aug 15 16:27:38 2005'
+\end{verbatim}
+\begin{center}
+    \begin{table}
+        \caption{PyPedal modules.}
+        \label{tbl:pypedal-modules}
+        \centerline{
+        \begin{tabular}{llp{4in}}
+            \hline
+            Module Name & Description \\
+            \hline
+            pyp\_db & \parbox[t]{4in}{Working with SQLite relational databases: create databases, add/drop tables, load PyPedal pedigrees into tables.} \\
+            pyp\_demog & \parbox[t]{4in}{Generate demographic reports, age distributions, for the pedigreed population.} \\
+            pyp\_graphics & \parbox[t]{4in}{Visualize pedigrees and numerator relationship matrices (NRM).} \\
+            pyp\_io & \parbox[t]{4in}{Save and load NRM and inverses of NRM; write pedigrees to formats used by other packages.} \\
+            pyp\_metrics & \parbox[t]{4in}{Compute metrics on pedigrees: effective founder and ancestor numbers, effective number of founder genomes, pedigree completeness.  Tools for identifying related animals, calculating coefficients of inbreeding and relationship, and computing expected offspring inbreeding from matings.} \\
+            pyp\_network & \parbox[t]{4in}{Convert pedigrees directed graphs.} \\
+            pyp\_newclasses & \parbox[t]{4in}{Pedigree, animal, and metadata classes used by PyPedal.} \\
+            pyp\_nrm & \parbox[t]{4in}{Creating, decompose, and inverting NRM, and recurse through pedigrees.} \\
+            pyp\_reports & \parbox[t]{4in}{Create reports from pedigree database (loaded in pyp_db).} \\
+            pyp\_template & \parbox[t]{4in}{Template for developers to use when adding new features to \PyPedal{} (Chapter \ref{cha:newfeatures}).} \\
+            pyp\_utils & \parbox[t]{4in}{Load, reorder and renumber pedigrees; set flags in individual animal records; string and date-time tools.} \\
+            \hline
+        \end{tabular}}
+    \end{table}
+\end{center}
+\section{pyp\_db}
+\input{pyp-db}
+\section{pyp\_demog}
+%\input{pyp-demog}
+\section{pyp\_graphics}
+%\input{pyp-graphics}
+\section{pyp\_io}
+%\input{pyp-io}
+\section{pyp\_metrics}
+%\input{pyp-metrics}
+\section{pyp\_network}
+%\input{pyp-network}
+\section{pyp\_newclasses}
+%\input{pyp-newclasses}
+\section{pyp\_nrm}
+%\input{pyp-nrm}
+\section{pyp\_reports}
+%\input{pyp-reports}
+\section{pyp\_utils}
+%\input{pyp-utils}

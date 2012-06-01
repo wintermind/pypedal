@@ -1,0 +1,188 @@
+\par pyp\_gui provides a simple graphical user interface for PyPedal using the wxPython
+(http://www.wxpython.org/) and Wax (http://sourceforge.net/projects/waxgui) extensions.
+\subsection*{Module Contents}
+\begin{description}
+\item[\textbf{MainWindow(parent, id, title)} (class) [\#]
+]
+\par The MainFrame() class provides the main pyp\_gui interface.
+\par For more information about this class, see \textit{The MainWindow Class}.
+
+\end{description}
+\subsection*{The MainWindow Class}
+\begin{description}
+\item[\textbf{MainWindow(parent, id, title)} (class) [\#]
+]
+\par The MainFrame() class provides the main pyp\_gui interface.
+
+\item[\textbf{\_OpenFile(filename)} ⇒ None [\#]
+]
+\par \_OpenFile() actually loads a pedigree from a file.  Once the pedigree is
+loaded the pedigree metadata is written to the screen.
+\begin{description}
+\item[\textit{filename}
+]
+The pedigree file name.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnAbout(event)} ⇒ None [\#]
+]
+\par OnAbout() produces an "about this application" dialogue box.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnAppExit(event)} ⇒ None [\#]
+]
+\par OnAppExit() produces a "do you really want to exit this application" dialogue box.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnFileOpenDialog(event)} ⇒ None [\#]
+]
+\par OnFileOpenDialog() produces the file dialog used to select a pedigree file to be opened.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnGraphInbreed(event)} ⇒ None [\#]
+]
+\par OnGraphInbreed() produces a "do you really want to exit this application" dialogue box.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnMetricsEffectiveFounders(event)} ⇒ None [\#]
+]
+\par OnMetricsEffectiveFounders() writes effective founders information to the
+main textbox.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnMetricsInbreeding(event)} ⇒ None [\#]
+]
+\par OnMetricsInbreeding() writes summary statistics for inbreeding to the main textbox.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnPedList(event)} ⇒ None [\#]
+]
+\par OnPedList() presents a list of the animals in the pedigree.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnPedMeta(event)} ⇒ None [\#]
+]
+\par OnPedMeta() produces the file dialog used when a pedigree file is to be saved.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnPedView(event)} ⇒ None [\#]
+]
+\par OnPedView() uses pydot and graphviz to produce a drawing of the pedigree,
+if they are installed.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{OnSettingsViewLog(event)} ⇒ None [\#]
+]
+\par OnSettingsViewLog() dumps the logfile to a window.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{Save(event)} ⇒ None [\#]
+]
+\par Save() produces the file dialog used when a pedigree file is to be saved.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{SetFilename(filename)} ⇒ None [\#]
+]
+\par SetFilename() writes the name of the opened pedigree file to the statusbar.
+\begin{description}
+\item[\textit{filename}
+]
+The pedigree file name.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{ToDo(event)} ⇒ None [\#]
+]
+\par ToDo() produces a "this feature has not yet been implemented" dialogue box.
+\begin{description}
+\item[\textit{event}
+]
+The type of event causing invocation of this method.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\end{description}

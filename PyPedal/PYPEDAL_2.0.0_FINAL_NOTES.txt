@@ -1,0 +1,20 @@
+###############################################################################
+# NAME: PYPEDAL_2.0.0_FINAL_NOTES
+# VERSION: 2.0.0a8 (30AUGUST2004)
+# AUTHOR: John B. Cole, PhD (jcole@aipl.arsusda.gov)
+# LICENSE: LGPL
+###############################################################################
+# PYPEDAL_2.0.0_FINAL_NOTES contains notes for working out where I want to go with the
+# new class structure and how I want to interact with the program.
+###############################################################################
+
+> import pyp_newclasses
+...
+> myped = pyp_newclasses.NewPedigree()
+...
+> myped.load(source='examples/firstped.ped'.format='asd'.title='A simple test pedigree',messages='verbose')
+Trying to load "A simple test pedigree" from the file "examples/firstped.ped"...
+	...opened file "examples/firstped.ped" for reading
+	...read 33 records from imput file
+	...closed file "examples/firstped.ped"
+>

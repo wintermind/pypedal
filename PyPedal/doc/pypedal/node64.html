@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node65.html" />
+<link rel="prev" href="node63.html" />
+<link rel="parent" href="node58.html" />
+<link rel="next" href="node65.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>6.3 The PedigreeMetadata Class</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="6.2 The NewPedigree Class"
+  href="node63.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="6. Using PyPedal Objects"
+  href="node58.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="6.4 The NewAMatrix Class"
+  href="node65.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node63.html">6.2 The NewPedigree Class</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node58.html">6. Using PyPedal Objects</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node65.html">6.4 The NewAMatrix Class</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION046300000000000000000"></A>
+<A NAME="sec:objects-metadata-objects"></A><a id='l2h-65' xml:id='l2h-65'></a>
+<BR>
+6.3 The PedigreeMetadata Class
+</H1>
+The <tt class="class">PedigreeMetadata</tt> class stores metadata about pedigrees. This helps improve performance in some procedures, and also makes it easy to access useful summary data. Metadata are collected when the pedigree is loaded and accessed by many PyPedal routines.
+<DIV ALIGN="CENTER">
+Attributes of <tt class="class">PedigreeMetadata</tt> objects.
+    Attribute &amp; Default &amp; Description 
+<BR>
+
+    
+    <A NAME="tbl:objects-metadata-attributes"></A>    <BR>
+<IMG
+ WIDTH="567" HEIGHT="307" ALIGN="BOTTOM" BORDER="0"
+ SRC="img25.png"
+ ALT="\begin{xtabular}{l\vert l\vert p{4in}}
+name &amp; \texttt{pedname} &amp; Name assigned ...
+...erd_list &amp; $[]$\ &amp; List of the unique herds in the pedigree. \\
+\end{xtabular}">
+<BR>
+</DIV>
+Metadata are gathered furing the pedigree loading process, but after load-time renumbering has occured (if requested). When a pedigree is renumbered after it has been loaded the unique sire, dam, and founders lists are not updated to contain the renumbere IDs. The metadata may be updated by instantiating a new <tt class="class">PedigreeMetadata</tt> object and using it to replace the original metadata:
+<div class="verbatim"><pre>
+example.metadata = PedigreeMetadata(example.pedigree,example.kw)
+</pre></div>
+Alternatively, ID maps (Section <A HREF="node68.html#sec:methodology-id-mapping">7.2</A>) may be used to produce expected lists of animals.
+
+<P>
+The methods of <tt class="class">PedigreeMetadata</tt> objects are listed in Table <A HREF="#tbl:objects-metadata-methods">6.10</A>. The couting methods (<tt class="function">nud</tt>, <tt class="function">nuf</tt>, etc.) return two values each, a count and a list, and new couting methods may easily be added.
+<DIV ALIGN="CENTER">
+Methods of <tt class="class">PedigreeMetadata</tt> objects.
+    Method &amp; Description 
+<BR>
+
+    
+    <A NAME="tbl:objects-metadata-methods"></A>    <BR>
+<IMG
+ WIDTH="541" HEIGHT="345" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.png"
+ ALT="\begin{xtabular}{l\vert p{4in}}
+\_\_init\_\_ &amp; Initializes and returns a \class...
+...a stored in the \class{PedigreeMetadata} object as a string. \\
+\end{xtabular}">
+<BR>
+</DIV>
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="6.2 The NewPedigree Class"
+  href="node63.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="6. Using PyPedal Objects"
+  href="node58.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="6.4 The NewAMatrix Class"
+  href="node65.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node63.html">6.2 The NewPedigree Class</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node58.html">6. Using PyPedal Objects</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node65.html">6.4 The NewAMatrix Class</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>
