@@ -12,6 +12,11 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
++++ 06/02/2012  Started working on the __add__() method for NewPedigree
+    objects.
+''' 06/02/2012  Fixed a few places in NewPedigree::__init__() where the logging
+    module was being called incorrectly, e.g., log.info was used instead of
+    logging.info.
 ### 05/17/2012  It looks like the algorithm of Sargolzaei et al.
     (2005) is a fair bit faster than the Meuwissen & Luo and
     modified M & L methods, but it also looks tricky to code, so
@@ -30,7 +35,7 @@ CHANGES in PyPedal 2.0.4 (Vetinari)
     The code is in pyp_nrm/inbreeding_meuwissen_luo(), and you use it
     by passing "method='meu_luo'" to pyp_nrm/inbreeding(). This
     method does NOT compute coefficients of relationship! I'm going
-    see Theo [Meuwissen] next week, but that's really just a coincidence. 
+    see Theo [Meuwissen] next week, but that's really just a coincidence.
 ''' 05/15/2012  Some refactoring of the code in pyp_nrm/fast_a_matrix()
     resulted in a performance improvement of about 2x, although your
     mileage may vary.

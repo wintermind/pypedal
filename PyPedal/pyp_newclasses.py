@@ -93,7 +93,7 @@ class NewPedigree:
         else:
             if not kw.has_key('pedfile'): raise PyPedalPedigreeInputFileNameError
         if not kw.has_key('pedformat'): kw['pedformat'] = 'asd'
-	if not kw.has_key('has_header'): kw['has_header'] = 0
+        if not kw.has_key('has_header'): kw['has_header'] = 0
         if not kw.has_key('pedname'): kw['pedname'] = 'Untitled'
         if not kw.has_key('messages'): kw['messages'] = 'verbose'
         if not kw.has_key('renumber'): kw['renumber'] = 1
@@ -157,10 +157,10 @@ class NewPedigree:
         if not kw.has_key('database_passwd'): kw['database_passwd'] = 'anonymous'
         if not kw.has_key('database_port'): kw['database_port'] = ''
         if not kw.has_key('database_sql'): kw['database_sql'] = 'SELECT * FROM %s'
-	# This keyword is used by pyp_nrm/fast_a_matrix() to determine if the diagonals
-	# of the relationship matrix should be augmented by founder coefficients of
-	# inbreeding or not. This is disabled by default.
-	if not kw.has_key('foundercoi'): kw['foundercoi'] = 0
+        # This keyword is used by pyp_nrm/fast_a_matrix() to determine if the diagonals
+        # of the relationship matrix should be augmented by founder coefficients of
+        # inbreeding or not. This is disabled by default.
+        if not kw.has_key('foundercoi'): kw['foundercoi'] = 0
         if kw['foundercoi'] not in [0, 1]: kw['foundercoi'] = 0
         # If the user provides a paper size make sure that it is a supported value.
         # Right now, only a4 and letter are supported.  Note that 'a4' is silently
@@ -197,10 +197,13 @@ class NewPedigree:
         ### on purpose so that people won't break things with it.
         if not kw.has_key('newanimal_caller'): kw['newanimal_caller'] = 'loader'
 
-	### Options related to traits.
-	if not kw.has_key('trait_names'): kw['trait_names'] = []
-	if not kw.has_key('trait_auto_name'): kw['trait_auto_name'] = 1
-	if not kw.has_keys('trait_count'): kw['trait_count'] = 0
+        ### Options related to traits
+        if not kw.has_key('trait_names'): kw['trait_names'] = []
+        if not kw.has_key('trait_auto_name'): kw['trait_auto_name'] = 1
+        if not kw.has_key('trait_count'): kw['trait_count'] = 0
+
+        # We need a match rule to use with the __add__() method.
+        if not kw.has_key('match_rule'): kw['match_rule'] = 'asd'
 
         # Now that we have processed all of the arguments in the options dictionary
         # we need to attach it to this object.
@@ -214,14 +217,14 @@ class NewPedigree:
         self.backmap = {}                          # Used to map between renumbered and original IDs.
         self.namemap = {}                           # This is needed to map IDs to names when IDs are read using the string formats (ASD).
         self.backmap = {}
-	self.namebackmap = {}
+        self.namebackmap = {}
         self.stringmap = {}                         # Maps original IDs to names in ASD pedigrees
         # Maybe these will go in a configuration file later
         self.starline = '*'*80
-	# This is the list of valid pedformat codes
+        # This is the list of valid pedformat codes
         self.pedformat_codes = ['a','s','d','g','x','b','f','r','n','y','l','e','p','A','S','D','L','Z','h','H','u']
-	# This dictionary maps pedformat codes to NewAnimal attributes
-	self.new_animal_attr = {
+        # This dictionary maps pedformat codes to NewAnimal attributes
+        self.new_animal_attr = {
 		'a': 'animalID',
 		's': 'sireID',
 		'd': 'damID',
@@ -261,10 +264,51 @@ class NewPedigree:
             kw['log_ped_lines'] = int(kw['log_ped_lines'])
         except ValueError:
             kw['log_ped_lines'] = 0
-            log.warning('An incorrect value (%s) was provided for the option log_ped_lines, which must be a number greater than or equal 0.  It has been set to 0.', _lpl)
+            logging.warning('An incorrect value (%s) was provided for the option log_ped_lines, which must be a number greater than or equal 0.  It has been set to 0.', _lpl)
         if  kw['log_ped_lines'] < 0:
             kw['log_ped_lines'] = 0
-            log.warning('A negative value (%s) was provided for the option log_ped_lines, which must be greater than or equal 0.  It has been set to 0.', kw['log_ped_lines'])
+            logging.warning('A negative value (%s) was provided for the option log_ped_lines, which must be greater than or equal 0.  It has been set to 0.', kw['log_ped_lines'])
+
+    ##
+    # Method to add two pedigree and return a new pedigree representing the
+    # merged pedigrees.
+    def __add__(self,other):
+        """
+        Method to add two pedigree and return a new pedigree representing the
+        merged pedigrees.
+        """
+        #if self.__class__.__name__ == 'NewPedigree':
+        #    print 'self is a NewPedigree object'
+        #if other.__class__.__name__ == 'NewPedigree':
+        #    print 'other is a NewPedigree object'
+        if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
+            logging.info('Adding pedigrees %s qnd %s', self.kw['pedname'], \
+                other.kw['pedname'] )
+            print 'self and other both are NewPedigree objects. We can start combining them'
+            print 'Using match rule: %s' % ( self.kw['match_rule'])
+            # We need to compare each animal in self and other to see if they
+            # match based on the match_rule.
+            for a in self.pedigree:
+                for b in other.pedigree:
+                    print 'Comparing animal %s in a and animal %s in b' % \
+                        ( a.animalID, b.animalID )
+                    for match in self.kw['match_rule']:
+                        print 'First match criterion: %s (%s)' % \
+                            ( match, self.kw['new_animal_attr'][match] )
+                        if getattr(a, self.kw['new_animal_attr'][match]) == \
+                            getattr(b, self.kw['new_animal_attr'][match]):
+                            print '%s == %s' % ( \
+                                getattr(a, self.kw['new_animal_attr'][match]), \
+                                getattr(b, self.kw['new_animal_attr'][match]) )
+                        else:
+                            print '%s != %s' % ( \
+                                getattr(a, self.kw['new_animal_attr'][match]), \
+                                getattr(b, self.kw['new_animal_attr'][match]) )
+            # Once we have matches, we are going to write a new pedigree file to disc,
+            # and we will load that file to get the new pedigree.
+        else:
+            logging.error('Cannot complete __add__() operation becuase types do not match.')
+            return NotImplemented
 
     ##
     # load() wraps several processes useful for loading and preparing a pedigree for
