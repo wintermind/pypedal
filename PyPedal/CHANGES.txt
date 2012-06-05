@@ -12,6 +12,19 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+''' 06/05/2012  Did more work on NewPedigree::__add__(). It seems as though it
+    works, at least for simple cases. I think that the comparison code needs to
+    be reworked a little so that original IDs are used to make comparisons when
+    renumbered pedigrees are used. That is, we need to compare the "true"
+    attributes of NewAnimals to determine if they're the same or different.
+''' 06/05/2012  Modified NewPedigree::save() to take three new arguments,
+    append, write_list, and originalID, to support the merge functionality in
+    NewPedigree::__add__(). If append is True then the output file is opened in
+    append mode rather than write mode. If write_list is provided, it specifies
+    what animal records should be written to the output files. By default, it
+    is False and all animals are saved. If originalID is True, which is the case
+    when it is called from __add__(), the original IDs are used when a merged
+    pedigree is written to a file.
 +++ 06/02/2012  Started working on the __add__() method for NewPedigree
     objects.
 ''' 06/02/2012  Fixed a few places in NewPedigree::__init__() where the logging

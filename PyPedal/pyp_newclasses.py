@@ -272,7 +272,7 @@ class NewPedigree:
     ##
     # Method to add two pedigree and return a new pedigree representing the
     # merged pedigrees.
-    def __add__(self,other):
+    def __add__(self, other, filename=False, debugLoad=False):
         """
         Method to add two pedigree and return a new pedigree representing the
         merged pedigrees.
@@ -282,30 +282,92 @@ class NewPedigree:
         #if other.__class__.__name__ == 'NewPedigree':
         #    print 'other is a NewPedigree object'
         if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
-            logging.info('Adding pedigrees %s qnd %s', self.kw['pedname'], \
+            logging.info('Adding pedigrees %s and %s', self.kw['pedname'], \
                 other.kw['pedname'] )
-            print 'self and other both are NewPedigree objects. We can start combining them'
-            print 'Using match rule: %s' % ( self.kw['match_rule'])
+            #print 'self and other both are NewPedigree objects. We can start combining them'
+            #print 'Using match rule: %s' % ( self.kw['match_rule'])
+            logging.info('Using match rule %s to merge pedigrees', \
+                self.kw['match_rule'] )
             # We need to compare each animal in self and other to see if they
             # match based on the match_rule.
+
+            # We're going to use a dictionary to keep track of which animals
+            # need to be written to the new pedigree file from which the merged
+            # pedigree will be loaded. By default, I assume that all animal
+            # records are unique, and only change the ped_to_write flag  when a
+            # duplicate has been detected.
+            #
+            # NOTE: It's nagging at me that there may be a logic error in the
+            # checking and flagging, so this code needs to be thoroughly tested!
+            ped_to_write = {'a': {}, 'b': {}}
             for a in self.pedigree:
+                ped_to_write['a'][a.animalID] = True
                 for b in other.pedigree:
-                    print 'Comparing animal %s in a and animal %s in b' % \
-                        ( a.animalID, b.animalID )
+                    ped_to_write['b'][b.animalID] = True
+                    #print 'Comparing animal %s in a and animal %s in b' % \
+                    #    ( a.animalID, b.animalID )
                     for match in self.kw['match_rule']:
-                        print 'First match criterion: %s (%s)' % \
-                            ( match, self.kw['new_animal_attr'][match] )
-                        if getattr(a, self.kw['new_animal_attr'][match]) == \
-                            getattr(b, self.kw['new_animal_attr'][match]):
-                            print '%s == %s' % ( \
-                                getattr(a, self.kw['new_animal_attr'][match]), \
-                                getattr(b, self.kw['new_animal_attr'][match]) )
+                        #print 'First match criterion: %s (%s)' % \
+                        #    ( match, self.new_animal_attr[match] )
+                        if getattr(a, self.new_animal_attr[match]) == \
+                            getattr(b, self.new_animal_attr[match]):
+                            #print '%s == %s' % ( \
+                            #    getattr(a, self.new_animal_attr[match]), \
+                            #    getattr(b, self.new_animal_attr[match]) )
+
+                            # If the two animals are the same based on the
+                            # match rule, then we only need to write one of
+                            # them to the pedigree file.
+                            ped_to_write['b'][b.animalID] = False
                         else:
-                            print '%s != %s' % ( \
-                                getattr(a, self.kw['new_animal_attr'][match]), \
-                                getattr(b, self.kw['new_animal_attr'][match]) )
-            # Once we have matches, we are going to write a new pedigree file to disc,
-            # and we will load that file to get the new pedigree.
+                            #print '%s != %s' % ( \
+                            #    getattr(a, self.new_animal_attr[match]), \
+                            #    getattr(b, self.new_animal_attr[match]) )
+                            pass
+            # Once we have matches, we are going to write a new pedigree
+            # file to disc, and we will load that file to get the new
+            # pedigree.
+            #
+            # First, save the unique animals from the union of pedigrees a and
+            # b based on the match rule. Note that the pedformat from the first
+            # pedigree passed to __add__() will be used for both pedigrees. This
+            # makes sense because you cannot have two different pedformats in
+            # the same file.
+            if filename == False:
+                filename = '%s_%s.ped' % ( self.kw['pedname'], \
+                other.kw['pedname'] )
+                print '[INFO]: filename = %s' % ( filename )
+            self.save(filename=filename, write_list=ped_to_write['a'], \
+                pedformat=self.kw['pedformat'], originalID=True)
+            other.save(filename=filename, write_list=ped_to_write['b'], \
+                pedformat=self.kw['pedformat'], originalID=True, append=True )
+            # Now we need to load the new pedigree and return it. This should be
+            # dead easy.
+            #
+            # Create the options dictionary
+            merged_pedname = 'Merged Pedigree: %s + %s' % \
+                ( self.kw['pedname'], other.kw['pedname'] )
+            new_options = {}
+            new_options['messages'] = self.kw['messages']
+            new_options['pedname'] = merged_pedname
+            new_options['renumber'] = 1
+            new_options['pedfile'] = filename
+            new_options['pedformat'] = self.kw['pedformat']
+            # Load the new pedigree and return it.
+            try:
+                new_pedigree = loadPedigree(new_options, debugLoad=True)
+                if self.kw['messages'] == 'verbose':
+                    print '[INFO]: Loaded merged pedigree %s from file %s!' % \
+                        ( merged_pedname, filename )
+                logging.info('Cannot complete __add__() operation becuase types do not match.')
+                return new_pedigree
+            except:
+                if self.kw['messages'] == 'verbose':
+                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
+                        ( merged_pedname, filename )
+                logging.error('Could not load merged pedigree %s from file %s!', \
+                    merged_pedname, filename)
+                return False
         else:
             logging.error('Cannot complete __add__() operation becuase types do not match.')
             return NotImplemented
@@ -667,27 +729,31 @@ class NewPedigree:
     # @param filename The file to which the pedigree should be written.
     # @param pedformat Pedigree format string for the pedigree to be written.
     # @param sepchar Character used to separate columns in the output pedigree file.
+    # @param append Append animal records to an existing file instead of creating a new one.
+    # @param write_list Optional list of animal records to save. The default is to save all animals.
+    # @param originalID save original IDs or renumbered IDs.
     # @retval A save status indicator (0: failed, 1: success)
-    def save(self, filename='', pedformat='asd', sepchar = ' '):
+    def save(self, filename='', pedformat='asd', sepchar = ' ', append=False, \
+        write_list=False, originalID=False):
         """
         save() writes a PyPedal pedigree to a user-specified file.  The saved pedigree
         includes all fields recognized by PyPedal, not just the original fields read
         from the input pedigree file.
         """
-	# Check the contents of the pedformat to make sure that each entry is valid. Save the pedformat passed in by the user
-	# and add the valid entries a new version of pedformat which will be used for the remainder of the processing.
-	pedformat_in = str(pedformat)
-	pedformat = ''
-	for pf in pedformat_in:
-		if pf in self.pedformat_codes:
-			pedformat = '%s%s' % ( pedformat, pf )
-		else:
-			if self.kw['messages'] == 'verbose':
-		                print '[WARNING]: Invalid pedigree format code, %s, in NewPedigree::save(). Not included in pedformat_ckd.' % ( pf )
-			logging.warning('Invalid pedigree format code, %s, in NewPedigree::save(). Not included in pedformat_ckd.', pf)
+        # Check the contents of the pedformat to make sure that each entry is valid. Save the pedformat passed in by the user
+        # and add the valid entries a new version of pedformat which will be used for the remainder of the processing.
+        pedformat_in = str(pedformat)
+        pedformat = ''
+        for pf in pedformat_in:
+            if pf in self.pedformat_codes:
+                pedformat = '%s%s' % ( pedformat, pf )
+            else:
+                if self.kw['messages'] == 'verbose':
+                    print '[WARNING]: Invalid pedigree format code, %s, in NewPedigree::save(). Not included in pedformat_ckd.' % ( pf )
+                logging.warning('Invalid pedigree format code, %s, in NewPedigree::save(). Not included in pedformat_ckd.', pf)
         # Warn the user if they are not outputting incomplete information (e.g., animals without sires or dams).
-	if ( 'ASD' not in pedformat ) and ( 'asd' not in pedformat ):
-	    if self.kw['messages'] == 'verbose':
+        if ( 'ASD' not in pedformat ) and ( 'asd' not in pedformat ):
+            if self.kw['messages'] == 'verbose':
                 print '[WARNING]: The pedigree format code, %s, does not contain the sequence \'asd\' or \'ASD\', and the resulting pedigree may have incomplete parentage information.' % ( pedformat )
             logging.warning('The pedigree format code, %s, does not contain the sequence \'asd\' or \'ASD\', and the resulting pedigree may have incomplete parentage information.', pedformat)
         # Check the sepchar to make sure that the fields aren't run all together
@@ -705,10 +771,16 @@ class NewPedigree:
                 print '[WARNING]: Saving pedigree to file %s to avoid overwriting %s.' % ( filename, self.kw['pedfile'] )
             logging.warning('Saving pedigree to file %s to avoid overwriting %s.',filename,self.kw['pedfile'])
         try:
-            ofh = file(filename,'w')
-            if self.kw['messages'] == 'verbose':
-                print '[INFO]: Opened file %s for pedigree save at %s.' % ( filename, pyp_utils.pyp_nice_time() )
-            logging.info('Opened file %s for pedigree save at %s.',filename, pyp_utils.pyp_nice_time())
+            if append == False:
+                ofh = file(filename,'w')
+                if self.kw['messages'] == 'verbose':
+                    print '[INFO]: Opened file %s for pedigree save at %s.' % ( filename, pyp_utils.pyp_nice_time() )
+                logging.info('Opened file %s for pedigree save at %s.',filename, pyp_utils.pyp_nice_time())
+            else:
+                ofh = file(filename,'a')
+                if self.kw['messages'] == 'verbose':
+                    print '[INFO]: Opened file %s for pedigree save in append mode at %s.' % ( filename, pyp_utils.pyp_nice_time() )
+                logging.info('Opened file %s for pedigree save in append mode at %s.',filename, pyp_utils.pyp_nice_time())
 
             # Let the user know which pedigree format code is being used.
             if self.kw['messages'] == 'verbose':
@@ -716,28 +788,49 @@ class NewPedigree:
             logging.info('Pedigree format code %s being used to write pedigree file %s in NewPedigree::save().', pedformat, filename)
 
             # Write file header.
-            ofh.write('# %s created by PyPedal at %s\n' % ( filename, pyp_utils.pyp_nice_time() ) )
-            ofh.write('# Current pedigree metadata:\n')
-            ofh.write('#\tpedigree file: %s\n' % (filename) )
-            ofh.write('#\tpedigree name: %s\n' % (self.kw['pedname']) )
-            ofh.write('#\tpedigree format: %s\n' % (pedformat) )
-            if self.kw['pedigree_is_renumbered'] == 1:
-                ofh.write('#\tNOTE: Animal, sire, and dam IDs are RENUMBERED IDs, not original IDs!\n')
-            ofh.write('# Original pedigree metadata:\n')
-            ofh.write('#\tpedigree file: %s\n' % (self.kw['pedfile']))
-            ofh.write('#\tpedigree name: %s\n' % (self.kw['pedname']))
-            ofh.write('#\tpedigree format: %s\n' % (self.kw['pedformat']))
+            if append == True:
+                ofh.write('# %s created by PyPedal at %s\n' % ( filename, pyp_utils.pyp_nice_time() ) )
+                ofh.write('# Current pedigree metadata:\n')
+                ofh.write('#\tpedigree file: %s\n' % (filename) )
+                ofh.write('#\tpedigree name: %s\n' % (self.kw['pedname']) )
+                ofh.write('#\tpedigree format: %s\n' % (pedformat) )
+                if self.kw['pedigree_is_renumbered'] == 1:
+                    ofh.write('#\tNOTE: Animal, sire, and dam IDs are RENUMBERED IDs, not original IDs!\n')
+                ofh.write('# Original pedigree metadata:\n')
+                ofh.write('#\tpedigree file: %s\n' % (self.kw['pedfile']))
+                ofh.write('#\tpedigree name: %s\n' % (self.kw['pedname']))
+                ofh.write('#\tpedigree format: %s\n' % (self.kw['pedformat']))
             for _a in self.pedigree:
-                _outstring = ''
-                for pf in pedformat:
-                    value = getattr(_a, self.new_animal_attr[pf])
-                    # If we don't catch the special case of the first entry in an output line the a sepchar always will be the
-                    # first character in the line.
-                    if len(_outstring) > 0:
-                        _outstring = '%s%s%s' % ( _outstring, sepchar, value )
-                    else:
-                        _outstring = '%s' % ( value )
-                ofh.write( '%s\n' % (_outstring) )
+                if write_list == False or write_list[_a.animalID] == True:
+                    _outstring = ''
+                    for pf in pedformat:
+                        if originalID == False:
+                            value = getattr(_a, self.new_animal_attr[pf])
+                        else:
+                            if pf in['a','A']:
+                                value = _a.originalID
+                            # This cascade may break if the pedigree is not
+                            # renumbered...
+                            elif pf in['s','S']:
+                                if _a.sireID != self.kw['missing_parent']:
+                                    value = self.pedigree[_a.sireID-1].originalID
+                                else:
+                                    value = 0
+                            elif pf in['d','D']:
+                                if _a.damID != self.kw['missing_parent']:
+                                    value = self.pedigree[_a.damID-1].originalID
+                                else:
+                                    value = 0
+                            else:
+                                value = getattr(_a, self.new_animal_attr[pf])
+                        # If we don't catch the special case of the first entry
+                        # in an output line the a sepchar always will be the
+                        # first character in the line.
+                        if len(_outstring) > 0:
+                            _outstring = '%s%s%s' % ( _outstring, sepchar, value )
+                        else:
+                            _outstring = '%s' % ( value )
+                    ofh.write( '%s\n' % (_outstring) )
             ofh.close()
             if self.kw['messages'] == 'verbose':
                 print '\t[INFO]: Closed file %s after pedigree save at %s.' % ( filename, pyp_utils.pyp_nice_time() )
