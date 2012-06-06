@@ -277,10 +277,6 @@ class NewPedigree:
         Method to add two pedigree and return a new pedigree representing the
         merged pedigrees.
         """
-        #if self.__class__.__name__ == 'NewPedigree':
-        #    print 'self is a NewPedigree object'
-        #if other.__class__.__name__ == 'NewPedigree':
-        #    print 'other is a NewPedigree object'
         if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
             logging.info('Adding pedigrees %s and %s', self.kw['pedname'], \
                 other.kw['pedname'] )
@@ -288,9 +284,16 @@ class NewPedigree:
             #print 'Using match rule: %s' % ( self.kw['match_rule'])
             logging.info('Using match rule %s to merge pedigrees', \
                 self.kw['match_rule'] )
+            # Pedigrees must be renumbered
+            if self.kw['pedigree_is_renumbered'] != 1:
+                self.renumber()
+                logging.info('Renumbering pedigree %s', self.kw['pedname'] )
+            if other.kw['pedigree_is_renumbered'] != 1:
+                other.renumber()
+                logging.info('Renumbering pedigree %s', other.kw['pedname'] )
             # We need to compare each animal in self and other to see if they
             # match based on the match_rule.
-
+            #
             # We're going to use a dictionary to keep track of which animals
             # need to be written to the new pedigree file from which the merged
             # pedigree will be loaded. By default, I assume that all animal
@@ -303,27 +306,45 @@ class NewPedigree:
             for a in self.pedigree:
                 ped_to_write['a'][a.animalID] = True
                 for b in other.pedigree:
-                    ped_to_write['b'][b.animalID] = True
+                    mismatches = 0		# Count places where the animals don't match
                     #print 'Comparing animal %s in a and animal %s in b' % \
                     #    ( a.animalID, b.animalID )
                     for match in self.kw['match_rule']:
                         #print 'First match criterion: %s (%s)' % \
                         #    ( match, self.new_animal_attr[match] )
-                        if getattr(a, self.new_animal_attr[match]) == \
+                        # If we're comparing animal IDs, make sure that we
+                        # compare original IDs, not renumbered IDs.
+                        if match in ['a','A']:
+                            if a.originalID != b.originalID:
+                                mismatches = mismatches + 1
+                        elif match in ['s','S']:
+                            if self.pedigree[a.sireID-1].originalID != \
+                                other.pedigree[b.sireID-1].originalID:
+                                mismatches = mismatches + 1
+                        elif match in ['d','D']:
+                            if self.pedigree[a.damID-1].originalID != \
+                                other.pedigree[b.damID-1].originalID:
+                                mismatches = mismatches + 1
+                        elif getattr(a, self.new_animal_attr[match]) != \
                             getattr(b, self.new_animal_attr[match]):
                             #print '%s == %s' % ( \
                             #    getattr(a, self.new_animal_attr[match]), \
                             #    getattr(b, self.new_animal_attr[match]) )
-
-                            # If the two animals are the same based on the
-                            # match rule, then we only need to write one of
-                            # them to the pedigree file.
-                            ped_to_write['b'][b.animalID] = False
+                            mismatches = mismatches + 1
                         else:
                             #print '%s != %s' % ( \
                             #    getattr(a, self.new_animal_attr[match]), \
                             #    getattr(b, self.new_animal_attr[match]) )
                             pass
+            # If there are no mismatches then the two animals are identical
+            # based on the match rule and only one of them needs to be written
+            # to the merged pedigree.
+            if ( mismatches == 0 ):
+                # Animals are identical
+                ped_to_write['b'][b.animalID] = False
+            else:
+                # Animals are different
+                ped_to_write['b'][b.animalID] = True
             # Once we have matches, we are going to write a new pedigree
             # file to disc, and we will load that file to get the new
             # pedigree.

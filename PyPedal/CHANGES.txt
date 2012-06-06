@@ -12,6 +12,14 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+### 06/06/2012  Need to check the new_merge.py script and pedigree files
+    into the git repository.
+''' 06/06/2012  Still more work on NewPedigree::__add__(). The method now
+    checkls to see if both pedigrees are renumbered, and does that if needed.
+    Animal, sire, and dam IDs are compared based on the originalID property of
+    the appropriate animals because what matters is whether or not the
+    original data match, not whether or not the renumbered information
+    matches.
 ''' 06/05/2012  Did more work on NewPedigree::__add__(). It seems as though it
     works, at least for simple cases. I think that the comparison code needs to
     be reworked a little so that original IDs are used to make comparisons when
