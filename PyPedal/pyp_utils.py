@@ -37,6 +37,7 @@
 #   founder_allele_dict()
 #   union()
 #   intersection()
+#   guess_pedformat()
 ###############################################################################
 
 ## @package pyp_utils
@@ -1287,3 +1288,69 @@ def union(pedobj_a, pedobj_b, filename=False):
 	else:
 		logging.error('Cannot complete union operation because types do not match.')
 		return NotImplemented
+
+##
+# guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided as
+# input based on the animal attributes as comapared to the default missing values for those attributes. I know
+# that you're wondering why we can't just use the pedformat that's in the pedigree options dictionary, and it's
+# because this is intended primarily for use with functions that take as input NewAnimal objects which may come
+# from different pedigrees with different pedformats. Note that the logic of guess_pedformat() depends entirely
+# on the single NewAnimal passed as input. If you make a judicious (read: lucky) choice, then you can feel pretty
+# good about the result. Otherwise, you may want to call guess_pedformat() several times with different inputs
+# to develop a consensus pedformat.
+# @param animal A NewAnimal instance.
+# @param ped_kw The kw dictionary from a NewPedigree object.
+# @retval A string containing the best-guess pedformat, or False.
+def guess_pedformat(animal, ped_kw):
+	"""
+	guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided
+	as input based on the animal attributes as comapared to the default missing values for those attributes.
+	I know that you're wondering why we can't just use the pedformat that's in the pedigree options dictionary,
+	and it's because this is intended primarily for use with functions that take as input NewAnimal objects
+	which may come from different pedigrees with different pedformats. Note that the logic of guess_pedformat()
+	depends entirely on the single NewAnimal passed as input. If you make a judicious (read: lucky) choice, then
+	you can feel pretty good about the result. Otherwise, you may want to call guess_pedformat() several times
+	with different inputs to develop a consensus pedformat.
+	"""
+	if animal.__class__.__name__ == 'NewAnimal':
+		# Loop over each NewAnimal attribute and check to see if it's been assigned a
+		# missing value. 
+		pedformat = ''
+		# The following code differentiates between 'asd' and 'ASD' formats. Recall
+		# that a pedigree must be 'asd' or 'ASD', you can't mix types of animal,
+		# sire, and dam names. Consequently, we only need to figure out if the
+		# animal ID was originally a string or an integer.
+		if isinstance(animal.originalID, int):
+			pedformat = 'asd'
+		elif isinstance(animal.originalID, str):
+			pedformat = 'ASD'
+		else:
+			logging.error('pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!')
+			if ped_kw['messages'] == 'verbose':
+				print '[ERROR]: pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!'
+			return False
+		# Now figure out other attributes.
+		if animal.bd != ped_kw['missing_bdate']: pedformat.append('b')
+		if animal.by != ped_kw['missing_byear']: pedformat.append('y')
+		if animal.name != ped_kw['missing_name']: pedformat.append('n')
+		if animal.breed != ped_kw['missing_nreed']: pedformat.append('r')
+		if animal.herd != ped_kw['missing_herd']: pedformat.append('H')
+		if animal.sex != ped_kw['missing_sex']: pedformat.appenx('x')
+		if animal.fa != ped_kw['missing_inbreeding']: pedformat.append('f')
+		if animal.alive != ped_kw['missing_alive']: pedformat.append('l')
+		if animal.age != ped_kw['missing_age']: pedformat.append('e')
+		if animal.gen != ped_kw['missing_gen']: pedformat.append('g')
+		if animal.gencoeff != ped_kw['missing_gencoeff']: pedformat.append('p')
+		if animal.alleles != ped_kw['missing_alleles']: pedformat.append('L')
+		if animal.userField != ped_kw['missing_userfield']: pedformat.append('u')
+		# Let the user know what's going on (at the top of my lungs).
+		logging.info('The best-guess pedformat is: \'%s\'', pedformat)
+		if ped_kw['messages'] == 'verbose':
+			print '[INFO]: The best-guess pedformat is: \'%s\'' % (pedformat)
+		return pedformat
+	else:
+		logging.error('You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!')
+		if ped_kw['messages'] == 'verbose':
+			print '[ERROR]: You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!'
+
+		return False

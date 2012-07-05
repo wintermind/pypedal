@@ -112,6 +112,7 @@ class NewPedigree:
         if not kw.has_key('alleles_sepchar'): kw['alleles_sepchar'] = '/'
         if not kw.has_key('counter'): kw['counter'] = 1000
         if not kw.has_key('slow_reorder'): kw['slow_reorder'] = 1
+	# Default missing values for NewAnimal objects.
         if not kw.has_key('missing_bdate'): kw['missing_bdate'] = '01011900'
         if not kw.has_key('missing_byear'): kw['missing_byear'] = 1900
         if not kw.has_key('missing_parent'): kw['missing_parent'] = 0
@@ -119,6 +120,16 @@ class NewPedigree:
         if not kw.has_key('missing_breed'): kw['missing_breed'] = 'Unknown_Breed'
         if not kw.has_key('missing_herd'): kw['missing_herd'] = 'Unknown_Herd'
         if not kw.has_key('missing_sex'): kw['missing_sex'] = 'u'
+	if not kw.has_key('missing_inbreeding'): kw['missing_inbreeding'] = 0.
+        if not kw.has_key('missing_alive'): kw['missing_alive'] = 0
+        if not kw.has_key('missing_age'): kw['missing_age'] = -999
+        if not kw.has_key('missing_gen'): kw['missing_gen'] = -999.
+        if not kw.has_key('missing_gencoeff'): kw['missing_gencoeff'] = -999.
+        if not kw.has_key('missing_igen'): kw['missing_igen'] = -999.
+        if not kw.has_key('missing_pedcomp'): kw['missing_pedcomp'] = -999.
+	if not kw.has_key('missing_alleles'): kw['missing_alleles'] = ['','']
+	if not kw.has_ley('missing_userfield'): kw['missing_userfield'] = ''
+	# End of default missing values for NewAnimal objects.
         if not kw.has_key('file_io'): kw['file_io'] = '1'
         if not kw.has_key('debug_messages'): kw['debug_messages'] = 0
         if not kw.has_key('form_nrm'): kw['form_nrm'] = 0
@@ -402,14 +413,19 @@ class NewPedigree:
     # @param pedsource Source of the pedigree ('file'|'graph'|'graphfile'|'db').
     # @param pedgraph DiGraph from which to load the pedigree.
     # @param pedstream Stream of text from which to load the pedigree.
+    # @param animallist Liost of NewAnimal objects from which to create a pedigree.
     # @retval None
-    def load(self, pedsource='file', pedgraph=0, pedstream=''):
+    def load(self, pedsource='file', pedgraph=0, pedstream='', animallist=False):
         """
         load() wraps several processes useful for loading and preparing a pedigree for
         use in an analysis, including reading the animals into a list of animal objects,
         forming lists of sires and dams, checking for common errors, setting ancestor
         flags, and renumbering the pedigree.
         """
+	# Check for valid values of pedsource
+	if pedsource not in ['file', 'db', 'graph', 'graphfile', 'null', 'animallist', 'gedcomfile', 'genesfile', 'textstream']:
+            logging.error('Unable to load pedigree because an invalid value of %s was provided for pedsource!', pedsource)
+            sys.exit(0)
 	# If the user has included traits in the pedigree file, we need to make sure that the
 	# names are properly handled.
 	if len(self.kw['trait_names']) > 0 and self.kw['trait_auto_name'] != 0:
@@ -488,6 +504,27 @@ class NewPedigree:
                     sys.exit(0)
             else:
                 logging.error('Unable to load pedigree from a directed graph stored in adjacency list format because no filename was provided!')
+                sys.exit(0)
+	# I want a way to create null (empty) pedigrees. Let's see what we can do...
+	elif pedsource == 'null':
+	    try:
+	        self.fromnull()
+	    except:
+                logging.error('Unable to create a null (empty) pedigree!')
+                sys.exit(0)
+	# I also want a way to create a pedigree based on a list of NewAnimal instances.
+        elif pedsource == 'animallist':
+	    if animallist and len(animallist) > 0:
+	        try:
+	            self.fromanimallist()
+	        except:
+                    logging.error('Unable to create a pedigree from an animallist!')
+                    sys.exit(0)
+            else:
+		if not animallist:
+                    logging.error('Unable to create a pedigree from an animal list because no list was provided!')
+		else:
+		    logging.error('Unable to create a pedigree from an animal list because an empty list was provided!') 
                 sys.exit(0)
         # The gedcomfile pedsource reads files that conform to the
         # GEDCOM 5.5 standard.
@@ -1022,9 +1059,9 @@ class NewPedigree:
         #print self.kw['pedformat']
         if not self.kw['pedformat']:
             self.kw['pedformat'] = 'asd'
-            logging.error('Null pedigree format string assigned a default value.')
+            logging.error('Null pedigree format string assigned a default value of %s.', self.kw['pedformat'])
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Null pedigree format string assigned a default value.'
+                print '[ERROR]: Null pedigree format string assigned a default value of %s.' % ( self.kw['pedformat'] )
         # This is where we check the format string to figure out what we have in the input file.
         # Check for valid characters...
         _pedformat = []
@@ -1429,8 +1466,51 @@ class NewPedigree:
                 logging.info('Added pedigree entry for animal %s' % (_n))
 
     ##
-    # tostream() creates a text stream from a pedigree.
+    # fromnull() creates a new pedigree with no animal records in it.
     # @param self Reference to current object
+    # @retval None
+    def fromnull(self):
+        """
+         fromnull() creates a new pedigree with no animal records in it.
+	"""
+	# Let's see if it's this easy!
+        logging.info('Created a null (empty) pedigree.')
+	return True
+
+
+    ##
+    # fromanimallist() populates a NewPedigree with instances of NewAnimal objects.
+    # @param self Reference to current object.
+    # @param animallist A list of instances of NewAnimals.
+    # @retval None
+    def fromanimallist(self, animallist):
+        """
+        fromanimallist() populates a NewPedigree with instances of NewAnimal objects.
+	"""
+	if len(animallist) > 0:
+            # There is a lingering issue here with the pedformat. Right now, it defaults to 'asd'
+            # regardless of what data are in the NewAnimal objects.
+            for an in animallist:
+                if an.__class__.__name__ == 'NewAnimal':		    
+                    self.pedigree.append(an)
+                    self.idmap[an.animalID] = an.animalID
+                    self.backmap[an.animalID] = an.animalID
+                    self.namemap[an.name] = an.animalID
+                    self.namebackmap[an.animalID] = an.name
+		else:
+                    logging.error('An entry in the animallist was not a NewAnimal object, skipping!')
+                if self.kw['debug_messages'] > 0:
+                    logging.info('Added pedigree entry for animal %s' % (animal.originalID))
+        else:
+            if self.kw['messages']:
+                print '[ERROR]: Could not create a pedigree from an empty animal list!'
+            logging.error('Could not create a pedigree from an empty animal list!')
+            return False
+
+
+    ##
+    # tostream() creates a text stream from a pedigree.
+    # @param self Reference to current object.
     # @retval None
     def tostream(self):
         """
@@ -2147,11 +2227,13 @@ class NewAnimal:
         if locations['generation'] != -999:
             self.gen = data[locations['generation']]
         else:
-            self.gen = -999
+            #self.gen = -999
+	    self.gen =  mykw['missing_gen']
         if locations['gencoeff'] != -999.:
             self.gencoeff = data[locations['gencoeff']]
         else:
-            self.gencoeff = -999.
+            #self.gencoeff = -999.
+            self.gencoeff =  mykw['missing_gencoeff']
         if locations['sex'] != -999:
             self.sex = string.strip(data[locations['sex']]).lower()
         else:
@@ -2171,7 +2253,8 @@ class NewAnimal:
         if locations['inbreeding'] != -999:
             self.fa = float(string.strip(data[locations['inbreeding']]))
         else:
-            self.fa = 0.
+            #self.fa = 0.
+	    self.fa =  mykw['missing_inbreeding']
         if locations['breed'] != -999:
             self.breed = string.strip(data[locations['breed']])
         else:
@@ -2179,11 +2262,13 @@ class NewAnimal:
         if locations['age'] != -999:
             self.age = int(string.strip(data[locations['age']]))
         else:
-            self.age = -999
+            #self.age = -999
+	    self.age =  mykw['missing_age']
         if locations['alive'] != -999:
             self.alive = int(string.strip(data[locations['alive']]))
         else:
-            self.alive = 0
+            #self.alive = 0
+	    self.alive =  mykw['missing_alive']
         if locations['herd'] != -999:
             if 'H' in mykw['pedformat']:
                 self.herd = self.string_to_int(data[locations['herd']])
@@ -2194,7 +2279,7 @@ class NewAnimal:
             self.herd = self.string_to_int(mykw['missing_herd'])
             self.originalHerd = mykw['missing_herd']
         self.renumberedID = -999
-        self.igen = -999
+	self.igen =  mykw['missing_igen']
         if str(self.sireID) == str(mykw['missing_parent']) and str(self.damID) == str(mykw['missing_parent']):
             self.founder = 'y'
         else:
@@ -2225,12 +2310,15 @@ class NewAnimal:
                 _allele_2 = '%s%s' % (self.paddedID,'__2')
                 self.alleles = [_allele_1,_allele_2]
             else:
-                self.alleles = ['','']
-        self.pedcomp = -999.9
+                #self.alleles = ['','']
+		self.alleles = mkyw['missing_alleles']
+        #self.pedcomp = -999.9
+	self.pedcomp =  mykw['missing_pedcomp']
         if locations['userfield'] != -999:
             self.userField = string.strip(data[locations['userfield']])
         else:
-            self.userField = ''
+            #self.userField = ''
+	    self.userField = mykw['missing_userfield']
         # print '%s\t%s\t%s' % (self.animalID, self.sireID, self.damID)
 
     ##

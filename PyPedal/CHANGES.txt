@@ -12,7 +12,30 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
-### 07/04.2012  Need to add an __equals__() method to NewAnimal objects.
+### 07/05/2012  There are a lot of documentation updates that need to be
+    from all of the changes listed as part of 2.0.4. Blame the fact that
+    I was far too ambitious in my EAAP 2012 abstract and don't want to
+    show up at the meeting with nothing implemented.
+### 07/05/2012  Modify pyp_utils/union() and pyp_utils/intersection() to
+    accept lists of pedigrees rather than just two pedigree arguments.
+    That way we can get really convoluted [sic] with the pedigree-mangling.
+### 07/05/2012  Once the new code for creating a pedigree from a list of
+    animal objects is working I can modify the NewPedigree::__add__(),
+    pyp_utils/union(), and pyp_utils/intersection() code to work with
+    either the write-to-disc-and-reload or in-memory methods.
++++ 07/05/2012  Added a new function, pyp_utils/guess_pedformat(), that
+    tries to guess the pedigree format code that best matches a NewAnimal
+    instance provided as input based on the animal attributes as comapared
+    to the default missing values for those attributes. The tricky part is
+    trying to figure out if a pedigree is 'asd' or 'ASD'.
++++ 07/05/2012  Added two new methods to NewPedigree, fromanimallist() and
+    fromnull(), which implement the 'animallist' and 'null' pedsources.
+''' 07/05/2012  Added two new supported values of the pedsource argument to
+    NewPedigree::load(): 'null' for creating empty pedigrees, and 'animallist'
+    for creating pedigrees from lists of NewAnimal instances.
+''' 07/05/2012  Added a new argument to NewPedigree::load(), animallist,
+    that will be used to create pedigrees using lists of NewAnimal instances.
+### 07/04/2012  Need to add an __equals__() method to NewAnimal objects.
     It would be very helpful in NewPedigree::__add__(), pyp_utils/union(),
     and pyp_utils/intersection().
 +++ 07/04/2012  Added pyp_io/save_newanimals_to_file() for writing lists
@@ -66,7 +89,7 @@ CHANGES in PyPedal 2.0.4 (Vetinari)
     calculations for large pedigrees should be substantially faster.
     The code is in pyp_nrm/inbreeding_meuwissen_luo(), and you use it
     by passing "method='meu_luo'" to pyp_nrm/inbreeding(). This
-    method does NOT compute coefficients of relationship! I'm going
+    method does NOT compute coefficients of relationship! I'm going to
     see Theo [Meuwissen] next week, but that's really just a coincidence.
 ''' 05/15/2012  Some refactoring of the code in pyp_nrm/fast_a_matrix()
     resulted in a performance improvement of about 2x, although your
