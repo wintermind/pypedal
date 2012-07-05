@@ -12,7 +12,18 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
-### 06/06/2012  Need to check the new_merge.py script and pedigree files
+### 07/04.2012  Need to add an __equals__() method to NewAnimal objects.
+    It would be very helpful in NewPedigree::__add__(), pyp_utils/union(),
+    and pyp_utils/intersection().
++++ 07/04/2012  Added pyp_io/save_newanimals_to_file() for writing lists
+    of NewAnimal instances to files.
++++ 07/04/2012  Added pyp_utils/intersection() for creating a new
+    pedigree that contains animals contained only in both imput pedigrees.
++++ 07/04/2012  Added pyp_utils/union() for creating a new pedigree that
+    contains all animals included in both input pedigrees. This is basically
+    a one-liner that is syntactic sugar around the __add__() method of
+    NewPedigree objects.
+''' 06/06/2012  The new_merge.py script and pedigree files were checked
     into the git repository.
 ''' 06/06/2012  Still more work on NewPedigree::__add__(). The method now
     checkls to see if both pedigrees are renumbered, and does that if needed.

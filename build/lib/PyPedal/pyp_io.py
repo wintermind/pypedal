@@ -27,7 +27,6 @@
 #   load_from_genes()
 #   save_from_genes()
 #   save_to_genes()
-#   save_newanimals_to_file()
 ###############################################################################
 
 ## @package pyp_io
@@ -1075,53 +1074,3 @@ def save_to_genes(pedobj, outfilename):
                 % ( outfilename )
         logging.error('Unable to export pedigree to the GENES file %s!',outfilename)
         return 0
-
-##
-# save_newanimals_to_file() take a list of PyPedal NewAnimal objects as input and writes them to a pedigree file.
-# @param animal_list A list of PyPedal NewAnimal bjects
-# @param filename The nae of the file t which the animals should be written
-# @param pedformat Pedigree format code for the output file
-def save_newanimals_to_file(animal_list, filename, pedformat, sepchar):
-	if len(animal_list) == 0:
-		pass
-	else:
-		# First, save the unique animals from the union of pedigrees a and
-		# b based on the match rule. Note that the pedformat from the first
-		# pedigree passed to __add__() will be used for both pedigrees. This
-		# makes sense because you cannot have two different pedformats in
-		# the same file.
-		try:
-			f = open(filename, 'w')
-			for animal in animal_list:
-				_outstring = ''
-				for pf in pedformat:
-					if originalID == False:
-						value = getattr(_a, self.new_animal_attr[pf])
-					else:
-						if pf in['a','A']:
-							value = _a.originalID
-					# This cascade may break if the pedigree is not
-					# renumbered...
-					elif pf in['s','S']:
-						if _a.sireID != self.kw['missing_parent']:
-							value = self.pedigree[_a.sireID-1].originalID
-						else:
-							value = 0
-					elif pf in['d','D']:
-						if _a.damID != self.kw['missing_parent']:
-							value = self.pedigree[_a.damID-1].originalID
-						else:
-							value = 0
-					else:
-						value = getattr(_a, self.new_animal_attr[pf])
-				# If we don't catch the special case of the first entry
-				# in an output line the a sepchar always will be the
-				# first character in the line.
-				if len(_outstring) > 0:
-					_outstring = '%s%s%s' % ( _outstring, sepchar, value )
-				else:
-					_outstring = '%s' % ( value )
-				ofh.write( '%s\n' % (_outstring) )
-			f.close()
-		except:
-			pass

@@ -270,7 +270,7 @@ class NewPedigree:
             logging.warning('A negative value (%s) was provided for the option log_ped_lines, which must be greater than or equal 0.  It has been set to 0.', kw['log_ped_lines'])
 
     ##
-    # Method to add two pedigrees and return a new pedigree representing the
+    # Method to add two pedigree and return a new pedigree representing the
     # merged pedigrees.
     def __add__(self, other, filename=False, debugLoad=False):
         """
