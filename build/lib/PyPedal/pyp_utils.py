@@ -35,6 +35,9 @@
 #   subpedigree()
 #   founders_from_list()
 #   founder_allele_dict()
+#   union()
+#   intersection()
+#   guess_pedformat()
 ###############################################################################
 
 ## @package pyp_utils
@@ -1137,3 +1140,224 @@ def founder_allele_freq(pedobj, anlist, allele_map, allele_mat, column):
     return allele_mat
     #except:
     #    return False
+
+##
+# intersection() returns a PyPedal pedigree object which contains the animals that are common to
+# both input pedigrees. If there are no animals in common between the two pedgrees, a value
+# of false is returned.
+# @param pedobj_a A PyPedal pedigree.
+# @param pedobj_b Another PyPedal pedigree.
+# @param filename The file to which the new pedigree should be written
+# @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
+def intersection(pedobj_a, pedobj_b, filename=False):
+	"""
+	intersection() returns a PyPedal pedigree object which contains the animals that are common to
+	both input pedigrees. If there are no animals in common between the two pedgrees, a value
+	of false is returned.
+	"""
+	if pedobj_a.__class__.__name__ == 'NewPedigree' and pedobj_b.__class__.__name__ == 'NewPedigree':
+		logging.info('Computing intersection of pedigrees %s and %s', pedobj_a.kw['pedname'], pedobj_b.kw['pedname'])
+		logging.info('Using match rule %s to compare pedigrees', pedobj_a.kw['match_rule'])
+		# Pedigrees must be renumbered
+		if pedobj_a.kw['pedigree_is_renumbered'] != 1:
+			pedobj_a.renumber()
+			logging.info('Renumbering pedigree %s', pedobj_a.kw['pedname'])
+		if pedobj_b.kw['pedigree_is_renumbered'] != 1:
+                	pedobj_b.renumber()
+                	logging.info('Renumbering pedigree %s', pedobj_b.kw['pedname'])
+            	# We need to compare each animal in self and other to see if they
+            	# match based on the match_rule.
+            	#
+            	# We're going to use a dictionary to keep track of which animals
+            	# need to be written to the new pedigree file from which the merged
+            	# pedigree will be loaded. By default, I assume that all animal
+            	# records are unique, and only change the ped_to_write flag  when a
+            	# duplicate has been detected.
+            	#
+            	# NOTE: It's nagging at me that there may be a logic error in the
+            	# checking and flagging, so this code needs to be thoroughly tested!
+		animals_to_write = []
+            	for a in pedobj_a.pedigree:
+                	for b in pedobj_b.pedigree:
+                		matches = 0		# Count places where the animals match
+                    		#print 'Comparing animal %s in a and animal %s in b' % \
+                    		#    ( a.animalID, b.animalID )
+                    		for match in pedobj_a.kw['match_rule']:
+                        		#print 'First match criterion: %s (%s)' % \
+                        		#    ( match, self.new_animal_attr[match] )
+                        		# If we're comparing animal IDs, make sure that we
+                        		# compare original IDs, not renumbered IDs.
+                        		if match in ['a','A']:
+                            			if a.originalID == b.originalID:
+                                			matches = matches + 1
+                        		elif match in ['s','S']:
+                            			if pedobj_a.pedigree[a.sireID-1].originalID == \
+                                			pedobj_b.pedigree[b.sireID-1].originalID:
+                                			matches = matches + 1
+                        		elif match in ['d','D']:
+                            			if self.pedigree[a.damID-1].originalID == \
+                                			other.pedigree[b.damID-1].originalID:
+                                			matches = matches + 1
+                        		elif getattr(a, pedobj_a.new_animal_attr[match]) == \
+                            			getattr(b, pedobj_b.new_animal_attr[match]):
+                            			#print '%s == %s' % ( \
+                            			#    getattr(a, self.new_animal_attr[match]), \
+                            			#    getattr(b, self.new_animal_attr[match]) )
+                            			matches = matches + 1
+                        		else:
+                            			#print '%s != %s' % ( \
+                            			#    getattr(a, self.new_animal_attr[match]), \
+                            			#    getattr(b, self.new_animal_attr[match]) )
+                            			pass
+				# If there are no mismatches then the two animals are identical
+            			# based on the match rule and only one of them needs to be written
+            			# to the merged pedigree.
+            			if ( matches == len(pedobj_a.kw['match_rule']) ):
+            				# Animals are identical
+					animals_to_write.append(a)
+            	# Once we have matches, we are going to write a new pedigree
+            	# file to disc, and we will load that file to get the new
+            	# pedigree.
+            	#
+            	# First, save the unique animals from the union of pedigrees a and
+           	# b based on the match rule. Note that the pedformat from the first
+           	# pedigree passed to __add__() will be used for both pedigrees. This
+           	# makes sense because you cannot have two different pedformats in
+           	# the same file.
+		if filename == False:
+			filename = '%s_%s.ped' % ( pedobj_a.kw['pedname'], \
+				pedobj_b.kw['pedname'] )
+			print '[INFO]: filename = %s' % ( filename )
+		pyp_io.save_newanimals_to_file(animals_to_write, filename, pedobj_a.pedformat, \
+			pedobj_a.kw['sepchar'])
+		# Now we need to load the new pedigree and return it. This should be
+		# dead easy.
+		#
+		# Create the options dictionary
+		intersect_pedname = 'Intersected Pedigree: %s + %s' % \
+			( pedobj_a.kw['pedname'], pedobj_b.kw['pedname'] )
+		new_options = {}
+		new_options['messages'] = pedobj_a.kw['messages']
+		new_options['pedname'] = intersect_pedname
+		new_options['renumber'] = 1
+		new_options['pedfile'] = filename
+		new_options['pedformat'] = pedobj_a.kw['pedformat']
+		# Load the new pedigree and return it.
+		try:
+			new_pedigree = loadPedigree(new_options, debugLoad=True)
+			if pedobj_a.kw['messages'] == 'verbose':
+				print '[INFO]: Loaded merged pedigree %s from file %s!' % \
+					( merged_pedname, filename )
+			logging.info('Cannot complete intersection operation because types do not match.')
+			return new_pedigree
+		except:
+			if pedobj_a.kw['messages'] == 'verbose':
+				print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
+					( merged_pedname, filename )
+			logging.error('Could not load merged pedigree %s from file %s!', \
+				merged_pedname, filename)
+			return False
+	else:
+		logging.error('Cannot complete intersection operation because types do not match.')
+		return NotImplemented
+
+##
+# union() returns a PyPedal pedigree object which contains all animals included in both of the
+# input pedigrees.
+# @param pedobj_a A PyPedal pedigree.
+# @param pedobj_b Another PyPedal pedigree.
+# @param filename The file to which the new pedigree should be written
+# @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
+def union(pedobjs, filename=False):
+	if len(pedobjs) > 0:
+		logging.info('Computing union of %s pedigrees', len(pedobjs))
+		for p in range(len(pedobjs)):
+			if p == 0:
+				new_pedigree = pyp_newclasses.loadPedigree(pedsource='null')
+			if pedobjs[p].__class__.__name__ != 'NewPedigree':
+				logging.info('Pedigree %s in pyp_utils.union() is not a NewPedigree instance! Skippng.', p)
+			else:
+				logging.info('Using match rule %s to compare pedigrees', pedobj_a.kw['match_rule'])
+				# Pedigrees must be renumbered
+				if p > 0:
+					if new_pedigree.kw['pedigree_is_renumbered'] != 1:
+						new_pedigree.renumber()
+						logging.info('Renumbering pedigree %s', new_pedigree.kw['pedname'])
+					if pedobjs[p].kw['pedigree_is_renumbered'] != 1:
+                				pedobjs[p].renumber()
+                				logging.info('Renumbering pedigree %s', pedobjs[p].kw['pedname'])
+				try:
+					new_pedigree = new_pedigree + pedobjs[p]
+					return new_pedigree
+				except:
+					logging.error('Could not compute union of input pedigrees.')
+					return False
+	else:
+		logging.error('Cannot complete union operation because types do not match.')
+		return NotImplemented
+
+##
+# guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided as
+# input based on the animal attributes as comapared to the default missing values for those attributes. I know
+# that you're wondering why we can't just use the pedformat that's in the pedigree options dictionary, and it's
+# because this is intended primarily for use with functions that take as input NewAnimal objects which may come
+# from different pedigrees with different pedformats. Note that the logic of guess_pedformat() depends entirely
+# on the single NewAnimal passed as input. If you make a judicious (read: lucky) choice, then you can feel pretty
+# good about the result. Otherwise, you may want to call guess_pedformat() several times with different inputs
+# to develop a consensus pedformat.
+# @param animal A NewAnimal instance.
+# @param ped_kw The kw dictionary from a NewPedigree object.
+# @retval A string containing the best-guess pedformat, or False.
+def guess_pedformat(animal, ped_kw):
+	"""
+	guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided
+	as input based on the animal attributes as comapared to the default missing values for those attributes.
+	I know that you're wondering why we can't just use the pedformat that's in the pedigree options dictionary,
+	and it's because this is intended primarily for use with functions that take as input NewAnimal objects
+	which may come from different pedigrees with different pedformats. Note that the logic of guess_pedformat()
+	depends entirely on the single NewAnimal passed as input. If you make a judicious (read: lucky) choice, then
+	you can feel pretty good about the result. Otherwise, you may want to call guess_pedformat() several times
+	with different inputs to develop a consensus pedformat.
+	"""
+	if animal.__class__.__name__ == 'NewAnimal':
+		# Loop over each NewAnimal attribute and check to see if it's been assigned a
+		# missing value. 
+		pedformat = ''
+		# The following code differentiates between 'asd' and 'ASD' formats. Recall
+		# that a pedigree must be 'asd' or 'ASD', you can't mix types of animal,
+		# sire, and dam names. Consequently, we only need to figure out if the
+		# animal ID was originally a string or an integer.
+		if isinstance(animal.originalID, int):
+			pedformat = 'asd'
+		elif isinstance(animal.originalID, str):
+			pedformat = 'ASD'
+		else:
+			logging.error('pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!')
+			if ped_kw['messages'] == 'verbose':
+				print '[ERROR]: pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!'
+			return False
+		# Now figure out other attributes.
+		if animal.bd != ped_kw['missing_bdate']: pedformat.append('b')
+		if animal.by != ped_kw['missing_byear']: pedformat.append('y')
+		if animal.name != ped_kw['missing_name']: pedformat.append('n')
+		if animal.breed != ped_kw['missing_nreed']: pedformat.append('r')
+		if animal.herd != ped_kw['missing_herd']: pedformat.append('H')
+		if animal.sex != ped_kw['missing_sex']: pedformat.appenx('x')
+		if animal.fa != ped_kw['missing_inbreeding']: pedformat.append('f')
+		if animal.alive != ped_kw['missing_alive']: pedformat.append('l')
+		if animal.age != ped_kw['missing_age']: pedformat.append('e')
+		if animal.gen != ped_kw['missing_gen']: pedformat.append('g')
+		if animal.gencoeff != ped_kw['missing_gencoeff']: pedformat.append('p')
+		if animal.alleles != ped_kw['missing_alleles']: pedformat.append('L')
+		if animal.userField != ped_kw['missing_userfield']: pedformat.append('u')
+		# Let the user know what's going on (at the top of my lungs).
+		logging.info('The best-guess pedformat is: \'%s\'', pedformat)
+		if ped_kw['messages'] == 'verbose':
+			print '[INFO]: The best-guess pedformat is: \'%s\'' % (pedformat)
+		return pedformat
+	else:
+		logging.error('You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!')
+		if ped_kw['messages'] == 'verbose':
+			print '[ERROR]: You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!'
+
+		return False

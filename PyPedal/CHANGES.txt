@@ -12,6 +12,21 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+--- 07/05/2012  pyp_utils.intersection() is currently broken as I
+    migrate to list-based input.
+XXX 07/05/2012  Removed the unused tail_recursive decorator from
+    pyp_newclasses.
++++ 07/05/2012  Added a new method, NewPedigree::__sub__(), for
+    subtracting the animals in one pedigree from another, or,
+    A - B = A - (A \cap B).
+''' 07/05/2012  NewPedigree::fromanimallist() now uses pyp_utils/
+    pedformat_guesser() to figure out the pedformat for the new
+    pedigree.
+''' 07/05/2012  Changed pyp_utils.union() to work with an input list of
+    pedigrees, rather than only two NewPedigrees.
+''' 07/05/2012  Lots of new missing_ keywords in NewPedigree that are used
+    when creating NewAnimal objects. I feel like that's not really where
+    they belong, but what're you gonna do?
 ### 07/05/2012  There are a lot of documentation updates that need to be
     from all of the changes listed as part of 2.0.4. Blame the fact that
     I was far too ambitious in my EAAP 2012 abstract and don't want to
@@ -25,7 +40,7 @@ CHANGES in PyPedal 2.0.4 (Vetinari)
     either the write-to-disc-and-reload or in-memory methods.
 +++ 07/05/2012  Added a new function, pyp_utils/guess_pedformat(), that
     tries to guess the pedigree format code that best matches a NewAnimal
-    instance provided as input based on the animal attributes as comapared
+    instance provided as input based on the animal attributes as compared
     to the default missing values for those attributes. The tricky part is
     trying to figure out if a pedigree is 'asd' or 'ASD'.
 +++ 07/05/2012  Added two new methods to NewPedigree, fromanimallist() and

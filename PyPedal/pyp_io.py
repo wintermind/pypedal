@@ -1100,20 +1100,20 @@ def save_newanimals_to_file(animal_list, filename, pedformat, sepchar):
 					else:
 						if pf in['a','A']:
 							value = _a.originalID
-					# This cascade may break if the pedigree is not
-					# renumbered...
-					elif pf in['s','S']:
-						if _a.sireID != self.kw['missing_parent']:
-							value = self.pedigree[_a.sireID-1].originalID
+						# This cascade may break if the pedigree is not
+						# renumbered...
+						elif pf in['s','S']:
+							if _a.sireID != self.kw['missing_parent']:
+								value = self.pedigree[_a.sireID-1].originalID
+							else:
+								value = 0
+						elif pf in['d','D']:
+							if _a.damID != self.kw['missing_parent']:
+								value = self.pedigree[_a.damID-1].originalID
+							else:
+								value = 0
 						else:
-							value = 0
-					elif pf in['d','D']:
-						if _a.damID != self.kw['missing_parent']:
-							value = self.pedigree[_a.damID-1].originalID
-						else:
-							value = 0
-					else:
-						value = getattr(_a, self.new_animal_attr[pf])
+							value = getattr(_a, self.new_animal_attr[pf])
 				# If we don't catch the special case of the first entry
 				# in an output line the a sepchar always will be the
 				# first character in the line.
