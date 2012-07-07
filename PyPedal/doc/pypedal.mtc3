@@ -1,9 +1,0 @@
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.1}Overview of installation}{\reset@font\mtcSfont 9}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.2}Testing the Python installation}{\reset@font\mtcSfont 10}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.3}Installing PyPedal}{\reset@font\mtcSfont 10}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.3.1}Installing on Unix, Linux, and Mac OSX}{\reset@font\mtcSSfont 10}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.3.2}Installing on Windows}{\reset@font\mtcSSfont 11}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Installation from source}{\reset@font\mtcSSSfont 11}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Installation from self-installing executable}{\reset@font\mtcSSSfont 11}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Installation on Cygwin}{\reset@font\mtcSSSfont 11}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.4}Testing the PyPedal Python Extension Installation}{\reset@font\mtcSfont 11}}
