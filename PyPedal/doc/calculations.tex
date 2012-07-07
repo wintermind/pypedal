@@ -4,7 +4,7 @@
  Are you quite sure that all those bells and whistles, all those wonderful facilities of your so called powerful programming languages, belong to the solution set rather than the problem set? --- Edsger Dijkstra
 \end{quote}
 \section{Overview}\label{sec:computing-overview}\index{working with pedigrees}
-In Chapter \ref{cha:inputoutput} tou learned how to get your pedigree data loaded into \PyPedal{}. This chapter will show you what you can do with the pedigree once it is loaded. The examples in this chapter assumes that you are working with a reordered and renumbered pedigree (see Section \ref{sec:methodology-reordering-and-renumbering} for additional details).
+In Chapter \ref{cha:inputoutput} you learned how to get your pedigree data loaded into \PyPedal{}. This chapter will show you what you can do with the pedigree once it is loaded. The examples in this chapter assumes that you are working with a reordered and renumbered pedigree (see Section \ref{sec:methodology-reordering-and-renumbering} for additional details).
 
 In order to get the most out of your pedigrees you need to understand the basic structure of a \PyPedal{} pedigree, which consists of two components: the pedigree itself, which is composed of a list of \class{NewAnimal} objects, and metadata, which is data about the animals contained in the pedigree. Some calculations are performed on the animal records directly, while others use the metadata, or some combination of the two. The fundamental goal of \PyPedal{} is to provide the user with tools for asking questions about their pedigrees.
 
@@ -56,7 +56,7 @@ print 'reln: ', reln
 \end{verbatim}
 The dictionary of relationship metadata returned by \function{inbreeding()} also contains statistics for zero and non-zero coefficients of relationship. On the example presented above the pedigree contains 
 
-Relationship metadata are not guaranteed to be correct when \samp{method =     'vanraden'} is used. This is because \function{inbreeding_vanraden()} uses a speed-up when there are full-sibs in the pedigree to avoid repeating calculations. The metadata should be reasonably accurate for pedigrees with few or no full-sibs. The summary statistics will not be very accurate in the case of pedigrees that contain lots of full-sibs.
+Relationship metadata are not guaranteed to be correct when \samp{method = 'vanraden'} is used. This is because \function{inbreeding_vanraden()} uses a speed-up when there are full-sibs in the pedigree to avoid repeating calculations. The metadata should be reasonably accurate for pedigrees with few or no full-sibs. The summary statistics will not be very accurate in the case of pedigrees that contain lots of full-sibs.
 
 The relationship metadata do not include individual pairwise relationships. In order to associate those with your pedigree you must create a \class{NewAMatrix} object, form the numerator relationship matrix (NRM), and attach it to the pedigree:
 \begin{verbatim}
@@ -90,7 +90,7 @@ If you want to inspect the NRM you can use \samp{example.nrm.printme()} to print
  [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5  1.   0.5 ]
  [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5  1.  ]]
 \end{verbatim}
-If you want to get the pairwise relationship between two animals you need to use their renumbered IDs and subtract 1 (because the array is zero-indexed). For example, if you wanted the coeffient of relationship between animals 2 and 5 (an individual and its sire) you would use the indices \samp{1} and \samp{4}:
+If you want to get the pairwise relationship between two animals you need to use their renumbered IDs and subtract 1 (because the array is zero-indexed). For example, if you wanted the coefficient of relationship between animals 2 and 5 (an individual and its sire) you would use the indices \samp{1} and \samp{4}:
 \begin{verbatim}
 print example.nrm.nrm[1][4]
 >>> 0.5
@@ -123,7 +123,7 @@ If you're from Missouri you can verify that the contents of \samp{Amatrix.txt} a
 0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  0.5  0.5  0.5  0.5  1.0  0.5
 0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  0.5  0.5  0.5  0.5  0.5  1.0
 \end{verbatim}
-Information on the endianess and precision of the data in the array are lost, so this is not a good way to archive data or move data between machines with different endianess. The data are always written in C (row major) order. For better performance you can set the \samp{nrm\_format} option to \samp{binary}, which will use a binary file formt.
+Information on the endianness and precision of the data in the array are lost, so this is not a good way to archive data or move data between machines with different endianness. The data are always written in C (row major) order. For better performance you can set the \samp{nrm\_format} option to \samp{binary}, which will use a binary file form.
 
 Finally, if you're going to work on the exact same pedigree later you can load \samp{Amatrix.txt} and avoid having to recalculate the NRM entirely:
 \begin{verbatim}
@@ -186,7 +186,7 @@ Results are returned as lists:
 \begin{verbatim}
 [1, 2, 5]
 \end{verbatim}
-If you've already obtained ancestor lists for a given pair of animals in which you're interested you can also obtain a list of common ancestors using Python sets, which avoids performing calcualtions more than needed:
+If you've already obtained ancestor lists for a given pair of animals in which you're interested you can also obtain a list of common ancestors using Python sets, which avoids performing calculations more than needed:
 \begin{verbatim}
 >>> set_a = set(list_a)
 >>> set_b = set(list_b)
@@ -211,7 +211,7 @@ However, it is improtant to note that you will not get the answer you expect unl
  4: {6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14}}
 \end{verbatim}
 \section{Decomposition and Direct Inverses of Numerator Relationship Matrices}\label{sec:computing-decomposition}\index{numerator relationship matrix!decomposition}\index{numerator relationship matrix!direct inverses}
-\PyPedal{} provides routines in the \method{pyp_nrm} module for decomposing and forming direct inverses of numerator relationship matrices (NRM). The NRM, $A$, may be written as $A=TDT'$, where $T$ is a lower triangular matrix and $D$ is a diagonal matrix \cite{ref143,ref1060}. $T$ traces the flow of genes from one generation to another, while $D$ provides varianced and covariances of Mendelian sampling. Mrode \citeyear{ref224} presents a more detailed discussion of this decomposition. The examples in this section all use the pedigree presented in Table 2.1 of that work, which is contained in the file \samp{examples/new_decompose.ped}:
+\PyPedal{} provides routines in the \method{pyp_nrm} module for decomposing and forming direct inverses of numerator relationship matrices (NRM). The NRM, $A$, may be written as $A=TDT'$, where $T$ is a lower triangular matrix and $D$ is a diagonal matrix \cite{ref143,ref1060}. $T$ traces the flow of genes from one generation to another, while $D$ provides variances and covariances of Mendelian sampling. Mrode \citeyear{ref224} presents a more detailed discussion of this decomposition. The examples in this section all use the pedigree presented in Table 2.1 of that work, which is contained in the file \samp{examples/new_decompose.ped}:
 \begin{verbatim}
 # Pedigree from Table 2.1 of
 # Mrode (1996)
@@ -274,7 +274,7 @@ print '======================'
 Ainv = pyp_nrm.a_inverse_df(example)
 print 'Ainv: ', Ainv
 \end{verbatim}
-You will note that the numbers in this matric are slightly different from those in the previous example. Those differences are due to the inbreeding in the pedigree, which was not accounted for by \function{a_inverse_dnf()}.
+You will note that the numbers in this matrix are slightly different from those in the previous example. Those differences are due to the inbreeding in the pedigree, which was not accounted for by \function{a_inverse_dnf()}.
 \begin{verbatim}
 Calling a_inverse_df()
 ======================
@@ -343,11 +343,47 @@ produces the result
 \begin{verbatim}
 Calling form_d_nof()
 ====================
-D:  [[ 1.    0.    0.    0.    0.    0.  ]
- [ 0.    1.    0.    0.    0.    0.  ]
- [ 0.    0.    0.5   0.    0.    0.  ]
- [ 0.    0.    0.    0.75  0.    0.  ]
- [ 0.    0.    0.    0.    0.5   0.  ]
- [ 0.    0.    0.    0.    0.    0.5 ]]
+D:  [[ 1.    0.    0.    0.      0.    0.   ]
+       [ 0.    1.    0.    0.      0.    0.   ]
+       [ 0.    0.    0.5  0.      0.    0.   ]
+       [ 0.    0.    0.    0.75  0.    0.   ]
+       [ 0.    0.    0.    0.      0.5   0.  ]
+       [ 0.    0.    0.    0.      0.    0.5 ]]
 \end{verbatim}
 which may be verified against the values of $D$ presented above.
+
+\section{Pedigrees as Sets}\label{sec:pedigrees-as-sets}\index{working with pedigrees!pedigrees as sets}
+As of version 2.0.4, PyPedal has new tools for working with pedigrees by treating them as mathematical sets
+of animals. This makes it easy to do things like merge pedigrees, or remove a subset of animals from a pedigree.
+Formally, we can think of a pedigree, $P$, as a set of $n$ animals denoted $a_1, a_2, \ldots, a_n$. Two animals,
+$a_i$ and $a_j$, are related iff $a_i, a_j \in P$. Two pedigrees, $P$ and $Q$, may then be merged by taking the
+union of the two sets, $R = P \cup Q$, using the \method{NewPedigree::union()} method or
+\function{pyp\_utils.llist\_union()} functions. Similarly, a subset of animals, $Q$, can be "subtracted" from a larger
+pedigree, $P$, as $R = P - Q = P - (P \cap Q)$.\footnote{Stated here without proof is the assertion that if you begin
+a null pedigree, that is, $P = \varnothing$, all possible pedigrees can be constructed using only unions ($\cap$)
+and intersections ($\cap$) of $P$ with individual animals.}
+
+A pair of pedigrees also can be merged using the \method{NewPedigree::\_\_add\_\_()} method, which provides an
+"addition" operator for \class{NewPedigree} instances, as shown in the following code:
+\begin{verbatim}
+    options = {}
+    options['pedname'] = 'Fake Pedigree 1'
+    options['renumber'] = 1
+    options['pedfile'] = 'merge1.ped'
+    options['pedformat'] = 'asd'
+    merge1 = pyp_newclasses.loadPedigree(options)
+
+    options2 = {}
+    options2['pedname'] = 'Fake Pedigree 2'
+    options2['renumber'] = 1
+    options2['pedfile'] = 'merge2.ped'
+    options2['pedformat'] = 'asd'
+    merge2 = pyp_newclasses.loadPedigree(options2)
+
+    merge3 = merge1 + merge2
+\end{verbatim}
+The \method{NewPedigree::\_\_sub\_\_()} method also provide a "subtraction" operator for subtracting the animals in
+one pedigree from another, as described above.
+
+Note that the \function{pyp\_utils.list\_union()} method takes advantage of the fact that $A \cap B \cap \ldots \cap Y \cap Z$
+can be factorized as $(A \cap (B \cap (\ldots \cap (Y \cap Z))))$.

@@ -1,92 +1,92 @@
 <tex2html_file>#./installation.tex#
-\chapter<<332>>Installing PyPedal<<332>>\label<<333>>cha:installation<<333>>\index<<334>>installation<<334>>
-\begin<<335>>quote<<335>>
-This chapter explains how to install and test PyPedal<<336>><<336>> under Posix-type operating systems and Microsoft Windows.
-\end<<337>>quote<<337>>
-\section<<338>>Overview of installation<<338>>\label<<339>>sec:installation-overview<<339>>
-Before we can begin the tutorial, you need install and test Python, Numarray and some other Python extensions, and PyPedal<<340>><<340>> itself. The extensions that you need to install in order to use all of the features of PyPedal<<341>><<341>> are listed in Table \ref<<342>>tbl:extensions<<342>>.  Note that some extensions need to be installed before others: \module<<343>>NumPy<<343>> should be installed first, SQLite must be installed before \module<<344>>pysqlite<<344>>, and \module<<345>>pyparsing<<345>> and Graphviz must be installed before \module<<346>>pydot<<346>>.
-\begin<<491>>tex2html_deferred<<491>>\par\end<<492>>tex2html_deferred<<492>>
-If you do not install one or more optional modules you will still be able to use  PyPedal<<347>><<347>>, although some features may not be available to you.  Details on installing the extensions listed above can be found on their respective websites.  All of these extensions are available for Unix-type operating systems (e.g. Linux, Mac OS X) as well as for Microsoft Windows; most sites also provide binary installers for Windows.  Python extensions can usually be installed by unzipping/untaring the archives, entering the folder, and issuing the command \begin<<493>>tex2html_deferred<<493>>\samp<<348>>python setup.py install<<348>>\end<<494>>tex2html_deferred<<494>> as a root/administrative user.
-\begin<<495>>tex2html_deferred<<495>>\par\end<<496>>tex2html_deferred<<496>>
-Note that Graphviz, NetworkX, PyGraphviz, PythonDoc, ReportLab, and SQLite are not installed by the Enthought Python distribution for Windows.
-\begin<<349>>center<<349>>
-    \tablecaption<<350>>Third-party extensions used by PyPedal.<<350>>
-    \tablefirsthead<<351>>\hline Extension ;SPMamp; Function ;SPMamp; URL \\  \hline<<351>>
-    \begin<<497>>tex2html_deferred<<497>>\tablehead<<352>>\hline Extension ;SPMamp; Function ;SPMamp; URL \\  \hline<<352>>\end<<498>>tex2html_deferred<<498>>
-    \begin<<499>>tex2html_deferred<<499>>\tabletail<<468>>\hline \multicolumn<<353>>3<<353>><<354>>l<<354>><<355>>\small\sl continued on next page<<355>> \\  \hline<<468>>\end<<500>>tex2html_deferred<<500>>
-    \tablelasttail<<356>>\hline<<356>>
-    \label<<357>>tbl:extensions<<357>>
-    \index<<358>>installation!extensions<<358>>
-    \begin<<359>>xtabular<<359>><<469>>llp<<360>>4in<<360>><<469>>
-	elementtree ;SPMamp; Lightweight XML processing ;SPMamp; \begin<<501>>tex2html_deferred<<501>>\url<<361>>http://effbot.org/zone/element-index.htm<<361>>\end<<502>>tex2html_deferred<<502>>\\ 
-	Graphviz ;SPMamp; Draw directed graphs ;SPMamp; \begin<<503>>tex2html_deferred<<503>>\url<<362>>http://www.research.att.com/sw/tools/graphviz/<<362>>\end<<504>>tex2html_deferred<<504>>\\ 
-	matplotlib ;SPMamp; Plotting, matrix visualization ;SPMamp; \begin<<505>>tex2html_deferred<<505>>\url<<363>>http://matplotlib.sourceforge.net/<<363>>\end<<506>>tex2html_deferred<<506>>\\ 
-	NetworkX ;SPMamp; Network analysis ;SPMamp; \begin<<507>>tex2html_deferred<<507>>\url<<364>>https://networkx.lanl.gov/<<364>>\end<<508>>tex2html_deferred<<508>>\\ 
-	NumPy ;SPMamp; Array manipulation ;SPMamp; \begin<<509>>tex2html_deferred<<509>>\url<<365>>http://www.numpy.org/<<365>>\end<<510>>tex2html_deferred<<510>>\\ 
-	PIL ;SPMamp; Image processing ;SPMamp; \begin<<511>>tex2html_deferred<<511>>\url<<366>>http://effbot.org/zone/pil-index.htm<<366>>\end<<512>>tex2html_deferred<<512>>\\ 
-	pydot ;SPMamp; Interface to Graphviz ;SPMamp; \begin<<513>>tex2html_deferred<<513>>\url<<367>>http://dkbza.org/pydot.html<<367>>\end<<514>>tex2html_deferred<<514>>\\ 
-	PyGraphviz ;SPMamp; Interface to Graphviz ;SPMamp; \begin<<515>>tex2html_deferred<<515>>\url<<368>>https://networkx.lanl.gov/wiki/pygraphviz<<368>>\end<<516>>tex2html_deferred<<516>>\\ 
-	pyparsing ;SPMamp; Text parsing ;SPMamp; \begin<<517>>tex2html_deferred<<517>>\url<<369>>http://pyparsing.sourceforge.net/<<369>>\end<<518>>tex2html_deferred<<518>>\\ 
-	pysqlite ;SPMamp; Interface to SQLite ;SPMamp; \begin<<519>>tex2html_deferred<<519>>\url<<370>>http://initd.org/tracker/pysqlite<<370>>\end<<520>>tex2html_deferred<<520>>\\ 
-	PythonDoc ;SPMamp; Generate API documentation ;SPMamp; \begin<<521>>tex2html_deferred<<521>>\url<<371>>http://effbot.org/zone/pythondoc.htm<<371>>\end<<522>>tex2html_deferred<<522>>\\ 
-	ReportLab ;SPMamp; Generate PDF documents ;SPMamp; \begin<<523>>tex2html_deferred<<523>>\url<<372>>http://www.reportlab.org/<<372>>\end<<524>>tex2html_deferred<<524>>\\ 
-	SQLite ;SPMamp; Lightweight SQL database ;SPMamp; \begin<<525>>tex2html_deferred<<525>>\url<<373>>http://www.sqlite.org/<<373>>\end<<526>>tex2html_deferred<<526>>\\ 
-	testoob ;SPMamp; Advanced unit testing ;SPMamp; \begin<<527>>tex2html_deferred<<527>>\url<<374>>http://testoob.sourceforge.net/<<374>>\end<<528>>tex2html_deferred<<528>>\\ 
-    \end<<375>>xtabular<<375>>
-\end<<376>>center<<376>>
-\section<<377>>Testing the Python installation<<377>>
+\chapter<<337>>Installing PyPedal<<337>>\label<<338>>cha:installation<<338>>\index<<339>>installation<<339>>
+\begin<<340>>quote<<340>>
+As we acquire more knowledge, things do not become more comprehensible, but more mysterious. --- Will Durant
+\end<<341>>quote<<341>>
+This chapter explains how to install and test PyPedal<<342>><<342>> under Posix-type operating systems and Microsoft Windows.
+\begin<<498>>tex2html_deferred<<498>>\par\end<<499>>tex2html_deferred<<499>>
+\section<<343>>Overview of installation<<343>>\label<<344>>sec:installation-overview<<344>>
+Before we can begin the tutorial, you need install and test Python, NumPy and some other Python extensions, and PyPedal<<345>><<345>> itself. PyPedal<<346>><<346>> has been tested against the versions listed in Table \ref<<347>>tbl:extensions<<347>>, and may not work with earlier releases of those packages. The extensions that you need to install in order to use all of the features of PyPedal<<348>><<348>> are listed in Table \ref<<349>>tbl:extensions<<349>>.  Note that some extensions need to be installed before others: \module<<350>>Numpy<<350>> should be installed first, and \module<<351>>pyparsing<<351>> and Graphviz must be installed before \module<<352>>pydot<<352>>.
+\begin<<500>>tex2html_deferred<<500>>\par\end<<501>>tex2html_deferred<<501>>
+If you do not install one or more optional modules you will still be able to use PyPedal<<353>><<353>>, although some features may not be available to you. Details on installing the extensions listed above can be found on their respective websites.  All of these extensions are available for Unix-type operating systems (e.g. Linux, Mac OS X) as well as for Microsoft Windows; most sites also provide binary installers for Windows. Python extensions can usually be installed by unzipping/untaring the archives, entering the folder, and issuing the command \begin<<502>>tex2html_deferred<<502>>\samp<<354>>python setup.py install<<354>>\end<<503>>tex2html_deferred<<503>> as a root/administrative user. Note that NetworkX and ReportLab are not installed by the Enthought Python Distribution for Windows. I have found that installations from source on Linux are sometimes tricky, but I have found that Sage (\begin<<504>>tex2html_deferred<<504>>\url<<355>>http://www.sagemath.org/index.html<<355>>\end<<505>>tex2html_deferred<<505>>) does a great job of getting clean builds of the trickier pieces, such as Numpy and matplotlib.
+\begin<<356>>center<<356>>
+    \tablecaption<<475>>Packages and compatible versions used by PyPedal<<357>><<357>>.<<475>>
+    \tablefirsthead<<358>>\hline Extension ;SPMamp; Version ;SPMamp; Used for... ;SPMamp; URL \\  \hline<<358>>
+    \begin<<506>>tex2html_deferred<<506>>\tablehead<<359>>\hline Extension ;SPMamp; Version ;SPMamp; Used for... ;SPMamp; URL \\  \hline<<359>>\end<<507>>tex2html_deferred<<507>>
+    \begin<<508>>tex2html_deferred<<508>>\tabletail<<476>>\hline \multicolumn<<360>>4<<360>><<361>>l<<361>><<362>>\small\sl continued on next page<<362>> \\  \hline<<476>>\end<<509>>tex2html_deferred<<509>>
+    \tablelasttail<<363>>\hline<<363>>
+    \label<<364>>tbl:extensions<<364>>
+    \index<<365>>installation!extensions<<365>>
+    \begin<<366>>xtabular<<366>><<477>>lllp<<367>>4in<<367>><<477>>
+	elementtree ;SPMamp;  ;SPMamp; Lightweight XML processing ;SPMamp; \begin<<510>>tex2html_deferred<<510>>\url<<368>>http://effbot.org/zone/element-index.htm<<368>>\end<<511>>tex2html_deferred<<511>>\\ 
+	Graphviz ;SPMamp;  ;SPMamp; Draw directed graphs ;SPMamp; \begin<<512>>tex2html_deferred<<512>>\url<<369>>http://www.research.att.com/sw/tools/graphviz/<<369>>\end<<513>>tex2html_deferred<<513>>\\ 
+	matplotlib ;SPMamp;  ;SPMamp; Plotting, matrix visualization ;SPMamp; \begin<<514>>tex2html_deferred<<514>>\url<<370>>http://matplotlib.sourceforge.net/<<370>>\end<<515>>tex2html_deferred<<515>>\\ 
+	NetworkX ;SPMamp;  ;SPMamp; Network analysis ;SPMamp; \begin<<516>>tex2html_deferred<<516>>\url<<371>>https://networkx.lanl.gov/<<371>>\end<<517>>tex2html_deferred<<517>>\\ 
+	Numpy ;SPMamp;  ;SPMamp; Array manipulation ;SPMamp; \begin<<518>>tex2html_deferred<<518>>\url<<372>>http://www.numpy.org/<<372>>\end<<519>>tex2html_deferred<<519>>\\ 
+	PIL ;SPMamp;  ;SPMamp; Image processing ;SPMamp; \begin<<520>>tex2html_deferred<<520>>\url<<373>>http://effbot.org/zone/pil-index.htm<<373>>\end<<521>>tex2html_deferred<<521>>\\ 
+	pydot ;SPMamp;  ;SPMamp; Interface to Graphviz ;SPMamp; \begin<<522>>tex2html_deferred<<522>>\url<<374>>http://dkbza.org/pydot.html<<374>>\end<<523>>tex2html_deferred<<523>>\\ 
+	PyGraphviz ;SPMamp;  ;SPMamp; Interface to Graphviz ;SPMamp; \begin<<524>>tex2html_deferred<<524>>\url<<375>>https://networkx.lanl.gov/wiki/pygraphviz<<375>>\end<<525>>tex2html_deferred<<525>>\\ 
+	pyparsing ;SPMamp;  ;SPMamp; Text parsing ;SPMamp; \begin<<526>>tex2html_deferred<<526>>\url<<376>>http://pyparsing.sourceforge.net/<<376>>\end<<527>>tex2html_deferred<<527>>\\ 
+	Python ;SPMamp;  ;SPMamp; Pretty much everything ;SPMamp; \begin<<528>>tex2html_deferred<<528>>\url<<377>>http://python.org/<<377>>\end<<529>>tex2html_deferred<<529>>\\ 
+	ReportLab ;SPMamp;  ;SPMamp; Generate PDF documents ;SPMamp; \begin<<530>>tex2html_deferred<<530>>\url<<378>>http://www.reportlab.org/<<378>>\end<<531>>tex2html_deferred<<531>>\\ 
+	testoob ;SPMamp;  ;SPMamp; Advanced unit testing ;SPMamp; \begin<<532>>tex2html_deferred<<532>>\url<<379>>http://testoob.sourceforge.net/<<379>>\end<<533>>tex2html_deferred<<533>>\\ 
+    \end<<380>>xtabular<<380>>
+\end<<381>>center<<381>>
+The PyPedal<<382>><<382>> distribution includes a copy of the ADOdb for Python (\begin<<534>>tex2html_deferred<<534>>\url<<383>>http://http://phplens.com/lens/adodb/adodb-py-docs.htm/<<383>>\end<<535>>tex2html_deferred<<535>>) database abstraction library. It is installed with PyPedal<<384>><<384>> and does not require a separate installation step.
+\begin<<536>>tex2html_deferred<<536>>\par\end<<537>>tex2html_deferred<<537>>
+\section<<385>>Testing the Python installation<<385>>
 The first step is to install Python 2.4 (or later) if you haven't already done so. Python is available at
-\begin<<529>>tex2html_deferred<<529>>\url<<378>>http://sourceforge.net/projects/python/<<378>>\end<<530>>tex2html_deferred<<530>>.  Click on the link corresponding to your platform, and follow the instructions
-presented there. Python can usually be started by typing \begin<<531>>tex2html_deferred<<531>>\samp<<379>>python<<379>>\end<<532>>tex2html_deferred<<532>> at the shell (Posix) or double-clicking on the Python interpreter (Windows).  When you start Python you should see a message such as:
-\begin<<380>>tex2html_preform<<380>><tex2html_verbatim_mark>verbatim57#\end<<381>>tex2html_preform<<381>>
-If you have problems getting Python to work, contact your local support person or e-mail  \ulink<<382>>python-help@python.org<<382>><<383>>mailto:python-help@python.org<<383>> for help.
-\section<<384>>Installing PyPedal<<384>>\label<<385>>sec:installing-pypedal<<385>>
-In order to get  PyPedal<<386>><<386>>, visit the official website at \begin<<533>>tex2html_deferred<<533>>\url<<387>>http://pypedal.sourceforge.net/<<387>>\end<<534>>tex2html_deferred<<534>>.  Click on the ;SPMquot;Sourceforge Page;SPMquot; link, click on the ;SPMquot;Download PyPedal;SPMquot; button, and select the latest file release. Files whose names end in ;SPMquot;.tar.gz;SPMquot; are source code releases. The other files are binaries for a given platform (if any are available).
-\begin<<535>>tex2html_deferred<<535>>\par\end<<536>>tex2html_deferred<<536>>
-The CVS repository on the Sourceforge site is not in synch with the development tree; to get the latest version you should download the source code release.
-\subsection<<388>>Installing on Unix, Linux, and Mac OSX<<388>>\label<<389>>sec:installing-unix<<389>>\index<<390>>installation!installation on Linux<<390>>
+\begin<<538>>tex2html_deferred<<538>>\url<<386>>http://sourceforge.net/projects/python/<<386>>\end<<539>>tex2html_deferred<<539>>.  Click on the link corresponding to your platform, and follow the instructions presented there. Python can usually be started by typing \begin<<540>>tex2html_deferred<<540>>\samp<<387>>python<<387>>\end<<541>>tex2html_deferred<<541>> at the shell (Posix) or double-clicking on the Python interpreter (Windows).  When you start Python you should see a message like:
+\begin<<388>>tex2html_preform<<388>><tex2html_verbatim_mark>verbatim57#\end<<389>>tex2html_preform<<389>>
+If you have problems getting Python to work, contact your local support person or e-mail  \ulink<<390>>python-help@python.org<<390>><<391>>mailto:python-help@python.org<<391>> for help.
+\begin<<542>>tex2html_deferred<<542>>\par\end<<543>>tex2html_deferred<<543>>
+\section<<392>>Installing PyPedal<<392>>\label<<393>>sec:installing-pypedal<<393>>
+In order to get PyPedal<<394>><<394>>, visit the official website at \begin<<544>>tex2html_deferred<<544>>\url<<395>>http://pypedal.sourceforge.net/<<395>>\end<<545>>tex2html_deferred<<545>>. Click on the ;SPMquot;Sourceforge Page;SPMquot; link, click on the ;SPMquot;Download PyPedal;SPMquot; button, and select the latest file release. Files whose names end in ``.tar.gz'' or ``.zip''are source code releases. The PyPedal<<396>><<396>> installation will not fail if a prerequisite package is not present, but not all PyPedal<<397>><<397>> functionality will be available to you.
+\begin<<546>>tex2html_deferred<<546>>\par\end<<547>>tex2html_deferred<<547>>
+\subsection<<398>>Installing on Unix, Linux, and Mac OSX<<398>>\label<<399>>sec:installing-unix<<399>>\index<<400>>installation!installation on Linux<<400>>
 The source distribution should be uncompressed and unpacked as follows (for example):
-\begin<<391>>tex2html_preform<<391>><tex2html_verbatim_mark>verbatim58#\end<<392>>tex2html_preform<<392>>
+\begin<<401>>tex2html_preform<<401>><tex2html_verbatim_mark>verbatim58#\end<<402>>tex2html_preform<<402>>
 Follow the instructions in the top-level directory for compilation and installation. Installation is usually as simple as:
-\begin<<393>>tex2html_preform<<393>><tex2html_verbatim_mark>verbatim59#\end<<394>>tex2html_preform<<394>>
-\paragraph*<<395>>Important Tip<<395>> \label<<396>>sec:tip:from-pypedal-import<<396>> Just like all Python modules and packages, the  PyPedal<<397>><<397>> module can be invoked using either the \begin<<537>>tex2html_deferred<<537>>\samp<<398>>import PyPedal<<398>>\end<<538>>tex2html_deferred<<538>> form, or the \begin<<539>>tex2html_deferred<<539>>\samp<<399>>from PyPedal import ...<<399>>\end<<540>>tex2html_deferred<<540>> form.  All of the code samples will assume that they have been preceded by statements such as:
-\begin<<400>>tex2html_preform<<400>><tex2html_verbatim_mark>verbatim60#\end<<401>>tex2html_preform<<401>>
-A complete list of modules is provided in Chapter \ref<<402>>cha:api<<402>>.
-\subsection<<403>>Installing on Windows<<403>>\label<<404>>sec:installing-windows<<404>>\index<<405>>installation!installation on Windows<<405>>
-To install PyPedal<<406>><<406>>, you need to be logged into an account with Administrator privileges.  As a general rule, always remove any old version of PyPedal<<407>><<407>> before installing the next version.
-\begin<<541>>tex2html_deferred<<541>>\par\end<<542>>tex2html_deferred<<542>>
-Please note that  PyPedal<<408>><<408>> has been lightly-tested on Windows XP, but I cannot guarantee that it runs without problems on Win-32 platforms!  PyPedal<<409>><<409>> should install and run properly on Win-32 as long as the dependencies listed above are satisfied. \index<<410>>installation!installation on Windows!Python Enthought Edition<<410>>Enthought provides a Python distribution that is bundled with a number of extras, including most of the dependencies needed to install and run PyPedal<<411>><<411>> in the Windows environment (\begin<<543>>tex2html_deferred<<543>>\url<<412>>http://code.enthought.com/enthon/#download<<412>>\end<<544>>tex2html_deferred<<544>>). It is a large download (~120 MB) but greatly simplifies installation. If you use the Enthought distribution you will still need to download and install Graphviz, ReportLab, and SQLite from their respective sites (Table \ref<<413>>tbl:extensions<<413>>). Graphviz and ReportLab are easy to install. Installation instructions for SQLite are provided below.
-\begin<<545>>tex2html_deferred<<545>>\par\end<<546>>tex2html_deferred<<546>>
- 
-\begin<<547>>tex2html_deferred<<547>>\textcolor<<474>>red<<474>><<475>>
-<<476>>\fbox<<477>> <<480>>\bf FIX<<480>>
-\begin<<487>>tex2html_wrap_inline<<487>>\ensuremath<<481>>\blacktriangleright \blacktriangleright \blacktriangleright<<481>>\end<<488>>tex2html_wrap_inline<<488>><<477>>
-<<478>>\bf There is not yet an easy way to install the \module<<482>>PyGraphviz<<482>>\index<<483>>PyGraphviz<<483>> library under Windows. \module<<484>>PyGraphviz<<484>> is used by some of the graphics routines for rendering pedigrees. Windows users will need to refer to Chapter \ref<<485>>cha:graphics<<485>> for details on routines which require this module.<<478>>
-\fbox<<479>>\begin<<489>>tex2html_wrap_inline<<489>>\ensuremath<<486>> \blacktriangleleft \blacktriangleleft \blacktriangleleft <<486>>\end<<490>>tex2html_wrap_inline<<490>>
-<<479>> <<476>> <<475>>\end<<548>>tex2html_deferred<<548>>
+\begin<<403>>tex2html_preform<<403>><tex2html_verbatim_mark>verbatim59#\end<<404>>tex2html_preform<<404>>
+\paragraph*<<405>>Important Tip<<405>> \label<<406>>sec:tip:from-pypedal-import<<406>> Just like all Python modules and packages, the PyPedal<<407>><<407>> module can be invoked using either the \begin<<548>>tex2html_deferred<<548>>\samp<<408>>import PyPedal<<408>>\end<<549>>tex2html_deferred<<549>> form, or the \begin<<550>>tex2html_deferred<<550>>\samp<<409>>from PyPedal import ...<<409>>\end<<551>>tex2html_deferred<<551>> form.  All of the code samples will assume that they have been preceded by statements such as:
+\begin<<410>>tex2html_preform<<410>><tex2html_verbatim_mark>verbatim60#\end<<411>>tex2html_preform<<411>>
+A complete list of modules is provided in Chapter \ref<<412>>cha:api<<412>>.
+\begin<<552>>tex2html_deferred<<552>>\par\end<<553>>tex2html_deferred<<553>>
+\subsection<<413>>Installing on Windows<<413>>\label<<414>>sec:installing-windows<<414>>\index<<415>>installation!installation on Windows<<415>>
+To install PyPedal<<416>><<416>>, you need to be logged into an account with Administrator privileges.  As a general rule, always remove any old version of PyPedal<<417>><<417>> before installing the current version.
+\begin<<554>>tex2html_deferred<<554>>\par\end<<555>>tex2html_deferred<<555>>
+Please note that PyPedal<<418>><<418>> has been lightly-tested on Windows XP, but I cannot guarantee that it runs without problems on Win-32 platforms!  PyPedal<<419>><<419>> should install and run properly on Win-32 as long as the dependencies listed above are satisfied. \index<<420>>installation!installation on Windows!Python Enthought Edition<<420>>Enthought provides a Python distribution that is bundled with a number of extras, including most of the dependencies needed to install and run PyPedal<<421>><<421>> in the Windows environment (\begin<<556>>tex2html_deferred<<556>>\url<<422>>http://enthought.com/products/epd.php<<422>>\end<<557>>tex2html_deferred<<557>>). It is a large download (;SPMgt;100 MB) but greatly simplifies installation. If you use the Enthought distribution you will still need to download and install ReportLab (Table \ref<<423>>tbl:extensions<<423>>). Please note that the Enthought Python Distribution is free for academic and hobbyist use; if you intend to use it commercially (as part of your business) please pay the license fee or do not use their product. With the exception of \module<<424>>PyGraphviz<<424>>, which is discussed below, the prerequisite packages are available as Windows installation (.msi) files that can be downloaded and installed individually.
+\begin<<558>>tex2html_deferred<<558>>\par\end<<559>>tex2html_deferred<<559>>
 
-\begin<<549>>tex2html_deferred<<549>>\par\end<<550>>tex2html_deferred<<550>>
-It is possible that the installation may fail with the message \begin<<418>>tex2html_preform<<418>><tex2html_verbatim_mark>verbatim61#\end<<419>>tex2html_preform<<419>>. This means that the installer was trying to download a dependency and that operation was unsuccessful. This can usually be remedied by simply running the installer again.
-\begin<<551>>tex2html_deferred<<551>>\par\end<<552>>tex2html_deferred<<552>>
-\index<<420>>installation!installation on Windows!environment variables<<420>>In order to get your installation working correctly you will need to set some environment variables.  Under Windows XP (and 2000) you access those variables by right-clicking on the \emph<<421>>My Computer<<421>> icon on your desktop, selecting \emph<<422>>Properties<<422>>, selecting the \emph<<423>>Advanced<<423>> tab, and clicking the \emph<<424>>Environment Variables<<424>> button.  First, add \texttt<<471>>;C:\textbackslash<<425>><<425>>Python24<<471>> to the \envvar<<426>>PATH<<426>> by selecting it in the \emph<<427>>System Variables<<427>> list and clicking \emph<<428>>Edit<<428>>.  Next, create a \envvar<<429>>PYTHONPATH<<429>> environment variable by clicking the \texttt<<430>>New<<430>> button under \texttt<<431>>User Variables<<431>>, entering the path to the  PyPedal<<432>><<432>> directory in the \texttt<<433>>Variable value<<433>> field.
-\begin<<553>>tex2html_deferred<<553>>\par\end<<554>>tex2html_deferred<<554>>
-\index<<434>>installation!installation on Windows!SQLite<<434>>The documentation for SQLite for Windows is kind of vague.  I got it to work by downloading the files \file<<435>>sqlite-3_2_7.zip<<435>> and \file<<436>>sqlitedll-3_2_7.zip<<436>> and extracting their contents into \texttt<<472>>C:\textbackslash<<437>><<437>>Windows<<472>>.  Your mileage may vary.
-\subsubsection<<438>>Installation from source<<438>>\label<<439>>sec:installation-from-source<<439>>\index<<440>>installation!installation from source<<440>>
-\begin<<441>>enumerate<<441>>
-\item Unpack the distribution using an unzipping utility such as 7-Zip (\begin<<555>>tex2html_deferred<<555>>\url<<442>>http://www.7-zip.org/<<442>>\end<<556>>tex2html_deferred<<556>>) that understands gzipped-and-tarred files. Once you've done that, open a shell by left-clicking on ;SPMquot;Start;SPMquot;, selecting ;SPMquot;Run;SPMquot;, and typing \texttt<<443>>cmd<<443>> into the box. Navigate to the directory into which you unpacked the  PyPedal<<444>><<444>> distributio(this is an example, your file location may vary):
-\begin<<445>>tex2html_preform<<445>><tex2html_verbatim_mark>verbatim62#\end<<446>>tex2html_preform<<446>>
+\begin<<560>>tex2html_deferred<<560>>\textcolor<<481>>red<<481>><<482>>
+<<483>>\fbox<<484>> <<487>>\bf FIX<<487>>
+\begin<<494>>tex2html_wrap_inline<<494>>\ensuremath<<488>>\blacktriangleright \blacktriangleright \blacktriangleright<<488>>\end<<495>>tex2html_wrap_inline<<495>><<484>>
+<<485>>\bf There is not yet an easy way to install the \module<<489>>PyGraphviz<<489>>\index<<490>>PyGraphviz<<490>> library under Windows. \module<<491>>PyGraphviz<<491>> is used by some of the graphics routines for rendering pedigrees. Windows users will need to refer to Chapter \ref<<492>>cha:graphics<<492>> for details on routines which require this module.<<485>>
+\fbox<<486>>\begin<<496>>tex2html_wrap_inline<<496>>\ensuremath<<493>> \blacktriangleleft \blacktriangleleft \blacktriangleleft <<493>>\end<<497>>tex2html_wrap_inline<<497>>
+<<486>> <<483>> <<482>>\end<<561>>tex2html_deferred<<561>>
+
+\begin<<562>>tex2html_deferred<<562>>\par\end<<563>>tex2html_deferred<<563>>
+It is possible that the installation may fail with the message \begin<<429>>tex2html_preform<<429>><tex2html_verbatim_mark>verbatim61#\end<<430>>tex2html_preform<<430>>. This means that the installer was trying to download a dependency and that operation was unsuccessful. This can usually be remedied by simply running the installer again.
+\begin<<564>>tex2html_deferred<<564>>\par\end<<565>>tex2html_deferred<<565>>
+\index<<431>>installation!installation on Windows!environment variables<<431>>In order to get your installation working correctly you will need to set some environment variables.  Under Windows XP (and 2000) you access those variables by right-clicking on the \emph<<432>>My Computer<<432>> icon on your desktop, selecting \emph<<433>>Properties<<433>>, selecting the \emph<<434>>Advanced<<434>> tab, and clicking the \emph<<435>>Environment Variables<<435>> button. First, add \texttt<<479>>;C:\textbackslash<<436>><<436>>Python24<<479>> to the \envvar<<437>>PATH<<437>> by selecting it in the \emph<<438>>System Variables<<438>> list and clicking \emph<<439>>Edit<<439>>. Next, create a \envvar<<440>>PYTHONPATH<<440>> environment variable by clicking the \texttt<<441>>New<<441>> button under \texttt<<442>>User Variables<<442>>, entering the path to the PyPedal<<443>><<443>> directory in the \texttt<<444>>Variable value<<444>> field.
+\begin<<566>>tex2html_deferred<<566>>\par\end<<567>>tex2html_deferred<<567>>
+\subsubsection<<445>>Installation from source<<445>>\label<<446>>sec:installation-from-source<<446>>\index<<447>>installation!installation from source<<447>>
+\begin<<448>>enumerate<<448>>
+\item Unpack the distribution using an unzipping utility such as 7-Zip (\begin<<568>>tex2html_deferred<<568>>\url<<449>>http://www.7-zip.org/<<449>>\end<<569>>tex2html_deferred<<569>>) that understands gzipped-and-tarred files. Once you've done that, open a shell by left-clicking on ;SPMquot;Start;SPMquot;, selecting ;SPMquot;Run;SPMquot;, and typing \texttt<<450>>cmd<<450>> into the box. Navigate to the directory into which you unpacked the PyPedal<<451>><<451>> distributio(this is an example, your file location may vary):
+\begin<<452>>tex2html_preform<<452>><tex2html_verbatim_mark>verbatim62#\end<<453>>tex2html_preform<<453>>
 \item Build it using the distutils defaults:
-\begin<<447>>tex2html_preform<<447>><tex2html_verbatim_mark>verbatim63#\end<<448>>tex2html_preform<<448>>
-This installs PyPedal<<449>><<449>> in \texttt<<473>>C:\textbackslash<<450>><<450>>python24\textbackslash<<451>><<451>>site-packages<<473>>.
-\end<<452>>enumerate<<452>>
-\subsubsection<<453>>Installation on Cygwin<<453>>\label<<454>>sec:installation-cygwin<<454>>\index<<455>>installation!installation on Cygwin<<455>>
-No information on installing PyPedal<<456>><<456>> on Cygwin is available.  If you manage to get it working, please let me know.
-\section<<457>>Testing the PyPedal Installation<<457>>\label<<458>>sec:installation-testing<<458>>\index<<459>>installation!testing the installation<<459>>
-To find out if you have correctly installed PyPedal<<460>><<460>>, type \begin<<557>>tex2html_deferred<<557>>\samp<<461>>import PyPedal<<461>>\end<<558>>tex2html_deferred<<558>> at the Python prompt. You'll see one of two
-behaviors (throughout this document user input and Python interpreter output will be emphasized
+\begin<<454>>tex2html_preform<<454>><tex2html_verbatim_mark>verbatim63#\end<<455>>tex2html_preform<<455>>
+This installs PyPedal<<456>><<456>> in \texttt<<480>>C:\textbackslash<<457>><<457>>python24\textbackslash<<458>><<458>>site-packages<<480>>.
+\end<<459>>enumerate<<459>>
+\begin<<570>>tex2html_deferred<<570>>\par\end<<571>>tex2html_deferred<<571>>
+\subsubsection<<460>>Installation on Cygwin<<460>> \label<<461>>sec:installation-cygwin<<461>>\index<<462>>installation!installation on Cygwin<<462>>
+No information on installing PyPedal<<463>><<463>> on Cygwin is available.  If you manage to get it working, please let me know.
+\begin<<572>>tex2html_deferred<<572>>\par\end<<573>>tex2html_deferred<<573>>
+\section<<464>>Testing the PyPedal Installation<<464>>\label<<465>>sec:installation-testing<<465>>\index<<466>>installation!testing the installation<<466>>
+To find out if you have correctly installed PyPedal<<467>><<467>>, type \begin<<574>>tex2html_deferred<<574>>\samp<<468>>import PyPedal<<468>>\end<<575>>tex2html_deferred<<575>> at the Python prompt. You'll see one of two behaviors (throughout this document user input and Python interpreter output will be emphasized
 as shown in the block below):
-\begin<<462>>tex2html_preform<<462>><tex2html_verbatim_mark>verbatim64#\end<<463>>tex2html_preform<<463>>
-indicating that you don't have PyPedal<<464>><<464>> installed, or:
-\begin<<465>>tex2html_preform<<465>><tex2html_verbatim_mark>verbatim65#\end<<466>>tex2html_preform<<466>>
-indicating that PyPedal<<467>><<467>> is installed.
+\begin<<469>>tex2html_preform<<469>><tex2html_verbatim_mark>verbatim64#\end<<470>>tex2html_preform<<470>>
+indicating that you don't have PyPedal<<471>><<471>> installed, or:
+\begin<<472>>tex2html_preform<<472>><tex2html_verbatim_mark>verbatim65#\end<<473>>tex2html_preform<<473>>
+indicating that PyPedal<<474>><<474>> is installed.
 <tex2html_endfile>#./installation.tex#

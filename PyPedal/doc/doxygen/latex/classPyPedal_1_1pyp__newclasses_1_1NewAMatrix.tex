@@ -11,15 +11,15 @@
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a38f78e043e7bee1cac6237a09d912d93}{\_\-\_\-init\_\-\_\-}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a38f78e043e7bee1cac6237a09d912d93}{\_\-\_\-init\_\-\_\-()} initializes a \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix}{NewAMatrix} object. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a38f78e043e7bee1cac6237a09d912d93}{\_\-\_\-init\_\-\_\-()} initializes a \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix}{NewAMatrix} object. \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_aab22e9d4b42f4207692435849e15a551}{form\_\-a\_\-matrix}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_aab22e9d4b42f4207692435849e15a551}{form\_\-a\_\-matrix()} calls pyp\_\-nrm/fast\_\-a\_\-matrix() or pyp\_\-nrm/fast\_\-a\_\-matrix\_\-r() to form a NRM from a pedigree. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_aab22e9d4b42f4207692435849e15a551}{form\_\-a\_\-matrix()} calls pyp\_\-nrm/fast\_\-a\_\-matrix() or pyp\_\-nrm/fast\_\-a\_\-matrix\_\-r() to form a NRM from a pedigree. \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a1d5ee9920957680eb210fe4b1b81adb3}{load}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a1d5ee9920957680eb210fe4b1b81adb3}{load()} uses the Numarray Array Function \char`\"{}fromfile()\char`\"{} to load an array from a binary file. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a1d5ee9920957680eb210fe4b1b81adb3}{load()} uses the Numarray Array Function \char`\"{}fromfile()\char`\"{} to load an array from a binary file. \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_ac2ee373f5e250c7ae637dc983f1b1651}{save}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_ac2ee373f5e250c7ae637dc983f1b1651}{save()} uses the Numarray method \char`\"{}tofile()\char`\"{} to save an array to a binary file. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_ac2ee373f5e250c7ae637dc983f1b1651}{save()} uses the Numarray method \char`\"{}tofile()\char`\"{} to save an array to a binary file. \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a65c238459dd58cb32ec19cb7c93164ba}{printme}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a65c238459dd58cb32ec19cb7c93164ba}{printme()} prints the NRM to the screen. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a65c238459dd58cb32ec19cb7c93164ba}{printme()} prints the NRM to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,20 +36,22 @@ def \hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a65c238459dd58cb32e
 
 
 \subsection{Detailed Description}
-\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix}{NewAMatrix} provides an instance of a numerator relationship matrix as a Numarray array of floats with some convenience methods. The idea here is to provide a wrapper around a NRM so that it is easier to work with. For large pedigrees it can take a long time to compute the elements of A, so there is real value in providing an easy way to save and retrieve a NRM once it has been formed. 
+\hyperlink{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix}{NewAMatrix} provides an instance of a numerator relationship matrix as a Numarray array of floats with some convenience methods. 
 
-Definition at line 2719 of file pyp\_\-newclasses.py.
+The idea here is to provide a wrapper around a NRM so that it is easier to work with. For large pedigrees it can take a long time to compute the elements of A, so there is real value in providing an easy way to save and retrieve a NRM once it has been formed. 
+
+Definition at line 3231 of file pyp\_\-newclasses.py.
 
 
 
-\subsection{Member Function Documentation}
+\subsection{Constructor \& Destructor Documentation}
 \hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a38f78e043e7bee1cac6237a09d912d93}{
 \index{PyPedal::pyp\_\-newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
 \index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}}
 \subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewAMatrix.\_\-\_\-init\_\-\_\- (
 \begin{DoxyParamCaption}
-\item[{}]{ self, }
-\item[{}]{ kw}
+\item[{}]{self, }
+\item[{}]{kw}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a38f78e043e7bee1cac6237a09d912d93}
@@ -59,24 +61,33 @@ Definition at line 2719 of file pyp\_\-newclasses.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to current object. \item[{\em kw}]A dictionary of options. \end{DoxyParams}
+{\em self} & Reference to current object. \\
+\hline
+{\em kw} & A dictionary of options. \\
+\hline
+\end{DoxyParams}
 
 \begin{DoxyRetVals}{Return values}
-\item[{\em An}]instance of a NewAMatrix() object \begin{DoxyVerb}
+{\em An} & instance of a NewAMatrix() object \begin{DoxyVerb}
 Initialize a new numerator relationship matrix.
 \end{DoxyVerb}
- \end{DoxyRetVals}
+ \\
+\hline
+\end{DoxyRetVals}
 
 
-Definition at line 2725 of file pyp\_\-newclasses.py.
+Definition at line 3237 of file pyp\_\-newclasses.py.
 
+
+
+\subsection{Member Function Documentation}
 \hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_aab22e9d4b42f4207692435849e15a551}{
 \index{PyPedal::pyp\_\-newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}!form\_\-a\_\-matrix@{form\_\-a\_\-matrix}}
 \index{form\_\-a\_\-matrix@{form\_\-a\_\-matrix}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}}
 \subsubsection[{form\_\-a\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewAMatrix.form\_\-a\_\-matrix (
 \begin{DoxyParamCaption}
-\item[{}]{ self, }
-\item[{}]{ pedigree}
+\item[{}]{self, }
+\item[{}]{pedigree}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_aab22e9d4b42f4207692435849e15a551}
@@ -86,25 +97,31 @@ Definition at line 2725 of file pyp\_\-newclasses.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to current object. \item[{\em pedigree}]The pedigree used to form the NRM. \end{DoxyParams}
+{\em self} & Reference to current object. \\
+\hline
+{\em pedigree} & The pedigree used to form the NRM. \\
+\hline
+\end{DoxyParams}
 
 \begin{DoxyRetVals}{Return values}
-\item[{\em A}]NRM on success, 0 on failure. \begin{DoxyVerb}
+{\em A} & NRM on success, 0 on failure. \begin{DoxyVerb}
 form_a_matrix() calls pyp_nrm/fast_a_matrix() or pyp_nrm/fast_a_matrix_r()
 to form a NRM from a pedigree.
 \end{DoxyVerb}
- \end{DoxyRetVals}
+ \\
+\hline
+\end{DoxyRetVals}
 
 
-Definition at line 2742 of file pyp\_\-newclasses.py.
+Definition at line 3254 of file pyp\_\-newclasses.py.
 
 \hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a1d5ee9920957680eb210fe4b1b81adb3}{
 \index{PyPedal::pyp\_\-newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}!load@{load}}
 \index{load@{load}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}}
 \subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewAMatrix.load (
 \begin{DoxyParamCaption}
-\item[{}]{ self, }
-\item[{}]{ nrm\_\-filename}
+\item[{}]{self, }
+\item[{}]{nrm\_\-filename}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a1d5ee9920957680eb210fe4b1b81adb3}
@@ -114,24 +131,30 @@ Definition at line 2742 of file pyp\_\-newclasses.py.
 
 If the load is successful, self.nrm contains the matrix. 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to current object. \item[{\em nrm\_\-filename}]The file from which the matrix should be read. \end{DoxyParams}
+{\em self} & Reference to current object. \\
+\hline
+{\em nrm\_\-filename} & The file from which the matrix should be read. \\
+\hline
+\end{DoxyParams}
 
 \begin{DoxyRetVals}{Return values}
-\item[{\em A}]load status indicator (0: failed, 1: success). \begin{DoxyVerb}
+{\em A} & load status indicator (0: failed, 1: success). \begin{DoxyVerb}
 load() uses the Numarray Array Function "fromfile()" to load an array from a
 binary file.  If the load is successful, self.nrm contains the matrix.
 \end{DoxyVerb}
- \end{DoxyRetVals}
+ \\
+\hline
+\end{DoxyRetVals}
 
 
-Definition at line 2785 of file pyp\_\-newclasses.py.
+Definition at line 3297 of file pyp\_\-newclasses.py.
 
 \hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a65c238459dd58cb32ec19cb7c93164ba}{
 \index{PyPedal::pyp\_\-newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}!printme@{printme}}
 \index{printme@{printme}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}}
 \subsubsection[{printme}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewAMatrix.printme (
 \begin{DoxyParamCaption}
-\item[{}]{ self}
+\item[{}]{self}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_a65c238459dd58cb32ec19cb7c93164ba}
@@ -141,25 +164,29 @@ Definition at line 2785 of file pyp\_\-newclasses.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to current object. \end{DoxyParams}
+{\em self} & Reference to current object. \\
+\hline
+\end{DoxyParams}
 
 \begin{DoxyRetVals}{Return values}
-\item[{\em None}]\begin{DoxyVerb}
+{\em None} & \begin{DoxyVerb}
 printme() prints the NRM to the screen.
 \end{DoxyVerb}
- \end{DoxyRetVals}
+ \\
+\hline
+\end{DoxyRetVals}
 
 
-Definition at line 2844 of file pyp\_\-newclasses.py.
+Definition at line 3356 of file pyp\_\-newclasses.py.
 
 \hypertarget{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_ac2ee373f5e250c7ae637dc983f1b1651}{
 \index{PyPedal::pyp\_\-newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}!save@{save}}
 \index{save@{save}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\-newclasses::NewAMatrix}}
 \subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-newclasses.NewAMatrix.save (
 \begin{DoxyParamCaption}
-\item[{}]{ self, }
-\item[{}]{ nrm\_\-filename, }
-\item[{}]{ nrm\_\-format = {\ttfamily ''}}
+\item[{}]{self, }
+\item[{}]{nrm\_\-filename, }
+\item[{}]{nrm\_\-format = {\ttfamily ''}}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__newclasses_1_1NewAMatrix_ac2ee373f5e250c7ae637dc983f1b1651}
@@ -169,16 +196,24 @@ Definition at line 2844 of file pyp\_\-newclasses.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to current object. \item[{\em nrm\_\-filename}]The file to which the matrix should be written. \item[{\em nrm\_\-format}]String indicating the format to use when writing the NRM to a file (binary$|$string). \end{DoxyParams}
+{\em self} & Reference to current object. \\
+\hline
+{\em nrm\_\-filename} & The file to which the matrix should be written. \\
+\hline
+{\em nrm\_\-format} & String indicating the format to use when writing the NRM to a file (binary$|$string). \\
+\hline
+\end{DoxyParams}
 
 \begin{DoxyRetVals}{Return values}
-\item[{\em A}]save status indicator (0: failed, 1: success). \begin{DoxyVerb}
+{\em A} & save status indicator (0: failed, 1: success). \begin{DoxyVerb}
 save() uses the NumPy method "tofile()" to save an array to a binary file.
 \end{DoxyVerb}
- \end{DoxyRetVals}
+ \\
+\hline
+\end{DoxyRetVals}
 
 
-Definition at line 2813 of file pyp\_\-newclasses.py.
+Definition at line 3325 of file pyp\_\-newclasses.py.
 
 
 

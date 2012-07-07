@@ -178,17 +178,28 @@ The methods of \class{NewPedigree} objects are listed in Table \ref{tbl:objects-
     \tablelasttail{\hline}
     \label{tbl:objects-newpedigree-methods}
     \begin{xtabular}{l|p{4in}}
-        \_\_init\_\_ & Initializes and returns a \class{NewPedigree} object. \\
-        addanimal & Adds a new animal of class \class{NewAnimal} to the pedigree. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{addanimal} may result in data loss or corruption. You have been warned. \\
-        delanimal & Deletes an animal from the pedigree. Note that this method DOES not update the metadata attached to the pedigree and should only be used if that is not important. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{delanimal} may result in data loss or corruption. You have been warned. \\
-        fromgraph & Creates a \class{NewPedigree} from an \class{XDiGraph} objject. \\
-	load & Wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming metadata, checking for common errors, setting ancestor and sex flags, and renumbering the pedigree. \\
-	preprocess & Processes the entries in a pedigree file, which includes reading each entry, checking it for common errors, and instantiating a \class{NewAnimal} object. \\
-	printoptions & Prints the contents of the options dictionary, which is useful for debugging. \\
-	renumber & Calls the proper reordering and renumbering routines; updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
-	save & Writes a \PyPedal{} pedigree to a user-specified file.  The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. \\
-	simulate & Simulate simulates an arbitrary pedigree of size \textit{n} with \textsl{g} generations starting from \textsl{n\_s} base sires and \textsl{n\_d} base dams.  This method is based on the concepts and algorithms in the \method{Pedigree::sample} method from Matvec 1.1a (src/classes/pedigree.cpp; \url{http://statistics.unl.edu/faculty/steve/software/matvec/}), although all of the code in this implementation was written from scratch.\\
-	updateidmap & Updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
+		\_\_init\_\_ & Initializes and returns a \class{NewPedigree} object. \\
+		\_\_add\\_\_ & Implements pedigree "addition" as discussed briefly in Section \ref{sec:pedigrees-as-sets}. \\
+		\_\_sub\\_\_ & Implements pedigree "subtraction" as discussed briefly in Section \ref{sec:pedigrees-as-sets}. \\
+		addanimal & Adds a new animal of class \class{NewAnimal} to the pedigree. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{addanimal} may result in data loss or corruption. You have been warned. \\
+		delanimal & Deletes an animal from the pedigree. Note that this method DOES not update the metadata attached to the pedigree and should only be used if that is not important. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{delanimal} may result in data loss or corruption. You have been warned. \\
+		fromanimallist & Creates a \class{NewPedigree} from a list of \class{NewAnimal} instances. \\
+		fromgraph & Creates a \class{NewPedigree} from an \class{XDiGraph} object. \\
+		fromnull & Creates a null (empty) \class{NewPedigree}, which is a pedigree with no associated animal records. \\
+		intersection & Implements pedigree intersections as discussed briefly in Section \ref{sec:pedigrees-as-sets}. \\
+		load & Wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming metadata, checking for common errors, setting ancestor and sex flags, and renumbering the pedigree. \\
+		preprocess & Processes the entries in a pedigree file, which includes reading each entry, checking it for common errors, and instantiating a \class{NewAnimal} object. \\
+		printoptions & Prints the contents of the options dictionary, which is useful for debugging. \\
+		renumber & Calls the proper reordering and renumbering routines; updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
+		save & Writes a \PyPedal{} pedigree to a user-specified file.  The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. \\
+		savedb & Writes a \PyPedal{} pedigree to a relational database, as described in Section \ref{sec:io-output-database}. \\
+		savegedcom & Writes a \PyPedal{} pedigree to a user-specified file the format used by GEDCOM 5.5, as described in Appendix \ref{GEDCOM}. \\
+		savegenes & Writes a \PyPedal{} pedigree to a user-specified file the format used by GENES 1.20, as described in Appendix \ref{GENES}. \\
+		savegraph & Writes a \PyPedal{} pedigree to a user-specified file as a directed graph represented as an adjacency list. \\
+		simulate & Simulate simulates an arbitrary pedigree of size \textit{n} with \textsl{g} generations starting from \textsl{n\_s} base sires and \textsl{n\_d} base dams.  This method is based on the concepts and algorithms in the \method{Pedigree::sample} method from Matvec 1.1a (src/classes/pedigree.cpp; \url{http://statistics.unl.edu/faculty/steve/software/matvec/}), although all of the code in this implementation was written from scratch.\\
+		tostream & Writes a \class{NewPedigree} to a text-stream, as described in Section \ref{sec:io-output-text-streams}. \\
+		union & This is an alias for \method{NewPedigree::__add__()}. \\
+		updateidmap & Updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
     \end{xtabular}
 \end{center}
 See Section \ref{sec:pedigree-simulation} for details on pedigree simulation.

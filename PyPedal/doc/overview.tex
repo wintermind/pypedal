@@ -41,7 +41,7 @@ from PyPedal import  pyp_metrics
 \end{verbatim}
 You should only import modules that you are going to use in your program; you do not need to import every \PyPedal{} module in every program you write.
 
-\PyPedal{} recognizes a number of diffferent options that are used to control its behavior (Section \ref{sec:pypedal-options}).  Before you can load your pedigree into a \PyPedal{} object you must provide a pedigree file name (\samp{pedname}) and a pedigree format string (\samp{pedformat}).  This is done by either creating a Python dictionary and passing it as a parameter when \method{pyp_newclasses.loadPedigree()} is called or by specifying a configuration file\index{configuration file} name.  For example, here is how you would create and populate an options dictionary:
+\PyPedal{} recognizes a number of different options that are used to control its behavior (Section \ref{sec:pypedal-options}).  Before you can load your pedigree into a \PyPedal{} object you must provide a pedigree file name (\samp{pedname}) and a pedigree format string (\samp{pedformat}).  This is done by either creating a Python dictionary and passing it as a parameter when \method{pyp_newclasses.loadPedigree()} is called or by specifying a configuration file\index{configuration file} name.  For example, here is how you would create and populate an options dictionary:
 \begin{verbatim}
 options = {}
 options['messages'] = 'verbose'
@@ -78,7 +78,7 @@ Example programs that demonstrate how to use many of the features of \PyPedal{} 
 \section{Options}
 \label{sec:pypedal-options}
 \index{options}
-Many aspects of \PyPedal{}'s operation can be controlled using a series of options.  A complete list of these options, their defaults, and a brief desription of their purpose is presented in Table \ref{tbl:options}.  Options are stored in a Python dictionary that you must create in your programs.  You must specify values for the \var{pedfile} and \var{pedformat} options; all others are optional.  \var{pedfile} is a string containing the name of the file from which your pedigree will be read.  \var{pedformat} is a string containing a pedigree format code (see section \ref{sec:pedigree-format-codes}) for each column in the datafile in the order in which those columns occur.  The following code fragement demonstrates how options are specified.
+Many aspects of \PyPedal{}'s operation can be controlled using a series of options.  A complete list of these options, their defaults, and a brief description of their purpose is presented in Table \ref{tbl:options}.  Options are stored in a Python dictionary that you must create in your programs.  You must specify values for the \var{pedfile} and \var{pedformat} options; all others are optional.  \var{pedfile} is a string containing the name of the file from which your pedigree will be read.  \var{pedformat} is a string containing a pedigree format code (see section \ref{sec:pedigree-format-codes}) for each column in the datafile in the order in which those columns occur.  The following code fragment demonstrates how options are specified.
 \begin{verbatim}
 options = {}
 options['messages'] = 'verbose'
@@ -129,7 +129,7 @@ All pedigree options other than \var{pedfile} and \var{pedformat} have default v
 	database\_host   & 'localhost'   & The server on which the database is running. \\
 	database\_name   & 'pypedal'     & The name of the database to be used. \\
 	database\_passwd & 'anonymous'   & The password needed to connect to your database. \\
-	database\_port   & ''            & The port on which your databse is listening for connections (needed only for Postgres). \\
+	database\_port   & ''            & The port on which your database is listening for connections (needed only for Postgres). \\
 	database\_table  & 'filetag'     & The name of the database table to which the current pedigree will be written. \\
 	database\_type   & 'sqlite'      & The type of database you are using ('mysql'|'postgres'|'sqlite'). \\
 	database\_user   & 'anonymous'   & The name of a user with access rights to your database.  \\
@@ -147,15 +147,25 @@ All pedigree options other than \var{pedfile} and \var{pedformat} have default v
 	log\_long\_filenames & 0        & When nonzero, long logfile names will be used, which means that log file names will include datestamps. \\
 	log\_ped\_lines  & 0            & When $>$ 0 indicates how many lines read from the pedigree file should be printed in the log file for debugging purposes. \\
 	logfile          & filetag.log  & The name of the file to which \PyPedal{} should write messages about its progress. \\
+	match\_rule & 'add' & Default rule used for comparing \class{NewAnimal}s to see if they're identical. \\
 	matrix\_type	 & 'dense'	& Select between dense and sparse matrices.\\
 	messages         & 'verbose'    & How chatty \PyPedal{} should be with respect to messages to the user.  'verbose' indicates that all status messages will be written to STDOUT, while 'quiet' suppresses all output to STDOUT. \\
+	missing\_age & -999 & Default animal age. \\
+	missing\_alive & 0 & Default value for alive-or-dead indicator. \\
+	missing\_alleles & \code{[`'],[`']} & Default allelotype. \\
 	missing\_bdate    & '01011900'   & Default birth date. \\
-	missing\_breed    & 'Unknown\_Breed'    & Default breed name.\\
-	missing\_byear    & 1900         & Default birth year.\\
-	missing\_herd	 & 'Unknown\_Herd'	& Default herd identifier.\\
-	missing\_name     & 'Unknown\_Name'    & Default animal name.\\
+	missing\_breed    & 'Unknown\_Breed'    & Default breed name. \\
+	missing\_byear    & 1900         & Default birth year. \\
+	missing\_gen & -999. & Default generation. \\
+	missing\_gencoeff & -999. & Defailt Pattie's generation coefficient. \\
+	missing\_herd	 & 'Unknown\_Herd'	& Default herd identifier. \\
+	missing \_igen & -999. & Default inferred generation. \\
+	missing\_inbreeding & 0. & Default coefficient of inbreeding. \\
+	missing\_name     & 'Unknown\_Name'    & Default animal name. \\
 	missing\_parent  & 0            & Indicates what code is used to identify missing/unknown parents in the pedigree file. \\
-	missing\_sex	 & 'u'		& Default sex code.\\
+	missing\_pedcomp & -999. & Default value for pedigree completeness. \\
+	missing\_sex	 & 'u'		& Default sex code. \\
+	missing\_userfield & -999 & Default value for user-provided field. \\
 	newanimal\_caller  & 'loader'   & Internal parameter needed for addanimal() to work correctly with ASD pedigrees. \\
 	nrm\_format      & 'text'       & Format to use when writing an NRM to a file ('text'|'binary'). Array elements in text files are separated by \var{sepchar}.\\
 	nrm\_method      & 'nrm'        & Specifies that an NRM formed from the current pedigree as an instance of a \class{NewAMatrix} object should ('frm') or should not ('nrm') be corrected for parental inbreeding. \\
@@ -194,7 +204,7 @@ All pedigree options other than \var{pedfile} and \var{pedformat} have default v
 \subsection{Configuration Files}
 \label{sec:pypedal-options-file}
 \index{configuration files}
-The Dict4Ini\index{Dict4Ini} module (\url{http://cheeseshop.python.org/pypi/Dict4Ini/0.4}) is used to process configuration files, and in included with the distribution so that you do not need to download and install it.  Dict4Ini objects can be addressed as though they are standard Python dictionaries, which made it very easy to add configuration file support to \PyPedal{}.  Configuration files consist of simple \emph{keyword = value} pairs on separate lines\footnote{Please note that the Dict4Ini documentation referrs to sections.  Sections are very commonly used in configuration files, but \PyPedal{} does not use them.}, and may include comments.
+The Dict4Ini\index{Dict4Ini} module (\url{http://cheeseshop.python.org/pypi/Dict4Ini/0.4}) is used to process configuration files, and in included with the distribution so that you do not need to download and install it.  Dict4Ini objects can be addressed as though they are standard Python dictionaries, which made it very easy to add configuration file support to \PyPedal{}.  Configuration files consist of simple \emph{keyword = value} pairs on separate lines\footnote{Please note that the Dict4Ini documentation refers to sections.  Sections are very commonly used in configuration files, but \PyPedal{} does not use them.}, and may include comments.
 \begin{verbatim}
 # new_options.ini
 # This is an example of a PyPedal configuration file.
@@ -250,7 +260,7 @@ options['pedformat'] = 'asd'
 \end{verbatim}
 Please note that the format codes are case-sensitive, which means that \character{a} is considered to be a different code than \character{A}.  The codes currently recognized by \PyPedal{} are listed in Table \ref{tbl:pedigree-format-codes}.
 
-As noted, all pedigrees must contain columns corresponding to animals, sires, and dams, either in the 'asd' or 'ASD' formats (it is not recommended that you mix them such as in 'AsD').  Pedigree codes should be entered in the same order in which the columns occur in the pedigee file.  The character that separates alleles when the 'L' format code is used cannot be the same character used to separate columns in the pedigree file.  If you do use the same character, \PyPedal{} will write an error message to the log file and screen and halt.  The herd column type simply refers to a management group identifier, and can
+As noted, all pedigrees must contain columns corresponding to animals, sires, and dams, either in the 'asd' or 'ASD' formats (it is not recommended that you mix them such as in 'AsD').  Pedigree codes should be entered in the same order in which the columns occur in the pedigree file.  The character that separates alleles when the 'L' format code is used cannot be the same character used to separate columns in the pedigree file.  If you do use the same character, \PyPedal{} will write an error message to the log file and screen and halt.  The herd column type simply refers to a management group identifier, and can
 correspond to a herd, flock, litter, etc.
 
 If you used an earlier version of \PyPedal{} you may have added a pedigree format string, e.g. \texttt{"\% asd"}, to your pedigree file(s).  You no longer need to include that string in your pedigrees, and if \PyPedal{} sees one while reading a pedigree file it will ignore it.

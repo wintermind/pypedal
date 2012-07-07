@@ -1,25 +1,95 @@
-<tex2html_file>#./glossary.tex#
-\chapter<<2693>>Glossary<<2693>>
-\label<<2694>>cha:glossary<<2694>>
-\begin<<2695>>quote<<2695>>
-This chapter provides a glossary of terms.\begin<<2708>>tex2html_deferred<<2708>>\footnote<<2696>>Please let me know of any additions to this list which you feel would be helpful.<<2696>>\end<<2709>>tex2html_deferred<<2709>>
-\end<<2697>>quote<<2697>>
-\begin<<2698>>description<<2698>>
-\item[ancestor loss coefficient] See: pedigree completeness.
-\item[coefficient of ancestral inbreeding] The probability that an individual jas inherited an allele that has undergone inbreeding in the past at least once.
-\item[coefficient of inbreeding] Probability that two alleles selected at random are identical by descent.
-\item[coefficient of partial inbreeding] The probability that the alleles at an arbitrary locus in an individual are identitical-by-descent, and that the alleles were derived from an allele in a particular founder.
-\item[coefficient of relationship] Proportion of genes that two individuals share on average.
-\item[effective ancestor number] The number of equally-contributing ancestors, not necessarily founders, needed to produce a population with the heterozygosity of the studied population \cite<<2699>>ref352<<2699>>.
-\item[effective founder number] The number of equally-contributing founders needed to produce a population with the heterozygosity of the studied population \cite<<2700>>ref640<<2700>>.
-\item[effective population size] The effective population size is the size of an ideal population that would lose heterozygosity at a rate equal to that of the studied population \cite<<2701>>ref91<<2701>>.
-\item[founder] An animal with unknown parents that is assumed to be unrelated to all other founders.
-\item[internal report] A PyPedal() report that is intended for use by other PyPedal() procedures, such as plotting
-routines, and not for printing.
-\item[numerator relationship matrix] Matrix of additive genetic covariances among the animals in a population.
-\item[pedigree] A PyPedal<<2702>><<2702>> pedigree consists of a Python list containing instances of PyPedal<<2703>><<2703>> \method<<2704>>NewAnimal()<<2704>> objects.
-\item[pedigree completeness] The proportion of known pedigree information for an arbitrary number of generations.
-\item[renumbering] Many calculations require that the animals in a pedigree be ordered from oldest to youngest, with sires and dams preceding offspring, and renumbered  starting with 1.  This is a computational necessity, and results in an animal's ID (\texttt<<2705>>animalID<<2705>>) being changed to reflect that animal's order in the pedigree.  All animals have their original IDs stored in their \texttt<<2706>>originalName<<2706>> attribute.
-\item[reordering] The process of arranging animals in a pedigree so that parents appear before their offspring; this is a necessary step in renumbering a pedigree.
-\end<<2707>>description<<2707>>
-<tex2html_endfile>#./glossary.tex#
+<tex2html_file>#./newfeatures.tex#
+\chapter<<3159>>Implementing New Features<<3159>>
+\label<<3160>>cha:newfeatures<<3160>>
+\begin<<3161>>quote<<3161>>
+First, solve the problem. Then, write the code. --- John Johnson
+\end<<3162>>quote<<3162>>
+\section<<3163>>Overview<<3163>>\label<<3164>>sec:newfeatures-overview<<3164>>\index<<3165>>new features<<3165>>
+In this chapter, an example of wil be provided of how to extend PyPedal<<3166>><<3166>> by creating a user-defined routine.  New routines may implement a new measure of genetic diversity, extend the graphics module, add a new report, or group a series of actions into a single convenient routine.
+\begin<<3252>>tex2html_deferred<<3252>>\par\end<<3253>>tex2html_deferred<<3253>>
+One of the appealing features of PyPedal<<3167>><<3167>> is its easy extensibility.  In this section, we will demonstrate how to add a
+user-written module to PyPedal<<3168>><<3168>>.  The file \texttt<<3169>>pyp\_template.py<<3169>> that is distributed with PyPedal<<3170>><<3170>> is a
+skeleton that can be used to help you get started writing your custom module(s).  You should also look at the source
+code of the standard modules, particularly if there is already a routine that does something similar to what you would
+like to do, to see if you can jump-start your project by reusing code.
+\subsection<<3171>>Defining the Problem<<3171>>
+\label<<3172>>sec:newfeatures-overview-problem<<3172>>
+\index<<3173>>new features!defining the problem<<3173>>
+Before you open your editor and begin writing code you need to clearly define your problem.  Answering a few questions can
+help you do this:
+\begin<<3174>>itemize<<3174>>
+\item What output do I want from my routine?
+\item What calculations do I need to perform?
+\item What input do I need to give my routine in order to perform those calculations?
+\item Are there any PyPedal<<3175>><<3175>> routines that already do something similar?
+\end<<3176>>itemize<<3176>>
+The last question is as important as the others --- if there is already a PyPedal<<3177>><<3177>> routine that does similar calculations
+you can use it as a starting point.  Code reuse is a great idea.
+\begin<<3254>>tex2html_deferred<<3254>>\par\end<<3255>>tex2html_deferred<<3255>>
+The problem that will motivate the rest of this section sounds very tricky, but is not really so bad because we are going to
+reuse a lot of code.  I want to create a routine for drawing pedigrees that color nodes (animals) based on their importance as
+measured by their connectedness to other animals in the pedigree.  After a brief review of the contents of the Module Template
+in Section \ref<<3178>>sec:newfeatures-template<<3178>>, I will present a detailed solution to this problem in Section
+\ref<<3179>>sec:newfeatures-solving-the-problem<<3179>>.
+\section<<3180>>Module Template<<3180>>
+\label<<3181>>sec:newfeatures-template<<3181>>
+\index<<3182>>new features!module template<<3182>>
+The file \file<<3183>>pyp\_template.py<<3183>> is a skeleton that can be used to get started writing a custom module.  The first thing you should do is save a copy of \file<<3184>>pyp\_template.py<<3184>> with your working module name; we will use the filename \file<<3185>>pyp\_jbc.py<<3185>> for the following example.  You should also fill-in the module header so that it contains your name, e-mail address, etc.  The version number of your module does not have to match that of the main PyPedal<<3186>><<3186>> distribution, and is only used as an aid to the programmer.
+\index<<3187>>new features!module template!header<<3187>>
+\begin<<3188>>tex2html_preform<<3188>><tex2html_verbatim_mark>verbatim212#\end<<3189>>tex2html_preform<<3189>>
+The imports section of the template includes \code<<3190>>import<<3190>> statements for all of the standard PyPedal<<3191>><<3191>> modules.  There's
+no harm in including all of them in your module, but it's good practice to include only the modules you need. You should
+always include the \module<<3192>>logging<<3192>> module because it's needed for communicating with the log file.  For \module<<3193>>pyp\_jbc<<3193>>
+I am including only the \module<<3194>>pyp\_graphics<<3194>>, \module<<3195>>pyp\_network<<3195>>, and \module<<3196>>pyp\_utils<<3196>> modules.
+\index<<3197>>new features!module template!imports<<3197>>
+\begin<<3198>>tex2html_preform<<3198>><tex2html_verbatim_mark>verbatim213#\end<<3199>>tex2html_preform<<3199>>
+There is a very sketchy function prototype included in the template.  It is probably enough for you to get started if you have
+a little experience programming in Python.  If you don't have any experience programming in Python you should be able to get
+up-and-running with a little trial-and-error and some study of PyPedal<<3200>><<3200>> source.  You should always write a comment block similar to that attached to \function<<3201>>yourFunctionName()<<3201>> for each of your functions.  This comment block is recognized by PythonDoc, a tool for automatically generating program documentation.  Parameters are the inputs that you send to a function, return is a description of the function's output, and defreturn is the type of output that is returned, such as a list, dictionary, integer, or tuple.
+\index<<3202>>new features!module template!function prototype<<3202>>
+\begin<<3203>>tex2html_preform<<3203>><tex2html_verbatim_mark>verbatim214#\end<<3204>>tex2html_preform<<3204>>
+\section<<3205>>Solving the Problem<<3205>>
+\label<<3206>>sec:newfeatures-solving-the-problem<<3206>>
+\index<<3207>>new features!solving the problem<<3207>>
+The measure of connectedness I am going to use for coloring the pedigree is the proportion of animals in the pedigree that are descended from each animal in the pedigree.  In order to do this we need to do the following:
+\begin<<3208>>enumerate<<3208>>
+\item Compute the proportion of animals in the pedigree that are descended from each animal in the pedigree; the values will
+be stored in a dictionary keyed by animal IDs.
+\item Map the proportion of descendants from decimal values on the interval (0,1) to RGB triples.
+\item Use the RGB triples to set the fill color for nodes.
+\end<<3209>>enumerate<<3209>>
+There is not an existing function for the first item, but there is a function in the \module<<3210>>pyp\_network<<3210>> module, \function<<3211>>find_descendants()<<3211>>, for identifying all of the descendants of an animal.  We can use the length of the list of descendants and the number of animals in the pedigree to calculate the proportion of animals in the pedigree descended from that animal.  The \function<<3212>>color\_pedigree()<<3212>> function creates a dictionary and loops over the pedigree to compute the proporions.  It also calls \function<<3213>>draw\_colored\_pedigree()<<3213>>, which is a modified version of \function<<3214>>pyp\_graphics.draw\_pedigree()<<3214>>, to draw the pedigree with colored nodes.
+\begin<<3215>>tex2html_preform<<3215>><tex2html_verbatim_mark>verbatim215#\end<<3216>>tex2html_preform<<3216>>
+\function<<3217>>pyp\_graphics.draw\_pedigree()<<3217>> was copied into \module<<3218>>pyp\_jbc<<3218>>, renamed to \function<<3219>>draw\_colored\_pedigree()<<3219>>, and modified to draw colored nodes.  Two basic changes were made to accomplish that: the function was altered to accept a dictionary of weights to be used for coloring, and code for actually coloring the nodes was written.  The first change was simply the addition of a new required parameter, \var<<3220>>shading<<3220>>, to the function header.  The second step required a little more work.  For each animal in the pedigree, the descendant proportion is looked-up in the shading dictionary, the proportion is passed to \function<<3221>>get\_color\_32()<<3221>> and converted into an RGB triple, and the \member<<3222>>filled<<3222>> and \member<<3223>>color<<3223>> attributes for the node representing that animal are set.  The hardest part of creating this routine was determining where changes should be made when modifying \function<<3224>>pyp\_graphics.draw\_pedigree()<<3224>>.
+\begin<<3225>>tex2html_preform<<3225>><tex2html_verbatim_mark>verbatim216#\end<<3226>>tex2html_preform<<3226>>
+The \function<<3227>>get\_color\_32()<<3227>> function is a modified version of \function<<3228>>pyp\_graphics.rmuller\_get\_color()<<3228>> that returns RGB triplets of the form \begin<<3256>>tex2html_deferred<<3256>>\samp<<3229>>\#1a2b3c<<3229>>\end<<3257>>tex2html_deferred<<3257>>, which are required by the program that renders the graphs.  This is another example of how code reuse can reduce development time.
+\begin<<3230>>tex2html_preform<<3230>><tex2html_verbatim_mark>verbatim217#\end<<3231>>tex2html_preform<<3231>>
+This change will probably be to rolled into \function<<3232>>rmuller\_get\_color()<<3232>> so that the form of the return triplet is user-selectable.
+\begin<<3258>>tex2html_deferred<<3258>>\par\end<<3259>>tex2html_deferred<<3259>>
+The program \file<<3233>>new_jbc.py<<3233>> demonstrates use of the new \function<<3234>>pyp\_jbc.color\_pedigree()<<3234>> routine:
+\begin<<3235>>tex2html_preform<<3235>><tex2html_verbatim_mark>verbatim218#\end<<3236>>tex2html_preform<<3236>>
+The resulting colorized pedigree can be seen in Figure \ref<<3237>>fig:boichard2-pedigree-colorized<<3237>>.  Each of the nodes is colored
+according to the proportion of animals in the complete pedigree descended from a given animal.  Clearly there is still room
+for improvement; for example, there is no key provided in the image so that you can see how colors map to proportions.  Implementation
+of a key is left as an exercise for the reader.
+\begin<<3238>>figure<<3238>>
+  \begin<<3239>>center<<3239>>
+    \includegraphics[width=6in]<<3240>>BoichardPedigreeColored.eps<<3240>>
+    \begin<<3260>>tex2html_deferred<<3260>>\caption<<3251>>Colorized version of the pedigree in Figure \ref<<3241>>fig:new-ids2-pedigree-basic<<3241>><<3251>>\end<<3261>>tex2html_deferred<<3261>>
+    \label<<3242>>fig:boichard2-pedigree-colorized<<3242>>
+  \end<<3243>>center<<3243>>
+\end<<3244>>figure<<3244>>
+\section<<3245>>Contributing Code to PyPedal<<3245>>
+\label<<3246>>sec:newfeatures-overview-contributing-code<<3246>>
+\index<<3247>>new features!contributing code<<3247>>
+If you would like to contribute your code back to PyPedal<<3248>><<3248>> please note that it must be licensed under version 2.1 or any
+later version of the GNU Lesser General Public License.  The GNU LGPL has all of the restrictions of the GPL except that you
+may use the code at compile time without the derivative work becoming a GPL work. This allows the use of the code in
+proprietary works.  You must also complete and return the joint copyright assignment form distributed as
+\texttt<<3249>>pypedal\_copyright\_assignment.pdf<<3249>> before any contributions can be accepted and merged into the development tree.
+\begin<<3262>>tex2html_deferred<<3262>>\par\end<<3263>>tex2html_deferred<<3263>>
+Contributors are asked to document their code using the documentation comments recognized by PythonDoc 2.0 or later
+(\begin<<3264>>tex2html_deferred<<3264>>\url<<3250>>http://effbot.org/zone/pythondoc.htm<<3250>>\end<<3265>>tex2html_deferred<<3265>>).  PythonDoc is used to generates API documentation in HTML and other formats
+based on descriptions in Python source files.  You are also strongly encouraged to provide example programs abd datasets
+with any code submissions.
+<tex2html_endfile>#./newfeatures.tex#

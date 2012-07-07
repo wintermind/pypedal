@@ -1,16 +1,18 @@
 <tex2html_file>#./copyright.tex#
 \section*<<150>>Legal Notice<<150>>
-\label<<151>>sec:legal-notice<<151>>
-\begin<<162>>tex2html_deferred<<162>>\par\end<<163>>tex2html_deferred<<163>>
-Copyright (c) 2002-2008.  John B. Cole.  All rights reserved.
+\begin<<151>>quote<<151>>
+ The only people who have anything to fear from free software are those whose products are worth even less. --- David Emery
+\end<<152>>quote<<152>>
 \begin<<164>>tex2html_deferred<<164>>\par\end<<165>>tex2html_deferred<<165>>
+\label<<153>>sec:legal-notice<<153>>
+Copyright (c) 2002-2012.  John B. Cole.  All rights reserved.
+\begin<<166>>tex2html_deferred<<166>>\par\end<<167>>tex2html_deferred<<167>>
 Permission to use, copy, modify, and distribute this software for any purpose
 without fee is hereby granted, provided that this entire notice is included in
 all copies of any software which is or includes a copy or modification of this
 software and in all copies of the supporting documentation for such software.
-\begin<<166>>tex2html_deferred<<166>>\par\end<<167>>tex2html_deferred<<167>>
-\subsection*<<152>>Disclaimer<<152>>
 \begin<<168>>tex2html_deferred<<168>>\par\end<<169>>tex2html_deferred<<169>>
+\subsection*<<154>>Disclaimer<<154>>
 The author of this software does not make any warranty, express or implied, or
 assume any liability or responsibility for the accuracy, completeness, or
 usefulness of any information, apparatus, product, or process disclosed, or
@@ -22,9 +24,7 @@ the author. The views and opinions of authors expressed herein do not necessaril
 state or reflect those of the United States Government and shall not be used for
 advertising or product endorsement purposes.
 \begin<<170>>tex2html_deferred<<170>>\par\end<<171>>tex2html_deferred<<171>>
-\section*<<153>>License<<153>>
-\label<<154>>sec:license<<154>>
-\index<<155>>license<<155>>
+\section*<<155>>License<<155>>\label<<156>>sec:license<<156>>\index<<157>>license<<157>>
 This is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation; either version 2.1 of the License, or (at
@@ -45,6 +45,6 @@ USA.
 \begin<<180>>tex2html_deferred<<180>>\listoftables\end<<181>>tex2html_deferred<<181>>
 \begin<<182>>tex2html_deferred<<182>>\listoffigures\end<<183>>tex2html_deferred<<183>>
 \begin<<184>>tex2html_deferred<<184>>\par\end<<185>>tex2html_deferred<<185>>
-\begin<<186>>tex2html_deferred<<186>>\declaremodule<<156>>extension<<156>><<157>>pypedal<<157>>\end<<187>>tex2html_deferred<<187>>
-\moduleauthor<<158>>John B. Cole<<158>><<159>>jcole@aipl.arsusda.gov<<159>>
-\begin<<188>>tex2html_deferred<<188>>\modulesynopsis<<161>>Py<<160>>P<<160>>edal<<161>>\end<<189>>tex2html_deferred<<189>>
+\begin<<186>>tex2html_deferred<<186>>\declaremodule<<158>>extension<<158>><<159>>pypedal<<159>>\end<<187>>tex2html_deferred<<187>>
+\moduleauthor<<160>>John B. Cole<<160>><<161>>john.cole@ars.usda.gov<<161>>
+\begin<<188>>tex2html_deferred<<188>>\modulesynopsis<<163>>Py<<162>>P<<162>>edal<<163>>\end<<189>>tex2html_deferred<<189>>

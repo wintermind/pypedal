@@ -1,283 +1,121 @@
-<tex2html_file>#./objects.tex#
-\chapter<<1088>>Using PyPedal Objects<<1088>>
-\label<<1089>>cha:using-pypedal-objects<<1089>>
-\index<<1090>>PyPedal objects<<1090>>
-\begin<<1091>>quote<<1091>>
-In this chapter, a detailed explanation of each PyPedal<<1092>><<1092>> class is presented, including attributes and methods.
-\end<<1093>>quote<<1093>>
-\section<<1094>>Animal Objects<<1094>>
-\label<<1095>>sec:objects-animal-objects<<1095>>
-\index<<1096>>PyPedal objects!Animal objects<<1096>>
-Three types of animal object are provided in PyPedal<<1097>><<1097>> (\ref<<1098>>sec:objects-animal-objects-new-animal<<1098>>). Users will typically work with instances of \class<<1099>>NewAnimal<<1099>> objects, while \class<<1100>>LightAnimal<<1100>> (\ref<<1101>>sec:objects-animal-objects-light-animal<<1101>>) and \class<<1102>>SimAnimal<<1102>> (\ref<<1103>>sec:objects-animal-objects-sim-animal<<1103>>) objects are of interest primarily to developers. Detailed descriptions of each class and class method may be found in the API Reference for the \module<<1104>>pyp\_newclasses<<1104>> module (Section \ref<<1105>>sec:functions-pyp-newclasses<<1105>>).
-\subsection<<1106>>The NewAnimal Class<<1106>>
-\label<<1107>>sec:objects-animal-objects-new-animal<<1107>>
-\index<<1108>>PyPedal objects!Animal objects!NewAnimal<<1108>>
-\begin<<1109>>center<<1109>>
-    \tablecaption<<1469>>Attributes of \class<<1110>>NewAnimal<<1110>> objects.<<1469>>
-    \tablefirsthead<<1470>>\hline
-	\multirow<<1111>>2<<1111>><<1112>>15mm<<1112>><<1113>>Attribute<<1113>> ;SPMamp; \multicolumn<<1114>>2<<1114>><<1115>>|c|<<1115>><<1116>>Default<<1116>> ;SPMamp; \multirow<<1117>>2<<1117>><<1118>>2.5in<<1118>><<1119>>Description<<1119>> \\ 
-        \cline<<1120>>2-3<<1120>>
-         ;SPMamp;  Integral IDs (\texttt<<1121>>'asd'<<1121>>) ;SPMamp; String IDs (\texttt<<1122>>'ASD'<<1122>>) ;SPMamp; \\ 
-	\hline<<1470>>
-    \begin<<1564>>tex2html_deferred<<1564>>\tablehead<<1471>>\hline
-	\multirow<<1123>>2<<1123>><<1124>>15mm<<1124>><<1125>>Attribute<<1125>> ;SPMamp; \multicolumn<<1126>>2<<1126>><<1127>>|c|<<1127>><<1128>>Default<<1128>> ;SPMamp; \multirow<<1129>>2<<1129>><<1130>>2.5in<<1130>><<1131>>Description<<1131>> \\ 
-        \cline<<1132>>2-3<<1132>>
-         ;SPMamp;  Integral IDs (\texttt<<1133>>'asd'<<1133>>) ;SPMamp; String IDs (\texttt<<1134>>'ASD'<<1134>>) ;SPMamp; \\ 
-	\hline<<1471>>\end<<1565>>tex2html_deferred<<1565>>
-    \begin<<1566>>tex2html_deferred<<1566>>\tabletail<<1472>>\hline \multicolumn<<1135>>4<<1135>><<1136>>l<<1136>><<1137>>\small\sl continued on next page<<1137>> \\  \hline<<1472>>\end<<1567>>tex2html_deferred<<1567>>
-    \tablelasttail<<1138>>\hline<<1138>>
-    \label<<1139>>tbl:objects-animal-objects-new-animal-attributes<<1139>>
-    \begin<<1140>>xtabular<<1140>><<1473>>l|l|l|p<<1141>>2.5in<<1141>><<1473>>
-        age ;SPMamp; -999 ;SPMamp; -999 ;SPMamp; The animal's age based on the global \texttt<<1142>>BASE_DEMOGRAPHIC_YEAR<<1142>> defined in \module<<1143>>pyp_demog<<1143>>. If the \emph<<1144>>by<<1144>> is unknown, the inferred generation is used.  If the inferred generation is unknown, the age is set to -999. \\ 
-        alive ;SPMamp; \texttt<<1145>>'0'<<1145>> ;SPMamp; \texttt<<1146>>'0'<<1146>> ;SPMamp; Flag indicating whether or not the animal is alive: \texttt<<1147>>'0'<<1147>> = dead, \texttt<<1148>>'1'<<1148>> = alive. \\ 
-        alleles ;SPMamp; \begin<<1508>>tex2html_wrap_inline<<1508>>$['', '']$\end<<1509>>tex2html_wrap_inline<<1509>>\space ;SPMamp; \begin<<1510>>tex2html_wrap_inline<<1510>>$['', '']$\end<<1511>>tex2html_wrap_inline<<1511>>\space ;SPMamp; Alleles used for gene dropping. \\ 
-        ancestor ;SPMamp; \texttt<<1149>>'0'<<1149>> ;SPMamp; \texttt<<1150>>'0'<<1150>> ;SPMamp; Flag indicating whether or not the animal has offspring: \texttt<<1151>>'0'<<1151>> = has no offspring, \texttt<<1152>>'1'<<1152>> = has offspring. The flags are set by calling \function<<1153>>pyp\_utils.set\_ancestor\_flag()<<1153>> and passing it a renumbred pedigree. \\ 
-        animalID ;SPMamp; animal ID ;SPMamp; animal ID \begin<<1512>>tex2html_wrap_inline<<1512>>$\mapsto$\end<<1513>>tex2html_wrap_inline<<1513>>\space \emph<<1154>>integer<<1154>> ;SPMamp; Animal's ID. Animal IDs change when a pedigree is renumbered. IDs must be provided for all animals in a pedigree file. When strings are provided for animal  IDs using the \texttt<<1155>>ASD<<1155>> pedigree format code they are converted to integral animal IDs using the \method<<1156>>string_to_int()<<1156>> method.\\ 
-        bd ;SPMamp; \texttt<<1157>>missing_bdate<<1157>> ;SPMamp; \texttt<<1158>>missing_bdate<<1158>> ;SPMamp; The animal's birthdate in \emph<<1159>>MMDDYY<<1159>> format. \\ 
-        breed ;SPMamp; \texttt<<1160>>missing_breed<<1160>> ;SPMamp; \texttt<<1161>>missing_breed<<1161>> ;SPMamp; The animal's breed as a string. \\ 
-        by ;SPMamp; \texttt<<1162>>missing_byear<<1162>> ;SPMamp; \texttt<<1163>>missing_byear<<1163>> ;SPMamp; The animal's birthyear in \emph<<1164>>YYYY<<1164>> format. Default values set in \texttt<<1165>>this typeface<<1165>> are  PyPedal<<1166>><<1166>> options which are described in detail in Section \ref<<1167>>sec:pypedal-options<<1167>>.\\ 
-        damID ;SPMamp; dam ID ;SPMamp; dam ID \begin<<1514>>tex2html_wrap_inline<<1514>>$\mapsto$\end<<1515>>tex2html_wrap_inline<<1515>>\space \emph<<1168>>integer<<1168>> ;SPMamp; Dam's ID. When strings are provided for animal  IDs using the \texttt<<1169>>ASD<<1169>> pedigree format code they are converted to integral animal IDs using the \method<<1170>>string_to_int()<<1170>> method. \\ 
-        damName ;SPMamp; dam ID ;SPMamp; dam ID ;SPMamp; The name of the animal's dam. \\ 
-        daus ;SPMamp; \begin<<1516>>tex2html_wrap_inline<<1516>>$\{\}$\end<<1517>>tex2html_wrap_inline<<1517>>\space ;SPMamp; \begin<<1518>>tex2html_wrap_inline<<1518>>$\{\}$\end<<1519>>tex2html_wrap_inline<<1519>>\space ;SPMamp; Dictionary containing all known daughters of an animal. The keys and values are the animal IDs for each offspring. When the pedigree is renumbered, keys are updated to correspond to the renumbered IDs for each offspring. \\ 
-        fa ;SPMamp; 0.0 ;SPMamp; 0.0 ;SPMamp; The animal's coefficient of inbreeding. \\ 
-        founder ;SPMamp; \texttt<<1171>>'n'<<1171>> ;SPMamp; \texttt<<1172>>'n'<<1172>> ;SPMamp; Character indicating whether or not the animal is a founder (had unknown parents): \texttt<<1173>>'n'<<1173>> = not a founder (one or both parents known), \texttt<<1174>>'y'<<1174>> = founder (parents unknown).\\ 
-        gen ;SPMamp; -999 ;SPMamp; -999 ;SPMamp; Generation to which the animal belongs. \\ 
-        gencoeff ;SPMamp; -999.0 ;SPMamp; -999.0 ;SPMamp; Pattie's \citeyear<<1175>>Pattie1965<<1175>> generation coefficient. \\ 
-        herd ;SPMamp; \texttt<<1176>>missing_herd<<1176>> \begin<<1520>>tex2html_wrap_inline<<1520>>$\mapsto$\end<<1521>>tex2html_wrap_inline<<1521>>\space \emph<<1177>>integer<<1177>> ;SPMamp; \texttt<<1178>>missing_herd<<1178>> \begin<<1522>>tex2html_wrap_inline<<1522>>$\mapsto$\end<<1523>>tex2html_wrap_inline<<1523>>\space \emph<<1179>>integer<<1179>> ;SPMamp; The ID of the herd to which the animal belongs. \\ 
-        igen ;SPMamp; -999 ;SPMamp; -999 ;SPMamp; Generation inferred by \function<<1180>>pyp\_utils.set\_generation()<<1180>>. \\ 
-        name ;SPMamp; animal ID ;SPMamp; animal ID ;SPMamp; The animal's name. This attribute is quite useful in \texttt<<1181>>ASD<<1181>> pedigrees. and less so in \texttt<<1182>>asd<<1182>> pedigrees. \\ 
-        originalHerd ;SPMamp; herd ;SPMamp; herd ;SPMamp; The original herd ID to which an animal belonged before the herd was converted from a string to an integer; most useful with the \texttt<<1183>>'H'<<1183>> pedigree format code. \\ 
-        originalID ;SPMamp; animalID ;SPMamp; animal ID \begin<<1524>>tex2html_wrap_inline<<1524>>$\mapsto$\end<<1525>>tex2html_wrap_inline<<1525>>\space \emph<<1184>>integer<<1184>> ;SPMamp; Original ID assigned to an animal. It will not change when the pedigree is renumbered. \\ 
-        paddedID ;SPMamp; \texttt<<1185>>animalID<<1185>> \begin<<1526>>tex2html_wrap_inline<<1526>>$\mapsto$\end<<1527>>tex2html_wrap_inline<<1527>>\space \emph<<1186>>integer<<1186>> ;SPMamp; \texttt<<1187>>animalID<<1187>> \begin<<1528>>tex2html_wrap_inline<<1528>>$\mapsto$\end<<1529>>tex2html_wrap_inline<<1529>>\space \emph<<1188>>integer<<1188>> ;SPMamp; The animal ID padded to fifteen digits, with the birthyear (or 1950 if the birth year is unknown) prepended.  The order of elements is: birthyear, animalID,count of zeros, zeros. Used to create alleles for gene dropping. \\ 
-        pedcomp ;SPMamp; -999.9 ;SPMamp; -999.9 ;SPMamp; Pedigree completeness as described in Section \ref<<1189>>sec:methodology-pedigre-completeness<<1189>>. \\ 
-        renumberedID ;SPMamp; -999 ;SPMamp; -999 ;SPMamp; ID assigned to an animal when the pedigree is renumbered. The default value indicates that the pedigree has not been renumbered using PyPedal<<1190>><<1190>>.\\ 
-        sex ;SPMamp; \texttt<<1191>>'u'<<1191>> ;SPMamp; \texttt<<1192>>'u'<<1192>> ;SPMamp; The sex of the animal: \texttt<<1193>>'m'<<1193>> = male, \texttt<<1194>>'f'<<1194>> = female, \texttt<<1195>>'u'<<1195>> = unknown/not provided. \\ 
-        sireID ;SPMamp; sire ID ;SPMamp; sire ID \begin<<1530>>tex2html_wrap_inline<<1530>>$\mapsto$\end<<1531>>tex2html_wrap_inline<<1531>>\space \emph<<1196>>integer<<1196>> ;SPMamp; Sire's ID. When strings are provided for animal  IDs using the \texttt<<1197>>ASD<<1197>> pedigree format code they are converted to integral animal IDs using the \method<<1198>>string_to_int()<<1198>> method. \\ 
-        sireName ;SPMamp; sireID ;SPMamp; sireID ;SPMamp; The name of the animal's sire. \\ 
-        sons ;SPMamp; \begin<<1532>>tex2html_wrap_inline<<1532>>$\{\}$\end<<1533>>tex2html_wrap_inline<<1533>>\space ;SPMamp; \begin<<1534>>tex2html_wrap_inline<<1534>>$\{\}$\end<<1535>>tex2html_wrap_inline<<1535>>\space ;SPMamp; Dictionary containing all known sons of an animal. The keys and values are the animal IDs for each offspring. When the pedigree is renumbered, keys are updated to correspond to the renumbered IDs for each offspring.\\ 
-        unks ;SPMamp; \begin<<1536>>tex2html_wrap_inline<<1536>>$\{\}$\end<<1537>>tex2html_wrap_inline<<1537>>\space ;SPMamp; \begin<<1538>>tex2html_wrap_inline<<1538>>$\{\}$\end<<1539>>tex2html_wrap_inline<<1539>>\space ;SPMamp; Dictionary containing all offspring of an animal with unknown sex. The keys and values are the animal IDs for each offspring. When the pedigree is renumbered, keys are updated to correspond to the renumbered IDs for each offspring. \\ 
-    \end<<1199>>xtabular<<1199>>
-\end<<1200>>center<<1200>>
-\class<<1201>>NewAnimal<<1201>> objects have the seven methods listed in Table \ref<<1202>>tbl:objects-animal-objects-new-animal-methods<<1202>>. The methods focus on returning information about an instance of an object; calculations are left to functions in, e.g., the \module<<1203>>pyp\_metrics<<1203>> and \module<<1204>>pyp\_nrm<<1204>> modules. 
-\begin<<1205>>center<<1205>>
-    \tablecaption<<1474>>Methods of \class<<1206>>NewAnimal<<1206>> objects.<<1474>>
-    \tablefirsthead<<1207>>\hline Method ;SPMamp; Description \\  \hline<<1207>>
-    \begin<<1568>>tex2html_deferred<<1568>>\tablehead<<1208>>\hline Method ;SPMamp; Description \\  \hline<<1208>>\end<<1569>>tex2html_deferred<<1569>>
-    \begin<<1570>>tex2html_deferred<<1570>>\tabletail<<1475>>\hline \multicolumn<<1209>>2<<1209>><<1210>>l<<1210>><<1211>>\small\sl continued on next page<<1211>> \\  \hline<<1475>>\end<<1571>>tex2html_deferred<<1571>>
-    \tablelasttail<<1212>>\hline<<1212>>
-    \label<<1213>>tbl:objects-animal-objects-new-animal-methods<<1213>>
-    \begin<<1214>>xtabular<<1214>><<1476>>l|p<<1215>>4in<<1215>><<1476>>
-        \_\_init\_\_ ;SPMamp; Initializes a \class<<1216>>NewAnimal<<1216>> object and returns an instance of a \class<<1217>>NewAnimal<<1217>> object. \\ 
-        printme ;SPMamp; Prints a summary of the data stored in a \class<<1218>>NewAnimal<<1218>> object. \\ 
-        stringme ;SPMamp; Returns the data stored in a \class<<1219>>NewtAnimal<<1219>> object as a string. \\ 
-        dictme ;SPMamp; Returns the data stored in a \class<<1220>>NewtAnimal<<1220>> object as a dictionary whose keys are attribute names and whose values are attribute values. \\ 
-        trap ;SPMamp; Checks for common errors in \class<<1221>>NewtAnimal<<1221>> objects. \\ 
-        pad\_id ;SPMamp; Takes an animal ID, pads it to fifteen digits, and prepends the birthyear. The order of elements is: birthyear, animalID, count of zeros, zeros. The padded ID is used for reordering the pedigree with the \function<<1222>>fast\_reorder<<1222>> routine. \\ 
-        string\_to\_int ;SPMamp; Takes an animal ID as a string and returns a hash. The algorithm used is taken from ;SPMquot;Character String Keys;SPMquot; in ;SPMquot;Data Structures and Algorithms with Object-Oriented Design Patterns in Python;SPMquot; by Bruno R. Preiss: \begin<<1572>>tex2html_deferred<<1572>>\url<<1223>>http://www.brpreiss.com/books/opus7/html/page220.html#progstrnga<<1223>>\end<<1573>>tex2html_deferred<<1573>>. \\ 
-    \end<<1224>>xtabular<<1224>>
-\end<<1225>>center<<1225>>
-\subsection<<1226>>The LightAnimal Class<<1226>>
-\label<<1227>>sec:objects-animal-objects-light-animal<<1227>>
-\index<<1228>>PyPedal objects!Animal objects!LightAnimal<<1228>>
-The \class<<1229>>LightAnimal<<1229>> class holds animals records read from a pedigree file. It implements a much simpler object than the \class<<1230>>NewAnimal<<1230>> object and is intended for use with the graph theoretic routines in \module<<1231>>pyp\_network<<1231>>. The only attributes of these objects are animal ID, sire ID, dam ID, original ID, renumbered ID, birth year, and sex (Table \ref<<1232>>tbl:objects-animal-objects-light-animal-attributes<<1232>>).
-\begin<<1233>>center<<1233>>
-    \tablecaption<<1477>>Attributes of \class<<1234>>LightAnimal<<1234>> objects.<<1477>>
-    \tablefirsthead<<1235>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1235>>
-    \begin<<1574>>tex2html_deferred<<1574>>\tablehead<<1236>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1236>>\end<<1575>>tex2html_deferred<<1575>>
-    \begin<<1576>>tex2html_deferred<<1576>>\tabletail<<1478>>\hline \multicolumn<<1237>>3<<1237>><<1238>>l<<1238>><<1239>>\small\sl continued on next page<<1239>> \\  \hline<<1478>>\end<<1577>>tex2html_deferred<<1577>>
-    \tablelasttail<<1240>>\hline<<1240>>
-    \label<<1241>>tbl:objects-animal-objects-light-animal-attributes<<1241>>
-    \begin<<1242>>xtabular<<1242>><<1479>>l|l|p<<1243>>4in<<1243>><<1479>>
-        animalID ;SPMamp; animal ID ;SPMamp; Animal's ID. \\ 
-        by ;SPMamp; \texttt<<1244>>missing_byear<<1244>> ;SPMamp; The animal's birthyear in \emph<<1245>>YYYY<<1245>> format. \\ 
-        damID ;SPMamp; 0 ;SPMamp; Dam's ID. \\ 
-        originalID ;SPMamp; animalID ;SPMamp; Original ID assigned to an animal. It will not change when the pedigree is renumbered. \\ 
-        renumberedID ;SPMamp; animalID ;SPMamp; Renumbered ID assigned to an animal. It is assigned by the renumbering routine. \\ 
-        sex ;SPMamp; \texttt<<1246>>'u'<<1246>> ;SPMamp; The sex of the animal: \texttt<<1247>>'m'<<1247>> = male, \texttt<<1248>>'f'<<1248>> = female, \texttt<<1249>>'u'<<1249>> = unknown. \\ 
-        sireID ;SPMamp; 0 ;SPMamp; Sire's ID. \\ 
-    \end<<1250>>xtabular<<1250>>
-\end<<1251>>center<<1251>>
-\class<<1252>>LightAnimal<<1252>> objects have the same seven methods (Table \ref<<1253>>tbl:objects-animal-objects-light-animal-methods<<1253>>) as \class<<1254>>NewAnimal<<1254>> objects (Table \ref<<1255>>tbl:objects-animal-objects-new-animal-methods<<1255>>).
-\begin<<1256>>center<<1256>>
-    \tablecaption<<1480>>Methods of \class<<1257>>LightAnimal<<1257>> objects.<<1480>>
-    \tablefirsthead<<1258>>\hline Method ;SPMamp; Description \\  \hline<<1258>>
-    \begin<<1578>>tex2html_deferred<<1578>>\tablehead<<1259>>\hline Method ;SPMamp; Description \\  \hline<<1259>>\end<<1579>>tex2html_deferred<<1579>>
-    \begin<<1580>>tex2html_deferred<<1580>>\tabletail<<1481>>\hline \multicolumn<<1260>>2<<1260>><<1261>>l<<1261>><<1262>>\small\sl continued on next page<<1262>> \\  \hline<<1481>>\end<<1581>>tex2html_deferred<<1581>>
-    \tablelasttail<<1263>>\hline<<1263>>
-    \label<<1264>>tbl:objects-animal-objects-light-animal-methods<<1264>>
-    \begin<<1265>>xtabular<<1265>><<1482>>l|p<<1266>>4in<<1266>><<1482>>
-        \_\_init\_\_ ;SPMamp; Initializes a \class<<1267>>LightAnimal<<1267>> object and returns an instance of a \class<<1268>>LightAnimal<<1268>> object. \\ 
-        printme ;SPMamp; Prints a summary of the data stored in a \class<<1269>>LightAnimal<<1269>> object. \\ 
-        stringme ;SPMamp; Returns the data stored in a \class<<1270>>LightAnimal<<1270>> object as a string. \\ 
-        dictme ;SPMamp; Returns the data stored in a \class<<1271>>LightAnimal<<1271>> object as a dictionary whose keys are attribute names and whose values are attribute values. \\ 
-        trap ;SPMamp; Checks for common errors in \class<<1272>>LightAnimal<<1272>> objects. \\ 
-        pad\_id ;SPMamp; Takes an animal ID, pads it to fifteen digits, and prepends the birthyear. The order of elements is: birthyear, animalID, count of zeros, zeros. The padded ID is used for reordering the pedigree with the \function<<1273>>fast\_reorder<<1273>> routine. \\ 
-        string\_to\_int ;SPMamp; Takes an animal ID as a string and returns a hash. The algorithm used is taken from ;SPMquot;Character String Keys;SPMquot; in ;SPMquot;Data Structures and Algorithms with Object-Oriented Design Patterns in Python;SPMquot; by Bruno R. Preiss: \begin<<1582>>tex2html_deferred<<1582>>\url<<1274>>http://www.brpreiss.com/books/opus7/html/page220.html#progstrnga<<1274>>\end<<1583>>tex2html_deferred<<1583>>. \\ 
-    \end<<1275>>xtabular<<1275>>
-\end<<1276>>center<<1276>>
-\subsection<<1277>>The SimAnimal Class<<1277>>\label<<1278>>sec:objects-animal-objects-sim-animal<<1278>>\index<<1279>>PyPedal objects!Animal objects!SimAnimal<<1279>>
-The \class<<1280>>SimAnimal<<1280>> class is used for pedigree simulation, which is described in Section \ref<<1281>>sec:pedigree-simulation<<1281>>. All simulated pedigrees have the format code \texttt<<1282>>asdxg<<1282>>, and those are the only class attributes (Table \ref<<1283>>tbl:objects-animal-objects-sim-animal-attributes<<1283>>). This class is intended for use only by the pedigree simulation routines, so the lack of attributes and methods as compared to the \class<<1284>>NewAnimal<<1284>> class is a deliberate design decision.
-\begin<<1285>>center<<1285>>
-    \tablecaption<<1483>>Attributes of \class<<1286>>SimAnimal<<1286>> objects.<<1483>>
-    \tablefirsthead<<1287>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1287>>
-    \begin<<1584>>tex2html_deferred<<1584>>\tablehead<<1288>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1288>>\end<<1585>>tex2html_deferred<<1585>>
-    \begin<<1586>>tex2html_deferred<<1586>>\tabletail<<1484>>\hline \multicolumn<<1289>>3<<1289>><<1290>>l<<1290>><<1291>>\small\sl continued on next page<<1291>> \\  \hline<<1484>>\end<<1587>>tex2html_deferred<<1587>>
-    \tablelasttail<<1292>>\hline<<1292>>
-    \label<<1293>>tbl:objects-animal-objects-sim-animal-attributes<<1293>>
-    \begin<<1294>>xtabular<<1294>><<1485>>l|l|p<<1295>>4in<<1295>><<1485>>
-        animalID ;SPMamp; animal ID ;SPMamp; Animal's ID. \\ 
-        damID ;SPMamp; 0 ;SPMamp; Dam's ID. \\ 
-        gen ;SPMamp; 0 ;SPMamp; Generation to which the animal belongs. \\ 
-        sex ;SPMamp; \texttt<<1296>>'u'<<1296>> ;SPMamp; The sex of the animal: \texttt<<1297>>'m'<<1297>> = male, \texttt<<1298>>'f'<<1298>> = female, \texttt<<1299>>'u'<<1299>> = unknown. \\ 
-        sireID ;SPMamp; 0 ;SPMamp; Sire's ID. \\ 
-    \end<<1300>>xtabular<<1300>>
-\end<<1301>>center<<1301>>
-\class<<1302>>SimAnimal<<1302>> objects have only three methods (Table \ref<<1303>>tbl:objects-animal-objects-sim-animal-methods<<1303>>).
-\begin<<1304>>center<<1304>>
-    \tablecaption<<1486>>Methods of \class<<1305>>SimAnimal<<1305>> objects.<<1486>>
-    \tablefirsthead<<1306>>\hline Method ;SPMamp; Description \\  \hline<<1306>>
-    \begin<<1588>>tex2html_deferred<<1588>>\tablehead<<1307>>\hline Method ;SPMamp; Description \\  \hline<<1307>>\end<<1589>>tex2html_deferred<<1589>>
-    \begin<<1590>>tex2html_deferred<<1590>>\tabletail<<1487>>\hline \multicolumn<<1308>>2<<1308>><<1309>>l<<1309>><<1310>>\small\sl continued on next page<<1310>> \\  \hline<<1487>>\end<<1591>>tex2html_deferred<<1591>>
-    \tablelasttail<<1311>>\hline<<1311>>
-    \label<<1312>>tbl:objects-animal-objects-sim-animal-methods<<1312>>
-    \begin<<1313>>xtabular<<1313>><<1488>>l|p<<1314>>4in<<1314>><<1488>>
-        \_\_init\_\_ ;SPMamp; Initializes a \class<<1315>>SimAnimal<<1315>> object and returns an instance of a \class<<1316>>SimAnimal<<1316>> object. \\ 
-        printme ;SPMamp; Prints a summary of the data stored in a \class<<1317>>SimAnimal<<1317>> object. \\ 
-        stringme ;SPMamp; Returns the data stored in a \class<<1318>>SimAnimal<<1318>> object as a string. \\ 
-    \end<<1319>>xtabular<<1319>>
-\end<<1320>>center<<1320>>
-\section<<1321>>The NewPedigree Class<<1321>>
-\label<<1322>>sec:objects-pedigree-objects<<1322>>
-\index<<1323>>PyPedal objects!Pedigree objects<<1323>>
-The \class<<1324>>NewPedigree<<1324>> class is the fundamental object in PyPedal<<1325>><<1325>>. 
-\begin<<1326>>center<<1326>>
-    \tablecaption<<1489>>Attributes of \class<<1327>>NewPedigree<<1327>> objects.<<1489>>
-    \tablefirsthead<<1328>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1328>>
-    \begin<<1592>>tex2html_deferred<<1592>>\tablehead<<1329>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1329>>\end<<1593>>tex2html_deferred<<1593>>
-    \begin<<1594>>tex2html_deferred<<1594>>\tabletail<<1490>>\hline \multicolumn<<1330>>3<<1330>><<1331>>l<<1331>><<1332>>\small\sl continued on next page<<1332>> \\  \hline<<1490>>\end<<1595>>tex2html_deferred<<1595>>
-    \tablelasttail<<1333>>\hline<<1333>>
-    \label<<1334>>tbl:objects-newpedigree-attributes<<1334>>
-    \begin<<1335>>xtabular<<1335>><<1491>>l|l|p<<1336>>4in<<1336>><<1491>>
-        kw ;SPMamp; \texttt<<1337>>kw<<1337>> ;SPMamp; Keyword dictionary. \\ 
-	pedigree ;SPMamp; \begin<<1540>>tex2html_wrap_inline<<1540>>$[]$\end<<1541>>tex2html_wrap_inline<<1541>>\space ;SPMamp; A list of \class<<1338>>NewAnimal<<1338>> objects. \\ 
-        metadata ;SPMamp; \begin<<1542>>tex2html_wrap_inline<<1542>>$\{\}$\end<<1543>>tex2html_wrap_inline<<1543>>\space ;SPMamp; A \class<<1339>>PedigreeMetadata<<1339>> object. \\ 
-        idmap ;SPMamp; \begin<<1544>>tex2html_wrap_inline<<1544>>$\{\}$\end<<1545>>tex2html_wrap_inline<<1545>>\space ;SPMamp; Dictionary for mapping original IDs to renumbered IDs (\ref<<1340>>sec:methodology-id-mapping<<1340>>). \\ 
-        backmap ;SPMamp; \begin<<1546>>tex2html_wrap_inline<<1546>>$\{\}$\end<<1547>>tex2html_wrap_inline<<1547>>\space ;SPMamp; Dictionary for mapping renumbered IDs to original IDs (\ref<<1341>>sec:methodology-id-mapping<<1341>>). \\ 
-        namemap ;SPMamp; \begin<<1548>>tex2html_wrap_inline<<1548>>$\{\}$\end<<1549>>tex2html_wrap_inline<<1549>>\space ;SPMamp; Dictionary for mapping names to original IDs (\ref<<1342>>sec:methodology-id-mapping<<1342>>). \\ 
-        namebackmap ;SPMamp; \begin<<1550>>tex2html_wrap_inline<<1550>>$\{\}$\end<<1551>>tex2html_wrap_inline<<1551>>\space ;SPMamp; Dictionary for mapping original IDs to names (\ref<<1343>>sec:methodology-id-mapping<<1343>>). \\ 
-        starline ;SPMamp; \texttt<<1344>>'*'*80<<1344>> ;SPMamp; Convenience string. \\ 
-        nrm ;SPMamp; None ;SPMamp; An instance of a \class<<1345>>NewAMatrix<<1345>> object. \\ 
-    \end<<1346>>xtabular<<1346>>
-\end<<1347>>center<<1347>>
-The methods of \class<<1348>>NewPedigree<<1348>> objects are listed in Table \ref<<1349>>tbl:objects-newpedigree-methods<<1349>>. !!!I need to put something in here about pedsources and make sure that it's in the index!!!
-\begin<<1350>>center<<1350>>
-    \tablecaption<<1492>>Methods of \class<<1351>>NewPedigree<<1351>> objects.<<1492>>
-    \tablefirsthead<<1352>>\hline Method ;SPMamp; Description \\  \hline<<1352>>
-    \begin<<1596>>tex2html_deferred<<1596>>\tablehead<<1353>>\hline Method ;SPMamp; Description \\  \hline<<1353>>\end<<1597>>tex2html_deferred<<1597>>
-    \begin<<1598>>tex2html_deferred<<1598>>\tabletail<<1493>>\hline \multicolumn<<1354>>2<<1354>><<1355>>l<<1355>><<1356>>\small\sl continued on next page<<1356>> \\  \hline<<1493>>\end<<1599>>tex2html_deferred<<1599>>
-    \tablelasttail<<1357>>\hline<<1357>>
-    \label<<1358>>tbl:objects-newpedigree-methods<<1358>>
-    \begin<<1359>>xtabular<<1359>><<1494>>l|p<<1360>>4in<<1360>><<1494>>
-        \_\_init\_\_ ;SPMamp; Initializes and returns a \class<<1361>>NewPedigree<<1361>> object. \\ 
-        addanimal ;SPMamp; Adds a new animal of class \class<<1362>>NewAnimal<<1362>> to the pedigree. \textbf<<1363>>Note:<<1363>> This function should be used by \class<<1364>>NewPedigree<<1364>> methods only, not userspace routines. Improper use of \method<<1365>>addanimal<<1365>> may result in data loss or corruption. You have been warned. \\ 
-        delanimal ;SPMamp; Deletes an animal from the pedigree. Note that this method DOES not update the metadata attached to the pedigree and should only be used if that is not important. \textbf<<1366>>Note:<<1366>> This function should be used by \class<<1367>>NewPedigree<<1367>> methods only, not userspace routines. Improper use of \method<<1368>>delanimal<<1368>> may result in data loss or corruption. You have been warned. \\ 
-        fromgraph ;SPMamp; Creates a \class<<1369>>NewPedigree<<1369>> from an \class<<1370>>XDiGraph<<1370>> objject. \\ 
-	load ;SPMamp; Wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming metadata, checking for common errors, setting ancestor and sex flags, and renumbering the pedigree. \\ 
-	preprocess ;SPMamp; Processes the entries in a pedigree file, which includes reading each entry, checking it for common errors, and instantiating a \class<<1371>>NewAnimal<<1371>> object. \\ 
-	printoptions ;SPMamp; Prints the contents of the options dictionary, which is useful for debugging. \\ 
-	renumber ;SPMamp; Calls the proper reordering and renumbering routines; updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\ 
-	save ;SPMamp; Writes a PyPedal<<1372>><<1372>> pedigree to a user-specified file.  The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. \\ 
-	simulate ;SPMamp; Simulate simulates an arbitrary pedigree of size \textit<<1373>>n<<1373>> with \textsl<<1374>>g<<1374>> generations starting from \textsl<<1375>>n\_s<<1375>> base sires and \textsl<<1376>>n\_d<<1376>> base dams.  This method is based on the concepts and algorithms in the \method<<1377>>Pedigree::sample<<1377>> method from Matvec 1.1a (src/classes/pedigree.cpp; \begin<<1600>>tex2html_deferred<<1600>>\url<<1378>>http://statistics.unl.edu/faculty/steve/software/matvec/<<1378>>\end<<1601>>tex2html_deferred<<1601>>), although all of the code in this implementation was written from scratch.\\ 
-	updateidmap ;SPMamp; Updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\ 
-    \end<<1379>>xtabular<<1379>>
-\end<<1380>>center<<1380>>
-See Section \ref<<1381>>sec:pedigree-simulation<<1381>> for details on pedigree simulation.
-\section<<1382>>The PedigreeMetadata Class<<1382>>
-\label<<1383>>sec:objects-metadata-objects<<1383>>
-\index<<1384>>PyPedal objects!Metadata objects<<1384>>
-The \class<<1385>>PedigreeMetadata<<1385>> class stores metadata about pedigrees. This helps improve performance in some procedures, and also makes it easy to access useful summary data. Metadata are collected when the pedigree is loaded and accessed by many PyPedal<<1386>><<1386>> routines.
-\begin<<1387>>center<<1387>>
-    \tablecaption<<1495>>Attributes of \class<<1388>>PedigreeMetadata<<1388>> objects.<<1495>>
-    \tablefirsthead<<1389>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1389>>
-    \begin<<1602>>tex2html_deferred<<1602>>\tablehead<<1390>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1390>>\end<<1603>>tex2html_deferred<<1603>>
-    \begin<<1604>>tex2html_deferred<<1604>>\tabletail<<1496>>\hline \multicolumn<<1391>>3<<1391>><<1392>>l<<1392>><<1393>>\small\sl continued on next page<<1393>> \\  \hline<<1496>>\end<<1605>>tex2html_deferred<<1605>>
-    \tablelasttail<<1394>>\hline<<1394>>
-    \label<<1395>>tbl:objects-metadata-attributes<<1395>>
-    \begin<<1396>>xtabular<<1396>><<1497>>l|l|p<<1397>>4in<<1397>><<1497>>
-        name ;SPMamp; \texttt<<1398>>pedname<<1398>> ;SPMamp; Name assigned to the pedigree. \\ 
-        filename ;SPMamp; \texttt<<1399>>pedfile<<1399>> ;SPMamp; File from which the pedigree was loaded. \\ 
-        pedcode ;SPMamp; \texttt<<1400>>pedformat<<1400>> ;SPMamp; Pedigree format string. \\ 
-        num_records ;SPMamp; 0 ;SPMamp; Number of records in the pedigree. \\ 
-        num_unique_sires ;SPMamp; 0 ;SPMamp; Number of unique sires in the pedigree. \\ 
-        num_unique_dams ;SPMamp; 0 ;SPMamp; Number of unique dams in the pedigree. \\ 
-        num_unique_founders ;SPMamp; 0 ;SPMamp; Number of unique founders in the pedigree. \\ 
-        num_unique_gens ;SPMamp; 0 ;SPMamp; Number of unique generations in the pedigree. \\ 
-        num_unique_years ;SPMamp; 0 ;SPMamp; Number of unique birth years in the pedigree. \\ 
-        num_unique_herds ;SPMamp; 0 ;SPMamp; Number of unique herds in the pedigree. \\ 
-        unique_sire_list ;SPMamp; \begin<<1552>>tex2html_wrap_inline<<1552>>$[]$\end<<1553>>tex2html_wrap_inline<<1553>>\space ;SPMamp; List of the unique sires in the pedigree. \\ 
-        unique_dam_list ;SPMamp; \begin<<1554>>tex2html_wrap_inline<<1554>>$[]$\end<<1555>>tex2html_wrap_inline<<1555>>\space ;SPMamp; List of the unique dams in the pedigree. \\ 
-        unique_founder_list ;SPMamp; \begin<<1556>>tex2html_wrap_inline<<1556>>$[]$\end<<1557>>tex2html_wrap_inline<<1557>>\space ;SPMamp; List of the unique founders in the pedigree. \\ 
-        unique_gen_list ;SPMamp; \begin<<1558>>tex2html_wrap_inline<<1558>>$[]$\end<<1559>>tex2html_wrap_inline<<1559>>\space ;SPMamp; List of the unique generations in the pedigree. \\ 
-        unique_year_list ;SPMamp; \begin<<1560>>tex2html_wrap_inline<<1560>>$[]$\end<<1561>>tex2html_wrap_inline<<1561>>\space ;SPMamp; List of the unique birth years in the pedigree. \\ 
-        unique_herd_list ;SPMamp; \begin<<1562>>tex2html_wrap_inline<<1562>>$[]$\end<<1563>>tex2html_wrap_inline<<1563>>\space ;SPMamp; List of the unique herds in the pedigree. \\ 
-    \end<<1401>>xtabular<<1401>>
-\end<<1402>>center<<1402>>
-Metadata are gathered furing the pedigree loading process, but after load-time renumbering has occured (if requested). When a pedigree is renumbered after it has been loaded the unique sire, dam, and founders lists are not updated to contain the renumbere IDs. The metadata may be updated by instantiating a new \class<<1403>>PedigreeMetadata<<1403>> object and using it to replace the original metadata:
-\begin<<1404>>tex2html_preform<<1404>><tex2html_verbatim_mark>verbatim95#\end<<1405>>tex2html_preform<<1405>>
-Alternatively, ID maps (Section \ref<<1406>>sec:methodology-id-mapping<<1406>>) may be used to produce expected lists of animals.
+<tex2html_file>#./calculations.tex#
+\chapter<<1272>>Working with Pedigrees<<1272>>
+\label<<1273>>cha:computing<<1273>>
+\begin<<1274>>quote<<1274>>
+ Are you quite sure that all those bells and whistles, all those wonderful facilities of your so called powerful programming languages, belong to the solution set rather than the problem set? --- Edsger Dijkstra
+\end<<1275>>quote<<1275>>
+\section<<1276>>Overview<<1276>>\label<<1277>>sec:computing-overview<<1277>>\index<<1278>>working with pedigrees<<1278>>
+In Chapter \ref<<1279>>cha:inputoutput<<1279>> you learned how to get your pedigree data loaded into PyPedal<<1280>><<1280>>. This chapter will show you what you can do with the pedigree once it is loaded. The examples in this chapter assumes that you are working with a reordered and renumbered pedigree (see Section \ref<<1281>>sec:methodology-reordering-and-renumbering<<1281>> for additional details).
+\begin<<1524>>tex2html_deferred<<1524>>\par\end<<1525>>tex2html_deferred<<1525>>
+In order to get the most out of your pedigrees you need to understand the basic structure of a PyPedal<<1282>><<1282>> pedigree, which consists of two components: the pedigree itself, which is composed of a list of \class<<1283>>NewAnimal<<1283>> objects, and metadata, which is data about the animals contained in the pedigree. Some calculations are performed on the animal records directly, while others use the metadata, or some combination of the two. The fundamental goal of PyPedal<<1284>><<1284>> is to provide the user with tools for asking questions about their pedigrees.
+\begin<<1526>>tex2html_deferred<<1526>>\par\end<<1527>>tex2html_deferred<<1527>>
+The following discussion will use the following pedigree taken from Boichard et al. \citeyear<<1285>>ref352<<1285>>:
+\begin<<1286>>tex2html_preform<<1286>><tex2html_verbatim_mark>verbatim119#\end<<1287>>tex2html_preform<<1287>>
+Many of the subsequent code snippets are taken from the \begin<<1528>>tex2html_deferred<<1528>>\samp<<1288>>new\_methods.py<<1288>>\end<<1529>>tex2html_deferred<<1529>> example program (see: Appendix \ref<<1289>>cha:example-programs<<1289>>). 
+\begin<<1530>>tex2html_deferred<<1530>>\par\end<<1531>>tex2html_deferred<<1531>>
+\section<<1290>>Inbreeding and Relationships<<1290>>\label<<1291>>sec:computing-inbreeding<<1291>>\index<<1292>>working with pedigrees!inbreeding and relationships<<1292>>
+\begin<<1532>>tex2html_deferred<<1532>>\par\end<<1533>>tex2html_deferred<<1533>>
+\begin<<1293>>tex2html_preform<<1293>><tex2html_verbatim_mark>verbatim120#\end<<1294>>tex2html_preform<<1294>>
+The dictionary returned by \function<<1295>>inbreeding()<<1295>> contains two dictionaries: \begin<<1534>>tex2html_deferred<<1534>>\samp<<1296>>fx<<1296>>\end<<1535>>tex2html_deferred<<1535>> contains coefficients of inbreeding keyes to animal IDs, and \begin<<1536>>tex2html_deferred<<1536>>\samp<<1297>>metadata<<1297>>\end<<1537>>tex2html_deferred<<1537>> contains summary information about the coefficients of inbreeding in the pedigree. \begin<<1538>>tex2html_deferred<<1538>>\samp<<1298>>metadata<<1298>>\end<<1539>>tex2html_deferred<<1539>> also contains two dictionaries: \begin<<1540>>tex2html_deferred<<1540>>\samp<<1299>>nonzero<<1299>>\end<<1541>>tex2html_deferred<<1541>> contains summary statostics only for animals with non-zero coefficients of inbreeding, and \begin<<1542>>tex2html_deferred<<1542>>\samp<<1300>>all<<1300>>\end<<1543>>tex2html_deferred<<1543>> contains statistics for all animals.
+\begin<<1544>>tex2html_deferred<<1544>>\par\end<<1545>>tex2html_deferred<<1545>>
+Relationship metadata, similar to the inbreeding metadata described above but for coefficients of relationship, are available but not calculated by default. 
+\begin<<1301>>tex2html_preform<<1301>><tex2html_verbatim_mark>verbatim121#\end<<1302>>tex2html_preform<<1302>>
+The dictionary of relationship metadata returned by \function<<1303>>inbreeding()<<1303>> also contains statistics for zero and non-zero coefficients of relationship. On the example presented above the pedigree contains 
+\begin<<1546>>tex2html_deferred<<1546>>\par\end<<1547>>tex2html_deferred<<1547>>
+Relationship metadata are not guaranteed to be correct when \begin<<1548>>tex2html_deferred<<1548>>\samp<<1304>>method = 'vanraden'<<1304>>\end<<1549>>tex2html_deferred<<1549>> is used. This is because \function<<1305>>inbreeding_vanraden()<<1305>> uses a speed-up when there are full-sibs in the pedigree to avoid repeating calculations. The metadata should be reasonably accurate for pedigrees with few or no full-sibs. The summary statistics will not be very accurate in the case of pedigrees that contain lots of full-sibs.
+\begin<<1550>>tex2html_deferred<<1550>>\par\end<<1551>>tex2html_deferred<<1551>>
+The relationship metadata do not include individual pairwise relationships. In order to associate those with your pedigree you must create a \class<<1306>>NewAMatrix<<1306>> object, form the numerator relationship matrix (NRM), and attach it to the pedigree:
+\begin<<1307>>tex2html_preform<<1307>><tex2html_verbatim_mark>verbatim122#\end<<1308>>tex2html_preform<<1308>>
+If you know when you load the pedigree file  that you want to calculate and store the NRM you can save a little typing by setting the \begin<<1552>>tex2html_deferred<<1552>>\samp<<1309>>form\_nrm<<1309>>\end<<1553>>tex2html_deferred<<1553>> option:
+\begin<<1310>>tex2html_preform<<1310>><tex2html_verbatim_mark>verbatim123#\end<<1311>>tex2html_preform<<1311>>
+If you want to inspect the NRM you can use \begin<<1554>>tex2html_deferred<<1554>>\samp<<1312>>example.nrm.printme()<<1312>>\end<<1555>>tex2html_deferred<<1555>> to print the matrix to the screen, which is probably not a particularly good idea for large matrices.
+\begin<<1313>>tex2html_preform<<1313>><tex2html_verbatim_mark>verbatim124#\end<<1314>>tex2html_preform<<1314>>
+If you want to get the pairwise relationship between two animals you need to use their renumbered IDs and subtract 1 (because the array is zero-indexed). For example, if you wanted the coefficient of relationship between animals 2 and 5 (an individual and its sire) you would use the indices \begin<<1556>>tex2html_deferred<<1556>>\samp<<1315>>1<<1315>>\end<<1557>>tex2html_deferred<<1557>> and \begin<<1558>>tex2html_deferred<<1558>>\samp<<1316>>4<<1316>>\end<<1559>>tex2html_deferred<<1559>>:
+\begin<<1317>>tex2html_preform<<1317>><tex2html_verbatim_mark>verbatim125#\end<<1318>>tex2html_preform<<1318>>
+The NRM is symmetric, which means that \begin<<1560>>tex2html_deferred<<1560>>\samp<<1450>>nrm<<1319>>[1]<<1319>><<1320>>[4]<<1320>><<1450>>\end<<1561>>tex2html_deferred<<1561>> and \begin<<1562>>tex2html_deferred<<1562>>\samp<<1451>>nrm<<1321>>[4]<<1321>><<1322>>[1]<<1322>><<1451>>\end<<1563>>tex2html_deferred<<1563>> are identical.
+\begin<<1323>>tex2html_preform<<1323>><tex2html_verbatim_mark>verbatim126#\end<<1324>>tex2html_preform<<1324>>
+You can also easily save the NRM to a file for future reference:
+\begin<<1325>>tex2html_preform<<1325>><tex2html_verbatim_mark>verbatim127#\end<<1326>>tex2html_preform<<1326>>
+If you're from Missouri you can verify that the contents of \begin<<1564>>tex2html_deferred<<1564>>\samp<<1327>>Amatrix.txt<<1327>>\end<<1565>>tex2html_deferred<<1565>> are:
+\begin<<1328>>tex2html_preform<<1328>><tex2html_verbatim_mark>verbatim128#\end<<1329>>tex2html_preform<<1329>>
+Information on the endianness and precision of the data in the array are lost, so this is not a good way to archive data or move data between machines with different endianness. The data are always written in C (row major) order. For better performance you can set the \begin<<1566>>tex2html_deferred<<1566>>\samp<<1330>>nrm\_format<<1330>>\end<<1567>>tex2html_deferred<<1567>> option to \begin<<1568>>tex2html_deferred<<1568>>\samp<<1331>>binary<<1331>>\end<<1569>>tex2html_deferred<<1569>>, which will use a binary file form.
+\begin<<1570>>tex2html_deferred<<1570>>\par\end<<1571>>tex2html_deferred<<1571>>
+Finally, if you're going to work on the exact same pedigree later you can load \begin<<1572>>tex2html_deferred<<1572>>\samp<<1332>>Amatrix.txt<<1332>>\end<<1573>>tex2html_deferred<<1573>> and avoid having to recalculate the NRM entirely:
+\begin<<1333>>tex2html_preform<<1333>><tex2html_verbatim_mark>verbatim129#\end<<1334>>tex2html_preform<<1334>>
+Since we've loaded \begin<<1574>>tex2html_deferred<<1574>>\samp<<1335>>Amatrix.txt<<1335>>\end<<1575>>tex2html_deferred<<1575>> into a second NRM (\begin<<1576>>tex2html_deferred<<1576>>\samp<<1336>>nrm2<<1336>>\end<<1577>>tex2html_deferred<<1577>>) attached to our pedigree it's straightforward, if tedious, to verify that the two NRM contain the same values.
+\begin<<1578>>tex2html_deferred<<1578>>\par\end<<1579>>tex2html_deferred<<1579>>
+\section<<1337>>Matings<<1337>>\label<<1338>>sec:computing-matings<<1338>>\index<<1339>>working with pedigrees!matings<<1339>>
+There are a number of questions you might wish to ask that involve matings, such as, ``What is the minimum-inbreeding mating among this set of individuals?''. Several routines in \module<<1340>>pyp\_metrics<<1340>>.
+\begin<<1580>>tex2html_deferred<<1580>>\par\end<<1581>>tex2html_deferred<<1581>>
+Suppose you were considering a mating between animals 5 (index 4) and 14 (index 13), which is a sire-daughter mating. How would you go about this? You simply call \method<<1341>>pyp\_metrics.mating\_coi()<<1341>>:
+\begin<<1342>>tex2html_preform<<1342>><tex2html_verbatim_mark>verbatim130#\end<<1343>>tex2html_preform<<1343>>
+which produces the output:
+\begin<<1344>>tex2html_preform<<1344>><tex2html_verbatim_mark>verbatim131#\end<<1345>>tex2html_preform<<1345>>
+We don't need PyPedal<<1346>><<1346>> to tell us the coefficient of inbreeding of such a simple mating, but the calculations can be complex for more complicated cases. While you can do all of the necessary computations ``by hand'', \method<<1347>>pyp\_metrics.mating\_coi()<<1347>> takes care of that for you by adding a new dummy animal to the pedigree with the proposed parents, calculating the coefficient of inbreeding of that mating, deleting the dummy animal from the pedigree, and returning the coefficient of inbreeding.
+\begin<<1582>>tex2html_deferred<<1582>>\par\end<<1583>>tex2html_deferred<<1583>>
+ PyPedal<<1348>><<1348>> takes things one step further, allowing you to work with groups of proposed matings at one time using \method<<1349>>pyp\_metrics.mating\_coi\_group()<<1349>>. Internally it works similarly to \method<<1350>>pyp\_metrics.mating\_coi()<<1350>>, although instead of passing a pair of parents you pass a list of proposed matings. The matings are of the form \begin<<1584>>tex2html_deferred<<1584>>\samp<<1351>>;SPMlt;parent1;SPMgt;\_;SPMlt;parent2;SPMgt;<<1351>>\end<<1585>>tex2html_deferred<<1585>>. Here's an example in which we are going to consider the following three matings: 1 with 5, 1 with 14, and 5 with 14. Note how the matings are formed and appended to the \begin<<1586>>tex2html_deferred<<1586>>\samp<<1352>>matings<<1352>>\end<<1587>>tex2html_deferred<<1587>> list in one step.
+\begin<<1353>>tex2html_preform<<1353>><tex2html_verbatim_mark>verbatim132#\end<<1354>>tex2html_preform<<1354>>
+That code produces a list of the proposed matings with associated coefficients of inbreeding. In addition to the \begin<<1588>>tex2html_deferred<<1588>>\samp<<1355>>matings<<1355>>\end<<1589>>tex2html_deferred<<1589>> dictionary, the \begin<<1590>>tex2html_deferred<<1590>>\samp<<1356>>fgrp<<1356>>\end<<1591>>tex2html_deferred<<1591>> dictionary also contains a dictionary named \begin<<1592>>tex2html_deferred<<1592>>\samp<<1357>>metadata<<1357>>\end<<1593>>tex2html_deferred<<1593>> which contains summary statistics about the proposed matings.
+\begin<<1358>>tex2html_preform<<1358>><tex2html_verbatim_mark>verbatim133#\end<<1359>>tex2html_preform<<1359>>
+\section<<1360>>Relatives<<1360>>\label<<1361>>sec:computing-relatives<<1361>>\index<<1362>>working with pedigrees!relatives<<1362>>
+PyPedal<<1363>><<1363>> provides a number of tools for extracting information about relatives from a pedigree. Examples include: obtaining lists of the ancestors of an animal, getting lists of ancestors shared in common by a pair of animals, listing the descendants of an individual, the calculation of the additive genetic relationship between a given pair of animals, and the creation of ``subpedigrees'' containing only specified animals.
+\begin<<1594>>tex2html_deferred<<1594>>\par\end<<1595>>tex2html_deferred<<1595>>
+It is easy to obtain a list of an animal's relatives using \method<<1364>>pyp\_metrics.related\_animals()<<1364>>:
+\begin<<1365>>tex2html_preform<<1365>><tex2html_verbatim_mark>verbatim134#\end<<1366>>tex2html_preform<<1366>>
+produces a list of each animal's relatives:
+\begin<<1367>>tex2html_preform<<1367>><tex2html_verbatim_mark>verbatim135#\end<<1368>>tex2html_preform<<1368>>
+\method<<1369>>pyp\_metrics.common\_ancestors()<<1369>> is used to get a list of the common ancestors of two animals, say animals \begin<<1596>>tex2html_deferred<<1596>>\samp<<1370>>5<<1370>>\end<<1597>>tex2html_deferred<<1597>> and \begin<<1598>>tex2html_deferred<<1598>>\samp<<1371>>14<<1371>>\end<<1599>>tex2html_deferred<<1599>> (remember that this pedigree is renumbered, and that Python lists are indexed from 0, so we need to offset the animal IDs by 1 to get the correct animal IDs).
+\begin<<1372>>tex2html_preform<<1372>><tex2html_verbatim_mark>verbatim136#\end<<1373>>tex2html_preform<<1373>>
+Results are returned as lists:
+\begin<<1374>>tex2html_preform<<1374>><tex2html_verbatim_mark>verbatim137#\end<<1375>>tex2html_preform<<1375>>
+If you've already obtained ancestor lists for a given pair of animals in which you're interested you can also obtain a list of common ancestors using Python sets, which avoids performing calculations more than needed:
+\begin<<1376>>tex2html_preform<<1376>><tex2html_verbatim_mark>verbatim138#\end<<1377>>tex2html_preform<<1377>>
+A list of descendants can be obtained by calling \method<<1378>>pyp\_metrics.descendants()<<1378>>, which returns a dictionary:
+\begin<<1379>>tex2html_preform<<1379>><tex2html_verbatim_mark>verbatim139#\end<<1380>>tex2html_preform<<1380>>
+However, it is improtant to note that you will not get the answer you expect unless you have either set the option \begin<<1600>>tex2html_deferred<<1600>>\samp<<1381>>set\_offspring = 1<<1381>>\end<<1601>>tex2html_deferred<<1601>> or called \method<<1382>>pyp\_utils.assign\_offspring()<<1382>> after loading the pedigree. There is also a convenience function, \method<<1383>>pyp\_metrics.founder\_descendants()<<1383>>, for handling the special case of obtaining descendants of all of the founders in the pedigree:
+\begin<<1384>>tex2html_preform<<1384>><tex2html_verbatim_mark>verbatim140#\end<<1385>>tex2html_preform<<1385>>
+\section<<1386>>Decomposition and Direct Inverses of Numerator Relationship Matrices<<1386>>\label<<1387>>sec:computing-decomposition<<1387>>\index<<1388>>numerator relationship matrix!decomposition<<1388>>\index<<1389>>numerator relationship matrix!direct inverses<<1389>>
+PyPedal<<1390>><<1390>> provides routines in the \method<<1391>>pyp_nrm<<1391>> module for decomposing and forming direct inverses of numerator relationship matrices (NRM). The NRM, \begin<<1452>>tex2html_wrap_inline<<1452>>$A$\end<<1453>>tex2html_wrap_inline<<1453>>, may be written as \begin<<1454>>tex2html_wrap_inline<<1454>>$A=TDT'$\end<<1455>>tex2html_wrap_inline<<1455>>, where \begin<<1456>>tex2html_wrap_inline<<1456>>$T$\end<<1457>>tex2html_wrap_inline<<1457>>\space is a lower triangular matrix and \begin<<1458>>tex2html_wrap_inline<<1458>>$D$\end<<1459>>tex2html_wrap_inline<<1459>>\space is a diagonal matrix \cite<<1392>>ref143,ref1060<<1392>>. \begin<<1460>>tex2html_wrap_inline<<1460>>$T$\end<<1461>>tex2html_wrap_inline<<1461>>\space traces the flow of genes from one generation to another, while \begin<<1462>>tex2html_wrap_inline<<1462>>$D$\end<<1463>>tex2html_wrap_inline<<1463>>\space provides variances and covariances of Mendelian sampling. Mrode \citeyear<<1393>>ref224<<1393>> presents a more detailed discussion of this decomposition. The examples in this section all use the pedigree presented in Table 2.1 of that work, which is contained in the file \begin<<1602>>tex2html_deferred<<1602>>\samp<<1394>>examples/new_decompose.ped<<1394>>\end<<1603>>tex2html_deferred<<1603>>:
+\begin<<1395>>tex2html_preform<<1395>><tex2html_verbatim_mark>verbatim141#\end<<1396>>tex2html_preform<<1396>>
+The results presented below may be obtained by running the \begin<<1604>>tex2html_deferred<<1604>>\samp<<1397>>new_decompose.py<<1397>>\end<<1605>>tex2html_deferred<<1605>> example program. The \method<<1398>>pyp_nrm.a_decompose()<<1398>> function takes as its argument a pedigree object and returns the matrices \begin<<1464>>tex2html_wrap_inline<<1464>>$T$\end<<1465>>tex2html_wrap_inline<<1465>>\space and \begin<<1466>>tex2html_wrap_inline<<1466>>$D$\end<<1467>>tex2html_wrap_inline<<1467>>. The code
+\begin<<1399>>tex2html_preform<<1399>><tex2html_verbatim_mark>verbatim142#\end<<1400>>tex2html_preform<<1400>>
+produces identical answers to those presented by Mrode \citeyear<<1401>>ref224<<1401>> (note that outputs may have been reformatted slightly to improve readability).
+\begin<<1402>>tex2html_preform<<1402>><tex2html_verbatim_mark>verbatim143#\end<<1403>>tex2html_preform<<1403>>
+It is not generally feasible to directly compute the inverse, \begin<<1468>>tex2html_wrap_inline<<1468>>$A^<<1404>>-1<<1404>>$\end<<1469>>tex2html_wrap_inline<<1469>>, of large NRM. However, it is possible to formulate simple rules for computing the inverse directly from. Henderson \citeyear<<1405>>ref143<<1405>> presented a simple procedure for calculating \begin<<1470>>tex2html_wrap_inline<<1470>>$A^<<1406>>-1<<1406>>$\end<<1471>>tex2html_wrap_inline<<1471>>\space without accounting for inbreeding taking advantage of the fact that \begin<<1472>>tex2html_wrap_inline<<1472>>$A^<<1407>>-1<<1407>>=(T^<<1408>>-1<<1408>>)'D^<<1409>>-1<<1409>>T^<<1410>>-1<<1410>>$\end<<1473>>tex2html_wrap_inline<<1473>>, which is implemented as \method<<1411>>pyp_nrm.form_d_nof()<<1411>>:
+\begin<<1412>>tex2html_preform<<1412>><tex2html_verbatim_mark>verbatim144#\end<<1413>>tex2html_preform<<1413>>
+produces \begin<<1474>>tex2html_wrap_inline<<1474>>$A^<<1414>>-1<<1414>>$\end<<1475>>tex2html_wrap_inline<<1475>>\space without accounting for inbreeding in the pedigree:
+\begin<<1415>>tex2html_preform<<1415>><tex2html_verbatim_mark>verbatim145#\end<<1416>>tex2html_preform<<1416>>
+Quaas \citeyear<<1417>>ref235<<1417>> built on Henderson's earlier work by providing an algorithm for the computation of \begin<<1476>>tex2html_wrap_inline<<1476>>$A^<<1418>>-1<<1418>>$\end<<1477>>tex2html_wrap_inline<<1477>>\space accounting for inbreeding, which is implemented as the function  \function<<1419>>pyp_nrm.a_inverse_df()<<1419>>.
+\begin<<1420>>tex2html_preform<<1420>><tex2html_verbatim_mark>verbatim146#\end<<1421>>tex2html_preform<<1421>>
+You will note that the numbers in this matrix are slightly different from those in the previous example. Those differences are due to the inbreeding in the pedigree, which was not accounted for by \function<<1422>>a_inverse_dnf()<<1422>>.
+\begin<<1423>>tex2html_preform<<1423>><tex2html_verbatim_mark>verbatim147#\end<<1424>>tex2html_preform<<1424>>
+The correctness of the results from \function<<1425>><<1425>> can be verified by using some linear algebra to compute \begin<<1478>>tex2html_wrap_inline<<1478>>$A^<<1426>>-1<<1426>>$\end<<1479>>tex2html_wrap_inline<<1479>>\space directly:
+\begin<<1427>>tex2html_preform<<1427>><tex2html_verbatim_mark>verbatim148#\end<<1428>>tex2html_preform<<1428>>
+The output includes several intermediate matrices that have been verified against Mrode's book \cite<<1429>>ref224<<1429>>.
+\begin<<1430>>tex2html_preform<<1430>><tex2html_verbatim_mark>verbatim149#\end<<1431>>tex2html_preform<<1431>>
+The function \method<<1432>>pyp_nrm.form_d_nof()<<1432>> is provided as a convenience function. The form of \begin<<1480>>tex2html_wrap_inline<<1480>>$D$\end<<1481>>tex2html_wrap_inline<<1481>>\space is the same when calculating \begin<<1482>>tex2html_wrap_inline<<1482>>$A^<<1433>>-1<<1433>>$\end<<1483>>tex2html_wrap_inline<<1483>>\space regardless of the form \begin<<1484>>tex2html_wrap_inline<<1484>>$T$\end<<1485>>tex2html_wrap_inline<<1485>>\space takes (i.e., accounts for inbreeding or not). The code
+\begin<<1434>>tex2html_preform<<1434>><tex2html_verbatim_mark>verbatim150#\end<<1435>>tex2html_preform<<1435>>
+produces the result
+\begin<<1436>>tex2html_preform<<1436>><tex2html_verbatim_mark>verbatim151#\end<<1437>>tex2html_preform<<1437>>
+which may be verified against the values of \begin<<1486>>tex2html_wrap_inline<<1486>>$D$\end<<1487>>tex2html_wrap_inline<<1487>>\space presented above.
 \begin<<1606>>tex2html_deferred<<1606>>\par\end<<1607>>tex2html_deferred<<1607>>
-The methods of \class<<1407>>PedigreeMetadata<<1407>> objects are listed in Table \ref<<1408>>tbl:objects-metadata-methods<<1408>>. The couting methods (\function<<1409>>nud<<1409>>, \function<<1410>>nuf<<1410>>, etc.) return two values each, a count and a list, and new couting methods may easily be added.
-\begin<<1411>>center<<1411>>
-    \tablecaption<<1498>>Methods of \class<<1412>>PedigreeMetadata<<1412>> objects.<<1498>>
-    \tablefirsthead<<1413>>\hline Method ;SPMamp; Description \\  \hline<<1413>>
-    \begin<<1608>>tex2html_deferred<<1608>>\tablehead<<1414>>\hline Method ;SPMamp; Description \\  \hline<<1414>>\end<<1609>>tex2html_deferred<<1609>>
-    \begin<<1610>>tex2html_deferred<<1610>>\tabletail<<1499>>\hline \multicolumn<<1415>>2<<1415>><<1416>>l<<1416>><<1417>>\small\sl continued on next page<<1417>> \\  \hline<<1499>>\end<<1611>>tex2html_deferred<<1611>>
-    \tablelasttail<<1418>>\hline<<1418>>
-    \label<<1419>>tbl:objects-metadata-methods<<1419>>
-    \begin<<1420>>xtabular<<1420>><<1500>>l|p<<1421>>4in<<1421>><<1500>>
-        \_\_init\_\_ ;SPMamp; Initializes and returns a \class<<1422>>PedigreeMetadata<<1422>> object. \\ 
-        fileme ;SPMamp; Writes the metada stored in the \class<<1423>>PedigreeMetadata<<1423>> object to disc. \\ 
-        nud ;SPMamp; Returns the number of unique dams in the pedigree along with a list of the dams. \\ 
-        nuf ;SPMamp; Returns the number of unique founders in the pedigree along with a list of the founders. \\ 
-        nug ;SPMamp; Returns the number of unique generations in the pedigree along with a list of the generations. \\ 
-        nuherds ;SPMamp; Returns the number of unique herds in the pedigree along with a list of the herds. \\ 
-        nus ;SPMamp; Returns the number of unique sires in the pedigree along with a list of the sires. \\ 
-        nuy ;SPMamp; Returns the number of unique birth years in the pedigree along with a list of the birth years. \\ 
-        printme ;SPMamp; Prints a summary of the pedigree metadata stored in the \class<<1424>>PedigreeMetadata<<1424>> object. \\ 
-        stringme ;SPMamp; Returns a summary of the pedigree metadata stored in the \class<<1425>>PedigreeMetadata<<1425>> object as a string. \\ 
-    \end<<1426>>xtabular<<1426>>
-\end<<1427>>center<<1427>>
-\section<<1428>>The NewAMatrix Class<<1428>>
-\label<<1429>>sec:objects-amatrix-objects<<1429>>
-\index<<1430>>PyPedal objects!AMatrix objects<<1430>>
-The \class<<1431>>NewAMatrix<<1431>> class provides an instance of a numerator relationship matrix as a NumPy array of floats with some convenience methods.  The idea here is to provide a wrapper around a NRM so that it is easier to work with.  For large pedigrees it can take a long time to compute the elements of A, so there is real value in providing an easy way to save and retrieve a NRM once it has been formed.
-\begin<<1432>>center<<1432>>
-    \tablecaption<<1501>>Attributes of \class<<1433>>NewAMatrix<<1433>> objects.<<1501>>
-    \tablefirsthead<<1434>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1434>>
-    \begin<<1612>>tex2html_deferred<<1612>>\tablehead<<1435>>\hline Attribute ;SPMamp; Default ;SPMamp; Description \\  \hline<<1435>>\end<<1613>>tex2html_deferred<<1613>>
-    \begin<<1614>>tex2html_deferred<<1614>>\tabletail<<1502>>\hline \multicolumn<<1436>>3<<1436>><<1437>>l<<1437>><<1438>>\small\sl continued on next page<<1438>> \\  \hline<<1502>>\end<<1615>>tex2html_deferred<<1615>>
-    \tablelasttail<<1439>>\hline<<1439>>
-    \label<<1440>>tbl:objects-amatrix-attributes<<1440>>
-    \begin<<1441>>xtabular<<1441>><<1503>>l|l|p<<1442>>4in<<1442>><<1503>>
-        kw ;SPMamp; \texttt<<1443>>kw<<1443>> ;SPMamp; Keyword dictionary. \\ 
-        nrm ;SPMamp; \texttt<<1444>>None<<1444>> ;SPMamp; A numerator relationship matrix; exists only after the \function<<1445>>form\_a\_matrix<<1445>> method has been called. \\ 
-    \end<<1446>>xtabular<<1446>>
-\end<<1447>>center<<1447>>
-The methods of \class<<1448>>NewAMatrix<<1448>> objects are listed in Table \ref<<1449>>tbl:objects-amatrix-methods<<1449>>.
-\begin<<1450>>center<<1450>>
-    \tablecaption<<1504>>Methods of \class<<1451>>NewAMatrix<<1451>> objects.<<1504>>
-    \tablefirsthead<<1452>>\hline Method ;SPMamp; Description \\  \hline<<1452>>
-    \begin<<1616>>tex2html_deferred<<1616>>\tablehead<<1453>>\hline Method ;SPMamp; Description \\  \hline<<1453>>\end<<1617>>tex2html_deferred<<1617>>
-    \begin<<1618>>tex2html_deferred<<1618>>\tabletail<<1505>>\hline \multicolumn<<1454>>2<<1454>><<1455>>l<<1455>><<1456>>\small\sl continued on next page<<1456>> \\  \hline<<1505>>\end<<1619>>tex2html_deferred<<1619>>
-    \tablelasttail<<1457>>\hline<<1457>>
-    \label<<1458>>tbl:objects-amatrix-methods<<1458>>
-    \begin<<1459>>xtabular<<1459>><<1506>>l|p<<1460>>4in<<1460>><<1506>>
-        \_\_init\_\_ ;SPMamp; Initializes and returns a \class<<1461>>NewAMatrix<<1461>> object. \\ 
-        form\_a\_matrix ;SPMamp; Calls \function<<1462>>pyp\_nrm.fast\_a\_matrix()<<1462>> or \function<<1463>>pyp\_nrm.fast\_a\_matrix\_r()<<1463>> to form a NRM from a pedigree. \\ 
-        info ;SPMamp; Uses the NRM's \method<<1464>>info()<<1464>> method to dump some information about the NRM. This is useful for debugging. \\ 
-        load ;SPMamp; Uses the NumPy function \function<<1507>>fromfile<<1465>><<1465>><<1507>> to load an array from a binary file.  If the load is successful, self.nrm contains the matrix. \\ 
-        save ;SPMamp; Uses the NRM's \method<<1466>>tofile()<<1466>> method to save an array to either a text or binary file. \\ 
-        printme ;SPMamp; Prints the NRM to the screen. \\ 
-    \end<<1467>>xtabular<<1467>>
-\end<<1468>>center<<1468>>
-<tex2html_endfile>#./objects.tex#
+\section<<1438>>Pedigrees as Sets<<1438>>\label<<1439>>sec:pedigrees-as-sets<<1439>>\index<<1440>>working with pedigrees!pedigrees as sets<<1440>>
+As of version 2.0.4, PyPedal has new tools for working with pedigrees by treating them as mathematical sets
+of animals. This makes it easy to do things like merge pedigrees, or remove a subset of animals from a pedigree.
+Formally, we can think of a pedigree, \begin<<1488>>tex2html_wrap_inline<<1488>>$P$\end<<1489>>tex2html_wrap_inline<<1489>>, as a set of \begin<<1490>>tex2html_wrap_inline<<1490>>$n$\end<<1491>>tex2html_wrap_inline<<1491>>\space animals denoted \begin<<1492>>tex2html_wrap_inline<<1492>>$a_1, a_2, \ldots, a_n$\end<<1493>>tex2html_wrap_inline<<1493>>. Two animals,
+\begin<<1494>>tex2html_wrap_inline<<1494>>$a_i$\end<<1495>>tex2html_wrap_inline<<1495>>\space and \begin<<1496>>tex2html_wrap_inline<<1496>>$a_j$\end<<1497>>tex2html_wrap_inline<<1497>>, are related iff \begin<<1498>>tex2html_wrap_inline<<1498>>$a_i, a_j \in P$\end<<1499>>tex2html_wrap_inline<<1499>>. Two pedigrees, \begin<<1500>>tex2html_wrap_inline<<1500>>$P$\end<<1501>>tex2html_wrap_inline<<1501>>\space and \begin<<1502>>tex2html_wrap_inline<<1502>>$Q$\end<<1503>>tex2html_wrap_inline<<1503>>, may then be merged by taking the
+union of the two sets, \begin<<1504>>tex2html_wrap_inline<<1504>>$R = P \cup Q$\end<<1505>>tex2html_wrap_inline<<1505>>, using the \method<<1441>>NewPedigree::union()<<1441>> method or
+\function<<1442>>pyp\_utils.llist\_union()<<1442>> functions. Similarly, a subset of animals, \begin<<1506>>tex2html_wrap_inline<<1506>>$Q$\end<<1507>>tex2html_wrap_inline<<1507>>, can be ;SPMquot;subtracted;SPMquot; from a larger
+pedigree, \begin<<1508>>tex2html_wrap_inline<<1508>>$P$\end<<1509>>tex2html_wrap_inline<<1509>>, as \begin<<1510>>tex2html_wrap_inline<<1510>>$R = P - Q = P - (P \cap Q)$\end<<1511>>tex2html_wrap_inline<<1511>>.\begin<<1608>>tex2html_deferred<<1608>>\footnote<<1443>>Stated here without proof is the assertion that if you begin
+a null pedigree, that is, \begin<<1512>>tex2html_wrap_inline<<1512>>$P = \varnothing$\end<<1513>>tex2html_wrap_inline<<1513>>, all possible pedigrees can be constructed using only unions (\begin<<1514>>tex2html_wrap_inline<<1514>>$\cap$\end<<1515>>tex2html_wrap_inline<<1515>>)
+and intersections (\begin<<1516>>tex2html_wrap_inline<<1516>>$\cap$\end<<1517>>tex2html_wrap_inline<<1517>>) of \begin<<1518>>tex2html_wrap_inline<<1518>>$P$\end<<1519>>tex2html_wrap_inline<<1519>>\space with individual animals.<<1443>>\end<<1609>>tex2html_deferred<<1609>>
+\begin<<1610>>tex2html_deferred<<1610>>\par\end<<1611>>tex2html_deferred<<1611>>
+A pair of pedigrees also can be merged using the \method<<1444>>NewPedigree::\_\_add\_\_()<<1444>> method, which provides an
+;SPMquot;addition;SPMquot; operator for \class<<1445>>NewPedigree<<1445>> instances, as shown in the following code:
+\begin<<1446>>tex2html_preform<<1446>><tex2html_verbatim_mark>verbatim152#\end<<1447>>tex2html_preform<<1447>>
+The \method<<1448>>NewPedigree::\_\_sub\_\_()<<1448>> method also provide a ;SPMquot;subtraction;SPMquot; operator for subtracting the animals in
+one pedigree from another, as described above.
+\begin<<1612>>tex2html_deferred<<1612>>\par\end<<1613>>tex2html_deferred<<1613>>
+Note that the \function<<1449>>pyp\_utils.list\_union()<<1449>> method takes advantage of the fact that \begin<<1520>>tex2html_wrap_inline<<1520>>$A \cap B \cap \ldots \cap Y \cap Z$\end<<1521>>tex2html_wrap_inline<<1521>>
+can be factorized as \begin<<1522>>tex2html_wrap_inline<<1522>>$(A \cap (B \cap (\ldots \cap (Y \cap Z))))$\end<<1523>>tex2html_wrap_inline<<1523>>.
+<tex2html_endfile>#./calculations.tex#

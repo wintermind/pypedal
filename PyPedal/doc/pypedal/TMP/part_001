@@ -68,7 +68,7 @@
 \begin<<126>>tex2html_deferred<<126>>\par\end<<127>>tex2html_deferred<<127>>
 \date<<51>>November 29, 2005 \\  Revised \today<<51>>                   <tex2html_comment_mark>47
 \begin<<128>>tex2html_deferred<<128>>\par\end<<129>>tex2html_deferred<<129>>
-\release<<52>>2.0.0b23<<52>>              <tex2html_comment_mark>52
+\release<<52>>2.0.4<<52>>                 <tex2html_comment_mark>52
 \setshortversion<<53>>2.0<<53>>           <tex2html_comment_mark>53
 \makeindex                      <tex2html_comment_mark>54
 \newindex<<54>>func<<54>><<55>>fdx<<55>><<56>>fnd<<56>><<57>>Function Index<<57>>
@@ -78,7 +78,7 @@
 \maketitle
 \begin<<134>>tex2html_deferred<<134>>\par\end<<135>>tex2html_deferred<<135>>
 \begin<<59>>abstract<<59>>
-Cole, J.B.  2008.  A Manual for use of PyPedal: A software package for pedigree analysis.  Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture.
+Cole, J.B.  2012.  A Manual for use of PyPedal: A software package for pedigree analysis.  Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture.
 \begin<<136>>tex2html_deferred<<136>>\par\end<<137>>tex2html_deferred<<137>>
 This manual in twelve chapters describes PyPedal (v 2.0), a software package for pedigree analysis, report generation, and data visualization.  Metrics include coefficients of inbreeding and relationship, effective founder and ancestor numbers, and founder genome equivalents.  Tools are provided for identifying ancestors and descendants, computing coefficients of inbreeding from potential matings, quantifying pedigree completeness, and visualizing pedigrees.  Scripting support is provided by the Python programming language; this language may be used to easily automate analyses and implement new features. Input and output files utilize plain-text formats.  The program has been used for the analysis of dairy cattle and working dog pedigrees.  PyPedal runs on the GNU/Linux and Microsoft Windows operating systems.  The program, documentation, and examples of usage are available at \begin<<138>>tex2html_deferred<<138>>\url<<60>>http://pypedal.sourceforge.net/<<60>>\end<<139>>tex2html_deferred<<139>>.
 \begin<<140>>tex2html_deferred<<140>>\par\end<<141>>tex2html_deferred<<141>>

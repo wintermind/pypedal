@@ -1,0 +1,117 @@
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Features}{6}{section.1.1}
+\contentsline {section}{\numberline {1.2}Where to get information and code}{7}{section.1.2}
+\contentsline {section}{\numberline {1.3}Acknowledgments}{7}{section.1.3}
+\contentsline {section}{\numberline {1.4}Disclaimer}{8}{section.1.4}
+\contentsline {chapter}{\numberline {2}Installing PyPedal}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Overview of installation}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Testing the Python installation}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}Installing PyPedal}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Installing on Unix, Linux, and Mac OSX}{10}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Installing on Windows}{11}{subsection.2.3.2}
+\contentsline {subsubsection}{Installation from source}{11}{section*.8}
+\contentsline {subsubsection}{Installation on Cygwin}{12}{section*.9}
+\contentsline {section}{\numberline {2.4}Testing the PyPedal Installation}{12}{section.2.4}
+\contentsline {chapter}{\numberline {3}High-Level Overview}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Interacting with PyPedal}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}The PyPedal Object Model}{13}{section.3.2}
+\contentsline {section}{\numberline {3.3}Program Structure}{13}{section.3.3}
+\contentsline {section}{\numberline {3.4}Options}{15}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Configuration Files}{19}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Pedigree Files}{19}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Pedigree Format Codes}{20}{subsection.3.5.1}
+\contentsline {section}{\numberline {3.6}Renumbering a Pedigree}{21}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Animal Identification}{22}{subsection.3.6.1}
+\contentsline {section}{\numberline {3.7}Logging}{22}{section.3.7}
+\contentsline {section}{\numberline {3.8}Simulating Pedigrees}{23}{section.3.8}
+\contentsline {chapter}{\numberline {4}Input and Output}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Overview}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Input}{26}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Graph Objects}{26}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}{GEDCOM} Files}{27}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}{GENES} Files}{27}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Text Files}{27}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Text Streams}{27}{subsection.4.2.5}
+\contentsline {section}{\numberline {4.3}Output}{28}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}{GEDCOM} Files}{28}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}{GENES} Files}{28}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Graph Objects}{28}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Text Files}{28}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Text Streams}{32}{subsection.4.3.5}
+\contentsline {section}{\numberline {4.4}Databases}{32}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Input from Databases}{32}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Output to Databases}{33}{subsection.4.4.2}
+\contentsline {chapter}{\numberline {5}Working with Pedigrees}{37}{chapter.5}
+\contentsline {section}{\numberline {5.1}Overview}{37}{section.5.1}
+\contentsline {section}{\numberline {5.2}Inbreeding and Relationships}{38}{section.5.2}
+\contentsline {section}{\numberline {5.3}Matings}{40}{section.5.3}
+\contentsline {section}{\numberline {5.4}Relatives}{41}{section.5.4}
+\contentsline {section}{\numberline {5.5}Decomposition and Direct Inverses of Numerator Relationship Matrices}{42}{section.5.5}
+\contentsline {section}{\numberline {5.6}Pedigrees as Sets}{46}{section.5.6}
+\contentsline {chapter}{\numberline {6}Using PyPedal Objects}{47}{chapter.6}
+\contentsline {section}{\numberline {6.1}Animal Objects}{47}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}The NewAnimal Class}{47}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}The LightAnimal Class}{50}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}The SimAnimal Class}{51}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}The NewPedigree Class}{52}{section.6.2}
+\contentsline {section}{\numberline {6.3}The PedigreeMetadata Class}{54}{section.6.3}
+\contentsline {section}{\numberline {6.4}The NewAMatrix Class}{55}{section.6.4}
+\contentsline {chapter}{\numberline {7}Methodology}{57}{chapter.7}
+\contentsline {section}{\numberline {7.1}Reordering and Renumbering}{57}{section.7.1}
+\contentsline {section}{\numberline {7.2}Animal Identification and Cross-References}{58}{section.7.2}
+\contentsline {section}{\numberline {7.3}Measures of Genetic Variation}{59}{section.7.3}
+\contentsline {section}{\numberline {7.4}Computational Details}{59}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Inbreeding and Related Measures}{59}{subsection.7.4.1}
+\contentsline {subsection}{\numberline {7.4.2}Ancestral Inbreeding}{60}{subsection.7.4.2}
+\contentsline {subsection}{\numberline {7.4.3}Partial Inbreeding}{60}{subsection.7.4.3}
+\contentsline {subsection}{\numberline {7.4.4}Generation Coefficients}{61}{subsection.7.4.4}
+\contentsline {subsection}{\numberline {7.4.5}Effective Founder Number}{61}{subsection.7.4.5}
+\contentsline {subsection}{\numberline {7.4.6}Founder Genome Equivalents}{61}{subsection.7.4.6}
+\contentsline {subsection}{\numberline {7.4.7}Effective Ancestor Number}{62}{subsection.7.4.7}
+\contentsline {subsection}{\numberline {7.4.8}Pedigree Completeness}{62}{subsection.7.4.8}
+\contentsline {chapter}{\numberline {8}HOWTOs}{63}{chapter.8}
+\contentsline {section}{\numberline {8.1}Basic Tasks}{63}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}How do I load a pedigree from a file?}{63}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}How do I load multiple pedigrees in one program?}{63}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}How do I renumber a pedigree?}{64}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}How do I turn off output messages?}{64}{subsection.8.1.4}
+\contentsline {subsection}{\numberline {8.1.5}How do I load a pedigree whose columns are comma-delimited?}{65}{subsection.8.1.5}
+\contentsline {subsection}{\numberline {8.1.6}How do I load a pedigree whose columns are tab-delimited?}{65}{subsection.8.1.6}
+\contentsline {section}{\numberline {8.2}Calculating Measures of Genetic Variation}{66}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}How do I calculate coefficients of inbreeding?}{66}{subsection.8.2.1}
+\contentsline {section}{\numberline {8.3}Databases and Report Generation}{67}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}How do I load a pedigree into a database?}{67}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}How do I update a pedigree in the database?}{67}{subsection.8.3.2}
+\contentsline {section}{\numberline {8.4}Pedigrees as Graphs}{68}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}How do I convert a pedigree to a graph?}{68}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}How do I convert a graph to a pedigree?}{68}{subsection.8.4.2}
+\contentsline {subsection}{\numberline {8.4.3}How do I load a pedigree from a file containing a graph stored as an adjacency list?}{69}{subsection.8.4.3}
+\contentsline {subsection}{\numberline {8.4.4}How do I save a graph as an adjacency list?}{69}{subsection.8.4.4}
+\contentsline {section}{\numberline {8.5}Miscellaneous}{69}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}How do I export a numerator relationship matrix so that I can read it into Octave?}{69}{subsection.8.5.1}
+\contentsline {subsection}{\numberline {8.5.2}How else can I export a NRM to a file?}{70}{subsection.8.5.2}
+\contentsline {subsection}{\numberline {8.5.3}How do I load a pedigree from a GEDCOM file?}{71}{subsection.8.5.3}
+\contentsline {subsection}{\numberline {8.5.4}How do I save a pedigree to a GEDCOM file?}{71}{subsection.8.5.4}
+\contentsline {subsection}{\numberline {8.5.5}How do I load a pedigree from a string?}{71}{subsection.8.5.5}
+\contentsline {section}{\numberline {8.6}Contribute a HOWTO}{72}{section.8.6}
+\contentsline {chapter}{\numberline {9}Graphics}{73}{chapter.9}
+\contentsline {section}{\numberline {9.1}PyPedal Graphics}{73}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Drawing Pedigrees}{73}{subsection.9.1.1}
+\contentsline {subsection}{\numberline {9.1.2}Drawing Line Graphs}{77}{subsection.9.1.2}
+\contentsline {subsection}{\numberline {9.1.3}Visualizing Numerator Relationship Matrices}{77}{subsection.9.1.3}
+\contentsline {chapter}{\numberline {10}Report Generation}{81}{chapter.10}
+\contentsline {section}{\numberline {10.1}Overview}{81}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Three Generation Pedigrees}{82}{subsection.10.1.1}
+\contentsline {section}{\numberline {10.2}Creating a Custom Internal Report}{82}{section.10.2}
+\contentsline {section}{\numberline {10.3}Creating a Custom Printed Report}{84}{section.10.3}
+\contentsline {chapter}{\numberline {11}Implementing New Features}{87}{chapter.11}
+\contentsline {section}{\numberline {11.1}Overview}{87}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Defining the Problem}{87}{subsection.11.1.1}
+\contentsline {section}{\numberline {11.2}Module Template}{88}{section.11.2}
+\contentsline {section}{\numberline {11.3}Solving the Problem}{89}{section.11.3}
+\contentsline {section}{\numberline {11.4}Contributing Code to PyPedal}{94}{section.11.4}
+\contentsline {chapter}{\numberline {12}Glossary}{95}{chapter.12}
+\contentsline {chapter}{Appendices}{95}{chapter.12}
+\contentsline {chapter}{\numberline {A}Example Programs}{97}{appendix.A}
+\contentsline {chapter}{\numberline {B}GEDCOM File Handling}{99}{appendix.B}
+\contentsline {chapter}{\numberline {C}GENES File Handling}{101}{appendix.C}

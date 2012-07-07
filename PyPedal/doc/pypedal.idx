@@ -1,0 +1,130 @@
+\indexentry {license|hyperpage}{i}
+\indexentry {pypedal@{\py@idxcode {pypedal}} (extension module)|hyperindexformat{\textbf }}{3}
+\indexentry {Acknowledgments|hyperpage}{7}
+\indexentry {Disclaimer|hyperpage}{8}
+\indexentry {installation|hyperpage}{9}
+\indexentry {installation!extensions|hyperpage}{9}
+\indexentry {installation!installation on Linux|hyperpage}{10}
+\indexentry {installation!installation on Windows|hyperpage}{11}
+\indexentry {installation!installation on Windows!Python Enthought Edition|hyperpage}{11}
+\indexentry {PyGraphviz|hyperpage}{11}
+\indexentry {installation!installation on Windows!environment variables|hyperpage}{11}
+\indexentry {PATH|hyperpage}{11}
+\indexentry {environment variables!{PATH}|hyperpage}{11}
+\indexentry {PYTHONPATH|hyperpage}{11}
+\indexentry {environment variables!{PYTHONPATH}|hyperpage}{11}
+\indexentry {installation!installation from source|hyperpage}{11}
+\indexentry {installation!installation on Cygwin|hyperpage}{12}
+\indexentry {installation!testing the installation|hyperpage}{12}
+\indexentry {interacting with PyPedal|hyperpage}{13}
+\indexentry {interacting with PyPedal!interactively|hyperpage}{13}
+\indexentry {interacting with PyPedal!programmatically|hyperpage}{13}
+\indexentry {objects|hyperpage}{13}
+\indexentry {program structure|hyperpage}{13}
+\indexentry {configuration file|hyperpage}{14}
+\indexentry {options|hyperpage}{15}
+\indexentry {options!list|hyperpage}{16}
+\indexentry {configuration files|hyperpage}{19}
+\indexentry {Dict4Ini|hyperpage}{19}
+\indexentry {pedigree files|hyperpage}{19}
+\indexentry {column delimiter|hyperpage}{20}
+\indexentry {pedigree format codes|hyperpage}{20}
+\indexentry {pedigree format codes!list|hyperpage}{21}
+\indexentry {renumbering pedigrees|hyperpage}{21}
+\indexentry {renumbering pedigrees!animal identification|hyperpage}{22}
+\indexentry {logging|hyperpage}{22}
+\indexentry {pedigree simulation|hyperpage}{23}
+\indexentry {input|hyperpage}{26}
+\indexentry {input!integrity checks|hyperpage}{26}
+\indexentry {input!graph objects|hyperpage}{26}
+\indexentry {input!GEDCOM files|hyperpage}{27}
+\indexentry {input!GENES files|hyperpage}{27}
+\indexentry {input!text files|hyperpage}{27}
+\indexentry {input!text streams|hyperpage}{27}
+\indexentry {pedsource|hyperpage}{27}
+\indexentry {output|hyperpage}{28}
+\indexentry {output!GEDCOM files|hyperpage}{28}
+\indexentry {output!GENES files|hyperpage}{28}
+\indexentry {output!graph objects|hyperpage}{28}
+\indexentry {output!text files|hyperpage}{28}
+\indexentry {output!text streams|hyperpage}{32}
+\indexentry {databases|hyperpage}{32}
+\indexentry {input!databases|hyperpage}{32}
+\indexentry {databases!new input sources|hyperpage}{33}
+\indexentry {output!databases|hyperpage}{33}
+\indexentry {databases!new output destinations|hyperpage}{34}
+\indexentry {working with pedigrees|hyperpage}{37}
+\indexentry {working with pedigrees!inbreeding and relationships|hyperpage}{38}
+\indexentry {working with pedigrees!matings|hyperpage}{40}
+\indexentry {working with pedigrees!relatives|hyperpage}{41}
+\indexentry {numerator relationship matrix!decomposition|hyperpage}{42}
+\indexentry {numerator relationship matrix!direct inverses|hyperpage}{42}
+\indexentry {working with pedigrees!pedigrees as sets|hyperpage}{46}
+\indexentry {PyPedal objects|hyperpage}{47}
+\indexentry {PyPedal objects!Animal objects|hyperpage}{47}
+\indexentry {PyPedal objects!Animal objects!NewAnimal|hyperpage}{47}
+\indexentry {PyPedal objects!Animal objects!LightAnimal|hyperpage}{50}
+\indexentry {PyPedal objects!Animal objects!SimAnimal|hyperpage}{51}
+\indexentry {PyPedal objects!Pedigree objects|hyperpage}{52}
+\indexentry {PyPedal objects!Metadata objects|hyperpage}{54}
+\indexentry {PyPedal objects!AMatrix objects|hyperpage}{55}
+\indexentry {reordering and renumbering|hyperpage}{57}
+\indexentry {ID mapping|hyperpage}{58}
+\indexentry {measures of genetic variation|hyperpage}{59}
+\indexentry {computational details|hyperpage}{59}
+\indexentry {computational details!inbreeding and related measures|hyperpage}{59}
+\indexentry {computational details!ancestral inbreeding|hyperpage}{60}
+\indexentry {computational details!partial inbreeding|hyperpage}{60}
+\indexentry {computational details!generation coefficients|hyperpage}{61}
+\indexentry {computational details!effective founder number|hyperpage}{61}
+\indexentry {computational details!founder genome equivalents|hyperpage}{61}
+\indexentry {computational details!effective ancestor number|hyperpage}{62}
+\indexentry {computational details!pedigree completeness|hyperpage}{62}
+\indexentry {ancestor loss coefficient|hyperpage}{62}
+\indexentry {how do I!basic tasks|hyperpage}{63}
+\indexentry {how do I!basic tasks!load a pedigree|hyperpage}{63}
+\indexentry {how do I!basic tasks!load multiple pedigrees|hyperpage}{63}
+\indexentry {how do I!basic tasks!renumber a pedigree|hyperpage}{64}
+\indexentry {how do I!basic tasks!turn off output|hyperpage}{64}
+\indexentry {how do I!basic tasks!load comma-delimited pedigree|hyperpage}{65}
+\indexentry {how do I!basic tasks!load tab-delimited pedigree|hyperpage}{65}
+\indexentry {how do I!calculate genetic variation|hyperpage}{66}
+\indexentry {how do I!calculate genetic variation!coefficients of inbreeding|hyperpage}{66}
+\indexentry {how do I!databases and reports|hyperpage}{67}
+\indexentry {how do I!databases and reports!load a pedigree|hyperpage}{67}
+\indexentry {how do I!databases and reports!update pedigree table|hyperpage}{67}
+\indexentry {how do I!pedigrees as graphs|hyperpage}{68}
+\indexentry {how do I!pedigrees as graphs!pedigree to graph|hyperpage}{68}
+\indexentry {how do I!pedigrees as graphs!graph to pedigree|hyperpage}{68}
+\indexentry {how do I!pedigrees as graphs!pedigree from graph file|hyperpage}{69}
+\indexentry {how do I!pedigrees as graphs!graph to file|hyperpage}{69}
+\indexentry {how do I!miscellaneous|hyperpage}{69}
+\indexentry {how do I!miscellaneous!export NRM to Octave|hyperpage}{69}
+\indexentry {how do I!miscellaneous!export NRM to a file|hyperpage}{70}
+\indexentry {how do I!miscellaneous!load a GEDCOM pedigree|hyperpage}{71}
+\indexentry {pedsource|hyperpage}{71}
+\indexentry {how do I!miscellaneous!save to GEDCOM pedigree|hyperpage}{71}
+\indexentry {savegedcom|hyperpage}{71}
+\indexentry {how do I!miscellaneous!load a pedigree from a string|hyperpage}{71}
+\indexentry {pedsource|hyperpage}{71}
+\indexentry {how do I!contribute a HOWTO|hyperpage}{72}
+\indexentry {graphics|hyperpage}{73}
+\indexentry {graphics!drawing pedigrees|hyperpage}{73}
+\indexentry {graphics!drawing line graphs|hyperpage}{77}
+\indexentry {graphics!visualizing relationship matrices|hyperpage}{77}
+\indexentry {report generation|hyperpage}{81}
+\indexentry {report generation!three generation pedigrees|hyperpage}{82}
+\indexentry {report generation!creating custom internal reports|hyperpage}{82}
+\indexentry {internal reports|hyperpage}{82}
+\indexentry {report generation!creating custom printed reports|hyperpage}{84}
+\indexentry {new features|hyperpage}{87}
+\indexentry {new features!defining the problem|hyperpage}{87}
+\indexentry {new features!module template|hyperpage}{88}
+\indexentry {new features!module template!header|hyperpage}{88}
+\indexentry {new features!module template!imports|hyperpage}{88}
+\indexentry {new features!module template!function prototype|hyperpage}{88}
+\indexentry {new features!solving the problem|hyperpage}{89}
+\indexentry {new features!contributing code|hyperpage}{94}
+\indexentry {example programs|hyperpage}{97}
+\indexentry {GEDCOM files|hyperpage}{99}
+\indexentry {GENES files|hyperpage}{101}

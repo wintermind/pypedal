@@ -11,15 +11,15 @@ The Animal() class is holds animals records read from a pedigree file.
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_a70faad62bca4ba5416716e9e80ac1f4b}{\_\-\_\-init\_\-\_\-}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_a70faad62bca4ba5416716e9e80ac1f4b}{\_\-\_\-init\_\-\_\-()} initializes an Animal() object. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_a70faad62bca4ba5416716e9e80ac1f4b}{\_\-\_\-init\_\-\_\-()} initializes an Animal() object. \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_af51068dab30eb24722552cf6bb41c287}{printme}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_af51068dab30eb24722552cf6bb41c287}{printme()} prints a summary of the data stored in the Animal() object. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_af51068dab30eb24722552cf6bb41c287}{printme()} prints a summary of the data stored in the Animal() object. \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_ac3daf931dff355bfae652a95b41d0503}{stringme}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_ac3daf931dff355bfae652a95b41d0503}{stringme()} returns a summary of the data stored in the Animal() object as a string. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_ac3daf931dff355bfae652a95b41d0503}{stringme()} returns a summary of the data stored in the Animal() object as a string. \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_addb9409a4949f8317cf69313bbd0bd91}{trap}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_addb9409a4949f8317cf69313bbd0bd91}{trap()} checks for common errors in Animal() objects \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_addb9409a4949f8317cf69313bbd0bd91}{trap()} checks for common errors in Animal() objects \end{DoxyCompactList}\item 
 def \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_a41d6af83aa24c442fd52005cb45bd2fd}{pad\_\-id}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_a41d6af83aa24c442fd52005cb45bd2fd}{pad\_\-id()} takes an \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal}{Animal} ID, pads it to fifteen digits, and prepends the birthyear (or 1950 if the birth year is unknown). \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_a41d6af83aa24c442fd52005cb45bd2fd}{pad\_\-id()} takes an \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal}{Animal} ID, pads it to fifteen digits, and prepends the birthyear (or 1950 if the birth year is unknown). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -131,32 +131,34 @@ def \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal_a41d6af83aa24c442fd52005cb
 
 
 \subsection{Detailed Description}
-The Animal() class is holds animals records read from a pedigree file. \begin{DoxyVerb}A simple class to hold animals records read from a pedigree file.\end{DoxyVerb}
+The Animal() class is holds animals records read from a pedigree file. 
+
+\begin{DoxyVerb}A simple class to hold animals records read from a pedigree file.\end{DoxyVerb}
  
 
 Definition at line 34 of file pyp\_\-classes.py.
 
 
 
-\subsection{Member Function Documentation}
+\subsection{Constructor \& Destructor Documentation}
 \hypertarget{classPyPedal_1_1pyp__classes_1_1Animal_a70faad62bca4ba5416716e9e80ac1f4b}{
 \index{PyPedal::pyp\_\-classes::Animal@{PyPedal::pyp\_\-classes::Animal}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
 \index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\-classes::Animal}}
 \subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-classes.Animal.\_\-\_\-init\_\-\_\- (
 \begin{DoxyParamCaption}
-\item[{}]{ self, }
-\item[{}]{ animalID, }
-\item[{}]{ sireID, }
-\item[{}]{ damID, }
-\item[{}]{ gen = {\ttfamily '0'}, }
-\item[{}]{ by = {\ttfamily 1900}, }
-\item[{}]{ sex = {\ttfamily 'u'}, }
-\item[{}]{ fa = {\ttfamily 0.}, }
-\item[{}]{ name = {\ttfamily 'u'}, }
-\item[{}]{ alleles = {\ttfamily \mbox{[}''}, }
-\item[{}]{ breed = {\ttfamily 'u'}, }
-\item[{}]{ age = {\ttfamily -\/999}, }
-\item[{}]{ alive = {\ttfamily -\/999}}
+\item[{}]{self, }
+\item[{}]{animalID, }
+\item[{}]{sireID, }
+\item[{}]{damID, }
+\item[{}]{gen = {\ttfamily '0'}, }
+\item[{}]{by = {\ttfamily 1900}, }
+\item[{}]{sex = {\ttfamily 'u'}, }
+\item[{}]{fa = {\ttfamily 0.}, }
+\item[{}]{name = {\ttfamily 'u'}, }
+\item[{}]{alleles = {\ttfamily \mbox{[}''}, }
+\item[{}]{breed = {\ttfamily 'u'}, }
+\item[{}]{age = {\ttfamily -\/999}, }
+\item[{}]{alive = {\ttfamily -\/999}}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__classes_1_1Animal_a70faad62bca4ba5416716e9e80ac1f4b}
@@ -166,7 +168,33 @@ Definition at line 34 of file pyp\_\-classes.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to the current Animal() object \item[{\em animalID}]\hyperlink{classPyPedal_1_1pyp__classes_1_1Animal}{Animal} ID number \item[{\em sireID}]Sire ID number \item[{\em damID}]Dam ID number \item[{\em gen}]Generation to which the animal belongs \item[{\em by}]Birthyear of the animal \item[{\em sex}]Sex of the animal (m$|$f$|$u) \item[{\em fa}]Coefficient of inbreeding of the animal \item[{\em name}]Name of animal \item[{\em alleles}]A two-\/element array of strings, which represent allelotypes. \item[{\em breed}]Breed of animal \item[{\em age}]Age of animal \item[{\em alive}]Status of animal (alive or dead) \end{DoxyParams}
+{\em self} & Reference to the current Animal() object \\
+\hline
+{\em animalID} & \hyperlink{classPyPedal_1_1pyp__classes_1_1Animal}{Animal} ID number \\
+\hline
+{\em sireID} & Sire ID number \\
+\hline
+{\em damID} & Dam ID number \\
+\hline
+{\em gen} & Generation to which the animal belongs \\
+\hline
+{\em by} & Birthyear of the animal \\
+\hline
+{\em sex} & Sex of the animal (m$|$f$|$u) \\
+\hline
+{\em fa} & Coefficient of inbreeding of the animal \\
+\hline
+{\em name} & Name of animal \\
+\hline
+{\em alleles} & A two-\/element array of strings, which represent allelotypes. \\
+\hline
+{\em breed} & Breed of animal \\
+\hline
+{\em age} & Age of animal \\
+\hline
+{\em alive} & Status of animal (alive or dead) \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 An instance of an Animal() object populated with data  object \begin{DoxyVerb}Initialize an animal record.\end{DoxyVerb}
  
@@ -175,12 +203,15 @@ An instance of an Animal() object populated with data  object \begin{DoxyVerb}In
 
 Definition at line 53 of file pyp\_\-classes.py.
 
+
+
+\subsection{Member Function Documentation}
 \hypertarget{classPyPedal_1_1pyp__classes_1_1Animal_a41d6af83aa24c442fd52005cb45bd2fd}{
 \index{PyPedal::pyp\_\-classes::Animal@{PyPedal::pyp\_\-classes::Animal}!pad\_\-id@{pad\_\-id}}
 \index{pad\_\-id@{pad\_\-id}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\-classes::Animal}}
 \subsubsection[{pad\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-classes.Animal.pad\_\-id (
 \begin{DoxyParamCaption}
-\item[{}]{ self}
+\item[{}]{self}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__classes_1_1Animal_a41d6af83aa24c442fd52005cb45bd2fd}
@@ -190,7 +221,9 @@ Definition at line 53 of file pyp\_\-classes.py.
 
 The order of elements is: birthyear, animalID, count of zeros, zeros. 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to the current Animal() object \end{DoxyParams}
+{\em self} & Reference to the current Animal() object \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A padded ID number that is supposed to be unique across animals  integer \begin{DoxyVerb}Take an Animal ID, pad it to fifteen digits, and prepend the birthyear (or 1950 if the birth year is unknown)\end{DoxyVerb}
  
@@ -204,7 +237,7 @@ Definition at line 185 of file pyp\_\-classes.py.
 \index{printme@{printme}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\-classes::Animal}}
 \subsubsection[{printme}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-classes.Animal.printme (
 \begin{DoxyParamCaption}
-\item[{}]{ self}
+\item[{}]{self}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__classes_1_1Animal_af51068dab30eb24722552cf6bb41c287}
@@ -214,8 +247,10 @@ Definition at line 185 of file pyp\_\-classes.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to the current Animal() object \begin{DoxyVerb}Print the contents of an animal record - used for debugging.\end{DoxyVerb}
- \end{DoxyParams}
+{\em self} & Reference to the current Animal() object \begin{DoxyVerb}Print the contents of an animal record - used for debugging.\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 91 of file pyp\_\-classes.py.
@@ -225,7 +260,7 @@ Definition at line 91 of file pyp\_\-classes.py.
 \index{stringme@{stringme}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\-classes::Animal}}
 \subsubsection[{stringme}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-classes.Animal.stringme (
 \begin{DoxyParamCaption}
-\item[{}]{ self}
+\item[{}]{self}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__classes_1_1Animal_ac3daf931dff355bfae652a95b41d0503}
@@ -235,8 +270,10 @@ Definition at line 91 of file pyp\_\-classes.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to the current Animal() object \begin{DoxyVerb}Return the contents of an animal record as a string.\end{DoxyVerb}
- \end{DoxyParams}
+{\em self} & Reference to the current Animal() object \begin{DoxyVerb}Return the contents of an animal record as a string.\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 119 of file pyp\_\-classes.py.
@@ -246,7 +283,7 @@ Definition at line 119 of file pyp\_\-classes.py.
 \index{trap@{trap}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\-classes::Animal}}
 \subsubsection[{trap}]{\setlength{\rightskip}{0pt plus 5cm}def PyPedal.pyp\_\-classes.Animal.trap (
 \begin{DoxyParamCaption}
-\item[{}]{ self}
+\item[{}]{self}
 \end{DoxyParamCaption}
 )}}
 \label{classPyPedal_1_1pyp__classes_1_1Animal_addb9409a4949f8317cf69313bbd0bd91}
@@ -256,8 +293,10 @@ Definition at line 119 of file pyp\_\-classes.py.
 
 
 \begin{DoxyParams}{Parameters}
-\item[{\em self}]Reference to the current Animal() object \begin{DoxyVerb}Trap common errors in pedigree file entries.\end{DoxyVerb}
- \end{DoxyParams}
+{\em self} & Reference to the current Animal() object \begin{DoxyVerb}Trap common errors in pedigree file entries.\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 167 of file pyp\_\-classes.py.

@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classPyPedal_1_1pyp__newclasses_1_1PyPedalError.html" title="PyPedalError is the base class for exceptions in PyPedal." alt="" coords="6,5,261,33"/>
+<area shape="rect" id="node3" href="$classPyPedal_1_1pyp__newclasses_1_1PyPedalPedigreeInputFileNameError.html" title="PyPedalPedigreeInputFileNameError is raised when a simulated pedigree is not requested and a pedigree..." alt="" coords="310,5,706,33"/>
+</map>

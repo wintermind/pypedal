@@ -89,6 +89,17 @@ MacCluer, J.~W., J.~L. VandeBerg, B.~Read, and O.~A. Ryder (1986).
 \newblock Pedigree analysis by computer simulation.
 \newblock {\em Zoo Biology.\/}~{\em 5}, 147--160.
 
+\bibitem[\protect\citeauthoryear{Meuwissen and Luo}{Meuwissen and
+  Luo}{1992}]{ref585}
+Meuwissen, H.~E. and Z.~Luo (1992).
+\newblock Computing inbreeding coefficients in large populations.
+\newblock {\em Genetics Selection Evolution\/}~{\em 24}, 305--313.
+
+\bibitem[\protect\citeauthoryear{Mrode}{Mrode}{1996}]{ref224}
+Mrode, R.~A. (1996).
+\newblock {\em Linear Models for the Prediction of Animal Breeding Values}.
+\newblock Wallingford, UK: CAB International.
+
 \bibitem[\protect\citeauthoryear{Pattie}{Pattie}{1965}]{Pattie1965}
 Pattie, W. (1965).
 \newblock Selection for weaning weight in {M}erino sheep.
@@ -113,6 +124,12 @@ Suwanlee, S., R.~Baumung, J.~S{\"o}lkner, and I.~Curik (2007).
 \newblock Evaluation of ancestral inbreeding coefficients: Ballou's formula
   versus gene dropping.
 \newblock {\em Conservation Genetics\/}~{\em 8}, 489--495.
+
+\bibitem[\protect\citeauthoryear{Thompson}{Thompson}{1977}]{ref1060}
+Thompson, R. (1977).
+\newblock The estimation of heritability with unbalanced data i. observations
+  available on parents and offspring.
+\newblock {\em Biometrics\/}~{\em 33}, 495.
 
 \bibitem[\protect\citeauthoryear{Toro, Rodriganez, Silio., and Rodriguez}{Toro
   et~al.}{2000}]{ref435}

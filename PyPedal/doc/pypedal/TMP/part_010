@@ -1,138 +1,187 @@
-<tex2html_file>#./graphics.tex#
-\chapter<<2254>>Graphics<<2254>>
-\label<<2255>>cha:graphics<<2255>>
-\begin<<2256>>quote<<2256>>
-This chapter presents an overview of using the graphics routines PyPedal<<2257>><<2257>>.
-\end<<2258>>quote<<2258>>
-\section<<2259>>PyPedal Graphics<<2259>>
-\label<<2260>>sec:graphics-overview<<2260>>
-\index<<2261>>graphics<<2261>>
-PyPedal<<2262>><<2262>> is capable of producing graphics from information contained in a pedigree, including pedigree drawings, line graphs of changes in genetic diversity over time, and visualizations of numerator relationship matrices.  These graphics are non-interactive: output images are created and written to output files.  A separate program must be used to view and/or print the image; web browsers make reasonably good viewers for a small number of images.  If you are creating and viewing large numbers of images you may want to obtain an image management package for your platform.  Default and supported file formats for each of the graphics routines are presented in Table \ref<<2263>>tbl:pypedal-graphics-formats<<2263>>.
-\begin<<2264>>center<<2264>>
-    \tablecaption<<2265>>Default graphics formats.<<2265>>
-    \tablefirsthead<<2266>>\hline Routine ;SPMamp; Default Format ;SPMamp; Supported Formats \\  \hline<<2266>>
-    \begin<<2414>>tex2html_deferred<<2414>>\tablehead<<2267>>\hline Routine ;SPMamp; Default Format ;SPMamp; Supported Formats \\  \hline<<2267>>\end<<2415>>tex2html_deferred<<2415>>
-    \begin<<2416>>tex2html_deferred<<2416>>\tabletail<<2385>>\hline \multicolumn<<2268>>3<<2268>><<2269>>l<<2269>><<2270>>\small\sl continued on next page<<2270>> \\  \hline<<2385>>\end<<2417>>tex2html_deferred<<2417>>
-    \tablelasttail<<2271>>\hline<<2271>>
-    \label<<2272>>tbl:pypedal-graphics-formats<<2272>>
-    \begin<<2273>>xtabular<<2273>><<2386>>llp<<2274>>2in<<2274>><<2386>>
-	draw\_pedigree ;SPMamp; JPG ;SPMamp; JPG, PNG, PS \\ 
-	new\_draw\_pedigree ;SPMamp; JPG ;SPMamp; JPG, PNG, PS \\ 
-	pcolor\_matrix\_pylab ;SPMamp; PNG ;SPMamp; PNG only \\ 
-	plot\_founders\_by\_year ;SPMamp; PNG ;SPMamp; PNG only \\ 
-	plot\_founders\_pct\_by\_year ;SPMamp; PNG ;SPMamp; PNG only \\ 
-	plot\_line\_xy ;SPMamp; PNG ;SPMamp; PNG only \\ 
-	rmuller\_pcolor\_matrix\_pil ;SPMamp; PNG ;SPMamp; PNG only \\ 
-	rmuller\_spy\_matrix\_pil ;SPMamp; PNG ;SPMamp; PNG only \\ 
-	spy\_matrix\_pylab ;SPMamp; PNG ;SPMamp; PNG only \\ 
-    \end<<2275>>xtabular<<2275>>
-\end<<2276>>center<<2276>>
-\subsection<<2277>>Drawing Pedigrees<<2277>>
-\label<<2278>>sec:graphics-drawing-pedigrees<<2278>>
-\index<<2279>>graphics!drawing pedigrees<<2279>>
-The pedigree from Figure 2 in Boichard et al. \citeyear<<2280>>ref352<<2280>> is shown in Figure \ref<<2281>>fig:boichard2-pedigree<<2281>>, and shows males enclosed in rectangles and females in ovals.  Figure \ref<<2282>>fig:new-ids2-pedigree-basic<<2282>> shows a pedigree in which strings are used for animal IDs; animal are enclosed in ovals because sexes were not specified in the pedigree file and the \member<<2283>>set\_sexes<<2283>> option was not specified.  A more complex German Shepherd pedigree is presented in Figure \ref<<2284>>fig:doug-pedigree-basic<<2284>>; the code used to create this pedigree is:
-\begin<<2285>>tex2html_preform<<2285>><tex2html_verbatim_mark>verbatim128#\end<<2286>>tex2html_preform<<2286>>
-\begin<<2287>>figure<<2287>>
-  \begin<<2288>>center<<2288>>
-    \includegraphics[width=4in]<<2289>>boichard2Pedigree.eps<<2289>>
-    \begin<<2418>>tex2html_deferred<<2418>>\caption<<2290>>Pedigree 2 from Boichard et al. (1997)<<2290>>\end<<2419>>tex2html_deferred<<2419>>
-    \label<<2291>>fig:boichard2-pedigree<<2291>>
-  \end<<2292>>center<<2292>>
-\end<<2293>>figure<<2293>>
-\begin<<2294>>figure<<2294>>
-  \begin<<2295>>center<<2295>>
-    \includegraphics[width=3in]<<2296>>BoichardPedigreeBasic.eps<<2296>>
-    \begin<<2420>>tex2html_deferred<<2420>>\caption<<2297>>A pedigree with strings as animal IDs<<2297>>\end<<2421>>tex2html_deferred<<2421>>
-    \label<<2298>>fig:new-ids2-pedigree-basic<<2298>>
-  \end<<2299>>center<<2299>>
-\end<<2300>>figure<<2300>>
-\begin<<2301>>figure<<2301>>
-  \begin<<2302>>center<<2302>>
-    \includegraphics[width=4in]<<2303>>dougPRlNotitle.eps<<2303>>
-    \begin<<2422>>tex2html_deferred<<2422>>\caption<<2304>>German Shepherd pedigree<<2304>>\end<<2423>>tex2html_deferred<<2423>>
-    \label<<2305>>fig:doug-pedigree-basic<<2305>>
-  \end<<2306>>center<<2306>>
-\end<<2307>>figure<<2307>>
-The resulting graphic is written to doug\_p\_rl\_notitle.jpg; note from Table \ref<<2308>>tbl:pypedal-graphics-formats<<2308>> that the default file format for \function<<2309>>draw\_pedigree()<<2309>> is \textbf<<2310>>JPG<<2310>> rather than \textbf<<2311>>PNG<<2311>>, as is the case for the other graphics routines.  To get a PNG simply pass the argument \var<<2312>>gformat='png'<<2312>> to \function<<2313>>draw\_pedigree()<<2313>>.  For details on the options taken by \function<<2314>>draw\_pedigree()<<2314>> please refer to the API documentation (Section \ref<<2315>>sec:pyp-graphics-draw-pedigree<<2315>>). \function<<2316>>draw\_pedigree()<<2316>> uses rectangles to indicates known males, circles to indicate known females, and octagons to indicate animals of unknown sex.
-\begin<<2424>>tex2html_deferred<<2424>>\par\end<<2425>>tex2html_deferred<<2425>>
-Pedigrees can also be colored using the \function<<2317>>color\_pedigree()<<2317>> function in the \module<<2318>>pyp\_jbc<<2318>> module. At present, animals are shaded either by the number of sons produced or by the total number of descendants. The five-generation pedigree of the Newfoundland dog King von der D\"<<2319>>u<<2319>>ssel is presented in Figure \ref<<2320>>fig:newfoundland-colored-pedigree<<2320>> (\begin<<2426>>tex2html_deferred<<2426>>\url<<2321>>http://www.newfoundlanddog-database.net/en/ahnen.php?num=0000025330<<2321>>\end<<2427>>tex2html_deferred<<2427>>, data used with permission), and the nodes are shaded based on number of descendants.
-\begin<<2322>>figure<<2322>>
-  \begin<<2323>>center<<2323>>
-    \includegraphics[width=4in]<<2324>>newfoundland.eps<<2324>>
-    \begin<<2428>>tex2html_deferred<<2428>>\caption<<2325>>Newfoundland colored pedigree<<2325>>\end<<2429>>tex2html_deferred<<2429>>
-    \label<<2326>>fig:newfoundland-colored-pedigree<<2326>>
-  \end<<2327>>center<<2327>>
-\end<<2328>>figure<<2328>>
-\begin<<2430>>tex2html_deferred<<2430>>\par\end<<2431>>tex2html_deferred<<2431>>
- 
-\begin<<2432>>tex2html_deferred<<2432>>\textcolor<<2389>>red<<2389>><<2390>>
-<<2391>>\fbox<<2392>> <<2395>>\bf FIX<<2395>>
-\begin<<2404>>tex2html_wrap_inline<<2404>>\ensuremath<<2396>>\blacktriangleright \blacktriangleright \blacktriangleright<<2396>>\end<<2405>>tex2html_wrap_inline<<2405>><<2392>>
-<<2393>>\bf Windows users should set the \var<<2397>>drawers<<2397>> keyword to 'old' when calling \function<<2398>>color\_pedigree()<<2398>>. This will call \function<<2399>>draw\_colored\_pedigree()<<2399>> rather than \function<<2400>>new\_draw\_colored\_pedigree()<<2400>>. The latter requires that PyGraphviz library be installed and there is not yet an easy way to install it on Windows.<<2393>>
-\fbox<<2394>>\begin<<2406>>tex2html_wrap_inline<<2406>>\ensuremath<<2401>> \blacktriangleleft \blacktriangleleft \blacktriangleleft <<2401>>\end<<2407>>tex2html_wrap_inline<<2407>>
-<<2394>> <<2391>> <<2390>>\end<<2433>>tex2html_deferred<<2433>>
-
-\subsection<<2333>>Drawing Line Graphs<<2333>>\label<<2334>>sec:graphics-drawing-line-graphs<<2334>>\index<<2335>>graphics!drawing line graphs<<2335>>
-The \texttt<<2336>>plot\_line\_xy()<<2336>> routine provides a convenient tool for creating two-dimensional line graphs.  Figure \ref<<2337>>fig:ayrshire-coi-graph<<2337>> shows the plot of inbreeding by birth year for the US Ayrshire cattle population.  The plot is produced by the call:
-\begin<<2338>>tex2html_preform<<2338>><tex2html_verbatim_mark>verbatim129#\end<<2339>>tex2html_preform<<2339>>
-\begin<<2340>>figure<<2340>>
-  \begin<<2341>>center<<2341>>
-    \includegraphics[width=4in]<<2342>>ayCoiByYear.eps<<2342>>
-    \begin<<2434>>tex2html_deferred<<2434>>\caption<<2343>>Average inbreeding by birth year for the US Ayrshire cattle population<<2343>>\end<<2435>>tex2html_deferred<<2435>>
-    \label<<2344>>fig:ayrshire-coi-graph<<2344>>
-  \end<<2345>>center<<2345>>
-\end<<2346>>figure<<2346>>
-The code above uses \function<<2347>>pyp_reports.meanMetricBy()<<2347>> (see \ref<<2348>>sec:pyp-reports-mean-metric-by<<2348>>) to populate \var<<2349>>coi_by_year<<2349>>; the keys in \var<<2350>>coi\_by\_year<<2350>> are plotted in the x-axis, and the values are plotted on the y-axis.  The default birth year, 1900, was deleted from the dictionary before the plot was drawn because leaving the default birthyear in the plot was distracting and somewhat misleading.  The only restriction that you have to observe is that the value plotted on the y-ais has to be a numeric quantity.
-\begin<<2436>>tex2html_deferred<<2436>>\par\end<<2437>>tex2html_deferred<<2437>>
-If you need more complicated plots than are produced by \function<<2351>>plot\_line\_xy()<<2351>> you can write a new plotting function (Chapter \ref<<2352>>cha:newfeatures<<2352>>) that uses the tools in matplotlib (\begin<<2438>>tex2html_deferred<<2438>>\url<<2353>>http://matplotlib.sourceforge.net/<<2353>>\end<<2439>>tex2html_deferred<<2439>>). For complete details on the options taken by \function<<2388>>plot\_line\_xy<<2354>><<2354>><<2388>> please refer to the API documentation (\ref<<2355>>sec:pyp-graphics-plot-line-xy<<2355>>).
-\subsection<<2356>>Visualizing Numerator Relationship Matrices<<2356>>
-\label<<2357>>sec:graphics-visualizing-nrm<<2357>>
-\index<<2358>>graphics!visualizing relationship matrices<<2358>>
-Two routines are provided for visualization of numerator relationship matrices (NRM), \function<<2359>>rmuller_pcolor_matrix_pil()<<2359>> and \function<<2360>>rmuller_spy_matrix_pil()<<2360>>.
-\begin<<2440>>tex2html_deferred<<2440>>\par\end<<2441>>tex2html_deferred<<2441>>
-As an example, we will consider the NRM for the pedigree in Figure \ref<<2361>>fig:boichard2-pedigree<<2361>>.  The matrix is square and symmetric; the diagonal values correspond to \begin<<2408>>tex2html_wrap_inline<<2408>>$1+f_a$\end<<2409>>tex2html_wrap_inline<<2409>>, where \begin<<2410>>tex2html_wrap_inline<<2410>>$f_a$\end<<2411>>tex2html_wrap_inline<<2411>>\space is an animal's coefficient of inbreeding; animals with a diagonal element \begin<<2412>>tex2html_wrap_inline<<2412>>$;SPMgt;1$\end<<2413>>tex2html_wrap_inline<<2413>>\space are inbred.
-\begin<<2402>>displaymath<<2402>>
-    \begin<<2442>>tex2html_deferred<<2442>>\scriptsize\end<<2443>>tex2html_deferred<<2443>>
-    \left[ \begin<<2362>>array<<2362>><<2363>>llllllllllllllllllll<<2363>>
-        1. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0. ;SPMamp; 1. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0. ;SPMamp; 0. ;SPMamp; 1. ;SPMamp; 0. ;SPMamp; 0.  ;SPMamp; 0.5 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 1. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 1. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.25 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 1. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.5 ;SPMamp; 0.75 ;SPMamp; 0.75 \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 1. ;SPMamp; 0.75 ;SPMamp; 0.75 \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.75 ;SPMamp; 0.75 ;SPMamp; 1.25 ;SPMamp; 0.75 \\ 
-        0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0. ;SPMamp; 0.5 ;SPMamp; 0.5 ;SPMamp; 0.75 ;SPMamp; 0.75 ;SPMamp; 0.75 ;SPMamp; 1.25
-    \end<<2364>>array<<2364>> \right]
-    \begin<<2444>>tex2html_deferred<<2444>>\normalsize\end<<2445>>tex2html_deferred<<2445>>
-\end<<2403>>displaymath<<2403>>
-Note that the array only contains six distinct values: 0., 0.25, 0.5, 0.75, 1.0, and 1.25.  These six values will be used to create the color map used by \function<<2365>>rmuller_pcolor_matrix_pil()<<2365>>.
-\begin<<2446>>tex2html_deferred<<2446>>\par\end<<2447>>tex2html_deferred<<2447>>
-\function<<2366>>rmuller_pcolor_matrix_pil()<<2366>> produces pseudocolor plots from NRM.  A pseudocolor plot is an array of cells that are colored based on the values the corresponding cells in the NRM. The minimum and maximum values in the NRM are assigned the first and last colors in the colormap; other cells are colored by mapping their values to colormap elements.  In the example above, the minimum value is 0.0 and the maximum value is 1.0 (Figure \ref<<2367>>fig:boichard2-pseudocolor<<2367>>).  The two inbred animals in the population are easily identified as the yellow diagonal elements in the bottom-left corner of the matrix.
-\begin<<2368>>figure<<2368>>[tb]
-  \begin<<2369>>center<<2369>>
-    \includegraphics[width=3in]<<2370>>boichard2Pcolor.eps<<2370>>
-    \begin<<2448>>tex2html_deferred<<2448>>\caption<<2371>>Pseudocolored NRM from the Boichard et al. (1997) pedigree<<2371>>\end<<2449>>tex2html_deferred<<2449>>
-    \label<<2372>>fig:boichard2-pseudocolor<<2372>>
-  \end<<2373>>center<<2373>>
-\end<<2374>>figure<<2374>>
-\function<<2375>>rmuller_spy_matrix_pil()<<2375>> is similar to \function<<2376>>rmuller_pcolor_matrix_pil()<<2376>>, but it is used to visualize the sparsity of a matrix.  Cells are either filled, indicating that the value is non-zero, or not filled, indicating that the cell's value is zero.  In Figure \ref<<2377>>fig:boichard2-sparsity<<2377>> it is easy to see the two separate families in the pedigree.
-\begin<<2378>>figure<<2378>>[tb]
-  \begin<<2379>>center<<2379>>
-    \includegraphics[width=3in]<<2380>>boichard2Spy.eps<<2380>>
-    \begin<<2450>>tex2html_deferred<<2450>>\caption<<2381>>Sparsity of the NRM from the Boichard et al. (1997) pedigree<<2381>>\end<<2451>>tex2html_deferred<<2451>>
-    \label<<2382>>fig:boichard2-sparsity<<2382>>
-  \end<<2383>>center<<2383>>
-\end<<2384>>figure<<2384>>
-<tex2html_endfile>#./graphics.tex#
+<tex2html_file>#./howtos.tex#
+\chapter<<2528>>HOWTOs<<2528>>
+\label<<2529>>cha:howtos<<2529>>
+\begin<<2530>>quote<<2530>>
+Computers are good at following instructions, but not at reading your mind. --- Donald E. Knuth
+\end<<2531>>quote<<2531>>
+\section<<2532>>Basic Tasks<<2532>>
+\label<<2533>>sec:howto-basic-operations<<2533>>
+\index<<2534>>how do I!basic tasks<<2534>>
+\begin<<2786>>tex2html_deferred<<2786>>\par\end<<2787>>tex2html_deferred<<2787>>
+\subsection<<2535>>How do I load a pedigree from a file?<<2535>>
+\label<<2536>>sec:howto-load-pedigree<<2536>>
+\index<<2537>>how do I!basic tasks!load a pedigree<<2537>>
+Each pedigree that you read must be passed its own dictionary of options that must have at least a pedigree file name (\var<<2538>>pedfile<<2538>>) and a pedigree format string (\var<<2539>>pedformat<<2539>>).  You then call \method<<2540>>pyp_newclasses.NewPedigree()<<2540>> and pass the options dictionary as an argument.  The following code fragment demonstrates how to read a pedigree file:
+\begin<<2541>>tex2html_preform<<2541>><tex2html_verbatim_mark>verbatim157#\end<<2542>>tex2html_preform<<2542>>
+The options dictionary may be named anything you like.  In this manual, and in the example programs distributed with PyPedal<<2543>><<2543>>, \var<<2544>>options<<2544>> is the name used.
+\begin<<2788>>tex2html_deferred<<2788>>\par\end<<2789>>tex2html_deferred<<2789>>
+\subsection<<2545>>How do I load multiple pedigrees in one program?<<2545>>
+\label<<2546>>sec:howto-load-multiple-pedigrees<<2546>>
+\index<<2547>>how do I!basic tasks!load multiple pedigrees<<2547>>
+A PyPedal<<2548>><<2548>> program can load more than one pedigree at a time.  Each pedigree must be passed its own options dictionary, and the pedigrees must have different names.  This is easily done by creating a dictionary with global options and customizing it for each pedigree.  Once you have created a pedigree by calling \method<<2549>>pyp\_newclasses.NewPedigree('options')<<2549>> you can change the options dictionary without affecting that pedigree (a pedigree stores a copy of the options dictionary in its \member<<2550>>kw<<2550>> attribute).  The following code fragment demonstrates how to read two pedigree files in a single program:
+\begin<<2551>>tex2html_preform<<2551>><tex2html_verbatim_mark>verbatim158#\end<<2552>>tex2html_preform<<2552>>
+Note that \var<<2553>>pedformat<<2553>> only needs to be changed if the two pedigrees have different formats.  You do not even have to change \var<<2554>>pedfile<<2554>>.
+\begin<<2790>>tex2html_deferred<<2790>>\par\end<<2791>>tex2html_deferred<<2791>>
+\subsection<<2555>>How do I renumber a pedigree?<<2555>>
+\label<<2556>>sec:howto-renumber-pedigree<<2556>>
+\index<<2557>>how do I!basic tasks!renumber a pedigree<<2557>>
+Set the \member<<2558>>renumber<<2558>> option to \begin<<2792>>tex2html_deferred<<2792>>\samp<<2559>>1<<2559>>\end<<2793>>tex2html_deferred<<2793>> before you load the pedigree.
+\begin<<2560>>tex2html_preform<<2560>><tex2html_verbatim_mark>verbatim159#\end<<2561>>tex2html_preform<<2561>>
+If you do not renumber a pedigree at load time and choose to renumber it later you must set the \member<<2562>>renumber<<2562>> option and call the pedigree's \method<<2563>>renumber()<<2563>> method:
+\begin<<2564>>tex2html_preform<<2564>><tex2html_verbatim_mark>verbatim160#\end<<2565>>tex2html_preform<<2565>>
+For more details on pedigree renumbering see Section \ref<<2566>>sec:renumbering<<2566>>.
+\begin<<2794>>tex2html_deferred<<2794>>\par\end<<2795>>tex2html_deferred<<2795>>
+\subsection<<2567>>How do I turn off output messages?<<2567>>
+\label<<2568>>sec:howto-turn-off-messages<<2568>>
+\index<<2569>>how do I!basic tasks!turn off output<<2569>>
+You may want to suppress the output that is normally written to STDOUT by scripts.  You do this by setting the \member<<2570>>messages<<2570>> option:
+\begin<<2571>>tex2html_preform<<2571>><tex2html_verbatim_mark>verbatim161#\end<<2572>>tex2html_preform<<2572>>
+The default setting for \member<<2573>>messages<<2573>> is \begin<<2796>>tex2html_deferred<<2796>>\samp<<2574>>verbose<<2574>>\end<<2797>>tex2html_deferred<<2797>>, which produces lots of messages.
+\begin<<2798>>tex2html_deferred<<2798>>\par\end<<2799>>tex2html_deferred<<2799>>
+\subsection<<2575>>How do I load a pedigree whose columns are comma-delimited?<<2575>>
+\label<<2576>>sec:howto-load-comma-delimited-pedigree<<2576>>
+\index<<2577>>how do I!basic tasks!load comma-delimited pedigree<<2577>>
+The default column-delimiter used by PyPedal<<2578>><<2578>> is a space (` ').  Comma-separated value (CSV) files can be read by
+setting \var<<2579>>sepchar<<2579>> to \code<<2580>>','<<2580>>.  If you are using a configuration file, you \emph<<2581>>must<<2581>> enclose the comma in
+double quotation marks (``''):
+\begin<<2582>>tex2html_preform<<2582>><tex2html_verbatim_mark>verbatim162#\end<<2583>>tex2html_preform<<2583>>
+If you do not enclose the delimiter properly you will receive an error message such as:
+\begin<<2584>>tex2html_preform<<2584>><tex2html_verbatim_mark>verbatim163#\end<<2585>>tex2html_preform<<2585>>
+\begin<<2800>>tex2html_deferred<<2800>>\par\end<<2801>>tex2html_deferred<<2801>>
+\subsection<<2586>>How do I load a pedigree whose columns are tab-delimited?<<2586>>
+\label<<2587>>sec:howto-load-tab-delimited-pedigree<<2587>>
+\index<<2588>>how do I!basic tasks!load tab-delimited pedigree<<2588>>
+The default column-delimiter used by PyPedal<<2589>><<2589>> is a space (` ').  You can change the delimiter by setting the \var<<2590>>sepchar<<2590>> option:
+\begin<<2591>>tex2html_preform<<2591>><tex2html_verbatim_mark>verbatim164#\end<<2592>>tex2html_preform<<2592>>
+If you are using a configuration file, you \emph<<2593>>must<<2593>> enclose any delimiter containing a backslash in double quotation marks (``'').
+If you do not enclose the delimiter properly you will receive an error message such as:
+\begin<<2594>>tex2html_preform<<2594>><tex2html_verbatim_mark>verbatim165#\end<<2595>>tex2html_preform<<2595>>
+\begin<<2802>>tex2html_deferred<<2802>>\par\end<<2803>>tex2html_deferred<<2803>>
+\section<<2596>>Calculating Measures of Genetic Variation<<2596>>
+\label<<2597>>sec:howto-genetic-variation<<2597>>
+\index<<2598>>how do I!calculate genetic variation<<2598>>
+\begin<<2804>>tex2html_deferred<<2804>>\par\end<<2805>>tex2html_deferred<<2805>>
+\subsection<<2599>>How do I calculate coefficients of inbreeding?<<2599>>
+\label<<2600>>sec:howto-calculate-inbreeding<<2600>>
+\index<<2601>>how do I!calculate genetic variation!coefficients of inbreeding<<2601>>
+This requires that you have a renumbered pedigree (HOWTO \ref<<2602>>sec:howto-renumber-pedigree<<2602>>).
+\begin<<2603>>tex2html_preform<<2603>><tex2html_verbatim_mark>verbatim166#\end<<2604>>tex2html_preform<<2604>>
+The dictionary returned by \function<<2605>>pyp_nrm.inbreeding(example)<<2605>>, \var<<2606>>example_inbreeding<<2606>>, contains two dictionaries: \var<<2607>>fx<<2607>> contains coefficients of inbreeding (COI) keyed to renumbered animal IDs and \var<<2608>>metadata<<2608>> contains summary statistics.  \var<<2609>>metadata<<2609>> also contains two dictionaries: \var<<2610>>all<<2610>> contains summary statistics for all animals, while \var<<2611>>nonzero<<2611>> contains summary statistics for only animals with non-zero coefficients of inbreeding.  If you print \var<<2612>>example_inbreeding<<2612>> you'll get the following:
+\begin<<2613>>tex2html_preform<<2613>><tex2html_verbatim_mark>verbatim167#\end<<2614>>tex2html_preform<<2614>>
+Obtaining the COI for a given animal, say 28, is simple:
+\begin<<2615>>tex2html_preform<<2615>><tex2html_verbatim_mark>verbatim168#\end<<2616>>tex2html_preform<<2616>>
+To print the mean COI for the pedigree:
+\begin<<2617>>tex2html_preform<<2617>><tex2html_verbatim_mark>verbatim169#\end<<2618>>tex2html_preform<<2618>>
+\section<<2619>>Databases and Report Generation<<2619>>
+\label<<2620>>sec:howto-databases-and-reports<<2620>>
+\index<<2621>>how do I!databases and reports<<2621>>
+\subsection<<2622>>How do I load a pedigree into a database?<<2622>>
+\label<<2623>>sec:howto-load-pedigree-db<<2623>>
+\index<<2624>>how do I!databases and reports!load a pedigree<<2624>>
+The \module<<2625>>pyp\_reports<<2625>> module (\ref<<2626>>sec:pyp-reports<<2626>>) uses the \module<<2627>>pyp\_db<<2627>> module (Section \ref<<2628>>sec:pyp-db<<2628>>)
+to store and manipulate a pedigree in an SQLite database.  In order to use these tools you must first load your pedigree into
+the database.  This is done with a call to \function<<2629>>pyp\_db.loadPedigreeTable()<<2629>>:
+\begin<<2630>>tex2html_preform<<2630>><tex2html_verbatim_mark>verbatim170#\end<<2631>>tex2html_preform<<2631>>
+The routines in \module<<2632>>pyp\_reports<<2632>> will check to see if your pedigree has already been loaded; if it
+has not, a table will be created and populated for you.
+\subsection<<2633>>How do I update a pedigree in the database?<<2633>>
+\label<<2634>>sec:howto-pedigree-db-update-table<<2634>>
+\index<<2635>>how do I!databases and reports!update pedigree table<<2635>>
+Changes to a PyPedal<<2636>><<2636>> pedigree object are not automatically saved to the database.  If you have changed
+your pedigree, such as by calculating coefficients of inbreeding, and you want those changes visible to the
+database you have to call \function<<2637>>pyp\_db.loadPedigreeTable()<<2637>> again.  \textbf<<2638>>IMPORTANT NOTE:<<2638>> If you call
+\function<<2639>>pyp\_db.loadPedigreeTable()<<2639>> after you have already loaded your pedigree into the database it will
+drop the existing table and reload it; all data in the existing table will be lost!  In the following
+example, the pedigree is written to table \textbf<<2640>>hartlandclark<<2640>> in the database \textbf<<2641>>pypedal<<2641>>:
+\begin<<2642>>tex2html_preform<<2642>><tex2html_verbatim_mark>verbatim171#\end<<2643>>tex2html_preform<<2643>>
+\member<<2644>>pypedal<<2644>> is the default database name used by PyPedal<<2645>><<2645>>, and can be changed using a pedigree's \member<<2646>>database_name<<2646>> option.  By default, table names are formed from the pedigree file name.  A table name can be specified using a pedigree's \member<<2647>>dbtable_name<<2647>> option.  Continuing the above example, suppose that I calculated coefficients of inbreeding on my pedigree and want to store the resulting pedigree in a new table named \var<<2648>>noordwijck_and_scharloo_inbreeding<<2648>>:
+\begin<<2649>>tex2html_preform<<2649>><tex2html_verbatim_mark>verbatim172#\end<<2650>>tex2html_preform<<2650>>
+You should see messages in the log telling you that the table has been created and populated:
+\begin<<2651>>tex2html_preform<<2651>><tex2html_verbatim_mark>verbatim173#\end<<2652>>tex2html_preform<<2652>>
+\section<<2653>>Pedigrees as Graphs<<2653>>
+\label<<2654>>sec:howto-pedigrees-graphs<<2654>>
+\index<<2655>>how do I!pedigrees as graphs<<2655>>
+PyPedal<<2656>><<2656>> includes tools for working with pedigrees as algebraic structures known as directed graphs, or digraphs. Digraphs are not graphs in the sense of graphics for presentation or display. Rather, they are mathematical abstractions, the study of which can provide interesting information about the structure of a population. A digraph represents a pedigree as a set of vertices (also called nodes), which correspond to animals, and a collection of edges, which connect nodes to one another. In the context of a pedigree, edges indicate that a parent--offspring relationship exists between two animals.  If a path can be constructed between two vertices (animals) in the graph then those animals are related. If no path can be constructed between teo nodes, then no relatinship exists between the two. Routines for working with graphs (also called networwks) are contained in the \module<<2657>>pyp\_network<<2657>> module (\ref<<2658>>sec:pyp-network<<2658>>)
+\subsection<<2659>>How do I convert a pedigree to a graph?<<2659>>
+\label<<2660>>sec:howto-pedigree-to-graph<<2660>>
+\index<<2661>>how do I!pedigrees as graphs!pedigree to graph<<2661>>
+The function \function<<2662>>pyp\_network.ped\_to\_graph()<<2662>> takes a PyPedal<<2663>><<2663>> pedigree object as its argument and returns a NetworkX (\begin<<2806>>tex2html_deferred<<2806>>\url<<2664>>https://networkx.lanl.gov/<<2664>>\end<<2807>>tex2html_deferred<<2807>>) XDiGraph object:
+\begin<<2665>>tex2html_preform<<2665>><tex2html_verbatim_mark>verbatim174#\end<<2666>>tex2html_preform<<2666>>
+Once you've got a graph, you use the NetworkX API to operate on the graph. For example, the number of animals in the pedigree is simply the number of nodes in the graph:
+\begin<<2667>>tex2html_preform<<2667>><tex2html_verbatim_mark>verbatim175#\end<<2668>>tex2html_preform<<2668>>
+\subsection<<2669>>How do I convert a graph to a pedigree?<<2669>>
+\label<<2670>>sec:howto-graph-to-pedigree<<2670>>
+\index<<2671>>how do I!pedigrees as graphs!graph to pedigree<<2671>>
+It is possible to create a PyPedal<<2672>><<2672>> pedigree from a NetworkX graph. This is useful, for example, when you'd like to create a pedigree representing a subset of the population in a \class<<2673>>NewPedigree<<2673>> object. \function<<2674>>pyp\_nrm.recurse\_pedigree()<<2674>> and related functions won't do the trick because they return only lists of animal IDs, not actual \class<<2675>>NewPedigree<<2675>> instances. To create a pedigree from a graph you simply build your options dictionary and call \function<<2676>>pyp\_newclasses.loadPedigree()<<2676>>:
+\begin<<2677>>tex2html_preform<<2677>><tex2html_verbatim_mark>verbatim176#\end<<2678>>tex2html_preform<<2678>>
+You must provide a non-null \texttt<<2679>>pedfile<<2679>> keyword in your options dictionary, as well as the \texttt<<2680>>pedsource<<2680>> and \texttt<<2681>>pedgraph<<2681>> arguments to \function<<2682>>pyp\_newclasses.loadPedigree()<<2682>>.
+\begin<<2808>>tex2html_deferred<<2808>>\par\end<<2809>>tex2html_deferred<<2809>>
+There is a known bug with logfile creation when loading a pedigree from a digraph.
+\subsection<<2683>>How do I load a pedigree from a file containing a graph stored as an adjacency list?<<2683>>
+\label<<2684>>sec:howto-pedigree-from-graph-file<<2684>>
+\index<<2685>>how do I!pedigrees as graphs!pedigree from graph file<<2685>>
+PyPedal<<2686>><<2686>> can read graphs stored in text files as adjacency lists, which is one way of representing directed graphs:
+\begin<<2687>>tex2html_preform<<2687>><tex2html_verbatim_mark>verbatim177#\end<<2688>>tex2html_preform<<2688>>
+\subsection<<2689>>How do I save a graph as an adjacency list?<<2689>>
+\label<<2690>>sec:howto-graph-to-file<<2690>>
+\index<<2691>>how do I!pedigrees as graphs!graph to file<<2691>>
+PyPedal<<2692>><<2692>>, using NetworkX, can save graphs as adjacency lists:
+\begin<<2693>>tex2html_preform<<2693>><tex2html_verbatim_mark>verbatim178#\end<<2694>>tex2html_preform<<2694>>
+\section<<2695>>Miscellaneous<<2695>>
+\label<<2696>>sec:howto-miscellaneous<<2696>>
+\index<<2697>>how do I!miscellaneous<<2697>>
+\subsection<<2698>>How do I export a numerator relationship matrix so that I can read it into Octave?<<2698>>
+\label<<2699>>sec:howto-export-nrm-to-octave<<2699>>
+\index<<2700>>how do I!miscellaneous!export NRM to Octave<<2700>>
+Numerator relationship matrices may be exported to text files for use with, e.g., Octave using the \method<<2701>>NewAMatrix.save<<2701>> method:
+\begin<<2702>>tex2html_preform<<2702>><tex2html_verbatim_mark>verbatim179#\end<<2703>>tex2html_preform<<2703>>
+When matrices are written to text files array elements are separated by \var<<2704>>sepchar<<2704>> (Table \ref<<2705>>tbl:options<<2705>>).
+\begin<<2810>>tex2html_deferred<<2810>>\par\end<<2811>>tex2html_deferred<<2811>>
+Matrices may also be written to a binary format. The default value of the \var<<2706>>nrm\_format<<2706>> pedigree option is \texttt<<2707>>text<<2707>>. To write files in binary format you must either specify the  value of the \var<<2708>>nrm\_format<<2708>> option as \texttt<<2709>>binary<<2709>> before you load your pedigree file or use the \var<<2710>>nrm\_format<<2710>> keyword when you call \method<<2711>>NewAMatrix.save<<2711>>:
+\begin<<2712>>tex2html_preform<<2712>><tex2html_verbatim_mark>verbatim180#\end<<2713>>tex2html_preform<<2713>>
+Once you've saved the NRM to a file, say \texttt<<2714>>'Ainv.txt'<<2714>>, in text format you can easily read it into Octave:
+\begin<<2715>>tex2html_preform<<2715>><tex2html_verbatim_mark>verbatim181#\end<<2716>>tex2html_preform<<2716>>
+This has been verified with Octave 2.1.57 under RedHat Enterprise Linux on small matrices.
+\subsection<<2717>>How else can I export a NRM to a file?<<2717>>
+\label<<2718>>sec:howto-export-nrm-to-ijk-file<<2718>>
+\index<<2719>>how do I!miscellaneous!export NRM to a file<<2719>>
+Numerator relationship matrices may be exported to a text file in ``ijk format'',
+where each line is of the form ``animal\_A animal\_B rAB'' using the \function<<2720>>pyp\_io.save\_ijk()<<2720>> function. Diagonal entries are \begin<<2776>>tex2html_wrap_inline<<2776>>$1 + f_a$\end<<2777>>tex2html_wrap_inline<<2777>>, where \begin<<2778>>tex2html_wrap_inline<<2778>>$f_a$\end<<2779>>tex2html_wrap_inline<<2779>>\space is the animal's coefficient of inbreedin.
+\begin<<2721>>tex2html_preform<<2721>><tex2html_verbatim_mark>verbatim182#\end<<2722>>tex2html_preform<<2722>>
+Suppose that the example above produces the following file:
+\begin<<2723>>tex2html_preform<<2723>><tex2html_verbatim_mark>verbatim183#\end<<2724>>tex2html_preform<<2724>>
+In order to get \begin<<2780>>tex2html_wrap_inline<<2780>>$f_a$\end<<2781>>tex2html_wrap_inline<<2781>>\space for animal 4627 you need to find the corresponding diagonal element and subtract 1 from it:
+\begin<<2774>>displaymath<<2774>>
+f_a = 1.125 - 1.0 = 0.125
+\end<<2775>>displaymath<<2775>>
+The coefficient of relationship between 4627 and 5538 is \begin<<2782>>tex2html_wrap_inline<<2782>>$0.5$\end<<2783>>tex2html_wrap_inline<<2783>>\space (4627 is probably a parent of 5538). Note that the file \var<<2725>>nrm\_ijk.txt<<2725>> will include only the diagonal and upper off-diagonal elements of the NRM, and should have \begin<<2784>>tex2html_wrap_inline<<2784>>$n + n(n+1)/2$\end<<2785>>tex2html_wrap_inline<<2785>>\space lines.
+\subsection<<2726>>How do I load a pedigree from a GEDCOM file?<<2726>>
+\label<<2727>>sec:howto-load-gedcom-pedigree<<2727>>
+\index<<2728>>how do I!miscellaneous!load a GEDCOM pedigree<<2728>>
+As of version 2 release candidate 1 PyPedal<<2729>><<2729>> can load pedigrees from GEDCOM 5.5 files. This is done by passing the \function<<2730>>pedsource<<2730>>\index<<2731>>pedsource<<2731>> keyword to \function<<2732>>pyp_newclasses.loadPedigree<<2732>> with a value of \begin<<2812>>tex2html_deferred<<2812>>\samp<<2733>>gedcomfile<<2733>>\end<<2813>>tex2html_deferred<<2813>>:
+\begin<<2734>>tex2html_preform<<2734>><tex2html_verbatim_mark>verbatim184#\end<<2735>>tex2html_preform<<2735>>
+Note that only a limited subset of the GEDCOM format is supported, and it is possible to lose metadata when converting a pedigree from GEDCOM to PyPedal<<2736>><<2736>>. More details on PyPedal<<2737>><<2737>>'s GEDCOM handling can be found in Appendix \ref<<2738>>GEDCOM<<2738>>.
+\subsection<<2739>>How do I save a pedigree to a GEDCOM file?<<2739>>
+\label<<2740>>sec:howto-save-gedcom-pedigree<<2740>>
+\index<<2741>>how do I!miscellaneous!save to GEDCOM pedigree<<2741>>
+As of version 2 release candidate 1 PyPedal<<2742>><<2742>> can write pedigrees to GEDCOM 5.5-formatted files using the \function<<2743>>savegedcom<<2743>>\index<<2744>>savegedcom<<2744>> method of \function<<2745>>pyp_newclasses.NewPedigree<<2745>> objects. The method takes an output file name as its argument:
+\begin<<2746>>tex2html_preform<<2746>><tex2html_verbatim_mark>verbatim185#\end<<2747>>tex2html_preform<<2747>>
+Note that not all attributes of \function<<2748>>pyp_newclasses.NewAnimal<<2748>> objects are written to the output file. More details on PyPedal<<2749>><<2749>>'s GEDCOM handling can be found in Appendix \ref<<2750>>GEDCOM<<2750>>.
+\subsection<<2751>>How do I load a pedigree from a string?<<2751>>
+\label<<2752>>sec:howto-load-from-string<<2752>>
+\index<<2753>>how do I!miscellaneous!load a pedigree from a string<<2753>>
+There are some use cases for which it is desirable to load pedigrees from strings rather than from files. This is done by passing the \function<<2754>>pedsource<<2754>>\index<<2755>>pedsource<<2755>> keyword to \function<<2756>>pyp_newclasses.loadPedigree<<2756>> with a value of \begin<<2814>>tex2html_deferred<<2814>>\samp<<2757>>textstream<<2757>>\end<<2815>>tex2html_deferred<<2815>>, along with a string named \begin<<2816>>tex2html_deferred<<2816>>\samp<<2758>>pedstream<<2758>>\end<<2817>>tex2html_deferred<<2817>> (Figure \ref<<2759>>fig:ped-from-string<<2759>>):
+\begin<<2760>>tex2html_preform<<2760>><tex2html_verbatim_mark>verbatim186#\end<<2761>>tex2html_preform<<2761>>
+Note that only ASD-formatted pedigrees can be loaded this way, individual IDs are separated with commas, and successive records are separated by newlines. All records must contain a newline, including the last record in the string! You must also set the \begin<<2818>>tex2html_deferred<<2818>>\samp<<2762>>pedfile<<2762>>\end<<2819>>tex2html_deferred<<2819>> option to a value, even if that value is just an empty string as in the example.
+\begin<<2763>>figure<<2763>>
+  \begin<<2764>>center<<2764>>
+    \includegraphics[width=4in]<<2765>>pedfromstring.eps<<2765>>
+    \begin<<2820>>tex2html_deferred<<2820>>\caption<<2766>>Pedigree loaded from a string<<2766>>\end<<2821>>tex2html_deferred<<2821>>
+    \label<<2767>>fig:ped-from-string<<2767>>
+  \end<<2768>>center<<2768>>
+\end<<2769>>figure<<2769>>
+\section<<2770>>Contribute a HOWTO<<2770>>
+\label<<2771>>sec:howto-contribute<<2771>>
+\index<<2772>>how do I!contribute a HOWTO<<2772>>
+Users are invited to contribute HOWTOs demonstrating how to solve problems they've found interesting.  In order for such HOWTOs to be considered for inclusion in this manual they must be licensed under the GNU Free Documentation License version 1.2 or later (\begin<<2822>>tex2html_deferred<<2822>>\url<<2773>>http://www.gnu.org/copyleft/fdl.html<<2773>>\end<<2823>>tex2html_deferred<<2823>>).  Authorship will be acknowledged, and copyright will remain with the author of the HOWTO.
+<tex2html_endfile>#./howtos.tex#

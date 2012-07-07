@@ -1,88 +1,221 @@
 <tex2html_file>#./inputoutput.tex#
-\chapter<<892>>Input and Output<<892>>
-\label<<893>>cha:inputoutput<<893>>
-\begin<<894>>quote<<894>>
-In this chapter, ways of getting pedigrees into and out of PyPedal<<895>><<895>> are discussed.
-\end<<896>>quote<<896>>
-\section<<897>>Overview<<897>>\label<<898>>sec:io-overview<<898>>
-Getting data into and out of programs, while extremely important to end-users, is often challenging. PyPedal<<899>><<899>> is able to load pedigrees from, and save them to, from a number of different sources. A list of supported input and output methods may be found in Table \ref<<900>>tbl:io-methods<<900>>.
-\begin<<901>>center<<901>>
-    \tablecaption<<1024>>PyPedal<<902>><<902>> input and output methods.<<1024>>
-    \tablefirsthead<<903>>\hline Direction ;SPMamp; Source ;SPMamp; Description \\  \hline<<903>>
-    \begin<<1030>>tex2html_deferred<<1030>>\tablehead<<904>>\hline Direction ;SPMamp; Source ;SPMamp; Description \\  \hline<<904>>\end<<1031>>tex2html_deferred<<1031>>
-    \begin<<1032>>tex2html_deferred<<1032>>\tabletail<<1025>>\hline \multicolumn<<905>>3<<905>><<906>>l<<906>><<907>>\small\sl continued on next page<<907>> \\  \hline<<1025>>\end<<1033>>tex2html_deferred<<1033>>
-    \tablelasttail<<908>>\hline<<908>>
-    \label<<909>>tbl:io-methods<<909>>
-    \begin<<910>>xtabular<<910>><<1026>>l|p<<911>>1in<<911>>|p<<912>>3in<<912>><<1026>>
+\chapter<<911>>Input and Output<<911>>
+\label<<912>>cha:inputoutput<<912>>
+\begin<<913>>quote<<913>>
+The only legitimate use of a computer is to play games. --- Eugene Jarvis
+\end<<914>>quote<<914>>
+\section<<915>>Overview<<915>>\label<<916>>sec:io-overview<<916>>
+Getting data into and out of programs, while extremely important to end-users, is often challenging. PyPedal<<917>><<917>> is able to load pedigrees from, and save them to, from a number of different sources. A list of supported input and output methods may be found in Table \ref<<918>>tbl:io-methods<<918>>.
+\begin<<919>>center<<919>>
+    \tablecaption<<1166>>PyPedal<<920>><<920>> input and output methods.<<1166>>
+    \tablefirsthead<<921>>\hline Direction ;SPMamp; Source ;SPMamp; Description \\  \hline<<921>>
+    \begin<<1176>>tex2html_deferred<<1176>>\tablehead<<922>>\hline Direction ;SPMamp; Source ;SPMamp; Description \\  \hline<<922>>\end<<1177>>tex2html_deferred<<1177>>
+    \begin<<1178>>tex2html_deferred<<1178>>\tabletail<<1167>>\hline \multicolumn<<923>>3<<923>><<924>>l<<924>><<925>>\small\sl continued on next page<<925>> \\  \hline<<1167>>\end<<1179>>tex2html_deferred<<1179>>
+    \tablelasttail<<926>>\hline<<926>>
+    \label<<927>>tbl:io-methods<<927>>
+    \begin<<928>>xtabular<<928>><<1168>>l|p<<929>>1in<<929>>|p<<930>>3in<<930>><<1168>>
     Input ;SPMamp; db ;SPMamp; Load an ASDx-formatted data from an SQLite database \\ 
      ;SPMamp; fromgraph ;SPMamp; Load a pedigree from an instance of an XDiGraph object (not a file) \\ 
      ;SPMamp; gedcomfile ;SPMamp; Load a pedigree from a GEDCOM 5.5 file \\ 
      ;SPMamp; graphfile ;SPMamp; Load a pedigree from an adjacency list using the read_adjlist() function from the NetworkX module \\ 
      ;SPMamp; simulate ;SPMamp; Simulate a pedigree rathen that loading it from a file \\ 
      ;SPMamp; textstream ;SPMamp; Load a pedigree from a string contaiing animal records \\ 
-    Output ;SPMamp; save ;SPMamp; Save a pedigree to a user-specified file \\ 
+    Output ;SPMamp; save ;SPMamp; Save a pedigree with user-specified filenames, pedigree format codes, and separators \\ 
      ;SPMamp; savedb ;SPMamp; Save a pedigree to a database table \\ 
      ;SPMamp; savegedcom ;SPMamp; Save a pedigree to a GEDCOM 5.5 file \\ 
+     ;SPMamp; savegedcom ;SPMamp; Save a pedigree to a GENES 1.20 file (DBASE III format) \\ 
      ;SPMamp; savegraph ;SPMamp; Save a pedigree to a file as an adjacency list \\ 
-    \end<<913>>xtabular<<913>>
-\end<<914>>center<<914>>
-It has evolved over time that the input methods are implemented as cases of \begin<<1034>>tex2html_deferred<<1034>>\samp<<915>>pedsource<<915>>\end<<1035>>tex2html_deferred<<1035>> in the \method<<916>>NewPedigree::load()<<916>> method, while output methods are implemented as individual methods of \method<<917>>NewPedigree<<917>>. While it is quite straightforward to add new methods for pedigree output, it is trickier to add new input sources. The greater difficulty in adding new input sources is largely attributable to the mysterious workings of the \method<<918>>NewPedigree::preprocess()<<918>> method, which walks through input line-by-line to load the pedigree and perform a number of integrity checks. Once the data are loaded into a \method<<919>>NewPedigree<<919>> object it is easy to output them because there is no need to check the integrity of the pedigree and relationships among the records in the pedigree. If you want to implement a new input source the sanity-saving way to go is to get the data into a list that you can pass to \method<<920>>preprocess()<<920>>; \method<<921>>preprocess()<<921>> can then walk the list as it would walk through the  lines of an input file.
-\begin<<1036>>tex2html_deferred<<1036>>\par\end<<1037>>tex2html_deferred<<1037>>
-\section<<922>>Input<<922>>\label<<923>>sec:io-input<<923>>\index<<924>>input<<924>>
-The process of data input hsa been made as simple as is reasonably possible, but it is ultimately the responsibility of the user to prepare their data. Most people will load their data from a simple text file, with one pedigree entry per line. \index<<925>>input!integrity checks<<925>>A number of pedigree integrity checks are performed when the data are loaded. First, the pedigree format string (Section \ref<<926>>sec:pedigree-format-codes<<926>>) is checked for validity and compared to a line of data to make sure that the specfied number of colums of data exist. Once that check is passed individual records are loaded and checked one at a time. As individual records are vvalidated they are added to the pedigree. Duplicate records are eliminated, parents that appear in the pedigree but do not have their own record in the inpur data are added to the pedigree, and sexes are checked (animals cannot appear as both sires and dams). If animal IDs are strings they are hashed to get numeric IDs for use in pedigree reordering and renumbering.
-\begin<<1038>>tex2html_deferred<<1038>>\par\end<<1039>>tex2html_deferred<<1039>>
-If you used an earlier version of  PyPedal<<927>><<927>> you may have added a pedigree format string to your pedigree file. You do not need to include that string in the current version of PyPedal<<928>><<928>>, and if \method<<929>>preprocess()<<929>> sees one while reading a pedigree file it will ignore it. You may include comment lines in your file as well; they will also be ignored.
-\begin<<1040>>tex2html_deferred<<1040>>\par\end<<1041>>tex2html_deferred<<1041>>
-\subsection<<930>>Databases<<930>>\label<<931>>sec:io-input-database<<931>>\index<<932>>input!databases<<932>>
- PyPedal<<933>><<933>> can load ASDx-formatted pedigrees from an SQLite database using \begin<<1042>>tex2html_deferred<<1042>>\samp<<934>>pedsource='db'<<934>>\end<<1043>>tex2html_deferred<<1043>>. The pedigree will be loaded from the database and table specified in the \var<<935>>database\_name<<935>> and \var<<936>>dbtable\_name<<936>> variables. Consider the following example:
-\begin<<937>>tex2html_preform<<937>><tex2html_verbatim_mark>verbatim84#\end<<938>>tex2html_preform<<938>>
-This produces the output:
-\begin<<939>>tex2html_preform<<939>><tex2html_verbatim_mark>verbatim85#\end<<940>>tex2html_preform<<940>>
-Note that user-supplied values of the pedigree format string will be over-written by the \method<<941>>load()<<941>> method and do not affect database processing. Database importation is hard-coded to accept only pedigrees in that format.
-\begin<<1044>>tex2html_deferred<<1044>>\par\end<<1045>>tex2html_deferred<<1045>>
-\subsection<<942>>Graph Objects<<942>>\label<<943>>sec:io-input-xdigraph<<943>>\index<<944>>input!graph objects<<944>>
-Pedigrees can be represented as a type of mathematical object called a directed graph (digraph; not to be confused with visualizations of data). The \class<<945>>NetworkX<<945>> module provides Python tools for working with digraphs, and  PyPedal<<946>><<946>> provides a convenient way for loading a pedigree from an instance of an \class<<1027>><<947>>XD<<947>>i<<948>>G<<948>>raph<<1027>> object.
-\begin<<949>>tex2html_preform<<949>><tex2html_verbatim_mark>verbatim86#\end<<950>>tex2html_preform<<950>>
-You can see from the printout of the metadata from the new pedigree, \begin<<1046>>tex2html_deferred<<1046>>\samp<<951>>example2<<951>>\end<<1047>>tex2html_deferred<<1047>>, that the graph \begin<<1048>>tex2html_deferred<<1048>>\samp<<952>>ng<<952>>\end<<1049>>tex2html_deferred<<1049>> was successfully converted to a \class<<953>>NewPedigree<<953>> object.
-\begin<<954>>tex2html_preform<<954>><tex2html_verbatim_mark>verbatim87#\end<<955>>tex2html_preform<<955>>
-When considering the utility of such tools it might be helpful to recall that PyPedal<<956>><<956>> was written by and for use in scientific research. Perhaps that will allow the author to be forgiven a multitude of sins.
-\begin<<1050>>tex2html_deferred<<1050>>\par\end<<1051>>tex2html_deferred<<1051>>
-\subsection<<1028>><<957>>GEDCOM<<957>> Files<<1028>>\label<<958>>sec:io-input-gedcom<<958>>\index<<959>>input!GEDCOM files<<959>>
-A thorough description of support for <<960>>GEDCOM<<960>> files may be found in Appendix \ref<<961>>GEDCOM<<961>>.
-\begin<<1052>>tex2html_deferred<<1052>>\par\end<<1053>>tex2html_deferred<<1053>>
-\subsection<<962>>Text Files<<962>>\label<<963>>sec:io-input-text-files<<963>>\index<<964>>input!text files<<964>>
+    \end<<931>>xtabular<<931>>
+\end<<932>>center<<932>>
+It has evolved over time that the input methods are implemented as cases of \begin<<1180>>tex2html_deferred<<1180>>\samp<<933>>pedsource<<933>>\end<<1181>>tex2html_deferred<<1181>> in the \method<<934>>NewPedigree::load()<<934>> method, while output methods are implemented as individual methods of \method<<935>>NewPedigree<<935>>. While it is quite straightforward to add new methods for pedigree output, it is trickier to add new input sources. The greater difficulty in adding new input sources is largely attributable to the mysterious workings of the \method<<936>>NewPedigree::preprocess()<<936>> method, which walks through input line-by-line to load the pedigree and perform a number of integrity checks. Once the data are loaded into a \method<<937>>NewPedigree<<937>> object it is easy to output them because there is no need to check the integrity of the pedigree and relationships among the records in the pedigree. If you want to implement a new input source the sanity-saving way to go is to get the data into a list that you can pass to \method<<938>>preprocess()<<938>>; \method<<939>>preprocess()<<939>> can then walk the list as it would walk through the lines of an input file.
+\begin<<1182>>tex2html_deferred<<1182>>\par\end<<1183>>tex2html_deferred<<1183>>
+Database operations are discussed in their own section at the end of this chapter.
+\begin<<1184>>tex2html_deferred<<1184>>\par\end<<1185>>tex2html_deferred<<1185>>
+\section<<940>>Input<<940>>\label<<941>>sec:io-input<<941>>\index<<942>>input<<942>>
+The process of data input hsa been made as simple as is reasonably possible, but it is ultimately the responsibility of the user to prepare their data. Most people will load their data from a simple text file, with one pedigree entry per line. \index<<943>>input!integrity checks<<943>>A number of pedigree integrity checks are performed when the data are loaded. First, the pedigree format string (Section \ref<<944>>sec:pedigree-format-codes<<944>>) is checked for validity and compared to a line of data to make sure that the specfied number of colums of data exist. Once that check is passed individual records are loaded and checked one at a time. As individual records are vvalidated they are added to the pedigree. Duplicate records are eliminated, parents that appear in the pedigree but do not have their own record in the inpur data are added to the pedigree, and sexes are checked (animals cannot appear as both sires and dams). If animal IDs are strings they are hashed to get numeric IDs for use in pedigree reordering and renumbering.
+\begin<<1186>>tex2html_deferred<<1186>>\par\end<<1187>>tex2html_deferred<<1187>>
+If you used an earlier version of PyPedal<<945>><<945>> you may have added a pedigree format string to your pedigree file. You do not need to include that string in the current version of PyPedal<<946>><<946>>, and if \method<<947>>preprocess()<<947>> sees one while reading a pedigree file it will ignore it. You may include comment lines in your file as well; they will also be ignored.
+\begin<<1188>>tex2html_deferred<<1188>>\par\end<<1189>>tex2html_deferred<<1189>>
+\subsection<<948>>Graph Objects<<948>>\label<<949>>sec:io-input-xdigraph<<949>>\index<<950>>input!graph objects<<950>>
+Pedigrees can be represented as a type of mathematical object called a directed graph (digraph; not to be confused with visualizations of data). The \class<<951>>NetworkX<<951>> module provides Python tools for working with digraphs, and PyPedal<<952>><<952>> provides a convenient way for loading a pedigree from an instance of an \class<<1169>><<953>>XD<<953>>i<<954>>G<<954>>raph<<1169>> object.
+\begin<<955>>tex2html_preform<<955>><tex2html_verbatim_mark>verbatim88#\end<<956>>tex2html_preform<<956>>
+You can see from the printout of the metadata from the new pedigree, \begin<<1190>>tex2html_deferred<<1190>>\samp<<957>>example2<<957>>\end<<1191>>tex2html_deferred<<1191>>, that the graph \begin<<1192>>tex2html_deferred<<1192>>\samp<<958>>ng<<958>>\end<<1193>>tex2html_deferred<<1193>> was successfully converted to a \class<<959>>NewPedigree<<959>> object.
+\begin<<960>>tex2html_preform<<960>><tex2html_verbatim_mark>verbatim89#\end<<961>>tex2html_preform<<961>>
+When considering the utility of such tools it might be helpful to recall that PyPedal<<962>><<962>> was written by and for use in scientific research. Perhaps that will allow the author to be forgiven a multitude of sins.
+\begin<<1194>>tex2html_deferred<<1194>>\par\end<<1195>>tex2html_deferred<<1195>>
+\subsection<<1170>><<963>>GEDCOM<<963>> Files<<1170>>\label<<964>>sec:io-input-gedcom<<964>>\index<<965>>input!GEDCOM files<<965>>
+A thorough description of support for <<966>>GEDCOM<<966>> files may be found in Appendix \ref<<967>>GEDCOM<<967>>.
+\begin<<1196>>tex2html_deferred<<1196>>\par\end<<1197>>tex2html_deferred<<1197>>
+\subsection<<1171>><<968>>GENES<<968>> Files<<1171>>\label<<969>>sec:io-input-genes<<969>>\index<<970>>input!GENES files<<970>>
+A thorough description of support for <<971>>GENES<<971>> files may be found in Appendix \ref<<972>>GENES<<972>>.
+\begin<<1198>>tex2html_deferred<<1198>>\par\end<<1199>>tex2html_deferred<<1199>>
+\subsection<<973>>Text Files<<973>>\label<<974>>sec:io-input-text-files<<974>>\index<<975>>input!text files<<975>>
 Most users will load their pedigrees from simple text files. As an example, consider a large dog pedigree, an excerpt of which is presented below.
-\begin<<965>>tex2html_preform<<965>><tex2html_verbatim_mark>verbatim88#\end<<966>>tex2html_preform<<966>>
+\begin<<976>>tex2html_preform<<976>><tex2html_verbatim_mark>verbatim90#\end<<977>>tex2html_preform<<977>>
 This pedigree can be loaded using this short program:
-\begin<<967>>tex2html_preform<<967>><tex2html_verbatim_mark>verbatim89#\end<<968>>tex2html_preform<<968>>
+\begin<<978>>tex2html_preform<<978>><tex2html_verbatim_mark>verbatim91#\end<<979>>tex2html_preform<<979>>
 There are numerous examples of loading pedigrees from text files throughout this manual.
-\begin<<1054>>tex2html_deferred<<1054>>\par\end<<1055>>tex2html_deferred<<1055>>
-\subsection<<969>>Text Streams<<969>>\label<<970>>sec:io-input-text-streams<<970>>\index<<971>>input!text streams<<971>>
-There are some use cases, such as web services, for which it may be desirable to load pedigrees from strings rather than from files. This is done by passing the \function<<972>>pedsource<<972>>\index<<973>>pedsource<<973>> keyword to \function<<974>>pyp_newclasses.loadPedigree<<974>> with a value of \begin<<1056>>tex2html_deferred<<1056>>\samp<<975>>textstream<<975>>\end<<1057>>tex2html_deferred<<1057>>, along with a string named \begin<<1058>>tex2html_deferred<<1058>>\samp<<976>>pedstream<<976>>\end<<1059>>tex2html_deferred<<1059>>:
-\begin<<977>>tex2html_preform<<977>><tex2html_verbatim_mark>verbatim90#\end<<978>>tex2html_preform<<978>>
-Only ASD-formatted pedigrees can be loaded this way, individual IDs are separated with commas, and successive records are separated by newlines. These restrictions are hard-coded into the \method<<979>>NewPedigree::load()<<979>> method. All records must contain a newline, including the last record in the string! You must also set the \begin<<1060>>tex2html_deferred<<1060>>\samp<<980>>pedfile<<980>>\end<<1061>>tex2html_deferred<<1061>> option to some value, even if that value is just an empty string as in the example.
-\begin<<1062>>tex2html_deferred<<1062>>\par\end<<1063>>tex2html_deferred<<1063>>
+\begin<<1200>>tex2html_deferred<<1200>>\par\end<<1201>>tex2html_deferred<<1201>>
+\subsection<<980>>Text Streams<<980>>\label<<981>>sec:io-input-text-streams<<981>>\index<<982>>input!text streams<<982>>
+There are some use cases, such as web services, for which it may be desirable to load pedigrees from strings rather than from files. This is done by passing the \function<<983>>pedsource<<983>>\index<<984>>pedsource<<984>> keyword to \function<<985>>pyp_newclasses.loadPedigree<<985>> with a value of \begin<<1202>>tex2html_deferred<<1202>>\samp<<986>>textstream<<986>>\end<<1203>>tex2html_deferred<<1203>>, along with a string named \begin<<1204>>tex2html_deferred<<1204>>\samp<<987>>pedstream<<987>>\end<<1205>>tex2html_deferred<<1205>>:
+\begin<<988>>tex2html_preform<<988>><tex2html_verbatim_mark>verbatim92#\end<<989>>tex2html_preform<<989>>
+Only ASD-formatted pedigrees can be loaded this way, individual IDs are separated with commas, and successive records are separated by newlines. These restrictions are hard-coded into the \method<<990>>NewPedigree::load()<<990>> method. All records must contain a newline, including the last record in the string! You must also set the \begin<<1206>>tex2html_deferred<<1206>>\samp<<991>>pedfile<<991>>\end<<1207>>tex2html_deferred<<1207>> option to some value, even if that value is just an empty string as in the example.
+\begin<<1208>>tex2html_deferred<<1208>>\par\end<<1209>>tex2html_deferred<<1209>>
 The expected use case is that the pedigree would be retrieved from a database, and the result set from the SQL query converted into a string. There is an upper bound on the size of pedigree that can be loaded from a stream based on the physical memory available on your platform, and extremely large pedigrees should be loaded from a text file. 
-\begin<<1064>>tex2html_deferred<<1064>>\par\end<<1065>>tex2html_deferred<<1065>>
-\section<<981>>Output<<981>>\label<<982>>sec:io-output<<982>>\index<<983>>output<<983>>
-\begin<<1066>>tex2html_deferred<<1066>>\par\end<<1067>>tex2html_deferred<<1067>>
-\subsection<<984>>Databases<<984>>\label<<985>>sec:io-output-database<<985>>\index<<986>>output!databases<<986>>
- PyPedal<<987>><<987>> can write \class<<988>>NewPedigree<<988>> pedigrees to ASDx-formatted SQLite tables using the \method<<989>>NewPedigree::savedb()<<989>> method. The following program will result in the creation of a table named \begin<<1068>>tex2html_deferred<<1068>>\samp<<990>>test\_save<<990>>\end<<1069>>tex2html_deferred<<1069>> in the database \begin<<1070>>tex2html_deferred<<1070>>\samp<<991>>test\_pypedal\_save<<991>>\end<<1071>>tex2html_deferred<<1071>>.
-\begin<<992>>tex2html_preform<<992>><tex2html_verbatim_mark>verbatim91#\end<<993>>tex2html_preform<<993>>
-The pedigree is saved to the database and table specified in the \var<<994>>database\_name<<994>> and \var<<995>>dbtable\_name<<995>> variables. If the specified table already exists it will be dropped and a new table created. This can result in data loss! Please be careful.
-\begin<<1072>>tex2html_deferred<<1072>>\par\end<<1073>>tex2html_deferred<<1073>>
-\subsection<<1029>><<996>>GEDCOM<<996>> Files<<1029>>\label<<997>>sec:io-output-gedcom<<997>>\index<<998>>output!GEDCOM files<<998>>
-A thorough description of <<999>>GEDCOM<<999>> file exportation may be found in Appendix \ref<<1000>>GEDCOM<<1000>>.
-\begin<<1074>>tex2html_deferred<<1074>>\par\end<<1075>>tex2html_deferred<<1075>>
-\subsection<<1001>>Graph Objects<<1001>>\label<<1002>>sec:io-output-xdigraph<<1002>>\index<<1003>>output!graph objects<<1003>>
-The \method<<1004>>NewPedigree::savegraph()<<1004>> save a pedigree to a file as an adjacency list, which is a commonly-used format for describing digraphs. If the pedigree has already been converted to a digraph pass it using the \var<<1005>>pedgraph<<1005>> argument; otherwise, the method will call the appropriate converter:
-\begin<<1006>>tex2html_preform<<1006>><tex2html_verbatim_mark>verbatim92#\end<<1007>>tex2html_preform<<1007>>
-The file \begin<<1076>>tex2html_deferred<<1076>>\samp<<1008>>test.adj<<1008>>\end<<1077>>tex2html_deferred<<1077>> has the following comments:
-\begin<<1009>>tex2html_preform<<1009>><tex2html_verbatim_mark>verbatim93#\end<<1010>>tex2html_preform<<1010>>
-This example demonstrates that there can be a considerable loss of information when going from a  PyPedal<<1011>><<1011>> pedigree to some other way of representing the pedigree, such as a graph.
-\begin<<1078>>tex2html_deferred<<1078>>\par\end<<1079>>tex2html_deferred<<1079>>
-\subsection<<1012>>Text Files<<1012>>\label<<1013>>sec:io-output-text-files<<1013>>\index<<1014>>output!text files<<1014>>
-The \method<<1015>>NewPedigree::save()<<1015>> method writes a  PyPedal<<1016>><<1016>> pedigree to a user-specified file with either the format specified in the pedigree format string (default) or a format including all variables in the pedigree (\begin<<1080>>tex2html_deferred<<1080>>\samp<<1017>>outformat='l'<<1017>>\end<<1081>>tex2html_deferred<<1081>>). Either the original (default) or renumbered (\begin<<1082>>tex2html_deferred<<1082>>\samp<<1018>>idformat='r'<<1018>>\end<<1083>>tex2html_deferred<<1083>>) IDs can be used for animal, sire, and dam IDs. In the following example all variables are written to a file named \begin<<1084>>tex2html_deferred<<1084>>\samp<<1019>>all\_data.ped<<1019>>\end<<1085>>tex2html_deferred<<1085>> using the same IDs as in the original file:
-\begin<<1020>>tex2html_preform<<1020>><tex2html_verbatim_mark>verbatim94#\end<<1021>>tex2html_preform<<1021>>
-\method<<1022>>NewPedigree::save()<<1022>> tries never to overwrite your data. If you do not pass a filename argument a file whose name is derived from, but not the same as, the original pedigree filename will be used. The string \begin<<1086>>tex2html_deferred<<1086>>\samp<<1023>>\_saved<<1023>>\end<<1087>>tex2html_deferred<<1087>> will be appended to the filename in order to distinguish it from the original pedigree file.
+\begin<<1210>>tex2html_deferred<<1210>>\par\end<<1211>>tex2html_deferred<<1211>>
+\section<<992>>Output<<992>>\label<<993>>sec:io-output<<993>>\index<<994>>output<<994>>
+\subsection<<1172>><<995>>GEDCOM<<995>> Files<<1172>>\label<<996>>sec:io-output-gedcom<<996>>\index<<997>>output!GEDCOM files<<997>>
+A thorough description of <<998>>GEDCOM<<998>> file exportation may be found in Appendix \ref<<999>>GEDCOM<<999>>.
+\begin<<1212>>tex2html_deferred<<1212>>\par\end<<1213>>tex2html_deferred<<1213>>
+\subsection<<1173>><<1000>>GENES<<1000>> Files<<1173>>\label<<1001>>sec:io-output-genes<<1001>>\index<<1002>>output!GENES files<<1002>>
+A thorough description of <<1003>>GENES<<1003>> file exportation may be found in Appendix \ref<<1004>>GENES<<1004>>.
+\begin<<1214>>tex2html_deferred<<1214>>\par\end<<1215>>tex2html_deferred<<1215>>
+\subsection<<1005>>Graph Objects<<1005>>\label<<1006>>sec:io-output-xdigraph<<1006>>\index<<1007>>output!graph objects<<1007>>
+The \method<<1008>>NewPedigree::savegraph()<<1008>> save a pedigree to a file as an adjacency list, which is a commonly-used format for describing digraphs. If the pedigree has already been converted to a digraph pass it using the \var<<1009>>pedgraph<<1009>> argument; otherwise, the method will call the appropriate converter:
+\begin<<1010>>tex2html_preform<<1010>><tex2html_verbatim_mark>verbatim93#\end<<1011>>tex2html_preform<<1011>>
+The file \begin<<1216>>tex2html_deferred<<1216>>\samp<<1012>>test.adj<<1012>>\end<<1217>>tex2html_deferred<<1217>> has the following comments:
+\begin<<1013>>tex2html_preform<<1013>><tex2html_verbatim_mark>verbatim94#\end<<1014>>tex2html_preform<<1014>>
+This example demonstrates that there can be a considerable loss of information when going from a PyPedal<<1015>><<1015>> pedigree to some other way of representing the pedigree, such as a graph.
+\begin<<1218>>tex2html_deferred<<1218>>\par\end<<1219>>tex2html_deferred<<1219>>
+\subsection<<1016>>Text Files<<1016>>\label<<1017>>sec:io-output-text-files<<1017>>\index<<1018>>output!text files<<1018>>
+The \method<<1019>>NewPedigree::save()<<1019>> method writes a PyPedal<<1020>><<1020>> pedigree to a user-specified file based on a pedigree format string and optional column separator provided by the user. By default, the pedformat is \begin<<1220>>tex2html_deferred<<1220>>\samp<<1021>>asd<<1021>>\end<<1221>>tex2html_deferred<<1221>> and the sepchar is \begin<<1222>>tex2html_deferred<<1222>>\samp<<1022>> <<1022>>\end<<1223>>tex2html_deferred<<1223>>. Any attribute of a \method<<1023>>NewAnimal<<1023>> object can be written to an output file.
+\begin<<1224>>tex2html_deferred<<1224>>\par\end<<1225>>tex2html_deferred<<1225>>
+\method<<1024>>NewPedigree::save()<<1024>> tries never to overwrite your data. If you do not pass a filename argument a file whose name is derived from, but not the same as, the original pedigree filename will be used. The string \begin<<1226>>tex2html_deferred<<1226>>\samp<<1025>>\_saved<<1025>>\end<<1227>>tex2html_deferred<<1227>> will be appended to the filename in order to distinguish it from the original pedigree file.
+\begin<<1228>>tex2html_deferred<<1228>>\par\end<<1229>>tex2html_deferred<<1229>>
+There are a few points that you need to be aware of when using \method<<1026>>NewPedigree::save()<<1026>>. First, you may use any column separator you choose but the empty string
+(\texttt<<1027>>sepchar=''<<1027>>); if you try and do this the sepchar will be changed to the global default (currently \begin<<1230>>tex2html_deferred<<1230>>\samp<<1028>> <<1028>>\end<<1231>>tex2html_deferred<<1231>>), and a message written to the log. That means
+that there is no way for you to run all of the columns in your pedigree file together such that they cannot easily be separated. Sorry.  You can use anoy other string
+you like to separate your columns (spaces, columns, and tabs have been tested).It IS possible to write an
+incomplete pedigree file, that is, a file which does not include animal, sire, and dam information. PyPedal<<1029>><<1029>> checks the pedformat to see if it contains either
+\texttt<<1030>>'asd'<<1030>> or \texttt<<1031>>'ASD'<<1031>> and warns you if it does not, but it will happily write the file you tell it to. The burden is on you, the user, to make sure that
+your output file contains all of the information you want. Finally, you can write whatever attribute you like to whichever column you like in the output file. For the
+sake of your sanity I strongly recommend that you always place the animal, sire, and dam IDs in the first three columns, but you're an adult and may do what you like.
+\begin<<1232>>tex2html_deferred<<1232>>\par\end<<1233>>tex2html_deferred<<1233>>
+Maybe a couple of examples will help clear that up. Here's the simplest case, taking defaults:
+\begin<<1032>>tex2html_preform<<1032>><tex2html_verbatim_mark>verbatim95#\end<<1033>>tex2html_preform<<1033>>
+gets you the result:
+\begin<<1034>>tex2html_preform<<1034>><tex2html_verbatim_mark>verbatim96#\end<<1035>>tex2html_preform<<1035>>
+Note the friendly header to tell you what you've got and from where it came. The note about renumbere IDs is particularly important -- if
+the \texttt<<1036>>pedigree\_is\_renumbered<<1036>> flag is set then you will get this message to alert you that comparing this file against your original
+source file may give conflicting results. Well, they're not really conflicting, but if you compare renumbered with not-renumbered IDs the
+you may assume there's some kind of problem when really there is not. Original and renumbered pedigrees are mathematically equivalent assuming
+that there were no errors in the original file that were corrected by PyPedal<<1037>><<1037>>. Isn't that reassuring? From here on out I will not show the
+header, and will include only the first five data rows in the file for the sake of brevity (like I've ever let that stop me before). You can get
+the same thing as a CSV using the sepchar argument:
+\begin<<1038>>tex2html_preform<<1038>><tex2html_verbatim_mark>verbatim97#\end<<1039>>tex2html_preform<<1039>>
+which produces:
+\begin<<1040>>tex2html_preform<<1040>><tex2html_verbatim_mark>verbatim98#\end<<1041>>tex2html_preform<<1041>>
+Sometimes you want to go all the way and dump everything into a file. This is like one of those pizzas with every variety of cured meat known to
+food science piled up on top. Here you go:
+\begin<<1042>>tex2html_preform<<1042>><tex2html_verbatim_mark>verbatim99#\end<<1043>>tex2html_preform<<1043>>
+which gives you what you asked for, even if many of the values are not particularly interesting:
+\begin<<1044>>tex2html_preform<<1044>><tex2html_verbatim_mark>verbatim100#\end<<1045>>tex2html_preform<<1045>>
+Okay, I get it. You're like the Nigel Tufnel of Missouri -- you want to see something that goes to 11. I pondered this for a while. You've read this far
+and deserve to be rewarded. So I tried to think of the most awesomest thing that I could think of. So here you go, LSU fans, straight from Death Valley
+by way of Beltsville, MD:
+\begin<<1046>>tex2html_preform<<1046>><tex2html_verbatim_mark>verbatim101#\end<<1047>>tex2html_preform<<1047>>
+Maybe Patrick Peterson is really into genealogy -- you never know -- stop looking at me like that! This is a perfectly cromulent example of the extremes to
+which the sepchar argument can be pushed:
+\begin<<1048>>tex2html_preform<<1048>><tex2html_verbatim_mark>verbatim102#\end<<1049>>tex2html_preform<<1049>>
+You're thinking, ;SPMquot;My eyes! Why would he do that?!;SPMquot; The same reason Zod gave us a little Heisman pose in the end zone after returning a West Virginia kickoff for 6 --
+because I can. (This kind of writing is probably going to get me in trouble one day, but the boss is out of town and there's no one here to rein-in my behavior!) Wait,
+though. It gets better. PyPedal<<1050>><<1050>> can get all Ourboros on this unholy creation:
+\begin<<1051>>tex2html_preform<<1051>><tex2html_verbatim_mark>verbatim103#\end<<1052>>tex2html_preform<<1052>>
+When you run this bit of code you see that it poses no problem at all for PyPedal<<1053>><<1053>>. Perhaps political dissidents can communicate secretly by doing strange things
+with \var<<1054>>sepchar<<1054>>, although it's more likely that PhD students will find a clever way to abuse MS students with it, instead.
+\begin<<1055>>tex2html_preform<<1055>><tex2html_verbatim_mark>verbatim104#\end<<1056>>tex2html_preform<<1056>>
+How's that for the strangest thing you're likely to see all day? I'm not suggesting that you seriously use column separators the way I just did, but this
+example does show that you can do some unusual things with PyPedal<<1057>><<1057>>, and perhaps you will come up with something very useful because of that flexibility.
+If nothing else, you now have a greater appreciation of what you can do with a dynamic language and questionable processing of user inputs. Remember, never
+trust any data a user gives you. They're a shifty lot, users.
+\begin<<1234>>tex2html_deferred<<1234>>\par\end<<1235>>tex2html_deferred<<1235>>
+\subsection<<1058>>Text Streams<<1058>>\label<<1059>>sec:io-output-text-streams<<1059>>\index<<1060>>output!text streams<<1060>>
+\method<<1061>>NewPedigree::tostream()<<1061>> returns a text stream from an instance of a \class<<1062>>NewPedigree<<1062>> object. The text stream contains an ASD-formatted pedigree as a string in which individual IDs are separated by commas and successive records are separated by newlines.
+\begin<<1063>>tex2html_preform<<1063>><tex2html_verbatim_mark>verbatim105#\end<<1064>>tex2html_preform<<1064>>
+Note that in this example the input and output text streams differ because the input stream did not include pedigree entries for all animals in the pedigree (for example, sire \begin<<1236>>tex2html_deferred<<1236>>\samp<<1065>>s1<<1065>>\end<<1237>>tex2html_deferred<<1237>>). Recall that PyPedal<<1066>><<1066>> adds missing entries for parents when the pedigree is loaded.
+\begin<<1238>>tex2html_deferred<<1238>>\par\end<<1239>>tex2html_deferred<<1239>>
+\section<<1067>>Databases<<1067>>\label<<1068>>sec:io-databases<<1068>>\index<<1069>>databases<<1069>>
+PyPedal<<1070>><<1070>> is able to load pedigrees from, and save them to, three databases:
+\href<<1071>>http://www.mysql.com/<<1071>><<1072>>MySQL<<1072>>, \href<<1073>>http://www.postgresql.org/<<1073>><<1074>>Postgres<<1074>>,
+and \href<<1075>>http://sqlite.org/<<1075>><<1076>>SQLite<<1076>>. PyPedal<<1077>><<1077>> uses the 
+\href<<1078>>http://phplens.com/lens/adodb/adodb-py-docs.htm<<1078>><<1079>>ADOdb for Python<<1079>> database
+abstraction tool, which is distributed with PyPedal<<1080>><<1080>> to talk to these databases.
+Additional databases are supported by ADOdb and require only minor changes to the
+connection strings in the \function<<1081>>connectToDatabase<<1081>> function in the \module<<1082>>pyp_db<<1082>>
+module in order to work with PyPedal<<1083>><<1083>> as well.
+\begin<<1240>>tex2html_deferred<<1240>>\par\end<<1241>>tex2html_deferred<<1241>>
+A list of the database-related keywords may be found in Table \ref<<1084>>tbl:db-parms<<1084>>.
+\begin<<1085>>center<<1085>>
+    \tablecaption<<1086>>Database parameters.<<1086>>
+    \tablefirsthead<<1087>>\hline Parameter ;SPMamp; Default ;SPMamp; Description \\  \hline<<1087>>
+    \begin<<1242>>tex2html_deferred<<1242>>\tablehead<<1088>>\hline Parameter ;SPMamp; Default ;SPMamp; Description \\  \hline<<1088>>\end<<1243>>tex2html_deferred<<1243>>
+    \begin<<1244>>tex2html_deferred<<1244>>\tabletail<<1174>>\hline \multicolumn<<1089>>3<<1089>><<1090>>l<<1090>><<1091>>\small\sl continued on next page<<1091>> \\  \hline<<1174>>\end<<1245>>tex2html_deferred<<1245>>
+    \tablelasttail<<1092>>\hline<<1092>>
+    \label<<1093>>tbl:db-parms<<1093>>
+    \begin<<1094>>xtabular<<1094>><<1175>>l|p<<1095>>1in<<1095>>|p<<1096>>3in<<1096>><<1175>>
+    database\_debug ;SPMamp; False ;SPMamp; Toggle debugging messages in the database module on and off. \\ 
+    database\_host ;SPMamp; 'localhost' ;SPMamp; The server on which the database is running. \\ 
+    database\_name ;SPMamp; 'pypedal' ;SPMamp; The name of the database to be used. \\ 
+    database\_passwd ;SPMamp; 'anonymous' ;SPMamp; The password needed to connect to your database. \\ 
+    database\_port ;SPMamp; '' ;SPMamp; The port on which your databse is listening for connections (needed only for Postgres). \\ 
+    database\_table ;SPMamp; 'filetag' (See: Table \ref<<1097>>tbl:options<<1097>>) ;SPMamp; The name of the database table to which the current pedigree will be written. \\ 
+    database\_type ;SPMamp; 'sqlite' ;SPMamp; The type of database you are using ('mysql'|'postgres'|'sqlite'). \\ 
+    database\_user ;SPMamp; 'anonymous' ;SPMamp; The name of a user with access rights to your database.  \\ 
+    \end<<1098>>xtabular<<1098>>
+\end<<1099>>center<<1099>>
+\begin<<1246>>tex2html_deferred<<1246>>\par\end<<1247>>tex2html_deferred<<1247>>
+\subsection<<1100>>Input from Databases<<1100>>\label<<1101>>sec:io-input-database<<1101>>\index<<1102>>input!databases<<1102>>
+PyPedal<<1103>><<1103>> can load ASDx-formatted pedigrees from an SQLite database using \begin<<1248>>tex2html_deferred<<1248>>\samp<<1104>>pedsource='db'<<1104>>\end<<1249>>tex2html_deferred<<1249>>. The pedigree will be loaded from the database and table specified in the \var<<1105>>database\_name<<1105>> and \var<<1106>>dbtable\_name<<1106>> variables. Consider the following example:
+\begin<<1107>>tex2html_preform<<1107>><tex2html_verbatim_mark>verbatim106#\end<<1108>>tex2html_preform<<1108>>
+This produces the output:
+\begin<<1109>>tex2html_preform<<1109>><tex2html_verbatim_mark>verbatim107#\end<<1110>>tex2html_preform<<1110>>
+Note that user-supplied values of the pedigree format string will be over-written by the \method<<1111>>load()<<1111>> method and do not affect database processing. Database importation is hard-coded to accept only pedigrees in that format.
+\begin<<1250>>tex2html_deferred<<1250>>\par\end<<1251>>tex2html_deferred<<1251>>
+\index<<1112>>databases!new input sources<<1112>>It is possible to load pedigrees from a databse with a format different than that exected by PyPedal<<1113>><<1113>>, but it requires that you make changes to the \class<<1114>>NewPedigree<<1114>> class's \method<<1115>>load<<1115>> method. Consider the database-loading code that is located at about line 250 of \texttt<<1116>>pyp_newclasses.py<<1116>>:
+\begin<<1117>>tex2html_preform<<1117>><tex2html_verbatim_mark>verbatim108#\end<<1118>>tex2html_preform<<1118>>
+In order to load data from your own database you must change the pedigree format string
+on line 252 to match the pedigree you want to load (see Table
+\ref<<1119>>tbl:pedigree-format-codes<<1119>> for a list of pedigree format codes). You then need to
+change the SQL statement on line 264 to match the column names in your database and the
+order of fields in your pedigree format string. The animal, sire, and dam IDs,
+respectively, should always  be the first three columns in your records. The query
+results are stored as a list of tuples in \var<<1120>>dbstream<<1120>> and will be unpacked in the
+\method<<1121>>preprocess<<1121>> method (\textit<<1122>>cf.<<1122>> line 864).
+\begin<<1252>>tex2html_deferred<<1252>>\par\end<<1253>>tex2html_deferred<<1253>>
+Please note that while I will try and answer questions about the way in which PyPedal<<1123>><<1123>>
+handles loading pedigrees from databases, I cannot answer detailed questions about 
+databases to which I do not ave access. You should carefully test your custom queries in
+SQL to ensure that they are working correctly before adding them to PyPedal<<1124>><<1124>>. Also,
+please check your pedigree format string to make sure that it matches your query.
+\begin<<1254>>tex2html_deferred<<1254>>\par\end<<1255>>tex2html_deferred<<1255>>
+\subsection<<1125>>Output to Databases<<1125>>\label<<1126>>sec:io-output-database<<1126>>\index<<1127>>output!databases<<1127>>
+PyPedal<<1128>><<1128>> can write \class<<1129>>NewPedigree<<1129>> pedigrees to ASDx-formatted SQLite tables using the \method<<1130>>NewPedigree::savedb()<<1130>> method. The following program will result in the creation of a table named \begin<<1256>>tex2html_deferred<<1256>>\samp<<1131>>test\_save<<1131>>\end<<1257>>tex2html_deferred<<1257>> in the database \begin<<1258>>tex2html_deferred<<1258>>\samp<<1132>>test\_pypedal\_save<<1132>>\end<<1259>>tex2html_deferred<<1259>>.
+\begin<<1133>>tex2html_preform<<1133>><tex2html_verbatim_mark>verbatim109#\end<<1134>>tex2html_preform<<1134>>
+The pedigree is saved to the database and table specified in the \var<<1135>>database\_name<<1135>> and \var<<1136>>dbtable\_name<<1136>> variables. If the specified table already exists then the records from the current pedigree will be added to the table. If you want to overwrite the existing database then you need to pass \begin<<1260>>tex2html_deferred<<1260>>\samp<<1137>>drop=True<<1137>>\end<<1261>>tex2html_deferred<<1261>> in the call to method<<1138>>savedb<<1138>>:
+\begin<<1139>>tex2html_preform<<1139>><tex2html_verbatim_mark>verbatim110#\end<<1140>>tex2html_preform<<1140>>
+While this may strike some users as unexpected behavior it is based on the idea that you should never lose data unexpectedly. If you use only the defaults you will never lose data. However, if you try and save a renumbered pedigree on top of another renumbered pedigree you will run into problems because animal IDs are used as primary keys, and you will have constraint violations.
+\begin<<1262>>tex2html_deferred<<1262>>\par\end<<1263>>tex2html_deferred<<1263>>
+\index<<1141>>databases!new output destinations<<1141>>It is possible to save pedigrees to a databse
+with a format different than that exected by PyPedal<<1142>><<1142>>, but it is a little harder than
+changeing pedigree input. Changing the output table requires that you change the
+\class<<1143>>NewPedigree<<1143>> class's \method<<1144>>savesb<<1144>> method. Consider the code that begins on or
+about line 590 of \texttt<<1145>>pyp_newclasses.py<<1145>> in \method<<1146>>savesb<<1146>>:
+\begin<<1147>>tex2html_preform<<1147>><tex2html_verbatim_mark>verbatim111#\end<<1148>>tex2html_preform<<1148>>
+You need to rewrite this statement to add or remove columns; the SQL for a tavble that 
+includes all fields in a \class<<1149>>NewAnimal<<1149>> object may be found in the 
+\function<<1150>>createPedigreeTable<<1150>> function of the \module<<1151>>pyp\_db module<<1151>>. Note that not 
+every field in a \class<<1152>>NewAnimal<<1152>> object has a corresponding pedigree format code. 
+Consult Table \ref<<1153>>sec:pedigree-format-codes<<1153>> for appropriate codes.
+\begin<<1264>>tex2html_deferred<<1264>>\par\end<<1265>>tex2html_deferred<<1265>>
+Once you've updated the SQL used to create your custom pedigree table you will also need to change the code which prepares the input for writing to the database. This code is found on or about about line 617 in \method<<1154>>savesb<<1154>>:
+\begin<<1155>>tex2html_preform<<1155>><tex2html_verbatim_mark>verbatim112#\end<<1156>>tex2html_preform<<1156>>
+Note that you will need to make appropriate casts yourself. For example, you will want 
+to cast things that are stored as integers or reals to make sure that you don't violate 
+a column constraint. You must enclose strings in single-quotation marks ('') yourself. 
+\begin<<1266>>tex2html_deferred<<1266>>\par\end<<1267>>tex2html_deferred<<1267>>
+By default PyPedal<<1157>><<1157>> saves pedigrees in \begin<<1268>>tex2html_deferred<<1268>>\samp<<1158>>ASD<<1158>>\end<<1269>>tex2html_deferred<<1269>> format. If you want to save your pedigree in \begin<<1270>>tex2html_deferred<<1270>>\samp<<1159>>asd<<1159>>\end<<1271>>tex2html_deferred<<1271>> format then you will need to change the code on or about line 610 from:
+\begin<<1160>>tex2html_preform<<1160>><tex2html_verbatim_mark>verbatim113#\end<<1161>>tex2html_preform<<1161>>
+to:
+\begin<<1162>>tex2html_preform<<1162>><tex2html_verbatim_mark>verbatim114#\end<<1163>>tex2html_preform<<1163>>
+It is better to add a new method supporting your output format to \class<<1164>>NewAnimal<<1164>>   rather than changing the \method<<1165>>savedb<<1165>> method.
 <tex2html_endfile>#./inputoutput.tex#

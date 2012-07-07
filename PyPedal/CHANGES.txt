@@ -12,6 +12,14 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+''' 07/06/2012  I think that pyp_utils/list_intersection() is working now.
+''' 07/06/2012  The union() and intersection() functions in pyp_utils have
+    been renamed list_union and list_intersection, respectively.
++++ 07/06/2012  NewPedigree now has union() and intersection() methods,
+    but they're binary (take only two pedigrees), unlike the versions in
+    pyp_utils/union() and pyp_utils.intersection(). It's also important
+    to note that NewPedigree::union() is just a wrapper around
+    New_Pedigree::__add__().
 --- 07/05/2012  pyp_utils.intersection() is currently broken as I
     migrate to list-based input.
 XXX 07/05/2012  Removed the unused tail_recursive decorator from

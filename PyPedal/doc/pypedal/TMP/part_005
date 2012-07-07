@@ -1,112 +1,135 @@
 <tex2html_file>#./overview.tex#
-\chapter<<559>>High-Level Overview<<559>>
-\label<<560>>cha:high-level-overview<<560>>
-\begin<<561>>quote<<561>>
-In this chapter, a high-level overview of PyPedal<<562>><<562>> is presented, including key components of the module and concepts used throughout this manual.
-\end<<563>>quote<<563>>
-\section<<564>>Interacting with PyPedal<<564>>
-\label<<565>>sec:interacting<<565>>
-\index<<566>>interacting with PyPedal<<566>>
-There are two ways to interact with PyPedal<<567>><<567>>: interactively\index<<568>>interacting with PyPedal!interactively<<568>> from a Python command line, and programmatically\index<<569>>interacting with PyPedal!programmatically<<569>> using a script that is run using the Python interpreter.  The latter is preferred to the former for any but trivial examples, although it is useful to work with the command line while learning how to use PyPedal<<570>><<570>>.  A number of sample programs are included with the PyPedal<<571>><<571>> distribution. <tex2html_comment_mark>66
-\section<<572>>The PyPedal Object Model<<572>>
-\label<<573>>sec:pypedal-objects<<573>>
-\index<<574>>objects<<574>>
-At the heart of PyPedal<<575>><<575>> are four different types of objects.  These objects
+\chapter<<576>>High-Level Overview<<576>>
+\label<<577>>cha:high-level-overview<<577>>
+\begin<<578>>quote<<578>>
+By a small sample we may judge the whole piece. --- Miguel de Cervantes Saavedra
+\end<<579>>quote<<579>>
+\section<<580>>Interacting with PyPedal<<580>>
+\label<<581>>sec:interacting<<581>>
+\index<<582>>interacting with PyPedal<<582>>
+There are two ways to interact with PyPedal<<583>><<583>>: interactively\index<<584>>interacting with PyPedal!interactively<<584>> from a Python command line, and programmatically\index<<585>>interacting with PyPedal!programmatically<<585>> using a script that is run using the Python interpreter.  The latter is preferred to the former for any but trivial examples, although it is useful to work with the command line while learning how to use PyPedal<<586>><<586>>.  A number of sample programs are included with the PyPedal<<587>><<587>> distribution. <tex2html_comment_mark>66
+\section<<588>>The PyPedal Object Model<<588>>
+\label<<589>>sec:pypedal-objects<<589>>
+\index<<590>>objects<<590>>
+At the heart of PyPedal<<591>><<591>> are four different types of objects.  These objects
 combine data and the code that operate on those data into convenient packages.
-Although most PyPedal<<576>><<576>> users will only work directly with one or two of these
+Although most PyPedal<<592>><<592>> users will only work directly with one or two of these
 objects it is worthwhile to know a little about each of them.  An instance of the
-\class<<577>>NewPedigree<<577>> class stores a pedigree read from an input file, as well as
-metadata about that pedigree.  The pedigree is a Python list of \class<<578>>NewAnimal<<578>>
+\class<<593>>NewPedigree<<593>> class stores a pedigree read from an input file, as well as
+metadata about that pedigree.  The pedigree is a Python list of \class<<594>>NewAnimal<<594>>
 objects.  Information about the pedigree, such as the number and identity of founders,
-is contained in an instance of the \class<<579>>PedigreeMetadata<<579>> class.
-\begin<<836>>tex2html_deferred<<836>>\par\end<<837>>tex2html_deferred<<837>>
-The fourth  PyPedal<<580>><<580>> class, \class<<822>>New<<581>>AM<<581>>atrix<<822>>, is used to manipulate numerator
+is contained in an instance of the \class<<595>>PedigreeMetadata<<595>> class.
+\begin<<855>>tex2html_deferred<<855>>\par\end<<856>>tex2html_deferred<<856>>
+The fourth PyPedal<<596>><<596>> class, \class<<841>>New<<597>>AM<<597>>atrix<<841>>, is used to manipulate numerator
 relationship matrices (NRM).  When working with large pedigrees it can take a long
 time to compute the elements of a NRM, and having an easy way to save and restore
 them is quite convenient.
-\begin<<838>>tex2html_deferred<<838>>\par\end<<839>>tex2html_deferred<<839>>
- PyPedal<<582>><<582>> also provides \class<<583>>LightAnimal<<583>> and \class<<584>>SimAnimal<<584>> objects. \class<<585>>LightAnimal<<585>>s
-are intended for use with the graph theoretic routines provided in \module<<586>>pyp_network<<586>> and lack
-many of the attributes of \class<<587>>NewAnimal<<587>> objects, such as names, breeds, and alleleotypes.
-\class<<588>>SimAnimal<<588>>s are intended for internal use only by the pedigree simulation routines.
-\begin<<840>>tex2html_deferred<<840>>\par\end<<841>>tex2html_deferred<<841>>
-A detailed explanation of each class is provided in Chapter \ref<<589>>cha:using-pypedal-objects<<589>>.
-\section<<590>>Program Structure<<590>>
-\label<<591>>sec:overview-program-structure<<591>>
-\index<<592>>program structure<<592>>
- PyPedal<<593>><<593>> programs load pedigrees from files and operate on those pedigrees.  A program consists of four basic parts: a header, an options section, pedigree creation, and pedigree operations.  The program header is used to import modules used in that program, and may include any Python module available on your system.  You must import a module before you can use it:
-\begin<<594>>tex2html_preform<<594>><tex2html_verbatim_mark>verbatim68#\end<<595>>tex2html_preform<<595>>
-You should only import modules that you are going to use in your program; you do not need to import every PyPedal<<596>><<596>> module in every program you write.
-\begin<<842>>tex2html_deferred<<842>>\par\end<<843>>tex2html_deferred<<843>>
- PyPedal<<597>><<597>> recognizes a number of diffferent options that are used to control its behavior (Section \ref<<598>>sec:pypedal-options<<598>>).  Before you can load your pedigree into a PyPedal<<599>><<599>> object you must provide a pedigree file name (\begin<<844>>tex2html_deferred<<844>>\samp<<600>>pedname<<600>>\end<<845>>tex2html_deferred<<845>>) and a pedigree format string (\begin<<846>>tex2html_deferred<<846>>\samp<<601>>pedformat<<601>>\end<<847>>tex2html_deferred<<847>>).  This is done by either creating a Python dictionary and passing it as a parameter when \method<<602>>pyp_newclasses.loadPedigree()<<602>> is called or by specifying a configuration file\index<<603>>configuration file<<603>> name.  For example, here is how you would create and populate an options dictionary:
-\begin<<604>>tex2html_preform<<604>><tex2html_verbatim_mark>verbatim69#\end<<605>>tex2html_preform<<605>>
-The syntax used in a configuration file is similar.  Consider the file \file<<606>>options.ini<<606>>, which contains the same options as set in the \var<<607>>options<<607>> dictionary in the previous example:
-\begin<<608>>tex2html_preform<<608>><tex2html_verbatim_mark>verbatim70#\end<<609>>tex2html_preform<<609>>
-More details on configuration files are provided in Section \ref<<610>>sec:pypedal-options-file<<610>>.
-\begin<<848>>tex2html_deferred<<848>>\par\end<<849>>tex2html_deferred<<849>>
-You may name your dictionary or configuration file whatever you like; the examples in this manual, as well as those distributed with  PyPedal<<611>><<611>>, use the name \begin<<850>>tex2html_deferred<<850>>\samp<<612>>options<<612>>\end<<851>>tex2html_deferred<<851>>.  Once you have defined your options to is time to load your pedigree.  This is as simple as calling \function<<613>>pyp_newclasses.NewPedigree()<<613>>:
-\begin<<614>>tex2html_preform<<614>><tex2html_verbatim_mark>verbatim71#\end<<615>>tex2html_preform<<615>>
-If you would like to use a configuration file to set your pedigree options, supply the configuration file name using the \var<<616>>optionsfile<<616>> keyword:
-\begin<<617>>tex2html_preform<<617>><tex2html_verbatim_mark>verbatim72#\end<<618>>tex2html_preform<<618>>
-Once you have loaded your pedigree file into a \class<<619>>NewPedigree<<619>> object you can unleash the awesome power of a fully-functional PyPedal<<620>><<620>> installation on it.  For example, calculating the effective number of founders in your pedigree using Lacy's \citeyear<<621>>ref640<<621>> exact method is as simple as:
-\begin<<622>>tex2html_preform<<622>><tex2html_verbatim_mark>verbatim73#\end<<623>>tex2html_preform<<623>>
-Example programs that demonstrate how to use many of the features of PyPedal<<624>><<624>> are included in the \begin<<852>>tex2html_deferred<<852>>\samp<<625>>examples<<625>>\end<<853>>tex2html_deferred<<853>> directory of the distribution.
-\section<<626>>Options<<626>>
-\label<<627>>sec:pypedal-options<<627>>
-\index<<628>>options<<628>>
-Many aspects of PyPedal<<629>><<629>>'s operation can be controlled using a series of options.  A complete list of these options, their defaults, and a brief desription of their purpose is presented in Table \ref<<630>>tbl:options<<630>>.  Options are stored in a Python dictionary that you must create in your programs.  You must specify values for the \var<<631>>pedfile<<631>> and \var<<632>>pedformat<<632>> options; all others are optional.  \var<<633>>pedfile<<633>> is a string containing the name of the file from which your pedigree will be read.  \var<<634>>pedformat<<634>> is a string containing a pedigree format code (see section \ref<<635>>sec:pedigree-format-codes<<635>>) for each column in the datafile in the order in which those columns occur.  The following code fragement demonstrates how options are specified.
-\begin<<636>>tex2html_preform<<636>><tex2html_verbatim_mark>verbatim74#\end<<637>>tex2html_preform<<637>>
-First, a dictionary named \var<<638>>options<<638>> is created; you may use any name you like as long as it is a valid Python variable name.  Next, values are assigned to several options.  Finally, \var<<639>>options<<639>> is passed to \function<<640>>pyp\_newclasses.loadPedigree()<<640>>, which requires that you pass it either a dictionary of options or a configuration file name.  If you do not provide one of these, PyPedal<<641>><<641>> will halt with an error.
-\begin<<854>>tex2html_deferred<<854>>\par\end<<855>>tex2html_deferred<<855>>
-A single  PyPedal<<642>><<642>> program may be used to read one or more pedigrees.  Each pedigree that you read must be passed its own dictionary of options.  The easiest way to do this is by creating a dictionary with global options.  You can then customize the dictionary for each pedigree you want to read.  Once you have created a PyPedal<<643>><<643>> pedigree by calling \function<<644>>pyp\_newclasses.NewPedigree(options)<<644>> you can change the options dictionary without affecting that pedigree because it has a separate copy of those options stored in its \member<<645>>kw<<645>> attribute.  The following code fragment demonstrates how to read two pedigree files using the same dictionary of options.
-\begin<<646>>tex2html_preform<<646>><tex2html_verbatim_mark>verbatim75#\end<<647>>tex2html_preform<<647>>
-Note that \var<<648>>pedformat<<648>> only needs to be changed if the two pedigrees have different formats.  Only \var<<649>>pedfile<<649>> \emph<<650>>has<<650>> to be changed at all.
-\begin<<856>>tex2html_deferred<<856>>\par\end<<857>>tex2html_deferred<<857>>
-All pedigree options other than \var<<651>>pedfile<<651>> and \var<<652>>pedformat<<652>> have default values.  If you provide a value that is invalid the option will revert to the default.  In most cases, a message to that effect will also be placed in the log file.
-\begin<<653>>center<<653>>
-    \tablecaption<<654>>Options for controlling PyPedal.<<654>>
-    \tablefirsthead<<655>>\hline Option ;SPMamp; Default ;SPMamp; Note(s) \\  \hline<<655>>
-    \begin<<858>>tex2html_deferred<<858>>\tablehead<<656>>\hline Option ;SPMamp; Default ;SPMamp; Note(s) \\  \hline<<656>>\end<<859>>tex2html_deferred<<859>>
-    \begin<<860>>tex2html_deferred<<860>>\tabletail<<823>>\hline \multicolumn<<657>>3<<657>><<658>>l<<658>><<659>>\small\sl continued on next page<<659>> \\  \hline<<823>>\end<<861>>tex2html_deferred<<861>>
-    \tablelasttail<<660>>\hline<<660>>
-    \label<<661>>tbl:options<<661>>
-    \index<<662>>options!list<<662>>
-    \begin<<663>>xtabular<<663>><<824>>l|l|p<<664>>4in<<664>><<824>>
-	alleles\_sepchar  ;SPMamp; '/'          ;SPMamp; The character separating the two alleles in an animal's allelotype. \var<<665>>alleles\_sepchar<<665>> CANNOT be the same as \var<<666>>sepchar<<666>>! \\ 
-	animal\_type  ;SPMamp; 'new'           ;SPMamp; Indicates which animal class should be used to instantiate animal records, \class<<667>>NewAnimal<<667>> or \class<<668>>LightAnimal<<668>> (`new'|`light'). \\ 
-	counter          ;SPMamp; 1000         ;SPMamp; How often should  PyPedal<<669>><<669>> write a note to the screen when reading large pedigree files. \\ 
-	database\_name   ;SPMamp; 'pypedal'    ;SPMamp; The name of the database to be used when using the \module<<670>>pyp\_reports<<670>> nodule. \\ 
-	dbtable\_name     ;SPMamp; filetag      ;SPMamp; The name of the database table to which the current pedigree will be written when using the \module<<671>>pyp\_reports<<671>> module. \\ 
-	default\_fontsize ;SPMamp; 10           ;SPMamp; Specifies the default font size used in \module<<672>>pyp   \_graphics<<672>>. If the font size cannot be cast to an integer, it is set to the default value of 10. Font sizes less than 1 are set to the default of 10. \\ 
-	default\_report   ;SPMamp; filetag      ;SPMamp; Default report name for use by \module<<673>>pyp\_reports<<673>>. \\ 
+\begin<<857>>tex2html_deferred<<857>>\par\end<<858>>tex2html_deferred<<858>>
+ PyPedal<<598>><<598>> also provides \class<<599>>LightAnimal<<599>> and \class<<600>>SimAnimal<<600>> objects. \class<<601>>LightAnimal<<601>>s
+are intended for use with the graph theoretic routines provided in \module<<602>>pyp_network<<602>> and lack
+many of the attributes of \class<<603>>NewAnimal<<603>> objects, such as names, breeds, and alleleotypes.
+\class<<604>>SimAnimal<<604>>s are intended for internal use only by the pedigree simulation routines.
+\begin<<859>>tex2html_deferred<<859>>\par\end<<860>>tex2html_deferred<<860>>
+A detailed explanation of each class is provided in Chapter \ref<<605>>cha:using-pypedal-objects<<605>>.
+\section<<606>>Program Structure<<606>>
+\label<<607>>sec:overview-program-structure<<607>>
+\index<<608>>program structure<<608>>
+PyPedal<<609>><<609>> programs load pedigrees from files and operate on those pedigrees.  A program consists of four basic parts: a header, an options section, pedigree creation, and pedigree operations.  The program header is used to import modules used in that program, and may include any Python module available on your system.  You must import a module before you can use it:
+\begin<<610>>tex2html_preform<<610>><tex2html_verbatim_mark>verbatim68#\end<<611>>tex2html_preform<<611>>
+You should only import modules that you are going to use in your program; you do not need to import every PyPedal<<612>><<612>> module in every program you write.
+\begin<<861>>tex2html_deferred<<861>>\par\end<<862>>tex2html_deferred<<862>>
+ PyPedal<<613>><<613>> recognizes a number of different options that are used to control its behavior (Section \ref<<614>>sec:pypedal-options<<614>>).  Before you can load your pedigree into a PyPedal<<615>><<615>> object you must provide a pedigree file name (\begin<<863>>tex2html_deferred<<863>>\samp<<616>>pedname<<616>>\end<<864>>tex2html_deferred<<864>>) and a pedigree format string (\begin<<865>>tex2html_deferred<<865>>\samp<<617>>pedformat<<617>>\end<<866>>tex2html_deferred<<866>>).  This is done by either creating a Python dictionary and passing it as a parameter when \method<<618>>pyp_newclasses.loadPedigree()<<618>> is called or by specifying a configuration file\index<<619>>configuration file<<619>> name.  For example, here is how you would create and populate an options dictionary:
+\begin<<620>>tex2html_preform<<620>><tex2html_verbatim_mark>verbatim69#\end<<621>>tex2html_preform<<621>>
+The syntax used in a configuration file is similar.  Consider the file \file<<622>>options.ini<<622>>, which contains the same options as set in the \var<<623>>options<<623>> dictionary in the previous example:
+\begin<<624>>tex2html_preform<<624>><tex2html_verbatim_mark>verbatim70#\end<<625>>tex2html_preform<<625>>
+More details on configuration files are provided in Section \ref<<626>>sec:pypedal-options-file<<626>>.
+\begin<<867>>tex2html_deferred<<867>>\par\end<<868>>tex2html_deferred<<868>>
+You may name your dictionary or configuration file whatever you like; the examples in this manual, as well as those distributed with PyPedal<<627>><<627>>, use the name \begin<<869>>tex2html_deferred<<869>>\samp<<628>>options<<628>>\end<<870>>tex2html_deferred<<870>>.  Once you have defined your options to is time to load your pedigree.  This is as simple as calling \function<<629>>pyp_newclasses.NewPedigree()<<629>>:
+\begin<<630>>tex2html_preform<<630>><tex2html_verbatim_mark>verbatim71#\end<<631>>tex2html_preform<<631>>
+If you would like to use a configuration file to set your pedigree options, supply the configuration file name using the \var<<632>>optionsfile<<632>> keyword:
+\begin<<633>>tex2html_preform<<633>><tex2html_verbatim_mark>verbatim72#\end<<634>>tex2html_preform<<634>>
+Once you have loaded your pedigree file into a \class<<635>>NewPedigree<<635>> object you can unleash the awesome power of a fully-functional PyPedal<<636>><<636>> installation on it.  For example, calculating the effective number of founders in your pedigree using Lacy's \citeyear<<637>>ref640<<637>> exact method is as simple as:
+\begin<<638>>tex2html_preform<<638>><tex2html_verbatim_mark>verbatim73#\end<<639>>tex2html_preform<<639>>
+Example programs that demonstrate how to use many of the features of PyPedal<<640>><<640>> are included in the \begin<<871>>tex2html_deferred<<871>>\samp<<641>>examples<<641>>\end<<872>>tex2html_deferred<<872>> directory of the distribution.
+\section<<642>>Options<<642>>
+\label<<643>>sec:pypedal-options<<643>>
+\index<<644>>options<<644>>
+Many aspects of PyPedal<<645>><<645>>'s operation can be controlled using a series of options.  A complete list of these options, their defaults, and a brief description of their purpose is presented in Table \ref<<646>>tbl:options<<646>>.  Options are stored in a Python dictionary that you must create in your programs.  You must specify values for the \var<<647>>pedfile<<647>> and \var<<648>>pedformat<<648>> options; all others are optional.  \var<<649>>pedfile<<649>> is a string containing the name of the file from which your pedigree will be read.  \var<<650>>pedformat<<650>> is a string containing a pedigree format code (see section \ref<<651>>sec:pedigree-format-codes<<651>>) for each column in the datafile in the order in which those columns occur.  The following code fragment demonstrates how options are specified.
+\begin<<652>>tex2html_preform<<652>><tex2html_verbatim_mark>verbatim74#\end<<653>>tex2html_preform<<653>>
+First, a dictionary named \var<<654>>options<<654>> is created; you may use any name you like as long as it is a valid Python variable name.  Next, values are assigned to several options.  Finally, \var<<655>>options<<655>> is passed to \function<<656>>pyp\_newclasses.loadPedigree()<<656>>, which requires that you pass it either a dictionary of options or a configuration file name.  If you do not provide one of these, PyPedal<<657>><<657>> will halt with an error.
+\begin<<873>>tex2html_deferred<<873>>\par\end<<874>>tex2html_deferred<<874>>
+A single PyPedal<<658>><<658>> program may be used to read one or more pedigrees.  Each pedigree that you read must be passed its own dictionary of options.  The easiest way to do this is by creating a dictionary with global options.  You can then customize the dictionary for each pedigree you want to read.  Once you have created a PyPedal<<659>><<659>> pedigree by calling \function<<660>>pyp\_newclasses.NewPedigree(options)<<660>> you can change the options dictionary without affecting that pedigree because it has a separate copy of those options stored in its \member<<661>>kw<<661>> attribute.  The following code fragment demonstrates how to read two pedigree files using the same dictionary of options.
+\begin<<662>>tex2html_preform<<662>><tex2html_verbatim_mark>verbatim75#\end<<663>>tex2html_preform<<663>>
+Note that \var<<664>>pedformat<<664>> only needs to be changed if the two pedigrees have different formats.  Only \var<<665>>pedfile<<665>> \emph<<666>>has<<666>> to be changed at all.
+\begin<<875>>tex2html_deferred<<875>>\par\end<<876>>tex2html_deferred<<876>>
+All pedigree options other than \var<<667>>pedfile<<667>> and \var<<668>>pedformat<<668>> have default values.  If you provide a value that is invalid the option will revert to the default.  In most cases, a message to that effect will also be placed in the log file.
+\begin<<669>>center<<669>>
+    \tablecaption<<670>>Options for controlling PyPedal.<<670>>
+    \tablefirsthead<<671>>\hline Option ;SPMamp; Default ;SPMamp; Note(s) \\  \hline<<671>>
+    \begin<<877>>tex2html_deferred<<877>>\tablehead<<672>>\hline Option ;SPMamp; Default ;SPMamp; Note(s) \\  \hline<<672>>\end<<878>>tex2html_deferred<<878>>
+    \begin<<879>>tex2html_deferred<<879>>\tabletail<<842>>\hline \multicolumn<<673>>3<<673>><<674>>l<<674>><<675>>\small\sl continued on next page<<675>> \\  \hline<<842>>\end<<880>>tex2html_deferred<<880>>
+    \tablelasttail<<676>>\hline<<676>>
+    \label<<677>>tbl:options<<677>>
+    \index<<678>>options!list<<678>>
+    \begin<<679>>xtabular<<679>><<843>>l|l|p<<680>>4in<<680>><<843>>
+	alleles\_sepchar  ;SPMamp; '/'          ;SPMamp; The character separating the two alleles in an animal's allelotype. \var<<681>>alleles\_sepchar<<681>> CANNOT be the same as \var<<682>>sepchar<<682>>! \\ 
+	animal\_type  ;SPMamp; 'new'            ;SPMamp; Indicates which animal class should be used to instantiate animal records, \class<<683>>NewAnimal<<683>> or \class<<684>>LightAnimal<<684>> (`new'|`light'). \\ 
+	counter          ;SPMamp; 1000          ;SPMamp; How often should PyPedal<<685>><<685>> write a note to the screen when reading large pedigree files. \\ 
+	database\_debug  ;SPMamp; False         ;SPMamp; Toggle debugging messages in the database module on and off. \\ 
+	database\_host   ;SPMamp; 'localhost'   ;SPMamp; The server on which the database is running. \\ 
+	database\_name   ;SPMamp; 'pypedal'     ;SPMamp; The name of the database to be used. \\ 
+	database\_passwd ;SPMamp; 'anonymous'   ;SPMamp; The password needed to connect to your database. \\ 
+	database\_port   ;SPMamp; ''            ;SPMamp; The port on which your database is listening for connections (needed only for Postgres). \\ 
+	database\_table  ;SPMamp; 'filetag'     ;SPMamp; The name of the database table to which the current pedigree will be written. \\ 
+	database\_type   ;SPMamp; 'sqlite'      ;SPMamp; The type of database you are using ('mysql'|'postgres'|'sqlite'). \\ 
+	database\_user   ;SPMamp; 'anonymous'   ;SPMamp; The name of a user with access rights to your database.  \\ 
+	default\_fontsize ;SPMamp; 10           ;SPMamp; Specifies the default font size used in \module<<686>>pyp   \_graphics<<686>>. If the font size cannot be cast to an integer, it is set to the default value of 10. Font sizes less than 1 are set to the default of 10. \\ 
+	default\_report   ;SPMamp; filetag      ;SPMamp; Default report name for use by \module<<687>>pyp\_reports<<687>>. \\ 
 	default\_unit     ;SPMamp; 'inch'       ;SPMamp; The default unit of measurement for report generation ('cm'|'inch'). \\ 
-	debug\_messages  ;SPMamp; 0            ;SPMamp; Indicates whether or not PyPedal<<674>><<674>> should print debugging information. \\ 
-	f\_computed       ;SPMamp; 0            ;SPMamp; Indicates whether or not coefficients of inbreeding  have been computed for animals in the current pedigree.  If the pedigree format string includes \character<<675>>f<<675>> this will be set to 1; it is also set to 1 on a successful return from \function<<676>>pyp\_nrm/inbreeding()<<676>>. \\ 
+	debug\_messages  ;SPMamp; 0            ;SPMamp; Indicates whether or not PyPedal<<688>><<688>> should print debugging information. \\ 
+	f\_computed       ;SPMamp; 0            ;SPMamp; Indicates whether or not coefficients of inbreeding  have been computed for animals in the current pedigree.  If the pedigree format string includes \character<<689>>f<<689>> this will be set to 1; it is also set to 1 on a successful return from \function<<690>>pyp\_nrm/inbreeding()<<690>>. \\ 
 	file\_io         ;SPMamp; 1            ;SPMamp; When true, routines that can write results to output files will do so and put messages in the program log to that effect. \\ 
-	filetag          ;SPMamp; pedfile      ;SPMamp; \var<<677>>filetag<<677>> is a descriptive label attached to output files created when processing a pedigree.  By default the filetag is based on \var<<678>>pedfile<<678>>, minus its file extension. \\ 
-	form\_nrm        ;SPMamp; 0            ;SPMamp; Indicates whether or not to form a NRM and bind it to the pedigree as an instance of a \class<<679>>NewAMatrix<<679>> object. \\ 
-	gen\_coeff       ;SPMamp; 0            ;SPMamp; When nonzero, calculate generation coefficients using the method of Pattie \citeyear<<680>>Pattie1965<<680>> and store them in the \member<<681>>gen\_coeff<<681>> attribute of a \class<<682>>NewAnimal<<682>> object.  The inferred generation stored in the \member<<683>>igen<<683>> attribute will be the \member<<684>>gen\_coeff<<684>> rounded to the nearest 0.5.  When zero, the \member<<685>>gen\_coeff<<685>> is -999. \\ 
+	filetag          ;SPMamp; pedfile      ;SPMamp; \var<<691>>filetag<<691>> is a descriptive label attached to output files created when processing a pedigree.  By default the filetag is based on \var<<692>>pedfile<<692>>, minus its file extension. \\ 
+	form\_nrm        ;SPMamp; 0            ;SPMamp; Indicates whether or not to form a NRM and bind it to the pedigree as an instance of a \class<<693>>NewAMatrix<<693>> object. \\ 
+	foundercoi	 ;SPMamp; 0		;SPMamp; Tells \function<<694>>pyp\_nrm.fast\_a\_matrix()<<694>> whether or not to use coefficients of inbreeding from the pedigree to augment the diagonals for founders.\\ 
+	gen\_coeff       ;SPMamp; 0            ;SPMamp; When nonzero, calculate generation coefficients using the method of Pattie \citeyear<<695>>Pattie1965<<695>> and store them in the \member<<696>>gen\_coeff<<696>> attribute of a \class<<697>>NewAnimal<<697>> object.  The inferred generation stored in the \member<<698>>igen<<698>> attribute will be the \member<<699>>gen\_coeff<<699>> rounded to the nearest 0.5.  When zero, the \member<<700>>gen\_coeff<<700>> is -999. \\ 
+	has\_header	 ;SPMamp; 0		;SPMamp; When 1, the first row of the pedigree file is converted to a comment because it is a list of column names rather than data. If you are using a configuration file, you \emph<<701>>must<<701>> enclose the comma in double quotation marks (e.g., \code<<702>>has_header = ``,''<<702>>). \\ 
 	log\_long\_filenames ;SPMamp; 0        ;SPMamp; When nonzero, long logfile names will be used, which means that log file names will include datestamps. \\ 
-	log\_ped\_lines  ;SPMamp; 0            ;SPMamp; When \begin<<828>>tex2html_wrap_inline<<828>>$;SPMgt;$\end<<829>>tex2html_wrap_inline<<829>>\space 0 indicates how many lines read from the pedigree file should be printed in the log file for debugging purposes. \\ 
-	logfile          ;SPMamp; filetag.log  ;SPMamp; The name of the file to which PyPedal<<686>><<686>> should write messages about its progress. \\ 
-	messages         ;SPMamp; 'verbose'    ;SPMamp; How chatty PyPedal<<687>><<687>> should be with respect to messages to the user.  'verbose' indicates that all status messages will be written to STDOUT, while 'quiet' suppresses all output to STDOUT. \\ 
+	log\_ped\_lines  ;SPMamp; 0            ;SPMamp; When \begin<<847>>tex2html_wrap_inline<<847>>$;SPMgt;$\end<<848>>tex2html_wrap_inline<<848>>\space 0 indicates how many lines read from the pedigree file should be printed in the log file for debugging purposes. \\ 
+	logfile          ;SPMamp; filetag.log  ;SPMamp; The name of the file to which PyPedal<<703>><<703>> should write messages about its progress. \\ 
+	match\_rule ;SPMamp; 'add' ;SPMamp; Default rule used for comparing \class<<704>>NewAnimal<<704>>s to see if they're identical. \\ 
+	matrix\_type	 ;SPMamp; 'dense'	;SPMamp; Select between dense and sparse matrices.\\ 
+	messages         ;SPMamp; 'verbose'    ;SPMamp; How chatty PyPedal<<705>><<705>> should be with respect to messages to the user.  'verbose' indicates that all status messages will be written to STDOUT, while 'quiet' suppresses all output to STDOUT. \\ 
+	missing\_age ;SPMamp; -999 ;SPMamp; Default animal age. \\ 
+	missing\_alive ;SPMamp; 0 ;SPMamp; Default value for alive-or-dead indicator. \\ 
+	missing\_alleles ;SPMamp; \code<<706>>[`'],[`']<<706>> ;SPMamp; Default allelotype. \\ 
 	missing\_bdate    ;SPMamp; '01011900'   ;SPMamp; Default birth date. \\ 
-	missing\_breed    ;SPMamp; 'Unknown'    ;SPMamp; Default breed name.\\ 
-	missing\_byear    ;SPMamp; 1900         ;SPMamp; Default birth year.\\ 
-	missing\_name     ;SPMamp; 'Unknown'    ;SPMamp; Default animal name.\\ 
+	missing\_breed    ;SPMamp; 'Unknown\_Breed'    ;SPMamp; Default breed name. \\ 
+	missing\_byear    ;SPMamp; 1900         ;SPMamp; Default birth year. \\ 
+	missing\_gen ;SPMamp; -999. ;SPMamp; Default generation. \\ 
+	missing\_gencoeff ;SPMamp; -999. ;SPMamp; Defailt Pattie's generation coefficient. \\ 
+	missing\_herd	 ;SPMamp; 'Unknown\_Herd'	;SPMamp; Default herd identifier. \\ 
+	missing \_igen ;SPMamp; -999. ;SPMamp; Default inferred generation. \\ 
+	missing\_inbreeding ;SPMamp; 0. ;SPMamp; Default coefficient of inbreeding. \\ 
+	missing\_name     ;SPMamp; 'Unknown\_Name'    ;SPMamp; Default animal name. \\ 
 	missing\_parent  ;SPMamp; 0            ;SPMamp; Indicates what code is used to identify missing/unknown parents in the pedigree file. \\ 
+	missing\_pedcomp ;SPMamp; -999. ;SPMamp; Default value for pedigree completeness. \\ 
+	missing\_sex	 ;SPMamp; 'u'		;SPMamp; Default sex code. \\ 
+	missing\_userfield ;SPMamp; -999 ;SPMamp; Default value for user-provided field. \\ 
 	newanimal\_caller  ;SPMamp; 'loader'   ;SPMamp; Internal parameter needed for addanimal() to work correctly with ASD pedigrees. \\ 
-	nrm\_format      ;SPMamp; 'text'       ;SPMamp; Format to use when writing an NRM to a file ('text'|'binary'). Array elements in text files are separated by \var<<688>>sepchar<<688>>.\\ 
-	nrm\_method      ;SPMamp; 'nrm'        ;SPMamp; Specifies that an NRM formed from the current pedigree as an instance of a \class<<689>>NewAMatrix<<689>> object should ('frm') or should not ('nrm') be corrected for parental inbreeding. \\ 
-	paper_size       ;SPMamp; 'letter'     ;SPMamp; Default paper size for printed reports ('A4'|'letter'). \\ 
+	nrm\_format      ;SPMamp; 'text'       ;SPMamp; Format to use when writing an NRM to a file ('text'|'binary'). Array elements in text files are separated by \var<<707>>sepchar<<707>>.\\ 
+	nrm\_method      ;SPMamp; 'nrm'        ;SPMamp; Specifies that an NRM formed from the current pedigree as an instance of a \class<<708>>NewAMatrix<<708>> object should ('frm') or should not ('nrm') be corrected for parental inbreeding. \\ 
+	paper\_size       ;SPMamp; 'letter'     ;SPMamp; Default paper size for printed reports ('A4'|'letter'). \\ 
 	pedcomp          ;SPMamp; 0            ;SPMamp; When 1, calculate pedigree completeness using pedcomp\_gens generations of pedigree. \\ 
 	pedcomp\_gens    ;SPMamp; 3            ;SPMamp; Number of generations of pedigree to use when calculating pedigree completeness. \\ 
 	pedfile          ;SPMamp; None         ;SPMamp; File from which pedigree is read; must provided unless you are simulating a pedigree. Defaults to 'simulated_pedigree' for simulated pedigrees. \\ 
-	pedformat        ;SPMamp; 'asd'        ;SPMamp; See \ref<<690>>sec:pedigree-format-codes<<690>> for details. \\ 
+	pedformat        ;SPMamp; 'asd'        ;SPMamp; See \ref<<709>>sec:pedigree-format-codes<<709>> for details. \\ 
 	pedname          ;SPMamp; 'Untitled'   ;SPMamp; A name/title for your pedigree. \\ 
 	pedgree\_is\_renumbered ;SPMamp; 0     ;SPMamp; Indicates whether or not the pedigree has been renumbered. \\ 
-	pedigree\_summary ;SPMamp; 1           ;SPMamp; Indicates whether or not the pedigree loading details and summary are printed to STDOUT.  Output is only written if \var<<691>>message<<691>> is set to `verbose'. \\ 
-	renumber         ;SPMamp; 0            ;SPMamp; Renumber the pedigree after reading from file (0/1). \\ 
+	pedigree\_summary ;SPMamp; 1           ;SPMamp; Indicates whether or not the pedigree loading details and summary are printed to STDOUT.  Output is only written if \var<<710>>message<<710>> is set to `verbose'. \\ 
+	renumber         ;SPMamp; 1            ;SPMamp; Renumber the pedigree after reading from file (0/1). \\ 
+	reorder 	 ;SPMamp; 0		;SPMamp; Reorder the pedigree after reading from file (0/1). \\ 
+	reorder\_max\_rounds ;SPMamp; 100	;SPMamp; Maximum number of passes to use when reordering the pedigree. \\ 
 	sepchar          ;SPMamp; ' '          ;SPMamp; The character separating columns of input in the pedfile. \\ 
 	set\_ancestors   ;SPMamp; 0            ;SPMamp; Iterate over the pedigree to assign ancestors lists to parents in the pedigree (0/1). \\ 
 	set\_alleles     ;SPMamp; 0            ;SPMamp; Assign alleles for use in gene-drop simulations (0/1). \\ 
@@ -126,55 +149,55 @@ All pedigree options other than \var<<651>>pedfile<<651>> and \var<<652>>pedform
 	simulate\_save   ;SPMamp; 0            ;SPMamp; Flag indicating whether or not the simulated pedigree should be written to a file after it is created. \\ 
 	simulate\_sr     ;SPMamp; 0.5          ;SPMamp; Sex ratio in simulated pedigree; ;SPMlt; 0.5 gives more females, ;SPMgt; 0.5 gives more males. \\ 
 	slow\_reorder    ;SPMamp; 1            ;SPMamp; Option to override the slow, but more correct, reordering routine used by PyPedal by default (0/1).  ONLY CHANGE THIS IF YOU REALLY UNDERSTAND WHAT IT DOES!  Careless use of this option can lead to erroneous results. \\ 
-    \end<<692>>xtabular<<692>>
-\end<<693>>center<<693>>
-\subsection<<694>>Configuration Files<<694>>
-\label<<695>>sec:pypedal-options-file<<695>>
-\index<<696>>configuration files<<696>>
-The Dict4Ini\index<<697>>Dict4Ini<<697>> module (\begin<<862>>tex2html_deferred<<862>>\url<<698>>http://cheeseshop.python.org/pypi/Dict4Ini/0.4<<698>>\end<<863>>tex2html_deferred<<863>>) is used to process configuration files, and in included with the distribution so that you do not need to download and install it.  Dict4Ini objects can be addressed as though they are standard Python dictionaries, which made it very easy to add configuration file support to PyPedal<<699>><<699>>.  Configuration files consist of simple \emph<<700>>keyword = value<<700>> pairs on separate lines\begin<<864>>tex2html_deferred<<864>>\footnote<<825>>Please note that the Dict4Ini documentation referrs to sections.  Sections are very commonly used in configuration files, but PyPedal<<701>><<701>> does not use them.<<825>>\end<<865>>tex2html_deferred<<865>>, and may include comments.
-\begin<<702>>tex2html_preform<<702>><tex2html_verbatim_mark>verbatim76#\end<<703>>tex2html_preform<<703>>
-If neither an options dictionary nor a configuration file name is provided, \function<<704>>pyp_newclasses.loadPedigree()<<704>> will try and load the file named \file<<705>>pypedal.ini<<705>>.
-\section<<706>>Pedigree Files<<706>>
-\label<<707>>sec:pedigree-files<<707>>
-\index<<708>>pedigree files<<708>>
+    \end<<711>>xtabular<<711>>
+\end<<712>>center<<712>>
+\subsection<<713>>Configuration Files<<713>>
+\label<<714>>sec:pypedal-options-file<<714>>
+\index<<715>>configuration files<<715>>
+The Dict4Ini\index<<716>>Dict4Ini<<716>> module (\begin<<881>>tex2html_deferred<<881>>\url<<717>>http://cheeseshop.python.org/pypi/Dict4Ini/0.4<<717>>\end<<882>>tex2html_deferred<<882>>) is used to process configuration files, and in included with the distribution so that you do not need to download and install it.  Dict4Ini objects can be addressed as though they are standard Python dictionaries, which made it very easy to add configuration file support to PyPedal<<718>><<718>>.  Configuration files consist of simple \emph<<719>>keyword = value<<719>> pairs on separate lines\begin<<883>>tex2html_deferred<<883>>\footnote<<844>>Please note that the Dict4Ini documentation refers to sections.  Sections are very commonly used in configuration files, but PyPedal<<720>><<720>> does not use them.<<844>>\end<<884>>tex2html_deferred<<884>>, and may include comments.
+\begin<<721>>tex2html_preform<<721>><tex2html_verbatim_mark>verbatim76#\end<<722>>tex2html_preform<<722>>
+If neither an options dictionary nor a configuration file name is provided, \function<<723>>pyp_newclasses.loadPedigree()<<723>> will try and load the file named \file<<724>>pypedal.ini<<724>>.
+\section<<725>>Pedigree Files<<725>>
+\label<<726>>sec:pedigree-files<<726>>
+\index<<727>>pedigree files<<727>>
 Pedigree files consist of plain-text files (also known as ASCII or flatfiles) whose rows contain
 records on individual animals and whose columns contain different variables.  The columns are
-delimited (separated from one another) by some character such as a space or a tab (\textbackslash<<709>><<709>>t).  Pedigree
-files may also contain comments (notes) about the pedigree that are ignored by PyPedal<<710>><<710>>; comments
+delimited (separated from one another) by some character such as a space or a tab (\textbackslash<<728>><<728>>t).  Pedigree
+files may also contain comments (notes) about the pedigree that are ignored by PyPedal<<729>><<729>>; comments
 always begin with an octothorpe (\#).  For example, the following pedigree contains records for 13
 animals, and each record contains three variables (animal ID, sire ID, and dam ID):
-\begin<<711>>tex2html_preform<<711>><tex2html_verbatim_mark>verbatim77#\end<<712>>tex2html_preform<<712>>
-When this pedigree is processed by PyPedal<<713>><<713>> the comments are ignored.  If you need to change the
-default column delimiter \index<<714>>column delimiter<<714>>, which is a space (' '), set the \var<<715>>sepchar<<715>> option to the desired
+\begin<<730>>tex2html_preform<<730>><tex2html_verbatim_mark>verbatim77#\end<<731>>tex2html_preform<<731>>
+When this pedigree is processed by PyPedal<<732>><<732>> the comments are ignored.  If you need to change the
+default column delimiter \index<<733>>column delimiter<<733>>, which is a space (' '), set the \var<<734>>sepchar<<734>> option to the desired
 value.  For example, if your columns are tab-delimited you would set the option as:
-\begin<<716>>tex2html_preform<<716>><tex2html_verbatim_mark>verbatim78#\end<<717>>tex2html_preform<<717>>
-Options are discussed at length in section \ref<<718>>sec:pypedal-options<<718>>. PyPedal<<719>><<719>> also provides tools for pedigree simulation, which are discussed in section \ref<<720>>sec:pedigree-simulation<<720>>. More details about pedigree input may be found in Chapter \ref<<721>>cha:inputoutput<<721>>.
-\subsection<<722>>Pedigree Format Codes<<722>>
-\label<<723>>sec:pedigree-format-codes<<723>>
-\index<<724>>pedigree format codes<<724>>
+\begin<<735>>tex2html_preform<<735>><tex2html_verbatim_mark>verbatim78#\end<<736>>tex2html_preform<<736>>
+Options are discussed at length in section \ref<<737>>sec:pypedal-options<<737>>. PyPedal<<738>><<738>> also provides tools for pedigree simulation, which are discussed in section \ref<<739>>sec:pedigree-simulation<<739>>. More details about pedigree input may be found in Chapter \ref<<740>>cha:inputoutput<<740>>.
+\subsection<<741>>Pedigree Format Codes<<741>>
+\label<<742>>sec:pedigree-format-codes<<742>>
+\index<<743>>pedigree format codes<<743>>
 Pedigree format codes consisting of a string of characters are used to describe
-the contents of a pedigree file.  The simplest pedigree file that can be read by PyPedal<<725>><<725>>
-is shown above; the pedigree format for this file is \var<<726>>asd<<726>>.  A pedigree format is required
-for reading a pedigree; there is no default code used, and PyPedal<<727>><<727>> wil halt with an error if you
+the contents of a pedigree file.  The simplest pedigree file that can be read by PyPedal<<744>><<744>>
+is shown above; the pedigree format for this file is \var<<745>>asd<<745>>.  A pedigree format is required
+for reading a pedigree; there is no default code used, and PyPedal<<746>><<746>> wil halt with an error if you
 do not specify one.  You specify the format using an option statement at the start of your program:
-\begin<<728>>tex2html_preform<<728>><tex2html_verbatim_mark>verbatim79#\end<<729>>tex2html_preform<<729>>
-Please note that the format codes are case-sensitive, which means that \character<<730>>a<<730>> is considered to be a different code than \character<<731>>A<<731>>.  The codes currently recognized by PyPedal<<732>><<732>> are listed in Table \ref<<733>>tbl:pedigree-format-codes<<733>>.
-\begin<<866>>tex2html_deferred<<866>>\par\end<<867>>tex2html_deferred<<867>>
-As noted, all pedigrees must contain columns corresponding to animals, sires, and dams, either in the 'asd' or 'ASD' formats (it is not recommended that you mix them such as in 'AsD').  Pedigree codes should be entered in the same order in which the columns occur in the pedigee file.  The character that separates alleles when the 'L' format code is used cannot be the same character used to separate columns in the pedigree file.  If you do use the same character,  PyPedal<<734>><<734>> will write an error message to the log file and screen and halt.  The herd column type simply refers to a management group identifier, and can
+\begin<<747>>tex2html_preform<<747>><tex2html_verbatim_mark>verbatim79#\end<<748>>tex2html_preform<<748>>
+Please note that the format codes are case-sensitive, which means that \character<<749>>a<<749>> is considered to be a different code than \character<<750>>A<<750>>.  The codes currently recognized by PyPedal<<751>><<751>> are listed in Table \ref<<752>>tbl:pedigree-format-codes<<752>>.
+\begin<<885>>tex2html_deferred<<885>>\par\end<<886>>tex2html_deferred<<886>>
+As noted, all pedigrees must contain columns corresponding to animals, sires, and dams, either in the 'asd' or 'ASD' formats (it is not recommended that you mix them such as in 'AsD').  Pedigree codes should be entered in the same order in which the columns occur in the pedigree file.  The character that separates alleles when the 'L' format code is used cannot be the same character used to separate columns in the pedigree file.  If you do use the same character, PyPedal<<753>><<753>> will write an error message to the log file and screen and halt.  The herd column type simply refers to a management group identifier, and can
 correspond to a herd, flock, litter, etc.
-\begin<<868>>tex2html_deferred<<868>>\par\end<<869>>tex2html_deferred<<869>>
-If you used an earlier version of  PyPedal<<735>><<735>> you may have added a pedigree format string, e.g. \texttt<<736>>;SPMquot;\% asd;SPMquot;<<736>>, to your pedigree file(s).  You no longer need to include that string in your pedigrees, and if PyPedal<<737>><<737>> sees one while reading a pedigree file it will ignore it.
-\begin<<870>>tex2html_deferred<<870>>\par\end<<871>>tex2html_deferred<<871>>
-Note that if your pedigree file uses strings for animal, sire, and dam IDs (the ASD pedigree format codes) you may need to override the \var<<738>>missing\_parent<<738>> option, which is \character<<739>>0<<739>> by default.  For example, the pedigree file shown in Figure \ref<<740>>fig:boichard-pedigree-basic<<740>> uses \var<<741>>animal0<<741>> to denote unknown parents.  If \begin<<872>>tex2html_deferred<<872>>\samp<<742>>options['missing\_parent'] = 'animal0'<<742>>\end<<873>>tex2html_deferred<<873>> is not set before the pedigree file is loaded missing parents will be treated as animals with unknown parents, rather than as unknown parents.
-\begin<<743>>center<<743>>
-    \tablecaption<<744>>Pedigree format codes.<<744>>
-    \tablefirsthead<<745>>\hline Code ;SPMamp; Description \\  \hline<<745>>
-    \begin<<874>>tex2html_deferred<<874>>\tablehead<<746>>\hline Code ;SPMamp; Description \\  \hline<<746>>\end<<875>>tex2html_deferred<<875>>
-    \begin<<876>>tex2html_deferred<<876>>\tabletail<<826>>\hline \multicolumn<<747>>2<<747>><<748>>l<<748>><<749>>\small\sl continued on next page<<749>> \\  \hline<<826>>\end<<877>>tex2html_deferred<<877>>
-    \tablelasttail<<750>>\hline<<750>>
-    \label<<751>>tbl:pedigree-format-codes<<751>>
-    \index<<752>>pedigree format codes!list<<752>>
-    \begin<<753>>xtabular<<753>><<827>>l|p<<754>>4in<<754>><<827>>
+\begin<<887>>tex2html_deferred<<887>>\par\end<<888>>tex2html_deferred<<888>>
+If you used an earlier version of PyPedal<<754>><<754>> you may have added a pedigree format string, e.g. \texttt<<755>>;SPMquot;\% asd;SPMquot;<<755>>, to your pedigree file(s).  You no longer need to include that string in your pedigrees, and if PyPedal<<756>><<756>> sees one while reading a pedigree file it will ignore it.
+\begin<<889>>tex2html_deferred<<889>>\par\end<<890>>tex2html_deferred<<890>>
+Note that if your pedigree file uses strings for animal, sire, and dam IDs (the ASD pedigree format codes) you may need to override the \var<<757>>missing\_parent<<757>> option, which is \character<<758>>0<<758>> by default.  For example, the pedigree file shown in Figure \ref<<759>>fig:boichard-pedigree-basic<<759>> uses \var<<760>>animal0<<760>> to denote unknown parents.  If \begin<<891>>tex2html_deferred<<891>>\samp<<761>>options['missing\_parent'] = 'animal0'<<761>>\end<<892>>tex2html_deferred<<892>> is not set before the pedigree file is loaded missing parents will be treated as animals with unknown parents, rather than as unknown parents.
+\begin<<762>>center<<762>>
+    \tablecaption<<763>>Pedigree format codes.<<763>>
+    \tablefirsthead<<764>>\hline Code ;SPMamp; Description \\  \hline<<764>>
+    \begin<<893>>tex2html_deferred<<893>>\tablehead<<765>>\hline Code ;SPMamp; Description \\  \hline<<765>>\end<<894>>tex2html_deferred<<894>>
+    \begin<<895>>tex2html_deferred<<895>>\tabletail<<845>>\hline \multicolumn<<766>>2<<766>><<767>>l<<767>><<768>>\small\sl continued on next page<<768>> \\  \hline<<845>>\end<<896>>tex2html_deferred<<896>>
+    \tablelasttail<<769>>\hline<<769>>
+    \label<<770>>tbl:pedigree-format-codes<<770>>
+    \index<<771>>pedigree format codes!list<<771>>
+    \begin<<772>>xtabular<<772>><<846>>l|p<<773>>4in<<773>><<846>>
 	a ;SPMamp; animal ('a' or 'A' REQUIRED)\\ 
 	s ;SPMamp; sire ('s' or 'S' REQUIRED)\\ 
 	d ;SPMamp; dam ('d' or 'D' REQUIRED)\\ 
@@ -185,51 +208,51 @@ Note that if your pedigree file uses strings for animal, sire, and dam IDs (the 
 	h ;SPMamp; herd\\ 
 	l ;SPMamp; alive (1) or dead (0)\\ 
 	n ;SPMamp; name\\ 
-	p ;SPMamp; Pattie's \citeyear<<755>>Pattie1965<<755>> generation coefficient\\ 
+	p ;SPMamp; Pattie's \citeyear<<774>>Pattie1965<<774>> generation coefficient\\ 
 	r ;SPMamp; breed\\ 
 	u ;SPMamp; user-defined field (string)\\ 
 	b ;SPMamp; birthdate in ;SPMquot;MMDDYYYY;SPMquot; format\\ 
 	x ;SPMamp; sex\\ 
-	A ;SPMamp; animal ID as a string (cannot contain \begin<<878>>tex2html_deferred<<878>>\samp<<756>>sepchar<<756>>\end<<879>>tex2html_deferred<<879>>)\\ 
-	S ;SPMamp; sire ID as a string (cannot contain \begin<<880>>tex2html_deferred<<880>>\samp<<757>>sepchar<<757>>\end<<881>>tex2html_deferred<<881>>)\\ 
-	D ;SPMamp; dam ID as a string (cannot contain \begin<<882>>tex2html_deferred<<882>>\samp<<758>>sepchar<<758>>\end<<883>>tex2html_deferred<<883>>)\\ 
-	H ;SPMamp; herd as a string (cannot contain \begin<<884>>tex2html_deferred<<884>>\samp<<759>>sepchar<<759>>\end<<885>>tex2html_deferred<<885>>)\\ 
+	A ;SPMamp; animal ID as a string (cannot contain \begin<<897>>tex2html_deferred<<897>>\samp<<775>>sepchar<<775>>\end<<898>>tex2html_deferred<<898>>)\\ 
+	S ;SPMamp; sire ID as a string (cannot contain \begin<<899>>tex2html_deferred<<899>>\samp<<776>>sepchar<<776>>\end<<900>>tex2html_deferred<<900>>)\\ 
+	D ;SPMamp; dam ID as a string (cannot contain \begin<<901>>tex2html_deferred<<901>>\samp<<777>>sepchar<<777>>\end<<902>>tex2html_deferred<<902>>)\\ 
+	H ;SPMamp; herd as a string (cannot contain \begin<<903>>tex2html_deferred<<903>>\samp<<778>>sepchar<<778>>\end<<904>>tex2html_deferred<<904>>)\\ 
 	L ;SPMamp; alleles (two alleles separated by a non-null character)\\ 
 	Z ;SPMamp; indicates a column that should be skipped (one allowed per pedigree)\\ 
-    \end<<760>>xtabular<<760>>
-\end<<761>>center<<761>>
-\section<<762>>Renumbering a Pedigree<<762>>
-\label<<763>>sec:renumbering<<763>>
-\index<<764>>renumbering pedigrees<<764>>
-Whenever you load a pedigree into  PyPedal<<765>><<765>> a list of offspring is attached to the record for each animal in the pedigree file.  If you renumber the pedigree at the time it is loaded, there is no problem.  However, if you do not renumber a pedigree at load time and choose to renumber it later in your session you must be careful.  The API documentation may lead you to believe that
-\begin<<766>>tex2html_preform<<766>><tex2html_verbatim_mark>verbatim80#\end<<767>>tex2html_preform<<767>>
+    \end<<779>>xtabular<<779>>
+\end<<780>>center<<780>>
+\section<<781>>Renumbering a Pedigree<<781>>
+\label<<782>>sec:renumbering<<782>>
+\index<<783>>renumbering pedigrees<<783>>
+Whenever you load a pedigree into PyPedal<<784>><<784>> a list of offspring is attached to the record for each animal in the pedigree file.  If you renumber the pedigree at the time it is loaded, there is no problem.  However, if you do not renumber a pedigree at load time and choose to renumber it later in your session you must be careful.  The API documentation may lead you to believe that
+\begin<<785>>tex2html_preform<<785>><tex2html_verbatim_mark>verbatim80#\end<<786>>tex2html_preform<<786>>
 is the correct way to renumber the pedigree, but that is not correct.  The pedigree should always be numbered as:
-\begin<<768>>tex2html_preform<<768>><tex2html_verbatim_mark>verbatim81#\end<<769>>tex2html_preform<<769>>
+\begin<<787>>tex2html_preform<<787>><tex2html_verbatim_mark>verbatim81#\end<<788>>tex2html_preform<<788>>
 If you are seeing strange results when trying to cross-reference offspring to their parents check to make sure that you have not incorrectly renumbered your pedigree.
-\subsection<<770>>Animal Identification<<770>>
-\label<<771>>sec:renumbering-animal-id<<771>>
-\index<<772>>renumbering pedigrees!animal identification<<772>>
-A detailed explanation of animal identification cross-references is provided in Section \ref<<773>>sec:methodology-id-mapping<<773>>.
-\section<<774>>Logging<<774>>
-\label<<775>>sec:logging<<775>>
-\index<<776>>logging<<776>>
-PyPedal<<777>><<777>> uses the \module<<778>>logging<<778>> module that is part of the Python standard library to record events during pedigree processing.  Informative messages, as well as warnings and errors, are written to the logfile, which can be found in the directory from which you ran PyPedal<<779>><<779>>.  An example of a log from a successful (error-free) run of a program is presented below:
-\begin<<780>>tex2html_preform<<780>><tex2html_verbatim_mark>verbatim82#\end<<781>>tex2html_preform<<781>>
-The \texttt<<782>>WARNING<<782>>s let you know when something unexpected or unusual has happened, although you might argue that coming to the end of an input file is neither.  If you get unexpected results from your program make sure that you check the logfile for details -- some subroutines return default values such as -999 when a problem occurs but do not halt the program.  Note that comments found in the pedigree file are written to the log, as are deprecated pedigree format strings used by earlier versions of PyPedal<<783>><<783>>.  When an error from which PyPedal<<784>><<784>> cannot recover occurs a message is written to both the screen and the logfile.  We can see from the following log that the number of columns in the pedigree file did not match the number of columns in the pedigree format string.
-\begin<<785>>tex2html_preform<<785>><tex2html_verbatim_mark>verbatim83#\end<<786>>tex2html_preform<<786>>
-There is no sensible ``best guess'' that PyPedal<<787>><<787>> can make about handling this situation, so it halts.  There are some cases where PyPedal<<788>><<788>> does ``guess'' how it should proceed in the face of ambiguity, which is why it is always a good idea to check for \texttt<<789>>WARNING<<789>>s in your logfiles.
-\section<<790>>Simulating Pedigrees<<790>>
-\label<<791>>sec:pedigree-simulation<<791>>
-\index<<792>>pedigree simulation<<792>>
-PyPedal<<793>><<793>> is capable of simulating pedigrees using am algorithm based on the \method<<794>>Pedigree::sample<<794>> method in Matvec 1.1a (\begin<<886>>tex2html_deferred<<886>>\url<<795>>http://statistics.unl.edu/faculty/steve/software/matvec/<<795>>\end<<887>>tex2html_deferred<<887>>), although the implementation in \class<<796>>NewPedigree<<796>> is all original code. A pedigree is simulated when the \member<<797>>simulate\_pedigree<<797>> flag is set, and is the only case in which a \member<<798>>pedfile<<798>> does not need to be provided to PyPedal<<799>><<799>>. All simulated pedigrees have the code `asdxg' and are \emph<<800>>not<<800>> renumbered. The options used to control pedigree simulation are presented in Table \ref<<801>>tbl:options<<801>>.
-\begin<<888>>tex2html_deferred<<888>>\par\end<<889>>tex2html_deferred<<889>>
-The basic structure of a simulated pedigree is determined by the total number of simulated animals (\member<<802>>simulate\_n<<802>>), founder sires (\member<<803>>simulate\_ns<<803>>) and dams (\member<<804>>simulate\_nd<<804>>), and the number of distinct generations in the pedigree (\member<<805>>simulate\_g<<805>>). Populations can be closed or open based on the value of \member<<806>>simulate\_ir<<806>>; when the immigration rate is \begin<<830>>tex2html_wrap_inline<<830>>$;SPMgt;$\end<<831>>tex2html_wrap_inline<<831>>\space 0 that proportion of new animals will be immigrants with unknown parents. The sex ratio can be altered by changing \member<<807>>simulate\_sr<<807>>; values \begin<<832>>tex2html_wrap_inline<<832>>$;SPMlt;$\end<<833>>tex2html_wrap_inline<<833>>\space 0.5 will result in more females than males, and values \begin<<834>>tex2html_wrap_inline<<834>>$;SPMgt;$\end<<835>>tex2html_wrap_inline<<835>>\space 0.5 will result in more males than females. By default, \method<<808>>NewPedigree.simulate<<808>> produces a three-generation pedigree with 15 animals descended from 4 founder sires and 4 founder dams (Figure \ref<<809>>fig:example-simulated-pedigree<<809>>).
-\begin<<810>>figure<<810>>
-  \begin<<811>>center<<811>>
-    \includegraphics[width=4in]<<812>>simulatedPedigree.eps<<812>>
-    \begin<<890>>tex2html_deferred<<890>>\caption<<813>>Simulated pedigree using default options<<813>>\end<<891>>tex2html_deferred<<891>>
-    \label<<814>>fig:example-simulated-pedigree<<814>>
-  \end<<815>>center<<815>>
-\end<<816>>figure<<816>>
-\var<<817>>simulate\_mp<<817>> is a flag indicating whether or not simulated animals may have missing parents. When missing parents are allowed, animals may have no, one, or both parents unknown. The related parameter, \var<<818>>simulate\_pmd<<818>>, specifies the number of times parents should be sampled at random when trying to satisfy all of the simulation constraints. If parents are sampled \var<<819>>simulate\_pmd<<819>> times without satisfying the rules in place, both parents are set to missing, even if missing parents are not permitted. Other constraints include allowing/forbidding parent-offspring (\var<<820>>simulate\_po<<820>>) and/or full sib (\var<<821>>simulate\_fs<<821>>) matings.
+\subsection<<789>>Animal Identification<<789>>
+\label<<790>>sec:renumbering-animal-id<<790>>
+\index<<791>>renumbering pedigrees!animal identification<<791>>
+A detailed explanation of animal identification cross-references is provided in Section \ref<<792>>sec:methodology-id-mapping<<792>>.
+\section<<793>>Logging<<793>>
+\label<<794>>sec:logging<<794>>
+\index<<795>>logging<<795>>
+PyPedal<<796>><<796>> uses the \module<<797>>logging<<797>> module that is part of the Python standard library to record events during pedigree processing.  Informative messages, as well as warnings and errors, are written to the logfile, which can be found in the directory from which you ran PyPedal<<798>><<798>>.  An example of a log from a successful (error-free) run of a program is presented below:
+\begin<<799>>tex2html_preform<<799>><tex2html_verbatim_mark>verbatim82#\end<<800>>tex2html_preform<<800>>
+The \texttt<<801>>WARNING<<801>>s let you know when something unexpected or unusual has happened, although you might argue that coming to the end of an input file is neither.  If you get unexpected results from your program make sure that you check the logfile for details -- some subroutines return default values such as -999 when a problem occurs but do not halt the program.  Note that comments found in the pedigree file are written to the log, as are deprecated pedigree format strings used by earlier versions of PyPedal<<802>><<802>>.  When an error from which PyPedal<<803>><<803>> cannot recover occurs a message is written to both the screen and the logfile.  We can see from the following log that the number of columns in the pedigree file did not match the number of columns in the pedigree format string.
+\begin<<804>>tex2html_preform<<804>><tex2html_verbatim_mark>verbatim83#\end<<805>>tex2html_preform<<805>>
+There is no sensible ``best guess'' that PyPedal<<806>><<806>> can make about handling this situation, so it halts.  There are some cases where PyPedal<<807>><<807>> does ``guess'' how it should proceed in the face of ambiguity, which is why it is always a good idea to check for \texttt<<808>>WARNING<<808>>s in your logfiles.
+\section<<809>>Simulating Pedigrees<<809>>
+\label<<810>>sec:pedigree-simulation<<810>>
+\index<<811>>pedigree simulation<<811>>
+PyPedal<<812>><<812>> is capable of simulating pedigrees using am algorithm based on the \method<<813>>Pedigree::sample<<813>> method in Matvec 1.1a (\begin<<905>>tex2html_deferred<<905>>\url<<814>>http://statistics.unl.edu/faculty/steve/software/matvec/<<814>>\end<<906>>tex2html_deferred<<906>>), although the implementation in \class<<815>>NewPedigree<<815>> is all original code. A pedigree is simulated when the \member<<816>>simulate\_pedigree<<816>> flag is set, and is the only case in which a \member<<817>>pedfile<<817>> does not need to be provided to PyPedal<<818>><<818>>. All simulated pedigrees have the code `asdxg' and are \emph<<819>>not<<819>> renumbered. The options used to control pedigree simulation are presented in Table \ref<<820>>tbl:options<<820>>.
+\begin<<907>>tex2html_deferred<<907>>\par\end<<908>>tex2html_deferred<<908>>
+The basic structure of a simulated pedigree is determined by the total number of simulated animals (\member<<821>>simulate\_n<<821>>), founder sires (\member<<822>>simulate\_ns<<822>>) and dams (\member<<823>>simulate\_nd<<823>>), and the number of distinct generations in the pedigree (\member<<824>>simulate\_g<<824>>). Populations can be closed or open based on the value of \member<<825>>simulate\_ir<<825>>; when the immigration rate is \begin<<849>>tex2html_wrap_inline<<849>>$;SPMgt;$\end<<850>>tex2html_wrap_inline<<850>>\space 0 that proportion of new animals will be immigrants with unknown parents. The sex ratio can be altered by changing \member<<826>>simulate\_sr<<826>>; values \begin<<851>>tex2html_wrap_inline<<851>>$;SPMlt;$\end<<852>>tex2html_wrap_inline<<852>>\space 0.5 will result in more females than males, and values \begin<<853>>tex2html_wrap_inline<<853>>$;SPMgt;$\end<<854>>tex2html_wrap_inline<<854>>\space 0.5 will result in more males than females. By default, \method<<827>>NewPedigree.simulate<<827>> produces a three-generation pedigree with 15 animals descended from 4 founder sires and 4 founder dams (Figure \ref<<828>>fig:example-simulated-pedigree<<828>>).
+\begin<<829>>figure<<829>>
+  \begin<<830>>center<<830>>
+    \includegraphics[width=4in]<<831>>simulatedPedigree.eps<<831>>
+    \begin<<909>>tex2html_deferred<<909>>\caption<<832>>Simulated pedigree using default options<<832>>\end<<910>>tex2html_deferred<<910>>
+    \label<<833>>fig:example-simulated-pedigree<<833>>
+  \end<<834>>center<<834>>
+\end<<835>>figure<<835>>
+\var<<836>>simulate\_mp<<836>> is a flag indicating whether or not simulated animals may have missing parents. When missing parents are allowed, animals may have no, one, or both parents unknown. The related parameter, \var<<837>>simulate\_pmd<<837>>, specifies the number of times parents should be sampled at random when trying to satisfy all of the simulation constraints. If parents are sampled \var<<838>>simulate\_pmd<<838>> times without satisfying the rules in place, both parents are set to missing, even if missing parents are not permitted. Other constraints include allowing/forbidding parent-offspring (\var<<839>>simulate\_po<<839>>) and/or full sib (\var<<840>>simulate\_fs<<840>>) matings.
 <tex2html_endfile>#./overview.tex#

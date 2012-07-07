@@ -117,7 +117,7 @@
                                 % the date to \today can be used during draft
                                 % stages to make it easier to handle versions.
 
-\release{2.0.0b23}              % (software) release version;
+\release{2.0.4}                 % (software) release version;
 \setshortversion{2.0}           % this is used to define the \version macro
 \makeindex                      % tell \index to actually write the .idx file
 \newindex{func}{fdx}{fnd}{Function Index}
@@ -127,7 +127,7 @@
 \maketitle
 
 \begin{abstract}
-Cole, J.B.  2008.  A Manual for use of PyPedal: A software package for pedigree analysis.  Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture.
+Cole, J.B.  2012.  A Manual for use of PyPedal: A software package for pedigree analysis.  Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture.
 
 This manual in twelve chapters describes PyPedal (v 2.0), a software package for pedigree analysis, report generation, and data visualization.  Metrics include coefficients of inbreeding and relationship, effective founder and ancestor numbers, and founder genome equivalents.  Tools are provided for identifying ancestors and descendants, computing coefficients of inbreeding from potential matings, quantifying pedigree completeness, and visualizing pedigrees.  Scripting support is provided by the Python programming language; this language may be used to easily automate analyses and implement new features. Input and output files utilize plain-text formats.  The program has been used for the analysis of dairy cattle and working dog pedigrees.  PyPedal runs on the GNU/Linux and Microsoft Windows operating systems.  The program, documentation, and examples of usage are available at \url{http://pypedal.sourceforge.net/}.
 
@@ -147,9 +147,12 @@ Revised \today
 
 %%% TEXEXPAND: INCLUDED FILE MARKER ./copyright.tex
 \section*{Legal Notice}
-\label{sec:legal-notice}
+\begin{quote}
+ The only people who have anything to fear from free software are those whose products are worth even less. --- David Emery
+\end{quote}
 
-Copyright (c) 2002-2008.  John B. Cole.  All rights reserved.
+\label{sec:legal-notice}
+Copyright (c) 2002-2012.  John B. Cole.  All rights reserved.
 
 Permission to use, copy, modify, and distribute this software for any purpose
 without fee is hereby granted, provided that this entire notice is included in
@@ -157,7 +160,6 @@ all copies of any software which is or includes a copy or modification of this
 software and in all copies of the supporting documentation for such software.
 
 \subsection*{Disclaimer}
-
 The author of this software does not make any warranty, express or implied, or
 assume any liability or responsibility for the accuracy, completeness, or
 usefulness of any information, apparatus, product, or process disclosed, or
@@ -169,9 +171,7 @@ the author. The views and opinions of authors expressed herein do not necessaril
 state or reflect those of the United States Government and shall not be used for
 advertising or product endorsement purposes.
 
-\section*{License}
-\label{sec:license}
-\index{license}
+\section*{License}\label{sec:license}\index{license}
 This is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation; either version 2.1 of the License, or (at
@@ -192,19 +192,20 @@ USA.%%% TEXEXPAND: END FILE ./copyright.tex
 \listoffigures
 
 \declaremodule{extension}{pypedal}
-\moduleauthor{John B. Cole}{jcole@aipl.arsusda.gov}
+\moduleauthor{John B. Cole}{john.cole@ars.usda.gov}
 \modulesynopsis{Py{P}edal}
 %%% TEXEXPAND: INCLUDED FILE MARKER ./introduction.tex
 \chapter{Introduction}
 \label{cha:introduction}
 
 \begin{quote}
-This chapter introduces the \PyPedal{} module for Python 2.4, provides an overview of key features of the software, and describes the contents of this manual.
+Any sufficiently disguised bug is indistinguishable from a feature. --- Rich Kulawiec
 \end{quote}
+This chapter introduces the \PyPedal{} module for Python 2.4, provides an overview of key features of the software, and describes the contents of this manual.
 
 \PyPedal{} (\textbf{P}ython \textbf{Ped}igree An\textbf{al}ysis) is a tool for analyzing pedigree files.  It calculates several quantitative measures of genetic diversity from pedigrees, including average coefficients of inbreeding and relationship, effective founder numbers, and effective ancestor numbers.  Checks are performed catch common mistakes in pedigree files, such as parents with more recent birthdates or smaller ID numbers than their offspring and animals appearing as both sires and dams in the pedigree.  Tools for pedigree visualization and report generation are also provided.  \PyPedal{} only makes use of information on pedigree structure, not individual genotypes.  Allelotypes can be assigned to founders for use in gene-dropping simulations to calculate the effective number of founder genomes, but no other measures of alleic diversity are currently supported.
 
-\PyPedal{} is a Python (\url{http://www.python.org/}) language module that may be called by programs or used interactively from the interpreter.  You must have Python 2.4 (or later) installed in order to use \PyPedal{} as \PyPedal{} makes use of features found only in that version.  The Numarray module must also be installed in order for you to use \PyPedal{}, and may be found at \url{http://www.stsci.edu/resources/software_hardware/numarray}.  In addition, there are a number of third-party packages used by \PyPedal{}; they are discussed in Chapter \ref{cha:installation}.
+\PyPedal{} is a Python (\url{http://www.python.org/}) language module that may be called by programs or used interactively from the interpreter.  You must have Python 2.7 (or later) installed in order to use \PyPedal{} as \PyPedal{} makes use of features found only in that version.  The Numarray module must also be installed in order for you to use \PyPedal{}, and may be found at \url{http://www.stsci.edu/resources/software_hardware/numarray}.  In addition, there are a number of third-party packages used by \PyPedal{}; they are discussed in Chapter \ref{cha:installation}.
 
 This manual is the official documentation for \PyPedal{}. It includes a tutorial and is the most authoritative source of information about \PyPedal{} with the exception of the source code. The tutorial material will walk you through a set of manipulations of a simple pedigree.  All users of \PyPedal{} are encouraged to follow the tutorial with a working \PyPedal{} installation. The best way to learn is by doing --- the aim of this tutorial is to guide you along this doing.
 
@@ -226,17 +227,18 @@ This content of this manual is broken down as follows:
 \item[References and Indices] are provided at the end of the manual.
 \end{description}
 
-\section{Implemented Features}
-A full list of features, including notes on useage and computational details, is provided in Chapter \ref{cha:api}.  Some of the notable features of \PyPedal{} include:
+\section{Features}
+Some of the notable features of \PyPedal{} include:
 \begin{itemize}
 \item Reading pedigree files in user-defined formats;
 \item Checking pedigree integrity (duplicate IDs, parents younger than offspring, etc.);
 \item Generating summary information such as frequency of appearance in the pedigree file;
-\item Reordering and renumbering of pedigree files.
+\item Reordering and renumbering of pedigree files, including those with IDs as character strings rather than integers;
 \item Computation of the numerator relationship matrix ($A$) from a pedigree file using the tabular method;
-\item Inbreeding calculations for large pedigrees;
-\item Computation of average total and average individual coefficients of inbreeding and relationship;
-\item Calculation of coefficients of partial inbreeding using an iterative tabulat method \cite{LacyAW1996,GulisijaGWT2006};
+\item Inbreeding and relationship calculations for large pedigrees (pedigrees up to 600,000 animals have been processed with \PyPedal{});
+\item Computation of coefficients of inbreeding using the Meuwissen and Luo \cite{ref585} and modified Meuwissen and Luo (Quaas, 1993) algorithms;
+\item Computation of average total and individual coefficients of inbreeding and relationship;
+\item Calculation of coefficients of partial inbreeding using an iterative tabular method \cite{LacyAW1996,GulisijaGWT2006};
 \item Calculation of coefficients of ancestral inbreeding using the methods of Ballou \citeyear{Ballou1997} or Suwanlee et al. \citeyear{SuwanleeBSC2007};
 \item Decomposition of $A$ into $T$ and $D$ such that $A=TDT'$;
 \item Computation of the direct inverse of $A$ (not accounting for inbreeding) using the method of Henderson \citeyear{ref143};
@@ -250,77 +252,81 @@ A full list of features, including notes on useage and computational details, is
 \item Identification of the common relatives of two animals;
 \item Calculation of the inbreeding of offspring from a prospective mating;
 \item Output to ASCII text files, including matrices, coefficients of inbreeding and relationship, and summary information;
+\item Importation and exportation of GEDCOM 5.5 files;
+\item Importation and exportation of GENES 1.20 (dBase III) files;
+\item Loading pedigrees from, and saving them to, MySQL, Postgres, and SQLite databases;
 \item Simulation of pedigrees using an algorithm derived from that in Matvec 1.1a;
+\item Set operations on pedigrees (unions and intersections);
 \end{itemize}
 \PyPedal{} has been used to perform calculations on pedigrees as large as 600,000 animals and has been used in scientific research \cite{Cole2004a,Cole2007a}.
 
 \section{Where to get information and code}
-\PyPedal{} and its documentation are available at: \url{http://pypedal.sourceforge.net/}.  The Sourceforge site, \url{http://sourceforge.net/projects/pypedal/}, provides tools for reporting bugs (\url{https://sourceforge.net/tracker/?func=add&group_id=106679&atid=645233}, making feature requests (\url{https://sourceforge.net/tracker/?func=add&group_id=106679&atid=645236}), and discussing \PyPedal{} (\url{https://sourceforge.net/forum/?group_id=106679}).
+\PyPedal{} and its documentation are available at: \url{http://pypedal.sourceforge.net/}.  The Sourceforge site, \url{http://sourceforge.net/projects/pypedal/}, provides tools for reporting bugs (\url{https://sourceforge.net/tracker/?func=add&group_id=106679&atid=645233}, making feature requests (\url{https://sourceforge.net/tracker/?func=add&group_id=106679&atid=645236}), and discussing \PyPedal{} (\url{https://sourceforge.net/forum/?group_id=106679}). The current development code can be downloaded from the \PyPedal{} git repository at \url{https://github.com/wintermind/pypedal}.
 
 \section{Acknowledgments}\index{Acknowledgments}
-\PyPedal{} was initially written to support the author's dissertation research while at Louisiana State University, Baton Rouge (\url{http://www.lsu.edu/}).  The initial development was supported in part by a grant from The Seeing Eye, Inc., Morristown, NJ, USA.  It lay fallow for some time but has recently come under active development again.  This is due in part to a request from colleagues at the University of Minnesota that led to the inclusion of new functionality in \PyPedal{}.  The author wishes to thank Paul Van{R}aden for very helpful suggestions for improving the ability of \PyPedal{} to handle certain computations in large pedigrees.  Additional feedback in the form of bug reports, feature requests, and discussion of computing strategies was provided by Bradley J. Heins (University of Minnesota-Twin Cities), Edward H. Hagen (Institute for Theoretical Biology, Humboldt-Universit\"{a}t zu Berlin), Kathy Hanford (University of Nebraska, Lincoln), Thomas Kelly (Department of Animal and Poultry Science, University of Guelph), Thomas von Hassell, and Gianluca Saba. Gregor Gorjanc has written a blog entry describing \href{http://ggorjan.blogspot.com/2007/04/installing-pypedal-under-debian.html}{how to install PyPedal on Debian Linux}. Fernando Perez posted a \LaTeX preamble to the NumPy listserver that dramatically improved the PDF version of This Manual.
+\PyPedal{} was initially written to support the author's dissertation research while at Louisiana State University, Baton Rouge (\url{http://www.lsu.edu/}).  The initial development was supported in part by a grant from The Seeing Eye, Inc., Morristown, NJ, USA.  It lay fallow for some time but has recently come under active development again.  This is due in part to a request from colleagues at the University of Minnesota that led to the inclusion of new functionality in \PyPedal{}.  The author wishes to thank Paul Van{R}aden for very helpful suggestions for improving the ability of \PyPedal{} to handle certain computations in large pedigrees.  Additional feedback in the form of bug reports, feature requests, and discussion of computing strategies was provided by Dan Cieslak, Bradley J. Heins (University of Minnesota-Twin Cities), Edward H. Hagen (Institute for Theoretical Biology, Humboldt-Universit\"{a}t zu Berlin), Kathy Hanford (University of Nebraska, Lincoln), Thomas Kelly (Department of Animal and Poultry Science, University of Guelph), Thomas von Hassell, Gianluca Saba, and Ken Severin (University of Alaska -- Fairbanks). Gregor Gorjanc has written a blog entry describing \href{http://ggorjan.blogspot.com/2007/04/installing-pypedal-under-debian.html}{how to install PyPedal on Debian Linux}. Fernando Perez posted a \LaTeX preamble to the NumPy listserver that dramatically improved the PDF version of This Manual.
 
 The Newfoundland pedigree presented in Figure \ref{fig:newfoundland-colored-pedigree} was taken from the NewFoundland Dog database (\url{http://www.newfoundlanddog-database.net/en/}) and is used with permission.
 
 The pedigree of European royalty used in the GEDCOM discussion (Appendix \ref{GEDCOM}), \href{http://www.genealogyforum.com/gedcom/gedcom1/ged3.htm}{ged3.ged}, was taken from the Genealogy Forum website (\url{http://www.genealogyforum.com/}). It is believed to be in the public domain, and is used with the knowledge of the website administrators.
 
 \section{Disclaimer}\index{Disclaimer}
-Reference to any commercial product is made with the understanding that no discrimination is intended and no endorsement by USDA is implied.%%% TEXEXPAND: END FILE ./introduction.tex
+Reference to any commercial product is made with the understanding that no discrimination is intended and no endorsement by USDA is implied.
+%%% TEXEXPAND: END FILE ./introduction.tex
 %%% TEXEXPAND: INCLUDED FILE MARKER ./installation.tex
 \chapter{Installing PyPedal}\label{cha:installation}\index{installation}
 \begin{quote}
-This chapter explains how to install and test \PyPedal{} under Posix-type operating systems and Microsoft Windows.
+As we acquire more knowledge, things do not become more comprehensible, but more mysterious. --- Will Durant
 \end{quote}
+This chapter explains how to install and test \PyPedal{} under Posix-type operating systems and Microsoft Windows.
+
 \section{Overview of installation}\label{sec:installation-overview}
-Before we can begin the tutorial, you need install and test Python, Numarray and some other Python extensions, and \PyPedal{} itself. The extensions that you need to install in order to use all of the features of \PyPedal{} are listed in Table \ref{tbl:extensions}.  Note that some extensions need to be installed before others: \module{NumPy} should be installed first, SQLite must be installed before \module{pysqlite}, and \module{pyparsing} and Graphviz must be installed before \module{pydot}.
+Before we can begin the tutorial, you need install and test Python, NumPy and some other Python extensions, and \PyPedal{} itself. \PyPedal{} has been tested against the versions listed in Table \ref{tbl:extensions}, and may not work with earlier releases of those packages. The extensions that you need to install in order to use all of the features of \PyPedal{} are listed in Table \ref{tbl:extensions}.  Note that some extensions need to be installed before others: \module{Numpy} should be installed first, and \module{pyparsing} and Graphviz must be installed before \module{pydot}.
 
-If you do not install one or more optional modules you will still be able to use \PyPedal{}, although some features may not be available to you.  Details on installing the extensions listed above can be found on their respective websites.  All of these extensions are available for Unix-type operating systems (e.g. Linux, Mac OS X) as well as for Microsoft Windows; most sites also provide binary installers for Windows.  Python extensions can usually be installed by unzipping/untaring the archives, entering the folder, and issuing the command \samp{python setup.py install} as a root/administrative user.
-
-Note that Graphviz, NetworkX, PyGraphviz, PythonDoc, ReportLab, and SQLite are not installed by the Enthought Python distribution for Windows.
+If you do not install one or more optional modules you will still be able to use \PyPedal{}, although some features may not be available to you. Details on installing the extensions listed above can be found on their respective websites.  All of these extensions are available for Unix-type operating systems (e.g. Linux, Mac OS X) as well as for Microsoft Windows; most sites also provide binary installers for Windows. Python extensions can usually be installed by unzipping/untaring the archives, entering the folder, and issuing the command \samp{python setup.py install} as a root/administrative user. Note that NetworkX and ReportLab are not installed by the Enthought Python Distribution for Windows. I have found that installations from source on Linux are sometimes tricky, but I have found that Sage (\url{http://www.sagemath.org/index.html}) does a great job of getting clean builds of the trickier pieces, such as Numpy and matplotlib.
 \begin{center}
-    \tablecaption{Third-party extensions used by PyPedal.}
-    \tablefirsthead{\hline Extension & Function & URL \\ \hline}
-    \tablehead{\hline Extension & Function & URL \\ \hline}
-    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablecaption{Packages and compatible versions used by \PyPedal{}.}
+    \tablefirsthead{\hline Extension & Version & Used for... & URL \\ \hline}
+    \tablehead{\hline Extension & Version & Used for... & URL \\ \hline}
+    \tabletail{\hline \multicolumn{4}{l}{\small\sl continued on next page} \\ \hline}
     \tablelasttail{\hline}
     \label{tbl:extensions}
     \index{installation!extensions}
-    \begin{xtabular}{llp{4in}}
-	elementtree & Lightweight XML processing & \url{http://effbot.org/zone/element-index.htm}\\
-	Graphviz & Draw directed graphs & \url{http://www.research.att.com/sw/tools/graphviz/}\\
-	matplotlib & Plotting, matrix visualization & \url{http://matplotlib.sourceforge.net/}\\
-	NetworkX & Network analysis & \url{https://networkx.lanl.gov/}\\
-	NumPy & Array manipulation & \url{http://www.numpy.org/}\\
-	PIL & Image processing & \url{http://effbot.org/zone/pil-index.htm}\\
-	pydot & Interface to Graphviz & \url{http://dkbza.org/pydot.html}\\
-	PyGraphviz & Interface to Graphviz & \url{https://networkx.lanl.gov/wiki/pygraphviz}\\
-	pyparsing & Text parsing & \url{http://pyparsing.sourceforge.net/}\\
-	pysqlite & Interface to SQLite & \url{http://initd.org/tracker/pysqlite}\\
-	PythonDoc & Generate API documentation & \url{http://effbot.org/zone/pythondoc.htm}\\
-	ReportLab & Generate PDF documents & \url{http://www.reportlab.org/}\\
-	SQLite & Lightweight SQL database & \url{http://www.sqlite.org/}\\
-	testoob & Advanced unit testing & \url{http://testoob.sourceforge.net/}\\
+    \begin{xtabular}{lllp{4in}}
+	elementtree &  & Lightweight XML processing & \url{http://effbot.org/zone/element-index.htm}\\
+	Graphviz &  & Draw directed graphs & \url{http://www.research.att.com/sw/tools/graphviz/}\\
+	matplotlib &  & Plotting, matrix visualization & \url{http://matplotlib.sourceforge.net/}\\
+	NetworkX &  & Network analysis & \url{https://networkx.lanl.gov/}\\
+	Numpy &  & Array manipulation & \url{http://www.numpy.org/}\\
+	PIL &  & Image processing & \url{http://effbot.org/zone/pil-index.htm}\\
+	pydot &  & Interface to Graphviz & \url{http://dkbza.org/pydot.html}\\
+	PyGraphviz &  & Interface to Graphviz & \url{https://networkx.lanl.gov/wiki/pygraphviz}\\
+	pyparsing &  & Text parsing & \url{http://pyparsing.sourceforge.net/}\\
+	Python &  & Pretty much everything & \url{http://python.org/}\\
+	ReportLab &  & Generate PDF documents & \url{http://www.reportlab.org/}\\
+	testoob &  & Advanced unit testing & \url{http://testoob.sourceforge.net/}\\
     \end{xtabular}
 \end{center}
+The \PyPedal{} distribution includes a copy of the ADOdb for Python (\url{http://http://phplens.com/lens/adodb/adodb-py-docs.htm/}) database abstraction library. It is installed with \PyPedal{} and does not require a separate installation step.
+
 \section{Testing the Python installation}
 The first step is to install Python 2.4 (or later) if you haven't already done so. Python is available at
-\url{http://sourceforge.net/projects/python/}.  Click on the link corresponding to your platform, and follow the instructions
-presented there. Python can usually be started by typing \samp{python} at the shell (Posix) or double-clicking on the Python interpreter (Windows).  When you start Python you should see a message such as:
+\url{http://sourceforge.net/projects/python/}.  Click on the link corresponding to your platform, and follow the instructions presented there. Python can usually be started by typing \samp{python} at the shell (Posix) or double-clicking on the Python interpreter (Windows).  When you start Python you should see a message like:
 \begin{verbatim}
-Python 2.4 (#1, Feb 25 2005, 12:30:11)
-[GCC 3.3.3] on linux2
+Python 2.5.2 (r252:60911, Apr  8 2008, 21:49:41)
+[GCC 4.2.3 (Ubuntu 4.2.3-2ubuntu7)] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 \end{verbatim}
 If you have problems getting Python to work, contact your local support person or e-mail  \ulink{python-help@python.org}{mailto:python-help@python.org} for help.
-\section{Installing PyPedal}\label{sec:installing-pypedal}
-In order to get \PyPedal{}, visit the official website at \url{http://pypedal.sourceforge.net/}.  Click on the "Sourceforge Page" link, click on the "Download PyPedal" button, and select the latest file release. Files whose names end in ".tar.gz" are source code releases. The other files are binaries for a given platform (if any are available).
 
-The CVS repository on the Sourceforge site is not in synch with the development tree; to get the latest version you should download the source code release.
+\section{Installing PyPedal}\label{sec:installing-pypedal}
+In order to get \PyPedal{}, visit the official website at \url{http://pypedal.sourceforge.net/}. Click on the "Sourceforge Page" link, click on the "Download PyPedal" button, and select the latest file release. Files whose names end in ``.tar.gz'' or ``.zip''are source code releases. The \PyPedal{} installation will not fail if a prerequisite package is not present, but not all \PyPedal{} functionality will be available to you.
+
 \subsection{Installing on Unix, Linux, and Mac OSX}\label{sec:installing-unix}\index{installation!installation on Linux}
 The source distribution should be uncompressed and unpacked as follows (for example):
 \begin{verbatim}
-gunzip pypedal-2.0.0a17.tar.gz
-tar xf pypedal-2.0.0a17.tar.gz
+gunzip pypedal-2.0.0rc4.tar.gz
+tar xf pypedal-2.0.0rc4.tar.gz
 \end{verbatim}
 Follow the instructions in the top-level directory for compilation and installation. Installation is usually as simple as:
 \begin{verbatim}
@@ -331,18 +337,18 @@ python setup.py install
 >>> from PyPedal import <module-name>
 \end{verbatim}
 A complete list of modules is provided in Chapter \ref{cha:api}.
-\subsection{Installing on Windows}\label{sec:installing-windows}\index{installation!installation on Windows}
-To install \PyPedal{}, you need to be logged into an account with Administrator privileges.  As a general rule, always remove any old version of \PyPedal{} before installing the next version.
 
-Please note that \PyPedal{} has been lightly-tested on Windows XP, but I cannot guarantee that it runs without problems on Win-32 platforms!  \PyPedal{} should install and run properly on Win-32 as long as the dependencies listed above are satisfied. \index{installation!installation on Windows!Python Enthought Edition}Enthought provides a Python distribution that is bundled with a number of extras, including most of the dependencies needed to install and run \PyPedal{} in the Windows environment (\url{http://code.enthought.com/enthon/#download}). It is a large download (~120 MB) but greatly simplifies installation. If you use the Enthought distribution you will still need to download and install Graphviz, ReportLab, and SQLite from their respective sites (Table \ref{tbl:extensions}). Graphviz and ReportLab are easy to install. Installation instructions for SQLite are provided below.
+\subsection{Installing on Windows}\label{sec:installing-windows}\index{installation!installation on Windows}
+To install \PyPedal{}, you need to be logged into an account with Administrator privileges.  As a general rule, always remove any old version of \PyPedal{} before installing the current version.
+
+Please note that \PyPedal{} has been lightly-tested on Windows XP, but I cannot guarantee that it runs without problems on Win-32 platforms!  \PyPedal{} should install and run properly on Win-32 as long as the dependencies listed above are satisfied. \index{installation!installation on Windows!Python Enthought Edition}Enthought provides a Python distribution that is bundled with a number of extras, including most of the dependencies needed to install and run \PyPedal{} in the Windows environment (\url{http://enthought.com/products/epd.php}). It is a large download (>100 MB) but greatly simplifies installation. If you use the Enthought distribution you will still need to download and install ReportLab (Table \ref{tbl:extensions}). Please note that the Enthought Python Distribution is free for academic and hobbyist use; if you intend to use it commercially (as part of your business) please pay the license fee or do not use their product. With the exception of \module{PyGraphviz}, which is discussed below, the prerequisite packages are available as Windows installation (.msi) files that can be downloaded and installed individually.
 
 \fixme{There is not yet an easy way to install the \module{PyGraphviz}\index{PyGraphviz} library under Windows. \module{PyGraphviz} is used by some of the graphics routines for rendering pedigrees. Windows users will need to refer to Chapter \ref{cha:graphics} for details on routines which require this module.}
 
 It is possible that the installation may fail with the message \begin{verbatim}error: Download error: (10060, 'Operation timed out')\end{verbatim}. This means that the installer was trying to download a dependency and that operation was unsuccessful. This can usually be remedied by simply running the installer again.
 
-\index{installation!installation on Windows!environment variables}In order to get your installation working correctly you will need to set some environment variables.  Under Windows XP (and 2000) you access those variables by right-clicking on the \emph{My Computer} icon on your desktop, selecting \emph{Properties}, selecting the \emph{Advanced} tab, and clicking the \emph{Environment Variables} button.  First, add \texttt{;C:\textbackslash{}Python24} to the \envvar{PATH} by selecting it in the \emph{System Variables} list and clicking \emph{Edit}.  Next, create a \envvar{PYTHONPATH} environment variable by clicking the \texttt{New} button under \texttt{User Variables}, entering the path to the \PyPedal{} directory in the \texttt{Variable value} field.
+\index{installation!installation on Windows!environment variables}In order to get your installation working correctly you will need to set some environment variables.  Under Windows XP (and 2000) you access those variables by right-clicking on the \emph{My Computer} icon on your desktop, selecting \emph{Properties}, selecting the \emph{Advanced} tab, and clicking the \emph{Environment Variables} button. First, add \texttt{;C:\textbackslash{}Python24} to the \envvar{PATH} by selecting it in the \emph{System Variables} list and clicking \emph{Edit}. Next, create a \envvar{PYTHONPATH} environment variable by clicking the \texttt{New} button under \texttt{User Variables}, entering the path to the \PyPedal{} directory in the \texttt{Variable value} field.
 
-\index{installation!installation on Windows!SQLite}The documentation for SQLite for Windows is kind of vague.  I got it to work by downloading the files \file{sqlite-3_2_7.zip} and \file{sqlitedll-3_2_7.zip} and extracting their contents into \texttt{C:\textbackslash{}Windows}.  Your mileage may vary.
 \subsubsection{Installation from source}\label{sec:installation-from-source}\index{installation!installation from source}
 \begin{enumerate}
 \item Unpack the distribution using an unzipping utility such as 7-Zip (\url{http://www.7-zip.org/}) that understands gzipped-and-tarred files. Once you've done that, open a shell by left-clicking on "Start", selecting "Run", and typing \texttt{cmd} into the box. Navigate to the directory into which you unpacked the \PyPedal{} distributio(this is an example, your file location may vary):
@@ -355,11 +361,12 @@ C:\PyPedal> python setup.py install
 \end{verbatim}
 This installs \PyPedal{} in \texttt{C:\textbackslash{}python24\textbackslash{}site-packages}.
 \end{enumerate}
-\subsubsection{Installation on Cygwin}\label{sec:installation-cygwin}\index{installation!installation on Cygwin}
+
+\subsubsection{Installation on Cygwin} \label{sec:installation-cygwin}\index{installation!installation on Cygwin}
 No information on installing \PyPedal{} on Cygwin is available.  If you manage to get it working, please let me know.
+
 \section{Testing the PyPedal Installation}\label{sec:installation-testing}\index{installation!testing the installation}
-To find out if you have correctly installed \PyPedal{}, type \samp{import PyPedal} at the Python prompt. You'll see one of two
-behaviors (throughout this document user input and Python interpreter output will be emphasized
+To find out if you have correctly installed \PyPedal{}, type \samp{import PyPedal} at the Python prompt. You'll see one of two behaviors (throughout this document user input and Python interpreter output will be emphasized
 as shown in the block below):
 \begin{verbatim}
 >>> import PyPedal
@@ -371,7 +378,7 @@ indicating that you don't have \PyPedal{} installed, or:
 \begin{verbatim}
 >>> import PyPedal
 >>> PyPedal.__version__.version
-'2.0.0b17'
+'2.0.0rc4'
 \end{verbatim}
 indicating that \PyPedal{} is installed.
 %%% TEXEXPAND: END FILE ./installation.tex
@@ -379,7 +386,7 @@ indicating that \PyPedal{} is installed.
 \chapter{High-Level Overview}
 \label{cha:high-level-overview}
 \begin{quote}
-In this chapter, a high-level overview of \PyPedal{} is presented, including key components of the module and concepts used throughout this manual.
+By a small sample we may judge the whole piece. --- Miguel de Cervantes Saavedra
 \end{quote}
 \section{Interacting with PyPedal}
 \label{sec:interacting}
@@ -419,7 +426,7 @@ from PyPedal import  pyp_metrics
 \end{verbatim}
 You should only import modules that you are going to use in your program; you do not need to import every \PyPedal{} module in every program you write.
 
-\PyPedal{} recognizes a number of diffferent options that are used to control its behavior (Section \ref{sec:pypedal-options}).  Before you can load your pedigree into a \PyPedal{} object you must provide a pedigree file name (\samp{pedname}) and a pedigree format string (\samp{pedformat}).  This is done by either creating a Python dictionary and passing it as a parameter when \method{pyp_newclasses.loadPedigree()} is called or by specifying a configuration file\index{configuration file} name.  For example, here is how you would create and populate an options dictionary:
+\PyPedal{} recognizes a number of different options that are used to control its behavior (Section \ref{sec:pypedal-options}).  Before you can load your pedigree into a \PyPedal{} object you must provide a pedigree file name (\samp{pedname}) and a pedigree format string (\samp{pedformat}).  This is done by either creating a Python dictionary and passing it as a parameter when \method{pyp_newclasses.loadPedigree()} is called or by specifying a configuration file\index{configuration file} name.  For example, here is how you would create and populate an options dictionary:
 \begin{verbatim}
 options = {}
 options['messages'] = 'verbose'
@@ -456,7 +463,7 @@ Example programs that demonstrate how to use many of the features of \PyPedal{} 
 \section{Options}
 \label{sec:pypedal-options}
 \index{options}
-Many aspects of \PyPedal{}'s operation can be controlled using a series of options.  A complete list of these options, their defaults, and a brief desription of their purpose is presented in Table \ref{tbl:options}.  Options are stored in a Python dictionary that you must create in your programs.  You must specify values for the \var{pedfile} and \var{pedformat} options; all others are optional.  \var{pedfile} is a string containing the name of the file from which your pedigree will be read.  \var{pedformat} is a string containing a pedigree format code (see section \ref{sec:pedigree-format-codes}) for each column in the datafile in the order in which those columns occur.  The following code fragement demonstrates how options are specified.
+Many aspects of \PyPedal{}'s operation can be controlled using a series of options.  A complete list of these options, their defaults, and a brief description of their purpose is presented in Table \ref{tbl:options}.  Options are stored in a Python dictionary that you must create in your programs.  You must specify values for the \var{pedfile} and \var{pedformat} options; all others are optional.  \var{pedfile} is a string containing the name of the file from which your pedigree will be read.  \var{pedformat} is a string containing a pedigree format code (see section \ref{sec:pedigree-format-codes}) for each column in the datafile in the order in which those columns occur.  The following code fragment demonstrates how options are specified.
 \begin{verbatim}
 options = {}
 options['messages'] = 'verbose'
@@ -501,10 +508,16 @@ All pedigree options other than \var{pedfile} and \var{pedformat} have default v
     \index{options!list}
     \begin{xtabular}{l|l|p{4in}}
 	alleles\_sepchar  & '/'          & The character separating the two alleles in an animal's allelotype. \var{alleles\_sepchar} CANNOT be the same as \var{sepchar}! \\
-	animal\_type  & 'new'           & Indicates which animal class should be used to instantiate animal records, \class{NewAnimal} or \class{LightAnimal} (`new'|`light'). \\
-	counter          & 1000         & How often should \PyPedal{} write a note to the screen when reading large pedigree files. \\
-	database\_name   & 'pypedal'    & The name of the database to be used when using the \module{pyp\_reports} nodule. \\
-	dbtable\_name     & filetag      & The name of the database table to which the current pedigree will be written when using the \module{pyp\_reports} module. \\
+	animal\_type  & 'new'            & Indicates which animal class should be used to instantiate animal records, \class{NewAnimal} or \class{LightAnimal} (`new'|`light'). \\
+	counter          & 1000          & How often should \PyPedal{} write a note to the screen when reading large pedigree files. \\
+	database\_debug  & False         & Toggle debugging messages in the database module on and off. \\
+	database\_host   & 'localhost'   & The server on which the database is running. \\
+	database\_name   & 'pypedal'     & The name of the database to be used. \\
+	database\_passwd & 'anonymous'   & The password needed to connect to your database. \\
+	database\_port   & ''            & The port on which your database is listening for connections (needed only for Postgres). \\
+	database\_table  & 'filetag'     & The name of the database table to which the current pedigree will be written. \\
+	database\_type   & 'sqlite'      & The type of database you are using ('mysql'|'postgres'|'sqlite'). \\
+	database\_user   & 'anonymous'   & The name of a user with access rights to your database.  \\
 	default\_fontsize & 10           & Specifies the default font size used in \module{pyp   \_graphics}. If the font size cannot be cast to an integer, it is set to the default value of 10. Font sizes less than 1 are set to the default of 10. \\
 	default\_report   & filetag      & Default report name for use by \module{pyp\_reports}. \\
 	default\_unit     & 'inch'       & The default unit of measurement for report generation ('cm'|'inch'). \\
@@ -513,20 +526,35 @@ All pedigree options other than \var{pedfile} and \var{pedformat} have default v
 	file\_io         & 1            & When true, routines that can write results to output files will do so and put messages in the program log to that effect. \\
 	filetag          & pedfile      & \var{filetag} is a descriptive label attached to output files created when processing a pedigree.  By default the filetag is based on \var{pedfile}, minus its file extension. \\
 	form\_nrm        & 0            & Indicates whether or not to form a NRM and bind it to the pedigree as an instance of a \class{NewAMatrix} object. \\
+	foundercoi	 & 0		& Tells \function{pyp\_nrm.fast\_a\_matrix()} whether or not to use coefficients of inbreeding from the pedigree to augment the diagonals for founders.\\
 	gen\_coeff       & 0            & When nonzero, calculate generation coefficients using the method of Pattie \citeyear{Pattie1965} and store them in the \member{gen\_coeff} attribute of a \class{NewAnimal} object.  The inferred generation stored in the \member{igen} attribute will be the \member{gen\_coeff} rounded to the nearest 0.5.  When zero, the \member{gen\_coeff} is -999. \\
+	has\_header	 & 0		& When 1, the first row of the pedigree file is converted to a comment because it is a list of column names rather than data. If you are using a configuration file, you \emph{must} enclose the comma in double quotation marks (e.g., \code{has_header = ``,''}). \\
 	log\_long\_filenames & 0        & When nonzero, long logfile names will be used, which means that log file names will include datestamps. \\
 	log\_ped\_lines  & 0            & When $>$ 0 indicates how many lines read from the pedigree file should be printed in the log file for debugging purposes. \\
 	logfile          & filetag.log  & The name of the file to which \PyPedal{} should write messages about its progress. \\
+	match\_rule & 'add' & Default rule used for comparing \class{NewAnimal}s to see if they're identical. \\
+	matrix\_type	 & 'dense'	& Select between dense and sparse matrices.\\
 	messages         & 'verbose'    & How chatty \PyPedal{} should be with respect to messages to the user.  'verbose' indicates that all status messages will be written to STDOUT, while 'quiet' suppresses all output to STDOUT. \\
+	missing\_age & -999 & Default animal age. \\
+	missing\_alive & 0 & Default value for alive-or-dead indicator. \\
+	missing\_alleles & \code{[`'],[`']} & Default allelotype. \\
 	missing\_bdate    & '01011900'   & Default birth date. \\
-	missing\_breed    & 'Unknown'    & Default breed name.\\
-	missing\_byear    & 1900         & Default birth year.\\
-	missing\_name     & 'Unknown'    & Default animal name.\\
+	missing\_breed    & 'Unknown\_Breed'    & Default breed name. \\
+	missing\_byear    & 1900         & Default birth year. \\
+	missing\_gen & -999. & Default generation. \\
+	missing\_gencoeff & -999. & Defailt Pattie's generation coefficient. \\
+	missing\_herd	 & 'Unknown\_Herd'	& Default herd identifier. \\
+	missing \_igen & -999. & Default inferred generation. \\
+	missing\_inbreeding & 0. & Default coefficient of inbreeding. \\
+	missing\_name     & 'Unknown\_Name'    & Default animal name. \\
 	missing\_parent  & 0            & Indicates what code is used to identify missing/unknown parents in the pedigree file. \\
+	missing\_pedcomp & -999. & Default value for pedigree completeness. \\
+	missing\_sex	 & 'u'		& Default sex code. \\
+	missing\_userfield & -999 & Default value for user-provided field. \\
 	newanimal\_caller  & 'loader'   & Internal parameter needed for addanimal() to work correctly with ASD pedigrees. \\
 	nrm\_format      & 'text'       & Format to use when writing an NRM to a file ('text'|'binary'). Array elements in text files are separated by \var{sepchar}.\\
 	nrm\_method      & 'nrm'        & Specifies that an NRM formed from the current pedigree as an instance of a \class{NewAMatrix} object should ('frm') or should not ('nrm') be corrected for parental inbreeding. \\
-	paper_size       & 'letter'     & Default paper size for printed reports ('A4'|'letter'). \\
+	paper\_size       & 'letter'     & Default paper size for printed reports ('A4'|'letter'). \\
 	pedcomp          & 0            & When 1, calculate pedigree completeness using pedcomp\_gens generations of pedigree. \\
 	pedcomp\_gens    & 3            & Number of generations of pedigree to use when calculating pedigree completeness. \\
 	pedfile          & None         & File from which pedigree is read; must provided unless you are simulating a pedigree. Defaults to 'simulated_pedigree' for simulated pedigrees. \\
@@ -534,7 +562,9 @@ All pedigree options other than \var{pedfile} and \var{pedformat} have default v
 	pedname          & 'Untitled'   & A name/title for your pedigree. \\
 	pedgree\_is\_renumbered & 0     & Indicates whether or not the pedigree has been renumbered. \\
 	pedigree\_summary & 1           & Indicates whether or not the pedigree loading details and summary are printed to STDOUT.  Output is only written if \var{message} is set to `verbose'. \\
-	renumber         & 0            & Renumber the pedigree after reading from file (0/1). \\
+	renumber         & 1            & Renumber the pedigree after reading from file (0/1). \\
+	reorder 	 & 0		& Reorder the pedigree after reading from file (0/1). \\
+	reorder\_max\_rounds & 100	& Maximum number of passes to use when reordering the pedigree. \\
 	sepchar          & ' '          & The character separating columns of input in the pedfile. \\
 	set\_ancestors   & 0            & Iterate over the pedigree to assign ancestors lists to parents in the pedigree (0/1). \\
 	set\_alleles     & 0            & Assign alleles for use in gene-drop simulations (0/1). \\
@@ -559,7 +589,7 @@ All pedigree options other than \var{pedfile} and \var{pedformat} have default v
 \subsection{Configuration Files}
 \label{sec:pypedal-options-file}
 \index{configuration files}
-The Dict4Ini\index{Dict4Ini} module (\url{http://cheeseshop.python.org/pypi/Dict4Ini/0.4}) is used to process configuration files, and in included with the distribution so that you do not need to download and install it.  Dict4Ini objects can be addressed as though they are standard Python dictionaries, which made it very easy to add configuration file support to \PyPedal{}.  Configuration files consist of simple \emph{keyword = value} pairs on separate lines\footnote{Please note that the Dict4Ini documentation referrs to sections.  Sections are very commonly used in configuration files, but \PyPedal{} does not use them.}, and may include comments.
+The Dict4Ini\index{Dict4Ini} module (\url{http://cheeseshop.python.org/pypi/Dict4Ini/0.4}) is used to process configuration files, and in included with the distribution so that you do not need to download and install it.  Dict4Ini objects can be addressed as though they are standard Python dictionaries, which made it very easy to add configuration file support to \PyPedal{}.  Configuration files consist of simple \emph{keyword = value} pairs on separate lines\footnote{Please note that the Dict4Ini documentation refers to sections.  Sections are very commonly used in configuration files, but \PyPedal{} does not use them.}, and may include comments.
 \begin{verbatim}
 # new_options.ini
 # This is an example of a PyPedal configuration file.
@@ -615,7 +645,7 @@ options['pedformat'] = 'asd'
 \end{verbatim}
 Please note that the format codes are case-sensitive, which means that \character{a} is considered to be a different code than \character{A}.  The codes currently recognized by \PyPedal{} are listed in Table \ref{tbl:pedigree-format-codes}.
 
-As noted, all pedigrees must contain columns corresponding to animals, sires, and dams, either in the 'asd' or 'ASD' formats (it is not recommended that you mix them such as in 'AsD').  Pedigree codes should be entered in the same order in which the columns occur in the pedigee file.  The character that separates alleles when the 'L' format code is used cannot be the same character used to separate columns in the pedigree file.  If you do use the same character, \PyPedal{} will write an error message to the log file and screen and halt.  The herd column type simply refers to a management group identifier, and can
+As noted, all pedigrees must contain columns corresponding to animals, sires, and dams, either in the 'asd' or 'ASD' formats (it is not recommended that you mix them such as in 'AsD').  Pedigree codes should be entered in the same order in which the columns occur in the pedigree file.  The character that separates alleles when the 'L' format code is used cannot be the same character used to separate columns in the pedigree file.  If you do use the same character, \PyPedal{} will write an error message to the log file and screen and halt.  The herd column type simply refers to a management group identifier, and can
 correspond to a herd, flock, litter, etc.
 
 If you used an earlier version of \PyPedal{} you may have added a pedigree format string, e.g. \texttt{"\% asd"}, to your pedigree file(s).  You no longer need to include that string in your pedigrees, and if \PyPedal{} sees one while reading a pedigree file it will ignore it.
@@ -721,12 +751,13 @@ The basic structure of a simulated pedigree is determined by the total number of
     \label{fig:example-simulated-pedigree}
   \end{center}
 \end{figure}
-\var{simulate\_mp} is a flag indicating whether or not simulated animals may have missing parents. When missing parents are allowed, animals may have no, one, or both parents unknown. The related parameter, \var{simulate\_pmd}, specifies the number of times parents should be sampled at random when trying to satisfy all of the simulation constraints. If parents are sampled \var{simulate\_pmd} times without satisfying the rules in place, both parents are set to missing, even if missing parents are not permitted. Other constraints include allowing/forbidding parent-offspring (\var{simulate\_po}) and/or full sib (\var{simulate\_fs}) matings.%%% TEXEXPAND: END FILE ./overview.tex
+\var{simulate\_mp} is a flag indicating whether or not simulated animals may have missing parents. When missing parents are allowed, animals may have no, one, or both parents unknown. The related parameter, \var{simulate\_pmd}, specifies the number of times parents should be sampled at random when trying to satisfy all of the simulation constraints. If parents are sampled \var{simulate\_pmd} times without satisfying the rules in place, both parents are set to missing, even if missing parents are not permitted. Other constraints include allowing/forbidding parent-offspring (\var{simulate\_po}) and/or full sib (\var{simulate\_fs}) matings.
+%%% TEXEXPAND: END FILE ./overview.tex
 %%% TEXEXPAND: INCLUDED FILE MARKER ./inputoutput.tex
 \chapter{Input and Output}
 \label{cha:inputoutput}
 \begin{quote}
-In this chapter, ways of getting pedigrees into and out of \PyPedal{} are discussed.
+The only legitimate use of a computer is to play games. --- Eugene Jarvis
 \end{quote}
 \section{Overview}\label{sec:io-overview}
 Getting data into and out of programs, while extremely important to end-users, is often challenging. \PyPedal{} is able to load pedigrees from, and save them to, from a number of different sources. A list of supported input and output methods may be found in Table \ref{tbl:io-methods}.
@@ -744,38 +775,21 @@ Getting data into and out of programs, while extremely important to end-users, i
      & graphfile & Load a pedigree from an adjacency list using the read_adjlist() function from the NetworkX module \\
      & simulate & Simulate a pedigree rathen that loading it from a file \\
      & textstream & Load a pedigree from a string contaiing animal records \\
-    Output & save & Save a pedigree to a user-specified file \\
+    Output & save & Save a pedigree with user-specified filenames, pedigree format codes, and separators \\
      & savedb & Save a pedigree to a database table \\
      & savegedcom & Save a pedigree to a GEDCOM 5.5 file \\
+     & savegedcom & Save a pedigree to a GENES 1.20 file (DBASE III format) \\
      & savegraph & Save a pedigree to a file as an adjacency list \\
     \end{xtabular}
 \end{center}
-It has evolved over time that the input methods are implemented as cases of \samp{pedsource} in the \method{NewPedigree::load()} method, while output methods are implemented as individual methods of \method{NewPedigree}. While it is quite straightforward to add new methods for pedigree output, it is trickier to add new input sources. The greater difficulty in adding new input sources is largely attributable to the mysterious workings of the \method{NewPedigree::preprocess()} method, which walks through input line-by-line to load the pedigree and perform a number of integrity checks. Once the data are loaded into a \method{NewPedigree} object it is easy to output them because there is no need to check the integrity of the pedigree and relationships among the records in the pedigree. If you want to implement a new input source the sanity-saving way to go is to get the data into a list that you can pass to \method{preprocess()}; \method{preprocess()} can then walk the list as it would walk through the  lines of an input file.
+It has evolved over time that the input methods are implemented as cases of \samp{pedsource} in the \method{NewPedigree::load()} method, while output methods are implemented as individual methods of \method{NewPedigree}. While it is quite straightforward to add new methods for pedigree output, it is trickier to add new input sources. The greater difficulty in adding new input sources is largely attributable to the mysterious workings of the \method{NewPedigree::preprocess()} method, which walks through input line-by-line to load the pedigree and perform a number of integrity checks. Once the data are loaded into a \method{NewPedigree} object it is easy to output them because there is no need to check the integrity of the pedigree and relationships among the records in the pedigree. If you want to implement a new input source the sanity-saving way to go is to get the data into a list that you can pass to \method{preprocess()}; \method{preprocess()} can then walk the list as it would walk through the lines of an input file.
+
+Database operations are discussed in their own section at the end of this chapter.
 
 \section{Input}\label{sec:io-input}\index{input}
 The process of data input hsa been made as simple as is reasonably possible, but it is ultimately the responsibility of the user to prepare their data. Most people will load their data from a simple text file, with one pedigree entry per line. \index{input!integrity checks}A number of pedigree integrity checks are performed when the data are loaded. First, the pedigree format string (Section \ref{sec:pedigree-format-codes}) is checked for validity and compared to a line of data to make sure that the specfied number of colums of data exist. Once that check is passed individual records are loaded and checked one at a time. As individual records are vvalidated they are added to the pedigree. Duplicate records are eliminated, parents that appear in the pedigree but do not have their own record in the inpur data are added to the pedigree, and sexes are checked (animals cannot appear as both sires and dams). If animal IDs are strings they are hashed to get numeric IDs for use in pedigree reordering and renumbering.
 
 If you used an earlier version of \PyPedal{} you may have added a pedigree format string to your pedigree file. You do not need to include that string in the current version of \PyPedal{}, and if \method{preprocess()} sees one while reading a pedigree file it will ignore it. You may include comment lines in your file as well; they will also be ignored.
-
-\subsection{Databases}\label{sec:io-input-database}\index{input!databases}
-\PyPedal{} can load ASDx-formatted pedigrees from an SQLite database using \samp{pedsource='db'}. The pedigree will be loaded from the database and table specified in the \var{database\_name} and \var{dbtable\_name} variables. Consider the following example:
-\begin{verbatim}
-test = pyp_newclasses.loadPedigree(options,pedsource='db')
-test.metadata.printme()
-\end{verbatim}
-This produces the output:
-\begin{verbatim}
-Metadata for  DB Stream ()
-    Records:                7
-    Unique Sires:           3
-    Unique Dams:            3
-    Unique Gens:            1
-    Unique Years:           1
-    Unique Founders:        4
-    Unique Herds:           1
-    Pedigree Code:          ASDx
-\end{verbatim}
-Note that user-supplied values of the pedigree format string will be over-written by the \method{load()} method and do not affect database processing. Database importation is hard-coded to accept only pedigrees in that format.
 
 \subsection{Graph Objects}\label{sec:io-input-xdigraph}\index{input!graph objects}
 Pedigrees can be represented as a type of mathematical object called a directed graph (digraph; not to be confused with visualizations of data). The \class{NetworkX} module provides Python tools for working with digraphs, and \PyPedal{} provides a convenient way for loading a pedigree from an instance of an \class{{XD}i{G}raph} object.
@@ -804,6 +818,9 @@ When considering the utility of such tools it might be helpful to recall that \P
 
 \subsection{{GEDCOM} Files}\label{sec:io-input-gedcom}\index{input!GEDCOM files}
 A thorough description of support for {GEDCOM} files may be found in Appendix \ref{GEDCOM}.
+
+\subsection{{GENES} Files}\label{sec:io-input-genes}\index{input!GENES files}
+A thorough description of support for {GENES} files may be found in Appendix \ref{GENES}.
 
 \subsection{Text Files}\label{sec:io-input-text-files}\index{input!text files}
 Most users will load their pedigrees from simple text files. As an example, consider a large dog pedigree, an excerpt of which is presented below.
@@ -843,18 +860,11 @@ Only ASD-formatted pedigrees can be loaded this way, individual IDs are separate
 The expected use case is that the pedigree would be retrieved from a database, and the result set from the SQL query converted into a string. There is an upper bound on the size of pedigree that can be loaded from a stream based on the physical memory available on your platform, and extremely large pedigrees should be loaded from a text file. 
 
 \section{Output}\label{sec:io-output}\index{output}
-
-\subsection{Databases}\label{sec:io-output-database}\index{output!databases}
-\PyPedal{} can write \class{NewPedigree} pedigrees to ASDx-formatted SQLite tables using the \method{NewPedigree::savedb()} method. The following program will result in the creation of a table named \samp{test\_save} in the database \samp{test\_pypedal\_save}.
-\begin{verbatim}
-test.kw['database_name'] = 'test_pypedal_save'
-test.kw['dbtable_name'] = 'test_save'
-test.savedb()
-\end{verbatim}
-The pedigree is saved to the database and table specified in the \var{database\_name} and \var{dbtable\_name} variables. If the specified table already exists it will be dropped and a new table created. This can result in data loss! Please be careful.
-
 \subsection{{GEDCOM} Files}\label{sec:io-output-gedcom}\index{output!GEDCOM files}
 A thorough description of {GEDCOM} file exportation may be found in Appendix \ref{GEDCOM}.
+
+\subsection{{GENES} Files}\label{sec:io-output-genes}\index{output!GENES files}
+A thorough description of {GENES} file exportation may be found in Appendix \ref{GENES}.
 
 \subsection{Graph Objects}\label{sec:io-output-xdigraph}\index{output!graph objects}
 The \method{NewPedigree::savegraph()} save a pedigree to a file as an adjacency list, which is a commonly-used format for describing digraphs. If the pedigree has already been converted to a digraph pass it using the \var{pedgraph} argument; otherwise, the method will call the appropriate converter:
@@ -877,18 +887,691 @@ The file \samp{test.adj} has the following comments:
 This example demonstrates that there can be a considerable loss of information when going from a \PyPedal{} pedigree to some other way of representing the pedigree, such as a graph.
 
 \subsection{Text Files}\label{sec:io-output-text-files}\index{output!text files}
-The \method{NewPedigree::save()} method writes a \PyPedal{} pedigree to a user-specified file with either the format specified in the pedigree format string (default) or a format including all variables in the pedigree (\samp{outformat='l'}). Either the original (default) or renumbered (\samp{idformat='r'}) IDs can be used for animal, sire, and dam IDs. In the following example all variables are written to a file named \samp{all\_data.ped} using the same IDs as in the original file:
+The \method{NewPedigree::save()} method writes a \PyPedal{} pedigree to a user-specified file based on a pedigree format string and optional column separator provided by the user. By default, the pedformat is \samp{asd} and the sepchar is \samp{ }. Any attribute of a \method{NewAnimal} object can be written to an output file.
+
+\method{NewPedigree::save()} tries never to overwrite your data. If you do not pass a filename argument a file whose name is derived from, but not the same as, the original pedigree filename will be used. The string \samp{\_saved} will be appended to the filename in order to distinguish it from the original pedigree file.
+
+There are a few points that you need to be aware of when using \method{NewPedigree::save()}. First, you may use any column separator you choose but the empty string
+(\texttt{sepchar=''}); if you try and do this the sepchar will be changed to the global default (currently \samp{ }), and a message written to the log. That means
+that there is no way for you to run all of the columns in your pedigree file together such that they cannot easily be separated. Sorry.  You can use anoy other string
+you like to separate your columns (spaces, columns, and tabs have been tested).It IS possible to write an
+incomplete pedigree file, that is, a file which does not include animal, sire, and dam information. \PyPedal{} checks the pedformat to see if it contains either
+\texttt{'asd'} or \texttt{'ASD'} and warns you if it does not, but it will happily write the file you tell it to. The burden is on you, the user, to make sure that
+your output file contains all of the information you want. Finally, you can write whatever attribute you like to whichever column you like in the output file. For the
+sake of your sanity I strongly recommend that you always place the animal, sire, and dam IDs in the first three columns, but you're an adult and may do what you like.
+
+Maybe a couple of examples will help clear that up. Here's the simplest case, taking defaults:
 \begin{verbatim}
-test.save(filename='all_data.ped',outformat='l',idformat='o')
+test.save('test_save_asd.ped')
 \end{verbatim}
-\method{NewPedigree::save()} tries never to overwrite your data. If you do not pass a filename argument a file whose name is derived from, but not the same as, the original pedigree filename will be used. The string \samp{\_saved} will be appended to the filename in order to distinguish it from the original pedigree file.%%% TEXEXPAND: END FILE ./inputoutput.tex
+gets you the result:
+\begin{verbatim}
+# test_save_asd.ped created by PyPedal at Tue Sep 28 16:39:36 2010
+# Current pedigree metadata:
+#       pedigree file: test_save_asd.ped
+#       pedigree name: Untitled
+#       pedigree format: asd
+#       NOTE: Animal, sire, and dam IDs are RENUMBERED IDs, not original IDs!
+# Original pedigree metadata:
+#       pedigree file: ../simulated_pedigree.ped
+#       pedigree name: Untitled
+#       pedigree format: asdxg
+1 0 0
+2 0 0
+3 0 0
+4 0 0
+5 0 0
+...
+21 19 10
+22 9 12
+23 1 10
+24 1 21
+25 13 8
+\end{verbatim}
+Note the friendly header to tell you what you've got and from where it came. The note about renumbere IDs is particularly important -- if
+the \texttt{pedigree\_is\_renumbered} flag is set then you will get this message to alert you that comparing this file against your original
+source file may give conflicting results. Well, they're not really conflicting, but if you compare renumbered with not-renumbered IDs the
+you may assume there's some kind of problem when really there is not. Original and renumbered pedigrees are mathematically equivalent assuming
+that there were no errors in the original file that were corrected by \PyPedal{}. Isn't that reassuring? From here on out I will not show the
+header, and will include only the first five data rows in the file for the sake of brevity (like I've ever let that stop me before). You can get
+the same thing as a CSV using the sepchar argument:
+\begin{verbatim}
+test.save('test_save_asd_csv.ped', sepchar=',')
+\end{verbatim}
+which produces:
+\begin{verbatim}
+1,0,0
+2,0,0
+3,0,0
+4,0,0
+5,0,0
+...
+\end{verbatim}
+Sometimes you want to go all the way and dump everything into a file. This is like one of those pizzas with every variety of cured meat known to
+food science piled up on top. Here you go:
+\begin{verbatim}
+test.save('test_save_combo_all.ped', pedformat = 'asdgxbfrnylepASDLhHu')
+\end{verbatim}
+which gives you what you asked for, even if many of the values are not particularly interesting:
+\begin{verbatim}
+1 0 0 0 m 01011900 0.0 Unknown_Breed 7 1900 0 -999 -999.0 7 Unknown_Name Unknown_Name ['1900000000000000071__1', '1900000000000000071__2'] 57361b5fd9993f00437fbe4c4675feca Unknown_Herd
+2 0 0 0 m 01011900 0.0 Unknown_Breed 6 1900 0 -999 -999.0 6 Unknown_Name Unknown_Name ['1900000000000000061__1', '1900000000000000061__2'] 57361b5fd9993f00437fbe4c4675feca Unknown_Herd
+3 0 0 0 m 01011900 0.0 Unknown_Breed 5 1900 0 -999 -999.0 5 Unknown_Name Unknown_Name ['1900000000000000051__1', '1900000000000000051__2'] 57361b5fd9993f00437fbe4c4675feca Unknown_Herd
+4 0 0 0 f 01011900 0.0 Unknown_Breed 3 1900 0 -999 -999.0 3 Unknown_Name Unknown_Name ['1900000000000000031__1', '1900000000000000031__2'] 57361b5fd9993f00437fbe4c4675feca Unknown_Herd
+5 0 0 0 f 01011900 0.0 Unknown_Breed 2 1900 0 -999 -999.0 2 Unknown_Name Unknown_Name ['1900000000000000021__1', '1900000000000000021__2'] 57361b5fd9993f00437fbe4c4675feca Unknown_Herd
+...
+\end{verbatim}
+Okay, I get it. You're like the Nigel Tufnel of Missouri -- you want to see something that goes to 11. I pondered this for a while. You've read this far
+and deserve to be rewarded. So I tried to think of the most awesomest thing that I could think of. So here you go, LSU fans, straight from Death Valley
+by way of Beltsville, MD:
+\begin{verbatim}
+test.save('test_save_peterson.ped', pedformat = 'asd', sepchar = '...Kneel before Zod!...'
+\end{verbatim}
+Maybe Patrick Peterson is really into genealogy -- you never know -- stop looking at me like that! This is a perfectly cromulent example of the extremes to
+which the sepchar argument can be pushed:
+\begin{verbatim}
+1...Kneel before Zod!...0...Kneel before Zod!...0
+2...Kneel before Zod!...0...Kneel before Zod!...0
+3...Kneel before Zod!...0...Kneel before Zod!...0
+4...Kneel before Zod!...0...Kneel before Zod!...0
+5...Kneel before Zod!...0...Kneel before Zod!...0
+...
+\end{verbatim}
+You're thinking, "My eyes! Why would he do that?!" The same reason Zod gave us a little Heisman pose in the end zone after returning a West Virginia kickoff for 6 --
+because I can. (This kind of writing is probably going to get me in trouble one day, but the boss is out of town and there's no one here to rein-in my behavior!) Wait,
+though. It gets better. \PyPedal{} can get all Ourboros on this unholy creation:
+\begin{verbatim}
+# But, wait, can this actually work?
+options2 = options
+options2['pedfile'] = 'test_save_peterson.ped'
+options2['sepchar'] = '...Kneel before Zod!...'
+options2['pedformat'] = 'asd'
+test2 = pyp_newclasses.loadPedigree(options2)
+\end{verbatim}
+When you run this bit of code you see that it poses no problem at all for \PyPedal{}. Perhaps political dissidents can communicate secretly by doing strange things
+with \var{sepchar}, although it's more likely that PhD students will find a clever way to abuse MS students with it, instead.
+\begin{verbatim}
+[INFO]: Logfile untitled_pedigree.log instantiated.
+[INFO]: Preprocessing test_save_peterson.ped
+[INFO]: Opening pedigree file test_save_peterson.ped
+        [INFO]: Renumbering pedigree at Wed Sep 29 13:42:05 2010
+                [INFO]: Reordering pedigree at Wed Sep 29 13:42:05 2010
+                [INFO]: Renumbering at Wed Sep 29 13:42:05 2010
+                [INFO]: Updating ID map at Wed Sep 29 13:42:05 2010
+        [INFO]: Assigning offspring at Wed Sep 29 13:42:05 2010
+[INFO]: Creating pedigree metadata object
+        [INFO]:  Instantiating a new PedigreeMetadata() object...
+        [INFO]:  Naming the Pedigree()...
+        [INFO]:  Assigning a filename...
+        [INFO]:  Attaching a pedigree...
+        [INFO]:  Setting the pedcode...
+        [INFO]:  Counting the number of animals in the pedigree...
+        [INFO]:  Counting and finding unique sires...
+        [INFO]:  Counting and finding unique dams...
+        [INFO]:  Setting renumbered flag...
+        [INFO]:  Counting and finding unique generations...
+        [INFO]:  Counting and finding unique birthyears...
+        [INFO]:  Counting and finding unique founders...
+        [INFO]:  Counting and finding unique herds...
+        [INFO]:  Detaching pedigree...
+Metadata for Untitled (test_save_peterson.ped)
+        Records:                25
+        Unique Sires:           7
+        Unique Dams:            7
+        Unique Gens:            1
+        Unique Years:           1
+        Unique Founders:        6
+        Unique Herds:           1
+        Pedigree Code:          asd
+\end{verbatim}
+How's that for the strangest thing you're likely to see all day? I'm not suggesting that you seriously use column separators the way I just did, but this
+example does show that you can do some unusual things with \PyPedal{}, and perhaps you will come up with something very useful because of that flexibility.
+If nothing else, you now have a greater appreciation of what you can do with a dynamic language and questionable processing of user inputs. Remember, never
+trust any data a user gives you. They're a shifty lot, users.
+
+\subsection{Text Streams}\label{sec:io-output-text-streams}\index{output!text streams}
+\method{NewPedigree::tostream()} returns a text stream from an instance of a \class{NewPedigree} object. The text stream contains an ASD-formatted pedigree as a string in which individual IDs are separated by commas and successive records are separated by newlines.
+\begin{verbatim}
+>>> pedstream = 'a1,s1,d1\na2,s2,d2\na3,a1,a2\n'
+>>> test = pyp_newclasses.loadPedigree(options,pedsource='textstream',pedstream=pedstream)
+>>> pedstream2 = test.tostream()
+>>> print pedstream2
+'d1,0,0\nd2,0,0\ns1,0,0\ns2,0,0\na2,s2,d2\na1,s1,d1\na3,a1,a2\n'
+\end{verbatim}
+Note that in this example the input and output text streams differ because the input stream did not include pedigree entries for all animals in the pedigree (for example, sire \samp{s1}). Recall that \PyPedal{} adds missing entries for parents when the pedigree is loaded.
+
+\section{Databases}\label{sec:io-databases}\index{databases}
+\PyPedal{} is able to load pedigrees from, and save them to, three databases:
+\href{http://www.mysql.com/}{MySQL}, \href{http://www.postgresql.org/}{Postgres},
+and \href{http://sqlite.org/}{SQLite}. \PyPedal{} uses the 
+\href{http://phplens.com/lens/adodb/adodb-py-docs.htm}{ADOdb for Python} database
+abstraction tool, which is distributed with \PyPedal{} to talk to these databases.
+Additional databases are supported by ADOdb and require only minor changes to the
+connection strings in the \function{connectToDatabase} function in the \module{pyp_db}
+module in order to work with \PyPedal{} as well.
+
+A list of the database-related keywords may be found in Table \ref{tbl:db-parms}.
+\begin{center}
+    \tablecaption{Database parameters.}
+    \tablefirsthead{\hline Parameter & Default & Description \\ \hline}
+    \tablehead{\hline Parameter & Default & Description \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:db-parms}
+    \begin{xtabular}{l|p{1in}|p{3in}}
+    database\_debug & False & Toggle debugging messages in the database module on and off. \\
+    database\_host & 'localhost' & The server on which the database is running. \\
+    database\_name & 'pypedal' & The name of the database to be used. \\
+    database\_passwd & 'anonymous' & The password needed to connect to your database. \\
+    database\_port & '' & The port on which your databse is listening for connections (needed only for Postgres). \\
+    database\_table & 'filetag' (See: Table \ref{tbl:options}) & The name of the database table to which the current pedigree will be written. \\
+    database\_type & 'sqlite' & The type of database you are using ('mysql'|'postgres'|'sqlite'). \\
+    database\_user & 'anonymous' & The name of a user with access rights to your database.  \\
+    \end{xtabular}
+\end{center}
+
+\subsection{Input from Databases}\label{sec:io-input-database}\index{input!databases}
+\PyPedal{} can load ASDx-formatted pedigrees from an SQLite database using \samp{pedsource='db'}. The pedigree will be loaded from the database and table specified in the \var{database\_name} and \var{dbtable\_name} variables. Consider the following example:
+\begin{verbatim}
+test = pyp_newclasses.loadPedigree(options,pedsource='db')
+test.metadata.printme()
+\end{verbatim}
+This produces the output:
+\begin{verbatim}
+Metadata for  DB Stream ()
+    Records:                7
+    Unique Sires:           3
+    Unique Dams:            3
+    Unique Gens:            1
+    Unique Years:           1
+    Unique Founders:        4
+    Unique Herds:           1
+    Pedigree Code:          ASDx
+\end{verbatim}
+Note that user-supplied values of the pedigree format string will be over-written by the \method{load()} method and do not affect database processing. Database importation is hard-coded to accept only pedigrees in that format.
+
+\index{databases!new input sources}It is possible to load pedigrees from a databse with a format different than that exected by \PyPedal{}, but it requires that you make changes to the \class{NewPedigree} class's \method{load} method. Consider the database-loading code that is located at about line 250 of \texttt{pyp_newclasses.py}:
+\begin{verbatim}
+251  elif pedsource == 'db':
+252      self.kw['pedformat'] = 'ASDx'
+253      self.kw['sepchar'] = ','
+...
+259      try:
+260          # Connect to the database
+261          if pyp_db.doesTableExist(self):
+262            conn = pyp_db.connectToDatabase(self)
+263              if conn:
+264                  sql = 'SELECT * FROM %s' % ( self.kw['database_table'] )
+265                  dbstream = conn.GetAll(sql)
+\end{verbatim}
+In order to load data from your own database you must change the pedigree format string
+on line 252 to match the pedigree you want to load (see Table
+\ref{tbl:pedigree-format-codes} for a list of pedigree format codes). You then need to
+change the SQL statement on line 264 to match the column names in your database and the
+order of fields in your pedigree format string. The animal, sire, and dam IDs,
+respectively, should always  be the first three columns in your records. The query
+results are stored as a list of tuples in \var{dbstream} and will be unpacked in the
+\method{preprocess} method (\textit{cf.} line 864).
+
+Please note that while I will try and answer questions about the way in which \PyPedal{}
+handles loading pedigrees from databases, I cannot answer detailed questions about 
+databases to which I do not ave access. You should carefully test your custom queries in
+SQL to ensure that they are working correctly before adding them to \PyPedal{}. Also,
+please check your pedigree format string to make sure that it matches your query.
+
+\subsection{Output to Databases}\label{sec:io-output-database}\index{output!databases}
+\PyPedal{} can write \class{NewPedigree} pedigrees to ASDx-formatted SQLite tables using the \method{NewPedigree::savedb()} method. The following program will result in the creation of a table named \samp{test\_save} in the database \samp{test\_pypedal\_save}.
+\begin{verbatim}
+test.kw['database_name'] = 'test_pypedal_save'
+test.kw['dbtable_name'] = 'test_save'
+test.savedb()
+\end{verbatim}
+The pedigree is saved to the database and table specified in the \var{database\_name} and \var{dbtable\_name} variables. If the specified table already exists then the records from the current pedigree will be added to the table. If you want to overwrite the existing database then you need to pass \samp{drop=True} in the call to method{savedb}:
+\begin{verbatim}
+test.savedb(drop=True)
+\end{verbatim}
+While this may strike some users as unexpected behavior it is based on the idea that you should never lose data unexpectedly. If you use only the defaults you will never lose data. However, if you try and save a renumbered pedigree on top of another renumbered pedigree you will run into problems because animal IDs are used as primary keys, and you will have constraint violations.
+
+\index{databases!new output destinations}It is possible to save pedigrees to a databse
+with a format different than that exected by \PyPedal{}, but it is a little harder than
+changeing pedigree input. Changing the output table requires that you change the
+\class{NewPedigree} class's \method{savesb} method. Consider the code that begins on or
+about line 590 of \texttt{pyp_newclasses.py} in \method{savesb}:
+\begin{verbatim}
+591  sql = 'create table %s ( \
+592      animalName   varchar(128) primary key, \
+593      sireName     varchar(128), \
+594      damName      varchar(128), \
+595      sex          char(1) \
+596      );' % ( self.kw['database_table'] )
+\end{verbatim}
+You need to rewrite this statement to add or remove columns; the SQL for a tavble that 
+includes all fields in a \class{NewAnimal} object may be found in the 
+\function{createPedigreeTable} function of the \module{pyp\_db module}. Note that not 
+every field in a \class{NewAnimal} object has a corresponding pedigree format code. 
+Consult Table \ref{sec:pedigree-format-codes} for appropriate codes.
+
+Once you've updated the SQL used to create your custom pedigree table you will also need to change the code which prepares the input for writing to the database. This code is found on or about about line 617 in \method{savesb}:
+\begin{verbatim}
+617  sql = "INSERT INTO %s ( animalName, sireName, damName, sex ) VALUES ('%s', '%s', '%s', '%s')" % ( self.kw['database_table'], an, si, da, p.sex )
+\end{verbatim}
+Note that you will need to make appropriate casts yourself. For example, you will want 
+to cast things that are stored as integers or reals to make sure that you don't violate 
+a column constraint. You must enclose strings in single-quotation marks ('') yourself. 
+
+By default \PyPedal{} saves pedigrees in \samp{ASD} format. If you want to save your pedigree in \samp{asd} format then you will need to change the code on or about line 610 from:
+\begin{verbatim}
+610  an = p.name
+611  si = p.sireName
+612  da = p.damName
+\end{verbatim}
+to:
+\begin{verbatim}
+610  an = p.animalID
+611  si = p.sireID
+612  da = p.damID
+\end{verbatim}
+It is better to add a new method supporting your output format to \class{NewAnimal}   rather than changing the \method{savedb} method.
+%%% TEXEXPAND: END FILE ./inputoutput.tex
+%%% TEXEXPAND: INCLUDED FILE MARKER ./calculations.tex
+\chapter{Working with Pedigrees}
+\label{cha:computing}
+\begin{quote}
+ Are you quite sure that all those bells and whistles, all those wonderful facilities of your so called powerful programming languages, belong to the solution set rather than the problem set? --- Edsger Dijkstra
+\end{quote}
+\section{Overview}\label{sec:computing-overview}\index{working with pedigrees}
+In Chapter \ref{cha:inputoutput} you learned how to get your pedigree data loaded into \PyPedal{}. This chapter will show you what you can do with the pedigree once it is loaded. The examples in this chapter assumes that you are working with a reordered and renumbered pedigree (see Section \ref{sec:methodology-reordering-and-renumbering} for additional details).
+
+In order to get the most out of your pedigrees you need to understand the basic structure of a \PyPedal{} pedigree, which consists of two components: the pedigree itself, which is composed of a list of \class{NewAnimal} objects, and metadata, which is data about the animals contained in the pedigree. Some calculations are performed on the animal records directly, while others use the metadata, or some combination of the two. The fundamental goal of \PyPedal{} is to provide the user with tools for asking questions about their pedigrees.
+
+The following discussion will use the following pedigree taken from Boichard et al. \citeyear{ref352}:
+\begin{verbatim}
+# pedformat: asdg
+1 0 0 1
+2 0 0 1
+3 0 0 1
+4 0 0 1
+5 1 2 2
+6 3 4 2
+7 5 6 3
+8 5 6 3
+9 5 6 3
+10 5 6 3
+11 5 6 3
+12 5 6 3
+13 5 6 3
+14 5 6 3
+\end{verbatim}
+Many of the subsequent code snippets are taken from the \samp{new\_methods.py} example program (see: Appendix \ref{cha:example-programs}). 
+
+\section{Inbreeding and Relationships}\label{sec:computing-inbreeding}\index{working with pedigrees!inbreeding and relationships}
+
+\begin{verbatim}
+inbr = pyp_nrm.inbreeding(example)
+print 'inbr: ', 
+>>> inbr:  {
+    'fx': {1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0,
+        8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0},
+    'metadata': {
+        'nonzero': {'f_max': 0.0, 'f_avg': 0.0, 'f_rng': 0.0,
+            'f_sum': 0.0, 'f_min': 0.0, 'f_count': 0},
+        'all': {'f_max': 0.0, 'f_avg': 0.0, 'f_rng': 0.0, 'f_sum': 0.0,
+            'f_min': 0.0, 'f_count': 14}
+        }
+    }
+\end{verbatim}
+The dictionary returned by \function{inbreeding()} contains two dictionaries: \samp{fx} contains coefficients of inbreeding keyes to animal IDs, and \samp{metadata} contains summary information about the coefficients of inbreeding in the pedigree. \samp{metadata} also contains two dictionaries: \samp{nonzero} contains summary statostics only for animals with non-zero coefficients of inbreeding, and \samp{all} contains statistics for all animals.
+
+Relationship metadata, similar to the inbreeding metadata described above but for coefficients of relationship, are available but not calculated by default. 
+\begin{verbatim}
+inbr,reln = pyp_nrm.inbreeding(example,rels=1)
+print 'reln: ', reln
+>>> reln:  {'r_nonzero_count': 10, 'r_nonzero_avg': 0.40000000000000002,
+    'r_min': 0.25, 'r_sum': 4.0, 'r_avg': 0.19047619047619047, 'r_max': 0.5,
+    'r_count': 21, 'r_rng': 0.25}
+\end{verbatim}
+The dictionary of relationship metadata returned by \function{inbreeding()} also contains statistics for zero and non-zero coefficients of relationship. On the example presented above the pedigree contains 
+
+Relationship metadata are not guaranteed to be correct when \samp{method = 'vanraden'} is used. This is because \function{inbreeding_vanraden()} uses a speed-up when there are full-sibs in the pedigree to avoid repeating calculations. The metadata should be reasonably accurate for pedigrees with few or no full-sibs. The summary statistics will not be very accurate in the case of pedigrees that contain lots of full-sibs.
+
+The relationship metadata do not include individual pairwise relationships. In order to associate those with your pedigree you must create a \class{NewAMatrix} object, form the numerator relationship matrix (NRM), and attach it to the pedigree:
+\begin{verbatim}
+options = {}
+...
+example = pyp_newclasses.loadPedigree(options)
+example.nrm = pyp_newclasses.NewAMatrix(example.kw)
+example.nrm.form_a_matrix(example.pedigree)
+\end{verbatim}
+If you know when you load the pedigree file  that you want to calculate and store the NRM you can save a little typing by setting the \samp{form\_nrm} option:
+\begin{verbatim}
+options = {}
+options['form_nrm'] = 1
+...
+example = pyp_newclasses.loadPedigree(options)
+\end{verbatim}
+If you want to inspect the NRM you can use \samp{example.nrm.printme()} to print the matrix to the screen, which is probably not a particularly good idea for large matrices.
+\begin{verbatim}
+[[ 1.   0.   0.   0.   0.5  0.   0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25]
+ [ 0.   1.   0.   0.   0.5  0.   0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25]
+ [ 0.   0.   1.   0.   0.   0.5  0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25]
+ [ 0.   0.   0.   1.   0.   0.5  0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25]
+ [ 0.5  0.5  0.   0.   1.   0.   0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5 ]
+ [ 0.   0.   0.5  0.5  0.   1.   0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  1.   0.5  0.5  0.5  0.5  0.5  0.5  0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  1.   0.5  0.5  0.5  0.5  0.5  0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  1.   0.5  0.5  0.5  0.5  0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  0.5  1.   0.5  0.5  0.5  0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  0.5  0.5  1.   0.5  0.5  0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  0.5  0.5  0.5  1.   0.5  0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5  1.   0.5 ]
+ [ 0.25 0.25 0.25 0.25 0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5  1.  ]]
+\end{verbatim}
+If you want to get the pairwise relationship between two animals you need to use their renumbered IDs and subtract 1 (because the array is zero-indexed). For example, if you wanted the coefficient of relationship between animals 2 and 5 (an individual and its sire) you would use the indices \samp{1} and \samp{4}:
+\begin{verbatim}
+print example.nrm.nrm[1][4]
+>>> 0.5
+\end{verbatim}
+The NRM is symmetric, which means that \samp{nrm{[1]}{[4]}} and \samp{nrm{[4]}{[1]}} are identical.
+\begin{verbatim}
+print example.nrm.nrm[1][4]
+>>> 0.5
+print example.nrm.nrm[5][1]
+>>> 0.5
+\end{verbatim}
+You can also easily save the NRM to a file for future reference:
+\begin{verbatim}
+example.nrm.save('Amatrix.txt')
+\end{verbatim}
+If you're from Missouri you can verify that the contents of \samp{Amatrix.txt} are:
+\begin{verbatim}
+1.0  0.0  0.0  0.0  0.5 0.0 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25
+0.0  1.0  0.0  0.0  0.5 0.0 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25
+0.0  0.0  1.0  0.0  0.0 0.5 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25
+0.0  0.0  0.0  1.0  0.0 0.5 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25
+0.5  0.5  0.0  0.0  1.0 0.0 0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5
+0.0  0.0  0.5  0.5  0.0 1.0 0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 1.0  0.5  0.5  0.5  0.5  0.5  0.5  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 0.5  1.0  0.5  0.5  0.5  0.5  0.5  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  1.0  0.5  0.5  0.5  0.5  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  0.5  1.0  0.5  0.5  0.5  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  0.5  0.5  1.0  0.5  0.5  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  0.5  0.5  0.5  1.0  0.5  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  0.5  0.5  0.5  0.5  1.0  0.5
+0.25 0.25 0.25 0.25 0.5 0.5 0.5  0.5  0.5  0.5  0.5  0.5  0.5  1.0
+\end{verbatim}
+Information on the endianness and precision of the data in the array are lost, so this is not a good way to archive data or move data between machines with different endianness. The data are always written in C (row major) order. For better performance you can set the \samp{nrm\_format} option to \samp{binary}, which will use a binary file form.
+
+Finally, if you're going to work on the exact same pedigree later you can load \samp{Amatrix.txt} and avoid having to recalculate the NRM entirely:
+\begin{verbatim}
+example.nrm2 = pyp_newclasses.NewAMatrix(example.kw)
+example.nrm2.load('Amatrix.txt')
+example.nrm2.printme()
+\end{verbatim}
+Since we've loaded \samp{Amatrix.txt} into a second NRM (\samp{nrm2}) attached to our pedigree it's straightforward, if tedious, to verify that the two NRM contain the same values.
+
+\section{Matings}\label{sec:computing-matings}\index{working with pedigrees!matings}
+There are a number of questions you might wish to ask that involve matings, such as, ``What is the minimum-inbreeding mating among this set of individuals?''. Several routines in \module{pyp\_metrics}.
+
+Suppose you were considering a mating between animals 5 (index 4) and 14 (index 13), which is a sire-daughter mating. How would you go about this? You simply call \method{pyp\_metrics.mating\_coi()}:
+\begin{verbatim}
+print '\tCalling mating_coi() at %s' % ( pyp_nice_time() )
+f = pyp_metrics.mating_coi(example.pedigree[4].animalID,
+    example.pedigree[13].animalID,example,1)
+print f
+\end{verbatim}
+which produces the output:
+\begin{verbatim}
+Calling mating_coi() at Wed Mar  5 11:31:30 2008
+0.25
+\end{verbatim}
+We don't need \PyPedal{} to tell us the coefficient of inbreeding of such a simple mating, but the calculations can be complex for more complicated cases. While you can do all of the necessary computations ``by hand'', \method{pyp\_metrics.mating\_coi()} takes care of that for you by adding a new dummy animal to the pedigree with the proposed parents, calculating the coefficient of inbreeding of that mating, deleting the dummy animal from the pedigree, and returning the coefficient of inbreeding.
+
+\PyPedal{} takes things one step further, allowing you to work with groups of proposed matings at one time using \method{pyp\_metrics.mating\_coi\_group()}. Internally it works similarly to \method{pyp\_metrics.mating\_coi()}, although instead of passing a pair of parents you pass a list of proposed matings. The matings are of the form \samp{<parent1>\_<parent2>}. Here's an example in which we are going to consider the following three matings: 1 with 5, 1 with 14, and 5 with 14. Note how the matings are formed and appended to the \samp{matings} list in one step.
+\begin{verbatim}
+matings = []
+matings.append('%s_%s'%(example.pedigree[0].animalID, example.pedigree[4].animalID))
+matings.append('%s_%s'%(example.pedigree[0].animalID, example.pedigree[13].animalID))
+matings.append('%s_%s'%(example.pedigree[4].animalID, example.pedigree[13].animalID))
+fgrp = pyp_metrics.mating_coi_group(matings,example)
+print 'fgrp: ', fgrp['matings']
+\end{verbatim}
+That code produces a list of the proposed matings with associated coefficients of inbreeding. In addition to the \samp{matings} dictionary, the \samp{fgrp} dictionary also contains a dictionary named \samp{metadata} which contains summary statistics about the proposed matings.
+\begin{verbatim}
+fgrp:  {'1_5': 0.25, '5_14': 0.25, '1_14': 0.125}
+\end{verbatim}
+\section{Relatives}\label{sec:computing-relatives}\index{working with pedigrees!relatives}
+\PyPedal{} provides a number of tools for extracting information about relatives from a pedigree. Examples include: obtaining lists of the ancestors of an animal, getting lists of ancestors shared in common by a pair of animals, listing the descendants of an individual, the calculation of the additive genetic relationship between a given pair of animals, and the creation of ``subpedigrees'' containing only specified animals.
+
+It is easy to obtain a list of an animal's relatives using \method{pyp\_metrics.related\_animals()}:
+\begin{verbatim}
+list_a = pyp_metrics.related_animals(example.pedigree[6].animalID,example)
+list_b = pyp_metrics.related_animals(example.pedigree[13].animalID,example)
+\end{verbatim}
+produces a list of each animal's relatives:
+\begin{verbatim}
+[5, 1, 2]
+[14, 5, 1, 2, 6, 3, 4]
+\end{verbatim}
+\method{pyp\_metrics.common\_ancestors()} is used to get a list of the common ancestors of two animals, say animals \samp{5} and \samp{14} (remember that this pedigree is renumbered, and that Python lists are indexed from 0, so we need to offset the animal IDs by 1 to get the correct animal IDs).
+\begin{verbatim}
+list_r = pyp_metrics.common_ancestors(example.pedigree[4].animalID,example.pedigree[13].ani
+malID,example)
+print list_r
+\end{verbatim}
+Results are returned as lists:
+\begin{verbatim}
+[1, 2, 5]
+\end{verbatim}
+If you've already obtained ancestor lists for a given pair of animals in which you're interested you can also obtain a list of common ancestors using Python sets, which avoids performing calculations more than needed:
+\begin{verbatim}
+>>> set_a = set(list_a)
+>>> set_b = set(list_b)
+>>> set_c = set_a.intersection(set_b)
+>>> set_c
+set([1, 2, 5])
+>>> list_c = list(set_c)
+>>> list_c
+[1, 2, 5]
+\end{verbatim}
+A list of descendants can be obtained by calling \method{pyp\_metrics.descendants()}, which returns a dictionary:
+\begin{verbatim}
+>>> pyp_metrics.descendants(5,example,{})
+{7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14}
+\end{verbatim}
+However, it is improtant to note that you will not get the answer you expect unless you have either set the option \samp{set\_offspring = 1} or called \method{pyp\_utils.assign\_offspring()} after loading the pedigree. There is also a convenience function, \method{pyp\_metrics.founder\_descendants()}, for handling the special case of obtaining descendants of all of the founders in the pedigree:
+\begin{verbatim}
+>>> pyp_metrics.founder_descendants(example)
+{1: {5: 5, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14},
+ 2: {5: 5, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14},
+ 3: {6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14},
+ 4: {6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14}}
+\end{verbatim}
+\section{Decomposition and Direct Inverses of Numerator Relationship Matrices}\label{sec:computing-decomposition}\index{numerator relationship matrix!decomposition}\index{numerator relationship matrix!direct inverses}
+\PyPedal{} provides routines in the \method{pyp_nrm} module for decomposing and forming direct inverses of numerator relationship matrices (NRM). The NRM, $A$, may be written as $A=TDT'$, where $T$ is a lower triangular matrix and $D$ is a diagonal matrix \cite{ref143,ref1060}. $T$ traces the flow of genes from one generation to another, while $D$ provides variances and covariances of Mendelian sampling. Mrode \citeyear{ref224} presents a more detailed discussion of this decomposition. The examples in this section all use the pedigree presented in Table 2.1 of that work, which is contained in the file \samp{examples/new_decompose.ped}:
+\begin{verbatim}
+# Pedigree from Table 2.1 of
+# Mrode (1996)
+1 0 0
+2 0 0
+3 1 2
+4 1 0
+5 4 3
+6 5 2
+\end{verbatim}
+The results presented below may be obtained by running the \samp{new_decompose.py} example program. The \method{pyp_nrm.a_decompose()} function takes as its argument a pedigree object and returns the matrices $T$ and $D$. The code
+\begin{verbatim}
+print 'Calling a_decompose()'
+print '====================='
+D, T  = pyp_nrm.a_decompose(example)
+print 'D: ', D
+print
+print 'T: ', T
+\end{verbatim}
+produces identical answers to those presented by Mrode \citeyear{ref224} (note that outputs may have been reformatted slightly to improve readability).
+\begin{verbatim}
+Calling a_decompose()
+=====================
+D:  [[ 1.       0.       0.       0.       0.       0.     ]
+ [ 0.       1.       0.       0.       0.       0.     ]
+ [ 0.       0.       0.5      0.       0.       0.     ]
+ [ 0.       0.       0.       0.75     0.       0.     ]
+ [ 0.       0.       0.       0.       0.5      0.     ]
+ [ 0.       0.       0.       0.       0.       0.46875]]
+
+T:  [[ 1.     0.     0.     0.     0.     0.   ]
+ [ 0.     1.     0.     0.     0.     0.   ]
+ [ 0.5    0.5    1.     0.     0.     0.   ]
+ [ 0.5    0.     0.     1.     0.     0.   ]
+ [ 0.5    0.25   0.5    0.5    1.     0.   ]
+ [ 0.25   0.625  0.25   0.25   0.5    1.   ]]
+\end{verbatim}
+It is not generally feasible to directly compute the inverse, $A^{-1}$, of large NRM. However, it is possible to formulate simple rules for computing the inverse directly from. Henderson \citeyear{ref143} presented a simple procedure for calculating $A^{-1}$ without accounting for inbreeding taking advantage of the fact that $A^{-1}=(T^{-1})'D^{-1}T^{-1}$, which is implemented as \method{pyp_nrm.form_d_nof()}:
+\begin{verbatim}
+print 'Calling a_inverse_dnf()'
+print '======================='
+Ainv = pyp_nrm.a_inverse_dnf(example)
+print 'Ainv: ', Ainv
+\end{verbatim}
+produces $A^{-1}$ without accounting for inbreeding in the pedigree:
+\begin{verbatim}
+Calling a_inverse_dnf()
+=======================
+Ainv:  [[ 1.83333333  0.5        -1.         -0.66666667  0.          0.        ]
+ [ 0.5         2.         -1.          0.          0.5        -1.        ]
+ [-1.         -1.          2.5         0.5        -1.          0.        ]
+ [-0.66666667  0.          0.5         1.83333333 -1.          0.        ]
+ [ 0.          0.5        -1.         -1.          2.5        -1.        ]
+ [ 0.         -1.          0.          0.         -1.          2.        ]]
+\end{verbatim}
+Quaas \citeyear{ref235} built on Henderson's earlier work by providing an algorithm for the computation of $A^{-1}$ accounting for inbreeding, which is implemented as the function  \function{pyp_nrm.a_inverse_df()}.
+\begin{verbatim}
+print 'Calling a_inverse_df()'
+print '======================'
+Ainv = pyp_nrm.a_inverse_df(example)
+print 'Ainv: ', Ainv
+\end{verbatim}
+You will note that the numbers in this matrix are slightly different from those in the previous example. Those differences are due to the inbreeding in the pedigree, which was not accounted for by \function{a_inverse_dnf()}.
+\begin{verbatim}
+Calling a_inverse_df()
+======================
+Ainv:  [[ 1.83333333  0.5        -1.         -0.66666667  0.          0.        ]
+ [ 0.5         2.03333333 -1.          0.          0.53333333 -1.06666667]
+ [-1.         -1.          2.5         0.5        -1.          0.        ]
+ [-0.66666667  0.          0.5         1.83333333 -1.          0.        ]
+ [ 0.          0.53333333 -1.         -1.          2.53333333 -1.06666667]
+ [ 0.         -1.06666667  0.          0.         -1.06666667  2.13333333]]
+\end{verbatim}
+The correctness of the results from \function{} can be verified by using some linear algebra to compute $A^{-1}$ directly:
+\begin{verbatim}
+    print 'Calculating Ainv from D and T'
+    print '============================='
+    l = example.metadata.num_records
+    Tinv = numpy.linalg.inv(T)
+    print 'Tinv: ', Tinv
+    Tpinv = numpy.linalg.inv(T.T)
+    print 'Tpinv: ', Tpinv
+    Dinv = numpy.linalg.inv(D)
+    print 'Dinv: ', Dinv
+    Ainvhalf = numpy.dot(Tpinv,Dinv)
+    Ainv = numpy.dot(Ainvhalf,Tinv)
+    print 'Ainv: ', Ainv
+\end{verbatim}
+The output includes several intermediate matrices that have been verified against Mrode's book \cite{ref224}.
+\begin{verbatim}
+Calculating Ainv from D and T
+=============================
+Tinv:  [[ 1.   0.   0.   0.   0.   0. ]
+ [ 0.   1.   0.   0.   0.   0. ]
+ [-0.5 -0.5  1.   0.   0.   0. ]
+ [-0.5  0.   0.   1.   0.   0. ]
+ [ 0.   0.  -0.5 -0.5  1.   0. ]
+ [ 0.  -0.5  0.   0.  -0.5  1. ]]
+
+Tpinv:  [[ 1.   0.  -0.5 -0.5  0.   0. ]
+ [ 0.   1.  -0.5  0.   0.  -0.5]
+ [ 0.   0.   1.   0.  -0.5  0. ]
+ [ 0.   0.   0.   1.  -0.5  0. ]
+ [ 0.   0.   0.   0.   1.  -0.5]
+ [ 0.   0.   0.   0.   0.   1. ]]
+
+Dinv:  [[ 1.          0.          0.          0.          0.          0.        ]
+ [ 0.          1.          0.          0.          0.          0.        ]
+ [ 0.          0.          2.          0.          0.          0.        ]
+ [ 0.          0.          0.          1.33333333  0.          0.        ]
+ [ 0.          0.          0.          0.          2.          0.        ]
+ [ 0.          0.          0.          0.          0.          2.13333333]]
+
+Ainv:  [[ 1.83333333  0.5        -1.         -0.66666667  0.          0.        ]
+ [ 0.5         2.03333333 -1.          0.          0.53333333 -1.06666667]
+ [-1.         -1.          2.5         0.5        -1.          0.        ]
+ [-0.66666667  0.          0.5         1.83333333 -1.          0.        ]
+ [ 0.          0.53333333 -1.         -1.          2.53333333 -1.06666667]
+ [ 0.         -1.06666667  0.          0.         -1.06666667  2.13333333]]
+\end{verbatim}
+The function \method{pyp_nrm.form_d_nof()} is provided as a convenience function. The form of $D$ is the same when calculating $A^{-1}$ regardless of the form $T$ takes (i.e., accounts for inbreeding or not). The code
+\begin{verbatim}
+print 'Calling form_d_nof()'
+print '===================='
+D  = pyp_nrm.form_d_nof(example)
+print 'D: ', D
+\end{verbatim}
+produces the result
+\begin{verbatim}
+Calling form_d_nof()
+====================
+D:  [[ 1.    0.    0.    0.      0.    0.   ]
+       [ 0.    1.    0.    0.      0.    0.   ]
+       [ 0.    0.    0.5  0.      0.    0.   ]
+       [ 0.    0.    0.    0.75  0.    0.   ]
+       [ 0.    0.    0.    0.      0.5   0.  ]
+       [ 0.    0.    0.    0.      0.    0.5 ]]
+\end{verbatim}
+which may be verified against the values of $D$ presented above.
+
+\section{Pedigrees as Sets}\label{sec:pedigrees-as-sets}\index{working with pedigrees!pedigrees as sets}
+As of version 2.0.4, PyPedal has new tools for working with pedigrees by treating them as mathematical sets
+of animals. This makes it easy to do things like merge pedigrees, or remove a subset of animals from a pedigree.
+Formally, we can think of a pedigree, $P$, as a set of $n$ animals denoted $a_1, a_2, \ldots, a_n$. Two animals,
+$a_i$ and $a_j$, are related iff $a_i, a_j \in P$. Two pedigrees, $P$ and $Q$, may then be merged by taking the
+union of the two sets, $R = P \cup Q$, using the \method{NewPedigree::union()} method or
+\function{pyp\_utils.llist\_union()} functions. Similarly, a subset of animals, $Q$, can be "subtracted" from a larger
+pedigree, $P$, as $R = P - Q = P - (P \cap Q)$.\footnote{Stated here without proof is the assertion that if you begin
+a null pedigree, that is, $P = \varnothing$, all possible pedigrees can be constructed using only unions ($\cap$)
+and intersections ($\cap$) of $P$ with individual animals.}
+
+A pair of pedigrees also can be merged using the \method{NewPedigree::\_\_add\_\_()} method, which provides an
+"addition" operator for \class{NewPedigree} instances, as shown in the following code:
+\begin{verbatim}
+    options = {}
+    options['pedname'] = 'Fake Pedigree 1'
+    options['renumber'] = 1
+    options['pedfile'] = 'merge1.ped'
+    options['pedformat'] = 'asd'
+    merge1 = pyp_newclasses.loadPedigree(options)
+
+    options2 = {}
+    options2['pedname'] = 'Fake Pedigree 2'
+    options2['renumber'] = 1
+    options2['pedfile'] = 'merge2.ped'
+    options2['pedformat'] = 'asd'
+    merge2 = pyp_newclasses.loadPedigree(options2)
+
+    merge3 = merge1 + merge2
+\end{verbatim}
+The \method{NewPedigree::\_\_sub\_\_()} method also provide a "subtraction" operator for subtracting the animals in
+one pedigree from another, as described above.
+
+Note that the \function{pyp\_utils.list\_union()} method takes advantage of the fact that $A \cap B \cap \ldots \cap Y \cap Z$
+can be factorized as $(A \cap (B \cap (\ldots \cap (Y \cap Z))))$.
+%%% TEXEXPAND: END FILE ./calculations.tex
 %%% TEXEXPAND: INCLUDED FILE MARKER ./objects.tex
 \chapter{Using PyPedal Objects}
+\begin{quote}
+In every chaotic behaviour, there lies a pattern. --- Jean Jacques Rousseau
+\end{quote}
 \label{cha:using-pypedal-objects}
 \index{PyPedal objects}
-\begin{quote}
 In this chapter, a detailed explanation of each \PyPedal{} class is presented, including attributes and methods.
-\end{quote}
 \section{Animal Objects}
 \label{sec:objects-animal-objects}
 \index{PyPedal objects!Animal objects}
@@ -1062,17 +1745,28 @@ The methods of \class{NewPedigree} objects are listed in Table \ref{tbl:objects-
     \tablelasttail{\hline}
     \label{tbl:objects-newpedigree-methods}
     \begin{xtabular}{l|p{4in}}
-        \_\_init\_\_ & Initializes and returns a \class{NewPedigree} object. \\
-        addanimal & Adds a new animal of class \class{NewAnimal} to the pedigree. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{addanimal} may result in data loss or corruption. You have been warned. \\
-        delanimal & Deletes an animal from the pedigree. Note that this method DOES not update the metadata attached to the pedigree and should only be used if that is not important. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{delanimal} may result in data loss or corruption. You have been warned. \\
-        fromgraph & Creates a \class{NewPedigree} from an \class{XDiGraph} objject. \\
-	load & Wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming metadata, checking for common errors, setting ancestor and sex flags, and renumbering the pedigree. \\
-	preprocess & Processes the entries in a pedigree file, which includes reading each entry, checking it for common errors, and instantiating a \class{NewAnimal} object. \\
-	printoptions & Prints the contents of the options dictionary, which is useful for debugging. \\
-	renumber & Calls the proper reordering and renumbering routines; updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
-	save & Writes a \PyPedal{} pedigree to a user-specified file.  The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. \\
-	simulate & Simulate simulates an arbitrary pedigree of size \textit{n} with \textsl{g} generations starting from \textsl{n\_s} base sires and \textsl{n\_d} base dams.  This method is based on the concepts and algorithms in the \method{Pedigree::sample} method from Matvec 1.1a (src/classes/pedigree.cpp; \url{http://statistics.unl.edu/faculty/steve/software/matvec/}), although all of the code in this implementation was written from scratch.\\
-	updateidmap & Updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
+		\_\_init\_\_ & Initializes and returns a \class{NewPedigree} object. \\
+		\_\_add\\_\_ & Implements pedigree "addition" as discussed briefly in Section \ref{sec:pedigrees-as-sets}. \\
+		\_\_sub\\_\_ & Implements pedigree "subtraction" as discussed briefly in Section \ref{sec:pedigrees-as-sets}. \\
+		addanimal & Adds a new animal of class \class{NewAnimal} to the pedigree. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{addanimal} may result in data loss or corruption. You have been warned. \\
+		delanimal & Deletes an animal from the pedigree. Note that this method DOES not update the metadata attached to the pedigree and should only be used if that is not important. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{delanimal} may result in data loss or corruption. You have been warned. \\
+		fromanimallist & Creates a \class{NewPedigree} from a list of \class{NewAnimal} instances. \\
+		fromgraph & Creates a \class{NewPedigree} from an \class{XDiGraph} object. \\
+		fromnull & Creates a null (empty) \class{NewPedigree}, which is a pedigree with no associated animal records. \\
+		intersection & Implements pedigree intersections as discussed briefly in Section \ref{sec:pedigrees-as-sets}. \\
+		load & Wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming metadata, checking for common errors, setting ancestor and sex flags, and renumbering the pedigree. \\
+		preprocess & Processes the entries in a pedigree file, which includes reading each entry, checking it for common errors, and instantiating a \class{NewAnimal} object. \\
+		printoptions & Prints the contents of the options dictionary, which is useful for debugging. \\
+		renumber & Calls the proper reordering and renumbering routines; updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
+		save & Writes a \PyPedal{} pedigree to a user-specified file.  The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. \\
+		savedb & Writes a \PyPedal{} pedigree to a relational database, as described in Section \ref{sec:io-output-database}. \\
+		savegedcom & Writes a \PyPedal{} pedigree to a user-specified file the format used by GEDCOM 5.5, as described in Appendix \ref{GEDCOM}. \\
+		savegenes & Writes a \PyPedal{} pedigree to a user-specified file the format used by GENES 1.20, as described in Appendix \ref{GENES}. \\
+		savegraph & Writes a \PyPedal{} pedigree to a user-specified file as a directed graph represented as an adjacency list. \\
+		simulate & Simulate simulates an arbitrary pedigree of size \textit{n} with \textsl{g} generations starting from \textsl{n\_s} base sires and \textsl{n\_d} base dams.  This method is based on the concepts and algorithms in the \method{Pedigree::sample} method from Matvec 1.1a (src/classes/pedigree.cpp; \url{http://statistics.unl.edu/faculty/steve/software/matvec/}), although all of the code in this implementation was written from scratch.\\
+		tostream & Writes a \class{NewPedigree} to a text-stream, as described in Section \ref{sec:io-output-text-streams}. \\
+		union & This is an alias for \method{NewPedigree::__add__()}. \\
+		updateidmap & Updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
     \end{xtabular}
 \end{center}
 See Section \ref{sec:pedigree-simulation} for details on pedigree simulation.
@@ -1170,22 +1864,20 @@ The methods of \class{NewAMatrix} objects are listed in Table \ref{tbl:objects-a
 \chapter{Methodology}
 \label{cha:methodology}
 \begin{quote}
+To iterate is human, to recurse divine. --- L. Peter Deutsch
+\end{quote}
 In this chapter, a high-level overview of \PYPEDAL{} is provided, giving
 the reader the definitions of the key components of the system. This section
 defines the concepts used by the remaining sections.
-\end{quote}
-\section{Reordering and Renumbering}
-\label{sec:methodology-reordering-and-renumbering}
-\index{reordering and renumbering}
-Many computations on pedigrees require that the pedigree be renumbered such that animal IDs are consecutive from 1 to \character{n}, where \character{n} is the total number of animalsin the pedigree.  The renumbering process requires that the pedigree be reordered such that parents always precede their offspring in the list of animal IDs.  The actual ID assigned to an animal is of no particular importance, and it is even possible for parents to have larger IDs than their ofspring.  \PyPedal{} can reorder any pedigree unless there is an error in it that would prevent unambiguously placing parents before offspring.  For example, a pedigree containing a keypunch error such that an animal is one of its own grandparents cannot be reordered because there is no way to unambiguously order the animals.  The \module{pyp_utils} module provides two routines for pedigree reordering, \function{reorder()} and \function{fast\_reorder()}.  By default, \function{reorder()} is used to reorder pedigrees in place.  It does this by maintaining a list of animal IDs that have been processed; whenever a parent that is not in the  list of encountered animals the offspring of that parent are moved to the end of the pedigree.  This ensures the pedigree is properly sorted such that all parents precede their offspring. Founders are also grouped together at the beginning of the pedigree. This procedure will always correctly reorder a pedigree but it can be quite inefficient as it is similar to an insertion sort, which has a worst-case runtime proportional to $n^{2}$ \cite{Cormen2003}.
+\section{Reordering and Renumbering}\label{sec:methodology-reordering-and-renumbering}\index{reordering and renumbering}
+Many computations on pedigrees require that the pedigree be renumbered such that animal IDs are consecutive from 1 to \character{n}, where \character{n} is the total number of animals in the pedigree. By default, all pedigrees are renumbered at load time. If you pedigree is already renumbered and you do not want it renumbered again you must set the \samp{renumber} option to 0. The renumbering process requires that the pedigree be reordered such that parents always precede their offspring in the list of animal IDs. The actual ID assigned to an animal is of no particular importance, and it is even possible for parents to have larger IDs than their offspring.  \PyPedal{} can reorder any pedigree unless there is an error in it that would prevent unambiguously placing parents before offspring.  For example, a pedigree containing a keypunch error such that an animal is one of its own grandparents cannot be reordered because there is no way to unambiguously order the animals.  The \module{pyp_utils} module provides two routines for pedigree reordering, \function{reorder()} and \function{fast\_reorder()}.  By default, \function{reorder()} is used to reorder pedigrees in place.  It does this by maintaining a list of animal IDs that have been processed; whenever a parent that is not in the  list of encountered animals the offspring of that parent are moved to the end of the pedigree.  This ensures the pedigree is properly sorted such that all parents precede their offspring. Founders are also grouped together at the beginning of the pedigree. This procedure will always correctly reorder a pedigree but it can be quite inefficient as it is similar to an insertion sort, which has a worst-case runtime proportional to $n^{2}$ \cite{Cormen2003}.
 
-\function{fast\_reorder()} provides a much faster means of reordering a pedigree, but can incorrectly reorder a pedigree in some cases.  When an instance of a \class{NewAnimal} object is created the \method{pad_id()} method is called.  \method{pad_id()} uses the animal ID and birth year to form an ID used by \function{by pyp_utils/fast_reorder()} for quick sorting; if your pedigree file is numbered such that offspring always have larger IDs than their parents and your birth years (if provided) are correct (that is, parents always born BEFORE offspring) then \function{pyp_utils.fast_reorder()} works as expected.  If you do not provide birth years in your pedigree file but your parent IDs are always smaller than your animal IDs, the reordering will be correct.  If you do not provide birth years, all animals in the pedigree will be assigned a default value of `1900'.  In that case, if parents have IDs larger than that of one or more of their offspring, the pedigree will be incorrecrly reordered by \function{fast\_reorder()}.  If your pedigree file contains birth years, or you know that parents always have smaller IDs than their offspring, then \function{fast\_reorder()} will correctly reorder your pedigree in linear time. Founders
-are not guaranteed to be grouped at the beginning of the pedigree when
-\function{fast\_reorder()} is used; if you are going to calculate coefficients of
-partial inbreeding (Section \ref{sec:methodology-partial-inbreeding}) then you should
-instead use \function{reorder()} to reorder your pedigree.
+\function{fast\_reorder()} provides a much faster means of reordering a pedigree, but can incorrectly reorder a pedigree in some cases.  When an instance of a \class{NewAnimal} object is created the \method{pad_id()} method is called.  \method{pad_id()} uses the animal ID and birth year to form an ID used by \function{by pyp_utils/fast_reorder()} for quick sorting; if your pedigree file is numbered such that offspring always have larger IDs than their parents and your birth years (if provided) are correct (that is, parents always born BEFORE offspring) then \function{pyp_utils.fast_reorder()} works as expected.  If you do not provide birth years in your pedigree file but your parent IDs are always smaller than your animal IDs, the reordering will be correct.  If you do not provide birth years, all animals in the pedigree will be assigned a default value of `1900'.  In that case, if parents have IDs larger than that of one or more of their offspring, the pedigree will be incorrectly reordered by \function{fast\_reorder()}.  If your pedigree file contains birth years, or you know that parents always have smaller IDs than their offspring, then \function{fast\_reorder()} will correctly reorder your pedigree in linear time. Founders
+are not guaranteed to be grouped at the beginning of the pedigree when \function{fast\_reorder()} is used; if you are going to calculate coefficients of
+partial inbreeding (Section \ref{sec:methodology-partial-inbreeding}) then you should instead use \function{reorder()} to reorder your pedigree.
 
 The performance difference between the two reordering routines is not very noticeable on pedigrees of a few hundred to a few thousand animals, but is quite dramatic for very large pedigrees. If your pedigree file is already reordered then there is essentially no performance difference between the two. When creating a pedigree file from data stored in a relational database, let the database perform the sort for you by using an \samp{ORDER BY} statement.
+
 \section{Animal Identification and Cross-References}
 \label{sec:methodology-id-mapping}
 \index{ID mapping}
@@ -1227,7 +1919,7 @@ Note that if an animal has its original ID as its name, which is the default whe
 \section{Measures of Genetic Variation}
 \label{sec:methodology-genetic-variation}
 \index{measures of genetic variation}
-Coefficients of inbreeding and relationship \cite{Wright1922} have been commonly used to describe the genetic diversity in livestock populations \cite{ref351}.  Inbreeding coefficients represent an individual's expected genetic homozygosity due to the relatedness of its parents. Coefficients of relationship describe the expected proportion of genes two individuals share due to their relatedness. These are relative measures that depend on such factors as the completeness and depth of pedigrees. Over time, these coefficients change in response to breeding and culling decisions, and they may be used as indicators of the genetic variability of a population. Rapid methods for calculating coefficients of inbreeding and relationship for large populations have been implemented \cite{ref337}.
+Coefficients of inbreeding and relationship \cite{Wright1922} have been commonly used to describe the genetic diversity in livestock populations \cite{ref351}. Inbreeding coefficients represent an individual's expected genetic homozygosity due to the relatedness of its parents. Coefficients of relationship describe the expected proportion of genes two individuals share due to their relatedness. These are relative measures that depend on such factors as the completeness and depth of pedigrees. Over time, these coefficients change in response to breeding and culling decisions, and they may be used as indicators of the genetic variability of a population. Rapid methods for calculating coefficients of inbreeding and relationship for large populations have been implemented \cite{ref337}.
 
 Populations under study rarely conform to the theory established for the use of coefficients of inbreeding \cite{Wright1931}. Lacy \citeyear{ref640} and Boichard et al. \citeyear{ref352} proposed measures of genetic variation based on ideas from conservation genetics. Lacy \citeyear{ref640} proposed the idea of the number of founder equivalents in assessing populations. A founder is an ancestor whose parents are unknown. If all founders contribute to the population equally, then the founder equivalent is equal to the number of founders. When founders contribute unequally to the population, the number of founder equivalents decreases. Boichard et al. \citeyear{ref352} developed the idea of founder ancestor equivalents, which is the minimum number of ancestors necessary to explain the genetic diversity of the current population. Founder ancestor equivalents account for bottlenecks, unlike founder equivalents, and are more accurate in populations undergoing intense selection.  Caballero and Toro \citeyear{ref817} discussed the relationships among these and other measures of diversity in small populations, and demonstrate their use \cite{ref435}.
 
@@ -1238,7 +1930,7 @@ Roughsedge et al. \citeyear{ref641} used average coefficients of inbreeding, ave
 \subsection{Inbreeding and Related Measures}
 \label{sec:methodology-computation-inbreeding}
 \index{computational details!inbreeding and related measures}
-Coefficients of relationship ($r_{ij}$) and inbreeding ($f_{i}$) are calculated using the method of Wiggans et al. \citeyear{ref337}.  An empty dictionary is created to store animal IDs and coefficients of inbreeding.  For each animal in the pedigree, working from youngest to oldest, the dictionary is queried for the animal ID.  If the animal does not have an entry in the dictonary, a subpedigree containing only relatives of that animal is extracted and the coefficients of inbreeding are calculated and stored in the dictionary.  A second dictionary keeps track of sire-dam combinations seen in the pedigree.  If a full-sib of an animal whose pedigree has already been processed is encountered the full-sib receives a COI identical to that of the animal already processed.  This approach allows for computation of COI for arbitrarily large populations because it does not require allocation of a single NRM of order $n^{2}$, where $n$ is the size of the pedigreed population.  In most cases, the NRM for a subpedigree is on the order of 200, although this can vary with species and population data structure.
+Coefficients of relationship ($r_{ij}$) and inbreeding ($f_{i}$) are calculated using the method of Wiggans et al. \citeyear{ref337}.  An empty dictionary is created to store animal IDs and coefficients of inbreeding.  For each animal in the pedigree, working from youngest to oldest, the dictionary is queried for the animal ID.  If the animal does not have an entry in the dictionary, a subpedigree containing only relatives of that animal is extracted and the coefficients of inbreeding are calculated and stored in the dictionary.  A second dictionary keeps track of sire-dam combinations seen in the pedigree.  If a full-sib of an animal whose pedigree has already been processed is encountered the full-sib receives a COI identical to that of the animal already processed.  This approach allows for computation of COI for arbitrarily large populations because it does not require allocation of a single NRM of order $n^{2}$, where $n$ is the size of the pedigreed population.  In most cases, the NRM for a subpedigree is on the order of 200, although this can vary with species and population data structure.
 
 Average and maximum coefficients of inbreeding are computed for the entire population and for all individuals with non-zero inbreeding.  The average relationship among all individuals is also computed.  Theoretical and realized effective population
 sizes, $N_{e(t)}$, and $N_{e(r)}$, were estimated as \cite{ref91}:
@@ -1328,11 +2020,12 @@ where $c_p$ is pedigree completeness and $a_k$ is the number of known ancestors 
 \chapter{HOWTOs}
 \label{cha:howtos}
 \begin{quote}
-In this chapter, examples of common operations are presented.
+Computers are good at following instructions, but not at reading your mind. --- Donald E. Knuth
 \end{quote}
 \section{Basic Tasks}
 \label{sec:howto-basic-operations}
 \index{how do I!basic tasks}
+
 \subsection{How do I load a pedigree from a file?}
 \label{sec:howto-load-pedigree}
 \index{how do I!basic tasks!load a pedigree}
@@ -1341,10 +2034,10 @@ Each pedigree that you read must be passed its own dictionary of options that mu
 options = {}
 options['pedfile'] = 'new_lacy.ped'
 options['pedformat'] = 'asd'
-
 example1 = pyp_newclasses.loadPedigree(options)
 \end{verbatim}
 The options dictionary may be named anything you like.  In this manual, and in the example programs distributed with \PyPedal{}, \var{options} is the name used.
+
 \subsection{How do I load multiple pedigrees in one program?}
 \label{sec:howto-load-multiple-pedigrees}
 \index{how do I!basic tasks!load multiple pedigrees}
@@ -1366,6 +2059,7 @@ options['pedname'] = 'Boichard Pedigree'
 example2 = pyp_newclasses.loadPedigree(options)
 \end{verbatim}
 Note that \var{pedformat} only needs to be changed if the two pedigrees have different formats.  You do not even have to change \var{pedfile}.
+
 \subsection{How do I renumber a pedigree?}
 \label{sec:howto-renumber-pedigree}
 \index{how do I!basic tasks!renumber a pedigree}
@@ -1383,6 +2077,7 @@ example.kw['renumber'] = 1
 example.renumber()
 \end{verbatim}
 For more details on pedigree renumbering see Section \ref{sec:renumbering}.
+
 \subsection{How do I turn off output messages?}
 \label{sec:howto-turn-off-messages}
 \index{how do I!basic tasks!turn off output}
@@ -1391,6 +2086,32 @@ You may want to suppress the output that is normally written to STDOUT by script
 options['messages'] = 'quiet'
 \end{verbatim}
 The default setting for \member{messages} is \samp{verbose}, which produces lots of messages.
+
+\subsection{How do I load a pedigree whose columns are comma-delimited?}
+\label{sec:howto-load-comma-delimited-pedigree}
+\index{how do I!basic tasks!load comma-delimited pedigree}
+The default column-delimiter used by \PyPedal{} is a space (` ').  Comma-separated value (CSV) files can be read by
+setting \var{sepchar} to \code{','}.  If you are using a configuration file, you \emph{must} enclose the comma in
+double quotation marks (``''):
+\begin{verbatim}
+options['sepchar'] = ","
+\end{verbatim}
+If you do not enclose the delimiter properly you will receive an error message such as:
+\begin{verbatim}
+Traceback (most recent call last):
+  File "ncsu.py", line 6, in <module>
+    ncsu = pyp_newclasses.loadPedigree(optionsfile='ncsu.ini', debugLoad=True)
+  File "/home/jcole/sage-4.8/local/lib/python2.6/site-packages/PyPedal-2.0.3-py2.6.egg/PyPedal/pyp_newclasses.py", line 2875, in loadPedigree
+    _pedigree.load(pedsource=pedsource,pedgraph=pedgraph,pedstream=pedstream)
+  File "/home/jcole/sage-4.8/local/lib/python2.6/site-packages/PyPedal-2.0.3-py2.6.egg/PyPedal/pyp_newclasses.py", line 444, in load
+    self.preprocess()
+  File "/home/jcole/sage-4.8/local/lib/python2.6/site-packages/PyPedal-2.0.3-py2.6.egg/PyPedal/pyp_newclasses.py", line 1076, in preprocess
+    l = string.split(string.strip(line),self.kw['sepchar'])
+  File "/home/jcole/sage-4.8/local/lib/python2.6/string.py", line 292, in split
+    return s.split(sep, maxsplit)
+TypeError: expected a character buffer object
+\end{verbatim}
+
 \subsection{How do I load a pedigree whose columns are tab-delimited?}
 \label{sec:howto-load-tab-delimited-pedigree}
 \index{how do I!basic tasks!load tab-delimited pedigree}
@@ -1398,10 +2119,7 @@ The default column-delimiter used by \PyPedal{} is a space (` ').  You can chang
 \begin{verbatim}
 options['sepchar'] = '\t'
 \end{verbatim}
-Commas are also commonly used as delimiters, and comma-separated value (CSV) files can be read by setting \var{sepchar} to \code{','}.  If you are using a configuration file, you \emph{must} enclose any delimiter containing a backslash in double quotation marks (``''):
-\begin{verbatim}
-options['sepchar'] = "\t"
-\end{verbatim}
+If you are using a configuration file, you \emph{must} enclose any delimiter containing a backslash in double quotation marks (``'').
 If you do not enclose the delimiter properly you will receive an error message such as:
 \begin{verbatim}
 [jcole@jcole2 examples]$ python new_ids.py
@@ -1414,9 +2132,11 @@ If you do not enclose the delimiter properly you will receive an error message s
          errors.
 [jcole@jcole2 examples]$
 \end{verbatim}
+
 \section{Calculating Measures of Genetic Variation}
 \label{sec:howto-genetic-variation}
 \index{how do I!calculate genetic variation}
+
 \subsection{How do I calculate coefficients of inbreeding?}
 \label{sec:howto-calculate-inbreeding}
 \index{how do I!calculate genetic variation!coefficients of inbreeding}
@@ -1656,12 +2376,13 @@ Note that only ASD-formatted pedigrees can be loaded this way, individual IDs ar
 \section{Contribute a HOWTO}
 \label{sec:howto-contribute}
 \index{how do I!contribute a HOWTO}
-Users are invited to contribute HOWTOs demonstrating how to solve problems they've found interesting.  In order for such HOWTOs to be considered for inclusion in this manual they must be licensed under the GNU Free Documentation License version 1.2 or later (\url{http://www.gnu.org/copyleft/fdl.html}).  Authorship will be acknowledged, and copyright will remain with the author of the HOWTO.%%% TEXEXPAND: END FILE ./howtos.tex
+Users are invited to contribute HOWTOs demonstrating how to solve problems they've found interesting.  In order for such HOWTOs to be considered for inclusion in this manual they must be licensed under the GNU Free Documentation License version 1.2 or later (\url{http://www.gnu.org/copyleft/fdl.html}).  Authorship will be acknowledged, and copyright will remain with the author of the HOWTO.
+%%% TEXEXPAND: END FILE ./howtos.tex
 %%% TEXEXPAND: INCLUDED FILE MARKER ./graphics.tex
 \chapter{Graphics}
 \label{cha:graphics}
 \begin{quote}
-This chapter presents an overview of using the graphics routines \PyPedal{}.
+If I could say it in words there would be no reason to paint. --- Edward Hopper
 \end{quote}
 \section{PyPedal Graphics}
 \label{sec:graphics-overview}
@@ -1802,12 +2523,11 @@ Note that the array only contains six distinct values: 0., 0.25, 0.5, 0.75, 1.0,
 \chapter{Report Generation}
 \label{cha:reports}
 \begin{quote}
-An overview of the report generation tools in \PyPedal{} is provided in this chapter.  The creation of a new, custom report
-is demonstrated.
+If we spoke a different language, we would perceive a somewhat different world. --- Ludwig Wittgenstein
 \end{quote}
-\section{Overview}
-\label{sec:reports-overview}
-\index{report generation}
+\section{Overview}\label{sec:reports-overview}\index{report generation}
+An overview of the report generation tools in \PyPedal{} is provided in this chapter.  The creation of a new, custom report is demonstrated.
+
 \PyPedal{} has a framework in place to support basic report generation.  This franework consists of two components: a database access module, \module{pyp\_db} (Section \ref{sec:pyp-db}), and a reporting module, \module{pyp\_reports} (Section \ref{sec:pyp-reports}).  The SQLite 3 database engine (\url{http://www.sqlite.org/}) is used to store data and generate reports.  The ReportLab extension to Python (\url{http://www.reportlab.org/}) allows users to create reports in the Adobe Portable Document Format (PDF).  As a result, there are two types of reports that can be produced: internal summaries that can be fed to other \PyPedal{} routines (e.g. the report produced by \function{pyp\_reports.meanMetricBy()} can be passed to \function{pyp\_graphics.plot\_line\_xy()} to produce a plot) and printed reports in PDF format.  When referencing the \module{pyp\_reports} API note that the convention used in \PyPedal{} is that procedures which produce PDFs are prepended with 'pdf'.  Sections \ref{sec:reports-custom-internal-reports} and \ref{sec:reports-custom-printed-reports} demonstrate how to create new or custom reports.  \module{pyp\_reports} was added to \PyPedal{} with the intention that end-users develop their own custom reports using \function{pyp\_reports.meanMetricBy()} as a template.  More material on adding new functionality to \PyPedal{} can be found in Chapter \ref{cha:newfeatures}.
 
 Column names, data types, and descriptions of contents for pedigree tables are presented in Table
@@ -1967,11 +2687,11 @@ While \PyPedal{} does not yet have any standard reports that include graphics, R
 \chapter{Implementing New Features}
 \label{cha:newfeatures}
 \begin{quote}
-In this chapter, an example of wil be provided of how to extend \PyPedal{} by creating a user-defined routine.  New routines may implement a new measure of genetic diversity, extend the graphics module, add a new report, or group a series of actions into a single convenient routine.
+First, solve the problem. Then, write the code. --- John Johnson
 \end{quote}
-\section{Overview}
-\label{sec:newfeatures-overview}
-\index{new features}
+\section{Overview}\label{sec:newfeatures-overview}\index{new features}
+In this chapter, an example of wil be provided of how to extend \PyPedal{} by creating a user-defined routine.  New routines may implement a new measure of genetic diversity, extend the graphics module, add a new report, or group a series of actions into a single convenient routine.
+
 One of the appealing features of \PyPedal{} is its easy extensibility.  In this section, we will demonstrate how to add a
 user-written module to \PyPedal{}.  The file \texttt{pyp\_template.py} that is distributed with \PyPedal{} is a
 skeleton that can be used to help you get started writing your custom module(s).  You should also look at the source
@@ -2205,8 +2925,9 @@ with any code submissions.%%% TEXEXPAND: END FILE ./newfeatures.tex
 \chapter{Glossary}
 \label{cha:glossary}
 \begin{quote}
-This chapter provides a glossary of terms.\footnote{Please let me know of any additions to this list which you feel would be helpful.}
+Just as birds have wings, man has language. --- George Henry Lewes
 \end{quote}
+This chapter provides a glossary of terms.\footnote{Please let me know of any additions to this list which you feel would be helpful.}
 \begin{description}
 \item[ancestor loss coefficient] See: pedigree completeness.
 \item[coefficient of ancestral inbreeding] The probability that an individual jas inherited an allele that has undergone inbreeding in the past at least once.
@@ -2228,7 +2949,11 @@ routines, and not for printing.
 %%% TEXEXPAND: INCLUDED FILE MARKER ./appendix.tex
 \appendix
 \addcontentsline{toc}{chapter}{Appendices}
-\chapter{Example Programs}
+\chapter{Example Programs}\label{cha:example-programs}\index{example programs}
+\begin{quote}
+ Either I've invented a whole new logic or, ahem, I'm not playing with a full deck. --- Philip K. Dick
+\end{quote}
+
 A number of example programs are distributed with \PyPedal{}. Table \ref{tbl:examples-program-list} provides the name of each file, the configuration and pedigree files used by those programs, and a brief description of the concepts and techniques presented.
 \begin{center}
     \tablecaption{Example programs distributed with \PyPedal{}.}
@@ -2241,6 +2966,7 @@ A number of example programs are distributed with \PyPedal{}. Table \ref{tbl:exa
     new\_amatrix.py & new\_amatrix.ini & new\_amatrix.ped & Create, save, load, and view information about NewAMatrix objects \\
     new\_classes.py & new\_classes.ini & boichard2.ped & ??? \\
     new\_db.py & new\_db.ini & hartlandclark.ped & Loading a pedigree into SQLite and creating a report of mean inbreeeding by birth year \\
+    new\_decompose.py & new\_decompose.ini & new_decompose.ped & Use of numerator relationship matrix decomposition subroutines in \module{pyp_nrm} \\
     new\_doug.py & new\_doug.ini & doug.ped & Reading a pedigree in which names are strings, drawing pedigrees \\
     new\_format.py & new\_format.ini & boichard2a.ped & Reading a pedigree using the `skip column' format code (Z), printing pedigree metadata \\
     new\_graphics.py & new\_graphics.ini & boichard2.ped & Use of a number of routines from \module{pyp_graphics} \\
@@ -2255,10 +2981,10 @@ A number of example programs are distributed with \PyPedal{}. Table \ref{tbl:exa
     new\_options.py & new\_options.ini & new\_lacy.ped & Use of the configuration files \\
     new\_renumbering.py & new\_renumbering.ini & new\_renumbering.ped & Renumbering a pedigree, calculating inbreeding, pedigree drawing \\
     new\_reporting.py & new\_reporting.ini & new\_renumbering.ped & Use of reporting functions \\
-    new\_simulate.py & new\_simulate.ini & None & Demonstrates how to create a random pedigree and produce a drawing of that pedigree. \\
+    new\_simulate.py & new\_simulate.ini & None & Demonstrates how to create a random pedigree and produce a drawing of that pedigree \\
+    new\_sqlite.py & None & None & Demonstrates the use of textstreams and an SQLite database \\
     \end{xtabular}
 \end{center}
-
 
 \chapter{GEDCOM File Handling}\label{GEDCOM}\index{GEDCOM files}
 \PyPedal{} is capable of importing from, and exporting to, GEDCOM 5.5 files using a subset
@@ -2289,7 +3015,7 @@ Most of the information that can be
 \end{center}
 The list of recognized tags is hard-coded in a list named \var{known\_tags} in \function{pyp\_io.load\_from\_gedcom()}.
 \begin{center}
-    \tablecaption{GEDCOM 5.5 data records and tags exported by PyPedal{}.}
+    \tablecaption{GEDCOM 5.5 data records and tags exported by \PyPedal{}.}
     \tablefirsthead{\hline Data Record Type & Supported Tags & Description\footnote{} \\ \hline}
     \tablehead{\hline Data Record Type & Supported Tags & Description\footnote{} \\ \hline}
     \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
@@ -2328,7 +3054,58 @@ The export process is uncoupled from the import process. You can export any pedi
 that \PyPedal{} can read as a {GEDCOM} file regardless of the original source. Perhaps
 some human types will be interested in some of the calculations that \PyPedal{} can do,
 or perhaps a dog breeder will do something unexpected, such as exporting to {GEDCOM} so
-that they can use GRAMPS or something like that to manipulate their data. Who knows. Anyway, \PyPedal{} supports two-way data flow.%%% TEXEXPAND: END FILE ./appendix.tex
+that they can use GRAMPS or something like that to manipulate their data. Who knows. Anyway, \PyPedal{} supports two-way data flow.
+
+\chapter{GENES File Handling}\label{GENES}\index{GENES files}
+PyPedal is capable of importing from, and exporting to, the dBase III file format used by Robert Lacy's GENES 1.20
+program (\url{http://www.vortex9.org/genes.html}). The code that does the actual conversion is a modified version
+of "Recipe 362715: DBF reader and writer (Python)" (\url{http://code.activestate.com/recipes/362715/}) by Raymond
+Hettinger. The changes I've made were mostly mappings between GENES and \PyPedal{} variables, as well as some code
+to catch potential errors on the inputs and outputs. It is my understanding that the PSF under which Hettinger's
+code was released is compatible with the GPL, under which \PyPedal{} is licensed.
+
+As one might expect, \PyPedal{} supports only a subset of the data contained in a GENES studbook file. That is because
+some of the metrics calculated by GENES do not have corresponding quantities in \PyPedal{}. (Table
+\ref{tbl:genes-supported-records-and-tags}). It's important to note that \PyPedal{}'s GENES import and export is
+lossy! This means that information in a GENES file is lost when importing the file, and data from \PyPedal{} pedigrees
+are lost when exporting.
+\begin{center}
+    \tablecaption{GENES 1.20 data records and tags exported by \PyPedal{}.}
+    \tablefirsthead{\hline Data Field & \PyPedal{} Variable & Description\footnote{} \\ \hline}
+    \tablehead{\hline Data Field & \PyPedal{} Variable & Description\footnote{} \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:genes-supported-records-and-tags}
+    \begin{xtabular}{l|p{1in}|p{3in}}
+    STUD ID & animalID & Alphanumeric animal ID, converted to integer ID \\
+     & originalID & Alphanumeric animal ID stored as string \\
+    SIRE ID & sireName & Alphanumeric sire ID, if known \\
+    DAM ID & damName & Alphanumeric dam ID, if known \\
+    BDATE & bd & Animal birthdate \\
+    SEX & sex & Mapped from 0/1 to f/m \\
+    LOCATION & originalHerd & Location of animal, if known \\
+    DEAD & alive & Mapped from 0/1 to 1/0 \\
+    INBREED & fa & Coefficient of inbreeding \\
+    AGE & age & Age of animal \\
+    \end{xtabular}
+\end{center}
+Some tags have slightly different connotatios in \PyPedal{} than in GENES. For example, GENES distinguished between
+animals that are known to be founders (parents are "WILD") and those with unknown parents that are assumed to be
+from the current population (parents are "UNK"). \PyPedal{} does not make such a distinction, and treats all animals
+with unknown parents as founders. The default birthdate (01011900) used by \PyPedal{} also may not make particular
+sense to GENES users.
+
+Importation is done by reading the GENES file and mapping the supported fields to their corresponding \PyPedal{}
+attributes. Those individual records are then written to a file, the pedigree format string and pedfile variables are
+updated for the new file, and that file is then loaded automatically. The downside is that you end up with two copies
+of each pedigree file, but disc space is cheap. I won't add an option for automatic deletion of the original GENES file
+because of the lossiness of the import procedure.
+
+The export process is uncoupled from the import process. You can export any pedigree that \PyPedal{} can read as a
+GENES file, regardless of the original source. Claire Raisin (Durrell Institute of Conservation and Ecology, University
+of Kent) asked for this feature quite a long time ago, and I finally got around to adding it. I hope that late is better than
+never.
+%%% TEXEXPAND: END FILE ./appendix.tex
 
 \bibliographystyle{chicago}
 \bibliography{references}

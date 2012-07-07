@@ -1,52 +1,48 @@
-This is BibTeX, Version 0.99c (Web2C 7.5.6)
+This is BibTeX, Version 0.99d (TeX Live 2011/Fink)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: pypedal.aux
 The style file: chicago.bst
 Database file #1: references.bib
-I was expecting an "="---line 1703 of file references.bib
- :   
- :   Title          = "On the consistency of a physical mapping method to
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--page numbers missing in ref435
-You've used 23 entries,
+You've used 26 entries,
             2861 wiz_defined-function locations,
-            765 strings with 8366 characters,
-and the built_in function-call counts, 15777 in all, are:
-= -- 1290
-> -- 1172
+            782 strings with 8705 characters,
+and the built_in function-call counts, 17500 in all, are:
+= -- 1432
+> -- 1276
 < -- 0
-+ -- 344
-- -- 388
-* -- 1446
-:= -- 2905
-add.period$ -- 69
-call.type$ -- 23
-change.case$ -- 167
-chr.to.int$ -- 23
-cite$ -- 24
-duplicate$ -- 391
-empty$ -- 972
-format.name$ -- 448
-if$ -- 2953
++ -- 374
+- -- 428
+* -- 1577
+:= -- 3235
+add.period$ -- 78
+call.type$ -- 26
+change.case$ -- 185
+chr.to.int$ -- 26
+cite$ -- 27
+duplicate$ -- 443
+empty$ -- 1090
+format.name$ -- 492
+if$ -- 3264
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 25
-newline$ -- 118
-num.names$ -- 230
-pop$ -- 107
+missing$ -- 29
+newline$ -- 133
+num.names$ -- 260
+pop$ -- 120
 preamble$ -- 1
-purify$ -- 307
+purify$ -- 344
 quote$ -- 0
-skip$ -- 414
+skip$ -- 471
 stack$ -- 0
-substring$ -- 896
-swap$ -- 114
+substring$ -- 988
+swap$ -- 129
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 440
+type$ -- 490
 warning$ -- 1
-while$ -- 206
+while$ -- 238
 width$ -- 0
-write$ -- 302
-(There was 1 error message)
+write$ -- 342
+(There was 1 warning)

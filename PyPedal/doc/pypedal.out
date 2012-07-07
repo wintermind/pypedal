@@ -1,26 +1,64 @@
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}
-\BOOKMARK [1][-]{section.1.1}{Implemented Features}{chapter.1}
-\BOOKMARK [1][-]{section.1.2}{Where to get information and code}{chapter.1}
-\BOOKMARK [1][-]{section.1.3}{Acknowledgments}{chapter.1}
-\BOOKMARK [1][-]{section.1.4}{Disclaimer}{chapter.1}
-\BOOKMARK [0][-]{chapter.2}{Installing PyPedal}{}
-\BOOKMARK [1][-]{section.2.1}{Overview of installation}{chapter.2}
-\BOOKMARK [1][-]{section.2.2}{Testing the Python installation}{chapter.2}
-\BOOKMARK [1][-]{section.2.3}{Installing PyPedal}{chapter.2}
-\BOOKMARK [1][-]{section.2.4}{Testing the PyPedal Installation}{chapter.2}
-\BOOKMARK [0][-]{chapter.3}{High-Level Overview}{}
-\BOOKMARK [1][-]{section.3.1}{Interacting with PyPedal}{chapter.3}
-\BOOKMARK [1][-]{section.3.2}{The PyPedal Object Model}{chapter.3}
-\BOOKMARK [1][-]{section.3.3}{Program Structure}{chapter.3}
-\BOOKMARK [1][-]{section.3.4}{Options}{chapter.3}
-\BOOKMARK [1][-]{section.3.5}{Pedigree Files}{chapter.3}
-\BOOKMARK [1][-]{section.3.6}{Renumbering a Pedigree}{chapter.3}
-\BOOKMARK [1][-]{section.3.7}{Logging}{chapter.3}
-\BOOKMARK [1][-]{section.3.8}{Simulating Pedigrees}{chapter.3}
-\BOOKMARK [0][-]{chapter.4}{Input and Output}{}
-\BOOKMARK [1][-]{section.4.1}{Overview}{chapter.4}
-\BOOKMARK [1][-]{section.4.2}{Input}{chapter.4}
-\BOOKMARK [1][-]{section.4.3}{Output}{chapter.4}
-\BOOKMARK [0][-]{chapter.5}{Working with Pedigrees}{}
-\BOOKMARK [1][-]{section.5.1}{Overview}{chapter.5}
-\BOOKMARK [1][-]{section.5.2}{Inbreeding and Relationships}{chapter.5}
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Features}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Where to get information and code}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Acknowledgments}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Disclaimer}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Installing PyPedal}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Overview of installation}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Testing the Python installation}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Installing PyPedal}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.4}{Testing the PyPedal Installation}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{High-Level Overview}{}% 11
+\BOOKMARK [1][-]{section.3.1}{Interacting with PyPedal}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{The PyPedal Object Model}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{Program Structure}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.4}{Options}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.5}{Pedigree Files}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.6}{Renumbering a Pedigree}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.7}{Logging}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.8}{Simulating Pedigrees}{chapter.3}% 19
+\BOOKMARK [0][-]{chapter.4}{Input and Output}{}% 20
+\BOOKMARK [1][-]{section.4.1}{Overview}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.2}{Input}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.3}{Output}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.4}{Databases}{chapter.4}% 24
+\BOOKMARK [0][-]{chapter.5}{Working with Pedigrees}{}% 25
+\BOOKMARK [1][-]{section.5.1}{Overview}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.2}{Inbreeding and Relationships}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.3}{Matings}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.4}{Relatives}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.5}{Decomposition and Direct Inverses of Numerator Relationship Matrices}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.6}{Pedigrees as Sets}{chapter.5}% 31
+\BOOKMARK [0][-]{chapter.6}{Using PyPedal Objects}{}% 32
+\BOOKMARK [1][-]{section.6.1}{Animal Objects}{chapter.6}% 33
+\BOOKMARK [1][-]{section.6.2}{The NewPedigree Class}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.3}{The PedigreeMetadata Class}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.4}{The NewAMatrix Class}{chapter.6}% 36
+\BOOKMARK [0][-]{chapter.7}{Methodology}{}% 37
+\BOOKMARK [1][-]{section.7.1}{Reordering and Renumbering}{chapter.7}% 38
+\BOOKMARK [1][-]{section.7.2}{Animal Identification and Cross-References}{chapter.7}% 39
+\BOOKMARK [1][-]{section.7.3}{Measures of Genetic Variation}{chapter.7}% 40
+\BOOKMARK [1][-]{section.7.4}{Computational Details}{chapter.7}% 41
+\BOOKMARK [0][-]{chapter.8}{HOWTOs}{}% 42
+\BOOKMARK [1][-]{section.8.1}{Basic Tasks}{chapter.8}% 43
+\BOOKMARK [1][-]{section.8.2}{Calculating Measures of Genetic Variation}{chapter.8}% 44
+\BOOKMARK [1][-]{section.8.3}{Databases and Report Generation}{chapter.8}% 45
+\BOOKMARK [1][-]{section.8.4}{Pedigrees as Graphs}{chapter.8}% 46
+\BOOKMARK [1][-]{section.8.5}{Miscellaneous}{chapter.8}% 47
+\BOOKMARK [1][-]{section.8.6}{Contribute a HOWTO}{chapter.8}% 48
+\BOOKMARK [0][-]{chapter.9}{Graphics}{}% 49
+\BOOKMARK [1][-]{section.9.1}{PyPedal Graphics}{chapter.9}% 50
+\BOOKMARK [0][-]{chapter.10}{Report Generation}{}% 51
+\BOOKMARK [1][-]{section.10.1}{Overview}{chapter.10}% 52
+\BOOKMARK [1][-]{section.10.2}{Creating a Custom Internal Report}{chapter.10}% 53
+\BOOKMARK [1][-]{section.10.3}{Creating a Custom Printed Report}{chapter.10}% 54
+\BOOKMARK [0][-]{chapter.11}{Implementing New Features}{}% 55
+\BOOKMARK [1][-]{section.11.1}{Overview}{chapter.11}% 56
+\BOOKMARK [1][-]{section.11.2}{Module Template}{chapter.11}% 57
+\BOOKMARK [1][-]{section.11.3}{Solving the Problem}{chapter.11}% 58
+\BOOKMARK [1][-]{section.11.4}{Contributing Code to PyPedal}{chapter.11}% 59
+\BOOKMARK [0][-]{chapter.12}{Glossary}{}% 60
+\BOOKMARK [0][-]{chapter.12}{Appendices}{}% 61
+\BOOKMARK [0][-]{appendix.A}{Example Programs}{}% 62
+\BOOKMARK [0][-]{appendix.B}{GEDCOM File Handling}{}% 63
+\BOOKMARK [0][-]{appendix.C}{GENES File Handling}{}% 64

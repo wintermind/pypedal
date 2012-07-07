@@ -35,8 +35,8 @@
 #   subpedigree()
 #   founders_from_list()
 #   founder_allele_dict()
-#   union()
-#   intersection()
+#   list_union()
+#   list_intersection()
 #   guess_pedformat()
 ###############################################################################
 
@@ -1142,112 +1142,52 @@ def founder_allele_freq(pedobj, anlist, allele_map, allele_mat, column):
     #    return False
 
 ##
-# intersection() returns a PyPedal pedigree object which contains the animals that are common to
+# list_intersection() returns a PyPedal pedigree object which contains the animals that are common to
 # both input pedigrees. If there are no animals in common between the two pedgrees, a value
 # of false is returned.
-# @param pedobj_a A PyPedal pedigree.
-# @param pedobj_b Another PyPedal pedigree.
-# @param filename The file to which the new pedigree should be written
+# @param pedobjs A list of PyPedal pedigrees.
 # @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
-def intersection(pedobjs, filename=False):
+def list_intersection(pedobjs):
 	"""
-	intersection() returns a PyPedal pedigree object which contains the animals that are common to
+	list_intersection() returns a PyPedal pedigree object which contains the animals that are common to
 	both input pedigrees. If there are no animals in common between the two pedgrees, a value
 	of false is returned.
 	"""
 	if len(pedobjs) > 0:
-		logging.info('Computing intersection of %s pedigrees', len(pedobjs))
-		# The first time through the pedigrees we're going to accumulate a list of
-		# NewAnimals that are common to all of the pedigrees in pedobjs.
-		animallist = []
-		for p in range(len(pedobjs)):
-			if pedobjs[p].__class__.__name__ != 'NewPedigree':
-				logging.info('Pedigree %s in pyp_utils.intersection() is not a NewPedigree instance! Skippng.', p)
-			for an in range(len(pedobjs[p].pedigree)):
-				if p == 0:
-					animallist.append(pedobjs[p].pedigree[an])
+		if pedobjs[0].kw['debug_messages']:
+			print '[INFO]: Computing intersection of %s pedigrees' % ( len(pedobjs) )
+                logging.info('Computing intersection of %s pedigrees', len(pedobjs))
+		plen = len(pedobjs)
+		# If there is only one pedigree in the list this is easy: A \cap A = A.
+		if plen == 1:
+			return pedobjs[0]
+		# If there is more than one pedigree in the list we use the following factorization
+		# to compute the intersection of those pedigrees:
+		#
+		# A \cap B \cap C \cap D ... Y \cap Z = (A \cap (B \cap (C \cap (D \cap ... (Y \cap Z) ) ) ) )
+		#
+		# See: http://en.wikipedia.org/wiki/Intersection_%28set_theory%29).
+		else:
+			intersected = pyp_newclasses.loadPedigree({'pedfile':'null'}, pedsource='null')
+			for p in range(plen-1, -1, -1):
+				if pedobjs[p].__class__.__name__ != 'NewPedigree':
+					if pedobjs[0].kw['debug_messages']:
+						print '[ERROR]: Pedigree %s in pyp_utils.list_intersection() is not a NewPedigree instance! Skippng.' % ( p )
+					logging.error('Pedigree %s in pyp_utils.list_intersection() is not a NewPedigree instance! Skippng.', p)
 				else:
-					logging.info('Using match rule %s to compare pedigrees', pedobjs[p].kw['match_rule'])
-				if pedobjs[p].kw['pedigree_is_renumbered'] != 1:
-                			pedobjs[p].renumber()
-                			logging.info('Renumbering pedigree %s', pedobjs[p].kw['pedname'])
-				logging.info('Using match rule %s to compare animals', pedobjs[p].kw['match_rule'])
-            			for a in animallist:
-                			for b in pedobjs[p].pedigree:
-                				matches = 0		# Count places where the animals match
-                    				for match in pedobj_a.kw['match_rule']:
-                        				if match in ['a','A']:
-                            					if a.originalID == b.originalID:
-                                					matches = matches + 1
-                        				elif match in ['s','S']:
-                            					if pedobj_a.pedigree[a.sireID-1].originalID == \
-                                					pedobj_b.pedigree[b.sireID-1].originalID:
-                                					matches = matches + 1
-                        				elif match in ['d','D']:
-                            					if self.pedigree[a.damID-1].originalID == \
-                                					other.pedigree[b.damID-1].originalID:
-                                					matches = matches + 1
-                        				elif getattr(a, pedobj_a.new_animal_attr[match]) == \
-                            					getattr(b, pedobj_b.new_animal_attr[match]):
-                            					matches = matches + 1
-                        				else:
-                            					pass
-						# If there are no mismatches then the two animals are identical
-            					# based on the match rule and only one of them needs to be written
-            					# to the merged pedigree.
-
-						###
-						# This match rule is not correct for an intersection!
-						###
-            					if ( matches == len(pedobj_a.kw['match_rule']) ):
-							animallist.append(a)
-		
-#		if filename == False:
-#			filename = '%s_%s.ped' % ( pedobj_a.kw['pedname'], \
-#				pedobj_b.kw['pedname'] )
-#			print '[INFO]: filename = %s' % ( filename )
-#		pyp_io.save_newanimals_to_file(animals_to_write, filename, pedobj_a.pedformat, \
-#			pedobj_a.kw['sepchar'])
-#		# Now we need to load the new pedigree and return it. This should be
-#		# dead easy.
-#		#
-#		# Create the options dictionary
-#		intersect_pedname = 'Intersected Pedigree: %s + %s' % \
-#			( pedobj_a.kw['pedname'], pedobj_b.kw['pedname'] )
-#		new_options = {}
-#		new_options['messages'] = pedobj_a.kw['messages']
-#		new_options['pedname'] = intersect_pedname
-#		new_options['renumber'] = 1
-#		new_options['pedfile'] = filename
-#		new_options['pedformat'] = pedobj_a.kw['pedformat']
-#		# Load the new pedigree and return it.
-#		try:
-#			new_pedigree = loadPedigree(new_options, debugLoad=True)
-#			if pedobj_a.kw['messages'] == 'verbose':
-#				print '[INFO]: Loaded merged pedigree %s from file %s!' % \
-#					( merged_pedname, filename )
-#			logging.info('Cannot complete intersection operation because types do not match.')
-#			return new_pedigree
-#		except:
-#			if pedobj_a.kw['messages'] == 'verbose':
-#				print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
-#					( merged_pedname, filename )
-#			logging.error('Could not load merged pedigree %s from file %s!', \
-#				merged_pedname, filename)
-#			return False
-#	else:
-#		logging.error('Cannot complete intersection operation because types do not match.')
-#		return NotImplemented
+					intersected = intersected.intersection(pedobjs[p])
+		return intersected
+	else:
+		logging.error('An empty list was passed to pyp_utils/list_intersection()! Cannot compute intersection on 0 pedigrees.')
 
 ##
-# union() returns a PyPedal pedigree object which contains all animals included in both of the
+# list_union() returns a PyPedal pedigree object which contains all animals included in both of the
 # input pedigrees.
 # @param pedobjs A list of PyPedal pedigrees.
-# @param filename The file to which the new pedigree should be written
 # @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
-def union(pedobjs, filename=False):
+def list_union(pedobjs):
 	"""
-	union() returns a PyPedal pedigree object which contains all animals included in both of the
+	list_union() returns a PyPedal pedigree object which contains all animals included in both of the
 	input pedigrees.
 	"""
 	if len(pedobjs) > 0:
@@ -1258,7 +1198,7 @@ def union(pedobjs, filename=False):
 			if p == 0:
 				new_pedigree = pyp_newclasses.loadPedigree({'pedfile':'null'}, pedsource='null')
 			if pedobjs[p].__class__.__name__ != 'NewPedigree':
-				logging.info('Pedigree %s in pyp_utils.union() is not a NewPedigree instance! Skippng.', p)
+				logging.info('Pedigree %s in pyp_utils.list_union() is not a NewPedigree instance! Skippng.', p)
 			# Renumber the input pedigrees, if necessary, and compute the union of new_pedigree and
 			# the first entry in the pedobjs list. new_pedigree starts out as an empty (null)
 			# pedigree, and each valid input pedigree is added to that to build-up the union of

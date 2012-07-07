@@ -1,171 +1,151 @@
-<tex2html_file>#./howtos.tex#
-\chapter<<1981>>HOWTOs<<1981>>
-\label<<1982>>cha:howtos<<1982>>
-\begin<<1983>>quote<<1983>>
-In this chapter, examples of common operations are presented.
-\end<<1984>>quote<<1984>>
-\section<<1985>>Basic Tasks<<1985>>
-\label<<1986>>sec:howto-basic-operations<<1986>>
-\index<<1987>>how do I!basic tasks<<1987>>
-\subsection<<1988>>How do I load a pedigree from a file?<<1988>>
-\label<<1989>>sec:howto-load-pedigree<<1989>>
-\index<<1990>>how do I!basic tasks!load a pedigree<<1990>>
-Each pedigree that you read must be passed its own dictionary of options that must have at least a pedigree file name (\var<<1991>>pedfile<<1991>>) and a pedigree format string (\var<<1992>>pedformat<<1992>>).  You then call \method<<1993>>pyp_newclasses.NewPedigree()<<1993>> and pass the options dictionary as an argument.  The following code fragment demonstrates how to read a pedigree file:
-\begin<<1994>>tex2html_preform<<1994>><tex2html_verbatim_mark>verbatim99#\end<<1995>>tex2html_preform<<1995>>
-The options dictionary may be named anything you like.  In this manual, and in the example programs distributed with PyPedal<<1996>><<1996>>, \var<<1997>>options<<1997>> is the name used.
-\subsection<<1998>>How do I load multiple pedigrees in one program?<<1998>>
-\label<<1999>>sec:howto-load-multiple-pedigrees<<1999>>
-\index<<2000>>how do I!basic tasks!load multiple pedigrees<<2000>>
-A PyPedal<<2001>><<2001>> program can load more than one pedigree at a time.  Each pedigree must be passed its own options dictionary, and the pedigrees must have different names.  This is easily done by creating a dictionary with global options and customizing it for each pedigree.  Once you have created a pedigree by calling \method<<2002>>pyp\_newclasses.NewPedigree('options')<<2002>> you can change the options dictionary without affecting that pedigree (a pedigree stores a copy of the options dictionary in its \member<<2003>>kw<<2003>> attribute).  The following code fragment demonstrates how to read two pedigree files in a single program:
-\begin<<2004>>tex2html_preform<<2004>><tex2html_verbatim_mark>verbatim100#\end<<2005>>tex2html_preform<<2005>>
-Note that \var<<2006>>pedformat<<2006>> only needs to be changed if the two pedigrees have different formats.  You do not even have to change \var<<2007>>pedfile<<2007>>.
-\subsection<<2008>>How do I renumber a pedigree?<<2008>>
-\label<<2009>>sec:howto-renumber-pedigree<<2009>>
-\index<<2010>>how do I!basic tasks!renumber a pedigree<<2010>>
-Set the \member<<2011>>renumber<<2011>> option to \begin<<2232>>tex2html_deferred<<2232>>\samp<<2012>>1<<2012>>\end<<2233>>tex2html_deferred<<2233>> before you load the pedigree.
-\begin<<2013>>tex2html_preform<<2013>><tex2html_verbatim_mark>verbatim101#\end<<2014>>tex2html_preform<<2014>>
-If you do not renumber a pedigree at load time and choose to renumber it later you must set the \member<<2015>>renumber<<2015>> option and call the pedigree's \method<<2016>>renumber()<<2016>> method:
-\begin<<2017>>tex2html_preform<<2017>><tex2html_verbatim_mark>verbatim102#\end<<2018>>tex2html_preform<<2018>>
-For more details on pedigree renumbering see Section \ref<<2019>>sec:renumbering<<2019>>.
-\subsection<<2020>>How do I turn off output messages?<<2020>>
-\label<<2021>>sec:howto-turn-off-messages<<2021>>
-\index<<2022>>how do I!basic tasks!turn off output<<2022>>
-You may want to suppress the output that is normally written to STDOUT by scripts.  You do this by setting the \member<<2023>>messages<<2023>> option:
-\begin<<2024>>tex2html_preform<<2024>><tex2html_verbatim_mark>verbatim103#\end<<2025>>tex2html_preform<<2025>>
-The default setting for \member<<2026>>messages<<2026>> is \begin<<2234>>tex2html_deferred<<2234>>\samp<<2027>>verbose<<2027>>\end<<2235>>tex2html_deferred<<2235>>, which produces lots of messages.
-\subsection<<2028>>How do I load a pedigree whose columns are tab-delimited?<<2028>>
-\label<<2029>>sec:howto-load-tab-delimited-pedigree<<2029>>
-\index<<2030>>how do I!basic tasks!load tab-delimited pedigree<<2030>>
-The default column-delimiter used by PyPedal<<2031>><<2031>> is a space (` ').  You can change the delimiter by setting the \var<<2032>>sepchar<<2032>> option:
-\begin<<2033>>tex2html_preform<<2033>><tex2html_verbatim_mark>verbatim104#\end<<2034>>tex2html_preform<<2034>>
-Commas are also commonly used as delimiters, and comma-separated value (CSV) files can be read by setting \var<<2035>>sepchar<<2035>> to \code<<2036>>','<<2036>>.  If you are using a configuration file, you \emph<<2037>>must<<2037>> enclose any delimiter containing a backslash in double quotation marks (``''):
-\begin<<2038>>tex2html_preform<<2038>><tex2html_verbatim_mark>verbatim105#\end<<2039>>tex2html_preform<<2039>>
-If you do not enclose the delimiter properly you will receive an error message such as:
-\begin<<2040>>tex2html_preform<<2040>><tex2html_verbatim_mark>verbatim106#\end<<2041>>tex2html_preform<<2041>>
-\section<<2042>>Calculating Measures of Genetic Variation<<2042>>
-\label<<2043>>sec:howto-genetic-variation<<2043>>
-\index<<2044>>how do I!calculate genetic variation<<2044>>
-\subsection<<2045>>How do I calculate coefficients of inbreeding?<<2045>>
-\label<<2046>>sec:howto-calculate-inbreeding<<2046>>
-\index<<2047>>how do I!calculate genetic variation!coefficients of inbreeding<<2047>>
-This requires that you have a renumbered pedigree (HOWTO \ref<<2048>>sec:howto-renumber-pedigree<<2048>>).
-\begin<<2049>>tex2html_preform<<2049>><tex2html_verbatim_mark>verbatim107#\end<<2050>>tex2html_preform<<2050>>
-The dictionary returned by \function<<2051>>pyp_nrm.inbreeding(example)<<2051>>, \var<<2052>>example_inbreeding<<2052>>, contains two dictionaries: \var<<2053>>fx<<2053>> contains coefficients of inbreeding (COI) keyed to renumbered animal IDs and \var<<2054>>metadata<<2054>> contains summary statistics.  \var<<2055>>metadata<<2055>> also contains two dictionaries: \var<<2056>>all<<2056>> contains summary statistics for all animals, while \var<<2057>>nonzero<<2057>> contains summary statistics for only animals with non-zero coefficients of inbreeding.  If you print \var<<2058>>example_inbreeding<<2058>> you'll get the following:
-\begin<<2059>>tex2html_preform<<2059>><tex2html_verbatim_mark>verbatim108#\end<<2060>>tex2html_preform<<2060>>
-Obtaining the COI for a given animal, say 28, is simple:
-\begin<<2061>>tex2html_preform<<2061>><tex2html_verbatim_mark>verbatim109#\end<<2062>>tex2html_preform<<2062>>
-To print the mean COI for the pedigree:
-\begin<<2063>>tex2html_preform<<2063>><tex2html_verbatim_mark>verbatim110#\end<<2064>>tex2html_preform<<2064>>
-\section<<2065>>Databases and Report Generation<<2065>>
-\label<<2066>>sec:howto-databases-and-reports<<2066>>
-\index<<2067>>how do I!databases and reports<<2067>>
-\subsection<<2068>>How do I load a pedigree into a database?<<2068>>
-\label<<2069>>sec:howto-load-pedigree-db<<2069>>
-\index<<2070>>how do I!databases and reports!load a pedigree<<2070>>
-The \module<<2071>>pyp\_reports<<2071>> module (\ref<<2072>>sec:pyp-reports<<2072>>) uses the \module<<2073>>pyp\_db<<2073>> module (Section \ref<<2074>>sec:pyp-db<<2074>>)
-to store and manipulate a pedigree in an SQLite database.  In order to use these tools you must first load your pedigree into
-the database.  This is done with a call to \function<<2075>>pyp\_db.loadPedigreeTable()<<2075>>:
-\begin<<2076>>tex2html_preform<<2076>><tex2html_verbatim_mark>verbatim111#\end<<2077>>tex2html_preform<<2077>>
-The routines in \module<<2078>>pyp\_reports<<2078>> will check to see if your pedigree has already been loaded; if it
-has not, a table will be created and populated for you.
-\subsection<<2079>>How do I update a pedigree in the database?<<2079>>
-\label<<2080>>sec:howto-pedigree-db-update-table<<2080>>
-\index<<2081>>how do I!databases and reports!update pedigree table<<2081>>
-Changes to a PyPedal<<2082>><<2082>> pedigree object are not automatically saved to the database.  If you have changed
-your pedigree, such as by calculating coefficients of inbreeding, and you want those changes visible to the
-database you have to call \function<<2083>>pyp\_db.loadPedigreeTable()<<2083>> again.  \textbf<<2084>>IMPORTANT NOTE:<<2084>> If you call
-\function<<2085>>pyp\_db.loadPedigreeTable()<<2085>> after you have already loaded your pedigree into the database it will
-drop the existing table and reload it; all data in the existing table will be lost!  In the following
-example, the pedigree is written to table \textbf<<2086>>hartlandclark<<2086>> in the database \textbf<<2087>>pypedal<<2087>>:
-\begin<<2088>>tex2html_preform<<2088>><tex2html_verbatim_mark>verbatim112#\end<<2089>>tex2html_preform<<2089>>
-\member<<2090>>pypedal<<2090>> is the default database name used by PyPedal<<2091>><<2091>>, and can be changed using a pedigree's \member<<2092>>database_name<<2092>> option.  By default, table names are formed from the pedigree file name.  A table name can be specified using a pedigree's \member<<2093>>dbtable_name<<2093>> option.  Continuing the above example, suppose that I calculated coefficients of inbreeding on my pedigree and want to store the resulting pedigree in a new table named \var<<2094>>noordwijck_and_scharloo_inbreeding<<2094>>:
-\begin<<2095>>tex2html_preform<<2095>><tex2html_verbatim_mark>verbatim113#\end<<2096>>tex2html_preform<<2096>>
-You should see messages in the log telling you that the table has been created and populated:
-\begin<<2097>>tex2html_preform<<2097>><tex2html_verbatim_mark>verbatim114#\end<<2098>>tex2html_preform<<2098>>
-\section<<2099>>Pedigrees as Graphs<<2099>>
-\label<<2100>>sec:howto-pedigrees-graphs<<2100>>
-\index<<2101>>how do I!pedigrees as graphs<<2101>>
-PyPedal<<2102>><<2102>> includes tools for working with pedigrees as algebraic structures known as directed graphs, or digraphs. Digraphs are not graphs in the sense of graphics for presentation or display. Rather, they are mathematical abstractions, the study of which can provide interesting information about the structure of a population. A digraph represents a pedigree as a set of vertices (also called nodes), which correspond to animals, and a collection of edges, which connect nodes to one another. In the context of a pedigree, edges indicate that a parent--offspring relationship exists between two animals.  If a path can be constructed between two vertices (animals) in the graph then those animals are related. If no path can be constructed between teo nodes, then no relatinship exists between the two. Routines for working with graphs (also called networwks) are contained in the \module<<2103>>pyp\_network<<2103>> module (\ref<<2104>>sec:pyp-network<<2104>>)
-\subsection<<2105>>How do I convert a pedigree to a graph?<<2105>>
-\label<<2106>>sec:howto-pedigree-to-graph<<2106>>
-\index<<2107>>how do I!pedigrees as graphs!pedigree to graph<<2107>>
-The function \function<<2108>>pyp\_network.ped\_to\_graph()<<2108>> takes a PyPedal<<2109>><<2109>> pedigree object as its argument and returns a NetworkX (\begin<<2236>>tex2html_deferred<<2236>>\url<<2110>>https://networkx.lanl.gov/<<2110>>\end<<2237>>tex2html_deferred<<2237>>) XDiGraph object:
-\begin<<2111>>tex2html_preform<<2111>><tex2html_verbatim_mark>verbatim115#\end<<2112>>tex2html_preform<<2112>>
-Once you've got a graph, you use the NetworkX API to operate on the graph. For example, the number of animals in the pedigree is simply the number of nodes in the graph:
-\begin<<2113>>tex2html_preform<<2113>><tex2html_verbatim_mark>verbatim116#\end<<2114>>tex2html_preform<<2114>>
-\subsection<<2115>>How do I convert a graph to a pedigree?<<2115>>
-\label<<2116>>sec:howto-graph-to-pedigree<<2116>>
-\index<<2117>>how do I!pedigrees as graphs!graph to pedigree<<2117>>
-It is possible to create a PyPedal<<2118>><<2118>> pedigree from a NetworkX graph. This is useful, for example, when you'd like to create a pedigree representing a subset of the population in a \class<<2119>>NewPedigree<<2119>> object. \function<<2120>>pyp\_nrm.recurse\_pedigree()<<2120>> and related functions won't do the trick because they return only lists of animal IDs, not actual \class<<2121>>NewPedigree<<2121>> instances. To create a pedigree from a graph you simply build your options dictionary and call \function<<2122>>pyp\_newclasses.loadPedigree()<<2122>>:
-\begin<<2123>>tex2html_preform<<2123>><tex2html_verbatim_mark>verbatim117#\end<<2124>>tex2html_preform<<2124>>
-You must provide a non-null \texttt<<2125>>pedfile<<2125>> keyword in your options dictionary, as well as the \texttt<<2126>>pedsource<<2126>> and \texttt<<2127>>pedgraph<<2127>> arguments to \function<<2128>>pyp\_newclasses.loadPedigree()<<2128>>.
-\begin<<2238>>tex2html_deferred<<2238>>\par\end<<2239>>tex2html_deferred<<2239>>
-There is a known bug with logfile creation when loading a pedigree from a digraph.
-\subsection<<2129>>How do I load a pedigree from a file containing a graph stored as an adjacency list?<<2129>>
-\label<<2130>>sec:howto-pedigree-from-graph-file<<2130>>
-\index<<2131>>how do I!pedigrees as graphs!pedigree from graph file<<2131>>
- PyPedal<<2132>><<2132>> can read graphs stored in text files as adjacency lists, which is one way of representing directed graphs:
-\begin<<2133>>tex2html_preform<<2133>><tex2html_verbatim_mark>verbatim118#\end<<2134>>tex2html_preform<<2134>>
-\subsection<<2135>>How do I save a graph as an adjacency list?<<2135>>
-\label<<2136>>sec:howto-graph-to-file<<2136>>
-\index<<2137>>how do I!pedigrees as graphs!graph to file<<2137>>
-PyPedal<<2138>><<2138>>, using NetworkX, can save graphs as adjacency lists:
-\begin<<2139>>tex2html_preform<<2139>><tex2html_verbatim_mark>verbatim119#\end<<2140>>tex2html_preform<<2140>>
-\section<<2141>>Miscellaneous<<2141>>
-\label<<2142>>sec:howto-miscellaneous<<2142>>
-\index<<2143>>how do I!miscellaneous<<2143>>
-\subsection<<2144>>How do I export a numerator relationship matrix so that I can read it into Octave?<<2144>>
-\label<<2145>>sec:howto-export-nrm-to-octave<<2145>>
-\index<<2146>>how do I!miscellaneous!export NRM to Octave<<2146>>
-Numerator relationship matrices may be exported to text files for use with, e.g., Octave using the \method<<2147>>NewAMatrix.save<<2147>> method:
-\begin<<2148>>tex2html_preform<<2148>><tex2html_verbatim_mark>verbatim120#\end<<2149>>tex2html_preform<<2149>>
-When matrices are written to text files array elements are separated by \var<<2150>>sepchar<<2150>> (Table \ref<<2151>>tbl:options<<2151>>).
-\begin<<2240>>tex2html_deferred<<2240>>\par\end<<2241>>tex2html_deferred<<2241>>
-Matrices may also be written to a binary format. The default value of the \var<<2152>>nrm\_format<<2152>> pedigree option is \texttt<<2153>>text<<2153>>. To write files in binary format you must either specify the  value of the \var<<2154>>nrm\_format<<2154>> option as \texttt<<2155>>binary<<2155>> before you load your pedigree file or use the \var<<2156>>nrm\_format<<2156>> keyword when you call \method<<2157>>NewAMatrix.save<<2157>>:
-\begin<<2158>>tex2html_preform<<2158>><tex2html_verbatim_mark>verbatim121#\end<<2159>>tex2html_preform<<2159>>
-Once you've saved the NRM to a file, say \texttt<<2160>>'Ainv.txt'<<2160>>, in text format you can easily read it into Octave:
-\begin<<2161>>tex2html_preform<<2161>><tex2html_verbatim_mark>verbatim122#\end<<2162>>tex2html_preform<<2162>>
-This has been verified with Octave 2.1.57 under RedHat Enterprise Linux on small matrices.
-\subsection<<2163>>How else can I export a NRM to a file?<<2163>>
-\label<<2164>>sec:howto-export-nrm-to-ijk-file<<2164>>
-\index<<2165>>how do I!miscellaneous!export NRM to a file<<2165>>
-Numerator relationship matrices may be exported to a text file in ``ijk format'',
-where each line is of the form ``animal\_A animal\_B rAB'' using the \function<<2166>>pyp\_io.save\_ijk()<<2166>> function. Diagonal entries are \begin<<2222>>tex2html_wrap_inline<<2222>>$1 + f_a$\end<<2223>>tex2html_wrap_inline<<2223>>, where \begin<<2224>>tex2html_wrap_inline<<2224>>$f_a$\end<<2225>>tex2html_wrap_inline<<2225>>\space is the animal's coefficient of inbreedin.
-\begin<<2167>>tex2html_preform<<2167>><tex2html_verbatim_mark>verbatim123#\end<<2168>>tex2html_preform<<2168>>
-Suppose that the example above produces the following file:
-\begin<<2169>>tex2html_preform<<2169>><tex2html_verbatim_mark>verbatim124#\end<<2170>>tex2html_preform<<2170>>
-In order to get \begin<<2226>>tex2html_wrap_inline<<2226>>$f_a$\end<<2227>>tex2html_wrap_inline<<2227>>\space for animal 4627 you need to find the corresponding diagonal element and subtract 1 from it:
-\begin<<2220>>displaymath<<2220>>
-f_a = 1.125 - 1.0 = 0.125
-\end<<2221>>displaymath<<2221>>
-The coefficient of relationship between 4627 and 5538 is \begin<<2228>>tex2html_wrap_inline<<2228>>$0.5$\end<<2229>>tex2html_wrap_inline<<2229>>\space (4627 is probably a parent of 5538). Note that the file \var<<2171>>nrm\_ijk.txt<<2171>> will include only the diagonal and upper off-diagonal elements of the NRM, and should have \begin<<2230>>tex2html_wrap_inline<<2230>>$n + n(n+1)/2$\end<<2231>>tex2html_wrap_inline<<2231>>\space lines.
-\subsection<<2172>>How do I load a pedigree from a GEDCOM file?<<2172>>
-\label<<2173>>sec:howto-load-gedcom-pedigree<<2173>>
-\index<<2174>>how do I!miscellaneous!load a GEDCOM pedigree<<2174>>
-As of version 2 release candidate 1  PyPedal<<2175>><<2175>> can load pedigrees from GEDCOM 5.5 files. This is done by passing the \function<<2176>>pedsource<<2176>>\index<<2177>>pedsource<<2177>> keyword to \function<<2178>>pyp_newclasses.loadPedigree<<2178>> with a value of \begin<<2242>>tex2html_deferred<<2242>>\samp<<2179>>gedcomfile<<2179>>\end<<2243>>tex2html_deferred<<2243>>:
-\begin<<2180>>tex2html_preform<<2180>><tex2html_verbatim_mark>verbatim125#\end<<2181>>tex2html_preform<<2181>>
-Note that only a limited subset of the GEDCOM format is supported, and it is possible to lose metadata when converting a pedigree from GEDCOM to PyPedal<<2182>><<2182>>. More details on PyPedal<<2183>><<2183>>'s GEDCOM handling can be found in Appendix \ref<<2184>>GEDCOM<<2184>>.
-\subsection<<2185>>How do I save a pedigree to a GEDCOM file?<<2185>>
-\label<<2186>>sec:howto-save-gedcom-pedigree<<2186>>
-\index<<2187>>how do I!miscellaneous!save to GEDCOM pedigree<<2187>>
-As of version 2 release candidate 1 PyPedal<<2188>><<2188>> can write pedigrees to GEDCOM 5.5-formatted files using the \function<<2189>>savegedcom<<2189>>\index<<2190>>savegedcom<<2190>> method of \function<<2191>>pyp_newclasses.NewPedigree<<2191>> objects. The method takes an output file name as its argument:
-\begin<<2192>>tex2html_preform<<2192>><tex2html_verbatim_mark>verbatim126#\end<<2193>>tex2html_preform<<2193>>
-Note that not all attributes of \function<<2194>>pyp_newclasses.NewAnimal<<2194>> objects are written to the output file. More details on PyPedal<<2195>><<2195>>'s GEDCOM handling can be found in Appendix \ref<<2196>>GEDCOM<<2196>>.
-\subsection<<2197>>How do I load a pedigree from a string?<<2197>>
-\label<<2198>>sec:howto-load-from-string<<2198>>
-\index<<2199>>how do I!miscellaneous!load a pedigree from a string<<2199>>
-There are some use cases for which it is desirable to load pedigrees from strings rather than from files. This is done by passing the \function<<2200>>pedsource<<2200>>\index<<2201>>pedsource<<2201>> keyword to \function<<2202>>pyp_newclasses.loadPedigree<<2202>> with a value of \begin<<2244>>tex2html_deferred<<2244>>\samp<<2203>>textstream<<2203>>\end<<2245>>tex2html_deferred<<2245>>, along with a string named \begin<<2246>>tex2html_deferred<<2246>>\samp<<2204>>pedstream<<2204>>\end<<2247>>tex2html_deferred<<2247>> (Figure \ref<<2205>>fig:ped-from-string<<2205>>):
-\begin<<2206>>tex2html_preform<<2206>><tex2html_verbatim_mark>verbatim127#\end<<2207>>tex2html_preform<<2207>>
-Note that only ASD-formatted pedigrees can be loaded this way, individual IDs are separated with commas, and successive records are separated by newlines. All records must contain a newline, including the last record in the string! You must also set the \begin<<2248>>tex2html_deferred<<2248>>\samp<<2208>>pedfile<<2208>>\end<<2249>>tex2html_deferred<<2249>> option to a value, even if that value is just an empty string as in the example.
-\begin<<2209>>figure<<2209>>
-  \begin<<2210>>center<<2210>>
-    \includegraphics[width=4in]<<2211>>pedfromstring.eps<<2211>>
-    \begin<<2250>>tex2html_deferred<<2250>>\caption<<2212>>Pedigree loaded from a string<<2212>>\end<<2251>>tex2html_deferred<<2251>>
-    \label<<2213>>fig:ped-from-string<<2213>>
-  \end<<2214>>center<<2214>>
-\end<<2215>>figure<<2215>>
-\section<<2216>>Contribute a HOWTO<<2216>>
-\label<<2217>>sec:howto-contribute<<2217>>
-\index<<2218>>how do I!contribute a HOWTO<<2218>>
-Users are invited to contribute HOWTOs demonstrating how to solve problems they've found interesting.  In order for such HOWTOs to be considered for inclusion in this manual they must be licensed under the GNU Free Documentation License version 1.2 or later (\begin<<2252>>tex2html_deferred<<2252>>\url<<2219>>http://www.gnu.org/copyleft/fdl.html<<2219>>\end<<2253>>tex2html_deferred<<2253>>).  Authorship will be acknowledged, and copyright will remain with the author of the HOWTO.
-<tex2html_endfile>#./howtos.tex#
+<tex2html_file>#./methodology.tex#
+\chapter<<2162>>Methodology<<2162>>
+\label<<2163>>cha:methodology<<2163>>
+\begin<<2164>>quote<<2164>>
+To iterate is human, to recurse divine. --- L. Peter Deutsch
+\end<<2165>>quote<<2165>>
+In this chapter, a high-level overview of PyPedal<<2166>><<2166>> is provided, giving
+the reader the definitions of the key components of the system. This section
+defines the concepts used by the remaining sections.
+\section<<2167>>Reordering and Renumbering<<2167>>\label<<2168>>sec:methodology-reordering-and-renumbering<<2168>>\index<<2169>>reordering and renumbering<<2169>>
+Many computations on pedigrees require that the pedigree be renumbered such that animal IDs are consecutive from 1 to \character<<2170>>n<<2170>>, where \character<<2171>>n<<2171>> is the total number of animals in the pedigree. By default, all pedigrees are renumbered at load time. If you pedigree is already renumbered and you do not want it renumbered again you must set the \begin<<2468>>tex2html_deferred<<2468>>\samp<<2172>>renumber<<2172>>\end<<2469>>tex2html_deferred<<2469>> option to 0. The renumbering process requires that the pedigree be reordered such that parents always precede their offspring in the list of animal IDs. The actual ID assigned to an animal is of no particular importance, and it is even possible for parents to have larger IDs than their offspring.  PyPedal<<2173>><<2173>> can reorder any pedigree unless there is an error in it that would prevent unambiguously placing parents before offspring.  For example, a pedigree containing a keypunch error such that an animal is one of its own grandparents cannot be reordered because there is no way to unambiguously order the animals.  The \module<<2174>>pyp_utils<<2174>> module provides two routines for pedigree reordering, \function<<2175>>reorder()<<2175>> and \function<<2176>>fast\_reorder()<<2176>>.  By default, \function<<2177>>reorder()<<2177>> is used to reorder pedigrees in place.  It does this by maintaining a list of animal IDs that have been processed; whenever a parent that is not in the  list of encountered animals the offspring of that parent are moved to the end of the pedigree.  This ensures the pedigree is properly sorted such that all parents precede their offspring. Founders are also grouped together at the beginning of the pedigree. This procedure will always correctly reorder a pedigree but it can be quite inefficient as it is similar to an insertion sort, which has a worst-case runtime proportional to \begin<<2376>>tex2html_wrap_inline<<2376>>$n^<<2178>>2<<2178>>$\end<<2377>>tex2html_wrap_inline<<2377>>\space \cite<<2179>>Cormen2003<<2179>>.
+\begin<<2470>>tex2html_deferred<<2470>>\par\end<<2471>>tex2html_deferred<<2471>>
+\function<<2180>>fast\_reorder()<<2180>> provides a much faster means of reordering a pedigree, but can incorrectly reorder a pedigree in some cases.  When an instance of a \class<<2181>>NewAnimal<<2181>> object is created the \method<<2182>>pad_id()<<2182>> method is called.  \method<<2183>>pad_id()<<2183>> uses the animal ID and birth year to form an ID used by \function<<2184>>by pyp_utils/fast_reorder()<<2184>> for quick sorting; if your pedigree file is numbered such that offspring always have larger IDs than their parents and your birth years (if provided) are correct (that is, parents always born BEFORE offspring) then \function<<2185>>pyp_utils.fast_reorder()<<2185>> works as expected.  If you do not provide birth years in your pedigree file but your parent IDs are always smaller than your animal IDs, the reordering will be correct.  If you do not provide birth years, all animals in the pedigree will be assigned a default value of `1900'.  In that case, if parents have IDs larger than that of one or more of their offspring, the pedigree will be incorrectly reordered by \function<<2186>>fast\_reorder()<<2186>>.  If your pedigree file contains birth years, or you know that parents always have smaller IDs than their offspring, then \function<<2187>>fast\_reorder()<<2187>> will correctly reorder your pedigree in linear time. Founders
+are not guaranteed to be grouped at the beginning of the pedigree when \function<<2188>>fast\_reorder()<<2188>> is used; if you are going to calculate coefficients of
+partial inbreeding (Section \ref<<2189>>sec:methodology-partial-inbreeding<<2189>>) then you should instead use \function<<2190>>reorder()<<2190>> to reorder your pedigree.
+\begin<<2472>>tex2html_deferred<<2472>>\par\end<<2473>>tex2html_deferred<<2473>>
+The performance difference between the two reordering routines is not very noticeable on pedigrees of a few hundred to a few thousand animals, but is quite dramatic for very large pedigrees. If your pedigree file is already reordered then there is essentially no performance difference between the two. When creating a pedigree file from data stored in a relational database, let the database perform the sort for you by using an \begin<<2474>>tex2html_deferred<<2474>>\samp<<2191>>ORDER BY<<2191>>\end<<2475>>tex2html_deferred<<2475>> statement.
+\begin<<2476>>tex2html_deferred<<2476>>\par\end<<2477>>tex2html_deferred<<2477>>
+\section<<2192>>Animal Identification and Cross-References<<2192>>
+\label<<2193>>sec:methodology-id-mapping<<2193>>
+\index<<2194>>ID mapping<<2194>>
+There are a number of identification attributes associated with animal objects in PyPedal<<2195>><<2195>> pedigrees. A description of those fields, as well as their default values, is provided in Table \ref<<2196>>tbl:objects-animal-objects-new-animal-attributes<<2196>>. This section describes the data structures provided for mapping between various animal IDs. Table \ref<<2197>>tbl:methodology-id-mapping<<2197>> lists the four structures provided for ID mapping and lists the default values for pedigrees with integral (\texttt<<2198>>asd<<2198>> formats) and string (\texttt<<2199>>ASD<<2199>> formats) IDs. Renumbered PyPedal<<2200>><<2200>> pedigree objects store animal objects in a list that is typically indexed by renumbered ID. When animal IDs are strings (see \ref<<2201>>sec:pedigree-format-codes<<2201>>) they are hashed to an integer and the original ID is stored in a name field. In renumbered pedigrees the original ID is stored and replaced by a renumbered ID.
+\begin<<2478>>tex2html_deferred<<2478>>\par\end<<2479>>tex2html_deferred<<2479>>
+Once your pedigree is renumbered it is quite easy to see how these maps can be used to convert between various IDs. The maps mean that you don't have to worry about renumbered IDs and can continue to think about your animals in terms of their original IDs, whether they be ID numbers or names. Consider the Newfoundland pedigree presented in Figure \ref<<2202>>fig:newfoundland-colored-pedigree<<2202>> -- it is much more convenient to think about the dog named Kaptn Kvols von Widdersdorf, rather than the dog whose name was hashed to the ID 5523557808241831142 amd renumbered to 48. For example, suppose you wanted to determine his coefficient of inbreeding. It is simple to do using the maps:
+\begin<<2203>>tex2html_preform<<2203>><tex2html_verbatim_mark>verbatim154#\end<<2204>>tex2html_preform<<2204>>
+\texttt<<2205>>example.namemap['Kaptn Kvols von Widdersdorf']<<2205>> returns the original ID assigned to the name, while \texttt<<2206>>example.idmap[...]<<2206>> converts from the original ID to the renumbered ID. This sort of ID/name mapping is sued in a number of places in PyPedal<<2207>><<2207>>, such as in the three generation pedigree routine in the \module<<2208>>pyp\_reports<<2208>> module.
+\begin<<2480>>tex2html_deferred<<2480>>\par\end<<2481>>tex2html_deferred<<2481>>
+Note that if an animal has its original ID as its name, which is the default when integral IDs and no animal names are provided, the name is changed to the renumbered ID when the pedigree is renumbered.
+\begin<<2209>>center<<2209>>
+    \tablecaption<<2210>>Animal identification and cross-references.<<2210>>
+    \tablefirsthead<<2359>>\hline
+	\multirow<<2211>>2<<2211>><<2212>>15mm<<2212>><<2213>>Map name<<2213>> ;SPMamp; \multicolumn<<2214>>2<<2214>><<2215>>c|<<2215>><<2350>>\texttt<<2216>>asd<<2216>> format<<2350>> ;SPMamp; \multicolumn<<2217>>2<<2217>><<2218>>c|<<2218>><<2351>>\texttt<<2219>>ASD<<2219>> format<<2351>>  ;SPMamp; \multicolumn<<2220>>2<<2220>><<2221>>c<<2221>><<2222>>Renumbered<<2222>>\\ 
+	\cline<<2223>>2-7<<2223>>
+	 ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value \\ 
+	\hline<<2359>>
+    \begin<<2482>>tex2html_deferred<<2482>>\tablehead<<2360>>\hline
+	\multirow<<2224>>2<<2224>><<2225>>15mm<<2225>><<2226>>Map name<<2226>> ;SPMamp; \multicolumn<<2227>>2<<2227>><<2228>>c|<<2228>><<2352>>\texttt<<2229>>asd<<2229>> format<<2352>> ;SPMamp; \multicolumn<<2230>>2<<2230>><<2231>>c|<<2231>><<2353>>\texttt<<2232>>ASD<<2232>> format<<2353>>  ;SPMamp; \multicolumn<<2233>>2<<2233>><<2234>>c<<2234>><<2235>>Renumbered<<2235>>\\ 
+	\cline<<2236>>2-7<<2236>>
+	 ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value ;SPMamp; Key ;SPMamp; Value \\ 
+	\hline<<2360>>\end<<2483>>tex2html_deferred<<2483>>
+    \begin<<2484>>tex2html_deferred<<2484>>\tabletail<<2354>>\hline \multicolumn<<2237>>7<<2237>><<2238>>l<<2238>><<2239>>\small\sl continued on next page<<2239>> \\  \hline<<2354>>\end<<2485>>tex2html_deferred<<2485>>
+    \tablelasttail<<2240>>\hline<<2240>>
+    \label<<2241>>tbl:methodology-id-mapping<<2241>>
+    \begin<<2242>>xtabular<<2242>><<2243>>l|l|l|l|l|l|l<<2243>>
+	idmap ;SPMamp; animal ID ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; original ID ;SPMamp; renumbered ID \\ 
+	backmap ;SPMamp; animal ID ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; renumbered ID ;SPMamp; original ID \\ 
+	namemap ;SPMamp; name ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; name ;SPMamp; original ID \\ 
+	namebackmap ;SPMamp; animal ID ;SPMamp; name ;SPMamp; name ;SPMamp; name ;SPMamp; original ID ;SPMamp; name \\ 
+    \end<<2244>>xtabular<<2244>>
+\end<<2245>>center<<2245>>
+\section<<2246>>Measures of Genetic Variation<<2246>>
+\label<<2247>>sec:methodology-genetic-variation<<2247>>
+\index<<2248>>measures of genetic variation<<2248>>
+Coefficients of inbreeding and relationship \cite<<2249>>Wright1922<<2249>> have been commonly used to describe the genetic diversity in livestock populations \cite<<2250>>ref351<<2250>>. Inbreeding coefficients represent an individual's expected genetic homozygosity due to the relatedness of its parents. Coefficients of relationship describe the expected proportion of genes two individuals share due to their relatedness. These are relative measures that depend on such factors as the completeness and depth of pedigrees. Over time, these coefficients change in response to breeding and culling decisions, and they may be used as indicators of the genetic variability of a population. Rapid methods for calculating coefficients of inbreeding and relationship for large populations have been implemented \cite<<2251>>ref337<<2251>>.
+\begin<<2486>>tex2html_deferred<<2486>>\par\end<<2487>>tex2html_deferred<<2487>>
+Populations under study rarely conform to the theory established for the use of coefficients of inbreeding \cite<<2252>>Wright1931<<2252>>. Lacy \citeyear<<2253>>ref640<<2253>> and Boichard et al. \citeyear<<2254>>ref352<<2254>> proposed measures of genetic variation based on ideas from conservation genetics. Lacy \citeyear<<2255>>ref640<<2255>> proposed the idea of the number of founder equivalents in assessing populations. A founder is an ancestor whose parents are unknown. If all founders contribute to the population equally, then the founder equivalent is equal to the number of founders. When founders contribute unequally to the population, the number of founder equivalents decreases. Boichard et al. \citeyear<<2256>>ref352<<2256>> developed the idea of founder ancestor equivalents, which is the minimum number of ancestors necessary to explain the genetic diversity of the current population. Founder ancestor equivalents account for bottlenecks, unlike founder equivalents, and are more accurate in populations undergoing intense selection.  Caballero and Toro \citeyear<<2257>>ref817<<2257>> discussed the relationships among these and other measures of diversity in small populations, and demonstrate their use \cite<<2258>>ref435<<2258>>.
+\begin<<2488>>tex2html_deferred<<2488>>\par\end<<2489>>tex2html_deferred<<2489>>
+Roughsedge et al. \citeyear<<2259>>ref641<<2259>> used average coefficients of inbreeding, average coefficients of relationship, founder equivalent numbers, and founder ancestor numbers to document the decrease in genetic diversity in the British dairy cattle population over the last 25 years. Changes in founder equivalent number and founder ancestor number reflected the use of a small number of influential individuals to improve the genetic merit of that population. Accompanying changes in average inbreeding and relationship did not accurately reflect that loss of diversity. Such results highlight the need for additional tools when assessing complex populations.
+\section<<2260>>Computational Details<<2260>>
+\label<<2261>>sec:methodology-computational-details<<2261>>
+\index<<2262>>computational details<<2262>>
+\subsection<<2263>>Inbreeding and Related Measures<<2263>>
+\label<<2264>>sec:methodology-computation-inbreeding<<2264>>
+\index<<2265>>computational details!inbreeding and related measures<<2265>>
+Coefficients of relationship (\begin<<2378>>tex2html_wrap_inline<<2378>>$r_<<2266>>ij<<2266>>$\end<<2379>>tex2html_wrap_inline<<2379>>) and inbreeding (\begin<<2380>>tex2html_wrap_inline<<2380>>$f_<<2267>>i<<2267>>$\end<<2381>>tex2html_wrap_inline<<2381>>) are calculated using the method of Wiggans et al. \citeyear<<2268>>ref337<<2268>>.  An empty dictionary is created to store animal IDs and coefficients of inbreeding.  For each animal in the pedigree, working from youngest to oldest, the dictionary is queried for the animal ID.  If the animal does not have an entry in the dictionary, a subpedigree containing only relatives of that animal is extracted and the coefficients of inbreeding are calculated and stored in the dictionary.  A second dictionary keeps track of sire-dam combinations seen in the pedigree.  If a full-sib of an animal whose pedigree has already been processed is encountered the full-sib receives a COI identical to that of the animal already processed.  This approach allows for computation of COI for arbitrarily large populations because it does not require allocation of a single NRM of order \begin<<2382>>tex2html_wrap_inline<<2382>>$n^<<2269>>2<<2269>>$\end<<2383>>tex2html_wrap_inline<<2383>>, where \begin<<2384>>tex2html_wrap_inline<<2384>>$n$\end<<2385>>tex2html_wrap_inline<<2385>>\space is the size of the pedigreed population.  In most cases, the NRM for a subpedigree is on the order of 200, although this can vary with species and population data structure.
+\begin<<2490>>tex2html_deferred<<2490>>\par\end<<2491>>tex2html_deferred<<2491>>
+Average and maximum coefficients of inbreeding are computed for the entire population and for all individuals with non-zero inbreeding.  The average relationship among all individuals is also computed.  Theoretical and realized effective population
+sizes, \begin<<2386>>tex2html_wrap_inline<<2386>>$N_<<2270>>e(t)<<2270>>$\end<<2387>>tex2html_wrap_inline<<2387>>, and \begin<<2388>>tex2html_wrap_inline<<2388>>$N_<<2271>>e(r)<<2271>>$\end<<2389>>tex2html_wrap_inline<<2389>>, were estimated as \cite<<2272>>ref91<<2272>>:
+\begin<<2492>>tex2html_deferred<<2492>>\par\end<<2493>>tex2html_deferred<<2493>>
+\begin<<2362>>displaymath<<2362>> N_<<2273>>e(t)<<2273>> = \dfrac<<2274>> 4 N_m N_f <<2274>> <<2275>> N_m + N_f <<2275>> \end<<2369>>displaymath<<2369>>
+\begin<<2494>>tex2html_deferred<<2494>>\par\end<<2495>>tex2html_deferred<<2495>>
+and
+\begin<<2496>>tex2html_deferred<<2496>>\par\end<<2497>>tex2html_deferred<<2497>>
+\begin<<2363>>displaymath<<2363>> N_<<2276>>e(t)<<2276>> = \dfrac<<2277>>1<<2277>><<2278>>2 \Delta f<<2278>> \end<<2370>>displaymath<<2370>>
+\begin<<2498>>tex2html_deferred<<2498>>\par\end<<2499>>tex2html_deferred<<2499>>
+where \begin<<2390>>tex2html_wrap_inline<<2390>>$N_m$\end<<2391>>tex2html_wrap_inline<<2391>>\space and \begin<<2392>>tex2html_wrap_inline<<2392>>$N_f$\end<<2393>>tex2html_wrap_inline<<2393>>\space are the number of sires and dams in the population, respectively, and \begin<<2394>>tex2html_wrap_inline<<2394>>$\Delta f$\end<<2395>>tex2html_wrap_inline<<2395>>\space is the change in
+population average inbreeding between generations \textit<<2279>>t<<2279>> and \textit<<2280>>t+1<<2280>>.  Interpretation of \begin<<2396>>tex2html_wrap_inline<<2396>>$N_<<2281>>e(t)<<2281>>$\end<<2397>>tex2html_wrap_inline<<2397>>\space can be
+problematic when \begin<<2398>>tex2html_wrap_inline<<2398>>$\Delta f$\end<<2399>>tex2html_wrap_inline<<2399>>\space is calculated from incomplete or error-prone pedigrees.
+\subsection<<2282>>Ancestral Inbreeding<<2282>>
+\label<<2283>>sec:methodology-ancestral-inbreeding<<2283>>
+\index<<2284>>computational details!ancestral inbreeding<<2284>>
+Ballou \citeyear<<2285>>Ballou1997<<2285>> described ancestral inbreeding, the probability that an individual inherited an allele that had undergone inbreeding in the past at least once, in a study of purging recessives and inbreeding in conservation genetics. This is a different idea than the usual coefficient of inbreeding as an individual that is not inbred may carry alleles that have been exposed to substantial inbreeding; recall that an individual may have inbred parents, but if the parents are not related to one another then the resulting offspring will not be themselves inbred. It has been proposed that animals deriving from highly inbred lines may be less susceptible to inbreeding depression because deleterious recessive alleles have been purged from the population, but literature reports on extant populations are inconsistent. Ancestral inbreeding is calculated using a recursion equation as:
+\begin<<2400>>tex2html_wrap_inline<<2400>>$f_a = [f_<<2286>>a(s)<<2286>> + (1 - f_<<2287>>a(s)<<2287>>)f_s + f_<<2288>>a(d)<<2288>> + (1 - f_<<2289>>a(d)<<2289>>)f_d ]/2$\end<<2401>>tex2html_wrap_inline<<2401>>
+where \begin<<2402>>tex2html_wrap_inline<<2402>>$f_a$\end<<2403>>tex2html_wrap_inline<<2403>>\space is the ancestral inbreeding coefficient for an individual, \begin<<2404>>tex2html_wrap_inline<<2404>>$f$\end<<2405>>tex2html_wrap_inline<<2405>>\space is the usual coefficient of inbreeding, and subscripts \begin<<2406>>tex2html_wrap_inline<<2406>>$s$\end<<2407>>tex2html_wrap_inline<<2407>>\space and \begin<<2408>>tex2html_wrap_inline<<2408>>$d$\end<<2409>>tex2html_wrap_inline<<2409>>\space represent sires and dams, respectively. Calculations are from oldest to youngest in the population and require as inputs only coefficients of inbreeding.
+\begin<<2500>>tex2html_deferred<<2500>>\par\end<<2501>>tex2html_deferred<<2501>>
+Suwanlee et al. \citeyear<<2290>>SuwanleeBSC2007<<2290>> extended the concept by presenting a gene-dropping approach \cite<<2291>>ref1719<<2291>> for calculating ancestral inbreeding, as well as modifying Ballou's equation to account for non-independence between individual inbreeding coefficients and ancestral inbreeding coefficients. Gene dropping is also used in PyPedal<<2292>><<2292>> for calculating founder genome equivalents (see: Section \ref<<2293>>sec:methodology-computation-founder-genome-equivalents<<2293>>), and the code used by the \function<<2294>>pyp_metrics.dropped_ancestral_inbreeding()<<2294>> and \function<<2295>>pyp_metrics.effective_founder_genomes()<<2295>> routines are similar, although the former drops an arbitrary number of unlinked biallelic loci through the pedigree while the latter drops only a single locus.
+\subsection<<2296>>Partial Inbreeding<<2296>>
+\label<<2297>>sec:methodology-partial-inbreeding<<2297>>
+\index<<2298>>computational details!partial inbreeding<<2298>>  
+Partial inbreeding coefficients, \begin<<2410>>tex2html_wrap_inline<<2410>>$F_<<2299>>ij<<2299>>$\end<<2411>>tex2html_wrap_inline<<2411>>, measure the probability that the alleles at an arbitrary locus in individual \begin<<2412>>tex2html_wrap_inline<<2412>>$i$\end<<2413>>tex2html_wrap_inline<<2413>>\space are identitical-by-descent and that the alleles were derived from an allele in founder \begin<<2414>>tex2html_wrap_inline<<2414>>$j$\end<<2415>>tex2html_wrap_inline<<2415>>\space \cite<<2300>>LacyAW1996<<2300>>; Gulisija et al. \citeyear<<2301>>GulisijaGWT2006<<2301>> provide an excellent description of the tabular method for calculating \begin<<2416>>tex2html_wrap_inline<<2416>>$F_<<2302>>ij<<2302>>$\end<<2417>>tex2html_wrap_inline<<2417>>. Computational requirements may be high for large pedigrees with a large number of founders because partial kinship matrices are calculated for each founder in the pedigree. The usual coefficients of inbreeding may be obtained by summing the coefficients of partial inbreeding over all founders common to the parents of animal \begin<<2418>>tex2html_wrap_inline<<2418>>$i$\end<<2419>>tex2html_wrap_inline<<2419>>, that is, \begin<<2420>>tex2html_wrap_inline<<2420>>$f_<<2303>>i<<2303>> = \sum_<<2304>>j<<2304>> F_<<2305>>ij<<2305>>$\end<<2421>>tex2html_wrap_inline<<2421>>.
+\begin<<2502>>tex2html_deferred<<2502>>\par\end<<2503>>tex2html_deferred<<2503>>
+For example, consider the pedigree presented in Figure 2 of Gulisija and Crow \citeyear <<2306>>GulisijaC2007<<2306>>. The individual of interest, \begin<<2422>>tex2html_wrap_inline<<2422>>$I$\end<<2423>>tex2html_wrap_inline<<2423>>, has an inbreeding coefficient of 0.375 and coefficients of partial inbreeding to founders J, K, and M of 0.21875,0.09375, and 0.0625, respectively. As asserted, \begin<<2424>>tex2html_wrap_inline<<2424>>$0.21875 + 0.09375 + 0.0625 = 0.375$\end<<2425>>tex2html_wrap_inline<<2425>>.
+\subsection<<2307>>Generation Coefficients<<2307>>
+\label<<2308>>sec:methodology-computation-generation-coefficients<<2308>>
+\index<<2309>>computational details!generation coefficients<<2309>>
+Generation coefficients are assigned using the method of \cite<<2310>>Pattie1965<<2310>>.  Founders, defined as individuals with unknown parents, are assigned generation codes of 0. All other animals are assigned generation codes as:
+\begin<<2504>>tex2html_deferred<<2504>>\par\end<<2505>>tex2html_deferred<<2505>>
+\begin<<2364>>displaymath<<2364>> GC_o = \dfrac<<2311>> ( GC_s + GC_d ) <<2311>> <<2312>> 2 <<2312>> + 1 \end<<2371>>displaymath<<2371>>
+\begin<<2506>>tex2html_deferred<<2506>>\par\end<<2507>>tex2html_deferred<<2507>>
+where \begin<<2426>>tex2html_wrap_inline<<2426>>$GC_o$\end<<2427>>tex2html_wrap_inline<<2427>>, \begin<<2428>>tex2html_wrap_inline<<2428>>$GC_s$\end<<2429>>tex2html_wrap_inline<<2429>>, \begin<<2430>>tex2html_wrap_inline<<2430>>$GC_d$\end<<2431>>tex2html_wrap_inline<<2431>>\space represent offspring, sire, and dam codes, respectively.
+\subsection<<2313>>Effective Founder Number<<2313>>
+\label<<2314>>sec:methodology-computation-effective-founder-number<<2314>>
+\index<<2315>>computational details!effective founder number<<2315>>
+The effective founder number (\begin<<2432>>tex2html_wrap_inline<<2432>>$f_e$\end<<2433>>tex2html_wrap_inline<<2433>>) was calculated as:
+\begin<<2508>>tex2html_deferred<<2508>>\par\end<<2509>>tex2html_deferred<<2509>>
+\begin<<2365>>displaymath<<2365>> f_e = \dfrac<<2316>> 1 <<2316>> <<2355>> \sum<<2317>> p_i^2 <<2317>> <<2355>> \end<<2372>>displaymath<<2372>>
+\begin<<2510>>tex2html_deferred<<2510>>\par\end<<2511>>tex2html_deferred<<2511>>
+where \begin<<2434>>tex2html_wrap_inline<<2434>>$p_i$\end<<2435>>tex2html_wrap_inline<<2435>>\space is the proportion of genes contributed by ancestor i to the current population \cite<<2318>>ref640<<2318>>. If all founders
+had contributed equally to the population, then \begin<<2436>>tex2html_wrap_inline<<2436>>$f_e$\end<<2437>>tex2html_wrap_inline<<2437>>\space would be the same as the actual number of founders.  When founders
+contribute to the population unequally, \begin<<2438>>tex2html_wrap_inline<<2438>>$f_e$\end<<2439>>tex2html_wrap_inline<<2439>>\space is smaller than the actual number of founders. The greater the inequity in
+founder contributions, the smaller the effective founder number.
+\begin<<2512>>tex2html_deferred<<2512>>\par\end<<2513>>tex2html_deferred<<2513>>
+A subpedigree approach, similar to that used for calculation of inbreeding (see \ref<<2319>>sec:methodology-computation-inbreeding<<2319>> for details), is also used for calculating \begin<<2440>>tex2html_wrap_inline<<2440>>$f_e$\end<<2441>>tex2html_wrap_inline<<2441>>.
+\subsection<<2320>>Founder Genome Equivalents<<2320>>
+\label<<2321>>sec:methodology-computation-founder-genome-equivalents<<2321>>
+\index<<2322>>computational details!founder genome equivalents<<2322>>
+Lacy \citeyear<<2323>>ref640<<2323>> also defined the number of founder genome equivalents (\begin<<2442>>tex2html_wrap_inline<<2442>>$f_g$\end<<2443>>tex2html_wrap_inline<<2443>>) as a measure of genetic diversity.  A
+founder genome equivalent is the number of founders that would produce a population with the same diversity of founder alleles
+as the pedigree population assuming all founders contributed equally to each generation of descendants. Founder genome
+equivalents are calculated as:
+\begin<<2514>>tex2html_deferred<<2514>>\par\end<<2515>>tex2html_deferred<<2515>>
+\begin<<2366>>displaymath<<2366>> f_g = \dfrac<<2324>> 1 <<2324>> <<2361>> \sum<<2356>> \dfrac<<2325>>p_i<<2325>> <<2326>>r_i<<2326>> <<2356>> <<2361>> \end<<2373>>displaymath<<2373>>
+\begin<<2516>>tex2html_deferred<<2516>>\par\end<<2517>>tex2html_deferred<<2517>>
+where \begin<<2444>>tex2html_wrap_inline<<2444>>$p_i$\end<<2445>>tex2html_wrap_inline<<2445>>\space is the proportion of genes contributed by ancestor \textit<<2327>>i<<2327>> to the current population and \begin<<2446>>tex2html_wrap_inline<<2446>>$r_i$\end<<2447>>tex2html_wrap_inline<<2447>>\space is the
+proportion of founder \textit<<2328>>i<<2328>>'s genes that are retained in the current population.  Like \begin<<2448>>tex2html_wrap_inline<<2448>>$f_e$\end<<2449>>tex2html_wrap_inline<<2449>>, \begin<<2450>>tex2html_wrap_inline<<2450>>$f_g$\end<<2451>>tex2html_wrap_inline<<2451>>\space accounts for
+unequal founder contributions.  Unlike \begin<<2452>>tex2html_wrap_inline<<2452>>$f_e$\end<<2453>>tex2html_wrap_inline<<2453>>, \begin<<2454>>tex2html_wrap_inline<<2454>>$f_g$\end<<2455>>tex2html_wrap_inline<<2455>>\space also accounts for the fraction of founder genomes lost from the
+pedigree through drift during bottlenecks. Although \begin<<2456>>tex2html_wrap_inline<<2456>>$f_g$\end<<2457>>tex2html_wrap_inline<<2457>>\space is the more accurate description of the amount of founder variation
+present in a population, it can only be calculated directly for simple pedigrees. For large or complex pedigrees, the number of
+founder genome equivalents must be approximated based on computer simulation of a large number of segregations through the
+pedigree. This is done by assigning each founder a unique pair of alleles and randomly transmitting those alleles through the
+pedigree \cite<<2329>>ref1719<<2329>>. The number of founder genome equivalents is similar to the effective founder number, but the former
+has been devalued based on the proportion of its genome that has probably been lost to drift \cite<<2330>>ref640<<2330>>.
+\subsection<<2331>>Effective Ancestor Number<<2331>>
+\label<<2332>>sec:methodology-computation-effective-ancestor-number<<2332>>
+\index<<2333>>computational details!effective ancestor number<<2333>>
+In populations that have undergone a bottleneck the effective number of founders computed using Lacy's \citeyear<<2334>>ref640<<2334>> approach is overestimated. Large contributions made by recent ancestors are more important to the population with respect to the loss of genetic diversity than equal contributions made long ago. Boichard et al. \citeyear<<2335>>ref352<<2335>> proposed a second measure of diversity to deal with such situations, the effective number of ancestors (\begin<<2458>>tex2html_wrap_inline<<2458>>$f_a$\end<<2459>>tex2html_wrap_inline<<2459>>), which considers the genetic contribution of all ancestors in the population, not just founders. The effective number of ancestors treats all ancestors in the population the same way, and is computed as:
+\begin<<2518>>tex2html_deferred<<2518>>\par\end<<2519>>tex2html_deferred<<2519>>
+\begin<<2367>>displaymath<<2367>>f_a = \dfrac<<2336>>1<<2336>><<2357>>\sum<<2337>>q_i^2<<2337>><<2357>>\end<<2374>>displaymath<<2374>>
+\begin<<2520>>tex2html_deferred<<2520>>\par\end<<2521>>tex2html_deferred<<2521>>
+where \begin<<2460>>tex2html_wrap_inline<<2460>>$q_i$\end<<2461>>tex2html_wrap_inline<<2461>>\space is the genetic contribution of the \textit<<2338>>i<<2338>>th ancestor not explained by the previous \textit<<2339>>i<<2339>>-1 ancestors.
+The ancestors with the greatest contributions are selected iteratively.  The number of ancestors with a positive genetic
+contribution is less than or equal to the actual number of founders.
+\subsection<<2340>>Pedigree Completeness<<2340>>
+\label<<2341>>sec:methodology-pedigre-completeness<<2341>>
+\index<<2342>>computational details!pedigree completeness<<2342>>
+Pedigree completeness \cite<<2343>>Cassell2003a<<2343>>, the proportion of known pedigree information for an arbitrary number of generations, is computed as:
+\begin<<2522>>tex2html_deferred<<2522>>\par\end<<2523>>tex2html_deferred<<2523>>
+\begin<<2368>>displaymath<<2368>> c_p = \dfrac<<2344>>a_k<<2344>><<2358>>\sum_<<2345>>i=1<<2345>>^g<<2346>>2^i<<2346>><<2358>> \end<<2375>>displaymath<<2375>>
+\begin<<2524>>tex2html_deferred<<2524>>\par\end<<2525>>tex2html_deferred<<2525>>
+where \begin<<2462>>tex2html_wrap_inline<<2462>>$c_p$\end<<2463>>tex2html_wrap_inline<<2463>>\space is pedigree completeness and \begin<<2464>>tex2html_wrap_inline<<2464>>$a_k$\end<<2465>>tex2html_wrap_inline<<2465>>\space is the number of known ancestors in \textit<<2347>>g<<2347>> generations.  The default (which may be overridden) is to compute four-generation pedigree completeness.  Low \begin<<2466>>tex2html_wrap_inline<<2466>>$c_p$\end<<2467>>tex2html_wrap_inline<<2467>>\space indicates that there is little pedigree information available for an individual, which may result in biased estimates of inbreeding and other measures of diversity. Pedigree completeness and ancestor loss coefficients\index<<2348>>ancestor loss coefficient<<2348>> (\begin<<2526>>tex2html_deferred<<2526>>\url<<2349>>http://www.newfoundlanddog-database.net/en/ahnen.php?num=0000025330<<2349>>\end<<2527>>tex2html_deferred<<2527>>), which are sometimes seen in dog breeding materials, are equivalent measures if the same number of generations were used in the calculations.
+<tex2html_endfile>#./methodology.tex#

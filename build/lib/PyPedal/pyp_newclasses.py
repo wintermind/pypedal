@@ -405,6 +405,255 @@ class NewPedigree:
             return NotImplemented
 
     ##
+    # Method to subtract two pedigree and return a new pedigree representing the
+    # first pedigree without any animals shared in common with the second pedigree,
+    # or: A - B = A - (A \cap B).
+    def __sub__(self, other, filename=False, debugLoad=False):
+        """
+        Method to subtract two pedigree and return a new pedigree representing the
+        first pedigree without any animals shared in common with the second pedigree,
+	or: A - B = A - (A \cap B).
+        """
+        if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
+            logging.info('Subtracting pedigrees %s and %s', self.kw['pedname'], \
+                other.kw['pedname'] )
+            #print 'self and other both are NewPedigree objects. We can start combining them'
+            #print 'Using match rule: %s' % ( self.kw['match_rule'])
+            logging.info('Using match rule %s to subtract pedigrees', \
+                self.kw['match_rule'] )
+            # Pedigrees must be renumbered
+            if self.kw['pedigree_is_renumbered'] != 1:
+                self.renumber()
+                logging.info('Renumbering pedigree %s', self.kw['pedname'] )
+            if other.kw['pedigree_is_renumbered'] != 1:
+                other.renumber()
+                logging.info('Renumbering pedigree %s', other.kw['pedname'] )
+            # We need to compare each animal in self and other to see if they
+            # match based on the match_rule.
+            #
+            # We're going to use a dictionary to keep track of which animals
+            # need to be written to the new pedigree file from which the merged
+            # pedigree will be loaded. By default, I assume that all animal
+            # records are unique, and only change the ped_to_write flag  when a
+            # duplicate has been detected.
+            #
+            # NOTE: It's nagging at me that there may be a logic error in the
+            # checking and flagging, so this code needs to be thoroughly tested!
+            ped_to_write = {'a': {}, 'b': {}}
+            for a in self.pedigree:
+                ped_to_write['a'][a.animalID] = True
+                for b in other.pedigree:
+		    ped_to_write['b'][b.animalID] = False
+                    mismatches = 0		# Count places where the animals don't match
+                    #print 'Comparing animal %s in a and animal %s in b' % \
+                    #    ( a.animalID, b.animalID )
+                    for match in self.kw['match_rule']:
+                        #print 'First match criterion: %s (%s)' % \
+                        #    ( match, self.new_animal_attr[match] )
+                        # If we're comparing animal IDs, make sure that we
+                        # compare original IDs, not renumbered IDs.
+                        if match in ['a','A']:
+                            if a.originalID != b.originalID:
+                                mismatches = mismatches + 1
+                        elif match in ['s','S']:
+                            if self.pedigree[a.sireID-1].originalID != \
+                                other.pedigree[b.sireID-1].originalID:
+                                mismatches = mismatches + 1
+                        elif match in ['d','D']:
+                            if self.pedigree[a.damID-1].originalID != \
+                                other.pedigree[b.damID-1].originalID:
+                                mismatches = mismatches + 1
+                        elif getattr(a, self.new_animal_attr[match]) != \
+                            getattr(b, self.new_animal_attr[match]):
+                            mismatches = mismatches + 1
+                        else:
+                            pass
+            # If there are no mismatches then the two animals are identical
+            # based on the match rule and only one of them needs to be written
+            # to the merged pedigree.
+            if ( mismatches == 0 ):
+                # Animals are identical. Do not write animals from self that are
+		# identical to animals in other.
+		ped_to_write['a'][a.animalID] = False
+            else:
+                # Animals are different
+                ped_to_write['b'][b.animalID] = True
+            # Once we have matches, we are going to write a new pedigree
+            # file to disc, and we will load that file to get the new
+            # pedigree.
+            #
+            # First, save the unique animals from the union of pedigrees a and
+            # b based on the match rule. Note that the pedformat from the first
+            # pedigree passed to __add__() will be used for both pedigrees. This
+            # makes sense because you cannot have two different pedformats in
+            # the same file.
+            if filename == False:
+                filename = '%s_%s.ped' % ( self.kw['pedname'], \
+                other.kw['pedname'] )
+                print '[INFO]: filename = %s' % ( filename )
+            self.save(filename=filename, write_list=ped_to_write['a'], \
+                pedformat=self.kw['pedformat'], originalID=True)
+            other.save(filename=filename, write_list=ped_to_write['b'], \
+                pedformat=self.kw['pedformat'], originalID=True, append=True )
+            # Now we need to load the new pedigree and return it. This should be
+            # dead easy.
+            #
+            # Create the options dictionary
+            merged_pedname = 'Merged Pedigree: %s + %s' % \
+                ( self.kw['pedname'], other.kw['pedname'] )
+            new_options = {}
+            new_options['messages'] = self.kw['messages']
+            new_options['pedname'] = merged_pedname
+            new_options['renumber'] = 1
+            new_options['pedfile'] = filename
+            new_options['pedformat'] = self.kw['pedformat']
+            # Load the new pedigree and return it.
+            try:
+                new_pedigree = loadPedigree(new_options, debugLoad=True)
+                if self.kw['messages'] == 'verbose':
+                    print '[INFO]: Loaded merged pedigree %s from file %s!' % \
+                        ( merged_pedname, filename )
+                logging.info('Cannot complete __add__() operation becuase types do not match.')
+                return new_pedigree
+            except:
+                if self.kw['messages'] == 'verbose':
+                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
+                        ( merged_pedname, filename )
+                logging.error('Could not load merged pedigree %s from file %s!', \
+                    merged_pedname, filename)
+                return False
+        else:
+            logging.error('Cannot complete __add__() operation becuase types do not match.')
+            return NotImplemented            
+
+    ##
+    # __union__() is an alias to NewPedigree::__add__().
+    def union(self, other, filename=False, debugLoad=False):
+	"""
+        __union__() is an alias to NewPedigree::__add__().
+	"""
+        self.__add__(self, other, filename=filename, debugLoad=debugLoad)
+
+    ##
+    # __intersection__() returns a PyPedal pedigree object which contains the animals that are
+    # common to both input pedigrees. If there are no animals in common between the two pedgrees,
+    # a value of false is returned.
+    # @param pedobj_b Another PyPedal pedigree.
+    # @param filename The file to which the new pedigree should be written
+    # @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
+    def intersection(self, other, filename=False):
+        """
+        intersection() returns a PyPedal pedigree object which contains the animals that are common to
+        both input pedigrees. If there are no animals in common between the two pedgrees, a value
+        of false is returned.
+        """
+        if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
+            logging.info('Computing intersection of pedigrees %s and %s', self.kw['pedname'], other.kw['pedname'])
+            logging.info('Using match rule %s to compare pedigrees', self.kw['match_rule'])
+            # Pedigrees must be renumbered
+            if self.kw['pedigree_is_renumbered'] != 1:
+                self.renumber()
+                logging.info('Renumbering pedigree %s', self.kw['pedname'])
+            if other.kw['pedigree_is_renumbered'] != 1:
+                other.renumber()
+                logging.info('Renumbering pedigree %s', other.kw['pedname'])
+            # We need to compare each animal in self and other to see if they
+            # match based on the match_rule.
+            #
+            # We're going to use a dictionary to keep track of which animals
+            # need to be written to the new pedigree file from which the merged
+            # pedigree will be loaded. By default, I assume that all animal
+            # records are unique, and only change the ped_to_write flag  when a
+            # duplicate has been detected.
+            #
+            # NOTE: It's nagging at me that there may be a logic error in the
+            # checking and flagging, so this code needs to be thoroughly tested!
+            animals_to_write = []
+            for a in self.pedigree:
+                for b in other.pedigree:
+                    matches = 0    # Count places where the animals match
+                     #print 'Comparing animal %s in a and animal %s in b' % \
+                     #    ( a.animalID, b.animalID )
+                     for match in self.kw['match_rule']:
+                         #print 'First match criterion: %s (%s)' % \
+                         #    ( match, self.new_animal_attr[match] )
+                         # If we're comparing animal IDs, make sure that we
+                         # compare original IDs, not renumbered IDs.
+                         if match in ['a','A']:
+                             if a.originalID == b.originalID:
+                                 matches = matches + 1
+                         elif match in ['s','S']:
+                             if self.pedigree[a.sireID-1].originalID == \
+                                 other.pedigree[b.sireID-1].originalID:
+                                 matches = matches + 1
+                         elif match in ['d','D']:
+                             if self.pedigree[a.damID-1].originalID == \
+                                 other.pedigree[b.damID-1].originalID:
+                                 matches = matches + 1
+                         elif getattr(a, self.new_animal_attr[match]) == \
+                             getattr(b, other.new_animal_attr[match]):
+                             #print '%s == %s' % ( \
+                             #    getattr(a, self.new_animal_attr[match]), \
+                             #    getattr(b, self.new_animal_attr[match]) )
+                             matches = matches + 1
+                         else:
+                             #print '%s != %s' % ( \
+                             #    getattr(a, self.new_animal_attr[match]), \
+                             #    getattr(b, self.new_animal_attr[match]) )
+                             pass
+                # If there are no mismatches then the two animals are identical
+                # based on the match rule and only one of them needs to be written
+                # to the merged pedigree.
+                if ( matches == len(self.kw['match_rule']) ):
+                    # Animals are identical
+                    animals_to_write.append(a)
+            # Once we have matches, we are going to write a new pedigree
+            # file to disc, and we will load that file to get the new
+            # pedigree.
+            #
+            # First, save the unique animals from the union of pedigrees a and
+            # b based on the match rule. Note that the pedformat from the first
+            # pedigree passed to __add__() will be used for both pedigrees. This
+            # makes sense because you cannot have two different pedformats in
+            # the same file.
+            if filename == False:
+                filename = '%s_%s.ped' % ( self.kw['pedname'], other.kw['pedname'] )
+		if self.kw['debug_messages']:
+                    print '[INFO]: filename = %s' % ( filename )
+                pyp_io.save_newanimals_to_file(animals_to_write, filename, self.pedformat \
+                    self.kw['sepchar'])
+            # Now we need to load the new pedigree and return it. This should be
+            # dead easy.
+            #
+            # Create the options dictionary
+            intersect_pedname = 'Intersected Pedigree: %s + %s' % \
+                ( self.kw['pedname'], other.kw['pedname'] )
+            new_options = {}
+            new_options['messages'] = self.kw['messages']
+            new_options['pedname'] = intersect_pedname
+            new_options['renumber'] = 1
+            new_options['pedfile'] = filename
+            new_options['pedformat'] = self.kw['pedformat']
+            # Load the new pedigree and return it.
+            try:
+                new_pedigree = loadPedigree(new_options, debugLoad=True)
+                if self.kw['messages'] == 'verbose':
+                    print '[INFO]: Loaded merged pedigree %s from file %s!' % \
+                        ( merged_pedname, filename )
+                    logging.info('Cannot complete intersection operation because types do not match.')
+                    return new_pedigree
+            except:
+                if self.kw['messages'] == 'verbose':
+                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
+                        ( merged_pedname, filename )
+                logging.error('Could not load merged pedigree %s from file %s!', \
+                    merged_pedname, filename)
+                return False
+        else:
+            logging.error('Cannot complete intersection operation because types do not match.')
+            return NotImplemented
+
+    ##
     # load() wraps several processes useful for loading and preparing a pedigree for
     # use in an analysis, including reading the animals into a list of animal objects,
     # forming lists of sires and dams, checking for common errors, setting ancestor
@@ -1488,10 +1737,11 @@ class NewPedigree:
         fromanimallist() populates a NewPedigree with instances of NewAnimal objects.
 	"""
 	if len(animallist) > 0:
-            # There is a lingering issue here with the pedformat. Right now, it defaults to 'asd'
-            # regardless of what data are in the NewAnimal objects.
+            # There is a lingering issue here with the pedformat. For now, we're
+	    # going to use my terribly clever pedformat guesser to figure it out.
+            self.kw['pedformat'] = pyp_utils.guess_pedformat(animallist[0], self.kw)
             for an in animallist:
-                if an.__class__.__name__ == 'NewAnimal':		    
+                if an.__class__.__name__ == 'NewAnimal':
                     self.pedigree.append(an)
                     self.idmap[an.animalID] = an.animalID
                     self.backmap[an.animalID] = an.animalID
