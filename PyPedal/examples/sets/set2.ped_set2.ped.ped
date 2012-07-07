@@ -1,0 +1,17 @@
+4 0 0
+3 0 0
+2 0 0
+1 0 0
+5 1 2
+6 3 4
+7 5 6
+# set2.ped_set2.ped.ped created by PyPedal at Fri Jul  6 21:10:18 2012
+# Current pedigree metadata:
+#	pedigree file: set2.ped_set2.ped.ped
+#	pedigree name: set2.ped
+#	pedigree format: asd
+#	NOTE: Animal, sire, and dam IDs are RENUMBERED IDs, not original IDs!
+# Original pedigree metadata:
+#	pedigree file: set1.ped
+#	pedigree name: set2.ped
+#	pedigree format: asd

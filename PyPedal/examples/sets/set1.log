@@ -1,0 +1,88 @@
+Fri, 06 Jul 2012 22:24:38 INFO     Logfile set1.log instantiated.
+Fri, 06 Jul 2012 22:24:38 INFO     Preprocessing set1.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Opening pedigree file set1.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Reached end-of-line in set1.ped after reading 5 lines.
+Fri, 06 Jul 2012 22:24:38 INFO     Closing pedigree file
+Fri, 06 Jul 2012 22:24:38 INFO     Reordering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Renumbering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Updating ID map
+Fri, 06 Jul 2012 22:24:38 INFO     Assigning offspring
+Fri, 06 Jul 2012 22:24:38 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Fake Pedigree 1
+Fri, 06 Jul 2012 22:24:38 INFO     Logfile set2.log instantiated.
+Fri, 06 Jul 2012 22:24:38 INFO     Preprocessing set2.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Opening pedigree file set2.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Reached end-of-line in set2.ped after reading 5 lines.
+Fri, 06 Jul 2012 22:24:38 INFO     Closing pedigree file
+Fri, 06 Jul 2012 22:24:38 INFO     Reordering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Renumbering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Updating ID map
+Fri, 06 Jul 2012 22:24:38 INFO     Assigning offspring
+Fri, 06 Jul 2012 22:24:38 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Fake Pedigree 2
+Fri, 06 Jul 2012 22:24:38 INFO     Adding pedigrees Fake Pedigree 1 and Fake Pedigree 2
+Fri, 06 Jul 2012 22:24:38 INFO     Using match rule asd to merge pedigrees
+Fri, 06 Jul 2012 22:24:38 INFO     Opened file Fake Pedigree 1_Fake Pedigree 2.ped for pedigree save at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree format code asd being used to write pedigree file Fake Pedigree 1_Fake Pedigree 2.ped in NewPedigree::save().
+Fri, 06 Jul 2012 22:24:38 INFO     Closed file Fake Pedigree 1_Fake Pedigree 2.ped after pedigree save at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Opened file Fake Pedigree 1_Fake Pedigree 2.ped for pedigree save in append mode at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree format code asd being used to write pedigree file Fake Pedigree 1_Fake Pedigree 2.ped in NewPedigree::save().
+Fri, 06 Jul 2012 22:24:38 INFO     Closed file Fake Pedigree 1_Fake Pedigree 2.ped after pedigree save at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Logfile Fake Pedigree 1_Fake Pedigree 2.log instantiated.
+Fri, 06 Jul 2012 22:24:38 INFO     Preprocessing Fake Pedigree 1_Fake Pedigree 2.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Opening pedigree file Fake Pedigree 1_Fake Pedigree 2.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 6): # Fake Pedigree 1_Fake Pedigree 2.ped created by PyPedal at Fri Jul  6 22:24:38 2012
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 7): # Current pedigree metadata:
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 8): #	pedigree file: Fake Pedigree 1_Fake Pedigree 2.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 9): #	pedigree name: Fake Pedigree 2
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 10): #	pedigree format: asd
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 11): #	NOTE: Animal, sire, and dam IDs are original IDs!
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 12): # Original pedigree metadata:
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 13): #	pedigree file: set2.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 14): #	pedigree name: Fake Pedigree 2
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 15): #	pedigree format: asd
+Fri, 06 Jul 2012 22:24:38 INFO     Reached end-of-line in Fake Pedigree 1_Fake Pedigree 2.ped after reading 20 lines.
+Fri, 06 Jul 2012 22:24:38 INFO     Closing pedigree file
+Fri, 06 Jul 2012 22:24:38 INFO     Reordering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Renumbering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Updating ID map
+Fri, 06 Jul 2012 22:24:38 INFO     Assigning offspring
+Fri, 06 Jul 2012 22:24:38 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Merged Pedigree: Fake Pedigree 1 + Fake Pedigree 2
+Fri, 06 Jul 2012 22:24:38 INFO     Loaded merged pedigree Merged Pedigree: Fake Pedigree 1 + Fake Pedigree 2 from file Fake Pedigree 1_Fake Pedigree 2.ped.
+Fri, 06 Jul 2012 22:24:38 INFO     Logfile set1.log instantiated.
+Fri, 06 Jul 2012 22:24:38 INFO     Preprocessing set3.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Opening pedigree file set3.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Reached end-of-line in set3.ped after reading 3 lines.
+Fri, 06 Jul 2012 22:24:38 INFO     Closing pedigree file
+Fri, 06 Jul 2012 22:24:38 INFO     Reordering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Renumbering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Updating ID map
+Fri, 06 Jul 2012 22:24:38 INFO     Assigning offspring
+Fri, 06 Jul 2012 22:24:38 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Fake Pedigree 3
+Fri, 06 Jul 2012 22:24:38 INFO     Adding pedigrees Fake Pedigree 1 and Fake Pedigree 3
+Fri, 06 Jul 2012 22:24:38 INFO     Using match rule asd to merge pedigrees
+Fri, 06 Jul 2012 22:24:38 INFO     Opened file Fake Pedigree 1_Fake Pedigree 3.ped for pedigree save at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree format code asd being used to write pedigree file Fake Pedigree 1_Fake Pedigree 3.ped in NewPedigree::save().
+Fri, 06 Jul 2012 22:24:38 INFO     Closed file Fake Pedigree 1_Fake Pedigree 3.ped after pedigree save at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Opened file Fake Pedigree 1_Fake Pedigree 3.ped for pedigree save in append mode at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree format code asd being used to write pedigree file Fake Pedigree 1_Fake Pedigree 3.ped in NewPedigree::save().
+Fri, 06 Jul 2012 22:24:38 INFO     Closed file Fake Pedigree 1_Fake Pedigree 3.ped after pedigree save at Fri Jul  6 22:24:38 2012.
+Fri, 06 Jul 2012 22:24:38 INFO     Logfile Fake Pedigree 1_Fake Pedigree 3.log instantiated.
+Fri, 06 Jul 2012 22:24:38 INFO     Preprocessing Fake Pedigree 1_Fake Pedigree 3.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Opening pedigree file Fake Pedigree 1_Fake Pedigree 3.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 6): # Fake Pedigree 1_Fake Pedigree 3.ped created by PyPedal at Fri Jul  6 22:24:38 2012
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 7): # Current pedigree metadata:
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 8): #	pedigree file: Fake Pedigree 1_Fake Pedigree 3.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 9): #	pedigree name: Fake Pedigree 3
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 10): #	pedigree format: asd
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 11): #	NOTE: Animal, sire, and dam IDs are original IDs!
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 12): # Original pedigree metadata:
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 13): #	pedigree file: set3.ped
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 14): #	pedigree name: Fake Pedigree 3
+Fri, 06 Jul 2012 22:24:38 INFO     Pedigree comment (line 15): #	pedigree format: asd
+Fri, 06 Jul 2012 22:24:38 INFO     Reached end-of-line in Fake Pedigree 1_Fake Pedigree 3.ped after reading 18 lines.
+Fri, 06 Jul 2012 22:24:38 INFO     Closing pedigree file
+Fri, 06 Jul 2012 22:24:38 INFO     Reordering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Renumbering pedigree
+Fri, 06 Jul 2012 22:24:38 INFO     Updating ID map
+Fri, 06 Jul 2012 22:24:38 INFO     Assigning offspring
+Fri, 06 Jul 2012 22:24:38 INFO     pyp_utils/assign_offspring() assigned offspring in pedigree Merged Pedigree: Fake Pedigree 1 + Fake Pedigree 3
+Fri, 06 Jul 2012 22:24:38 INFO     Loaded merged pedigree Merged Pedigree: Fake Pedigree 1 + Fake Pedigree 3 from file Fake Pedigree 1_Fake Pedigree 3.ped.

@@ -12,6 +12,9 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+--- 07/06/2012  The application of match rules for comparing sires and dams
+    in NewPedigree::__add__() is broken for the case where one or both
+    parents are missing.
 ''' 07/06/2012  I think that pyp_utils/list_intersection() is working now.
 ''' 07/06/2012  The union() and intersection() functions in pyp_utils have
     been renamed list_union and list_intersection, respectively.

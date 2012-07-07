@@ -1,0 +1,20 @@
+2 0 0
+1 0 0
+3 1 2
+4 1 2
+5 3 4
+# Fake Pedigree 1_Fake Pedigree 2.ped created by PyPedal at Fri Jul  6 22:24:38 2012
+# Current pedigree metadata:
+#	pedigree file: Fake Pedigree 1_Fake Pedigree 2.ped
+#	pedigree name: Fake Pedigree 2
+#	pedigree format: asd
+#	NOTE: Animal, sire, and dam IDs are original IDs!
+# Original pedigree metadata:
+#	pedigree file: set2.ped
+#	pedigree name: Fake Pedigree 2
+#	pedigree format: asd
+7 0 0
+6 0 0
+8 6 7
+9 6 7
+10 8 9
