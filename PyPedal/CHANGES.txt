@@ -12,6 +12,10 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
++++ 09/18/2012  Added some code in pyp_nrm/fast_a_matrix_r() to try memory-
+    mapped arrays if A cannot be created due to insufficient memory. This
+    also propagates through to pyp_newclasses/NewAMatrix::form_a_matrix(),
+    which uses pyp_nrm/fast_a_matrix_r() in the background.
 +++ 09/18/2012  Added some code in pyp_nrm/inbreeding_meuwissen_luo() and
     pyp_mrn/inbreeding_modified_meuwissen_luo() to try memory-
     mapped arrays if A cannot be created due to insufficient memory.

@@ -181,7 +181,15 @@ def fast_a_matrix(pedigree, pedopts, save=0, method='dense', debug=0, fill=1):
         except:
 #            logging.error('Could not import the spmatrix module from PySparse! Using NumPY dense matrices instead.')
 #            print '[ERROR]: Could not import the spmatrix module from PySparse! Using NumPY dense matrices instead.'
-            a = numpy.zeros([l,l],'d')
+            #a = numpy.zeros([l,l],'d')
+	    try:
+                a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros of appropriate size
+	    except MemoryError:
+	        a = numpy.memmap('fast_a_matrix_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
+	    except:
+	        print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix()!' % ( l )
+	        logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix()!', l)
+	        return False
     # Otherwise, use Numpy and its dense matrices
     else:
 	# First, try and allocate the vectors in RAM. If that does not work, try and allocate them using
@@ -189,10 +197,11 @@ def fast_a_matrix(pedigree, pedopts, save=0, method='dense', debug=0, fill=1):
 	try:
             a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros of appropriate size
 	except MemoryError:
-	    a = numpy.memmap('fast_a_matix_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
-	else:
+	    a = numpy.memmap('fast_a_matrix_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
+	except:
 	    print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix()!' % ( l )
 	    logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix()!', l)
+	    return False
         # print a
     if pedopts['debug_messages'] and pedopts['messages'] != 'quiet':
         print '\t\t[pyp_nrm/fast_a_matrix()] Started forming animal, sire, and dam lists at %s' %  pyp_utils.pyp_nice_time()
@@ -313,10 +322,28 @@ def fast_a_matrix_r(pedigree, pedopts, save=0, method='dense'):
                 for i in xrange(l):
                     a[i,i] = 1.
             except:
-                a = numpy.zeros([l,l],'d')
+                #a = numpy.zeros([l,l],'d')
+	        try:
+                    a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros of appropriate size
+	        except MemoryError:
+	            a = numpy.memmap('fast_a_matrix_r_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
+	        except:
+	            print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!' % ( l )
+	            logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!', l)
+                    return False
+
         # Otherwise, use NumPy and its dense matrices
         else:
-            a = numpy.zeros([l,l],'d')
+            #a = numpy.zeros([l,l],'d')
+	    try:
+                a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros of appropriate size
+	    except MemoryError:
+	        a = numpy.memmap('fast_a_matrix_r_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
+	    except:
+	        print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!' % ( l )
+	        logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!', l)
+                return False
+
         for i in xrange(l):
             animals.append(int(pedigree[i].animalID))
             sires.append(int(pedigree[i].sireID))
@@ -1154,7 +1181,9 @@ def inbreeding_meuwissen_luo(pedobj, gens=0,**kw):
     # First, try and allocate the vectors in RAM. If that does not work, try and allocate them using
     # memory-mapped files. If that does not work, well, give up.
     try:
+        logging.info('Allocating vectors in pyp_nrm.inbreeding_meuwissen_luo().')
         lvec = numpy.zeros((len(pedobj.pedigree)),'d')
+        #print 'lvec:\t', lvec
         avec = numpy.zeros((len(pedobj.pedigree)),'d')
         dvec = numpy.zeros((len(pedobj.pedigree)),'d')
     except MemoryError:
@@ -1165,7 +1194,7 @@ def inbreeding_meuwissen_luo(pedobj, gens=0,**kw):
 	avec = 0.0
 	dvec = numpy.memmap('dvec_memmap.bin', dtype='float32', mode='w+', shape=(len(pedobj.pedigree)))
 	dvec = 0.0
-    else:
+    except:
         print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.inbreeding_meuwissen_luo()!' % ( l )
         logging.error('[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.inbreeding_meuwissen_luo()!', l)
 	return False
@@ -1263,7 +1292,9 @@ def inbreeding_modified_meuwissen_luo(pedobj, gens=0,**kw):
     # First, try and allocate the vectors in RAM. If that does not work, try and allocate them using
     # memory-mapped files. If that does not work, well, give up.
     try:
+        logging.info('Allocating vectors in pyp_nrm.inbreeding_modified_meuwissen_luo().')
         lvecs = numpy.zeros((len(pedobj.pedigree)),'d')
+        #print 'lvecs:\t', lvecs
         lvecd = numpy.zeros((len(pedobj.pedigree)),'d')
         avec = numpy.zeros((len(pedobj.pedigree)),'d')
         dvec = numpy.zeros((len(pedobj.pedigree)),'d')
@@ -1277,7 +1308,7 @@ def inbreeding_modified_meuwissen_luo(pedobj, gens=0,**kw):
 	avec = 0.0
 	dvec = numpy.memmap('dvec_memmap.bin', dtype='float32', mode='w+', shape=(len(pedobj.pedigree)))
 	dvec = 0.0
-    else:
+    except:
         print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.inbreeding_modified_meuwissen_luo()!' % ( l )
         logging.error('[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.inbreeding_modified_meuwissen_luo()!', l)
 	return False
