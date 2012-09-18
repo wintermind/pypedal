@@ -33,9 +33,9 @@ PyPedal depends on features in 2.4 that are not present in earlier versions
 of Python.  You may find Python for your operating system at:
 http://www.python.org/
 
-You MUST have the Numeric extension to Python installed.  You can
-obtain Numeric, as well as installation instructions, at:
-http://www.pfdubois.com/numpy/
+You MUST have the NumPy extension to Python installed.  You can
+obtain NumPy as well as installation instructions, at:
+http://numpy.scipy.org/
 
 
 INSTALLING PyPedal UNDER UNIX/LINUX
