@@ -7,9 +7,6 @@
 # LICENSE: LGPL
 ###############################################################################
 # FUNCTIONS:
-#   load_pedigree()
-#   preprocess()
-#   new_preprocess()
 #   set_ancestor_flag()
 #   set_generation()
 #   set_age()
@@ -320,18 +317,30 @@ def assign_offspring(pedobj):
 # assign_upg() assigns pseudo-parents to animals with unknown (missing) parents. The
 # pseudo-parents can bbe used as Westell groups in an animal model.
 # @param pedobj An instance of a PyPedal NewPedigree object.
+# @param upg_rule Text string indicating how UPG should be assigned.
 # @retval None
-def assign_upg(pedobj):
+def assign_upg(pedobj, upg_rule='asd'):
     """
     assign_upg() assigns pseudo-parents to animals with unknown (missing) parents. The
     pseudo-parents can bbe used as Westell groups in an animal model.
     """
-    for p in pedobj:
-        if pedobk.kw['pedformat'] == 'asd' or  pedobk.kw['pedformat'] == 'ASD':
-	    p.sireID = -999999
-	    p.sireName = 'Sire_UPG'
-	else:
-            pass
+    if not pedobj.kw['pedigree_is_renumbered']:
+        for p in pedobj:
+            if pedobk.kw['pedformat'] == 'asd' or  pedobk.kw['pedformat'] == 'ASD':
+		if p.sireID == peobj.kw['missing_parent']:
+	            p.sireID = -999999
+	            p.sireName = 'Sire_UPG'
+                if p.damID == peobj.kw['missing_parent']:
+	            p.damID = -888888
+	            p.damName = 'Dam_UPG'
+	    else:
+	        logging.error('No rule for assigning unknown parent group %s!', upg_rule)
+	        if pedobj.kw['message'] == 'verbose':
+	            print '[ERROR]: No rule for assigning unknown parent group %s!' % ( upg_code )
+    else:
+	logging.error('Cannot assign unknown parent groups to a renumbered pedigree!')
+	if pedobj.kw['message'] == 'verbose':
+	    print '[ERROR]: Cannot assign unknown parent groups to a renumbered pedigree!'
 
 ##
 # reorder() renumbers a pedigree such that parents precede their offspring in the

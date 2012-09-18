@@ -12,6 +12,16 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
++++ 09/18/2012  Added some code in pyp_nrm/inbreeding_meuwissen_luo() and
+    pyp_mrn/inbreeding_modified_meuwissen_luo() to try memory-
+    mapped arrays if A cannot be created due to insufficient memory.
++++ 09/18/2012  Added some code in pyp_nrm/fast_a_matrix() to try memory-
+    mapped arrays if A cannot be created due to insufficient memory. This
+    also propagates through to pyp_newclasses/NewAMatrix::form_a_matrix(),
+    which uses pyp_nrm/fast_a_matrix() in the background.
+''' 07/15/2012  Did more work on pyp_utils/assign_upg().
+''' 07/15/2012  Fixed the match rules for comparing sires and dams
+    in NewPedigree::__add__() to deal with missing parents.
 --- 07/06/2012  The application of match rules for comparing sires and dams
     in NewPedigree::__add__() is broken for the case where one or both
     parents are missing.

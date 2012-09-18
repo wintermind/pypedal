@@ -334,13 +334,40 @@ class NewPedigree:
 			## when the sires or dams are unknown.
 			##
                         elif match in ['s','S']:
-                            if self.pedigree[a.sireID-1].originalID != \
-                                other.pedigree[b.sireID-1].originalID:
-                                mismatches = mismatches + 1
+			    # Check and see if sires are unknown -- what do we do if
+			    # self and other have different missing parent indicators?
+			    # It doesn't matter -- an unknown parent is na unknown
+			    # parent.
+			    if self.pedigree[a.sireID] != self.kw['missing_parent'] and \
+			        other.pedigree[b.sireID] != other.kw['missing_parent']:
+                                if self.pedigree[a.sireID-1].originalID != \
+                                    other.pedigree[b.sireID-1].originalID:
+                                    mismatches = mismatches + 1
+                            # If one parent is unknown and the othe ris not then we have
+			    # a mismatch.
+		            elif self.pedigree[a.sireID] == self.kw['missing_parent'] and \
+			        other.pedigree[b.sireID] != other.kw['missing_parent']:
+				mismatches = mismatches + 1
+			    elif self.pedigree[a.sireID] != self.kw['missing_parent'] and \
+			        other.pedigree[b.sireID] == other.kw['missing_parent']:
+				mismatches = mismatches + 1
+			    # Otherwise, carry onn.
+			    else:
+				pass
                         elif match in ['d','D']:
-                            if self.pedigree[a.damID-1].originalID != \
-                                other.pedigree[b.damID-1].originalID:
-                                mismatches = mismatches + 1
+			    if self.pedigree[a.damID] != self.kw['missing_parent'] and \
+			        other.pedigree[b.damID] != other.kw['missing_parent']:
+                                if self.pedigree[a.damID-1].originalID != \
+                                    other.pedigree[b.damID-1].originalID:
+                                    mismatches = mismatches + 1
+		            elif self.pedigree[a.sireID] == self.kw['missing_parent'] and \
+			        other.pedigree[b.sireID] != other.kw['missing_parent']:
+				mismatches = mismatches + 1
+			    elif self.pedigree[a.sireID] != self.kw['missing_parent'] and \
+			        other.pedigree[b.sireID] == other.kw['missing_parent']:
+				mismatches = mismatches + 1
+			    else:
+				pass
                         elif getattr(a, self.new_animal_attr[match]) != \
                             getattr(b, self.new_animal_attr[match]):
                             #print '%s == %s' % ( \
