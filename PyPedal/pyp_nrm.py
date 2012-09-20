@@ -1260,6 +1260,8 @@ def inbreeding_meuwissen_luo(pedobj, gens=0,**kw):
         if pedobj.kw['debug_messages']:
 	    print '\t\t[DEBUG]: fx[%s] = %s' % ( pedobj.pedigree[i].animalID, fx[pedobj.pedigree[i].animalID] )
 	    print '\t[DEBUG]: Current coefficients of inbeeding: ', fx
+    # We need to clean-up so that we don't have things like memory-ammped files laying around.
+    del lvec; del avec; del dvec
     try: logging.info('Exited inbreeding_meuwissen_luo()')
     except: pass
     return fx
@@ -1449,6 +1451,8 @@ def inbreeding_modified_meuwissen_luo(pedobj, gens=0,**kw):
  	        ancd.remove(j)
 		if pedobj.kw['debug_messages']: print '\t\t\t[DEBUG]: Ending ANCD: %s' % ( ancd )
 
+    # We need to clean-up so that we don't have things like memory-ammped files laying around.
+    del lvecs; del lvecd; del avec; del dvec
     try: logging.info('Exited inbreeding_modified_meuwissen_luo()')
     except: pass
     return fx

@@ -12,6 +12,9 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+''' 09/19/2012  Added a little cleanup code in pyp_nrm/inbreeding_meuwissen_luo()
+    and pyp_nrm/inbreeding_modified_meuwissen_luo() so that memory-mapped
+    files won't get left all over the place.
 +++ 09/18/2012  Added some code in pyp_nrm/fast_a_matrix_r() to try memory-
     mapped arrays if A cannot be created due to insufficient memory. This
     also propagates through to pyp_newclasses/NewAMatrix::form_a_matrix(),
