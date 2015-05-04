@@ -112,7 +112,7 @@ class NewPedigree:
         if not kw.has_key('alleles_sepchar'): kw['alleles_sepchar'] = '/'
         if not kw.has_key('counter'): kw['counter'] = 1000
         if not kw.has_key('slow_reorder'): kw['slow_reorder'] = 1
-	# Default missing values for NewAnimal objects.
+        # Default missing values for NewAnimal objects.
         if not kw.has_key('missing_bdate'): kw['missing_bdate'] = '01011900'
         if not kw.has_key('missing_byear'): kw['missing_byear'] = 1900
         if not kw.has_key('missing_parent'): kw['missing_parent'] = 0
@@ -120,16 +120,16 @@ class NewPedigree:
         if not kw.has_key('missing_breed'): kw['missing_breed'] = 'Unknown_Breed'
         if not kw.has_key('missing_herd'): kw['missing_herd'] = 'Unknown_Herd'
         if not kw.has_key('missing_sex'): kw['missing_sex'] = 'u'
-	if not kw.has_key('missing_inbreeding'): kw['missing_inbreeding'] = 0.
+        if not kw.has_key('missing_inbreeding'): kw['missing_inbreeding'] = 0.
         if not kw.has_key('missing_alive'): kw['missing_alive'] = 0
         if not kw.has_key('missing_age'): kw['missing_age'] = -999
         if not kw.has_key('missing_gen'): kw['missing_gen'] = -999.
         if not kw.has_key('missing_gencoeff'): kw['missing_gencoeff'] = -999.
         if not kw.has_key('missing_igen'): kw['missing_igen'] = -999.
         if not kw.has_key('missing_pedcomp'): kw['missing_pedcomp'] = -999.
-	if not kw.has_key('missing_alleles'): kw['missing_alleles'] = ['','']
-	if not kw.has_key('missing_userfield'): kw['missing_userfield'] = ''
-	# End of default missing values for NewAnimal objects.
+        if not kw.has_key('missing_alleles'): kw['missing_alleles'] = ['','']
+        if not kw.has_key('missing_userfield'): kw['missing_userfield'] = ''
+    # End of default missing values for NewAnimal objects.
         if not kw.has_key('file_io'): kw['file_io'] = '1'
         if not kw.has_key('debug_messages'): kw['debug_messages'] = 0
         if not kw.has_key('form_nrm'): kw['form_nrm'] = 0
@@ -186,7 +186,7 @@ class NewPedigree:
         if kw['default_unit'] not in ['cm','inch']:
             kw['default_unit'] = 'inch'
         # Defining the default font size to be used in graphs as a keyword
-        # saces some cruft in pyp_graphics and makes it easier for the user
+        # saves some cruft in pyp_graphics and makes it easier for the user
         # to understand what is going on.
         if not kw.has_key('default_fontsize'): kw['default_fontsize'] = 10
         try:
@@ -233,7 +233,7 @@ class NewPedigree:
         # Maybe these will go in a configuration file later
         self.starline = '*'*80
         # This is the list of valid pedformat codes
-        self.pedformat_codes = ['a','s','d','g','x','b','f','r','n','y','l','e','p','A','S','D','L','Z','h','H','u']
+        self.pedformat_codes = ['a','s','d','g','x','b','f','r','n','y','l','e','p','A','S','D','L','Z','h','H','u','T']
         # This dictionary maps pedformat codes to NewAnimal attributes
         self.new_animal_attr = {
 		'a': 'animalID',
@@ -1773,10 +1773,10 @@ class NewPedigree:
     def fromnull(self):
         """
          fromnull() creates a new pedigree with no animal records in it.
-	"""
-	# Let's see if it's this easy!
+	    """
+        # Let's see if it's this easy!
         logging.info('Created a null (empty) pedigree.')
-	return True
+        return True
 
 
     ##
@@ -1787,9 +1787,9 @@ class NewPedigree:
     def fromanimallist(self, animallist):
         """
         fromanimallist() populates a NewPedigree with instances of NewAnimal objects.
-	"""
+	    """
 	if len(animallist) > 0:
-            # There is a lingering issue here with the pedformat. For now, we're
+        # There is a lingering issue here with the pedformat. For now, we're
 	    # going to use my terribly clever pedformat guesser to figure it out.
             self.kw['pedformat'] = pyp_utils.guess_pedformat(animallist[0], self.kw)
             for an in animallist:
@@ -2615,13 +2615,59 @@ class NewAnimal:
                 #self.alleles = ['','']
 		self.alleles = mykw['missing_alleles']
         #self.pedcomp = -999.9
-	self.pedcomp =  mykw['missing_pedcomp']
+	    self.pedcomp =  mykw['missing_pedcomp']
         if locations['userfield'] != -999:
             self.userField = string.strip(data[locations['userfield']])
         else:
             #self.userField = ''
 	    self.userField = mykw['missing_userfield']
         # print '%s\t%s\t%s' % (self.animalID, self.sireID, self.damID)
+
+    ##
+    # __equals() is used to determine if two NewAnimal objects are identical.
+    # I think that the way to do this may be to hash both objects and do some
+    # sort of checksum comparison. Assuming that NewAnimals are hashable...
+    def __equals__(self, other):
+        if self.__class__.__name__ == 'NewAnimal' and other.__class__.__name__ == 'NewAnimal':
+            logging.info('Testing animals %s and %s for equality', self.animalID, \
+                         other.animalID )
+        if mykw['debug_messages']:
+            print '[DEBUG]: self and other both are NewAnimal objects. We can test them for equality.'
+        # The naive way to do this is to compare each attribute of the two animals
+        # to determine if they're identical. This seems inelegant...
+        #
+        # Need to think about this -- sires and dams can be the same but have
+        # different sireID and damID because those are renumbered IDs.
+        is_equal = True
+        #if self.animalID != other.animalID: is_equal = False
+        if ( self.name != other.name ): is_equal = False
+        #if ( self.sireID != other.sireID ): is_equal = False
+        if ( self.sireName != other.sireName ): is_equal = False
+        #if ( self.damID != other.damID ): is_equal = False
+        if ( self.damName != other.damName ): is_equal = False
+        if ( self.gen != other.gen ): is_equal = False
+        if ( self.gencoeff != other.gencoeff ): is_equal = False
+        if ( self.igen != other.igen ): is_equal = False
+        if ( self.by != other.by ): is_equal = False
+        if ( self.bd != other.bd ): is_equal = False
+        if ( self.sex != other.sex ): is_equal = False
+        if ( self.fa != other.fa ): is_equal = False
+        if ( self.founder != other.founder ): is_equal = False
+        if ( self.sons != other.sons ): is_equal = False
+        if ( self.daus != other.daus ): is_equal = False
+        if ( self.unks != other.unks ): is_equal = False
+        if ( self.ancestor != other.ancestor ): is_equal = False
+        if ( self.alleles != other.alleles ): is_equal = False
+        if ( self.originalID != other.originalID ): is_equal = False
+        #if ( self.renumberedID != other.renumberedID ): is_equal = False
+        if ( self.pedcomp != other.pedcomp ): is_equal = False
+        if ( self.breed != other.breed ): is_equal = False
+        if ( self.age != other.age ): is_equal = False
+        if ( self.alive != other.alive ): is_equal = False
+        if ( self.herd != other.herd ): is_equal = False
+        if ( self.originalHerd != other.originalHerd ): is_equal = False
+        if ( self.userField != other.userField ): is_equal = False
+        return is_equal
 
     ##
     # The NewAnimal class is not iterable, so raise an exception if anyonw tries it.
@@ -2666,7 +2712,7 @@ class NewAnimal:
         print '\tAlive:\t%s' % (self.alive)
         print '\tHerd:\t%s' % (self.herd)
         print '\tHerd name:\t%s' % (self.originalHerd)
-        if self.originalHerd != '':
+        if self.userField != '':
             print '\tUser field:\t%s' % (self.userField)
     ##
     # stringme() returns a summary of the data stored in the NewAnimal() object
@@ -2748,6 +2794,7 @@ class NewAnimal:
             _dict[alive] = self.alive
             _dict[herd] = self.herd
             _dict[originalHerd] = self.originalHerd
+            _dict[userField] = self.userField
             return _dict
         except:
             return {}
@@ -2813,7 +2860,7 @@ class NewAnimal:
 
         # This is a test to try and fix the problems on Mac OS/X and Windows.
         #import md5
-	import hashlib
+	    import hashlib
         try:
             # If we can, let's use the Python MD5 implementation
             #md5hash = md5.md5(idstring)
