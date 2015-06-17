@@ -990,8 +990,8 @@ def inbreeding_aguilar(pedobj, amethod=3):
     if pedobj.kw['messages'] == 'verbose':
         print '\t[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' \
             % (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-    logging.info('[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' % \
-            (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
+    logging.info('[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' \
+            % (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
     inbr = {}
     ifh = open(coifile, 'r')
     for line in ifh:

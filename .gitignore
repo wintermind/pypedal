@@ -30,3 +30,7 @@ PyPedal/doc/perl
 *.prof
 
 *.log
+
+PyPedal/.DS_Store
+
+PyPedal/.DS_Store

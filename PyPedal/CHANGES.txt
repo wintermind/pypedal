@@ -25,7 +25,11 @@ CHANGES in PyPedal 2.0.4 (Vetinari)
 +++ 04/29/2015  Added pyp_nrm/inbreeding_aguilar() that uses Aguilar
     and Misztal's inbupgf90 program externally to compute inbreeding coefficients.
 ### 04/29/2015  Sire and dam comparisons in NewAnimal::__equals__() may not
+<<<<<<< HEAD
     be quite right because the NewAnimal instances only include renumbered
+=======
+    be quite right because the NewAnimal instancs only includes renumbered
+>>>>>>> origin/master
     sire and dam IDs, not original IDs. Hm...
 ''' 04/29/2015  Added a NewAnimal::__equals__() method for comparing animals.
 ### 07/10/2014  Add an option to pyp_nrm/inbreeding() that will use Aguilar

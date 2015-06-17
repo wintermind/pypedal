@@ -2860,7 +2860,7 @@ class NewAnimal:
 
         # This is a test to try and fix the problems on Mac OS/X and Windows.
         #import md5
-	import hashlib
+	    import hashlib
         try:
             # If we can, let's use the Python MD5 implementation
             #md5hash = md5.md5(idstring)
