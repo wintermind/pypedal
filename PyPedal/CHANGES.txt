@@ -12,6 +12,25 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+''' 06/17/2015  Fixed a bug in pyp_metrics.founder_descendants() where the
+    original ID was being used instead of the renumbered ID whcn calling
+    pyp_metrics.descendants(). Thanks to Pedro Martinez-Garcia (UC Davis)
+    for the report.
+''' 06/17/2015  Fixed a bug in pyp_metrics.a_effective_founders_lacy() that
+    prevented the output file being written correctly. Thanks to Pedro
+    Martinez-Garcia (UC Davis) for the report.
+!!! 06/17/2015  Note that pyp_nrm/inbreeding_aguilar() doesn't work, yet.
+### 04/29/2015  It's a couple years after the fact and I'm still amazed that
+    NewPedigree::fromnull() actually works...
++++ 04/29/2015  Added pyp_nrm/inbreeding_aguilar() that uses Aguilar
+    and Misztal's inbupgf90 program externally to compute inbreeding coefficients.
+### 04/29/2015  Sire and dam comparisons in NewAnimal::__equals__() may not
+    be quite right because the NewAnimal instances only include renumbered
+    sire and dam IDs, not original IDs. Hm...
+''' 04/29/2015  Added a NewAnimal::__equals__() method for comparing animals.
+### 07/10/2014  Add an option to pyp_nrm/inbreeding() that will use Aguilar
+    and Misztal's inbupgf90 program externally to compute inbreeding and
+    relationships.
 ''' 09/19/2012  Added a little cleanup code in pyp_nrm/inbreeding_meuwissen_luo()
     and pyp_nrm/inbreeding_modified_meuwissen_luo() so that memory-mapped
     files won't get left all over the place.
@@ -56,9 +75,9 @@ XXX 07/05/2012  Removed the unused tail_recursive decorator from
     when creating NewAnimal objects. I feel like that's not really where
     they belong, but what're you gonna do?
 ### 07/05/2012  There are a lot of documentation updates that need to be
-    from all of the changes listed as part of 2.0.4. Blame the fact that
-    I was far too ambitious in my EAAP 2012 abstract and don't want to
-    show up at the meeting with nothing implemented.
+    made from all of the changes listed as part of 2.0.4. Blame the fact
+    that I was far too ambitious in my EAAP 2012 abstract and don't want
+    to show up at the meeting with nothing implemented.
 ### 07/05/2012  Modify pyp_utils/union() and pyp_utils/intersection() to
     accept lists of pedigrees rather than just two pedigree arguments.
     That way we can get really convoluted [sic] with the pedigree-mangling.
@@ -92,7 +111,7 @@ XXX 07/05/2012  Removed the unused tail_recursive decorator from
 ''' 06/06/2012  The new_merge.py script and pedigree files were checked
     into the git repository.
 ''' 06/06/2012  Still more work on NewPedigree::__add__(). The method now
-    checkls to see if both pedigrees are renumbered, and does that if needed.
+    checks to see if both pedigrees are renumbered, and does that if needed.
     Animal, sire, and dam IDs are compared based on the originalID property of
     the appropriate animals because what matters is whether or not the
     original data match, not whether or not the renumbered information

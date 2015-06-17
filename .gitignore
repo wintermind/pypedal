@@ -18,3 +18,9 @@ PyPedal/locale
 PyPedal/*.bmp
 PyPedal/doc/tools
 PyPedal/doc/perl
+
+*.egg
+
+*.egg
+
+*.bz2

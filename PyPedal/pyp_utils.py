@@ -751,6 +751,10 @@ def renumber(myped, filetag='_renumbered_', io='no', outformat='0', debug=0, ret
     # Clean-up
     if cleanmap == True:
         delete_id_map(filetag)
+
+    # Update the metadata for the pedigree
+    #myped.metadata = pyp_newclasses.PedigreeMetadata(myped.pedigree, myped.kw)
+
     #print 'ID map in renumber():%s' % (id_map)
     if not returnmap:
         return myped

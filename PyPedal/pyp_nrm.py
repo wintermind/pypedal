@@ -455,10 +455,11 @@ def fast_a_matrix_r(pedigree, pedopts, save=0, method='dense'):
 # @param gens The number of generations from the pedigree to be used for calculating CoI.  By default, gens=0, which uses the complete pedigree.
 # @param rels Flag indicating whether or not summary statistics should be computed for coefficients of relationship.
 # @param output Flag indicating whether or not output files should be written.
+# @param amethod The method parameter used by Aguilar's INBUPGF90 program.
 # @param force Flag to override use of NRM attached to pedigree for finding COI (0: use NRM, 1: ignore NRM)
 # @retval A dictionary of CoI keyed to renumbered animal IDs.
 #@profile
-def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0):
+def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0, amethod=3):
     """
     inbreeding() is a proxy function used to dispatch pedigrees to the appropriate
     function for computing CoI.  By default, small pedigrees < 10,000 animals) are
@@ -469,7 +470,7 @@ def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0):
     except: pass
     fx = {}
     metadata = {}
-    if method not in ['vanraden','tabular','meu_luo', 'mod_meu_luo']:
+    if method not in ['vanraden','tabular','meu_luo', 'mod_meu_luo', 'aguilar']:
         try: logging.warning('You passed an unrecognized method, %s, to pyp_nrm/inbreeding(); the method was changed to the default of \'tabular\'.', method)
         except: pass
         method = 'tabular'
@@ -533,14 +534,17 @@ def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0):
                 #print '[DEBUG]: reldict: ', reldict
             else:
                 fx = inbreeding_vanraden(pedobj, gens=gens)
-	elif method == 'meu_luo':
-	    if rels != 0:
-		logging.warning('You asked pyp_nrm.inbreeding() to compute relationships as well as inbreeding, but requested method %s, which does not provide coefficients of relationship. Only coefficients of inbreeding will be returned.', method)
-	    fx = inbreeding_meuwissen_luo(pedobj, gens=gens, rels=rels)
+        elif method == 'meu_luo':
+            if rels != 0:
+                logging.warning('You asked pyp_nrm.inbreeding() to compute relationships as well as inbreeding, but requested method %s, which does not provide coefficients of relationship. Only coefficients of inbreeding will be returned.', method)
+            fx = inbreeding_meuwissen_luo(pedobj, gens=gens, rels=rels)
         elif method == 'mod_meu_luo':
             if rels != 0:
                 logging.warning('You asked pyp_nrm.inbreeding() to compute relationships as well as inbreeding, but requested method %s, which does not provide coefficients of relationship. Only coefficients of inbreeding will be returned.', method)
             fx = inbreeding_modified_meuwissen_luo(pedobj, gens=gens, rels=rels)
+        elif method == 'aguilar':
+            logging.info('Using the INBUPGF90 program to compute inbreeding with method ', amethod)
+            fx = inbreeding_aguilar(pedobj, amethod)
         else:
             if rels:
                 fx, reldict = inbreeding_tabular(pedobj, gens=gens, rels=rels)
@@ -686,7 +690,7 @@ def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0):
 # @param gens The number of generations from the pedigree to be used for calculating CoI.  By default, gens=0, which uses the complete pedigree.
 # @param rels Flag indicating whether or not summary statistics should be computed for coefficients of relationship.
 # @retval A dictionary of CoI keyed to renumbered animal IDs
-#@profile
+# @profile
 def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
     """
     inbreeding_vanraden() uses VanRaden's (1992) method for computing coefficients of
@@ -906,13 +910,99 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
     for k in _parents.keys():
         del fx[k]
 
-    try:logging.info('Exited inbreeding_vanraden()')
+    try: logging.info('Exited inbreeding_vanraden()')
     except: pass
 #     print fx
     if rels:
         return fx, reldict
     else:
         return fx
+
+##
+# inbreeding_aguilar() uses use Ignacio Aguilar's INBUPGF90 programto compute coefficients of
+# inbreeding in large pedigrees.
+# @param pedobj A PyPedal pedigree object.
+# @retval A dictionary of CoI keyed to renumbered animal IDs
+# @profile
+def inbreeding_aguilar(pedobj, amethod=3):
+    """
+    inbreeding_aguilar() uses use Ignacio Aguilar's INBUPGF90 programto compute coefficients of
+    inbreeding in large pedigrees.
+    :param pedobj:
+    :param amethod:
+    :return:
+    """
+    # Per an e-mail from Ignacio Aguilar on 06/25/2014, INBUPGF90 does NOT emit a proper
+    # status return code when it exits, which makes it tricky to know for sure when the
+    # job is done. I've observed a number of cases where the simulation appears to stall
+    # because subprocess.call() does not recognize that INBUPGF90 has finished a job. So,
+    # I've cobbled-together a solution using ideas from Ezequiel Nicolazzi
+    # (https://github.com/nicolazzie/AffyPipe/blob/master/AffyPipe.py) and a post on
+    # Stack Overflow (http://stackoverflow.com/questions/12057794/
+    # python-using-popen-poll-on-background-process). I'm not 100% sure that this works
+    # as intended, but I'm out of ideas.
+    logfile = '%s_aguilar.log' % pedobj.kw['pedname']
+    # Several methods can be used:
+    # 1 - recursive as in Aguilar & Misztal, 2008 (default)
+    # 2 - recursive but with coefficients store in memory, faster with large number of
+    #     generations but more memory requirements
+    # 3 - method as in Meuwissen & Luo 1992
+    if amethod not in [1, 2, 3]: amethod = 3
+    if pedobj.kw['messages'] == 'verbose':
+        print '\t[inbreeding_aguilar]: Started inbupgf90 to calculate COI at %s' % datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    ###
+    # 1. Put some code here to check for the inbupgf90 binary in the user's path.
+    # ...
+    # 2. Put in code to make the pedigree flatfile that INBUPGF90 needs
+    pedfile = 'aguilar_pedigree_%s.txt' % pedobj.kw['pedname']
+    callinbupgf90 = ['inbupgf90', '--pedfile', pedfile, '--method', '3', '--yob', '>', logfile, '2>&1&']
+    time_waited = 0
+    p = subprocess.Popen(callinbupgf90, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    while p.poll() is None:
+        # Wait 1 second between pokes with a sharp stick.
+        time.sleep(10)
+        time_waited += 10
+        p.poll()
+        if time_waited % 60 == 0 and pedobj.kw['messages'] == 'verbose':
+            print '\t\t[inbreeding_aguilar]: Waiting for INBUPGF90 to finish -- %s minutes so far...' % int(time_waited/60)
+            logging.info('[inbreeding_aguilar]: Waiting for INBUPGF90 to finish -- %s minutes so far...', int(time_waited/60))
+
+    # Pick-up the output from INBUPGF90
+    (results, errors) = p.communicate()
+    if errors == '':
+        if pedobj.kw['messages'] == 'verbose':
+            print '\t\t[inbreeding_aguilar]: INBUPGF90 finished without problems at %s!' % \
+                  datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+            logging.info('[inbreeding_aguilar]: INBUPGF90 finished without problems at %s!',
+                datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+    else:
+        if pedobj.kw['messages'] == 'verbose':
+            print '\t\t[inbreeding_aguilar]: INBUPGF90 finished with errors: %s' % errors
+        logging.error('[inbreeding_aguilar]: INBUPGF90 finished with errors: ', errors)
+    if pedobj.kw['messages'] == 'verbose':
+        print '\t[aguilar_inbreeding]: Finished using INBUPGF90 to calculate COI at %s' % \
+            datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    logging.info('[inbreeding_aguilar]: Finished using INBUPGF90 to calculate COI at %s',
+        datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+
+    # Load the COI into a dictionary keyed by original animal ID
+    coifile = '%s.solinb' % pedfile
+    if pedobj.kw['messages'] == 'verbose':
+        print '\t[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' \
+            % (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+    logging.info('[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' % \
+            (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
+    inbr = {}
+    ifh = open(coifile, 'r')
+    for line in ifh:
+        pieces = line.split()
+        inbr[pieces[0]] = float(pieces[1])
+    ifh.close()
+
+    ### Need cleanup code to remove temporary files from filesystem.
+
+    # Send back the coefficients of inbreeding to the caller.
+    return inbr
 
 ##
 # recurse_pedigree() performs the recursion needed to build the subpedigrees used by

@@ -195,8 +195,8 @@ def a_effective_founders_lacy(pedobj, a=''):
     line = '='*60+'\n'
     aout.write('%s\n' % line)
     aout.write('%s animals\n' % l)
-    aout.write('%s founders: %s\n' % n_f,fs)
-    aout.write('%s descendants: %s\n' % n_d,ds)
+    aout.write('%s founders: %s\n' % (n_f,fs))
+    aout.write('%s descendants: %s\n' % (n_d,ds))
     aout.write('effective number of founders: %s\n' % f_e)
     aout.write('%s\n' % line)
     aout.close()
@@ -2321,7 +2321,8 @@ def founder_descendants(pedobj):
     except: pass
     founder_peds = {}
     for f in pedobj.metadata.unique_founder_list:
-        _desc = descendants(pedobj.idmap[f],pedobj,{})
+        #_desc = descendants(pedobj.idmap[f],pedobj,{})
+	_desc = descendants(f,pedobj,{})
         founder_peds[f] = _desc
     try: logging.info('Exited founder_descendants()')
     except: pass

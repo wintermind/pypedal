@@ -26,6 +26,7 @@ Raymond Hettinger (Python Software Foundation)
 Ryan Kaulakis (Pennsylvanis State University)
 Blair Kelly (No known relation to Matthew Kelly)
 Matthew Kelly (Department of Animal and Poultry Science, University of Guelph)
+Pedro Martinez-Garcia (UC Davis)
 Claire Raisin (Durrell Institute of Conservation & Ecology, University of Kent)
 Gianluca Saba
 Ken Severin (University of Alaska -- Fairbanks)
