@@ -24,3 +24,9 @@ PyPedal/doc/perl
 *.egg
 
 *.bz2
+
+*.lprof
+
+*.prof
+
+*.log

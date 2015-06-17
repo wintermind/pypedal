@@ -22,7 +22,7 @@ options['pedformat'] = 'asdxg'
 
 if __name__ == '__main__':
 
-	sizes = [100, 1000]
+	sizes = [100, 1000, 10000]
 	for size in sizes:
 
 		options['simulate_n'] = size
@@ -36,14 +36,14 @@ if __name__ == '__main__':
 		test_inbreeding_vr = pyp_nrm.inbreeding(test, method='vanraden')
 		print '\tFinished computing inbreeding using VanRaden\'s method  at %s' % (pyp_utils.pyp_nice_time())
 
-		print '\n\tStarted computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
-		test_inbreeding_ml = pyp_nrm.inbreeding(test, method='meu_luo')
-		print '\tFinished computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
+		#print '\n\tStarted computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
+		#test_inbreeding_ml = pyp_nrm.inbreeding(test, method='meu_luo')
+		#print '\tFinished computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
 
-		print '\n\tStarted computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
-		test_inbreeding_qu = pyp_nrm.inbreeding(test, method='mod_meu_luo')
-		print '\tFinished computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
+		#print '\n\tStarted computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
+		#test_inbreeding_qu = pyp_nrm.inbreeding(test, method='mod_meu_luo')
+		#print '\tFinished computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
 
 		print '\n\tVanRaden                  : ', test_inbreeding_vr['metadata']
-		print '\n\tMeuwissen and Luo         : ', test_inbreeding_ml['metadata']
-		print '\n\tModified Meuwissen and Luo: ', test_inbreeding_qu['metadata']
+		#print '\n\tMeuwissen and Luo         : ', test_inbreeding_ml['metadata']
+		#print '\n\tModified Meuwissen and Luo: ', test_inbreeding_qu['metadata']
