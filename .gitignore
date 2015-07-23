@@ -1,5 +1,5 @@
-build
-dist
+build/
+dist/
 *.egg
 *.gz
 *.rpm
@@ -19,10 +19,6 @@ PyPedal/*.bmp
 PyPedal/doc/tools
 PyPedal/doc/perl
 
-*.egg
-
-*.egg
-
 *.bz2
 
 *.lprof
@@ -31,6 +27,12 @@ PyPedal/doc/perl
 
 *.log
 
-PyPedal/.DS_Store
-
-PyPedal/.DS_Store
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
