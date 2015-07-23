@@ -1,0 +1,5 @@
+# Make Github recognise PyPedal as a Python project,
+# by marking .html & .tex files as text files!
+# https://github.com/github/linguist/blob/master/README.md
+*.html linguist-language=txt
+*.tex linguist-language=txt
