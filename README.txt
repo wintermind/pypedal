@@ -1,4 +1,4 @@
-README - PyPedal Version 2.0.0
+README - PyPedal Version 2.0.4
 -------------------------------------------------
 
 WHAT IS PyPedal?
@@ -35,7 +35,7 @@ http://www.python.org/
 
 You MUST have the NumPy extension to Python installed.  You can
 obtain NumPy as well as installation instructions, at:
-http://numpy.scipy.org/
+http://www.numpy.org/
 
 
 INSTALLING PyPedal UNDER UNIX/LINUX
@@ -64,7 +64,7 @@ Torvalds.
 
 COPYRIGHT
 
-PyPedal is copyright 2001-2007 by John B. Cole (jcole@aipl.arsusda.gov).
+PyPedal is copyright 2001-2015 by John B. Cole (jcole@aipl.arsusda.gov).
 
 This library is free software; you can redistribute it
 and/or modify it under the terms of the GNU Library General
@@ -80,5 +80,5 @@ more details.
 
 You should have received a copy of the GNU Library General
 Public License along with this library; if not, write to the
-Free Software Foundation, Inc., 59 Temple Place, Suite 330,
-Boston, MA 02111-1307 USA.
+Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+Boston, MA 02110-1301, USA.
