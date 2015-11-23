@@ -1,14 +1,14 @@
-build
-dist
-*.egg
 *.gz
 *.rpm
 *-info
+*.bz2
+*.lprof
+*.prof
+*.log
 PyPedal/adodb*
 PyPedal/tests
 PyPedal/tutorial
 PyPedal/depgra*
-PyPedal/*.pyc
 PyPedal/*.out
 PyPedal/*.png
 PyPedal/*.map
@@ -19,18 +19,53 @@ PyPedal/*.bmp
 PyPedal/doc/tools
 PyPedal/doc/perl
 
+
+# Python
+# https://github.com/github/gitignore/blob/master/Python.gitignore
+##################
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
 *.egg
 
-*.egg
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 
-*.bz2
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
 
-*.lprof
-
-*.prof
-
-*.log
-
-PyPedal/.DS_Store
-
-PyPedal/.DS_Store
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
