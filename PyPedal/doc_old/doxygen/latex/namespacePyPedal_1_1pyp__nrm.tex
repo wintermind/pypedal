@@ -1,0 +1,536 @@
+\hypertarget{namespacePyPedal_1_1pyp__nrm}{
+\section{Package Py\-Pedal.pyp\_\-nrm}
+\label{namespacePyPedal_1_1pyp__nrm}\index{PyPedal.pyp_nrm@{PyPedal.pyp\_\-nrm}}
+}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_160c730a5f8ed4809c427645d3331262}{a\_\-matrix}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_160c730a5f8ed4809c427645d3331262}{a\_\-matrix()} is used to form a numerator relationship matrix from a pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}{fast\_\-a\_\-matrix}
+\begin{CompactList}\small\item\em Form a numerator relationship matrix from a pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_314c945257fa3c101f6c47c1d4fb4079}{fast\_\-a\_\-matrix\_\-r}
+\begin{CompactList}\small\item\em Form a relationship matrix from a pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_925b0d16b9dcbd72291dbc2c4209e428}{inbreeding}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_925b0d16b9dcbd72291dbc2c4209e428}{inbreeding()} is a proxy function used to dispatch pedigrees to the appropriate function for computing Co\-I. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_577fd15845cca08988029a7ccf7f68e4}{inbreeding\_\-vanraden}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_577fd15845cca08988029a7ccf7f68e4}{inbreeding\_\-vanraden()} uses Van\-Raden's (1992) method for computing coefficients of inbreeding in a large pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_c2e0cc42e37f47162f7844645ebf21e1}{recurse\_\-pedigree}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_c2e0cc42e37f47162f7844645ebf21e1}{recurse\_\-pedigree()} performs the recursion needed to build the subpedigrees used by \hyperlink{namespacePyPedal_1_1pyp__nrm_577fd15845cca08988029a7ccf7f68e4}{inbreeding\_\-vanraden()}. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_9fe4e7e546ef28461188a080d971cdf7}{recurse\_\-pedigree\_\-n}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_9fe4e7e546ef28461188a080d971cdf7}{recurse\_\-pedigree\_\-n()} recurses to build a pedigree of depth n. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_71cc351a78e2a8f9b528a5e696efecc2}{recurse\_\-pedigree\_\-onesided}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_71cc351a78e2a8f9b528a5e696efecc2}{recurse\_\-pedigree\_\-onesided()} recurses to build a subpedigree from either the sire or dam side of a pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_0497f483c9c840213e97cff287417c71}{recurse\_\-pedigree\_\-idonly}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_0497f483c9c840213e97cff287417c71}{recurse\_\-pedigree\_\-idonly()} performs the recursion needed to build subpedigrees. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_88b1e0971e11743e8b521ef227e29e6f}{recurse\_\-pedigree\_\-idonly\_\-side}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_88b1e0971e11743e8b521ef227e29e6f}{recurse\_\-pedigree\_\-idonly\_\-side()} performs the recursion needed to build a subpedigree containing only animal IDs for either all sires or all dams. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_ca22371da820f4c44272c0c49813bda2}{inbreeding\_\-tabular}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_ca22371da820f4c44272c0c49813bda2}{inbreeding\_\-tabular()} computes Co\-I using the tabular method by calling \hyperlink{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}{fast\_\-a\_\-matrix()} to form the NRM directly. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_1f381e4601f9cbfec699bc2b293fc5eb}{a\_\-decompose}
+\begin{CompactList}\small\item\em Form the decomposed form of A, TDT', directly from a pedigree (after Henderson, 1976; Thompson, 1977; Mrode, 1996). \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_43df241a5d555995a4bc7d3fd2ff01bf}{form\_\-d\_\-nof}
+\begin{CompactList}\small\item\em Form the diagonal matrix, D, used in decomposing A and forming the direct inverse of A. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_9c6e5cd761d3de4d0501e0fa9c8b2977}{a\_\-inverse\_\-dnf}
+\begin{CompactList}\small\item\em Form the inverse of A directly using the method of Henderson (1976) which does not account for inbreeding. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_4bb868be035fbfd5953a580b441cd566}{a\_\-inverse\_\-df}
+\begin{CompactList}\small\item\em Directly form the inverse of A from the pedigree file - accounts for inbreeding - using the method of Quaas (1976). \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_271ba7166235340580cfe58aa31c887d}{partial\_\-inbreeding}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_271ba7166235340580cfe58aa31c887d}{partial\_\-inbreeding()} computes coefficients of partial inbreeding, which is the probability that an individual, i, is IDB at a locus and that the alleles were derived from ancestor j. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__nrm_aeaadca15ddc3430d7b46cde3470e808}{fast\_\-partial\_\-a\_\-matrix}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__nrm_aeaadca15ddc3430d7b46cde3470e808}{fast\_\-partial\_\-a\_\-matrix()} calculates a partial kinship matrix for a given founder in a pedigree, and returns a dictionary of partial inbreeding coefficients between that founder and and descendants (non-founders) in the pedigree. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__nrm_160c730a5f8ed4809c427645d3331262}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!a_matrix@{a\_\-matrix}}
+\index{a_matrix@{a\_\-matrix}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[a\_\-matrix]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.a\_\-matrix ( {\em pedobj},  {\em save} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__nrm_160c730a5f8ed4809c427645d3331262}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_160c730a5f8ed4809c427645d3331262}{a\_\-matrix()} is used to form a numerator relationship matrix from a pedigree. 
+
+DEPRECATED. use \hyperlink{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}{fast\_\-a\_\-matrix()} instead. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em save}]Flag to indicate whether or not the relationship matrix is written to a file. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]NRM as a Num\-Py matrix.
+
+\footnotesize\begin{verbatim}Form a numerator relationship matrix from a pedigree.  DEPRECATED.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 54 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!fast_a_matrix@{fast\_\-a\_\-matrix}}
+\index{fast_a_matrix@{fast\_\-a\_\-matrix}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[fast\_\-a\_\-matrix]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.fast\_\-a\_\-matrix ( {\em pedigree},  {\em pedopts},  {\em save} = {\tt 0},  {\em method} = {\tt 'dense'},  {\em debug} = {\tt 0},  {\em fill} = {\tt 1})}}
+\label{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}
+
+
+Form a numerator relationship matrix from a pedigree. 
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}{fast\_\-a\_\-matrix()} is a hacked version of \hyperlink{namespacePyPedal_1_1pyp__nrm_160c730a5f8ed4809c427645d3331262}{a\_\-matrix()} modified to try and improve performance. Lists of animal, sire, and dam IDs are formed and accessed rather than myped as it is much faster to access a member of a simple list rather than an attribute of an object in a list. Further note that only the diagonal and upper off-diagonal of A are populated. This is done to save n(n+1) / 2 matrix writes. For a 1000-element array, this saves 500,500 writes. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedigree}]A Py\-Pedal pedigree. \item[{\em pedopts}]Py\-Pedal options. \item[{\em save}]Flag to indicate whether or not the relationship matrix is written to a file. \item[{\em method}]Use dense or sparse matrix storage. \item[{\em debug}]Print NRM for debugging \item[{\em fill}]Fill both the upper and lower off-diagonals when 1, only the upper otherwise. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]NRM as Numarray matrix.
+
+\footnotesize\begin{verbatim}Form a numerator relationship matrix from a pedigree.  fast_a_matrix() is a hacked
+version of a_matrix() modified to try and improve performance.  Lists of animal,
+sire, and dam IDs are formed and accessed rather than myped as it is much faster to
+access a member of a simple list rather than an attribute of an object in a
+list.  Further note that only the diagonal and upper off-diagonal of A are
+populated.  This is done to save n(n+1) / 2 matrix writes.  For a 1000-element
+array, this saves 500,500 writes.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 138 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_314c945257fa3c101f6c47c1d4fb4079}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!fast_a_matrix_r@{fast\_\-a\_\-matrix\_\-r}}
+\index{fast_a_matrix_r@{fast\_\-a\_\-matrix\_\-r}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[fast\_\-a\_\-matrix\_\-r]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.fast\_\-a\_\-matrix\_\-r ( {\em pedigree},  {\em pedopts},  {\em save} = {\tt 0},  {\em method} = {\tt 'dense'})}}
+\label{namespacePyPedal_1_1pyp__nrm_314c945257fa3c101f6c47c1d4fb4079}
+
+
+Form a relationship matrix from a pedigree. 
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_314c945257fa3c101f6c47c1d4fb4079}{fast\_\-a\_\-matrix\_\-r()} differs from \hyperlink{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}{fast\_\-a\_\-matrix()} in that the coefficients of relationship are corrected for the inbreeding of the parents. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedigree}]A Py\-Pedal pedigree. \item[{\em pedopts}]Py\-Pedal options. \item[{\em save}]Flag to indicate whether or not the relationship matrix is written to a file. \item[{\em method}]Use dense or sparse matrix storage. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]relationship as Numarray matrix.
+
+\footnotesize\begin{verbatim}Form a relationship matrix from a pedigree.  fast_a_matrix_r() differs from
+fast_a_matrix() in that the coefficients of relationship are corrected for the
+inbreeding of the parents.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 287 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_925b0d16b9dcbd72291dbc2c4209e428}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!inbreeding@{inbreeding}}
+\index{inbreeding@{inbreeding}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[inbreeding]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.inbreeding ( {\em pedobj},  {\em method} = {\tt 'tabular'},  {\em gens} = {\tt 0},  {\em rels} = {\tt 0},  {\em output} = {\tt 1})}}
+\label{namespacePyPedal_1_1pyp__nrm_925b0d16b9dcbd72291dbc2c4209e428}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_925b0d16b9dcbd72291dbc2c4209e428}{inbreeding()} is a proxy function used to dispatch pedigrees to the appropriate function for computing Co\-I. 
+
+By default, small pedigrees $<$ 10,000 animals) are processed with the tabular method directly. For larger pedigrees, or if requested, the recursive method of Van\-Raden (1992) is used. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em method}]Keyword indicating which method of computing Co\-I should be used (tabular$|$vanraden). \item[{\em gens}]The number of generations from the pedigree to be used for calculating Co\-I. By default, gens=0, which uses the complete pedigree. \item[{\em rels}]Flag indicating whether or not summary statistics should be computed for coefficients of relationship. \item[{\em output}]Flag indicating whether or not output files should be written. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of Co\-I keyed to renumbered animal IDs.
+
+\footnotesize\begin{verbatim}inbreeding() is a proxy function used to dispatch pedigrees to the appropriate
+function for computing CoI.  By default, small pedigrees < 10,000 animals) are
+processed with the tabular method directly.  For larger pedigrees, or if requested,
+the recursive method of VanRaden (1992) is used.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 429 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_577fd15845cca08988029a7ccf7f68e4}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!inbreeding_vanraden@{inbreeding\_\-vanraden}}
+\index{inbreeding_vanraden@{inbreeding\_\-vanraden}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[inbreeding\_\-vanraden]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.inbreeding\_\-vanraden ( {\em pedobj},  {\em cleanmaps} = {\tt 1},  {\em gens} = {\tt 0},  {\em rels} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__nrm_577fd15845cca08988029a7ccf7f68e4}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_577fd15845cca08988029a7ccf7f68e4}{inbreeding\_\-vanraden()} uses Van\-Raden's (1992) method for computing coefficients of inbreeding in a large pedigree. 
+
+The method works as follows: 1. Take a large pedigree and order it from youngest animal to oldest (n, n-1, ..., 1); 2. Recurse through the pedigree to find all of the ancestors of that animal n; 3. Reorder and renumber that \char`\"{}subpedigree\char`\"{}; 4. Compute coefficients of inbreeding for that \char`\"{}subpedigree\char`\"{} using the tabular method (Emik and Terrill, 1949); 5. Put the coefficients of inbreeding in a dictionary; 6. Repeat 2 - 5 for animals n-1 through 1; the process is slowest for the early pedigrees and fastest for the later pedigrees. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em cleanmaps}]Flag to denote whether or not subpedigree ID maps should be deleted after they are used (0$|$1). \item[{\em gens}]The number of generations from the pedigree to be used for calculating Co\-I. By default, gens=0, which uses the complete pedigree. \item[{\em rels}]Flag indicating whether or not summary statistics should be computed for coefficients of relationship. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of Co\-I keyed to renumbered animal IDs
+
+\footnotesize\begin{verbatim}inbreeding_vanraden() uses VanRaden's (1992) method for computing coefficients of
+inbreeding in a large pedigree.  The method works as follows:
+1.  Take a large pedigree and order it from youngest animal to oldest (n, n-1, ...,
+    1);
+2.  Recurse through the pedigree to find all of the ancestors of that animal n;
+3.  Reorder and renumber that "subpedigree";
+4.  Compute coefficients of inbreeding for that "subpedigree" using the tabular
+    method (Emik and Terrill, 1949);
+5.  Put the coefficients of inbreeding in a dictionary;
+6.  Repeat 2 - 5 for animals n-1 through 1; the process is slowest for the early
+    pedigrees and fastest for the later pedigrees.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 649 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_c2e0cc42e37f47162f7844645ebf21e1}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!recurse_pedigree@{recurse\_\-pedigree}}
+\index{recurse_pedigree@{recurse\_\-pedigree}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[recurse\_\-pedigree]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.recurse\_\-pedigree ( {\em pedobj},  {\em anid},  {\em \_\-ped})}}
+\label{namespacePyPedal_1_1pyp__nrm_c2e0cc42e37f47162f7844645ebf21e1}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_c2e0cc42e37f47162f7844645ebf21e1}{recurse\_\-pedigree()} performs the recursion needed to build the subpedigrees used by \hyperlink{namespacePyPedal_1_1pyp__nrm_577fd15845cca08988029a7ccf7f68e4}{inbreeding\_\-vanraden()}. 
+
+For the animal with animal\-ID anid \hyperlink{namespacePyPedal_1_1pyp__nrm_c2e0cc42e37f47162f7844645ebf21e1}{recurse\_\-pedigree()} will recurse through the pedigree myped and add references to the relatives of anid to the temporary pedigree, \_\-ped. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree. \item[{\em anid}]The ID of the animal whose relatives are being located. \item[{\em \_\-ped}]A temporary Py\-Pedal pedigree that stores references to relatives of anid. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of references to the relatives of anid contained in myped.
+
+\footnotesize\begin{verbatim}recurse_pedigree() performs the recursion needed to build the subpedigrees used by
+inbreeding_vanraden().  For the animal with animalID anid recurse_pedigree() will
+recurse through the pedigree myped and add references to the relatives of anid to
+the temporary pedigree, _ped.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 885 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_9fe4e7e546ef28461188a080d971cdf7}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!recurse_pedigree_n@{recurse\_\-pedigree\_\-n}}
+\index{recurse_pedigree_n@{recurse\_\-pedigree\_\-n}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[recurse\_\-pedigree\_\-n]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.recurse\_\-pedigree\_\-n ( {\em pedobj},  {\em anid},  {\em \_\-ped},  {\em depth} = {\tt 3})}}
+\label{namespacePyPedal_1_1pyp__nrm_9fe4e7e546ef28461188a080d971cdf7}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_9fe4e7e546ef28461188a080d971cdf7}{recurse\_\-pedigree\_\-n()} recurses to build a pedigree of depth n. 
+
+A depth less than 1 returns the animal whose relatives were to be identified. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree. \item[{\em anid}]The ID of the animal whose relatives are being located. \item[{\em \_\-ped}]A temporary Py\-Pedal pedigree that stores references to relatives of anid. \item[{\em depth}]The depth of the pedigree to return. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of references to the relatives of anid contained in myped.
+
+\footnotesize\begin{verbatim}recurse_pedigree_n() recurses to build a pedigree of depth n.  A depth
+less than 1 returns the animal whose relatives were to be identified.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 915 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_71cc351a78e2a8f9b528a5e696efecc2}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!recurse_pedigree_onesided@{recurse\_\-pedigree\_\-onesided}}
+\index{recurse_pedigree_onesided@{recurse\_\-pedigree\_\-onesided}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[recurse\_\-pedigree\_\-onesided]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.recurse\_\-pedigree\_\-onesided ( {\em pedobj},  {\em anid},  {\em \_\-ped},  {\em side})}}
+\label{namespacePyPedal_1_1pyp__nrm_71cc351a78e2a8f9b528a5e696efecc2}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_71cc351a78e2a8f9b528a5e696efecc2}{recurse\_\-pedigree\_\-onesided()} recurses to build a subpedigree from either the sire or dam side of a pedigree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree. \item[{\em side}]The side to build: 's' for sire and 'd' for dam. \item[{\em anid}]The ID of the animal whose relatives are being located. \item[{\em \_\-ped}]A temporary Py\-Pedal pedigree that stores references to relatives of anid. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of references to the relatives of anid contained in myped.
+
+\footnotesize\begin{verbatim}recurse_pedigree_onesided() recurses to build a subpedigree from either the sire
+or dam side of a pedigree.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 944 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_0497f483c9c840213e97cff287417c71}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!recurse_pedigree_idonly@{recurse\_\-pedigree\_\-idonly}}
+\index{recurse_pedigree_idonly@{recurse\_\-pedigree\_\-idonly}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[recurse\_\-pedigree\_\-idonly]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.recurse\_\-pedigree\_\-idonly ( {\em pedobj},  {\em anid},  {\em \_\-ped})}}
+\label{namespacePyPedal_1_1pyp__nrm_0497f483c9c840213e97cff287417c71}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_0497f483c9c840213e97cff287417c71}{recurse\_\-pedigree\_\-idonly()} performs the recursion needed to build subpedigrees. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree. \item[{\em anid}]The ID of the animal whose relatives are being located. \item[{\em \_\-ped}]A Py\-Pedal list that stores the animal\-IDs of relatives of anid. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of animal\-IDs of the relatives of anid contained in myped.
+
+\footnotesize\begin{verbatim}recurse_pedigree_idonly() performs the recursion needed to build subpedigrees.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 972 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_88b1e0971e11743e8b521ef227e29e6f}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!recurse_pedigree_idonly_side@{recurse\_\-pedigree\_\-idonly\_\-side}}
+\index{recurse_pedigree_idonly_side@{recurse\_\-pedigree\_\-idonly\_\-side}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[recurse\_\-pedigree\_\-idonly\_\-side]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.recurse\_\-pedigree\_\-idonly\_\-side ( {\em pedobj},  {\em anid},  {\em \_\-ped},  {\em side} = {\tt 's'})}}
+\label{namespacePyPedal_1_1pyp__nrm_88b1e0971e11743e8b521ef227e29e6f}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_88b1e0971e11743e8b521ef227e29e6f}{recurse\_\-pedigree\_\-idonly\_\-side()} performs the recursion needed to build a subpedigree containing only animal IDs for either all sires or all dams. 
+
+That is, a pedigree would go sire-paternal grandsire-paternal great-grandsire, etc. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree. \item[{\em anid}]The ID of the animal whose relatives are being located. \item[{\em \_\-ped}]A Py\-Pedal list that stores the animal\-IDs of relatives of anid. \item[{\em side}]The side of the pedigree to follow ('s'$|$'d'). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]list of animal\-IDs of the relatives of anid contained in myped.
+
+\footnotesize\begin{verbatim}recurse_pedigree_idonly_side() performs the recursion needed to build
+a subpedigree containing only animal IDs for either all sires or all
+dams.  That is, a pedigree would go sire-paternal grandsire-paternal
+great-grandsire, etc.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1002 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_ca22371da820f4c44272c0c49813bda2}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!inbreeding_tabular@{inbreeding\_\-tabular}}
+\index{inbreeding_tabular@{inbreeding\_\-tabular}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[inbreeding\_\-tabular]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.inbreeding\_\-tabular ( {\em pedobj},  {\em gens} = {\tt 0},  {\em rels} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__nrm_ca22371da820f4c44272c0c49813bda2}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_ca22371da820f4c44272c0c49813bda2}{inbreeding\_\-tabular()} computes Co\-I using the tabular method by calling \hyperlink{namespacePyPedal_1_1pyp__nrm_d86974b6cb70f5165d7f9b41b68b613e}{fast\_\-a\_\-matrix()} to form the NRM directly. 
+
+In order for this routine to return successfully requires that you are able to allocate a matrix of floats of dimension len(myped)$\ast$$\ast$2. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em gens}]The number of generations from the pedigree to be used for calculating Co\-I. By default, gens=0, which uses the complete pedigree. \item[{\em rels}]Flag indicating whether or not summary statistics should be computed for coefficients of relationship. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of Co\-I keyed to renumbered animal IDs
+
+\footnotesize\begin{verbatim}inbreeding_tabular() computes CoI using the tabular method by calling
+fast_a_matrix() to form the NRM directly.  In order for this routine
+to return successfully requires that you are able to allocate a matrix
+of floats of dimension len(myped)**2.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1037 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_1f381e4601f9cbfec699bc2b293fc5eb}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!a_decompose@{a\_\-decompose}}
+\index{a_decompose@{a\_\-decompose}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[a\_\-decompose]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.a\_\-decompose ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__nrm_1f381e4601f9cbfec699bc2b293fc5eb}
+
+
+Form the decomposed form of A, TDT', directly from a pedigree (after Henderson, 1976; Thompson, 1977; Mrode, 1996). 
+
+Return D, a diagonal matrix, and T, a lower triagular matrix such that A = TDT'. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]diagonal matrix, D, and a lower triangular matrix, T.
+
+\footnotesize\begin{verbatim}Form the decomposed form of A, TDT', directly from a pedigree (after
+Henderson, 1976; Thompson, 1977; Mrode, 1996).  Return D, a diagonal
+matrix, and T, a lower triagular matrix such that A = TDT'.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1122 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_43df241a5d555995a4bc7d3fd2ff01bf}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!form_d_nof@{form\_\-d\_\-nof}}
+\index{form_d_nof@{form\_\-d\_\-nof}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[form\_\-d\_\-nof]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.form\_\-d\_\-nof ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__nrm_43df241a5d555995a4bc7d3fd2ff01bf}
+
+
+Form the diagonal matrix, D, used in decomposing A and forming the direct inverse of A. 
+
+This function does not write output to a file - if you need D in a file, use the \hyperlink{namespacePyPedal_1_1pyp__nrm_1f381e4601f9cbfec699bc2b293fc5eb}{a\_\-decompose()} function. form\_\-d() is a convenience function used by other functions. Note that inbreeding is not considered in the formation of D. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]diagonal matrix, D.
+
+\footnotesize\begin{verbatim}Form the diagonal matrix, D, used in decomposing A and forming the direct
+inverse of A.  This function does not write output to a file - if you need D in
+a file, use the a_decompose()  function.  form_d() is a convenience function
+used by other functions.  Note that inbreeding is not considered in the
+formation of D.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1226 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_9c6e5cd761d3de4d0501e0fa9c8b2977}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!a_inverse_dnf@{a\_\-inverse\_\-dnf}}
+\index{a_inverse_dnf@{a\_\-inverse\_\-dnf}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[a\_\-inverse\_\-dnf]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.a\_\-inverse\_\-dnf ( {\em pedobj},  {\em filetag} = {\tt '\_\-a\_\-inverse\_\-dnf\_\-'})}}
+\label{namespacePyPedal_1_1pyp__nrm_9c6e5cd761d3de4d0501e0fa9c8b2977}
+
+
+Form the inverse of A directly using the method of Henderson (1976) which does not account for inbreeding. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em filetag}]Prefix added to output file names. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]inverse of the NRM, A, not accounting for inbreeding.
+
+\footnotesize\begin{verbatim}Form the inverse of A directly using the method of Henderson (1976) which
+does not account for inbreeding.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1284 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_4bb868be035fbfd5953a580b441cd566}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!a_inverse_df@{a\_\-inverse\_\-df}}
+\index{a_inverse_df@{a\_\-inverse\_\-df}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[a\_\-inverse\_\-df]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.a\_\-inverse\_\-df ( {\em pedobj})}}
+\label{namespacePyPedal_1_1pyp__nrm_4bb868be035fbfd5953a580b441cd566}
+
+
+Directly form the inverse of A from the pedigree file - accounts for inbreeding - using the method of Quaas (1976). 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]inverse of the NRM, A, accounting for inbreeding.
+
+\footnotesize\begin{verbatim}Directly form the inverse of A from the pedigree file - accounts for
+inbreeding - using the method of Quaas (1976).
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1372 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_271ba7166235340580cfe58aa31c887d}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!partial_inbreeding@{partial\_\-inbreeding}}
+\index{partial_inbreeding@{partial\_\-inbreeding}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[partial\_\-inbreeding]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.partial\_\-inbreeding ( {\em pedobj},  {\em animals} = {\tt \mbox{[}\mbox{]}},  {\em gens} = {\tt 0},  {\em rels} = {\tt 1},  {\em cleanmaps} = {\tt 1})}}
+\label{namespacePyPedal_1_1pyp__nrm_271ba7166235340580cfe58aa31c887d}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_271ba7166235340580cfe58aa31c887d}{partial\_\-inbreeding()} computes coefficients of partial inbreeding, which is the probability that an individual, i, is IDB at a locus and that the alleles were derived from ancestor j. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em animals}]An empty list of renumbered animal IDs to process (do all when list empty). \item[{\em gens}]The number of generations from the pedigree to be used for calculating Co\-I. By default, gens=0, which uses the complete pedigree. \item[{\em rels}]Flag indicating whether or not summary statistics should be computed for coefficients of relationship. \item[{\em cleanmaps}]Flag to denote whether or not subpedigree ID maps should be deleted after they are used (0$|$1). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of partial Co\-I keyed to renumbered animal IDs.
+
+\footnotesize\begin{verbatim}partial_inbreeding() computes coefficients of partial inbreeding,
+which is the probability that an individual, i, is IDB at a locus
+and that the alleles were derived from ancestor j.
+Input: A PyPedal pedigree object.
+Output: A dictionary of partial CoI keyed to renumbered animal IDs.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1493 of file pyp\_\-nrm.py.\hypertarget{namespacePyPedal_1_1pyp__nrm_aeaadca15ddc3430d7b46cde3470e808}{
+\index{PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}!fast_partial_a_matrix@{fast\_\-partial\_\-a\_\-matrix}}
+\index{fast_partial_a_matrix@{fast\_\-partial\_\-a\_\-matrix}!PyPedal::pyp_nrm@{Py\-Pedal::pyp\_\-nrm}}
+\subsubsection[fast\_\-partial\_\-a\_\-matrix]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-nrm.fast\_\-partial\_\-a\_\-matrix ( {\em pedigree},  {\em founder},  {\em founderlist},  {\em pedopts},  {\em method} = {\tt 'dense'},  {\em debug} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__nrm_aeaadca15ddc3430d7b46cde3470e808}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__nrm_aeaadca15ddc3430d7b46cde3470e808}{fast\_\-partial\_\-a\_\-matrix()} calculates a partial kinship matrix for a given founder in a pedigree, and returns a dictionary of partial inbreeding coefficients between that founder and and descendants (non-founders) in the pedigree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedigree}]A Py\-Pedal pedigree. \item[{\em founder}]Founder of interest. \item[{\em founderlist}]List of founders in the pedigree. \item[{\em pedopts}]Py\-Pedal options. \item[{\em method}]Use dense or sparse matrix storage. \item[{\em debug}]Print NRM for debugging \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]NRM as Numarray matrix.
+
+\footnotesize\begin{verbatim}fast_partial_a_matrix() calculates a partial kinship matrix for a given
+founder in a pedigree, and returns a dictionary of partial inbreeding
+coefficients between that founder and and descendants (non-founders) in
+the pedigree.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 1648 of file pyp\_\-nrm.py.

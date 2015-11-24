@@ -22,7 +22,8 @@ options['pedformat'] = 'asdxg'
 
 if __name__ == '__main__':
 
-	sizes = [100, 1000]
+	sizes = [100, 1000, 10000, 100000]
+	#sizes = [100, 500, 1000]
 	for size in sizes:
 
 		options['simulate_n'] = size

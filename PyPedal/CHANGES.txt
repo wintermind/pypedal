@@ -12,8 +12,51 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+*** 11/23/2015  Began work on a brand nre, from-scratch manual using Sphinx.
+    The old documentation is in doc_old. This will, hopefully, result in a
+    substantially improved user experience.
+''' 11/22/2015  Fixed the range-checking for the 'foundercoi' option so
+    that it is not properly constrained to be [0., 1.].
+### 11/22/2015  Should all of the option processing move to a method,
+    instead of sitting in __init__()?
+XXX 11/22/2015  Removed all Psyco imports and messages since it's been a
+    dead project for a couple years now.
+!!! 11/20/2015  Some sort of "remove missing" method might be useful for,
+    e.g., 'ASD' pedigrees that have animal IDs that are equal to the
+    missing_parent value.
+''' 11/20/2015  It's annoying me that some functions in pyp_utils are
+    named set_<foo> while others are named assign_<foo>. This needs fix.
+''' 11/20/2015  In pedigrees with missing sires or dams added draw_pedigree()
+    uses the wrong shape when the sex of a parent is unknown. Make sure you
+    call assign_sexes() before calling draw_pedigree().
+''' 11/20/2015  Fixed "Added new pedigree" messages in pyp_newclasses to
+    respect the 'messages' keyword setting. Also done for "Adding sire"
+    and "Adding dam" messages. This means that it's actually possible to
+    ALMOST get a completely quiet load -- the INFO messages about libs
+    that can't be loaded need fixed, too..
+--- 11/20/2015  It looks like the missing parent compare in draw_pedigree()
+    is not working quite right. Lots of missing parents (IDs are 0) are
+    being written to the DOT file, which is not intended.
+--- 11/20/2015  Need to propagate changes to draw_pedigree().
+''' 11/20/2015  Added a statement to set the resolution in pyp_graphics/
+    draw_pedigree() to 150 DPI.
+''' 11/20/2015  Rewrote the code to handle the gdirec parameter in
+    pyp_graphics/draw_pedigree().
+--- 11/17/2015  When pydot cannot be loaded pyp_graphics/draw_pedigree() does
+    not fail gracefully. A better error message is needed.
+--- 11/17/2015  If you set the missing_parent option to a string instead of an
+    integer it looks as though that causes problems. A check probably needs to
+    be added. This may be the source of a strange error from pyp_nrm/inbreeding()
+    about fx being missing.
+!!! 10/15/2015  Note that pyp_nrm/inbreeding_aguilar() still doesn't work, but
+    it's getting there.
+!!! 10/15/2015  Use the tqdm library to provide progress bars for long-running
+    processes as a way of providing users with some real-time feedback.
++++ 10/08/2015  Added pyp_utils/which() to find executable programs in the
+    user's path. This is needed in order to make the INBUPGF90 integration
+    in pyp_nrm/inbreeding_aguilar() more robust.
 ''' 06/17/2015  Fixed a bug in pyp_metrics.founder_descendants() where the
-    original ID was being used instead of the renumbered ID whcn calling
+    original ID was being used instead of the renumbered ID when calling
     pyp_metrics.descendants(). Thanks to Pedro Martinez-Garcia (UC Davis)
     for the report.
 ''' 06/17/2015  Fixed a bug in pyp_metrics.a_effective_founders_lacy() that
@@ -25,11 +68,7 @@ CHANGES in PyPedal 2.0.4 (Vetinari)
 +++ 04/29/2015  Added pyp_nrm/inbreeding_aguilar() that uses Aguilar
     and Misztal's inbupgf90 program externally to compute inbreeding coefficients.
 ### 04/29/2015  Sire and dam comparisons in NewAnimal::__equals__() may not
-<<<<<<< HEAD
     be quite right because the NewAnimal instances only include renumbered
-=======
-    be quite right because the NewAnimal instancs only includes renumbered
->>>>>>> origin/master
     sire and dam IDs, not original IDs. Hm...
 ''' 04/29/2015  Added a NewAnimal::__equals__() method for comparing animals.
 ### 07/10/2014  Add an option to pyp_nrm/inbreeding() that will use Aguilar

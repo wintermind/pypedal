@@ -31,21 +31,13 @@
 # performing operations on those matrices.  It also contains routines for computing CoI on
 # large pedigrees using the recursive method of VanRaden (1992).
 ##
-import copy, logging, numpy, string
-import pyp_utils
-#from pyp_newclasses import tail_recursive
-
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    print '[INFO]: The psyco module could not be imported in pyp_nrm. Psyco speed optimizations are not available.'
 
 try:
     from pysparse import spmatrix
 except ImportError:
     #logging.info('Could not import the spmatrix module from PySparse! Using NumPY dense matrices instead.')
     print '[INFO]: Could not import the spmatrix module from PySparse in pyp_nrm! NumPY dense matrices will be used instead.'
+import pyp_utils
 
 ##
 # a_matrix() is used to form a numerator relationship matrix from a pedigree.  DEPRECATED.
@@ -926,12 +918,21 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
 # @profile
 def inbreeding_aguilar(pedobj, amethod=3):
     """
-    inbreeding_aguilar() uses use Ignacio Aguilar's INBUPGF90 programto compute coefficients of
+    inbreeding_aguilar() uses use Ignacio Aguilar's INBUPGF90 program to compute coefficients of
     inbreeding in large pedigrees.
     :param pedobj:
     :param amethod:
     :return:
     """
+    # Before we do anything let's see if the INBUPGF90 executable is visible to PyPedal.
+    if not pyp_utils.which('inbupgf90') and not pyp_utils.which('inbupgf90.exe'):
+        if pedobj.kw['messages'] == 'verbose':
+            print '\t[inbreeding_aguilar]: Cannot find the INBUPGF90 executable tat %s!' % \
+                  datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+            logging.error('[inbreeding_aguilar]: cannot find the INBUPGF90 executable at %s!',
+                          datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+        return None
+
     # Per an e-mail from Ignacio Aguilar on 06/25/2014, INBUPGF90 does NOT emit a proper
     # status return code when it exits, which makes it tricky to know for sure when the
     # job is done. I've observed a number of cases where the simulation appears to stall
@@ -990,8 +991,8 @@ def inbreeding_aguilar(pedobj, amethod=3):
     if pedobj.kw['messages'] == 'verbose':
         print '\t[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' \
             % (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-    logging.info('[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' \
-            % (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
+    logging.info('[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' % \
+            (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
     inbr = {}
     ifh = open(coifile, 'r')
     for line in ifh:
@@ -999,7 +1000,17 @@ def inbreeding_aguilar(pedobj, amethod=3):
         inbr[pieces[0]] = float(pieces[1])
     ifh.close()
 
-    ### Need cleanup code to remove temporary files from filesystem.
+    # Now, assign the coefficients of inbreeding to the animal records
+#    for c in cows: c[10] = inbr[c[0]]
+#    for dc in dead_cows: dc[10] = inbr[dc[0]]
+#    for b in bulls: b[10] = inbr[b[0]]
+#    for db in dead_bulls: db[10] = inbr[db[0]]
+
+    # Clean-up
+    os.remove(pedfile)
+    os.remove('%.solinb') % (pedfile)
+    os.remove('%s.errors') % (pedfile)
+    os.remove('%.inbavgs') % (pedfile)
 
     # Send back the coefficients of inbreeding to the caller.
     return inbr

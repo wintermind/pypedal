@@ -41,12 +41,6 @@ try:
 except ImportError:
     print '[WARNING]: The networkx module could not be imported in pyp_network.  Routines using networkx functionality are not available.'
 
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    print '[INFO]: The psyco module could not be imported in pyp_network. Psyco speed optimizations are not available.'
-
 ##
 # ped_to_graph() Takes a PyPedal pedigree object and returns a networkx DiGraph
 # object.

@@ -1,0 +1,414 @@
+%!PS-Adobe-2.0
+%%Creator: dot version 2.6 (Tue Oct 18 06:49:47 UTC 2005)
+%%For: (jcole) John
+%%Title: _anonymous_0
+%%Pages: (atend)
+%%BoundingBox: 0 0 603 783
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+/alignedtext {			% width adj text
+	/text exch def
+	/adj exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			text stringwidth pop adj mul 0 rmoveto
+		} if
+		[] 0 setdash
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+%%Page: 1 1
+%%PageBoundingBox: 138 273 465 510
+%%PageOrientation: Portrait
+gsave
+0 0 603 783 boxprim clip newpath
+138 273 translate
+0 0 1 beginpage
+1.0000 set_scale
+0 0 translate 0 rotate
+0.000 0.000 0.000 graphcolor
+14.00 /Times-Roman set_font
+% animal1
+gsave 10 dict begin
+249 220 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+227 216 moveto
+(animal1)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal9
+gsave 10 dict begin
+206 152 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+184 148 moveto
+(animal9)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal1->animal9
+newpath 239 205 moveto
+232 194 223 178 216 167 curveto
+stroke
+% animal2
+gsave 10 dict begin
+163 220 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+141 216 moveto
+(animal2)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal5
+gsave 10 dict begin
+120 152 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+98 148 moveto
+(animal5)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal2->animal5
+newpath 153 205 moveto
+146 194 137 178 130 167 curveto
+stroke
+% animal2->animal9
+newpath 173 205 moveto
+180 194 189 178 196 167 curveto
+stroke
+% animal3
+gsave 10 dict begin
+77 220 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+55 216 moveto
+(animal3)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal3->animal5
+newpath 87 205 moveto
+94 194 103 178 110 167 curveto
+stroke
+% animal4
+gsave 10 dict begin
+292 152 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+270 148 moveto
+(animal4)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal10
+gsave 10 dict begin
+166 84 37 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+141 80 moveto
+(animal10)
+[6.72 6.72 2.64 10.08 6.72 2.64 6 6.72]
+xshow
+end grestore
+end grestore
+% animal4->animal10
+newpath 270 140 moveto
+247 128 212 109 189 96 curveto
+stroke
+% animal7
+gsave 10 dict begin
+77 84 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+55 80 moveto
+(animal7)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal5->animal7
+newpath 110 137 moveto
+103 126 94 110 87 99 curveto
+stroke
+% animal5->animal10
+newpath 130 137 moveto
+138 126 148 110 156 99 curveto
+stroke
+% animal6
+gsave 10 dict begin
+34 152 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+12 148 moveto
+(animal6)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal6->animal7
+newpath 44 137 moveto
+51 126 60 110 67 99 curveto
+stroke
+% animal11
+gsave 10 dict begin
+75 16 36 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+51 12 moveto
+(animal11)
+[6.72 6.72 2.64 10.08 6.72 2.64 5.28 6.72]
+xshow
+end grestore
+end grestore
+% animal7->animal11
+newpath 77 68 moveto
+76 57 76 43 76 32 curveto
+stroke
+% animal12
+gsave 10 dict begin
+166 16 37 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+141 12 moveto
+(animal12)
+[6.72 6.72 2.64 10.08 6.72 2.64 6 6.72]
+xshow
+end grestore
+end grestore
+% animal7->animal12
+newpath 95 71 moveto
+111 59 133 42 148 30 curveto
+stroke
+% animal13
+gsave 10 dict begin
+258 16 37 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+233 12 moveto
+(animal13)
+[6.72 6.72 2.64 10.08 6.72 2.64 6 6.72]
+xshow
+end grestore
+end grestore
+% animal7->animal13
+newpath 103 74 moveto
+137 61 196 39 230 26 curveto
+stroke
+% animal8
+gsave 10 dict begin
+255 84 34 15 ellipse_path
+stroke
+gsave 10 dict begin
+12.00 /Helvetica set_font
+233 80 moveto
+(animal8)
+[6.72 6.72 2.64 10.08 6.72 2.64 6.72]
+xshow
+end grestore
+end grestore
+% animal8->animal11
+newpath 228 74 moveto
+194 61 136 39 102 26 curveto
+stroke
+% animal8->animal12
+newpath 237 71 moveto
+221 59 199 42 184 30 curveto
+stroke
+% animal8->animal13
+newpath 256 68 moveto
+257 57 257 43 257 32 curveto
+stroke
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

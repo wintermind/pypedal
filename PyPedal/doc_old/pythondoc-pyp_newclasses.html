@@ -1,0 +1,716 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_newclasses Module</title>
+</head>
+<body>
+<h1>The pyp_newclasses Module</h1>
+<p>pyp_newclasses contains the new class structure that will be a part of PyPedal 2.0.0Final.
+It includes a master class to which most of the computational routines will be bound as
+methods, a NewAnimal() class, and a PedigreeMetadata() class.</p>
+<h2>Module Contents</h2>
+<dl>
+<dt><b>LightAnimal(locations, data, mykw)</b> (class) [<a href='#pyp_newclasses.LightAnimal-class'>#</a>]</dt>
+<dd>
+<p>The LightAnimal() class holds animals records read from a pedigree file.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.LightAnimal-class'><i>The LightAnimal Class</i></a>.</p>
+</dd>
+<dt><a id='pyp_newclasses.loadPedigree-function' name='pyp_newclasses.loadPedigree-function'><b>loadPedigree(options='', optionsfile='pypedal.ini', pedsource='file', pedgraph=0)</b></a> &rArr; PyPedal pedigree object [<a href='#pyp_newclasses.loadPedigree-function'>#</a>]</dt>
+<dd>
+<p>loadPedigree() wraps pedigree creation and loading into a one-step
+process.  If the user passes both a dictionary and a filename, the
+dictionary will be used instead of the filename unless the dictionary
+is empty.</p>
+<dl>
+<dt><i>options</i></dt>
+<dd>
+Dictionary of pedigree options.</dd>
+<dt><i>optionsfile</i></dt>
+<dd>
+File from which pedigree options should be read.</dd>
+<dt><i>pedsource</i></dt>
+<dd>
+Source of the pedigree ('file'|'graph'|'graphfile'|'db').</dd>
+<dt><i>pedgraph</i></dt>
+<dd>
+XDiGraph from which to load the pedigree.</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a NewPedigree object on success, a 0 on failure.</dd>
+</dl><br />
+</dd>
+<dt><b>NewAMatrix(kw)</b> (class) [<a href='#pyp_newclasses.NewAMatrix-class'>#</a>]</dt>
+<dd>
+<p>NewAMatrix provides an instance of a numerator relationship matrix as a Numarray array of
+floats with some convenience methods.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.NewAMatrix-class'><i>The NewAMatrix Class</i></a>.</p>
+</dd>
+<dt><b>NewAnimal(locations, data, mykw)</b> (class) [<a href='#pyp_newclasses.NewAnimal-class'>#</a>]</dt>
+<dd>
+<p>The NewAnimal() class is holds animals records read from a pedigree file.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.NewAnimal-class'><i>The NewAnimal Class</i></a>.</p>
+</dd>
+<dt><b>NewPedigree(kw={}, kwfile='pypedal.ini')</b> (class) [<a href='#pyp_newclasses.NewPedigree-class'>#</a>]</dt>
+<dd>
+<p>The NewPedigree class is the main data structure for PyP 2.0.0Final.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.NewPedigree-class'><i>The NewPedigree Class</i></a>.</p>
+</dd>
+<dt><b>PedigreeMetadata(myped, kw)</b> (class) [<a href='#pyp_newclasses.PedigreeMetadata-class'>#</a>]</dt>
+<dd>
+<p>The PedigreeMetadata() class stores metadata about pedigrees.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.PedigreeMetadata-class'><i>The PedigreeMetadata Class</i></a>.</p>
+</dd>
+<dt><b>PyPedalError</b> (class)  [<a href='#pyp_newclasses.PyPedalError-class'>#</a>]</dt>
+<dd>
+<p>PyPedalError is the base class for exceptions in PyPedal.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.PyPedalError-class'><i>The PyPedalError Class</i></a>.</p>
+</dd>
+<dt><b>PyPedalPedigreeInputFileNameError()</b> (class) [<a href='#pyp_newclasses.PyPedalPedigreeInputFileNameError-class'>#</a>]</dt>
+<dd>
+<p>PyPedalPedigreeInputFileNameError is raised when a simulated pedigree
+is not requested and a pedigree file name is not provided.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.PyPedalPedigreeInputFileNameError-class'><i>The PyPedalPedigreeInputFileNameError Class</i></a>.</p>
+</dd>
+<dt><b>SimAnimal(animalID, sireID=0, damID=0, sex='u', gen=0)</b> (class) [<a href='#pyp_newclasses.SimAnimal-class'>#</a>]</dt>
+<dd>
+<p>The SimAnimal() class is a placeholder used for simulating animals.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.SimAnimal-class'><i>The SimAnimal Class</i></a>.</p>
+</dd>
+<dt><b>tail_recursive(func)</b> (class) [<a href='#pyp_newclasses.tail_recursive-class'>#</a>]</dt>
+<dd>
+<p>tail_recursive is a tail recursion decorator that eliminates tail calls
+for recursive functions.</p>
+<p>For more information about this class, see <a href='#pyp_newclasses.tail_recursive-class'><i>The tail_recursive Class</i></a>.</p>
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.LightAnimal-class' name='pyp_newclasses.LightAnimal-class'>The LightAnimal Class</a></h2>
+<dl>
+<dt><b>LightAnimal(locations, data, mykw)</b> (class) [<a href='#pyp_newclasses.LightAnimal-class'>#</a>]</dt>
+<dd>
+<p>The LightAnimal() class holds animals records read from a pedigree file. It
+is a much simpler object than the NewAnimal() object and is intended for use
+with the graph theoretic routines in pyp_network. The only attributes of these
+objects are: animal ID, sire ID, dam ID, original ID, birth year, and sex.</p>
+</dd>
+<dt><a id='pyp_newclasses.LightAnimal.__init__-method' name='pyp_newclasses.LightAnimal.__init__-method'><b>__init__(locations, data, mykw)</b></a> &rArr; object [<a href='#pyp_newclasses.LightAnimal.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes a LightAnimal() object.</p>
+<dl>
+<dt><i>locations</i></dt>
+<dd>
+A dictionary containing the locations of variables in the input line.</dd>
+<dt><i>data</i></dt>
+<dd>
+The line of input read from the pedigree file.</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a LightAnimal() object populated with data</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.LightAnimal.dictme-method' name='pyp_newclasses.LightAnimal.dictme-method'><b>dictme()</b></a> [<a href='#pyp_newclasses.LightAnimal.dictme-method'>#</a>]</dt>
+<dd>
+<p>dictme() returns a summary of the data stored in the NewAnimal() object
+as a dictionary.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAnimal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.LightAnimal.pad_id-method' name='pyp_newclasses.LightAnimal.pad_id-method'><b>pad_id()</b></a> &rArr; integer [<a href='#pyp_newclasses.LightAnimal.pad_id-method'>#</a>]</dt>
+<dd>
+<p>pad_id() takes an Animal ID, pads it to fifteen digits, and prepends the birthyear
+(or 1950 if the birth year is unknown).  The order of elements is: birthyear, animalID,
+count of zeros, zeros.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current LightAnimal() object</dd>
+<dt>Returns:</dt>
+<dd>
+A padded ID number that is supposed to be unique across animals</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.LightAnimal.printme-method' name='pyp_newclasses.LightAnimal.printme-method'><b>printme()</b></a> [<a href='#pyp_newclasses.LightAnimal.printme-method'>#</a>]</dt>
+<dd>
+<p>printme() prints a summary of the data stored in the LightAnimal() object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current LightAnimal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.LightAnimal.string_to_int-method' name='pyp_newclasses.LightAnimal.string_to_int-method'><b>string_to_int(idstring, mymaxint=9223372036854775807)</b></a> [<a href='#pyp_newclasses.LightAnimal.string_to_int-method'>#</a>]</dt>
+<dd>
+<p>string_to_int() takes an Animal/Sire/Dam ID as a string and returns a
+hash.</p>
+</dd>
+<dt><a id='pyp_newclasses.LightAnimal.stringme-method' name='pyp_newclasses.LightAnimal.stringme-method'><b>stringme()</b></a> [<a href='#pyp_newclasses.LightAnimal.stringme-method'>#</a>]</dt>
+<dd>
+<p>stringme() returns a summary of the data stored in the LightAnimal() object
+as a string.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current LightAnimal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.LightAnimal.trap-method' name='pyp_newclasses.LightAnimal.trap-method'><b>trap()</b></a> [<a href='#pyp_newclasses.LightAnimal.trap-method'>#</a>]</dt>
+<dd>
+<p>trap() checks for common errors in LightAnimal() objects</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current LightAnimal() object</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.NewAMatrix-class' name='pyp_newclasses.NewAMatrix-class'>The NewAMatrix Class</a></h2>
+<dl>
+<dt><b>NewAMatrix(kw)</b> (class) [<a href='#pyp_newclasses.NewAMatrix-class'>#</a>]</dt>
+<dd>
+<p>NewAMatrix provides an instance of a numerator relationship matrix as a Numarray array of
+floats with some convenience methods.  The idea here is to provide a wrapper around a NRM
+so that it is easier to work with.  For large pedigrees it can take a long time to compute
+the elements of A, so there is real value in providing an easy way to save and retrieve a
+NRM once it has been formed.</p>
+</dd>
+<dt><a id='pyp_newclasses.NewAMatrix.__init__-method' name='pyp_newclasses.NewAMatrix.__init__-method'><b>__init__(kw)</b></a> &rArr; object [<a href='#pyp_newclasses.NewAMatrix.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes a NewAMatrix object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAMatrix() object</dd>
+<dt><i>kw</i></dt>
+<dd>
+A dictionary of options.</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a NewAMatrix() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAMatrix.form_a_matrix-method' name='pyp_newclasses.NewAMatrix.form_a_matrix-method'><b>form_a_matrix(pedigree)</b></a> &rArr; integer [<a href='#pyp_newclasses.NewAMatrix.form_a_matrix-method'>#</a>]</dt>
+<dd>
+<p>form_a_matrix() calls pyp_nrm/fast_a_matrix() or pyp_nrm/fast_a_matrix_r()
+to form a NRM from a pedigree.</p>
+<dl>
+<dt><i>pedigree</i></dt>
+<dd>
+The pedigree used to form the NRM.</dd>
+<dt>Returns:</dt>
+<dd>
+A NRM on success, 0 on failure.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAMatrix.info-method' name='pyp_newclasses.NewAMatrix.info-method'><b>info()</b></a> &rArr; None [<a href='#pyp_newclasses.NewAMatrix.info-method'>#</a>]</dt>
+<dd>
+<p>info() uses the info() method of Numarray arrays to dump some information about
+the NRM.  This is of use predominantly for debugging.</p>
+<dl>
+<dt><i>None</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAMatrix.load-method' name='pyp_newclasses.NewAMatrix.load-method'><b>load(nrm_filename)</b></a> &rArr; integer [<a href='#pyp_newclasses.NewAMatrix.load-method'>#</a>]</dt>
+<dd>
+<p>load() uses the Numarray Array Function &quot;fromfile()&quot; to load an array from a
+binary file.  If the load is successful, self.nrm contains the matrix.</p>
+<dl>
+<dt><i>nrm_filename</i></dt>
+<dd>
+The file from which the matrix should be read.</dd>
+<dt>Returns:</dt>
+<dd>
+A load status indicator (0: failed, 1: success).</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAMatrix.printme-method' name='pyp_newclasses.NewAMatrix.printme-method'><b>printme()</b></a> &rArr; None [<a href='#pyp_newclasses.NewAMatrix.printme-method'>#</a>]</dt>
+<dd>
+<p>printme() prints the NRM to the screen.</p>
+<dl>
+<dt><i>None</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAMatrix.save-method' name='pyp_newclasses.NewAMatrix.save-method'><b>save(nrm_filename, nrm_format='')</b></a> &rArr; integer [<a href='#pyp_newclasses.NewAMatrix.save-method'>#</a>]</dt>
+<dd>
+<p>save() uses the Numarray method &quot;tofile()&quot; to save an array to a binary file.</p>
+<dl>
+<dt><i>nrm_filename</i></dt>
+<dd>
+The file to which the matrix should be written.</dd>
+<dt>Returns:</dt>
+<dd>
+A save status indicator (0: failed, 1: success).</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.NewAnimal-class' name='pyp_newclasses.NewAnimal-class'>The NewAnimal Class</a></h2>
+<dl>
+<dt><b>NewAnimal(locations, data, mykw)</b> (class) [<a href='#pyp_newclasses.NewAnimal-class'>#</a>]</dt>
+<dd>
+<p>The NewAnimal() class is holds animals records read from a pedigree file.</p>
+</dd>
+<dt><a id='pyp_newclasses.NewAnimal.__init__-method' name='pyp_newclasses.NewAnimal.__init__-method'><b>__init__(locations, data, mykw)</b></a> &rArr; object [<a href='#pyp_newclasses.NewAnimal.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes a NewAnimal() object.</p>
+<dl>
+<dt><i>locations</i></dt>
+<dd>
+A dictionary containing the locations of variables in the input line.</dd>
+<dt><i>data</i></dt>
+<dd>
+The line of input read from the pedigree file.</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a NewAnimal() object populated with data</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAnimal.dictme-method' name='pyp_newclasses.NewAnimal.dictme-method'><b>dictme()</b></a> [<a href='#pyp_newclasses.NewAnimal.dictme-method'>#</a>]</dt>
+<dd>
+<p>dictme() returns a summary of the data stored in the NewAnimal() object
+as a dictionary.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAnimal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAnimal.pad_id-method' name='pyp_newclasses.NewAnimal.pad_id-method'><b>pad_id()</b></a> &rArr; integer [<a href='#pyp_newclasses.NewAnimal.pad_id-method'>#</a>]</dt>
+<dd>
+<p>pad_id() takes an Animal ID, pads it to fifteen digits, and prepends the birthyear
+(or 1950 if the birth year is unknown).  The order of elements is: birthyear, animalID,
+count of zeros, zeros.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAnimal() object</dd>
+<dt>Returns:</dt>
+<dd>
+A padded ID number that is supposed to be unique across animals</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAnimal.printme-method' name='pyp_newclasses.NewAnimal.printme-method'><b>printme()</b></a> [<a href='#pyp_newclasses.NewAnimal.printme-method'>#</a>]</dt>
+<dd>
+<p>printme() prints a summary of the data stored in the NewAnimal() object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAnimal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAnimal.string_to_int-method' name='pyp_newclasses.NewAnimal.string_to_int-method'><b>string_to_int(idstring, mymaxint=9223372036854775807)</b></a> [<a href='#pyp_newclasses.NewAnimal.string_to_int-method'>#</a>]</dt>
+<dd>
+<p>string_to_int() takes an Animal/Sire/Dam ID as a string and returns a
+hash.</p>
+</dd>
+<dt><a id='pyp_newclasses.NewAnimal.stringme-method' name='pyp_newclasses.NewAnimal.stringme-method'><b>stringme()</b></a> [<a href='#pyp_newclasses.NewAnimal.stringme-method'>#</a>]</dt>
+<dd>
+<p>stringme() returns a summary of the data stored in the NewAnimal() object
+as a string.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAnimal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewAnimal.trap-method' name='pyp_newclasses.NewAnimal.trap-method'><b>trap()</b></a> [<a href='#pyp_newclasses.NewAnimal.trap-method'>#</a>]</dt>
+<dd>
+<p>trap() checks for common errors in NewAnimal() objects</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAnimal() object</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.NewPedigree-class' name='pyp_newclasses.NewPedigree-class'>The NewPedigree Class</a></h2>
+<dl>
+<dt><b>NewPedigree(kw={}, kwfile='pypedal.ini')</b> (class) [<a href='#pyp_newclasses.NewPedigree-class'>#</a>]</dt>
+<dd>
+<p>The NewPedigree class is the main data structure for PyP 2.0.0Final.</p>
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.__init__-method' name='pyp_newclasses.NewPedigree.__init__-method'><b>__init__(kw={}, kwfile='pypedal.ini')</b></a> &rArr; object [<a href='#pyp_newclasses.NewPedigree.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes a NewPedigree object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewPedigree() object</dd>
+<dt><i>kw</i></dt>
+<dd>
+A dictionary of options.</dd>
+<dt><i>kwfile</i></dt>
+<dd>
+An optionsl configuration file name</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a NewPedigree() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.addanimal-method' name='pyp_newclasses.NewPedigree.addanimal-method'><b>addanimal(animalID, sireID, damID)</b></a> &rArr; integer [<a href='#pyp_newclasses.NewPedigree.addanimal-method'>#</a>]</dt>
+<dd>
+<p>addanimal() adds a new animal of class NewAnimal to the pedigree.</p>
+<dl>
+<dt><i></i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+1 on success, 0 on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.delanimal-method' name='pyp_newclasses.NewPedigree.delanimal-method'><b>delanimal(animalID)</b></a> &rArr; integer [<a href='#pyp_newclasses.NewPedigree.delanimal-method'>#</a>]</dt>
+<dd>
+<p>delanimal() deletes an animal from the pedigree. Note that this
+method DOES not update the metadata attached to the pedigree
+and should only be used if that is not important. As of 04/10/2006
+delanimal() is intended for use by pyp_metrics/mating_coi() rather
+than directly by users.</p>
+<dl>
+<dt><i>animalID</i></dt>
+<dd>
+ID of the animal to be deleted</dd>
+<dt>Returns:</dt>
+<dd>
+1 on success, 0 on failure</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.fromgraph-method' name='pyp_newclasses.NewPedigree.fromgraph-method'><b>fromgraph(pedgraph)</b></a> &rArr; None [<a href='#pyp_newclasses.NewPedigree.fromgraph-method'>#</a>]</dt>
+<dd>
+<p>fromgraph() loads the animals to populate the pedigree from an
+XDiGraph object.</p>
+<dl>
+<dt><i>pedgraph</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.load-method' name='pyp_newclasses.NewPedigree.load-method'><b>load(pedsource='file', pedgraph=0)</b></a> &rArr; None [<a href='#pyp_newclasses.NewPedigree.load-method'>#</a>]</dt>
+<dd>
+<p>load() wraps several processes useful for loading and preparing a pedigree for
+use in an analysis, including reading the animals into a list of animal objects,
+forming lists of sires and dams, checking for common errors, setting ancestor
+flags, and renumbering the pedigree.</p>
+<dl>
+<dt><i>pedsource</i></dt>
+<dd>
+Source of the pedigree ('file'|'graph'|'graphfile'|'db').</dd>
+<dt><i>pedgraph</i></dt>
+<dd>
+XDiGraph from which to load the pedigree.</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.preprocess-method' name='pyp_newclasses.NewPedigree.preprocess-method'><b>preprocess()</b></a> &rArr; None [<a href='#pyp_newclasses.NewPedigree.preprocess-method'>#</a>]</dt>
+<dd>
+<p>preprocess() processes a pedigree file, which includes reading the animals
+into a list of animal objects, forming lists of sires and dams, and checking for
+common errors.</p>
+<dl>
+<dt><i>None</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.printoptions-method' name='pyp_newclasses.NewPedigree.printoptions-method'><b>printoptions()</b></a> &rArr; None [<a href='#pyp_newclasses.NewPedigree.printoptions-method'>#</a>]</dt>
+<dd>
+<p>printoptions() prints the contents of the options dictionary.</p>
+<dl>
+<dt><i>None</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.renumber-method' name='pyp_newclasses.NewPedigree.renumber-method'><b>renumber()</b></a> &rArr; None [<a href='#pyp_newclasses.NewPedigree.renumber-method'>#</a>]</dt>
+<dd>
+<p>renumber() updates the ID map after a pedigree has been renumbered so that all references
+are to renumbered rather than original IDs.</p>
+<dl>
+<dt><i>None</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.save-method' name='pyp_newclasses.NewPedigree.save-method'><b>save(filename='', outformat='o', idformat='o')</b></a> &rArr; integer [<a href='#pyp_newclasses.NewPedigree.save-method'>#</a>]</dt>
+<dd>
+<p>save() writes a PyPedal pedigree to a user-specified file.  The saved pedigree includes
+all fields recognized by PyPedal, not just the original fields read from the input pedigree
+file.</p>
+<dl>
+<dt><i>filename</i></dt>
+<dd>
+The file to which the pedigree should be written.</dd>
+<dt><i>outformat</i></dt>
+<dd>
+The format in which the pedigree should be written: 'o' for original (as read) and 'l' for long version (all available variables).</dd>
+<dt><i>idformat</i></dt>
+<dd>
+Write 'o' (original) or 'r' (renumbered) animal, sire, and dam IDs.</dd>
+<dt>Returns:</dt>
+<dd>
+A save status indicator (0: failed, 1: success)</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.simulate-method' name='pyp_newclasses.NewPedigree.simulate-method'><b>simulate()</b></a> &rArr; None [<a href='#pyp_newclasses.NewPedigree.simulate-method'>#</a>]</dt>
+<dd>
+<p>simulate() simulates an arbitrary pedigree of size n with g generations
+starting from n_s base sires and n_d base dams.  This method is based on
+the concepts and algorithms in the Pedigree::sample method from Matvec
+1.1a.  The arguments are read from the pedigree object's options
+dictionary.</p>
+<dl>
+<dt><i>None</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.NewPedigree.updateidmap-method' name='pyp_newclasses.NewPedigree.updateidmap-method'><b>updateidmap()</b></a> &rArr; None [<a href='#pyp_newclasses.NewPedigree.updateidmap-method'>#</a>]</dt>
+<dd>
+<p>updateidmap() updates the ID map after a pedigree has been renumbered so that all references
+are to renumbered rather than original IDs.</p>
+<dl>
+<dt><i>None</i></dt>
+<dd>
+</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.PedigreeMetadata-class' name='pyp_newclasses.PedigreeMetadata-class'>The PedigreeMetadata Class</a></h2>
+<dl>
+<dt><b>PedigreeMetadata(myped, kw)</b> (class) [<a href='#pyp_newclasses.PedigreeMetadata-class'>#</a>]</dt>
+<dd>
+<p>The PedigreeMetadata() class stores metadata about pedigrees.  Hopefully this will help improve performance in some procedures,
+as well as provide some useful summary data.</p>
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.__init__-method' name='pyp_newclasses.PedigreeMetadata.__init__-method'><b>__init__(myped, kw)</b></a> &rArr; object [<a href='#pyp_newclasses.PedigreeMetadata.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes a PedigreeMetadata object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt><i>myped</i></dt>
+<dd>
+A PyPedal pedigree.</dd>
+<dt><i>kw</i></dt>
+<dd>
+A dictionary of options.</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a Pedigree() object populated with data</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.fileme-method' name='pyp_newclasses.PedigreeMetadata.fileme-method'><b>fileme()</b></a> [<a href='#pyp_newclasses.PedigreeMetadata.fileme-method'>#</a>]</dt>
+<dd>
+<p>fileme() writes the metada stored in the Pedigree() object to disc.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.nud-method' name='pyp_newclasses.PedigreeMetadata.nud-method'><b>nud()</b></a> &rArr; integer-and-list [<a href='#pyp_newclasses.PedigreeMetadata.nud-method'>#</a>]</dt>
+<dd>
+<p>nud() returns the number of unique dams in the pedigree along with a list of the dams</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique dams in the pedigree and a list of those dams</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.nuf-method' name='pyp_newclasses.PedigreeMetadata.nuf-method'><b>nuf()</b></a> &rArr; integer-and-list [<a href='#pyp_newclasses.PedigreeMetadata.nuf-method'>#</a>]</dt>
+<dd>
+<p>nuf() returns the number of unique founders in the pedigree along with a list of the founders</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique founders in the pedigree and a list of those founders</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.nug-method' name='pyp_newclasses.PedigreeMetadata.nug-method'><b>nug()</b></a> &rArr; integer-and-list [<a href='#pyp_newclasses.PedigreeMetadata.nug-method'>#</a>]</dt>
+<dd>
+<p>nug() returns the number of unique generations in the pedigree along with a list of the generations</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique generations in the pedigree and a list of those generations</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.nuherds-method' name='pyp_newclasses.PedigreeMetadata.nuherds-method'><b>nuherds()</b></a> &rArr; integer-and-list [<a href='#pyp_newclasses.PedigreeMetadata.nuherds-method'>#</a>]</dt>
+<dd>
+<p>nuherds() returns the number of unique herds in the pedigree along with a list of the herds.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique herds in the pedigree and a list of those herds</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.nus-method' name='pyp_newclasses.PedigreeMetadata.nus-method'><b>nus()</b></a> &rArr; integer-and-list [<a href='#pyp_newclasses.PedigreeMetadata.nus-method'>#</a>]</dt>
+<dd>
+<p>nus() returns the number of unique sires in the pedigree along with a list of the sires</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique sires in the pedigree and a list of those sires</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.nuy-method' name='pyp_newclasses.PedigreeMetadata.nuy-method'><b>nuy()</b></a> &rArr; integer-and-list [<a href='#pyp_newclasses.PedigreeMetadata.nuy-method'>#</a>]</dt>
+<dd>
+<p>nuy() returns the number of unique birthyears in the pedigree along with a list of the birthyears</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique birthyears in the pedigree and a list of those birthyears</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.printme-method' name='pyp_newclasses.PedigreeMetadata.printme-method'><b>printme()</b></a> [<a href='#pyp_newclasses.PedigreeMetadata.printme-method'>#</a>]</dt>
+<dd>
+<p>printme() prints a summary of the metadata stored in the Pedigree() object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.PedigreeMetadata.stringme-method' name='pyp_newclasses.PedigreeMetadata.stringme-method'><b>stringme()</b></a> [<a href='#pyp_newclasses.PedigreeMetadata.stringme-method'>#</a>]</dt>
+<dd>
+<p>stringme() returns a summary of the metadata stored in the pedigree as
+a string.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.PyPedalError-class' name='pyp_newclasses.PyPedalError-class'>The PyPedalError Class</a></h2>
+<dl>
+<dt><b>PyPedalError</b> (class)  [<a href='#pyp_newclasses.PyPedalError-class'>#</a>]</dt>
+<dd>
+<p>PyPedalError is the base class for exceptions in PyPedal. The exceptions
+are based on the examples from &quot;An Introduction to Python&quot; by Guido van
+Rossum and Fred L. Drake,Jr.
+(http://www.network-theory.co.uk/docs/pytut/tut_64.html).</p>
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.PyPedalPedigreeInputFileNameError-class' name='pyp_newclasses.PyPedalPedigreeInputFileNameError-class'>The PyPedalPedigreeInputFileNameError Class</a></h2>
+<dl>
+<dt><b>PyPedalPedigreeInputFileNameError()</b> (class) [<a href='#pyp_newclasses.PyPedalPedigreeInputFileNameError-class'>#</a>]</dt>
+<dd>
+<p>PyPedalPedigreeInputFileNameError is raised when a simulated pedigree
+is not requested and a pedigree file name is not provided.</p>
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.SimAnimal-class' name='pyp_newclasses.SimAnimal-class'>The SimAnimal Class</a></h2>
+<dl>
+<dt><b>SimAnimal(animalID, sireID=0, damID=0, sex='u', gen=0)</b> (class) [<a href='#pyp_newclasses.SimAnimal-class'>#</a>]</dt>
+<dd>
+<p>The SimAnimal() class is a placeholder used for simulating animals.</p>
+</dd>
+<dt><a id='pyp_newclasses.SimAnimal.__init__-method' name='pyp_newclasses.SimAnimal.__init__-method'><b>__init__(animalID, sireID=0, damID=0, sex='u', gen=0)</b></a> &rArr; object [<a href='#pyp_newclasses.SimAnimal.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes a SimAnimal() object.</p>
+<dl>
+<dt><i>animalID</i></dt>
+<dd>
+Animal's ID.</dd>
+<dt><i>sireID</i></dt>
+<dd>
+Sire's ID.</dd>
+<dt><i>damID</i></dt>
+<dd>
+Dam's ID.</dd>
+<dt><i>sex</i></dt>
+<dd>
+Sex of animal.</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a SimAnimal() object populated with data</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.SimAnimal.printme-method' name='pyp_newclasses.SimAnimal.printme-method'><b>printme()</b></a> &rArr; None [<a href='#pyp_newclasses.SimAnimal.printme-method'>#</a>]</dt>
+<dd>
+<p>printme() prints a summary of the data stored in a SimAnimal() object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current object</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_newclasses.SimAnimal.stringme-method' name='pyp_newclasses.SimAnimal.stringme-method'><b>stringme()</b></a> &rArr; None [<a href='#pyp_newclasses.SimAnimal.stringme-method'>#</a>]</dt>
+<dd>
+<p>stringme() returns the data stored in a SimAnimal() object as a string.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current NewAnimal() object</dd>
+<dt>Returns:</dt>
+<dd>
+None</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_newclasses.tail_recursive-class' name='pyp_newclasses.tail_recursive-class'>The tail_recursive Class</a></h2>
+<dl>
+<dt><b>tail_recursive(func)</b> (class) [<a href='#pyp_newclasses.tail_recursive-class'>#</a>]</dt>
+<dd>
+<p>tail_recursive is a tail recursion decorator that eliminates tail calls
+for recursive functions. It was taken from the Python Cookbook entry
+&quot;New Tail Recursion Decorator&quot; submitted by Kay Schlueh. This version was
+provided by Michele Simionato on 2006/05/15. The URL is:
+http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/496691.</p>
+</dd>
+</dl>
+</body></html>

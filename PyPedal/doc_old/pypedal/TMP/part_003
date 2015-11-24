@@ -1,0 +1,72 @@
+<tex2html_file>#./introduction.tex#
+\chapter<<190>>Introduction<<190>>
+\label<<191>>cha:introduction<<191>>
+\begin<<288>>tex2html_deferred<<288>>\par\end<<289>>tex2html_deferred<<289>>
+\begin<<192>>quote<<192>>
+This chapter introduces the  PyPedal<<193>><<193>> module for Python 2.4, provides an overview of key features of the software, and describes the contents of this manual.
+\end<<194>>quote<<194>>
+\begin<<290>>tex2html_deferred<<290>>\par\end<<291>>tex2html_deferred<<291>>
+ PyPedal<<195>><<195>> (\textbf<<196>>P<<196>>ython \textbf<<197>>Ped<<197>>igree An\textbf<<198>>al<<198>>ysis) is a tool for analyzing pedigree files.  It calculates several quantitative measures of genetic diversity from pedigrees, including average coefficients of inbreeding and relationship, effective founder numbers, and effective ancestor numbers.  Checks are performed catch common mistakes in pedigree files, such as parents with more recent birthdates or smaller ID numbers than their offspring and animals appearing as both sires and dams in the pedigree.  Tools for pedigree visualization and report generation are also provided.  PyPedal<<199>><<199>> only makes use of information on pedigree structure, not individual genotypes.  Allelotypes can be assigned to founders for use in gene-dropping simulations to calculate the effective number of founder genomes, but no other measures of alleic diversity are currently supported.
+\begin<<292>>tex2html_deferred<<292>>\par\end<<293>>tex2html_deferred<<293>>
+ PyPedal<<200>><<200>> is a Python (\begin<<294>>tex2html_deferred<<294>>\url<<201>>http://www.python.org/<<201>>\end<<295>>tex2html_deferred<<295>>) language module that may be called by programs or used interactively from the interpreter.  You must have Python 2.4 (or later) installed in order to use PyPedal<<202>><<202>> as PyPedal<<203>><<203>> makes use of features found only in that version.  The Numarray module must also be installed in order for you to use PyPedal<<204>><<204>>, and may be found at \begin<<296>>tex2html_deferred<<296>>\url<<205>>http://www.stsci.edu/resources/software_hardware/numarray<<205>>\end<<297>>tex2html_deferred<<297>>.  In addition, there are a number of third-party packages used by PyPedal<<206>><<206>>; they are discussed in Chapter \ref<<207>>cha:installation<<207>>.
+\begin<<298>>tex2html_deferred<<298>>\par\end<<299>>tex2html_deferred<<299>>
+This manual is the official documentation for  PyPedal<<208>><<208>>. It includes a tutorial and is the most authoritative source of information about PyPedal<<209>><<209>> with the exception of the source code. The tutorial material will walk you through a set of manipulations of a simple pedigree.  All users of PyPedal<<210>><<210>> are encouraged to follow the tutorial with a working PyPedal<<211>><<211>> installation. The best way to learn is by doing --- the aim of this tutorial is to guide you along this doing.
+\begin<<300>>tex2html_deferred<<300>>\par\end<<301>>tex2html_deferred<<301>>
+This content of this manual is broken down as follows:
+\begin<<212>>description<<212>>
+\item[License] Chapter \ref<<213>>cha:license<<213>> describes the license under which  PyPedal<<214>><<214>> is distributed.  It is important that you review the license before using the program.
+\item[Installing PyPedal] Chapter \ref<<215>>cha:installation<<215>> provides information
+   on testing Python and installing PyPedal.
+\item[High-Level Overview] Chapter \ref<<216>>cha:high-level-overview<<216>> gives a
+   high-level overview of the components of the PyPedal<<217>><<217>> system as a whole.
+\item[Methodology] Chapter \ref<<218>>cha:methodology<<218>> provides a brief overview of the methodology used to calculate measures of genetic diversity.
+\item[HOWTOs] Chapter \ref<<219>>cha:howtos<<219>> provides demonstrations of how to perform common tasks.
+\item[Graphics] Chapter \ref<<220>>cha:graphics<<220>> provides details on producing graphics with PyPedal<<221>><<221>>.
+\item[Reports] Chapter \ref<<222>>cha:reports<<222>> provides details about the report generation tools available in PyPedal<<223>><<223>>.
+\item[Implementing New Features] Chapter \ref<<224>>cha:newfeatures<<224>> introduces the idea of extensibility and walks the reader through the development of a new PyPedal<<225>><<225>> routine.
+\item[Applications Programming Interface] Chapter \ref<<226>>cha:api<<226>> includes a complete reference, including useage notes, for all functions in all PyPedal<<227>><<227>> modules.
+\item[Glossary] Chapter \ref<<228>>cha:glossary<<228>> provides a glossary of terms.
+\item[References and Indices] are provided at the end of the manual.
+\end<<229>>description<<229>>
+\begin<<302>>tex2html_deferred<<302>>\par\end<<303>>tex2html_deferred<<303>>
+\section<<230>>Implemented Features<<230>>
+A full list of features, including notes on useage and computational details, is provided in Chapter \ref<<231>>cha:api<<231>>.  Some of the notable features of  PyPedal<<232>><<232>> include:
+\begin<<233>>itemize<<233>>
+\item Reading pedigree files in user-defined formats;
+\item Checking pedigree integrity (duplicate IDs, parents younger than offspring, etc.);
+\item Generating summary information such as frequency of appearance in the pedigree file;
+\item Reordering and renumbering of pedigree files.
+\item Computation of the numerator relationship matrix (\begin<<272>>tex2html_wrap_inline<<272>>$A$\end<<273>>tex2html_wrap_inline<<273>>) from a pedigree file using the tabular method;
+\item Inbreeding calculations for large pedigrees;
+\item Computation of average total and average individual coefficients of inbreeding and relationship;
+\item Calculation of coefficients of partial inbreeding using an iterative tabulat method \cite<<234>>LacyAW1996,GulisijaGWT2006<<234>>;
+\item Calculation of coefficients of ancestral inbreeding using the methods of Ballou \citeyear<<235>>Ballou1997<<235>> or Suwanlee et al. \citeyear<<236>>SuwanleeBSC2007<<236>>;
+\item Decomposition of \begin<<274>>tex2html_wrap_inline<<274>>$A$\end<<275>>tex2html_wrap_inline<<275>>\space into \begin<<276>>tex2html_wrap_inline<<276>>$T$\end<<277>>tex2html_wrap_inline<<277>>\space and \begin<<278>>tex2html_wrap_inline<<278>>$D$\end<<279>>tex2html_wrap_inline<<279>>\space such that \begin<<280>>tex2html_wrap_inline<<280>>$A=TDT'$\end<<281>>tex2html_wrap_inline<<281>>;
+\item Computation of the direct inverse of \begin<<282>>tex2html_wrap_inline<<282>>$A$\end<<283>>tex2html_wrap_inline<<283>>\space (not accounting for inbreeding) using the method of Henderson \citeyear<<237>>ref143<<237>>;
+\item Computation of the direct inverse of \begin<<284>>tex2html_wrap_inline<<284>>$A$\end<<285>>tex2html_wrap_inline<<285>>\space (accounting for inbreeding) using the method of Quaas \citeyear<<238>>ref235<<238>>;
+\item Storage of \begin<<286>>tex2html_wrap_inline<<286>>$A$\end<<287>>tex2html_wrap_inline<<287>>\space and its inverse between user sessions as persistent Python objects using the \textbf<<239>>pickle<<239>> module to avoid unnecessary calculations;
+\item Calculation of theoretical and actual effective population sizes;
+\item Computation of effective founder number using the exact algorithm of Lacy \citeyear<<240>>ref640<<240>>;
+\item Computation of effective founder number using the approximate algorithm of Boichard et al. \citeyear<<241>>ref352<<241>>;
+\item Computation of effective ancestor number using the algorithms of Boichard et al. \citeyear<<242>>ref352<<242>>;
+\item Selection of subpedigrees containing all ancestors of an animal;
+\item Identification of the common relatives of two animals;
+\item Calculation of the inbreeding of offspring from a prospective mating;
+\item Output to ASCII text files, including matrices, coefficients of inbreeding and relationship, and summary information;
+\item Simulation of pedigrees using an algorithm derived from that in Matvec 1.1a;
+\end<<243>>itemize<<243>>
+PyPedal<<244>><<244>> has been used to perform calculations on pedigrees as large as 600,000 animals and has been used in scientific research \cite<<245>>Cole2004a,Cole2007a<<245>>.
+\begin<<304>>tex2html_deferred<<304>>\par\end<<305>>tex2html_deferred<<305>>
+\section<<246>>Where to get information and code<<246>>
+ PyPedal<<247>><<247>> and its documentation are available at: \begin<<306>>tex2html_deferred<<306>>\url<<248>>http://pypedal.sourceforge.net/<<248>>\end<<307>>tex2html_deferred<<307>>.  The Sourceforge site, \begin<<308>>tex2html_deferred<<308>>\url<<249>>http://sourceforge.net/projects/pypedal/<<249>>\end<<309>>tex2html_deferred<<309>>, provides tools for reporting bugs (\begin<<310>>tex2html_deferred<<310>>\url<<250>>https://sourceforge.net/tracker/?func=add;SPMamp;group_id=106679;SPMamp;atid=645233<<250>>\end<<311>>tex2html_deferred<<311>>, making feature requests (\begin<<312>>tex2html_deferred<<312>>\url<<251>>https://sourceforge.net/tracker/?func=add;SPMamp;group_id=106679;SPMamp;atid=645236<<251>>\end<<313>>tex2html_deferred<<313>>), and discussing PyPedal<<252>><<252>> (\begin<<314>>tex2html_deferred<<314>>\url<<253>>https://sourceforge.net/forum/?group_id=106679<<253>>\end<<315>>tex2html_deferred<<315>>).
+\begin<<316>>tex2html_deferred<<316>>\par\end<<317>>tex2html_deferred<<317>>
+\section<<254>>Acknowledgments<<254>>\index<<255>>Acknowledgments<<255>>
+ PyPedal<<256>><<256>> was initially written to support the author's dissertation research while at Louisiana State University, Baton Rouge (\begin<<318>>tex2html_deferred<<318>>\url<<257>>http://www.lsu.edu/<<257>>\end<<319>>tex2html_deferred<<319>>).  The initial development was supported in part by a grant from The Seeing Eye, Inc., Morristown, NJ, USA.  It lay fallow for some time but has recently come under active development again.  This is due in part to a request from colleagues at the University of Minnesota that led to the inclusion of new functionality in PyPedal<<258>><<258>>.  The author wishes to thank Paul Van<<259>>R<<259>>aden for very helpful suggestions for improving the ability of PyPedal<<260>><<260>> to handle certain computations in large pedigrees.  Additional feedback in the form of bug reports, feature requests, and discussion of computing strategies was provided by Bradley J. Heins (University of Minnesota-Twin Cities), Edward H. Hagen (Institute for Theoretical Biology, Humboldt-Universit\"<<261>>a<<261>>t zu Berlin), Kathy Hanford (University of Nebraska, Lincoln), Thomas Kelly (Department of Animal and Poultry Science, University of Guelph), Thomas von Hassell, and Gianluca Saba. Gregor Gorjanc has written a blog entry describing \href<<262>>http://ggorjan.blogspot.com/2007/04/installing-pypedal-under-debian.html<<262>><<263>>how to install PyPedal on Debian Linux<<263>>. Fernando Perez posted a \begin<<320>>tex2html_deferred<<320>>\LaTeX\end<<321>>tex2html_deferred<<321>>preamble to the NumPy listserver that dramatically improved the PDF version of This Manual.
+\begin<<322>>tex2html_deferred<<322>>\par\end<<323>>tex2html_deferred<<323>>
+The Newfoundland pedigree presented in Figure \ref<<264>>fig:newfoundland-colored-pedigree<<264>> was taken from the NewFoundland Dog database (\begin<<324>>tex2html_deferred<<324>>\url<<265>>http://www.newfoundlanddog-database.net/en/<<265>>\end<<325>>tex2html_deferred<<325>>) and is used with permission.
+\begin<<326>>tex2html_deferred<<326>>\par\end<<327>>tex2html_deferred<<327>>
+The pedigree of European royalty used in the GEDCOM discussion (Appendix \ref<<266>>GEDCOM<<266>>), \href<<267>>http://www.genealogyforum.com/gedcom/gedcom1/ged3.htm<<267>><<268>>ged3.ged<<268>>, was taken from the Genealogy Forum website (\begin<<328>>tex2html_deferred<<328>>\url<<269>>http://www.genealogyforum.com/<<269>>\end<<329>>tex2html_deferred<<329>>). It is believed to be in the public domain, and is used with the knowledge of the website administrators.
+\begin<<330>>tex2html_deferred<<330>>\par\end<<331>>tex2html_deferred<<331>>
+\section<<270>>Disclaimer<<270>>\index<<271>>Disclaimer<<271>>
+Reference to any commercial product is made with the understanding that no discrimination is intended and no endorsement by USDA is implied.
+<tex2html_endfile>#./introduction.tex#

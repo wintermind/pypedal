@@ -1,0 +1,847 @@
+
+<tex2html_mydb_mark>#1#% Complete documentation on the extended LaTeX markup used for Python
+
+<tex2html_mydb_mark>#2#% documentation is available in ``Documenting Python'', which is part
+
+<tex2html_mydb_mark>#3#% of the standard documentation for Python.  It may be found online
+
+<tex2html_mydb_mark>#4#% at:
+
+<tex2html_mydb_mark>#5#%
+
+<tex2html_mydb_mark>#6#%     http://www.python.org/doc/current/doc/doc.html
+
+<tex2html_mydb_mark>#7#% latex2html doesn't know [T1]{fontenc}, so we cannot use that:(
+
+<tex2html_mydb_mark>#8#%\setlongtables
+
+<tex2html_mydb_mark>#9#%\usepackage{epsfig}
+
+<tex2html_mydb_mark>#10#% The commands of this document do not reset module names at section level
+
+<tex2html_mydb_mark>#11#% (nor at chapter level).
+
+<tex2html_mydb_mark>#12#% --;SPMgt; You have to do that manually when a new module starts!
+
+<tex2html_mydb_mark>#13#%     (use \py@reset)
+
+<tex2html_mydb_mark>#14#% additional mathematical functions
+
+<tex2html_mydb_mark>#15#%%%
+
+<tex2html_mydb_mark>#16#%%% Start of preamble ``borrowed'' from a Fernando Perez post tn the
+
+<tex2html_mydb_mark>#17#%%% NumPy listserv on 02/11/06.
+
+<tex2html_mydb_mark>#18#%%%
+
+<tex2html_mydb_mark>#19#% This gives us a better font in URL links (otherwise the default
+
+<tex2html_mydb_mark>#20#% MonoSpace font is bitmapped, and it looks horrible in PDF)
+
+<tex2html_mydb_mark>#21#% The hyperref package gives us a pdf with properly built
+
+<tex2html_mydb_mark>#22#% internal navigation ('pdf bookmarks' for the table of contents,
+
+<tex2html_mydb_mark>#23#% internal cross-reference links, web links for URLs, etc.)
+
+<tex2html_mydb_mark>#24#% A few colors to replace the defaults for certain link types
+
+<tex2html_mydb_mark>#25#% This helps prevent overly long lines that stretch beyond the margins
+
+<tex2html_mydb_mark>#26#% Define a \fixme command to mark visually things needing fixing in the draft.
+
+<tex2html_mydb_mark>#27#% For final printing or to simply disable these bright warnings, simply
+
+<tex2html_mydb_mark>#28#% uncomment the \renewcommand redefinition below
+
+<tex2html_mydb_mark>#29#% Uncomment the next line to make the \fixme command be a no-op
+
+<tex2html_mydb_mark>#30#%\renewcommand{\fixme}[1]{}
+
+<tex2html_mydb_mark>#31#%%% If you also want to use the listings package for nicely formatted
+
+<tex2html_mydb_mark>#32#%%% Python source code, this configuration produces good on-paper and
+
+<tex2html_mydb_mark>#33#%%% on-screen results:
+
+<tex2html_mydb_mark>#34#% Use and configure listings package for nicely formatted code
+
+<tex2html_mydb_mark>#35#%%%
+
+<tex2html_mydb_mark>#36#%%% End of preamble ``borrowed'' from a Fernando Perez post tn the
+
+<tex2html_mydb_mark>#37#%%% NumPy listserv on 02/11/06.
+
+<tex2html_mydb_mark>#38#%%%
+
+<tex2html_mydb_mark>#39#% some convenience declarations
+
+<tex2html_mydb_mark>#40#% Only beginning of sentence, otherwise use \pypedal{}
+
+<tex2html_mydb_mark>#41#% mark internal comments
+
+<tex2html_mydb_mark>#42#% for any published version switch to the second (empty) definition of the macro!
+
+<tex2html_mydb_mark>#43#% \newcommand{\remark}[1]{(\textbf{Note to authors: #1})}
+
+<tex2html_mydb_mark>#44#% I use date to indicate the manual-updates,
+
+<tex2html_mydb_mark>#45#% release below gives the matching software version.
+
+<tex2html_mydb_mark>#46#%\date{December 01, 2005}        % update before release!
+
+<tex2html_mydb_mark>#47#% update before release!
+                                
+<tex2html_mydb_mark>#48#% Use an explicit date so that reformatting
+                                
+<tex2html_mydb_mark>#49#% doesn't cause a new date to be used.  Setting
+                                
+<tex2html_mydb_mark>#50#% the date to \today can be used during draft
+                                
+<tex2html_mydb_mark>#51#% stages to make it easier to handle versions.
+
+<tex2html_mydb_mark>#52#% (software) release version;
+
+<tex2html_mydb_mark>#53#% this is used to define the \version macro
+
+<tex2html_mydb_mark>#54#% tell \index to actually write the .idx file
+
+<tex2html_mydb_mark>#55#% This makes the contents more accessible from the front page of the HTML.
+
+<tex2html_mydb_mark>#56#% \item[PyPedal Tutorial] Chapter \ref{cha:tutorial} provides brief tutorial for new users of \PyPedal{}.
+
+<tex2html_mydb_mark>#57#
+Python 2.4 (#1, Feb 25 2005, 12:30:11)
+[GCC 3.3.3] on linux2
+Type ;SPMquot;help;SPMquot;, ;SPMquot;copyright;SPMquot;, ;SPMquot;credits;SPMquot; or ;SPMquot;license;SPMquot; for more information.
+<tex2html_mydb_mark>#58#
+gunzip pypedal-2.0.0a17.tar.gz
+tar xf pypedal-2.0.0a17.tar.gz
+<tex2html_mydb_mark>#59#
+python setup.py install
+<tex2html_mydb_mark>#60#
+;SPMgt;;SPMgt;;SPMgt; from PyPedal import ;SPMlt;module-name;SPMgt;
+<tex2html_mydb_mark>#61#error: Download error: (10060, 'Operation timed out')
+<tex2html_mydb_mark>#62#
+C:\;SPMgt; cd C:\PyPedal
+<tex2html_mydb_mark>#63#
+C:\PyPedal;SPMgt; python setup.py install
+<tex2html_mydb_mark>#64#
+;SPMgt;;SPMgt;;SPMgt; import PyPedal
+Traceback (innermost last):
+File ;SPMquot;;SPMlt;stdin;SPMgt;;SPMquot;, line 1, in ?
+ImportError: No module named PyPedal
+<tex2html_mydb_mark>#65#
+;SPMgt;;SPMgt;;SPMgt; import PyPedal
+;SPMgt;;SPMgt;;SPMgt; PyPedal.__version__.version
+'2.0.0b17'
+<tex2html_mydb_mark>#66#%Examples of both styles of interaction may be found in the tutorial (Chapter \ref{cha:tutorial}).
+
+<tex2html_mydb_mark>#67#% asdg) on line 3 of the pedigree file.
+
+<tex2html_mydb_mark>#68#
+# Program header -- load modules used by a program
+from PyPedal import pyp_newclasses
+from PyPedal import  pyp_metrics
+<tex2html_mydb_mark>#69#
+options = {}
+options['messages'] = 'verbose'
+options['renumber'] = 0
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+options['pedname'] = 'Lacy (1989) Pedigree'
+<tex2html_mydb_mark>#70#
+# options.ini
+# This is an example of a PyPedal configuration file
+messages = verbose
+renumber = 0
+pedfile = new_lacy.ped
+pedformat = asd
+pedname = Lacy (1989) Pedigree
+<tex2html_mydb_mark>#71#
+example = pyp_newclasses.loadPedigree(options)
+<tex2html_mydb_mark>#72#
+example = pyp_newclasses.loadPedigree(optionsfile='options.ini')
+<tex2html_mydb_mark>#73#
+pyp_metrics.effective_founders_lacy(example)
+<tex2html_mydb_mark>#74#
+options = {}
+options['messages'] = 'verbose'
+options['renumber'] = 0
+options['counter'] = 5
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+options['pedname'] = 'Lacy Pedigree'
+example = pyp_newclasses.loadPedigree(options)
+<tex2html_mydb_mark>#75#
+options = {}
+options['messages'] = 'verbose'
+options['renumber'] = 0
+options['counter'] = 5
+
+if __name__ == '__main__':
+#   Read the first pedigree
+    options['pedfile'] = 'new_lacy.ped'
+    options['pedformat'] = 'asd'
+    options['pedname'] = 'Lacy Pedigree'
+    example1 = pyp_newclasses.loadPedigree(options)
+#   Read the second pedigree
+    options['pedfile'] = 'new_boichard.ped'
+    options['pedformat'] = 'asdg'
+    options['pedname'] = 'Boichard Pedigree'
+    example2 = pyp_newclasses.loadPedigree(options)
+<tex2html_mydb_mark>#76#
+# new_options.ini
+# This is an example of a PyPedal configuration file.
+pedfile = new_lacy.ped
+pedformat = asd
+pedname = Lacy Pedigree
+<tex2html_mydb_mark>#77#
+# This pedigree is taken from Boichard et al. (1997).
+# Each records contains an animal ID, a sire ID, and
+# a dam ID.
+1 0 0
+2 0 0
+3 0 0
+4 0 0
+5 2 3
+6 0 0
+7 5 6
+8 0 0
+9 1 2
+10 4 5
+11 7 8
+12 7 8
+13 7 8
+<tex2html_mydb_mark>#78#
+options['sepchar'] = '\t'
+<tex2html_mydb_mark>#79#
+options['pedformat'] = 'asd'
+<tex2html_mydb_mark>#80#
+    example.pedigree = pyp_utils.renumber()
+<tex2html_mydb_mark>#81#
+    example.kw['renumber'] = 1
+    example.renumber()
+<tex2html_mydb_mark>#82#
+Fri, 06 May 2005 10:27:22 INFO     Logfile boichard2.log instantiated.
+Fri, 06 May 2005 10:27:22 INFO     Preprocessing boichard2.ped
+Fri, 06 May 2005 10:27:22 INFO     Opening pedigree file
+Fri, 06 May 2005 10:27:22 INFO     Pedigree comment (line 1): # This pedigree is
+                                   taken from Boicherd et al. (1997).
+Fri, 06 May 2005 10:27:22 INFO     Pedigree comment (line 2): # It contains two
+                                   unrelated families.
+Fri, 06 May 2005 10:27:22 WARNING  Encountered deprecated pedigree format string
+                                   (% asdg) on line 3 of the pedigree file.
+Fri, 06 May 2005 10:27:22 WARNING  Reached end-of-line in boichard2.ped after reading
+                                   23 lines.
+Fri, 06 May 2005 10:27:22 INFO     Closing pedigree file
+Fri, 06 May 2005 10:27:22 INFO     Assigning offspring
+Fri, 06 May 2005 10:27:22 INFO     Creating pedigree metadata object
+Fri, 06 May 2005 10:27:22 INFO     Forming A-matrix from pedigree
+Fri, 06 May 2005 10:27:22 INFO     Formed A-matrix from pedigree
+<tex2html_mydb_mark>#83#
+Thu, 04 Aug 2005 15:36:18 INFO     Logfile hartlandclark.log instantiated.
+Thu, 04 Aug 2005 15:36:18 INFO     Preprocessing hartlandclark.ped
+Thu, 04 Aug 2005 15:36:18 INFO     Opening pedigree file
+Thu, 04 Aug 2005 15:36:18 INFO     Pedigree comment (line 1): # Pedigree from van
+                                   Noordwijck and Scharloo (1981) as presented
+Thu, 04 Aug 2005 15:36:18 INFO     Pedigree comment (line 2): # in Hartl and Clark
+                                   (1989), p. 242.
+Thu, 04 Aug 2005 15:36:18 ERROR    The record on line 3 of file hartlandclark.ped
+                                   does not have the same number of columns (4) as
+                                   the pedigree format string (asd) says that it
+                                   should (3). Please check your pedigree file and
+                                   the pedigree format string for errors.
+<tex2html_mydb_mark>#84#
+test = pyp_newclasses.loadPedigree(options,pedsource='db')
+test.metadata.printme()
+<tex2html_mydb_mark>#85#
+Metadata for  DB Stream ()
+    Records:                7
+    Unique Sires:           3
+    Unique Dams:            3
+    Unique Gens:            1
+    Unique Years:           1
+    Unique Founders:        4
+    Unique Herds:           1
+    Pedigree Code:          ASDx
+<tex2html_mydb_mark>#86#
+example = pyp_newclasses.loadPedigree(optionsfile='new_networkx.ini')
+ng = pyp_network.ped_to_graph(example)
+options = {}
+options['pedfile'] = 'dummy'
+options['pedformat'] = 'asd'
+example2 = pyp_newclasses.loadPedigree(options,pedsource='graph',pedgraph=ng)
+example2.metadata.printme()
+<tex2html_mydb_mark>#87#
+Metadata for  Testing fromgraph() (dummy)
+Records:                13
+Unique Sires:           3
+Unique Dams:            4
+Unique Gens:            1
+Unique Years:           1
+Unique Founders:        5
+Unique Herds:           1
+Pedigree Code:          asd
+<tex2html_mydb_mark>#88#
+# dogID,fatherID,motherID,gender,born
+64 66 67 2 1979
+63 64 65 1 1982
+62 191 195 2 1982
+61 64 65 2 1982
+...
+<tex2html_mydb_mark>#89#
+options = {}
+options['pedfile'] = 'dog.ped'
+options['pedname'] = 'A Large Dog Pedigree'
+options['pedformat'] = 'asdgb'
+if __name__ == '__main__':
+    test = pyp_newclasses.loadPedigree(options)
+<tex2html_mydb_mark>#90#
+options = {}
+options['pedfile'] = ''
+options['messages'] = 'verbose'
+options['pedformat'] = 'ASD'
+
+if __name__ == ;SPMquot;__main__;SPMquot;:
+    pedstream = 'a1,s1,d1\na2,s2,d2\na3,a1,a2\n'
+    test = pyp_newclasses.loadPedigree(options,pedsource='textstream',pedstream=pedstream)
+<tex2html_mydb_mark>#91#
+test.kw['database_name'] = 'test_pypedal_save'
+test.kw['dbtable_name'] = 'test_save'
+test.savedb()
+<tex2html_mydb_mark>#92#
+test.savegraph(pedoutfile='test.adj')
+<tex2html_mydb_mark>#93#
+# sqlite.py
+# GMT Tue Mar  4 20:38:52 2008
+# Text Stream
+1 5
+2 6
+3 5
+4 6
+5 7
+6 7
+7
+<tex2html_mydb_mark>#94#
+test.save(filename='all_data.ped',outformat='l',idformat='o')
+<tex2html_mydb_mark>#95#
+example.metadata = PedigreeMetadata(example.pedigree,example.kw)
+<tex2html_mydb_mark>#96#
+;SPMgt;;SPMgt;;SPMgt; example = pyp_newclasses.loadPedigree(optionsfile='newfoundland.ini')
+;SPMgt;;SPMgt;;SPMgt; newf_f = pyp_nrm.inbreeding(example)
+;SPMgt;;SPMgt;;SPMgt; print newf_f['fx'][example.idmap[example.namemap['Kaptn Kvols von Widdersdorf']]]
+
+0.0
+<tex2html_mydb_mark>#97#%s' % ( ng.order() )
+
+<tex2html_mydb_mark>#98#%f',[18,18])
+
+<tex2html_mydb_mark>#99#
+options = {}
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+
+example1 = pyp_newclasses.loadPedigree(options)
+<tex2html_mydb_mark>#100#
+#   Create the empty options dictionary
+options = {}
+
+#   Read the first pedigree
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+options['pedname'] = 'Lacy Pedigree'
+example1 = pyp_newclasses.loadPedigree(options)
+
+#   Read the second pedigree
+options['pedfile'] = 'new_boichard.ped'
+options['pedformat'] = 'asdg'
+options['pedname'] = 'Boichard Pedigree'
+example2 = pyp_newclasses.loadPedigree(options)
+<tex2html_mydb_mark>#101#
+options = {}
+options['renumber'] = 1
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+example1 = pyp_newclasses.loadPedigree(options)
+<tex2html_mydb_mark>#102#
+example.kw['renumber'] = 1
+example.renumber()
+<tex2html_mydb_mark>#103#
+options['messages'] = 'quiet'
+<tex2html_mydb_mark>#104#
+options['sepchar'] = '\t'
+<tex2html_mydb_mark>#105#
+options['sepchar'] = ;SPMquot;\t;SPMquot;
+<tex2html_mydb_mark>#106#
+[jcole@jcole2 examples]$ python new_ids.py
+[INFO]: Logfile new_ids2.log instantiated.
+[INFO]: Preprocessing new_ids2.ped
+[INFO]: Opening pedigree file
+[ERROR]: The record on line 2 of file new_ids2.ped does not have the same number
+         of columns (1) as the pedigree format string (ASD) says that it should
+         (3). Please check your pedigree file and the pedigree format string for
+         errors.
+[jcole@jcole2 examples]$
+<tex2html_mydb_mark>#107#
+options = {}
+options['renumber'] = 1
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+example1 = pyp_newclasses.loadPedigree(options)
+example_inbreeding = pyp_nrm.inbreeding(example)
+print example_inbreeding
+<tex2html_mydb_mark>#108#
+{'fx': {1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0,
+10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0,
+19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.0, 24: 0.0, 25: 0.0, 26: 0.0, 27: 0.0,
+28: 0.25, 29: 0.0, 30: 0.0, 31: 0.25, 32: 0.0, 33: 0.0, 34: 0.0, 35: 0.0, 36: 0.0,
+37: 0.0, 38: 0.21875, 39: 0.0, 40: 0.0625, 41: 0.0, 42: 0.0, 43: 0.03125, 44: 0.0,
+45: 0.0, 46: 0.0, 47: 0.0},
+'metadata': {'nonzero': {'f_max': 0.25, 'f_avg': 0.16250000000000001,
+'f_rng': 0.21875, 'f_sum': 0.8125, 'f_min': 0.03125, 'f_count': 5},
+'all': {'f_max': 0.25, 'f_avg': 0.017287234042553192, 'f_rng': 0.25,
+'f_sum': 0.8125, 'f_min': 0.0, 'f_count': 47}}}
+<tex2html_mydb_mark>#109#
+;SPMgt;;SPMgt;;SPMgt; print example_inbreeding['fx'][28]
+'0.25'
+<tex2html_mydb_mark>#110#
+;SPMgt;;SPMgt;;SPMgt; print example_inbreeding['metadata']['all']['f_avg']
+'0.017287234042553192'
+<tex2html_mydb_mark>#111#
+options = {}
+options['pedfile'] = 'hartlandclark.ped'
+options['pedname'] = 'Pedigree from van Noordwijck and Scharloo (1981)'
+options['pedformat'] = 'asdb'
+
+example = pyp_newclasses.loadPedigree(options)
+
+pyp_nrm.inbreeding(example)
+pyp_db.loadPedigreeTable(example)
+<tex2html_mydb_mark>#112#
+options = {}
+options['pedfile'] = 'hartlandclark.ped'
+options['pedname'] = 'Pedigree from van Noordwijck and Scharloo (1981)'
+options['pedformat'] = 'asdb'
+
+example = pyp_newclasses.loadPedigree(options)
+
+pyp_db.loadPedigreeTable(example)
+<tex2html_mydb_mark>#113#
+options['dbtable_name'] = 'noordwijck_and_scharloo_inbreeding'
+pyp_nrm.inbreeding(example)
+pyp_db.loadPedigreeTable(example)
+<tex2html_mydb_mark>#114#
+Tue, 29 Nov 2005 11:24:22 WARNING  Table noordwijck_and_scharloo_inbreeding does
+                                   not exist in database pypedal!
+Tue, 29 Nov 2005 11:24:22 INFO     Table noordwijck_and_scharloo_inbreeding
+                                   created in database pypedal!
+<tex2html_mydb_mark>#115#
+example = pyp_newclasses.loadPedigree(optionsfile='new_networkx.ini')
+ng = pyp_network.ped_to_graph(example)
+<tex2html_mydb_mark>#116#
+print 'Number of animals in pedigree: %s' % ( ng.order() )
+print ng.nodes()
+<tex2html_mydb_mark>#117#
+options = {}
+options['pedfile'] = 'dummy'
+options['messages'] = 'verbose'
+options['renumber'] = 1
+options['pedname'] = 'Testing fromgraph()'
+options['pedformat'] = 'asd'
+options['set_offspring'] = 1
+options['set_ancestors'] = 1
+options['set_sexes'] = 1
+options['set_generations'] = 1
+example2 = pyp_newclasses.loadPedigree(options,pedsource='graph',pedgraph=ng)
+<tex2html_mydb_mark>#118#
+options = {}
+options['pedfile'] = 'pedigree.adjlist'
+options['messages'] = 'verbose'
+options['pedname'] = 'Testing graphfile'
+options['pedformat'] = 'asd'
+example = pyp_newclasses.loadPedigree(options,pedsource='graphfile')
+<tex2html_mydb_mark>#119#
+example.savegraph('pedigree.adjlist')
+<tex2html_mydb_mark>#120#
+example = pyp_newclasses.loadPedigree(optionsfile='denny.ini')
+amatrix = pyp_newclasses.NewAMatrix(example.kw)
+amatrix.form_a_matrix(example.pedigree)
+amatrix.tofile('Ainv.txt')
+<tex2html_mydb_mark>#121#
+amatrix.tofile('Ainv.bin',nrm_format='binary')
+<tex2html_mydb_mark>#122#
+octave:1;SPMgt; myfile = fopen (;SPMquot;Ainv.txt;SPMquot;, ;SPMquot;r;SPMquot;);
+octave:2;SPMgt; ainv = fscanf(myfile,'%f',[18,18])
+
+<tex2html_mydb_mark>#123#
+example = pyp_newclasses.loadPedigree(options)
+# Save the NRM to a file in ijk format.
+# Don't forget to set the filename.
+pyp_io.save_ijk(example,'nrm_ijk.txt')
+<tex2html_mydb_mark>#124#
+$ head nrm_ijk.txt
+4627 4627 1.125
+4627 0832 0.0
+4627 5538 0.5
+...
+<tex2html_mydb_mark>#125#
+options['pedfile'] = 'example2.ged'
+options['pedformat'] = 'ASD'
+options['pedname'] = 'A GEDCOM pedigree'
+example2 = pyp_newclasses.loadPedigree(options,pedsource='gedcomfile')
+<tex2html_mydb_mark>#126#
+ test.savegedcom('ged3.pypedal.ged')
+<tex2html_mydb_mark>#127#
+options = {}
+options['pedfile'] = ''
+options['renumber'] = 1
+options['pedformat'] = 'ASD'
+if __name__ == ;SPMquot;__main__;SPMquot;:
+    pedstream = 'a1,s1,d1\na2,s2,d2\na3,a1,a2\n'
+    test = pyp_newclasses.loadPedigree(options,pedsource='textstream',pedstream=pedstream)
+    pyp_graphics.new_draw_pedigree(test, gfilename='partial', gtitle='Text Stream', gorient='p',gname=1)
+<tex2html_mydb_mark>#128#
+pyp_graphics.draw_pedigree(example, gfilename='doug_p_rl_notitle', gname=1,
+    gdirec='RL', gfontsize=12)
+<tex2html_mydb_mark>#129#
+pyp_db.loadPedigreeTable(ay)
+coi_by_year = pyp_reports.meanMetricBy(ay,metric='fa',byvar='by')
+cby = coi_by_year
+del(cby[1900])
+pyp_graphics.plot_line_xy(coi_by_year, gfilename='ay_coi_by_year',
+    gtitle='Inbreeding coefficients for Ayrshire cows', gxlabel='Birth year',
+    gylabel='Coefficient of inbreeding')
+<tex2html_mydb_mark>#130#%s GROUP BY birthyear \
+        
+<tex2html_mydb_mark>#131#% (pedobj.kw['dbtable_name'])
+    
+<tex2html_mydb_mark>#132#%s_inbreeding_by_year.pdf' % ( pedobj.kw['default_report'] )
+    
+<tex2html_mydb_mark>#133#%s' \
+            
+<tex2html_mydb_mark>#134#% (pedobj.kw['pedname'])
+    
+<tex2html_mydb_mark>#135#%s:\t\t%s' % (_k, _v)
+    
+<tex2html_mydb_mark>#136#%s:\t%s' % (_k, _v)
+    
+<tex2html_mydb_mark>#137#
+def inbreedingByYear(pedobj):
+    curs = pyp_db.getCursor(pedobj.kw['database_name'])
+
+    # Check and see if the pedigree has already been loaded.  If not, do it.
+    if not pyp_db.tableExists(pedobj.kw['database_name'], pedobj.kw['dbtable_name']):
+        pyp_db.loadPedigreeTable(pedobj)
+
+    MYQUERY = ;SPMquot;SELECT birthyear, pyp_mean(coi) FROM %s GROUP BY birthyear \
+        ORDER BY birthyear ASC;SPMquot; % (pedobj.kw['dbtable_name'])
+    curs.execute(MYQUERY)
+    myresult = curs.fetchall()
+    result_dict = {}
+    for _mr in myresult:
+        _level, _mean = _mr
+        result_dict[_level] = _mean
+    return result_dict
+<tex2html_mydb_mark>#138#
+def pdfInbreedingByYear(pedobj,results,titlepage=0,reporttitle='',reportauthor='', \
+    reportfile=''):
+    import reportlab
+    if reportfile == '':
+        _pdfOutfile = '%s_inbreeding_by_year.pdf' % ( pedobj.kw['default_report'] )
+    else:
+        _pdfOutfile = reportfile
+<tex2html_mydb_mark>#139#
+_pdfSettings = _pdfInitialize(pedobj)
+canv = canvas.Canvas(_pdfOutfile, invariant=1)
+canv.setPageCompression(1)
+<tex2html_mydb_mark>#140#
+if titlepage:
+    if reporttitle == '':
+        reporttitle = 'meanMetricBy Report for Pedigree\n%s' \
+            % (pedobj.kw['pedname'])
+    _pdfCreateTitlePage(canv, _pdfSettings, reporttitle, reportauthor)
+_pdfDrawPageFrame(canv, _pdfSettings)
+<tex2html_mydb_mark>#141#
+canv.setFont(;SPMquot;Times-Bold;SPMquot;, 12)
+tx = canv.beginText( _pdfSettings['_pdfCalcs']['_left_margin'],
+    _pdfSettings['_pdfCalcs']['_top_margin'] - 0.5 * \
+        _pdfSettings['_pdfCalcs']['_unit'] )
+<tex2html_mydb_mark>#142#
+# This is where the actual content is written to a text object that
+# will be displayed on a canvas.
+for _k, _v in results.iteritems():
+    if len(str(_k)) ;SPMlt;= 14:
+        _line = '\t%s:\t\t%s' % (_k, _v)
+    else:
+        _line = '\t%s:\t%s' % (_k, _v)
+    tx.textLine(_line)
+<tex2html_mydb_mark>#143#
+    # Paginate the document if the contents of a textLine are longer than one page.
+    if tx.getY() ;SPMlt; _pdfSettings['_pdfCalcs']['_bottom_margin'] + \
+        0.5 * _pdfSettings['_pdfCalcs']['_unit']:
+        canv.drawText(tx)
+        canv.showPage()
+        _pdfDrawPageFrame(canv, _pdfSettings)
+        canv.setFont('Times-Roman', 12)
+        tx = canv.beginText( _pdfSettings['_pdfCalcs']['_left_margin'],
+            _pdfSettings['_pdfCalcs']['_top_margin'] -
+            0.5 * _pdfSettings['_pdfCalcs']['_unit'] )
+<tex2html_mydb_mark>#144#
+if tx:
+    canv.drawText(tx)
+    canv.showPage()
+canv.save()
+<tex2html_mydb_mark>#145#%s_colored' % \
+        
+<tex2html_mydb_mark>#146#%2x' % int(255*red)
+    
+<tex2html_mydb_mark>#147#%s' % _r[1]
+    
+<tex2html_mydb_mark>#148#%2x' % int(255*green)
+    
+<tex2html_mydb_mark>#149#%s' % _g[1]
+    
+<tex2html_mydb_mark>#150#%2x' % int(255*blue)
+    
+<tex2html_mydb_mark>#151#%s' % _b[1]
+    
+<tex2html_mydb_mark>#152#%s%s%s' % (_r,_g,_b)
+    
+<tex2html_mydb_mark>#153#
+###############################################################################
+# NAME: pyp_jbc.py
+# VERSION: 1.0.0 (16NOVEMBER2005)
+# AUTHOR: John B. Cole, PhD (jcole@aipl.arsusda.gov)
+# LICENSE: LGPL
+###############################################################################
+# FUNCTIONS:
+#     get_color_32()
+#     color_pedigree()
+#     draw_colored_pedigree()
+###############################################################################
+<tex2html_mydb_mark>#154#
+##
+# pyp_jbc provides tools for enhanced pedigree drawing.
+##
+import logging
+from PyPedal import pyp_graphics
+from PyPedal import pyp_network
+from PyPedal import pyp_utils
+<tex2html_mydb_mark>#155#
+##
+# yourFunctionName() ;SPMlt;description of what function does;SPMgt;
+# @param ;SPMlt;parameter_name;SPMgt; ;SPMlt;parameter description;SPMgt;
+# @return ;SPMlt;description of returned value(s)
+# @defreturn ;SPMlt;type of returned data, e.g., 'dictionary' or 'list';SPMgt;
+def yourFunctionName(pedobj):
+    try:
+        # Do something here
+        logging.info('pyp_template/yourFunctionName() did something.')
+        # return a value/dictionary/etc.
+    except:
+        logging.error('pyp_template/yourFunctionName() encountered a problem.')
+        return 0
+<tex2html_mydb_mark>#156#
+##
+# color_pedigree() forms a graph object from a pedigree object and
+# determines the proportion of animals in a pedigree that are
+# descendants of each animal in the pedigree.  The results are used
+# to feed draw_colored_pedigree().
+# @param pedobj A PyPedal pedigree object.
+# @return A 1 for success and a 0 for failure.
+# @defreturn integer
+def color_pedigree(pedobj):
+    _pedgraph = pyp_network.ped_to_graph(pedobj)
+    _dprop = {}
+    # Walk the pedigree and compute proportion of animals in the
+    # pedigree that are descended from each animal.
+    for _p in pedobj.pedigree:
+        _dcount = pyp_network.find_descendants(_pedgraph,_p.animalID,[])
+        if len(_dcount) ;SPMlt; 1:
+            _dprop[_p.animalID] = 0.0
+        else:
+            _dprop[_p.animalID] = float(len(_dcount)) / \
+                float(pedobj.metadata.num_records)
+    del(_pedgraph)
+    _gfilename = '%s_colored' % \
+        (pyp_utils.string_to_table_name(pedobj.metadata.name))
+    draw_colored_pedigree(pedobj, _dprop, gfilename=_gfilename,
+        gtitle='Colored Pedigree', gorient='p', gname=1, gdirec='',
+        gfontsize=12, garrow=0, gtitloc='b')
+<tex2html_mydb_mark>#157#
+##
+# draw_colored_pedigree() uses the pydot bindings to the graphviz library
+# to produce a directed graph of your pedigree with paths of inheritance
+# as edges and animals as nodes.  If there is more than one generation in
+# the pedigree as determind by the 'gen' attributes of the animals in the
+# pedigree, draw_pedigree() will use subgraphs to try and group animals in
+# the same generation together in the drawing.  Nodes will be colored
+# based on the number of outgoing connections (number of offspring).
+# @param pedobj A PyPedal pedigree object.
+# @param shading A dictionary mapping animal IDs to levels that will be
+#                used to color nodes.
+# ...
+# @return A 1 for success and a 0 for failure.
+# @defreturn integer
+def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', \
+    gtitle='My_Pedigree', gformat='jpg', gsize='f', gdot='1', gorient='l', \
+    gdirec='', gname=0, gfontsize=10, garrow=1, gtitloc='b', gtitjust='c'):
+
+    from pyp_utils import string_to_table_name
+    _gtitle = string_to_table_name(gtitle)
+    ...
+    # If we do not have any generations, we have to draw a less-nice graph.
+    if len(gens) ;SPMlt;= 1:
+        for _m in pedobj.pedigree:
+            ...
+            _an_node = pydot.Node(_node_name)
+            ...
+            _color = get_color_32(shading[_m.animalID],0.0,1.0)
+            _an_node.set_style('filled')
+            _an_node.set_color(_color)
+            ...
+    # Otherwise we can draw a nice graph.
+    ...
+        ...
+            for _m in pedobj.pedigree:
+                ...
+                _an_node = pydot.Node(_node_name)
+                ...
+                _color = get_color_32(shading[_m.animalID])
+                _an_node.set_style('filled')
+                _an_node.set_color(_color)
+                ...
+<tex2html_mydb_mark>#158#
+##
+# get_color_32() Converts a float value to one of a continuous range of colors
+# using recipe 9.10 from the Python Cookbook.
+# @param a Float value to convert to a color.
+# @param cmin Minimum value in array (0.0 by default).
+# @param cmax Maximum value in array (1.0 by default).
+# @return An RGB triplet.
+# @defreturn integer
+def get_color_32(a,cmin=0.0,cmax=1.0):
+    try:
+        a = float(a-cmin)/(cmax-cmin)
+    except ZeroDivisionError:
+        a=0.5 # cmax == cmin
+    blue = min((max((4*(0.75-a),0.)),1.))
+    red = min((max((4*(a-0.25),0.)),1.))
+    green = min((max((4*math.fabs(a-0.5)-1.,0)),1.))
+    _r = '%2x' % int(255*red)
+    if _r[0] == ' ':
+        _r = '0%s' % _r[1]
+    _g = '%2x' % int(255*green)
+    if _g[0] == ' ':
+        _g = '0%s' % _g[1]
+    _b = '%2x' % int(255*blue)
+    if _b[0] == ' ':
+        _b = '0%s' % _b[1]
+    _triple = '#%s%s%s' % (_r,_g,_b)
+    return _triple
+<tex2html_mydb_mark>#159#
+options = {}
+options['renumber'] = 1
+options['sepchar'] = '\t'
+options['missing_parent'] = 'animal0'
+
+if __name__=='__main__':
+    options['pedfile'] = 'new_ids2.ped'
+    options['pedformat'] = 'ASD'
+    options['pedname'] = 'Boichard Pedigree'
+    example = pyp_newclasses.loadPedigree(options)
+    pyp_jbc.color_pedigree(example)
+<tex2html_mydb_mark>#177#<!-- MATH
+ $\blacktriangleright \blacktriangleright \blacktriangleright$
+ -->
+<tex2html_mydb_mark>#178#<!-- MATH
+ $\blacktriangleleft \blacktriangleleft \blacktriangleleft$
+ -->
+<tex2html_mydb_mark>#179#<!-- MATH
+ \begin{displaymath}
+N_{e(t)} = \dfrac{ 4 N_m N_f } { N_m + N_f }
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#180#<!-- MATH
+ \begin{displaymath}
+N_{e(t)} = \dfrac{1}{2 \Delta f}
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#181#<!-- MATH
+ $f_a = [f_{a(s)} + (1 - f_{a(s)})f_s + f_{a(d)} + (1 - f_{a(d)})f_d ]/2$
+ -->
+<tex2html_mydb_mark>#182#<!-- MATH
+ $f_{i} = \sum_{j} F_{ij}$
+ -->
+<tex2html_mydb_mark>#183#<!-- MATH
+ $0.21875 + 0.09375 + 0.0625 = 0.375$
+ -->
+<tex2html_mydb_mark>#184#<!-- MATH
+ \begin{displaymath}
+GC_o = \dfrac{ ( GC_s + GC_d ) } { 2 } + 1
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#185#<!-- MATH
+ \begin{displaymath}
+f_e = \dfrac{ 1 } { \sum{ p_i^2 } }
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#186#<!-- MATH
+ \begin{displaymath}
+f_g = \dfrac{ 1 } { \sum{ \dfrac{p_i} {r_i} } }
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#187#<!-- MATH
+ \begin{displaymath}
+f_a = \dfrac{1}{\sum{q_i^2}}
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#188#<!-- MATH
+ \begin{displaymath}
+c_p = \dfrac{a_k}{\sum_{i=1}^g{2^i}}
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#189#<!-- MATH
+ \begin{displaymath}
+f_a = 1.125 - 1.0 = 0.125
+\end{displaymath}
+ -->
+<tex2html_mydb_mark>#190#<!-- MATH
+ $n + n(n+1)/2$
+ -->
+<tex2html_mydb_mark>#191#<!-- MATH
+ $\blacktriangleright \blacktriangleright \blacktriangleright$
+ -->
+<tex2html_mydb_mark>#192#<!-- MATH
+ $\blacktriangleleft \blacktriangleleft \blacktriangleleft$
+ -->
+<tex2html_mydb_mark>#193#<!-- MATH
+ \begin{displaymath}
+\scriptsize
+    \left[ \begin{array}{llllllllllllllllllll}
+        1. & 0. & 0. & 0. & 0.5 & 0. & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 1. & 0. & 0. & 0.5 & 0. & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 1. & 0. & 0.  & 0.5 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0. & 1. & 0. & 0.5 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.5 & 0.5 & 0. & 0. & 1. & 0. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0.5 & 0.5 & 0. & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 1. & 0. & 0.5 & 0.5 & 0.5 & 0.5 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 1. & 0.5 & 0.5 & 0.5 & 0.5 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 1. & 0.5 & 0.75 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.5 & 1. & 0.75 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.75 & 0.75 & 1.25 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.75 & 0.75 & 0.75 & 1.25
+    \end{array} \right]
+    \normalsize
+\end{displaymath}
+ -->

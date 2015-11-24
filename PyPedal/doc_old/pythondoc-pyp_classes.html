@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_classes Module</title>
+</head>
+<body>
+<h1>The pyp_classes Module</h1>
+<p>pyp_classes contains two base classes that are used by PyPedal, the Animal() class
+and the Pedigree() class.  What most PyPedal routines recognize as a pedigree is
+actually just a Python list of Animal() objects.  An instance of a Pedigree() object
+is a collection of METADATA about a list of Animals().  I know that this is confusing,
+and it is going to change by the time that PyPedal 2.0.0 final is released.</p>
+<dl>
+<dt><b>Animal(animalID, sireID, damID, gen='0', by=1900, sex='u', fa=0., name='u', alleles=['', ''], breed='u', age=-999, alive=-999)</b> (class) [<a href='#pyp_classes.Animal-class'>#</a>]</dt>
+<dd>
+<p>The Animal() class is holds animals records read from a pedigree file.</p>
+<p>For more information about this class, see <a href='#pyp_classes.Animal-class'><i>The Animal Class</i></a>.</p>
+</dd>
+<dt><b>Pedigree(myped, inputfile, name, pedcode='asd', reord=0, renum=0, debug=0)</b> (class) [<a href='#pyp_classes.Pedigree-class'>#</a>]</dt>
+<dd>
+<p>The Pedigree() class stores metadata about pedigrees.</p>
+<p>For more information about this class, see <a href='#pyp_classes.Pedigree-class'><i>The Pedigree Class</i></a>.</p>
+</dd>
+</dl>
+<h2><a id='pyp_classes.Animal-class' name='pyp_classes.Animal-class'>The Animal Class</a></h2>
+<dl>
+<dt><b>Animal(animalID, sireID, damID, gen='0', by=1900, sex='u', fa=0., name='u', alleles=['', ''], breed='u', age=-999, alive=-999)</b> (class) [<a href='#pyp_classes.Animal-class'>#</a>]</dt>
+<dd>
+<p>The Animal() class is holds animals records read from a pedigree file.</p>
+</dd>
+<dt><a id='pyp_classes.Animal.__init__-method' name='pyp_classes.Animal.__init__-method'><b>__init__(animalID, sireID, damID, gen='0', by=1900, sex='u', fa=0., name='u', alleles=['', ''], breed='u', age=-999, alive=-999)</b></a> &rArr; object [<a href='#pyp_classes.Animal.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes an Animal() object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Animal() object</dd>
+<dt><i>animalID</i></dt>
+<dd>
+Animal ID number</dd>
+<dt><i>sireID</i></dt>
+<dd>
+Sire ID number</dd>
+<dt><i>damID</i></dt>
+<dd>
+Dam ID number</dd>
+<dt><i>gen</i></dt>
+<dd>
+Generation to which the animal belongs</dd>
+<dt><i>by</i></dt>
+<dd>
+Birthyear of the animal</dd>
+<dt><i>sex</i></dt>
+<dd>
+Sex of the animal (m|f|u)</dd>
+<dt><i>fa</i></dt>
+<dd>
+Coefficient of inbreeding of the animal</dd>
+<dt><i>name</i></dt>
+<dd>
+Name of animal</dd>
+<dt><i>alleles</i></dt>
+<dd>
+A two-element array of strings, which represent allelotypes.</dd>
+<dt><i>breed</i></dt>
+<dd>
+Breed of animal</dd>
+<dt><i>age</i></dt>
+<dd>
+Age of animal</dd>
+<dt><i>alive</i></dt>
+<dd>
+Status of animal (alive or dead)</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of an Animal() object populated with data</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Animal.pad_id-method' name='pyp_classes.Animal.pad_id-method'><b>pad_id()</b></a> &rArr; integer [<a href='#pyp_classes.Animal.pad_id-method'>#</a>]</dt>
+<dd>
+<p>pad_id() takes an Animal ID, pads it to fifteen digits, and prepends the birthyear
+(or 1950 if the birth year is unknown).  The order of elements is: birthyear, animalID,
+count of zeros, zeros.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Animal() object</dd>
+<dt>Returns:</dt>
+<dd>
+A padded ID number that is supposed to be unique across animals</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Animal.printme-method' name='pyp_classes.Animal.printme-method'><b>printme()</b></a> [<a href='#pyp_classes.Animal.printme-method'>#</a>]</dt>
+<dd>
+<p>printme() prints a summary of the data stored in the Animal() object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Animal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Animal.stringme-method' name='pyp_classes.Animal.stringme-method'><b>stringme()</b></a> [<a href='#pyp_classes.Animal.stringme-method'>#</a>]</dt>
+<dd>
+<p>stringme() returns a summary of the data stored in the Animal() object
+as a string.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Animal() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Animal.trap-method' name='pyp_classes.Animal.trap-method'><b>trap()</b></a> [<a href='#pyp_classes.Animal.trap-method'>#</a>]</dt>
+<dd>
+<p>trap() checks for common errors in Animal() objects</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Animal() object</dd>
+</dl><br />
+</dd>
+</dl>
+<h2><a id='pyp_classes.Pedigree-class' name='pyp_classes.Pedigree-class'>The Pedigree Class</a></h2>
+<dl>
+<dt><b>Pedigree(myped, inputfile, name, pedcode='asd', reord=0, renum=0, debug=0)</b> (class) [<a href='#pyp_classes.Pedigree-class'>#</a>]</dt>
+<dd>
+<p>The Pedigree() class stores metadata about pedigrees.  Hopefully this will help improve performance in some procedures,
+as well as provide some useful summary data.</p>
+</dd>
+<dt><a id='pyp_classes.Pedigree.__init__-method' name='pyp_classes.Pedigree.__init__-method'><b>__init__(myped, inputfile, name, pedcode='asd', reord=0, renum=0, debug=0)</b></a> &rArr; object [<a href='#pyp_classes.Pedigree.__init__-method'>#</a>]</dt>
+<dd>
+<p>__init__() initializes a Pedigree metata object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt><i>myped</i></dt>
+<dd>
+A PyPedal pedigree</dd>
+<dt><i>inputfile</i></dt>
+<dd>
+The name of the file from which the pedigree was loaded</dd>
+<dt><i>name</i></dt>
+<dd>
+The name assigned to the PyPedal pedigree</dd>
+<dt><i>pedcode</i></dt>
+<dd>
+The format code for the PyPedal pedigree</dd>
+<dt><i>reord</i></dt>
+<dd>
+Flag indicating whether or not the pedigree is reordered (0|1)</dd>
+<dt><i>renum</i></dt>
+<dd>
+Flag indicating whether or not the pedigree is renumbered (0|1)</dd>
+<dt>Returns:</dt>
+<dd>
+An instance of a Pedigree() object populated with data</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.fileme-method' name='pyp_classes.Pedigree.fileme-method'><b>fileme()</b></a> [<a href='#pyp_classes.Pedigree.fileme-method'>#</a>]</dt>
+<dd>
+<p>fileme() writes the metada stored in the Pedigree() object to disc.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.nud-method' name='pyp_classes.Pedigree.nud-method'><b>nud()</b></a> &rArr; integer-and-list [<a href='#pyp_classes.Pedigree.nud-method'>#</a>]</dt>
+<dd>
+<p>nud() returns the number of unique dams in the pedigree along with a list of the dams</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique dams in the pedigree and a list of those dams</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.nuf-method' name='pyp_classes.Pedigree.nuf-method'><b>nuf()</b></a> &rArr; integer-and-list [<a href='#pyp_classes.Pedigree.nuf-method'>#</a>]</dt>
+<dd>
+<p>nuf() returns the number of unique founders in the pedigree along with a list of the founders</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique founders in the pedigree and a list of those founders</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.nug-method' name='pyp_classes.Pedigree.nug-method'><b>nug()</b></a> &rArr; integer-and-list [<a href='#pyp_classes.Pedigree.nug-method'>#</a>]</dt>
+<dd>
+<p>nug() returns the number of unique generations in the pedigree along with a list of the generations</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique generations in the pedigree and a list of those generations</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.nus-method' name='pyp_classes.Pedigree.nus-method'><b>nus()</b></a> &rArr; integer-and-list [<a href='#pyp_classes.Pedigree.nus-method'>#</a>]</dt>
+<dd>
+<p>nus() returns the number of unique sires in the pedigree along with a list of the sires</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique sires in the pedigree and a list of those sires</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.nuy-method' name='pyp_classes.Pedigree.nuy-method'><b>nuy()</b></a> &rArr; integer-and-list [<a href='#pyp_classes.Pedigree.nuy-method'>#</a>]</dt>
+<dd>
+<p>nuy() returns the number of unique birthyears in the pedigree along with a list of the birthyears</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+<dt>Returns:</dt>
+<dd>
+The number of unique birthyears in the pedigree and a list of those birthyears</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.printme-method' name='pyp_classes.Pedigree.printme-method'><b>printme()</b></a> [<a href='#pyp_classes.Pedigree.printme-method'>#</a>]</dt>
+<dd>
+<p>printme() prints a summary of the metadata stored in the Pedigree() object.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_classes.Pedigree.stringme-method' name='pyp_classes.Pedigree.stringme-method'><b>stringme()</b></a> [<a href='#pyp_classes.Pedigree.stringme-method'>#</a>]</dt>
+<dd>
+<p>stringme() returns a summary of the metadata stored in the pedigree as
+a string.</p>
+<dl>
+<dt><i>self</i></dt>
+<dd>
+Reference to the current Pedigree() object</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>

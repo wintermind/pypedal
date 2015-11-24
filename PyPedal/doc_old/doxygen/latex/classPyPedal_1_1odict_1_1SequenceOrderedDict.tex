@@ -1,0 +1,297 @@
+\hypertarget{classPyPedal_1_1odict_1_1SequenceOrderedDict}{
+\section{PyPedal::odict::SequenceOrderedDict Class Reference}
+\label{classPyPedal_1_1odict_1_1SequenceOrderedDict}\index{PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}}
+}
+Inheritance diagram for PyPedal::odict::SequenceOrderedDict:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=112pt]{classPyPedal_1_1odict_1_1SequenceOrderedDict__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for PyPedal::odict::SequenceOrderedDict:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=112pt]{classPyPedal_1_1odict_1_1SequenceOrderedDict__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{classPyPedal_1_1odict_1_1SequenceOrderedDict_622163e06c3058e0bbca95a379f21a00}{\_\-\_\-init\_\-\_\-}
+\item 
+def \hyperlink{classPyPedal_1_1odict_1_1SequenceOrderedDict_0141943432f71113ff9998bd8087e50d}{\_\-\_\-setattr\_\-\_\-}
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{classPyPedal_1_1odict_1_1SequenceOrderedDict_92fa543790882256dba72fdbbaf59980}{
+\textbf{keys}}
+\label{classPyPedal_1_1odict_1_1SequenceOrderedDict_92fa543790882256dba72fdbbaf59980}
+
+\item 
+\hypertarget{classPyPedal_1_1odict_1_1SequenceOrderedDict_1e3a7c8ba8e70bb5f6be405cd27fa693}{
+\textbf{values}}
+\label{classPyPedal_1_1odict_1_1SequenceOrderedDict_1e3a7c8ba8e70bb5f6be405cd27fa693}
+
+\item 
+\hypertarget{classPyPedal_1_1odict_1_1SequenceOrderedDict_0c8a6aad6ae8b534b3a4a94dde30071a}{
+\textbf{items}}
+\label{classPyPedal_1_1odict_1_1SequenceOrderedDict_0c8a6aad6ae8b534b3a4a94dde30071a}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\footnotesize\begin{verbatim}
+Experimental version of OrderedDict that has a custom object for ``keys``,
+``values``, and ``items``.
+
+These are callable sequence objects that work as methods, or can be
+manipulated directly as sequences.
+
+Test for ``keys``, ``items`` and ``values``.
+
+>>> d = SequenceOrderedDict(((1, 2), (2, 3), (3, 4)))
+>>> d
+SequenceOrderedDict([(1, 2), (2, 3), (3, 4)])
+>>> d.keys
+[1, 2, 3]
+>>> d.keys()
+[1, 2, 3]
+>>> d.setkeys((3, 2, 1))
+>>> d
+SequenceOrderedDict([(3, 4), (2, 3), (1, 2)])
+>>> d.setkeys((1, 2, 3))
+>>> d.keys[0]
+1
+>>> d.keys[:]
+[1, 2, 3]
+>>> d.keys[-1]
+3
+>>> d.keys[-2]
+2
+>>> d.keys[0:2] = [2, 1]
+>>> d
+SequenceOrderedDict([(2, 3), (1, 2), (3, 4)])
+>>> d.keys.reverse()
+>>> d.keys
+[3, 1, 2]
+>>> d.keys = [1, 2, 3]
+>>> d
+SequenceOrderedDict([(1, 2), (2, 3), (3, 4)])
+>>> d.keys = [3, 1, 2]
+>>> d
+SequenceOrderedDict([(3, 4), (1, 2), (2, 3)])
+>>> a = SequenceOrderedDict()
+>>> b = SequenceOrderedDict()
+>>> a.keys == b.keys
+1
+>>> a['a'] = 3
+>>> a.keys == b.keys
+0
+>>> b['a'] = 3
+>>> a.keys == b.keys
+1
+>>> b['b'] = 3
+>>> a.keys == b.keys
+0
+>>> a.keys > b.keys
+0
+>>> a.keys < b.keys
+1
+>>> 'a' in a.keys
+1
+>>> len(b.keys)
+2
+>>> 'c' in d.keys
+0
+>>> 1 in d.keys
+1
+>>> [v for v in d.keys]
+[3, 1, 2]
+>>> d.keys.sort()
+>>> d.keys
+[1, 2, 3]
+>>> d = SequenceOrderedDict(((1, 2), (2, 3), (3, 4)), strict=True)
+>>> d.keys[::-1] = [1, 2, 3]
+>>> d
+SequenceOrderedDict([(3, 4), (2, 3), (1, 2)])
+>>> d.keys[:2]
+[3, 2]
+>>> d.keys[:2] = [1, 3]
+Traceback (most recent call last):
+KeyError: 'Keylist is not the same as current keylist.'
+
+>>> d = SequenceOrderedDict(((1, 2), (2, 3), (3, 4)))
+>>> d
+SequenceOrderedDict([(1, 2), (2, 3), (3, 4)])
+>>> d.values
+[2, 3, 4]
+>>> d.values()
+[2, 3, 4]
+>>> d.setvalues((4, 3, 2))
+>>> d
+SequenceOrderedDict([(1, 4), (2, 3), (3, 2)])
+>>> d.values[::-1]
+[2, 3, 4]
+>>> d.values[0]
+4
+>>> d.values[-2]
+3
+>>> del d.values[0]
+Traceback (most recent call last):
+TypeError: Can't delete items from values
+>>> d.values[::2] = [2, 4]
+>>> d
+SequenceOrderedDict([(1, 2), (2, 3), (3, 4)])
+>>> 7 in d.values
+0
+>>> len(d.values)
+3
+>>> [val for val in d.values]
+[2, 3, 4]
+>>> d.values[-1] = 2
+>>> d.values.count(2)
+2
+>>> d.values.index(2)
+0
+>>> d.values[-1] = 7
+>>> d.values
+[2, 3, 7]
+>>> d.values.reverse()
+>>> d.values
+[7, 3, 2]
+>>> d.values.sort()
+>>> d.values
+[2, 3, 7]
+>>> d.values.append('anything')
+Traceback (most recent call last):
+TypeError: Can't append items to values
+>>> d.values = (1, 2, 3)
+>>> d
+SequenceOrderedDict([(1, 1), (2, 2), (3, 3)])
+
+>>> d = SequenceOrderedDict(((1, 2), (2, 3), (3, 4)))
+>>> d
+SequenceOrderedDict([(1, 2), (2, 3), (3, 4)])
+>>> d.items()
+[(1, 2), (2, 3), (3, 4)]
+>>> d.setitems([(3, 4), (2 ,3), (1, 2)])
+>>> d
+SequenceOrderedDict([(3, 4), (2, 3), (1, 2)])
+>>> d.items[0]
+(3, 4)
+>>> d.items[:-1]
+[(3, 4), (2, 3)]
+>>> d.items[1] = (6, 3)
+>>> d.items
+[(3, 4), (6, 3), (1, 2)]
+>>> d.items[1:2] = [(9, 9)]
+>>> d
+SequenceOrderedDict([(3, 4), (9, 9), (1, 2)])
+>>> del d.items[1:2]
+>>> d
+SequenceOrderedDict([(3, 4), (1, 2)])
+>>> (3, 4) in d.items
+1
+>>> (4, 3) in d.items
+0
+>>> len(d.items)
+2
+>>> [v for v in d.items]
+[(3, 4), (1, 2)]
+>>> d.items.count((3, 4))
+1
+>>> d.items.index((1, 2))
+1
+>>> d.items.index((2, 1))
+Traceback (most recent call last):
+ValueError: list.index(x): x not in list
+>>> d.items.reverse()
+>>> d.items
+[(1, 2), (3, 4)]
+>>> d.items.reverse()
+>>> d.items.sort()
+>>> d.items
+[(1, 2), (3, 4)]
+>>> d.items.append((5, 6))
+>>> d.items
+[(1, 2), (3, 4), (5, 6)]
+>>> d.items.insert(0, (0, 0))
+>>> d.items
+[(0, 0), (1, 2), (3, 4), (5, 6)]
+>>> d.items.insert(-1, (7, 8))
+>>> d.items
+[(0, 0), (1, 2), (3, 4), (7, 8), (5, 6)]
+>>> d.items.pop()
+(5, 6)
+>>> d.items
+[(0, 0), (1, 2), (3, 4), (7, 8)]
+>>> d.items.remove((1, 2))
+>>> d.items
+[(0, 0), (3, 4), (7, 8)]
+>>> d.items.extend([(1, 2), (5, 6)])
+>>> d.items
+[(0, 0), (3, 4), (7, 8), (1, 2), (5, 6)]
+\end{verbatim}
+\normalsize
+ 
+
+Definition at line 1153 of file odict.py.
+
+\subsection{Member Function Documentation}
+\hypertarget{classPyPedal_1_1odict_1_1SequenceOrderedDict_622163e06c3058e0bbca95a379f21a00}{
+\index{PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}def PyPedal::odict::SequenceOrderedDict::\_\-\_\-init\_\-\_\- ( {\em self}, \/   {\em init\_\-val} = {\tt ()}, \/   {\em strict} = {\tt True})}}
+\label{classPyPedal_1_1odict_1_1SequenceOrderedDict_622163e06c3058e0bbca95a379f21a00}
+
+
+
+
+\footnotesize\begin{verbatim}
+Create a new ordered dictionary. Cannot init from a normal dict,
+nor from kwargs, since items order is undefined in those cases.
+
+If the ``strict`` keyword argument is ``True`` (``False`` is the
+default) then when doing slice assignment - the ``OrderedDict`` you are
+assigning from *must not* contain any keys in the remaining dict.
+
+>>> OrderedDict()
+OrderedDict([])
+>>> OrderedDict({1: 1})
+Traceback (most recent call last):
+TypeError: undefined order, cannot get items from dict
+>>> d = OrderedDict(((1, 3), (3, 2), (2, 1)))
+>>> d
+OrderedDict([(1, 3), (3, 2), (2, 1)])
+>>> OrderedDict(d)
+OrderedDict([(1, 3), (3, 2), (2, 1)])
+\end{verbatim}
+\normalsize
+ 
+
+Reimplemented from \hyperlink{classPyPedal_1_1odict_1_1OrderedDict_2819b83b7012be60ef9936b6716b9f7c}{PyPedal::odict::OrderedDict}.
+
+Definition at line 1347 of file odict.py.\hypertarget{classPyPedal_1_1odict_1_1SequenceOrderedDict_0141943432f71113ff9998bd8087e50d}{
+\index{PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}!\_\-\_\-setattr\_\-\_\-@{\_\-\_\-setattr\_\-\_\-}}
+\index{\_\-\_\-setattr\_\-\_\-@{\_\-\_\-setattr\_\-\_\-}!PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}def PyPedal::odict::SequenceOrderedDict::\_\-\_\-setattr\_\-\_\- ( {\em self}, \/   {\em name}, \/   {\em value})}}
+\label{classPyPedal_1_1odict_1_1SequenceOrderedDict_0141943432f71113ff9998bd8087e50d}
+
+
+
+
+\footnotesize\begin{verbatim}Protect keys, items, and values.\end{verbatim}
+\normalsize
+ 
+
+Definition at line 1360 of file odict.py.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+PyPedal/odict.py\end{CompactItemize}

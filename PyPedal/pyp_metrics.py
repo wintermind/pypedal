@@ -38,19 +38,6 @@
 # and effective ancestor number.
 ##
 
-import copy, logging, numpy, os, pickle, random, string, sys
-import pyp_io
-import pyp_network
-import pyp_nrm
-import pyp_utils
-from numpy import random
-
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    print '[INFO]: The psyco module could not be imported in pyp_metrics. Psyco speed optimizations are not available.'
-
 ##
 # min_max_f() takes a pedigree and returns a list of the individuals with the n
 # largest and n smallest coefficients of inbreeding.  Individuals with CoI of

@@ -1,0 +1,595 @@
+\hypertarget{namespacePyPedal_1_1pyp__network}{
+\section{Package Py\-Pedal.pyp\_\-network}
+\label{namespacePyPedal_1_1pyp__network}\index{PyPedal.pyp_network@{PyPedal.pyp\_\-network}}
+}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_800efc2cc1a885abd2d4af54f9dc38d5}{ped\_\-to\_\-graph}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_800efc2cc1a885abd2d4af54f9dc38d5}{ped\_\-to\_\-graph()} Takes a Py\-Pedal pedigree object and returns a networkx XDi\-Graph object. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_3e638a2ecefb9a7a010490534e8c5cd3}{find\_\-ancestors}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_3e638a2ecefb9a7a010490534e8c5cd3}{find\_\-ancestors()} identifies the ancestors of an animal and returns them in a list. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_e525dea748cda15e194c437134842016}{find\_\-ancestors\_\-g}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_e525dea748cda15e194c437134842016}{find\_\-ancestors\_\-g()} identifies the ancestors of an animal going back a user-specified number of generations and returns them in a list. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_868b8569bf54f00cdc197ed911082cc2}{find\_\-descendants}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_868b8569bf54f00cdc197ed911082cc2}{find\_\-descendants()} identifies the descendants of an animal and returns them in a list. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_3f216a5694155a42ef0662e0300d71da}{immediate\_\-family}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_3f216a5694155a42ef0662e0300d71da}{immediate\_\-family()} returns parents and offspring of an animal. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_3ccbd9df7f8267da05c78783e21a8288}{count\_\-offspring}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_3ccbd9df7f8267da05c78783e21a8288}{count\_\-offspring()} returns the number of offspring of an animal. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_ae9a5f01ef47449a3d35fb9fa8c12c39}{offspring\_\-influence}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_ae9a5f01ef47449a3d35fb9fa8c12c39}{offspring\_\-influence()} returns the number of grand-children by each child of a given animal. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_4371fc02c48e328c85b9b5d612735bff}{most\_\-influential\_\-offspring}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_4371fc02c48e328c85b9b5d612735bff}{most\_\-influential\_\-offspring()} returns the most influential offspring of an animal as measured by their number of offspring. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_6fce4d0fb5654715bf9cb3ff3dd9f38f}{get\_\-founder\_\-descendants}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_6fce4d0fb5654715bf9cb3ff3dd9f38f}{get\_\-founder\_\-descendants()} returns a dictionary containing a list of descendants of each founder in the pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_99fa1fd8ff5dc1479afeec03ec4ce9fe}{get\_\-node\_\-degrees}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_99fa1fd8ff5dc1479afeec03ec4ce9fe}{get\_\-node\_\-degrees()} returns a dictionary containing the number of vertices (nodes) in pg with a given number of incoming, outgoing, or total edges. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_7abe5f06621472c95b183cc8fd521cc4}{get\_\-node\_\-degree\_\-histograms}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_7abe5f06621472c95b183cc8fd521cc4}{get\_\-node\_\-degree\_\-histograms()} returns a dictionary containing histograms of the number of vertices (nodes) in pg with a given number of incoming, outgoing, or total edges. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_7c69193d5911cfb1deb21a6bd45a9423}{mean\_\-geodesic}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_7c69193d5911cfb1deb21a6bd45a9423}{mean\_\-geodesic()} calculates the mean geodesic (shortest) distance between two vertices in a network. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_5f7dd88164c3ad27f54fa8905494a02a}{graph\_\-density}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_5f7dd88164c3ad27f54fa8905494a02a}{graph\_\-density()} calculates the density of a digraph, which is the ratio of edges in the gaph to the maximum possible number of edges. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_2d0c4f1e9cb1ea3163aef28c9b3a7ac0}{dyad\_\-census}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_2d0c4f1e9cb1ea3163aef28c9b3a7ac0}{dyad\_\-census()} calculates the number of null, asymmetric, and mutual edges between all pairs of nodes in a directed graph. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_563bee26515afbda191df8558489964d}{mean\_\-degree\_\-centrality}
+\begin{CompactList}\small\item\em mean\_\-degree\_\-centrality(pg) calculates mean in- and out-degree centralities for directed graphs and simple degree-centralities for undirected graphs. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_f67aecda93c61a5b116b0025670ac3be}{mean\_\-value}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__network_f67aecda93c61a5b116b0025670ac3be}{mean\_\-value()} calculates the mean from all values in a dictionary. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_12847e12c06671b75f871dbae171097a}{get\_\-closeness\_\-centrality}
+\begin{CompactList}\small\item\em get\_\-closeness\_\-centrality(pg) returns a dictionary of the closeness centrality (1/(average distance to all nodes from n)) for each node in the graph. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_0932c10c8b90d448400e609753602e3c}{get\_\-clustering\_\-coefficient}
+\begin{CompactList}\small\item\em get\_\-clustering\_\-coefficient(pg) returns a dictionary of the clustering coefficient of each node in the graph based on the definition of Watts and Strogatz (1998). \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_802474b23ab95d5ef2421d61f2262b12}{get\_\-betweenness\_\-centrality}
+\begin{CompactList}\small\item\em get\_\-betweenness\_\-centrality(pg) returns a dictionary of the betweenness centrality of each node in the graph. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__network_5e1ef79a65c97a5554050f4941b99c22}{get\_\-node\_\-betweenness}
+\begin{CompactList}\small\item\em get\_\-node\_\-betweenness(pg) returns a dictionary of the number of shortest paths that go through each node in the graph. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__network_800efc2cc1a885abd2d4af54f9dc38d5}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!ped_to_graph@{ped\_\-to\_\-graph}}
+\index{ped_to_graph@{ped\_\-to\_\-graph}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[ped\_\-to\_\-graph]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.ped\_\-to\_\-graph ( {\em pedobj},  {\em oid} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__network_800efc2cc1a885abd2d4af54f9dc38d5}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_800efc2cc1a885abd2d4af54f9dc38d5}{ped\_\-to\_\-graph()} Takes a Py\-Pedal pedigree object and returns a networkx XDi\-Graph object. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em oid}]Flag indicating if original (1) or renumbered (0) IDs should be used. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em Di\-Graph}]object
+
+\footnotesize\begin{verbatim}ped_to_graph() Takes a PyPedal pedigree object and returns a networkx XDiGraph
+object.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 56 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_3e638a2ecefb9a7a010490534e8c5cd3}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!find_ancestors@{find\_\-ancestors}}
+\index{find_ancestors@{find\_\-ancestors}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[find\_\-ancestors]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.find\_\-ancestors ( {\em pedgraph},  {\em anid},  {\em \_\-ancestors} = {\tt \mbox{[}\mbox{]}})}}
+\label{namespacePyPedal_1_1pyp__network_3e638a2ecefb9a7a010490534e8c5cd3}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_3e638a2ecefb9a7a010490534e8c5cd3}{find\_\-ancestors()} identifies the ancestors of an animal and returns them in a list. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a networkx Di\-Graph. \item[{\em anid}]The animal for whom ancestors are to be found. \item[{\em \_\-ancestors}]The list of ancestors already found. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em List}]of ancestors of anid.
+
+\footnotesize\begin{verbatim}find_ancestors() identifies the ancestors of an animal and returns them in a list.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 90 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_e525dea748cda15e194c437134842016}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!find_ancestors_g@{find\_\-ancestors\_\-g}}
+\index{find_ancestors_g@{find\_\-ancestors\_\-g}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[find\_\-ancestors\_\-g]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.find\_\-ancestors\_\-g ( {\em pedgraph},  {\em anid},  {\em \_\-ancestors} = {\tt \{\}},  {\em gens} = {\tt 3})}}
+\label{namespacePyPedal_1_1pyp__network_e525dea748cda15e194c437134842016}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_e525dea748cda15e194c437134842016}{find\_\-ancestors\_\-g()} identifies the ancestors of an animal going back a user-specified number of generations and returns them in a list. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a networkx Di\-Graph. \item[{\em anid}]The animal for whom ancestors are to be found. \item[{\em \_\-ancestors}]The list of ancestors already found. \item[{\em gens}]Number of generations to go back in the pedigree. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em List}]of ancestors of anid.
+
+\footnotesize\begin{verbatim}find_ancestors_g() identifies the ancestors of an animal and returns them in a list.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 114 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_868b8569bf54f00cdc197ed911082cc2}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!find_descendants@{find\_\-descendants}}
+\index{find_descendants@{find\_\-descendants}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[find\_\-descendants]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.find\_\-descendants ( {\em pedgraph},  {\em anid},  {\em \_\-descendants} = {\tt \mbox{[}\mbox{]}})}}
+\label{namespacePyPedal_1_1pyp__network_868b8569bf54f00cdc197ed911082cc2}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_868b8569bf54f00cdc197ed911082cc2}{find\_\-descendants()} identifies the descendants of an animal and returns them in a list. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a networkx Di\-Graph. \item[{\em anid}]The animal for whom descendants are to be found. \item[{\em \_\-descendants}]The list of descendants already found. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em List}]of descendants of anid.
+
+\footnotesize\begin{verbatim}find_descendants() identifies the descendants of an animal and returns them in a list.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 141 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_3f216a5694155a42ef0662e0300d71da}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!immediate_family@{immediate\_\-family}}
+\index{immediate_family@{immediate\_\-family}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[immediate\_\-family]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.immediate\_\-family ( {\em pedgraph},  {\em anid})}}
+\label{namespacePyPedal_1_1pyp__network_3f216a5694155a42ef0662e0300d71da}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_3f216a5694155a42ef0662e0300d71da}{immediate\_\-family()} returns parents and offspring of an animal. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a networkx Di\-Graph. \item[{\em anid}]The animal for whom immediate family are to be found. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em List}]of immediate family members of anid.
+
+\footnotesize\begin{verbatim}immediate_family() returns parents and offspring of an animal.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 161 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_3ccbd9df7f8267da05c78783e21a8288}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!count_offspring@{count\_\-offspring}}
+\index{count_offspring@{count\_\-offspring}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[count\_\-offspring]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.count\_\-offspring ( {\em pedgraph},  {\em anid})}}
+\label{namespacePyPedal_1_1pyp__network_3ccbd9df7f8267da05c78783e21a8288}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_3ccbd9df7f8267da05c78783e21a8288}{count\_\-offspring()} returns the number of offspring of an animal. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a networkx Di\-Graph. \item[{\em anid}]The animal for whom offspring are to be counted. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em Count}]of offspring.
+
+\footnotesize\begin{verbatim}count_offspring() returns the number of offspring of an animal.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 176 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_ae9a5f01ef47449a3d35fb9fa8c12c39}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!offspring_influence@{offspring\_\-influence}}
+\index{offspring_influence@{offspring\_\-influence}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[offspring\_\-influence]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.offspring\_\-influence ( {\em pedgraph},  {\em anid})}}
+\label{namespacePyPedal_1_1pyp__network_ae9a5f01ef47449a3d35fb9fa8c12c39}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_ae9a5f01ef47449a3d35fb9fa8c12c39}{offspring\_\-influence()} returns the number of grand-children by each child of a given animal. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a networkx Di\-Graph. \item[{\em anid}]The animal for whom grand-progeny are to be counted. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of counts of progeny per child.
+
+\footnotesize\begin{verbatim}offspring_influence() returns the number of grand-children by each child of a given
+animal.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 191 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_4371fc02c48e328c85b9b5d612735bff}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!most_influential_offspring@{most\_\-influential\_\-offspring}}
+\index{most_influential_offspring@{most\_\-influential\_\-offspring}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[most\_\-influential\_\-offspring]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.most\_\-influential\_\-offspring ( {\em pedgraph},  {\em anid},  {\em resolve} = {\tt 'all'})}}
+\label{namespacePyPedal_1_1pyp__network_4371fc02c48e328c85b9b5d612735bff}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_4371fc02c48e328c85b9b5d612735bff}{most\_\-influential\_\-offspring()} returns the most influential offspring of an animal as measured by their number of offspring. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a networkx Di\-Graph. \item[{\em anid}]The animal for whom the most influential offspring is to be found. \item[{\em resolve}]Indicates how ties should be handled ('first'$|$'last'$|$'all'). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]most influential offspring of anid.
+
+\footnotesize\begin{verbatim}most_influential_offspring() returns the most influential offspring of an animal as
+measured by their number of offspring.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 212 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_6fce4d0fb5654715bf9cb3ff3dd9f38f}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!get_founder_descendants@{get\_\-founder\_\-descendants}}
+\index{get_founder_descendants@{get\_\-founder\_\-descendants}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[get\_\-founder\_\-descendants]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.get\_\-founder\_\-descendants ( {\em pedgraph})}}
+\label{namespacePyPedal_1_1pyp__network_6fce4d0fb5654715bf9cb3ff3dd9f38f}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_6fce4d0fb5654715bf9cb3ff3dd9f38f}{get\_\-founder\_\-descendants()} returns a dictionary containing a list of descendants of each founder in the pedigree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedgraph}]An instance of a Network\-X Di\-Graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary containing a list of descendants for each founder in the graph.
+
+\footnotesize\begin{verbatim}get_founder_descendants() returns a dictionary containing a list of descendants of
+each founder in the pedigree.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 262 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_99fa1fd8ff5dc1479afeec03ec4ce9fe}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!get_node_degrees@{get\_\-node\_\-degrees}}
+\index{get_node_degrees@{get\_\-node\_\-degrees}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[get\_\-node\_\-degrees]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.get\_\-node\_\-degrees ( {\em pg})}}
+\label{namespacePyPedal_1_1pyp__network_99fa1fd8ff5dc1479afeec03ec4ce9fe}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_99fa1fd8ff5dc1479afeec03ec4ce9fe}{get\_\-node\_\-degrees()} returns a dictionary containing the number of vertices (nodes) in pg with a given number of incoming, outgoing, or total edges. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of dictionaries containing in, out, and total node degrees.
+
+\footnotesize\begin{verbatim}get_node_degrees() returns a dictionary containing the number of
+vertices (nodes) in pg with a given number of incoming, outgoing,
+or total edges.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 286 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_7abe5f06621472c95b183cc8fd521cc4}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!get_node_degree_histograms@{get\_\-node\_\-degree\_\-histograms}}
+\index{get_node_degree_histograms@{get\_\-node\_\-degree\_\-histograms}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[get\_\-node\_\-degree\_\-histograms]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.get\_\-node\_\-degree\_\-histograms ( {\em node\_\-degrees})}}
+\label{namespacePyPedal_1_1pyp__network_7abe5f06621472c95b183cc8fd521cc4}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_7abe5f06621472c95b183cc8fd521cc4}{get\_\-node\_\-degree\_\-histograms()} returns a dictionary containing histograms of the number of vertices (nodes) in pg with a given number of incoming, outgoing, or total edges. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em node\_\-degrees}]A dictionary of dictionaries of in, out, and total node degrees. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of dictionaries containing in, out, and total degree histograms.
+
+\footnotesize\begin{verbatim}get_node_degree_histograms() returns a dictionary containing histograms of
+the number of vertices (nodes) in pg with a given number of incoming,
+outgoing, or total edges.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 311 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_7c69193d5911cfb1deb21a6bd45a9423}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!mean_geodesic@{mean\_\-geodesic}}
+\index{mean_geodesic@{mean\_\-geodesic}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[mean\_\-geodesic]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.mean\_\-geodesic ( {\em pg},  {\em debug} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__network_7c69193d5911cfb1deb21a6bd45a9423}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_7c69193d5911cfb1deb21a6bd45a9423}{mean\_\-geodesic()} calculates the mean geodesic (shortest) distance between two vertices in a network. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \item[{\em debug}]Flag to turn debugging messages on (1) or off (0). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]mean geodesic for the pedigree represented in pg.
+
+\footnotesize\begin{verbatim}mean_geodesic() calculates the mean geodesic (shortest) distance
+between two vertices in a network.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 344 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_5f7dd88164c3ad27f54fa8905494a02a}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!graph_density@{graph\_\-density}}
+\index{graph_density@{graph\_\-density}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[graph\_\-density]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.graph\_\-density ( {\em pg})}}
+\label{namespacePyPedal_1_1pyp__network_5f7dd88164c3ad27f54fa8905494a02a}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_5f7dd88164c3ad27f54fa8905494a02a}{graph\_\-density()} calculates the density of a digraph, which is the ratio of edges in the gaph to the maximum possible number of edges. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]density of the pedigree represented in pg.
+
+\footnotesize\begin{verbatim}graph_density() calculates the density of a digraph, which is the
+ratio of edges in the gaph to the maximum possible number of edges.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 380 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_2d0c4f1e9cb1ea3163aef28c9b3a7ac0}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!dyad_census@{dyad\_\-census}}
+\index{dyad_census@{dyad\_\-census}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[dyad\_\-census]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.dyad\_\-census ( {\em pg},  {\em debug} = {\tt 0},  {\em debuglog} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__network_2d0c4f1e9cb1ea3163aef28c9b3a7ac0}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_2d0c4f1e9cb1ea3163aef28c9b3a7ac0}{dyad\_\-census()} calculates the number of null, asymmetric, and mutual edges between all pairs of nodes in a directed graph. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \item[{\em debug}]Flag to turn debugging messages on (1) or off (0). \item[{\em debuglog}]Flag to turn debugging messages to the logfile on (1) or off (0). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of counts.
+
+\footnotesize\begin{verbatim}dyad_census() calculates the number of null, asymmetric, and
+mutual edges between all pairs of nodes in a directed graph.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 402 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_563bee26515afbda191df8558489964d}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!mean_degree_centrality@{mean\_\-degree\_\-centrality}}
+\index{mean_degree_centrality@{mean\_\-degree\_\-centrality}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[mean\_\-degree\_\-centrality]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.mean\_\-degree\_\-centrality ( {\em pg},  {\em normalize} = {\tt 0})}}
+\label{namespacePyPedal_1_1pyp__network_563bee26515afbda191df8558489964d}
+
+
+mean\_\-degree\_\-centrality(pg) calculates mean in- and out-degree centralities for directed graphs and simple degree-centralities for undirected graphs. 
+
+If the normalize flag is set, each node's centralities are weighted by the number of edges in the (di)graph. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \item[{\em normalize}]Flag to turn normalization on (1) or off (0). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of mean degree centralities.
+
+\footnotesize\begin{verbatim}mean_degree_centrality(pg) calculates mean in- and out-degree
+centralities for directed graphs and simple degree-centralities
+for undirected graphs. If the normalize flag is set, each node's
+centralities are weighted by the number of edges in the (di)graph.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 444 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_f67aecda93c61a5b116b0025670ac3be}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!mean_value@{mean\_\-value}}
+\index{mean_value@{mean\_\-value}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[mean\_\-value]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.mean\_\-value ( {\em mydict})}}
+\label{namespacePyPedal_1_1pyp__network_f67aecda93c61a5b116b0025670ac3be}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__network_f67aecda93c61a5b116b0025670ac3be}{mean\_\-value()} calculates the mean from all values in a dictionary. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mydict}]A dictionary whose values are integers or reals. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em The}]mean of values in mydict.
+
+\footnotesize\begin{verbatim}mean_value() calculates the mean from all values in a
+dictionary.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 482 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_12847e12c06671b75f871dbae171097a}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!get_closeness_centrality@{get\_\-closeness\_\-centrality}}
+\index{get_closeness_centrality@{get\_\-closeness\_\-centrality}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[get\_\-closeness\_\-centrality]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.get\_\-closeness\_\-centrality ( {\em pg})}}
+\label{namespacePyPedal_1_1pyp__network_12847e12c06671b75f871dbae171097a}
+
+
+get\_\-closeness\_\-centrality(pg) returns a dictionary of the closeness centrality (1/(average distance to all nodes from n)) for each node in the graph. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of closeness centralities.
+
+\footnotesize\begin{verbatim}get_closeness_centrality(pg) returns a dictionary of the close-
+ness centrality (1/(average distance to all nodes from n)) for
+each node in the graph.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 500 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_0932c10c8b90d448400e609753602e3c}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!get_clustering_coefficient@{get\_\-clustering\_\-coefficient}}
+\index{get_clustering_coefficient@{get\_\-clustering\_\-coefficient}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[get\_\-clustering\_\-coefficient]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.get\_\-clustering\_\-coefficient ( {\em pg})}}
+\label{namespacePyPedal_1_1pyp__network_0932c10c8b90d448400e609753602e3c}
+
+
+get\_\-clustering\_\-coefficient(pg) returns a dictionary of the clustering coefficient of each node in the graph based on the definition of Watts and Strogatz (1998). 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of clustering coefficients.
+
+\footnotesize\begin{verbatim}get_clustering_coefficient(pg) returns a dictionary of the clustering
+coefficient of each node in the graph based on the definition of Watts
+and Strogatz (1998).
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 520 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_802474b23ab95d5ef2421d61f2262b12}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!get_betweenness_centrality@{get\_\-betweenness\_\-centrality}}
+\index{get_betweenness_centrality@{get\_\-betweenness\_\-centrality}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[get\_\-betweenness\_\-centrality]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.get\_\-betweenness\_\-centrality ( {\em pg})}}
+\label{namespacePyPedal_1_1pyp__network_802474b23ab95d5ef2421d61f2262b12}
+
+
+get\_\-betweenness\_\-centrality(pg) returns a dictionary of the betweenness centrality of each node in the graph. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of closeness centralities.
+
+\footnotesize\begin{verbatim}get_betweenness_centrality(pg) returns a dictionary of the
+betweenness centrality of each node in the graph.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 539 of file pyp\_\-network.py.\hypertarget{namespacePyPedal_1_1pyp__network_5e1ef79a65c97a5554050f4941b99c22}{
+\index{PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}!get_node_betweenness@{get\_\-node\_\-betweenness}}
+\index{get_node_betweenness@{get\_\-node\_\-betweenness}!PyPedal::pyp_network@{Py\-Pedal::pyp\_\-network}}
+\subsubsection[get\_\-node\_\-betweenness]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-network.get\_\-node\_\-betweenness ( {\em pg})}}
+\label{namespacePyPedal_1_1pyp__network_5e1ef79a65c97a5554050f4941b99c22}
+
+
+get\_\-node\_\-betweenness(pg) returns a dictionary of the number of shortest paths that go through each node in the graph. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pg}]An instance of a Network\-X Di\-Graph. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary of node betweennesses.
+
+\footnotesize\begin{verbatim}get_node_betweenness(pg) returns a dictionary of the
+number of shortest paths that go through each node in
+the graph.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 557 of file pyp\_\-network.py.

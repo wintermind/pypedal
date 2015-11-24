@@ -1,0 +1,158 @@
+\appendix
+\addcontentsline{toc}{chapter}{Appendices}
+\chapter{Example Programs}\label{cha:example-programs}\index{example programs}
+\begin{quote}
+ Either I've invented a whole new logic or, ahem, I'm not playing with a full deck. --- Philip K. Dick
+\end{quote}
+
+A number of example programs are distributed with \PyPedal{}. Table \ref{tbl:examples-program-list} provides the name of each file, the configuration and pedigree files used by those programs, and a brief description of the concepts and techniques presented.
+\begin{center}
+    \tablecaption{Example programs distributed with \PyPedal{}.}
+    \tablefirsthead{\hline Program Name & Configuration File & Pedigree File & Description \\ \hline}
+    \tablehead{\hline Program Name & Configuration File & Pedigree File & Description \\ \hline}
+    \tabletail{\hline \multicolumn{4}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:examples-program-list}
+    \begin{xtabular}{l|p{1in}|p{1in}|p{3in}}
+    new\_amatrix.py & new\_amatrix.ini & new\_amatrix.ped & Create, save, load, and view information about NewAMatrix objects \\
+    new\_classes.py & new\_classes.ini & boichard2.ped & ??? \\
+    new\_db.py & new\_db.ini & hartlandclark.ped & Loading a pedigree into SQLite and creating a report of mean inbreeeding by birth year \\
+    new\_decompose.py & new\_decompose.ini & new_decompose.ped & Use of numerator relationship matrix decomposition subroutines in \module{pyp_nrm} \\
+    new\_doug.py & new\_doug.ini & doug.ped & Reading a pedigree in which names are strings, drawing pedigrees \\
+    new\_format.py & new\_format.ini & boichard2a.ped & Reading a pedigree using the `skip column' format code (Z), printing pedigree metadata \\
+    new\_graphics.py & new\_graphics.ini & boichard2.ped & Use of a number of routines from \module{pyp_graphics} \\
+    new\_hartl.py & new\_hartl.ini & hartlandclark.ped & Demonstrates use of \function{pyp_graphics.draw_pedigree()} \\
+    new\_ids.py & new\_ids.ini & new\_ids2.ped & Demonstrates reading tab-delimited files, using strings as animal IDs, overriding the default missing parent code, printing animal records \\
+    new\_inbreeding.py & new\_inbreeding.ini & new\_renumbering.ped & Calculating coefficients of inbreeding \\
+    new\_inbreeding2.py & new\_inbreeding2.ini, new\_inbreeding2multiple.ini & new\_renumbering.ped, horse.ped & Advanced .ini file techniques, computations on extremely inbred animals, calculation of summary statistics for coefficients of relationship \\
+    new\_jbc.py & new\_jbc.ini & new\_ids2.ped & Using \function{pyp_jbc.color_pedigree()} to produce a weighted, colored pedigree \\
+    new\_lacy.py & new\_lacy.ini, new\_format.ini & new\_lacy.ped, boichard2a.ped & Calculating effective ancestor and founder numbers \\
+    new\_methods.py & new\_format.ini & boichard2a.ped & Use of \function{pyp_metrics.related\_animals()} and \function{pyp_metrics.common\_ancestors()} \\
+    new\_networkx.py & new\_networkx.ini & generations.ped & Use of [algebraic] graph functions \\
+    new\_options.py & new\_options.ini & new\_lacy.ped & Use of the configuration files \\
+    new\_renumbering.py & new\_renumbering.ini & new\_renumbering.ped & Renumbering a pedigree, calculating inbreeding, pedigree drawing \\
+    new\_reporting.py & new\_reporting.ini & new\_renumbering.ped & Use of reporting functions \\
+    new\_simulate.py & new\_simulate.ini & None & Demonstrates how to create a random pedigree and produce a drawing of that pedigree \\
+    new\_sqlite.py & None & None & Demonstrates the use of textstreams and an SQLite database \\
+    \end{xtabular}
+\end{center}
+
+\chapter{GEDCOM File Handling}\label{GEDCOM}\index{GEDCOM files}
+\PyPedal{} is capable of importing from, and exporting to, GEDCOM 5.5 files using a subset
+of data record and tag types from the standard (Table 
+\ref{tbl:gedcom-supported-records-and-tags-import,tbl:gedcom-supported-records-and-tags-export}).
+Most of the information that can be
+ exchanged in GEDCOM files has no direct use in \PyPedal{}, so important information from \PyPedal{}'s point-of-view is not lost. However, it's important to note that \textbf{\PyPedal{}'s GEDCOM import and export is lossy}! This means that information in a GEDCOM file is lost when importing the file, and data from \PyPedal{} pedigrees is lost when exporting. There are many free and commercial packages for doing human genealogy that take full advantage of GEDCOM, so you might want to look at one if you need more advanced GEDCOM support than \PyPedal{} provides.
+\begin{center}
+    \tablecaption{GEDCOM 5.5 data records and tags imported by PyPedal{}.}
+    \tablefirsthead{\hline Data Record Type & Supported Tags & Description\footnote{} \\ \hline}
+    \tablehead{\hline Data Record Type & Supported Tags & Description\footnote{} \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:gedcom-supported-records-and-tags-import}
+    \begin{xtabular}{l|p{1in}|p{3in}}
+    Fam_Record & {FAM} & Alphanumeric with underscores; formed from parent IDs \\
+     & {HUSB} & Sire, if known \\
+     & {WIFE} & Dam, if known \\
+     & {CHIL} & Pointer to Individual_Record (one record per child) \\
+    Individual_Record & {INDI} & Individual ID \\
+     & SEX & M, F, or U (unknown) \\
+     & NAME & Individual's name, if known \\
+     & BIRT & Indicates that a birth date or year follows \\
+     & DATE & Birth date or birth year, if known \\
+     & FAMC & Pointer to family to which this individual belongs \\
+     & FAMS & Pointer to family in which this individual is a parent \\
+    \end{xtabular}
+\end{center}
+The list of recognized tags is hard-coded in a list named \var{known\_tags} in \function{pyp\_io.load\_from\_gedcom()}.
+\begin{center}
+    \tablecaption{GEDCOM 5.5 data records and tags exported by \PyPedal{}.}
+    \tablefirsthead{\hline Data Record Type & Supported Tags & Description\footnote{} \\ \hline}
+    \tablehead{\hline Data Record Type & Supported Tags & Description\footnote{} \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:gedcom-supported-records-and-tags-export}
+    \begin{xtabular}{l|p{1in}|p{3in}}
+    Header & {HEAD} & --- \\
+     & {SOUR} & {PYPEDAL} \\
+     & {VERS} & V2.0 \\
+     & {CORP} & {USDA-ARS-BA-ANRI-AIPL} \\
+     & {DEST} & {PYPEDAL} \\
+     & {DATE} & Timestamp from time of file creation \\
+     & {FILE} & Filename provided by user \\
+     & {GEDC} & --- \\
+     & {VERS} & {VERS 5.5} \\
+     & {FORM} & Lineage-Linked \\
+     & {CHAR} & {ASCII} \\
+    Fam_Record & {FAM} & Alphanumeric with underscores; formed from parent IDs \\
+     & {HUSB} & Sire, if known \\
+     & {WIFE} & Dam, if known \\
+     & {CHIL} & Pointer to Individual_Record (one record per child) \\
+    Individual_Record & {INDI} & Individual ID \\
+     & SEX & M, F, or U (unknown) \\
+     & NAME & Individual's name, if known \\
+     & BIRT & Indicates that a birth date or year follows \\
+     & DATE & Birth date or birth year, if known \\
+     & FAMC & Pointer to family to which this individual belongs \\
+     & FAMS & Pointer to family in which this individual is a parent \\
+    \end{xtabular}
+\end{center}
+Some tags have slightly different connotatios in \PyPedal{} than in {GEDCOM}. For example, in human genealogy marriages are important events, but that is not the case in animal pedigrees. \PyPedal{} creates family records only for unique mating pairs, and marriage information is lost when importing a {GEDCOM} file. Similarly, no marriage information is exported, and you will not see any family records containing only HUSB and WIFE tags. Founders (animals with both parents unknown) will have individual records but no family records. The default birth year used by \PyPedal{} is 1900; if you do not override that value then individuals with birth years of 1900 will not have BIRT/DATE tags written to their individual record. The same is true of default birth dates (01011900).
+
+Importation is done by reading the {GEDCOM} file, parsing out the supported tags into ``family'' and ``individual'', and using Python dictionaries (hash tables) to map everything down to individual records. Those individual records are then written to a file, the pedigree format string and pedfile variables are updated for the new file. That file is then loaded automatically. The downside is that you end up with two copies of each pedigree file, but disc space is cheap. I won't add an option for automatic deletion of the original {GEDCOM} file becuase of the lossiness of the import procedure.
+
+The export process is uncoupled from the import process. You can export any pedigree 
+that \PyPedal{} can read as a {GEDCOM} file regardless of the original source. Perhaps
+some human types will be interested in some of the calculations that \PyPedal{} can do,
+or perhaps a dog breeder will do something unexpected, such as exporting to {GEDCOM} so
+that they can use GRAMPS or something like that to manipulate their data. Who knows. Anyway, \PyPedal{} supports two-way data flow.
+
+\chapter{GENES File Handling}\label{GENES}\index{GENES files}
+PyPedal is capable of importing from, and exporting to, the dBase III file format used by Robert Lacy's GENES 1.20
+program (\url{http://www.vortex9.org/genes.html}). The code that does the actual conversion is a modified version
+of "Recipe 362715: DBF reader and writer (Python)" (\url{http://code.activestate.com/recipes/362715/}) by Raymond
+Hettinger. The changes I've made were mostly mappings between GENES and \PyPedal{} variables, as well as some code
+to catch potential errors on the inputs and outputs. It is my understanding that the PSF under which Hettinger's
+code was released is compatible with the GPL, under which \PyPedal{} is licensed.
+
+As one might expect, \PyPedal{} supports only a subset of the data contained in a GENES studbook file. That is because
+some of the metrics calculated by GENES do not have corresponding quantities in \PyPedal{}. (Table
+\ref{tbl:genes-supported-records-and-tags}). It's important to note that \PyPedal{}'s GENES import and export is
+lossy! This means that information in a GENES file is lost when importing the file, and data from \PyPedal{} pedigrees
+are lost when exporting.
+\begin{center}
+    \tablecaption{GENES 1.20 data records and tags exported by \PyPedal{}.}
+    \tablefirsthead{\hline Data Field & \PyPedal{} Variable & Description\footnote{} \\ \hline}
+    \tablehead{\hline Data Field & \PyPedal{} Variable & Description\footnote{} \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:genes-supported-records-and-tags}
+    \begin{xtabular}{l|p{1in}|p{3in}}
+    STUD ID & animalID & Alphanumeric animal ID, converted to integer ID \\
+     & originalID & Alphanumeric animal ID stored as string \\
+    SIRE ID & sireName & Alphanumeric sire ID, if known \\
+    DAM ID & damName & Alphanumeric dam ID, if known \\
+    BDATE & bd & Animal birthdate \\
+    SEX & sex & Mapped from 0/1 to f/m \\
+    LOCATION & originalHerd & Location of animal, if known \\
+    DEAD & alive & Mapped from 0/1 to 1/0 \\
+    INBREED & fa & Coefficient of inbreeding \\
+    AGE & age & Age of animal \\
+    \end{xtabular}
+\end{center}
+Some tags have slightly different connotatios in \PyPedal{} than in GENES. For example, GENES distinguished between
+animals that are known to be founders (parents are "WILD") and those with unknown parents that are assumed to be
+from the current population (parents are "UNK"). \PyPedal{} does not make such a distinction, and treats all animals
+with unknown parents as founders. The default birthdate (01011900) used by \PyPedal{} also may not make particular
+sense to GENES users.
+
+Importation is done by reading the GENES file and mapping the supported fields to their corresponding \PyPedal{}
+attributes. Those individual records are then written to a file, the pedigree format string and pedfile variables are
+updated for the new file, and that file is then loaded automatically. The downside is that you end up with two copies
+of each pedigree file, but disc space is cheap. I won't add an option for automatic deletion of the original GENES file
+because of the lossiness of the import procedure.
+
+The export process is uncoupled from the import process. You can export any pedigree that \PyPedal{} can read as a
+GENES file, regardless of the original source. Claire Raisin (Durrell Institute of Conservation and Ecology, University
+of Kent) asked for this feature quite a long time ago, and I finally got around to adding it. I hope that late is better than
+never.

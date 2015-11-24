@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: pypedal.aux
+The style file: chicago.bst
+Database file #1: references.bib
+I was expecting an "="---line 1703 of file references.bib
+ :   
+ :   Title          = "On the consistency of a physical mapping method to
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--page numbers missing in ref435
+You've used 23 entries,
+            2861 wiz_defined-function locations,
+            765 strings with 8366 characters,
+and the built_in function-call counts, 15777 in all, are:
+= -- 1290
+> -- 1172
+< -- 0
++ -- 344
+- -- 388
+* -- 1446
+:= -- 2905
+add.period$ -- 69
+call.type$ -- 23
+change.case$ -- 167
+chr.to.int$ -- 23
+cite$ -- 24
+duplicate$ -- 391
+empty$ -- 972
+format.name$ -- 448
+if$ -- 2953
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 25
+newline$ -- 118
+num.names$ -- 230
+pop$ -- 107
+preamble$ -- 1
+purify$ -- 307
+quote$ -- 0
+skip$ -- 414
+stack$ -- 0
+substring$ -- 896
+swap$ -- 114
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 440
+warning$ -- 1
+while$ -- 206
+width$ -- 0
+write$ -- 302
+(There was 1 error message)

@@ -1,0 +1,129 @@
+\hypertarget{namespacePyPedal_1_1pyp__reports}{
+\section{Package Py\-Pedal.pyp\_\-reports}
+\label{namespacePyPedal_1_1pyp__reports}\index{PyPedal.pyp_reports@{PyPedal.pyp\_\-reports}}
+}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+def \hyperlink{namespacePyPedal_1_1pyp__reports_bdef097ff294848a2a497f5c1dfef623}{mean\-Metric\-By}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__reports_bdef097ff294848a2a497f5c1dfef623}{mean\-Metric\-By()} returns a dictionary of means keyed by levels of the 'byvar' that can be used to draw graphs or prepare reports of summary statistics. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__reports_ec86116b871dbe57b254cd10bd92fc8a}{pdf\-Mean\-Metric\-By}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__reports_ec86116b871dbe57b254cd10bd92fc8a}{pdf\-Mean\-Metric\-By()} returns a dictionary of means keyed by levels of the 'byvar' that can be used to draw graphs or prepare reports of summary statistics. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__reports_11a744e9a637f073c0457573fa82bd0c}{pdf\-Pedigree\-Metadata}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__reports_11a744e9a637f073c0457573fa82bd0c}{pdf\-Pedigree\-Metadata()} produces a report, in PDF format, of the metadata from the input pedigree. \item\end{CompactList}\item 
+def \hyperlink{namespacePyPedal_1_1pyp__reports_d6ab6b0b0f5c79b36a1c97842bb552d4}{pdf3Gen\-Ped}
+\begin{CompactList}\small\item\em \hyperlink{namespacePyPedal_1_1pyp__reports_d6ab6b0b0f5c79b36a1c97842bb552d4}{pdf3Gen\-Ped()} draws a three-generation pedigree for animal 'animal\-ID'. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacePyPedal_1_1pyp__reports_bdef097ff294848a2a497f5c1dfef623}{
+\index{PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}!meanMetricBy@{meanMetricBy}}
+\index{meanMetricBy@{meanMetricBy}!PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}}
+\subsubsection[meanMetricBy]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-reports.mean\-Metric\-By ( {\em pedobj},  {\em metric} = {\tt 'fa'},  {\em byvar} = {\tt 'by'},  {\em createpdf} = {\tt False},  {\em conn} = {\tt False})}}
+\label{namespacePyPedal_1_1pyp__reports_bdef097ff294848a2a497f5c1dfef623}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__reports_bdef097ff294848a2a497f5c1dfef623}{mean\-Metric\-By()} returns a dictionary of means keyed by levels of the 'byvar' that can be used to draw graphs or prepare reports of summary statistics. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em metric}]The variable to summarize on a BY variable. \item[{\em byvar}]The variable on which to group the metric. \item[{\em createpdf}]Flag indicating whether or not a PDF version of the report should be created. \item[{\em conn}]Handle to a database connection, or False. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]dictionary containing means for the metric variable keyed to levels of the byvar.
+
+\footnotesize\begin{verbatim}meanMetricBy() returns a dictionary of means keyed by levels of the 'byvar' that
+can be used to draw graphs or prepare reports of summary statistics.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 49 of file pyp\_\-reports.py.\hypertarget{namespacePyPedal_1_1pyp__reports_ec86116b871dbe57b254cd10bd92fc8a}{
+\index{PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}!pdfMeanMetricBy@{pdfMeanMetricBy}}
+\index{pdfMeanMetricBy@{pdfMeanMetricBy}!PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}}
+\subsubsection[pdfMeanMetricBy]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-reports.pdf\-Mean\-Metric\-By ( {\em pedobj},  {\em results},  {\em titlepage} = {\tt 0},  {\em reporttitle} = {\tt ''},  {\em reportauthor} = {\tt ''},  {\em reportfile} = {\tt ''})}}
+\label{namespacePyPedal_1_1pyp__reports_ec86116b871dbe57b254cd10bd92fc8a}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__reports_ec86116b871dbe57b254cd10bd92fc8a}{pdf\-Mean\-Metric\-By()} returns a dictionary of means keyed by levels of the 'byvar' that can be used to draw graphs or prepare reports of summary statistics. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em results}]A dictionary containing means for the metric variable keyed to levels of the byvar. \item[{\em titlepage}]Show (1) or hide (0) the title page. \item[{\em reporttitle}]Title of report; if '', \_\-pdf\-Title is used. \item[{\em reportauthor}]Author/preparer of report. \item[{\em reportfile}]Optional name of file to which the report should be written. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em 1}]on success, 0 on failure
+
+\footnotesize\begin{verbatim}pdfMeanMetricBy() returns a dictionary of means keyed by levels of the 'byvar' that
+can be used to draw graphs or prepare reports of summary statistics.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 109 of file pyp\_\-reports.py.\hypertarget{namespacePyPedal_1_1pyp__reports_11a744e9a637f073c0457573fa82bd0c}{
+\index{PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}!pdfPedigreeMetadata@{pdfPedigreeMetadata}}
+\index{pdfPedigreeMetadata@{pdfPedigreeMetadata}!PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}}
+\subsubsection[pdfPedigreeMetadata]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-reports.pdf\-Pedigree\-Metadata ( {\em pedobj},  {\em titlepage} = {\tt 0},  {\em reporttitle} = {\tt ''},  {\em reportauthor} = {\tt ''},  {\em reportfile} = {\tt ''})}}
+\label{namespacePyPedal_1_1pyp__reports_11a744e9a637f073c0457573fa82bd0c}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__reports_11a744e9a637f073c0457573fa82bd0c}{pdf\-Pedigree\-Metadata()} produces a report, in PDF format, of the metadata from the input pedigree. 
+
+It is intended for use as a template for custom printed reports. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em titlepage}]Show (1) or hide (0) the title page. \item[{\em reporttitle}]Title of report; if '', \_\-pdf\-Title is used. \item[{\em reportauthor}]Author/preparer of report. \item[{\em reportfile}]Optional name of file to which the report should be written. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em A}]1 on success, 0 otherwise.
+
+\footnotesize\begin{verbatim}pdfPedigreeMetadata() produces a report, in PDF format, of the metadata from
+the input pedigree.  It is intended for use as a template for custom printed
+reports.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 177 of file pyp\_\-reports.py.\hypertarget{namespacePyPedal_1_1pyp__reports_d6ab6b0b0f5c79b36a1c97842bb552d4}{
+\index{PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}!pdf3GenPed@{pdf3GenPed}}
+\index{pdf3GenPed@{pdf3GenPed}!PyPedal::pyp_reports@{Py\-Pedal::pyp\_\-reports}}
+\subsubsection[pdf3GenPed]{\setlength{\rightskip}{0pt plus 5cm}def Py\-Pedal.pyp\_\-reports.pdf3Gen\-Ped ( {\em animal\-ID},  {\em pedobj},  {\em titlepage} = {\tt 0},  {\em reporttitle} = {\tt ''},  {\em reportauthor} = {\tt ''},  {\em reportfile} = {\tt ''})}}
+\label{namespacePyPedal_1_1pyp__reports_d6ab6b0b0f5c79b36a1c97842bb552d4}
+
+
+\hyperlink{namespacePyPedal_1_1pyp__reports_d6ab6b0b0f5c79b36a1c97842bb552d4}{pdf3Gen\-Ped()} draws a three-generation pedigree for animal 'animal\-ID'. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em animal\-ID}]An animal ID or list of animal IDs. \item[{\em pedobj}]A Py\-Pedal pedigree object. \item[{\em titlepage}]Show (1) or hide (0) the title page. \item[{\em reporttitle}]Title of report; if '', \_\-pdf\-Title is used. \item[{\em reportauthor}]Author/preparer of report. \item[{\em reportfile}]Optional name of file to which the report should be written. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Return values:]
+\begin{description}
+\item[{\em 1}]on success, 0 on failure
+
+\footnotesize\begin{verbatim}pdf3GenPed() draws a three-generation pedigree for animal 'animalID'.
+\end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 263 of file pyp\_\-reports.py.

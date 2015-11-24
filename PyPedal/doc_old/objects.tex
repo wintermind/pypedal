@@ -1,0 +1,284 @@
+\chapter{Using PyPedal Objects}
+\begin{quote}
+In every chaotic behaviour, there lies a pattern. --- Jean Jacques Rousseau
+\end{quote}
+\label{cha:using-pypedal-objects}
+\index{PyPedal objects}
+In this chapter, a detailed explanation of each \PyPedal{} class is presented, including attributes and methods.
+\section{Animal Objects}
+\label{sec:objects-animal-objects}
+\index{PyPedal objects!Animal objects}
+Three types of animal object are provided in \PyPedal{} (\ref{sec:objects-animal-objects-new-animal}). Users will typically work with instances of \class{NewAnimal} objects, while \class{LightAnimal} (\ref{sec:objects-animal-objects-light-animal}) and \class{SimAnimal} (\ref{sec:objects-animal-objects-sim-animal}) objects are of interest primarily to developers. Detailed descriptions of each class and class method may be found in the API Reference for the \module{pyp\_newclasses} module (Section \ref{sec:functions-pyp-newclasses}).
+\subsection{The NewAnimal Class}
+\label{sec:objects-animal-objects-new-animal}
+\index{PyPedal objects!Animal objects!NewAnimal}
+\begin{center}
+    \tablecaption{Attributes of \class{NewAnimal} objects.}
+    \tablefirsthead{\hline
+	\multirow{2}{15mm}{Attribute} & \multicolumn{2}{|c|}{Default} & \multirow{2}{2.5in}{Description} \\
+        \cline{2-3}
+         &  Integral IDs (\texttt{'asd'}) & String IDs (\texttt{'ASD'}) & \\
+	\hline}
+    \tablehead{\hline
+	\multirow{2}{15mm}{Attribute} & \multicolumn{2}{|c|}{Default} & \multirow{2}{2.5in}{Description} \\
+        \cline{2-3}
+         &  Integral IDs (\texttt{'asd'}) & String IDs (\texttt{'ASD'}) & \\
+	\hline}
+    \tabletail{\hline \multicolumn{4}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-animal-objects-new-animal-attributes}
+    \begin{xtabular}{l|l|l|p{2.5in}}
+        age & -999 & -999 & The animal's age based on the global \texttt{BASE_DEMOGRAPHIC_YEAR} defined in \module{pyp_demog}. If the \emph{by} is unknown, the inferred generation is used.  If the inferred generation is unknown, the age is set to -999. \\
+        alive & \texttt{'0'} & \texttt{'0'} & Flag indicating whether or not the animal is alive: \texttt{'0'} = dead, \texttt{'1'} = alive. \\
+        alleles & $['', '']$ & $['', '']$ & Alleles used for gene dropping. \\
+        ancestor & \texttt{'0'} & \texttt{'0'} & Flag indicating whether or not the animal has offspring: \texttt{'0'} = has no offspring, \texttt{'1'} = has offspring. The flags are set by calling \function{pyp\_utils.set\_ancestor\_flag()} and passing it a renumbred pedigree. \\
+        animalID & animal ID & animal ID $\mapsto$ \emph{integer} & Animal's ID. Animal IDs change when a pedigree is renumbered. IDs must be provided for all animals in a pedigree file. When strings are provided for animal  IDs using the \texttt{ASD} pedigree format code they are converted to integral animal IDs using the \method{string_to_int()} method.\\
+        bd & \texttt{missing_bdate} & \texttt{missing_bdate} & The animal's birthdate in \emph{MMDDYY} format. \\
+        breed & \texttt{missing_breed} & \texttt{missing_breed} & The animal's breed as a string. \\
+        by & \texttt{missing_byear} & \texttt{missing_byear} & The animal's birthyear in \emph{YYYY} format. Default values set in \texttt{this typeface} are \PyPedal{} options which are described in detail in Section \ref{sec:pypedal-options}.\\
+        damID & dam ID & dam ID $\mapsto$ \emph{integer} & Dam's ID. When strings are provided for animal  IDs using the \texttt{ASD} pedigree format code they are converted to integral animal IDs using the \method{string_to_int()} method. \\
+        damName & dam ID & dam ID & The name of the animal's dam. \\
+        daus & $\{\}$ & $\{\}$ & Dictionary containing all known daughters of an animal. The keys and values are the animal IDs for each offspring. When the pedigree is renumbered, keys are updated to correspond to the renumbered IDs for each offspring. \\
+        fa & 0.0 & 0.0 & The animal's coefficient of inbreeding. \\
+        founder & \texttt{'n'} & \texttt{'n'} & Character indicating whether or not the animal is a founder (had unknown parents): \texttt{'n'} = not a founder (one or both parents known), \texttt{'y'} = founder (parents unknown).\\
+        gen & -999 & -999 & Generation to which the animal belongs. \\
+        gencoeff & -999.0 & -999.0 & Pattie's \citeyear{Pattie1965} generation coefficient. \\
+        herd & \texttt{missing_herd} $\mapsto$ \emph{integer} & \texttt{missing_herd} $\mapsto$ \emph{integer} & The ID of the herd to which the animal belongs. \\
+        igen & -999 & -999 & Generation inferred by \function{pyp\_utils.set\_generation()}. \\
+        name & animal ID & animal ID & The animal's name. This attribute is quite useful in \texttt{ASD} pedigrees. and less so in \texttt{asd} pedigrees. \\
+        originalHerd & herd & herd & The original herd ID to which an animal belonged before the herd was converted from a string to an integer; most useful with the \texttt{'H'} pedigree format code. \\
+        originalID & animalID & animal ID $\mapsto$ \emph{integer} & Original ID assigned to an animal. It will not change when the pedigree is renumbered. \\
+        paddedID & \texttt{animalID} $\mapsto$ \emph{integer} & \texttt{animalID} $\mapsto$ \emph{integer} & The animal ID padded to fifteen digits, with the birthyear (or 1950 if the birth year is unknown) prepended.  The order of elements is: birthyear, animalID,count of zeros, zeros. Used to create alleles for gene dropping. \\
+        pedcomp & -999.9 & -999.9 & Pedigree completeness as described in Section \ref{sec:methodology-pedigre-completeness}. \\
+        renumberedID & -999 & -999 & ID assigned to an animal when the pedigree is renumbered. The default value indicates that the pedigree has not been renumbered using \PyPedal{}.\\
+        sex & \texttt{'u'} & \texttt{'u'} & The sex of the animal: \texttt{'m'} = male, \texttt{'f'} = female, \texttt{'u'} = unknown/not provided. \\
+        sireID & sire ID & sire ID $\mapsto$ \emph{integer} & Sire's ID. When strings are provided for animal  IDs using the \texttt{ASD} pedigree format code they are converted to integral animal IDs using the \method{string_to_int()} method. \\
+        sireName & sireID & sireID & The name of the animal's sire. \\
+        sons & $\{\}$ & $\{\}$ & Dictionary containing all known sons of an animal. The keys and values are the animal IDs for each offspring. When the pedigree is renumbered, keys are updated to correspond to the renumbered IDs for each offspring.\\
+        unks & $\{\}$ & $\{\}$ & Dictionary containing all offspring of an animal with unknown sex. The keys and values are the animal IDs for each offspring. When the pedigree is renumbered, keys are updated to correspond to the renumbered IDs for each offspring. \\
+    \end{xtabular}
+\end{center}
+\class{NewAnimal} objects have the seven methods listed in Table \ref{tbl:objects-animal-objects-new-animal-methods}. The methods focus on returning information about an instance of an object; calculations are left to functions in, e.g., the \module{pyp\_metrics} and \module{pyp\_nrm} modules. 
+\begin{center}
+    \tablecaption{Methods of \class{NewAnimal} objects.}
+    \tablefirsthead{\hline Method & Description \\ \hline}
+    \tablehead{\hline Method & Description \\ \hline}
+    \tabletail{\hline \multicolumn{2}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-animal-objects-new-animal-methods}
+    \begin{xtabular}{l|p{4in}}
+        \_\_init\_\_ & Initializes a \class{NewAnimal} object and returns an instance of a \class{NewAnimal} object. \\
+        printme & Prints a summary of the data stored in a \class{NewAnimal} object. \\
+        stringme & Returns the data stored in a \class{NewtAnimal} object as a string. \\
+        dictme & Returns the data stored in a \class{NewtAnimal} object as a dictionary whose keys are attribute names and whose values are attribute values. \\
+        trap & Checks for common errors in \class{NewtAnimal} objects. \\
+        pad\_id & Takes an animal ID, pads it to fifteen digits, and prepends the birthyear. The order of elements is: birthyear, animalID, count of zeros, zeros. The padded ID is used for reordering the pedigree with the \function{fast\_reorder} routine. \\
+        string\_to\_int & Takes an animal ID as a string and returns a hash. The algorithm used is taken from "Character String Keys" in "Data Structures and Algorithms with Object-Oriented Design Patterns in Python" by Bruno R. Preiss: \url{http://www.brpreiss.com/books/opus7/html/page220.html#progstrnga}. \\
+    \end{xtabular}
+\end{center}
+\subsection{The LightAnimal Class}
+\label{sec:objects-animal-objects-light-animal}
+\index{PyPedal objects!Animal objects!LightAnimal}
+The \class{LightAnimal} class holds animals records read from a pedigree file. It implements a much simpler object than the \class{NewAnimal} object and is intended for use with the graph theoretic routines in \module{pyp\_network}. The only attributes of these objects are animal ID, sire ID, dam ID, original ID, renumbered ID, birth year, and sex (Table \ref{tbl:objects-animal-objects-light-animal-attributes}).
+\begin{center}
+    \tablecaption{Attributes of \class{LightAnimal} objects.}
+    \tablefirsthead{\hline Attribute & Default & Description \\ \hline}
+    \tablehead{\hline Attribute & Default & Description \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-animal-objects-light-animal-attributes}
+    \begin{xtabular}{l|l|p{4in}}
+        animalID & animal ID & Animal's ID. \\
+        by & \texttt{missing_byear} & The animal's birthyear in \emph{YYYY} format. \\
+        damID & 0 & Dam's ID. \\
+        originalID & animalID & Original ID assigned to an animal. It will not change when the pedigree is renumbered. \\
+        renumberedID & animalID & Renumbered ID assigned to an animal. It is assigned by the renumbering routine. \\
+        sex & \texttt{'u'} & The sex of the animal: \texttt{'m'} = male, \texttt{'f'} = female, \texttt{'u'} = unknown. \\
+        sireID & 0 & Sire's ID. \\
+    \end{xtabular}
+\end{center}
+\class{LightAnimal} objects have the same seven methods (Table \ref{tbl:objects-animal-objects-light-animal-methods}) as \class{NewAnimal} objects (Table \ref{tbl:objects-animal-objects-new-animal-methods}).
+\begin{center}
+    \tablecaption{Methods of \class{LightAnimal} objects.}
+    \tablefirsthead{\hline Method & Description \\ \hline}
+    \tablehead{\hline Method & Description \\ \hline}
+    \tabletail{\hline \multicolumn{2}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-animal-objects-light-animal-methods}
+    \begin{xtabular}{l|p{4in}}
+        \_\_init\_\_ & Initializes a \class{LightAnimal} object and returns an instance of a \class{LightAnimal} object. \\
+        printme & Prints a summary of the data stored in a \class{LightAnimal} object. \\
+        stringme & Returns the data stored in a \class{LightAnimal} object as a string. \\
+        dictme & Returns the data stored in a \class{LightAnimal} object as a dictionary whose keys are attribute names and whose values are attribute values. \\
+        trap & Checks for common errors in \class{LightAnimal} objects. \\
+        pad\_id & Takes an animal ID, pads it to fifteen digits, and prepends the birthyear. The order of elements is: birthyear, animalID, count of zeros, zeros. The padded ID is used for reordering the pedigree with the \function{fast\_reorder} routine. \\
+        string\_to\_int & Takes an animal ID as a string and returns a hash. The algorithm used is taken from "Character String Keys" in "Data Structures and Algorithms with Object-Oriented Design Patterns in Python" by Bruno R. Preiss: \url{http://www.brpreiss.com/books/opus7/html/page220.html#progstrnga}. \\
+    \end{xtabular}
+\end{center}
+\subsection{The SimAnimal Class}\label{sec:objects-animal-objects-sim-animal}\index{PyPedal objects!Animal objects!SimAnimal}
+The \class{SimAnimal} class is used for pedigree simulation, which is described in Section \ref{sec:pedigree-simulation}. All simulated pedigrees have the format code \texttt{asdxg}, and those are the only class attributes (Table \ref{tbl:objects-animal-objects-sim-animal-attributes}). This class is intended for use only by the pedigree simulation routines, so the lack of attributes and methods as compared to the \class{NewAnimal} class is a deliberate design decision.
+\begin{center}
+    \tablecaption{Attributes of \class{SimAnimal} objects.}
+    \tablefirsthead{\hline Attribute & Default & Description \\ \hline}
+    \tablehead{\hline Attribute & Default & Description \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-animal-objects-sim-animal-attributes}
+    \begin{xtabular}{l|l|p{4in}}
+        animalID & animal ID & Animal's ID. \\
+        damID & 0 & Dam's ID. \\
+        gen & 0 & Generation to which the animal belongs. \\
+        sex & \texttt{'u'} & The sex of the animal: \texttt{'m'} = male, \texttt{'f'} = female, \texttt{'u'} = unknown. \\
+        sireID & 0 & Sire's ID. \\
+    \end{xtabular}
+\end{center}
+\class{SimAnimal} objects have only three methods (Table \ref{tbl:objects-animal-objects-sim-animal-methods}).
+\begin{center}
+    \tablecaption{Methods of \class{SimAnimal} objects.}
+    \tablefirsthead{\hline Method & Description \\ \hline}
+    \tablehead{\hline Method & Description \\ \hline}
+    \tabletail{\hline \multicolumn{2}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-animal-objects-sim-animal-methods}
+    \begin{xtabular}{l|p{4in}}
+        \_\_init\_\_ & Initializes a \class{SimAnimal} object and returns an instance of a \class{SimAnimal} object. \\
+        printme & Prints a summary of the data stored in a \class{SimAnimal} object. \\
+        stringme & Returns the data stored in a \class{SimAnimal} object as a string. \\
+    \end{xtabular}
+\end{center}
+\section{The NewPedigree Class}
+\label{sec:objects-pedigree-objects}
+\index{PyPedal objects!Pedigree objects}
+The \class{NewPedigree} class is the fundamental object in \PyPedal{}. 
+\begin{center}
+    \tablecaption{Attributes of \class{NewPedigree} objects.}
+    \tablefirsthead{\hline Attribute & Default & Description \\ \hline}
+    \tablehead{\hline Attribute & Default & Description \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-newpedigree-attributes}
+    \begin{xtabular}{l|l|p{4in}}
+        kw & \texttt{kw} & Keyword dictionary. \\
+	pedigree & $[]$ & A list of \class{NewAnimal} objects. \\
+        metadata & $\{\}$ & A \class{PedigreeMetadata} object. \\
+        idmap & $\{\}$ & Dictionary for mapping original IDs to renumbered IDs (\ref{sec:methodology-id-mapping}). \\
+        backmap & $\{\}$ & Dictionary for mapping renumbered IDs to original IDs (\ref{sec:methodology-id-mapping}). \\
+        namemap & $\{\}$ & Dictionary for mapping names to original IDs (\ref{sec:methodology-id-mapping}). \\
+        namebackmap & $\{\}$ & Dictionary for mapping original IDs to names (\ref{sec:methodology-id-mapping}). \\
+        starline & \texttt{'*'*80} & Convenience string. \\
+        nrm & None & An instance of a \class{NewAMatrix} object. \\
+    \end{xtabular}
+\end{center}
+The methods of \class{NewPedigree} objects are listed in Table \ref{tbl:objects-newpedigree-methods}. !!!I need to put something in here about pedsources and make sure that it's in the index!!!
+\begin{center}
+    \tablecaption{Methods of \class{NewPedigree} objects.}
+    \tablefirsthead{\hline Method & Description \\ \hline}
+    \tablehead{\hline Method & Description \\ \hline}
+    \tabletail{\hline \multicolumn{2}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-newpedigree-methods}
+    \begin{xtabular}{l|p{4in}}
+        \_\_init\_\_ & Initializes and returns a \class{NewPedigree} object. \\
+        addanimal & Adds a new animal of class \class{NewAnimal} to the pedigree. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{addanimal} may result in data loss or corruption. You have been warned. \\
+        delanimal & Deletes an animal from the pedigree. Note that this method DOES not update the metadata attached to the pedigree and should only be used if that is not important. \textbf{Note:} This function should be used by \class{NewPedigree} methods only, not userspace routines. Improper use of \method{delanimal} may result in data loss or corruption. You have been warned. \\
+        fromgraph & Creates a \class{NewPedigree} from an \class{XDiGraph} objject. \\
+	load & Wraps several processes useful for loading and preparing a pedigree for use in an analysis, including reading the animals into a list of animal objects, forming metadata, checking for common errors, setting ancestor and sex flags, and renumbering the pedigree. \\
+	preprocess & Processes the entries in a pedigree file, which includes reading each entry, checking it for common errors, and instantiating a \class{NewAnimal} object. \\
+	printoptions & Prints the contents of the options dictionary, which is useful for debugging. \\
+	renumber & Calls the proper reordering and renumbering routines; updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
+	save & Writes a \PyPedal{} pedigree to a user-specified file.  The saved pedigree includes all fields recognized by PyPedal, not just the original fields read from the input pedigree file. \\
+	simulate & Simulate simulates an arbitrary pedigree of size \textit{n} with \textsl{g} generations starting from \textsl{n\_s} base sires and \textsl{n\_d} base dams.  This method is based on the concepts and algorithms in the \method{Pedigree::sample} method from Matvec 1.1a (src/classes/pedigree.cpp; \url{http://statistics.unl.edu/faculty/steve/software/matvec/}), although all of the code in this implementation was written from scratch.\\
+	updateidmap & Updates the ID map after a pedigree has been renumbered so that all references are to renumbered rather than original IDs. \\
+    \end{xtabular}
+\end{center}
+See Section \ref{sec:pedigree-simulation} for details on pedigree simulation.
+\section{The PedigreeMetadata Class}
+\label{sec:objects-metadata-objects}
+\index{PyPedal objects!Metadata objects}
+The \class{PedigreeMetadata} class stores metadata about pedigrees. This helps improve performance in some procedures, and also makes it easy to access useful summary data. Metadata are collected when the pedigree is loaded and accessed by many \PyPedal{} routines.
+\begin{center}
+    \tablecaption{Attributes of \class{PedigreeMetadata} objects.}
+    \tablefirsthead{\hline Attribute & Default & Description \\ \hline}
+    \tablehead{\hline Attribute & Default & Description \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-metadata-attributes}
+    \begin{xtabular}{l|l|p{4in}}
+        name & \texttt{pedname} & Name assigned to the pedigree. \\
+        filename & \texttt{pedfile} & File from which the pedigree was loaded. \\
+        pedcode & \texttt{pedformat} & Pedigree format string. \\
+        num_records & 0 & Number of records in the pedigree. \\
+        num_unique_sires & 0 & Number of unique sires in the pedigree. \\
+        num_unique_dams & 0 & Number of unique dams in the pedigree. \\
+        num_unique_founders & 0 & Number of unique founders in the pedigree. \\
+        num_unique_gens & 0 & Number of unique generations in the pedigree. \\
+        num_unique_years & 0 & Number of unique birth years in the pedigree. \\
+        num_unique_herds & 0 & Number of unique herds in the pedigree. \\
+        unique_sire_list & $[]$ & List of the unique sires in the pedigree. \\
+        unique_dam_list & $[]$ & List of the unique dams in the pedigree. \\
+        unique_founder_list & $[]$ & List of the unique founders in the pedigree. \\
+        unique_gen_list & $[]$ & List of the unique generations in the pedigree. \\
+        unique_year_list & $[]$ & List of the unique birth years in the pedigree. \\
+        unique_herd_list & $[]$ & List of the unique herds in the pedigree. \\
+    \end{xtabular}
+\end{center}
+Metadata are gathered furing the pedigree loading process, but after load-time renumbering has occured (if requested). When a pedigree is renumbered after it has been loaded the unique sire, dam, and founders lists are not updated to contain the renumbere IDs. The metadata may be updated by instantiating a new \class{PedigreeMetadata} object and using it to replace the original metadata:
+\begin{verbatim}
+example.metadata = PedigreeMetadata(example.pedigree,example.kw)
+\end{verbatim}
+Alternatively, ID maps (Section \ref{sec:methodology-id-mapping}) may be used to produce expected lists of animals.
+
+The methods of \class{PedigreeMetadata} objects are listed in Table \ref{tbl:objects-metadata-methods}. The couting methods (\function{nud}, \function{nuf}, etc.) return two values each, a count and a list, and new couting methods may easily be added.
+\begin{center}
+    \tablecaption{Methods of \class{PedigreeMetadata} objects.}
+    \tablefirsthead{\hline Method & Description \\ \hline}
+    \tablehead{\hline Method & Description \\ \hline}
+    \tabletail{\hline \multicolumn{2}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-metadata-methods}
+    \begin{xtabular}{l|p{4in}}
+        \_\_init\_\_ & Initializes and returns a \class{PedigreeMetadata} object. \\
+        fileme & Writes the metada stored in the \class{PedigreeMetadata} object to disc. \\
+        nud & Returns the number of unique dams in the pedigree along with a list of the dams. \\
+        nuf & Returns the number of unique founders in the pedigree along with a list of the founders. \\
+        nug & Returns the number of unique generations in the pedigree along with a list of the generations. \\
+        nuherds & Returns the number of unique herds in the pedigree along with a list of the herds. \\
+        nus & Returns the number of unique sires in the pedigree along with a list of the sires. \\
+        nuy & Returns the number of unique birth years in the pedigree along with a list of the birth years. \\
+        printme & Prints a summary of the pedigree metadata stored in the \class{PedigreeMetadata} object. \\
+        stringme & Returns a summary of the pedigree metadata stored in the \class{PedigreeMetadata} object as a string. \\
+    \end{xtabular}
+\end{center}
+\section{The NewAMatrix Class}
+\label{sec:objects-amatrix-objects}
+\index{PyPedal objects!AMatrix objects}
+The \class{NewAMatrix} class provides an instance of a numerator relationship matrix as a NumPy array of floats with some convenience methods.  The idea here is to provide a wrapper around a NRM so that it is easier to work with.  For large pedigrees it can take a long time to compute the elements of A, so there is real value in providing an easy way to save and retrieve a NRM once it has been formed.
+\begin{center}
+    \tablecaption{Attributes of \class{NewAMatrix} objects.}
+    \tablefirsthead{\hline Attribute & Default & Description \\ \hline}
+    \tablehead{\hline Attribute & Default & Description \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-amatrix-attributes}
+    \begin{xtabular}{l|l|p{4in}}
+        kw & \texttt{kw} & Keyword dictionary. \\
+        nrm & \texttt{None} & A numerator relationship matrix; exists only after the \function{form\_a\_matrix} method has been called. \\
+    \end{xtabular}
+\end{center}
+The methods of \class{NewAMatrix} objects are listed in Table \ref{tbl:objects-amatrix-methods}.
+\begin{center}
+    \tablecaption{Methods of \class{NewAMatrix} objects.}
+    \tablefirsthead{\hline Method & Description \\ \hline}
+    \tablehead{\hline Method & Description \\ \hline}
+    \tabletail{\hline \multicolumn{2}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:objects-amatrix-methods}
+    \begin{xtabular}{l|p{4in}}
+        \_\_init\_\_ & Initializes and returns a \class{NewAMatrix} object. \\
+        form\_a\_matrix & Calls \function{pyp\_nrm.fast\_a\_matrix()} or \function{pyp\_nrm.fast\_a\_matrix\_r()} to form a NRM from a pedigree. \\
+        info & Uses the NRM's \method{info()} method to dump some information about the NRM. This is useful for debugging. \\
+        load & Uses the NumPy function \function{fromfile{}} to load an array from a binary file.  If the load is successful, self.nrm contains the matrix. \\
+        save & Uses the NRM's \method{tofile()} method to save an array to either a text or binary file. \\
+        printme & Prints the NRM to the screen. \\
+    \end{xtabular}
+\end{center}

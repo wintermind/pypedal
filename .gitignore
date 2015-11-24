@@ -69,3 +69,8 @@ pip-delete-this-directory.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+PyPedal/.idea/
+
+# Things that aren't mine
+PyPedal/tests/
+PyPedal/research/

@@ -1,0 +1,248 @@
+% This file was converted from HTML to LaTeX with
+% Tomasz Wegrzanowski's <maniek@beer.com> gnuhtml2latex program
+% Version : 0.1
+\documentclass{article}
+\begin{document}
+
+\section*{The pyp\_classes Module}
+\par pyp\_classes contains two base classes that are used by PyPedal, the Animal() class
+and the Pedigree() class.  What most PyPedal routines recognize as a pedigree is
+actually just a Python list of Animal() objects.  An instance of a Pedigree() object
+is a collection of METADATA about a list of Animals().  I know that this is confusing,
+and it is going to change by the time that PyPedal 2.0.0 final is released.
+\begin{description}
+\item[\textbf{Animal(animalID, sireID, damID, gen='0', by=1900, sex='u', fa=0., name='u', alleles=['', ''], breed='u', age=-999, alive=-999)} (class) [\#]
+]
+\par The Animal() class is holds animals records read from a pedigree file.
+\par For more information about this class, see \textit{The Animal Class}.
+
+\item[\textbf{Pedigree(myped, inputfile, name, pedcode='asd', reord=0, renum=0, debug=0)} (class) [\#]
+]
+\par The Pedigree() class stores metadata about pedigrees.
+\par For more information about this class, see \textit{The Pedigree Class}.
+
+\end{description}
+\subsection*{The Animal Class}
+\begin{description}
+\item[\textbf{Animal(animalID, sireID, damID, gen='0', by=1900, sex='u', fa=0., name='u', alleles=['', ''], breed='u', age=-999, alive=-999)} (class) [\#]
+]
+\par The Animal() class is holds animals records read from a pedigree file.
+
+\item[\textbf{\_\_init\_\_(animalID, sireID, damID, gen='0', by=1900, sex='u', fa=0., name='u', alleles=['', ''], breed='u', age=-999, alive=-999)} ⇒ object [\#]
+]
+\par \_\_init\_\_() initializes an Animal() object.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Animal() object
+\item[\textit{animalID}
+]
+Animal ID number
+\item[\textit{sireID}
+]
+Sire ID number
+\item[\textit{damID}
+]
+Dam ID number
+\item[\textit{gen}
+]
+Generation to which the animal belongs
+\item[\textit{by}
+]
+Birthyear of the animal
+\item[\textit{sex}
+]
+Sex of the animal (m|f|u)
+\item[\textit{fa}
+]
+Coefficient of inbreeding of the animal
+\item[\textit{name}
+]
+Name of animal
+\item[\textit{alleles}
+]
+A two-element array of strings, which represent allelotypes.
+\item[\textit{breed}
+]
+Breed of animal
+\item[\textit{age}
+]
+Age of animal
+\item[\textit{alive}
+]
+Status of animal (alive or dead)
+\item[Returns:
+]
+An instance of an Animal() object populated with data
+\end{description}\\
+
+\item[\textbf{pad\_id()} ⇒ integer [\#]
+]
+\par pad\_id() takes an Animal ID, pads it to fifteen digits, and prepends the birthyear
+(or 1950 if the birth year is unknown).  The order of elements is: birthyear, animalID,
+count of zeros, zeros.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Animal() object
+\item[Returns:
+]
+A padded ID number that is supposed to be unique across animals
+\end{description}\\
+
+\item[\textbf{printme()} [\#]
+]
+\par printme() prints a summary of the data stored in the Animal() object.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Animal() object
+\end{description}\\
+
+\item[\textbf{stringme()} [\#]
+]
+\par stringme() returns a summary of the data stored in the Animal() object
+as a string.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Animal() object
+\end{description}\\
+
+\item[\textbf{trap()} [\#]
+]
+\par trap() checks for common errors in Animal() objects
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Animal() object
+\end{description}\\
+
+\end{description}
+\subsection*{The Pedigree Class}
+\begin{description}
+\item[\textbf{Pedigree(myped, inputfile, name, pedcode='asd', reord=0, renum=0, debug=0)} (class) [\#]
+]
+\par The Pedigree() class stores metadata about pedigrees.  Hopefully this will help improve performance in some procedures,
+as well as provide some useful summary data.
+
+\item[\textbf{\_\_init\_\_(myped, inputfile, name, pedcode='asd', reord=0, renum=0, debug=0)} ⇒ object [\#]
+]
+\par \_\_init\_\_() initializes a Pedigree metata object.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\item[\textit{myped}
+]
+A PyPedal pedigree
+\item[\textit{inputfile}
+]
+The name of the file from which the pedigree was loaded
+\item[\textit{name}
+]
+The name assigned to the PyPedal pedigree
+\item[\textit{pedcode}
+]
+The format code for the PyPedal pedigree
+\item[\textit{reord}
+]
+Flag indicating whether or not the pedigree is reordered (0|1)
+\item[\textit{renum}
+]
+Flag indicating whether or not the pedigree is renumbered (0|1)
+\item[Returns:
+]
+An instance of a Pedigree() object populated with data
+\end{description}\\
+
+\item[\textbf{fileme()} [\#]
+]
+\par fileme() writes the metada stored in the Pedigree() object to disc.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\end{description}\\
+
+\item[\textbf{nud()} ⇒ integer-and-list [\#]
+]
+\par nud() returns the number of unique dams in the pedigree along with a list of the dams
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\item[Returns:
+]
+The number of unique dams in the pedigree and a list of those dams
+\end{description}\\
+
+\item[\textbf{nuf()} ⇒ integer-and-list [\#]
+]
+\par nuf() returns the number of unique founders in the pedigree along with a list of the founders
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\item[Returns:
+]
+The number of unique founders in the pedigree and a list of those founders
+\end{description}\\
+
+\item[\textbf{nug()} ⇒ integer-and-list [\#]
+]
+\par nug() returns the number of unique generations in the pedigree along with a list of the generations
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\item[Returns:
+]
+The number of unique generations in the pedigree and a list of those generations
+\end{description}\\
+
+\item[\textbf{nus()} ⇒ integer-and-list [\#]
+]
+\par nus() returns the number of unique sires in the pedigree along with a list of the sires
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\item[Returns:
+]
+The number of unique sires in the pedigree and a list of those sires
+\end{description}\\
+
+\item[\textbf{nuy()} ⇒ integer-and-list [\#]
+]
+\par nuy() returns the number of unique birthyears in the pedigree along with a list of the birthyears
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\item[Returns:
+]
+The number of unique birthyears in the pedigree and a list of those birthyears
+\end{description}\\
+
+\item[\textbf{printme()} [\#]
+]
+\par printme() prints a summary of the metadata stored in the Pedigree() object.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\end{description}\\
+
+\item[\textbf{stringme()} [\#]
+]
+\par stringme() returns a summary of the metadata stored in the pedigree as
+a string.
+\begin{description}
+\item[\textit{self}
+]
+Reference to the current Pedigree() object
+\end{description}\\
+
+\end{description}
+\end{document}

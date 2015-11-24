@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_metrics Module</title>
+</head>
+<body>
+<h1>The pyp_metrics Module</h1>
+<p>pyp_metrics contains a set of procedures for calculating metrics on PyPedal
+pedigree objects.  These metrics include coefficients of inbreeding and
+relationship as well as effective founder number, effective population size,
+and effective ancestor number.</p>
+<dl>
+<dt><a id='pyp_metrics.a_coefficients-function' name='pyp_metrics.a_coefficients-function'><b>a_coefficients(pedobj, a='', method='nrm')</b></a> &rArr; dictionary [<a href='#pyp_metrics.a_coefficients-function'>#</a>]</dt>
+<dd>
+<p>a_coefficients() writes population average coefficients of inbreeding and
+relationship to a file, as well as individual animal IDs and coefficients of
+inbreeding.  Some pedigrees are too large for fast_a_matrix() or fast_a_matrix_r()
+-- an array that large cannot be allocated due to memory restrictions -- and will
+result in a value of -999.9 for all outputs.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>a</i></dt>
+<dd>
+A numerator relationship matrix (optional).</dd>
+<dt><i>method</i></dt>
+<dd>
+If no relationship matrix is passed, determines which procedure should be called to build one (nrm|frm).</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of non-zero individual inbreeding coefficients.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.a_effective_ancestors_definite-function' name='pyp_metrics.a_effective_ancestors_definite-function'><b>a_effective_ancestors_definite(pedobj, a='', gen='')</b></a> &rArr; float [<a href='#pyp_metrics.a_effective_ancestors_definite-function'>#</a>]</dt>
+<dd>
+<p>a_effective_ancestors_definite() uses the algorithm in Appendix B of Boichard et al.
+(1996) to compute the effective ancestor number for a myped pedigree.
+NOTE: One problem here is that if you pass a pedigree WITHOUT generations and error
+is not thrown.  You simply end up wth a list of generations that contains the default
+value for Animal() objects, 0.
+Boichard's algorithm requires information about the GENERATION of animals.  If you
+do not provide an input pedigree with generations things may not work.  By default
+the most recent generation -- the generation with the largest generation ID -- will
+be used as the reference population.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>a</i></dt>
+<dd>
+A numerator relationship matrix (optional).</dd>
+<dt><i>gen</i></dt>
+<dd>
+Generation of interest.</dd>
+<dt>Returns:</dt>
+<dd>
+The effective ancestor number.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.a_effective_ancestors_indefinite-function' name='pyp_metrics.a_effective_ancestors_indefinite-function'><b>a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25)</b></a> &rArr; float [<a href='#pyp_metrics.a_effective_ancestors_indefinite-function'>#</a>]</dt>
+<dd>
+<p>a_effective_ancestors_indefinite() uses the approach outlined on pages 9 and 10 of
+Boichard et al. (1996) to compute approximate upper and lower bounds for f_a.  This
+is much more tractable for large pedigrees than the exact computation provided in
+a_effective_ancestors_definite().
+NOTE: One problem here is that if you pass a pedigree WITHOUT generations and error
+is not thrown.  You simply end up wth a list of generations that contains the default
+value for Animal() objects, 0.
+NOTE: If you pass a value of n that is greater than the actual number of ancestors in
+the pedigree then strange things happen.  As a stop-gap, a_effective_ancestors_indefinite()
+will detect that case and replace n with the number of founders - 1.
+Boichard's algorithm requires information about the GENERATION of animals.  If you
+do not provide an input pedigree with generations things may not work.  By default
+the most recent generation -- the generation with the largest generation ID -- will
+be used as the reference population.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>a</i></dt>
+<dd>
+A numerator relationship matrix (optional).</dd>
+<dt><i>gen</i></dt>
+<dd>
+Generation of interest.</dd>
+<dt>Returns:</dt>
+<dd>
+The effective ancestor number.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.a_effective_founders_boichard-function' name='pyp_metrics.a_effective_founders_boichard-function'><b>a_effective_founders_boichard(pedobj, a='', gen='')</b></a> &rArr; float [<a href='#pyp_metrics.a_effective_founders_boichard-function'>#</a>]</dt>
+<dd>
+<p>a_effective_founders_boichard() uses the algorithm in Appendix A of Boichard et al.
+(1996) to compute the effective founder number for myped.  Note that results from
+this function will not necessarily match those from a_effective_founders_lacy().
+Boichard's algorithm requires information about the GENERATION of animals.  If you
+do not provide an input pedigree with generations things may not work.  By default
+the most recent generation -- the generation with the largest generation ID -- will
+be used as the reference population.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>a</i></dt>
+<dd>
+A numerator relationship matrix (optional).</dd>
+<dt><i>gen</i></dt>
+<dd>
+Generation of interest.</dd>
+<dt>Returns:</dt>
+<dd>
+The effective founder number.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.a_effective_founders_lacy-function' name='pyp_metrics.a_effective_founders_lacy-function'><b>a_effective_founders_lacy(pedobj, a='')</b></a> &rArr; dictionary [<a href='#pyp_metrics.a_effective_founders_lacy-function'>#</a>]</dt>
+<dd>
+<p>a_effective_founders_lacy() calculates the number of effective founders in a
+pedigree using the exact method of Lacy.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>a</i></dt>
+<dd>
+A numerator relationship matrix (optional).</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of results, including the effective founder number.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.ballou_ancestral_inbreeding-function' name='pyp_metrics.ballou_ancestral_inbreeding-function'><b>ballou_ancestral_inbreeding(pedobj)</b></a> &rArr; dictionary [<a href='#pyp_metrics.ballou_ancestral_inbreeding-function'>#</a>]</dt>
+<dd>
+<p>ballou_ancestral_inbreeding() calculates ancestral inbreeding,
+the probability of an individual inheriting an allele that has
+undergone inbreeding in the past at least once, using the method
+of Ballou (1997).</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of ancestral inbreeding coefficients keyed to animal IDs.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.common_ancestors-function' name='pyp_metrics.common_ancestors-function'><b>common_ancestors(anim_a, anim_b, pedobj)</b></a> &rArr; list [<a href='#pyp_metrics.common_ancestors-function'>#</a>]</dt>
+<dd>
+<p>common_ancestors() returns a list of the ancestors that two animals share in common.</p>
+<dl>
+<dt><i>anim_a</i></dt>
+<dd>
+The renumbered ID of the first animal, a.</dd>
+<dt><i>anim_b</i></dt>
+<dd>
+The renumbered ID of the second animal, b.</dd>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+A list of animals related to anim_a AND anim_b</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.descendants-function' name='pyp_metrics.descendants-function'><b>descendants(anid, pedobj, _desc)</b></a> &rArr; list [<a href='#pyp_metrics.descendants-function'>#</a>]</dt>
+<dd>
+<p>descendants() uses pedigree metadata to walk a pedigree and return a list of all
+of the descendants of a given animal.</p>
+<dl>
+<dt><i>anid</i></dt>
+<dd>
+An animal ID</dd>
+<dt><i>pedobj</i></dt>
+<dd>
+A Python list of  PyPedal Animal() objects.</dd>
+<dt><i>_desc</i></dt>
+<dd>
+A Python dictionary of descendants of animal anid.</dd>
+<dt>Returns:</dt>
+<dd>
+A list of descendants of anid.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.dropped_ancestral_inbreeding-function' name='pyp_metrics.dropped_ancestral_inbreeding-function'><b>dropped_ancestral_inbreeding(pedobj, rounds=100, loci=100, frequency=0.05, seed=5048665)</b></a> &rArr; dictionary [<a href='#pyp_metrics.dropped_ancestral_inbreeding-function'>#</a>]</dt>
+<dd>
+<p>dropped_ancestral_inbreeding() uses a gene dropping approach to calculate
+ancestral inbreeding, the probability of an individual inheriting an allele
+that has undergone inbreeding in the past at least once.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>rounds</i></dt>
+<dd>
+The number of times to simulate segregation through the entire pedigree.</dd>
+<dt><i>loci</i></dt>
+<dd>
+The number biallelic, unlinked loci to simulate.</dd>
+<dt><i>frequency</i></dt>
+<dd>
+The minor allele frequency.</dd>
+<dt><i>seed</i></dt>
+<dd>
+The seed for the RNG.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of ancestral inbreeding coefficients keyed to animal IDs.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.effective_founder_genomes-function' name='pyp_metrics.effective_founder_genomes-function'><b>effective_founder_genomes(pedobj, rounds=10)</b></a> &rArr; float [<a href='#pyp_metrics.effective_founder_genomes-function'>#</a>]</dt>
+<dd>
+<p>effective_founder_genomes() simulates the random segregation of founder alleles through a pedigree.
+At present only two alleles are simulated for each founder.  Summary statistics are
+computed on the most recent generation.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>rounds</i></dt>
+<dd>
+The number of times to simulate segregation through the entire pedigree.</dd>
+<dt>Returns:</dt>
+<dd>
+The effective number of founder genomes over based on 'rounds' gene-drop simulations.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.effective_founders_lacy-function' name='pyp_metrics.effective_founders_lacy-function'><b>effective_founders_lacy(pedobj)</b></a> &rArr; dictionary [<a href='#pyp_metrics.effective_founders_lacy-function'>#</a>]</dt>
+<dd>
+<p>effective_founders_lacy() calculates the number of effective founders in a pedigree
+using the exact method of Lacy.  This version of the routine a_effective_founders_lacy()
+is designed to work with larger pedigrees as it forms &quot;familywise&quot; relationship matrices
+rather than a &quot;populationwise&quot; relationship matrix.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of results, including the effective founder number.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.fast_a_coefficients-function' name='pyp_metrics.fast_a_coefficients-function'><b>fast_a_coefficients(pedobj, a='', method='nrm', debug=0, storage='dense')</b></a> &rArr; dictionary [<a href='#pyp_metrics.fast_a_coefficients-function'>#</a>]</dt>
+<dd>
+<p>a_fast_coefficients() writes population average coefficients of inbreeding and
+relationship to a file, as well as individual animal IDs and coefficients of
+inbreeding.  It returns a list of non-zero individual CoI.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>a</i></dt>
+<dd>
+A numerator relationship matrix (optional).</dd>
+<dt><i>method</i></dt>
+<dd>
+If no relationship matrix is passed, determines which procedure should be called to build one (nrm|frm).</dd>
+<dt><i>storage</i></dt>
+<dd>
+Use dense or sparse matrix storage.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of non-zero individual inbreeding coefficients.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.founder_descendants-function' name='pyp_metrics.founder_descendants-function'><b>founder_descendants(pedobj)</b></a> &rArr; dictionary [<a href='#pyp_metrics.founder_descendants-function'>#</a>]</dt>
+<dd>
+<p>founder_descendants() returns a dictionary containing a list of descendants of
+each founder in the pedigree.</p>
+<dl>
+<dt><i>pedojb</i></dt>
+<dd>
+An instance of a PyPedal NewPedigree object.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.generation_intervals-function' name='pyp_metrics.generation_intervals-function'><b>generation_intervals(pedobj, units='y')</b></a> &rArr; dictionary [<a href='#pyp_metrics.generation_intervals-function'>#</a>]</dt>
+<dd>
+<p>generation_intervals() computes the average age of parents at the time of
+birth of their first (oldest) offspring.  This is implies that selection
+decisions are made at the time of birth of the first offspring.  Average
+ages are computed for each of four paths: sire-son, sire-daughter, dam-son,
+and dam-daughter.  An overall mean is computed, as well.  IT IS IMPORTANT
+to note that if you DO NOT provide birthyears in your pedigree file that the
+returned dictionary will contain only zeroes!  This is because when no birthyear
+is provided a default value (1900) is assigned to all animals in the pedigree.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>units</i></dt>
+<dd>
+A character indicating the units in which the generation lengths should be returned.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary containing the five average ages.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.generation_intervals_all-function' name='pyp_metrics.generation_intervals_all-function'><b>generation_intervals_all(pedobj, units='y')</b></a> &rArr; dictionary [<a href='#pyp_metrics.generation_intervals_all-function'>#</a>]</dt>
+<dd>
+<p>generation_intervals_all() computes the average age of parents at the time of
+birth of their offspring.  The computation is made using birth years for all
+known offspring of sires and dams, which implies discrete generations.  Average
+ages are computed for each of four paths: sire-son, sire-daughter, dam-son, and
+dam-daughter.  An overall mean is computed, as well. IT IS IMPORTANT to note that
+if you DO NOT provide birthyears in your pedigree file that the returned dictionary
+will contain only zeroes!  This is because when no birthyear is provided a default
+value (1900) is assigned to all animals in the pedigree.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>units</i></dt>
+<dd>
+A character indicating the units in which the generation lengths should be returned.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary containing the five average ages.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.mating_coi-function' name='pyp_metrics.mating_coi-function'><b>mating_coi(anim_a, anim_b, pedobj, gens=0)</b></a> &rArr; float [<a href='#pyp_metrics.mating_coi-function'>#</a>]</dt>
+<dd>
+<p>mating_coi() returns the coefficient of inbreeding of offspring of a
+mating between two animals, anim_a and anim_b.</p>
+<dl>
+<dt><i>anim_a</i></dt>
+<dd>
+The renumbered ID of an animal, a.</dd>
+<dt><i>anim_b</i></dt>
+<dd>
+The renumbered ID of an animal, b.</dd>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>gens</i></dt>
+<dd>
+The number of generations from the pedigree to be used for calculating CoI.  By default, gens=-1, which uses the complete pedigree.</dd>
+<dt>Returns:</dt>
+<dd>
+The coefficient of inbreeding of the offpsring of anim_a and anim_b</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.mating_coi_group-function' name='pyp_metrics.mating_coi_group-function'><b>mating_coi_group(matings, pedobj, names=0, gens=0)</b></a> &rArr; dictionary [<a href='#pyp_metrics.mating_coi_group-function'>#</a>]</dt>
+<dd>
+<p>mating_coi_group() returns the coefficients of inbreeding of offspring
+of a series of matings, as well as a list of minimum-inbreeding matings.</p>
+<dl>
+<dt><i>matings</i></dt>
+<dd>
+A dictionary</dd>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>names</i></dt>
+<dd>
+Indicates if the identifiers in 'matings' are names or animalIDs</dd>
+<dt><i>gens</i></dt>
+<dd>
+The number of generations from the pedigree to be used for calculating CoI.  By default, gens=-1, which uses the complete pedigree.</dd>
+<dt>Returns:</dt>
+<dd>
+he coefficient of inbreeding of the offpsring of anim_a and anim_b</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.min_max_f-function' name='pyp_metrics.min_max_f-function'><b>min_max_f(pedobj, a='', n=10, forma='dense')</b></a> &rArr; list [<a href='#pyp_metrics.min_max_f-function'>#</a>]</dt>
+<dd>
+<p>min_max_f() takes a pedigree and returns a list of the individuals with the n
+largest and n smallest coefficients of inbreeding.  Individuals with CoI of
+zero are not included.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>a</i></dt>
+<dd>
+A numerator relationship matrix (optional).</dd>
+<dt><i>n</i></dt>
+<dd>
+An integer (optional, default is 10).</dd>
+<dt><i>forma</i></dt>
+<dd>
+If A must be formed should dense or sparse matrices be used?</dd>
+<dt>Returns:</dt>
+<dd>
+Lists of the individuals with the n largest and the  n smallest CoI in the pedigree as (ID, CoI) tuples.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.pedigree_completeness-function' name='pyp_metrics.pedigree_completeness-function'><b>pedigree_completeness(pedobj, gens=4)</b></a> &rArr; dictionary [<a href='#pyp_metrics.pedigree_completeness-function'>#</a>]</dt>
+<dd>
+<p>pedigree_completeness() computes the proportion of known ancestors in the pedigree of
+each animal in the population for a user-determined number of generations.    Also,
+the mean pedcomps for all animals and for all animals that are not founders are
+computed as summary statistics.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>gens</i></dt>
+<dd>
+The number of generations the pedigree should be traced for completeness.</dd>
+<dt>Returns:</dt>
+<dd>
+Dictionary of summary statistics</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.related_animals-function' name='pyp_metrics.related_animals-function'><b>related_animals(anim, pedobj)</b></a> &rArr; list [<a href='#pyp_metrics.related_animals-function'>#</a>]</dt>
+<dd>
+<p>related_animals() returns a list of the ancestors of an animal.</p>
+<dl>
+<dt><i>anim_a</i></dt>
+<dd>
+The renumbered ID of an animal, a.</dd>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+A list of animals related to anim_a</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.relationship-function' name='pyp_metrics.relationship-function'><b>relationship(anim_a, anim_b, pedobj)</b></a> &rArr; float [<a href='#pyp_metrics.relationship-function'>#</a>]</dt>
+<dd>
+<p>relationship() returns the coefficient of relationship for two
+animals, anim_a and anim_b.</p>
+<dl>
+<dt><i>anim_a</i></dt>
+<dd>
+The renumbered ID of an animal, a.</dd>
+<dt><i>anim_b</i></dt>
+<dd>
+The renumbered ID of an animal, b.</dd>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+The coefficient of relationship of anim_a and anim_b</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_metrics.theoretical_ne_from_metadata-function' name='pyp_metrics.theoretical_ne_from_metadata-function'><b>theoretical_ne_from_metadata(pedobj)</b></a> &rArr; integer [<a href='#pyp_metrics.theoretical_ne_from_metadata-function'>#</a>]</dt>
+<dd>
+<p>theoretical_ne_from_metadata() computes the theoretical effective population
+size based on the number of sires and dams contained in a pedigree metadata
+object.  Writes results to an output file.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+True (1) on success, false (0) on failure</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>

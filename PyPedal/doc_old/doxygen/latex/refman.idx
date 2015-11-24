@@ -1,0 +1,578 @@
+\indexentry{pyp_demog@{pyp\_\discretionary {-}{}{}demog}|hyperpage}{7}
+\indexentry{PyPedal@{PyPedal}|hyperpage}{8}
+\indexentry{PyPedal::__version__@{PyPedal::\_\discretionary {-}{}{}\_\discretionary {-}{}{}version\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{9}
+\indexentry{PyPedal::depgraph2dot@{PyPedal::depgraph2dot}|hyperpage}{10}
+\indexentry{PyPedal::deps@{PyPedal::deps}|hyperpage}{11}
+\indexentry{PyPedal::dict4ini@{PyPedal::dict4ini}|hyperpage}{12}
+\indexentry{PyPedal::odict@{PyPedal::odict}|hyperpage}{13}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__deepcopy__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}deepcopy\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{14}
+\indexentry{__deepcopy__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}deepcopy\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{14}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__delitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}delitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{14}
+\indexentry{__delitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}delitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{14}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__eq__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}eq\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{15}
+\indexentry{__eq__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}eq\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{15}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__ge__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}ge\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{15}
+\indexentry{__ge__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}ge\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{15}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__getattr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getattr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{15}
+\indexentry{__getattr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getattr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{15}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{15}
+\indexentry{__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{15}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__gt__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}gt\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{16}
+\indexentry{__gt__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}gt\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{16}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__le__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}le\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{16}
+\indexentry{__le__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}le\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{16}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__lt__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}lt\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{16}
+\indexentry{__lt__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}lt\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{16}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__ne__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}ne\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{17}
+\indexentry{__ne__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}ne\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{17}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__repr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}repr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{17}
+\indexentry{__repr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}repr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{17}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__setattr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setattr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{17}
+\indexentry{__setattr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setattr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{17}
+\indexentry{PyPedal::odict@{PyPedal::odict}!__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{17}
+\indexentry{__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict@{PyPedal::odict}|hyperpage}{17}
+\indexentry{PyPedal::odict@{PyPedal::odict}!clear@{clear}|hyperpage}{19}
+\indexentry{clear@{clear}!PyPedal::odict@{PyPedal::odict}|hyperpage}{19}
+\indexentry{PyPedal::odict@{PyPedal::odict}!copy@{copy}|hyperpage}{19}
+\indexentry{copy@{copy}!PyPedal::odict@{PyPedal::odict}|hyperpage}{19}
+\indexentry{PyPedal::odict@{PyPedal::odict}!index@{index}|hyperpage}{19}
+\indexentry{index@{index}!PyPedal::odict@{PyPedal::odict}|hyperpage}{19}
+\indexentry{PyPedal::odict@{PyPedal::odict}!insert@{insert}|hyperpage}{19}
+\indexentry{insert@{insert}!PyPedal::odict@{PyPedal::odict}|hyperpage}{19}
+\indexentry{PyPedal::odict@{PyPedal::odict}!items@{items}|hyperpage}{20}
+\indexentry{items@{items}!PyPedal::odict@{PyPedal::odict}|hyperpage}{20}
+\indexentry{PyPedal::odict@{PyPedal::odict}!iteritems@{iteritems}|hyperpage}{20}
+\indexentry{iteritems@{iteritems}!PyPedal::odict@{PyPedal::odict}|hyperpage}{20}
+\indexentry{PyPedal::odict@{PyPedal::odict}!iterkeys@{iterkeys}|hyperpage}{20}
+\indexentry{iterkeys@{iterkeys}!PyPedal::odict@{PyPedal::odict}|hyperpage}{20}
+\indexentry{PyPedal::odict@{PyPedal::odict}!itervalues@{itervalues}|hyperpage}{20}
+\indexentry{itervalues@{itervalues}!PyPedal::odict@{PyPedal::odict}|hyperpage}{20}
+\indexentry{PyPedal::odict@{PyPedal::odict}!keys@{keys}|hyperpage}{21}
+\indexentry{keys@{keys}!PyPedal::odict@{PyPedal::odict}|hyperpage}{21}
+\indexentry{PyPedal::odict@{PyPedal::odict}!pop@{pop}|hyperpage}{21}
+\indexentry{pop@{pop}!PyPedal::odict@{PyPedal::odict}|hyperpage}{21}
+\indexentry{PyPedal::odict@{PyPedal::odict}!popitem@{popitem}|hyperpage}{21}
+\indexentry{popitem@{popitem}!PyPedal::odict@{PyPedal::odict}|hyperpage}{21}
+\indexentry{PyPedal::odict@{PyPedal::odict}!reverse@{reverse}|hyperpage}{22}
+\indexentry{reverse@{reverse}!PyPedal::odict@{PyPedal::odict}|hyperpage}{22}
+\indexentry{PyPedal::odict@{PyPedal::odict}!setdefault@{setdefault}|hyperpage}{22}
+\indexentry{setdefault@{setdefault}!PyPedal::odict@{PyPedal::odict}|hyperpage}{22}
+\indexentry{PyPedal::odict@{PyPedal::odict}!setitems@{setitems}|hyperpage}{22}
+\indexentry{setitems@{setitems}!PyPedal::odict@{PyPedal::odict}|hyperpage}{22}
+\indexentry{PyPedal::odict@{PyPedal::odict}!setkeys@{setkeys}|hyperpage}{23}
+\indexentry{setkeys@{setkeys}!PyPedal::odict@{PyPedal::odict}|hyperpage}{23}
+\indexentry{PyPedal::odict@{PyPedal::odict}!setvalues@{setvalues}|hyperpage}{23}
+\indexentry{setvalues@{setvalues}!PyPedal::odict@{PyPedal::odict}|hyperpage}{23}
+\indexentry{PyPedal::odict@{PyPedal::odict}!sort@{sort}|hyperpage}{23}
+\indexentry{sort@{sort}!PyPedal::odict@{PyPedal::odict}|hyperpage}{23}
+\indexentry{PyPedal::odict@{PyPedal::odict}!update@{update}|hyperpage}{24}
+\indexentry{update@{update}!PyPedal::odict@{PyPedal::odict}|hyperpage}{24}
+\indexentry{PyPedal::odict@{PyPedal::odict}!values@{values}|hyperpage}{24}
+\indexentry{values@{values}!PyPedal::odict@{PyPedal::odict}|hyperpage}{24}
+\indexentry{PyPedal::py2depgraph@{PyPedal::py2depgraph}|hyperpage}{25}
+\indexentry{PyPedal::pyp_classes@{PyPedal::pyp\_\discretionary {-}{}{}classes}|hyperpage}{26}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{27}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!createPedigreeDatabase@{createPedigreeDatabase}|hyperpage}{27}
+\indexentry{createPedigreeDatabase@{createPedigreeDatabase}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{27}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!createPedigreeTable@{createPedigreeTable}|hyperpage}{27}
+\indexentry{createPedigreeTable@{createPedigreeTable}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{27}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!databaseQuery@{databaseQuery}|hyperpage}{28}
+\indexentry{databaseQuery@{databaseQuery}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{28}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!getCursor@{getCursor}|hyperpage}{28}
+\indexentry{getCursor@{getCursor}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{28}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!getCursorSQA@{getCursorSQA}|hyperpage}{29}
+\indexentry{getCursorSQA@{getCursorSQA}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{29}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!loadPedigreeTable@{loadPedigreeTable}|hyperpage}{29}
+\indexentry{loadPedigreeTable@{loadPedigreeTable}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{29}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!tableCountRows@{tableCountRows}|hyperpage}{30}
+\indexentry{tableCountRows@{tableCountRows}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{30}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!tableDropRows@{tableDropRows}|hyperpage}{30}
+\indexentry{tableDropRows@{tableDropRows}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{30}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!tableDropTable@{tableDropTable}|hyperpage}{30}
+\indexentry{tableDropTable@{tableDropTable}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{30}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!tableExists@{tableExists}|hyperpage}{31}
+\indexentry{tableExists@{tableExists}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{31}
+\indexentry{PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}!tableExistsSQA@{tableExistsSQA}|hyperpage}{31}
+\indexentry{tableExistsSQA@{tableExistsSQA}!PyPedal::pyp_db@{PyPedal::pyp\_\discretionary {-}{}{}db}|hyperpage}{31}
+\indexentry{PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}|hyperpage}{33}
+\indexentry{PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}!age_distribution@{age\_\discretionary {-}{}{}distribution}|hyperpage}{33}
+\indexentry{age_distribution@{age\_\discretionary {-}{}{}distribution}!PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}|hyperpage}{33}
+\indexentry{PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}!founders_by_year@{founders\_\discretionary {-}{}{}by\_\discretionary {-}{}{}year}|hyperpage}{33}
+\indexentry{founders_by_year@{founders\_\discretionary {-}{}{}by\_\discretionary {-}{}{}year}!PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}|hyperpage}{33}
+\indexentry{PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}!set_age_units@{set\_\discretionary {-}{}{}age\_\discretionary {-}{}{}units}|hyperpage}{34}
+\indexentry{set_age_units@{set\_\discretionary {-}{}{}age\_\discretionary {-}{}{}units}!PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}|hyperpage}{34}
+\indexentry{PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}!set_base_year@{set\_\discretionary {-}{}{}base\_\discretionary {-}{}{}year}|hyperpage}{34}
+\indexentry{set_base_year@{set\_\discretionary {-}{}{}base\_\discretionary {-}{}{}year}!PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}|hyperpage}{34}
+\indexentry{PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}!sex_ratio@{sex\_\discretionary {-}{}{}ratio}|hyperpage}{34}
+\indexentry{sex_ratio@{sex\_\discretionary {-}{}{}ratio}!PyPedal::pyp_demog@{PyPedal::pyp\_\discretionary {-}{}{}demog}|hyperpage}{34}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{36}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!draw_pedigree@{draw\_\discretionary {-}{}{}pedigree}|hyperpage}{36}
+\indexentry{draw_pedigree@{draw\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{36}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!new_draw_pedigree@{new\_\discretionary {-}{}{}draw\_\discretionary {-}{}{}pedigree}|hyperpage}{37}
+\indexentry{new_draw_pedigree@{new\_\discretionary {-}{}{}draw\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{37}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!pcolor_matrix_pylab@{pcolor\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pylab}|hyperpage}{38}
+\indexentry{pcolor_matrix_pylab@{pcolor\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pylab}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{38}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!plot_founders_by_year@{plot\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}by\_\discretionary {-}{}{}year}|hyperpage}{39}
+\indexentry{plot_founders_by_year@{plot\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}by\_\discretionary {-}{}{}year}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{39}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!plot_founders_pct_by_year@{plot\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}pct\_\discretionary {-}{}{}by\_\discretionary {-}{}{}year}|hyperpage}{39}
+\indexentry{plot_founders_pct_by_year@{plot\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}pct\_\discretionary {-}{}{}by\_\discretionary {-}{}{}year}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{39}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!plot_line_xy@{plot\_\discretionary {-}{}{}line\_\discretionary {-}{}{}xy}|hyperpage}{40}
+\indexentry{plot_line_xy@{plot\_\discretionary {-}{}{}line\_\discretionary {-}{}{}xy}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{40}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!rmuller_get_color@{rmuller\_\discretionary {-}{}{}get\_\discretionary {-}{}{}color}|hyperpage}{40}
+\indexentry{rmuller_get_color@{rmuller\_\discretionary {-}{}{}get\_\discretionary {-}{}{}color}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{40}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!rmuller_pcolor_matrix_pil@{rmuller\_\discretionary {-}{}{}pcolor\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pil}|hyperpage}{40}
+\indexentry{rmuller_pcolor_matrix_pil@{rmuller\_\discretionary {-}{}{}pcolor\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pil}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{40}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!rmuller_spy_matrix_pil@{rmuller\_\discretionary {-}{}{}spy\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pil}|hyperpage}{41}
+\indexentry{rmuller_spy_matrix_pil@{rmuller\_\discretionary {-}{}{}spy\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pil}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{41}
+\indexentry{PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}!spy_matrix_pylab@{spy\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pylab}|hyperpage}{41}
+\indexentry{spy_matrix_pylab@{spy\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}pylab}!PyPedal::pyp_graphics@{PyPedal::pyp\_\discretionary {-}{}{}graphics}|hyperpage}{41}
+\indexentry{PyPedal::pyp_gui@{PyPedal::pyp\_\discretionary {-}{}{}gui}|hyperpage}{43}
+\indexentry{PyPedal::pyp_gui_graphs@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}graphs}|hyperpage}{44}
+\indexentry{PyPedal::pyp_gui_metrics@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}metrics}|hyperpage}{45}
+\indexentry{PyPedal::pyp_gui_utils@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}utils}|hyperpage}{46}
+\indexentry{PyPedal::pyp_gui_utils@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}utils}!PyPedalShowErrorDialog@{PyPedalShowErrorDialog}|hyperpage}{46}
+\indexentry{PyPedalShowErrorDialog@{PyPedalShowErrorDialog}!PyPedal::pyp_gui_utils@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}utils}|hyperpage}{46}
+\indexentry{PyPedal::pyp_gui_utils@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}utils}!UtilsViewLog@{UtilsViewLog}|hyperpage}{46}
+\indexentry{UtilsViewLog@{UtilsViewLog}!PyPedal::pyp_gui_utils@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}utils}|hyperpage}{46}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{48}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!a_inverse_from_file@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}from\_\discretionary {-}{}{}file}|hyperpage}{48}
+\indexentry{a_inverse_from_file@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}from\_\discretionary {-}{}{}file}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{48}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!a_inverse_to_file@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}to\_\discretionary {-}{}{}file}|hyperpage}{48}
+\indexentry{a_inverse_to_file@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}to\_\discretionary {-}{}{}file}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{48}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!dissertation_pedigree_to_file@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}file}|hyperpage}{49}
+\indexentry{dissertation_pedigree_to_file@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}file}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{49}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!dissertation_pedigree_to_pedig_format@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}pedig\_\discretionary {-}{}{}format}|hyperpage}{49}
+\indexentry{dissertation_pedigree_to_pedig_format@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}pedig\_\discretionary {-}{}{}format}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{49}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!dissertation_pedigree_to_pedig_format_mask@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}pedig\_\discretionary {-}{}{}format\_\discretionary {-}{}{}mask}|hyperpage}{50}
+\indexentry{dissertation_pedigree_to_pedig_format_mask@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}pedig\_\discretionary {-}{}{}format\_\discretionary {-}{}{}mask}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{50}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!dissertation_pedigree_to_pedig_interest_format@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}pedig\_\discretionary {-}{}{}interest\_\discretionary {-}{}{}format}|hyperpage}{50}
+\indexentry{dissertation_pedigree_to_pedig_interest_format@{dissertation\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}pedig\_\discretionary {-}{}{}interest\_\discretionary {-}{}{}format}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{50}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!load_from_gedcom@{load\_\discretionary {-}{}{}from\_\discretionary {-}{}{}gedcom}|hyperpage}{51}
+\indexentry{load_from_gedcom@{load\_\discretionary {-}{}{}from\_\discretionary {-}{}{}gedcom}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{51}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!pickle_pedigree@{pickle\_\discretionary {-}{}{}pedigree}|hyperpage}{51}
+\indexentry{pickle_pedigree@{pickle\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{51}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!pyp_file_footer@{pyp\_\discretionary {-}{}{}file\_\discretionary {-}{}{}footer}|hyperpage}{52}
+\indexentry{pyp_file_footer@{pyp\_\discretionary {-}{}{}file\_\discretionary {-}{}{}footer}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{52}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!pyp_file_header@{pyp\_\discretionary {-}{}{}file\_\discretionary {-}{}{}header}|hyperpage}{52}
+\indexentry{pyp_file_header@{pyp\_\discretionary {-}{}{}file\_\discretionary {-}{}{}header}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{52}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!renderBodyText@{renderBodyText}|hyperpage}{52}
+\indexentry{renderBodyText@{renderBodyText}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{52}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!renderTitle@{renderTitle}|hyperpage}{52}
+\indexentry{renderTitle@{renderTitle}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{52}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!save_from_gedcom@{save\_\discretionary {-}{}{}from\_\discretionary {-}{}{}gedcom}|hyperpage}{53}
+\indexentry{save_from_gedcom@{save\_\discretionary {-}{}{}from\_\discretionary {-}{}{}gedcom}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{53}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!save_ijk@{save\_\discretionary {-}{}{}ijk}|hyperpage}{53}
+\indexentry{save_ijk@{save\_\discretionary {-}{}{}ijk}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{53}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!save_to_gedcom@{save\_\discretionary {-}{}{}to\_\discretionary {-}{}{}gedcom}|hyperpage}{53}
+\indexentry{save_to_gedcom@{save\_\discretionary {-}{}{}to\_\discretionary {-}{}{}gedcom}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{53}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!summary_inbreeding@{summary\_\discretionary {-}{}{}inbreeding}|hyperpage}{54}
+\indexentry{summary_inbreeding@{summary\_\discretionary {-}{}{}inbreeding}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{54}
+\indexentry{PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}!unpickle_pedigree@{unpickle\_\discretionary {-}{}{}pedigree}|hyperpage}{54}
+\indexentry{unpickle_pedigree@{unpickle\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_io@{PyPedal::pyp\_\discretionary {-}{}{}io}|hyperpage}{54}
+\indexentry{PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}|hyperpage}{56}
+\indexentry{PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}!color_pedigree@{color\_\discretionary {-}{}{}pedigree}|hyperpage}{56}
+\indexentry{color_pedigree@{color\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}|hyperpage}{56}
+\indexentry{PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}!draw_colored_pedigree@{draw\_\discretionary {-}{}{}colored\_\discretionary {-}{}{}pedigree}|hyperpage}{56}
+\indexentry{draw_colored_pedigree@{draw\_\discretionary {-}{}{}colored\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}|hyperpage}{56}
+\indexentry{PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}!get_color_32@{get\_\discretionary {-}{}{}color\_\discretionary {-}{}{}32}|hyperpage}{57}
+\indexentry{get_color_32@{get\_\discretionary {-}{}{}color\_\discretionary {-}{}{}32}!PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}|hyperpage}{57}
+\indexentry{PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}!new_draw_colored_pedigree@{new\_\discretionary {-}{}{}draw\_\discretionary {-}{}{}colored\_\discretionary {-}{}{}pedigree}|hyperpage}{58}
+\indexentry{new_draw_colored_pedigree@{new\_\discretionary {-}{}{}draw\_\discretionary {-}{}{}colored\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_jbc@{PyPedal::pyp\_\discretionary {-}{}{}jbc}|hyperpage}{58}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{60}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!a_coefficients@{a\_\discretionary {-}{}{}coefficients}|hyperpage}{60}
+\indexentry{a_coefficients@{a\_\discretionary {-}{}{}coefficients}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{60}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!a_effective_ancestors_definite@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}ancestors\_\discretionary {-}{}{}definite}|hyperpage}{61}
+\indexentry{a_effective_ancestors_definite@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}ancestors\_\discretionary {-}{}{}definite}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{61}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!a_effective_ancestors_indefinite@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}ancestors\_\discretionary {-}{}{}indefinite}|hyperpage}{61}
+\indexentry{a_effective_ancestors_indefinite@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}ancestors\_\discretionary {-}{}{}indefinite}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{61}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!a_effective_founders_boichard@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}boichard}|hyperpage}{62}
+\indexentry{a_effective_founders_boichard@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}boichard}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{62}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!a_effective_founders_lacy@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}lacy}|hyperpage}{63}
+\indexentry{a_effective_founders_lacy@{a\_\discretionary {-}{}{}effective\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}lacy}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{63}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!ballou_ancestral_inbreeding@{ballou\_\discretionary {-}{}{}ancestral\_\discretionary {-}{}{}inbreeding}|hyperpage}{63}
+\indexentry{ballou_ancestral_inbreeding@{ballou\_\discretionary {-}{}{}ancestral\_\discretionary {-}{}{}inbreeding}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{63}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!common_ancestors@{common\_\discretionary {-}{}{}ancestors}|hyperpage}{63}
+\indexentry{common_ancestors@{common\_\discretionary {-}{}{}ancestors}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{63}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!descendants@{descendants}|hyperpage}{64}
+\indexentry{descendants@{descendants}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{64}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!dropped_ancestral_inbreeding@{dropped\_\discretionary {-}{}{}ancestral\_\discretionary {-}{}{}inbreeding}|hyperpage}{64}
+\indexentry{dropped_ancestral_inbreeding@{dropped\_\discretionary {-}{}{}ancestral\_\discretionary {-}{}{}inbreeding}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{64}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!effective_founder_genomes@{effective\_\discretionary {-}{}{}founder\_\discretionary {-}{}{}genomes}|hyperpage}{65}
+\indexentry{effective_founder_genomes@{effective\_\discretionary {-}{}{}founder\_\discretionary {-}{}{}genomes}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{65}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!effective_founders_lacy@{effective\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}lacy}|hyperpage}{65}
+\indexentry{effective_founders_lacy@{effective\_\discretionary {-}{}{}founders\_\discretionary {-}{}{}lacy}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{65}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!fast_a_coefficients@{fast\_\discretionary {-}{}{}a\_\discretionary {-}{}{}coefficients}|hyperpage}{66}
+\indexentry{fast_a_coefficients@{fast\_\discretionary {-}{}{}a\_\discretionary {-}{}{}coefficients}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{66}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!founder_descendants@{founder\_\discretionary {-}{}{}descendants}|hyperpage}{66}
+\indexentry{founder_descendants@{founder\_\discretionary {-}{}{}descendants}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{66}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!generation_intervals@{generation\_\discretionary {-}{}{}intervals}|hyperpage}{66}
+\indexentry{generation_intervals@{generation\_\discretionary {-}{}{}intervals}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{66}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!generation_intervals_all@{generation\_\discretionary {-}{}{}intervals\_\discretionary {-}{}{}all}|hyperpage}{67}
+\indexentry{generation_intervals_all@{generation\_\discretionary {-}{}{}intervals\_\discretionary {-}{}{}all}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{67}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!mating_coi@{mating\_\discretionary {-}{}{}coi}|hyperpage}{68}
+\indexentry{mating_coi@{mating\_\discretionary {-}{}{}coi}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{68}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!mating_coi_group@{mating\_\discretionary {-}{}{}coi\_\discretionary {-}{}{}group}|hyperpage}{68}
+\indexentry{mating_coi_group@{mating\_\discretionary {-}{}{}coi\_\discretionary {-}{}{}group}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{68}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!min_max_f@{min\_\discretionary {-}{}{}max\_\discretionary {-}{}{}f}|hyperpage}{69}
+\indexentry{min_max_f@{min\_\discretionary {-}{}{}max\_\discretionary {-}{}{}f}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{69}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!pedigree_completeness@{pedigree\_\discretionary {-}{}{}completeness}|hyperpage}{69}
+\indexentry{pedigree_completeness@{pedigree\_\discretionary {-}{}{}completeness}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{69}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!related_animals@{related\_\discretionary {-}{}{}animals}|hyperpage}{70}
+\indexentry{related_animals@{related\_\discretionary {-}{}{}animals}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{70}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!relationship@{relationship}|hyperpage}{70}
+\indexentry{relationship@{relationship}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{70}
+\indexentry{PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}!theoretical_ne_from_metadata@{theoretical\_\discretionary {-}{}{}ne\_\discretionary {-}{}{}from\_\discretionary {-}{}{}metadata}|hyperpage}{70}
+\indexentry{theoretical_ne_from_metadata@{theoretical\_\discretionary {-}{}{}ne\_\discretionary {-}{}{}from\_\discretionary {-}{}{}metadata}!PyPedal::pyp_metrics@{PyPedal::pyp\_\discretionary {-}{}{}metrics}|hyperpage}{70}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{72}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!count_offspring@{count\_\discretionary {-}{}{}offspring}|hyperpage}{72}
+\indexentry{count_offspring@{count\_\discretionary {-}{}{}offspring}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{72}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!dyad_census@{dyad\_\discretionary {-}{}{}census}|hyperpage}{73}
+\indexentry{dyad_census@{dyad\_\discretionary {-}{}{}census}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{73}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!find_ancestors@{find\_\discretionary {-}{}{}ancestors}|hyperpage}{73}
+\indexentry{find_ancestors@{find\_\discretionary {-}{}{}ancestors}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{73}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!find_ancestors_g@{find\_\discretionary {-}{}{}ancestors\_\discretionary {-}{}{}g}|hyperpage}{73}
+\indexentry{find_ancestors_g@{find\_\discretionary {-}{}{}ancestors\_\discretionary {-}{}{}g}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{73}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!find_descendants@{find\_\discretionary {-}{}{}descendants}|hyperpage}{74}
+\indexentry{find_descendants@{find\_\discretionary {-}{}{}descendants}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{74}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!get_betweenness_centrality@{get\_\discretionary {-}{}{}betweenness\_\discretionary {-}{}{}centrality}|hyperpage}{74}
+\indexentry{get_betweenness_centrality@{get\_\discretionary {-}{}{}betweenness\_\discretionary {-}{}{}centrality}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{74}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!get_closeness_centrality@{get\_\discretionary {-}{}{}closeness\_\discretionary {-}{}{}centrality}|hyperpage}{75}
+\indexentry{get_closeness_centrality@{get\_\discretionary {-}{}{}closeness\_\discretionary {-}{}{}centrality}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{75}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!get_clustering_coefficient@{get\_\discretionary {-}{}{}clustering\_\discretionary {-}{}{}coefficient}|hyperpage}{75}
+\indexentry{get_clustering_coefficient@{get\_\discretionary {-}{}{}clustering\_\discretionary {-}{}{}coefficient}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{75}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!get_founder_descendants@{get\_\discretionary {-}{}{}founder\_\discretionary {-}{}{}descendants}|hyperpage}{75}
+\indexentry{get_founder_descendants@{get\_\discretionary {-}{}{}founder\_\discretionary {-}{}{}descendants}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{75}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!get_node_betweenness@{get\_\discretionary {-}{}{}node\_\discretionary {-}{}{}betweenness}|hyperpage}{76}
+\indexentry{get_node_betweenness@{get\_\discretionary {-}{}{}node\_\discretionary {-}{}{}betweenness}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{76}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!get_node_degree_histograms@{get\_\discretionary {-}{}{}node\_\discretionary {-}{}{}degree\_\discretionary {-}{}{}histograms}|hyperpage}{76}
+\indexentry{get_node_degree_histograms@{get\_\discretionary {-}{}{}node\_\discretionary {-}{}{}degree\_\discretionary {-}{}{}histograms}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{76}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!get_node_degrees@{get\_\discretionary {-}{}{}node\_\discretionary {-}{}{}degrees}|hyperpage}{77}
+\indexentry{get_node_degrees@{get\_\discretionary {-}{}{}node\_\discretionary {-}{}{}degrees}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{77}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!graph_density@{graph\_\discretionary {-}{}{}density}|hyperpage}{77}
+\indexentry{graph_density@{graph\_\discretionary {-}{}{}density}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{77}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!immediate_family@{immediate\_\discretionary {-}{}{}family}|hyperpage}{77}
+\indexentry{immediate_family@{immediate\_\discretionary {-}{}{}family}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{77}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!mean_degree_centrality@{mean\_\discretionary {-}{}{}degree\_\discretionary {-}{}{}centrality}|hyperpage}{78}
+\indexentry{mean_degree_centrality@{mean\_\discretionary {-}{}{}degree\_\discretionary {-}{}{}centrality}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{78}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!mean_geodesic@{mean\_\discretionary {-}{}{}geodesic}|hyperpage}{78}
+\indexentry{mean_geodesic@{mean\_\discretionary {-}{}{}geodesic}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{78}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!mean_value@{mean\_\discretionary {-}{}{}value}|hyperpage}{79}
+\indexentry{mean_value@{mean\_\discretionary {-}{}{}value}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{79}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!most_influential_offspring@{most\_\discretionary {-}{}{}influential\_\discretionary {-}{}{}offspring}|hyperpage}{79}
+\indexentry{most_influential_offspring@{most\_\discretionary {-}{}{}influential\_\discretionary {-}{}{}offspring}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{79}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!offspring_influence@{offspring\_\discretionary {-}{}{}influence}|hyperpage}{79}
+\indexentry{offspring_influence@{offspring\_\discretionary {-}{}{}influence}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{79}
+\indexentry{PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}!ped_to_graph@{ped\_\discretionary {-}{}{}to\_\discretionary {-}{}{}graph}|hyperpage}{80}
+\indexentry{ped_to_graph@{ped\_\discretionary {-}{}{}to\_\discretionary {-}{}{}graph}!PyPedal::pyp_network@{PyPedal::pyp\_\discretionary {-}{}{}network}|hyperpage}{80}
+\indexentry{PyPedal::pyp_newclasses@{PyPedal::pyp\_\discretionary {-}{}{}newclasses}|hyperpage}{81}
+\indexentry{PyPedal::pyp_newclasses@{PyPedal::pyp\_\discretionary {-}{}{}newclasses}!loadPedigree@{loadPedigree}|hyperpage}{81}
+\indexentry{loadPedigree@{loadPedigree}!PyPedal::pyp_newclasses@{PyPedal::pyp\_\discretionary {-}{}{}newclasses}|hyperpage}{81}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{83}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!a_decompose@{a\_\discretionary {-}{}{}decompose}|hyperpage}{83}
+\indexentry{a_decompose@{a\_\discretionary {-}{}{}decompose}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{83}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!a_inverse_df@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}df}|hyperpage}{84}
+\indexentry{a_inverse_df@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}df}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{84}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!a_inverse_dnf@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}dnf}|hyperpage}{84}
+\indexentry{a_inverse_dnf@{a\_\discretionary {-}{}{}inverse\_\discretionary {-}{}{}dnf}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{84}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!a_matrix@{a\_\discretionary {-}{}{}matrix}|hyperpage}{84}
+\indexentry{a_matrix@{a\_\discretionary {-}{}{}matrix}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{84}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!fast_a_matrix@{fast\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix}|hyperpage}{85}
+\indexentry{fast_a_matrix@{fast\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{85}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!fast_a_matrix_r@{fast\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}r}|hyperpage}{85}
+\indexentry{fast_a_matrix_r@{fast\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}r}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{85}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!fast_partial_a_matrix@{fast\_\discretionary {-}{}{}partial\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix}|hyperpage}{86}
+\indexentry{fast_partial_a_matrix@{fast\_\discretionary {-}{}{}partial\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{86}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!form_d_nof@{form\_\discretionary {-}{}{}d\_\discretionary {-}{}{}nof}|hyperpage}{86}
+\indexentry{form_d_nof@{form\_\discretionary {-}{}{}d\_\discretionary {-}{}{}nof}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{86}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!inbreeding@{inbreeding}|hyperpage}{87}
+\indexentry{inbreeding@{inbreeding}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{87}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!inbreeding_tabular@{inbreeding\_\discretionary {-}{}{}tabular}|hyperpage}{87}
+\indexentry{inbreeding_tabular@{inbreeding\_\discretionary {-}{}{}tabular}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{87}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!inbreeding_vanraden@{inbreeding\_\discretionary {-}{}{}vanraden}|hyperpage}{88}
+\indexentry{inbreeding_vanraden@{inbreeding\_\discretionary {-}{}{}vanraden}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{88}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!partial_inbreeding@{partial\_\discretionary {-}{}{}inbreeding}|hyperpage}{89}
+\indexentry{partial_inbreeding@{partial\_\discretionary {-}{}{}inbreeding}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{89}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!recurse_pedigree@{recurse\_\discretionary {-}{}{}pedigree}|hyperpage}{89}
+\indexentry{recurse_pedigree@{recurse\_\discretionary {-}{}{}pedigree}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{89}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!recurse_pedigree_idonly@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}idonly}|hyperpage}{90}
+\indexentry{recurse_pedigree_idonly@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}idonly}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{90}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!recurse_pedigree_idonly_side@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}idonly\_\discretionary {-}{}{}side}|hyperpage}{90}
+\indexentry{recurse_pedigree_idonly_side@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}idonly\_\discretionary {-}{}{}side}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{90}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!recurse_pedigree_n@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}n}|hyperpage}{91}
+\indexentry{recurse_pedigree_n@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}n}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{91}
+\indexentry{PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}!recurse_pedigree_onesided@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}onesided}|hyperpage}{91}
+\indexentry{recurse_pedigree_onesided@{recurse\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}onesided}!PyPedal::pyp_nrm@{PyPedal::pyp\_\discretionary {-}{}{}nrm}|hyperpage}{91}
+\indexentry{PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}|hyperpage}{93}
+\indexentry{PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}!meanMetricBy@{meanMetricBy}|hyperpage}{93}
+\indexentry{meanMetricBy@{meanMetricBy}!PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}|hyperpage}{93}
+\indexentry{PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}!pdf3GenPed@{pdf3GenPed}|hyperpage}{93}
+\indexentry{pdf3GenPed@{pdf3GenPed}!PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}|hyperpage}{93}
+\indexentry{PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}!pdfMeanMetricBy@{pdfMeanMetricBy}|hyperpage}{94}
+\indexentry{pdfMeanMetricBy@{pdfMeanMetricBy}!PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}|hyperpage}{94}
+\indexentry{PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}!pdfPedigreeMetadata@{pdfPedigreeMetadata}|hyperpage}{94}
+\indexentry{pdfPedigreeMetadata@{pdfPedigreeMetadata}!PyPedal::pyp_reports@{PyPedal::pyp\_\discretionary {-}{}{}reports}|hyperpage}{94}
+\indexentry{PyPedal::pyp_reports_templates@{PyPedal::pyp\_\discretionary {-}{}{}reports\_\discretionary {-}{}{}templates}|hyperpage}{96}
+\indexentry{PyPedal::pyp_reports_templates@{PyPedal::pyp\_\discretionary {-}{}{}reports\_\discretionary {-}{}{}templates}!myFirstPage@{myFirstPage}|hyperpage}{96}
+\indexentry{myFirstPage@{myFirstPage}!PyPedal::pyp_reports_templates@{PyPedal::pyp\_\discretionary {-}{}{}reports\_\discretionary {-}{}{}templates}|hyperpage}{96}
+\indexentry{PyPedal::pyp_reports_templates@{PyPedal::pyp\_\discretionary {-}{}{}reports\_\discretionary {-}{}{}templates}!myLaterPages@{myLaterPages}|hyperpage}{96}
+\indexentry{myLaterPages@{myLaterPages}!PyPedal::pyp_reports_templates@{PyPedal::pyp\_\discretionary {-}{}{}reports\_\discretionary {-}{}{}templates}|hyperpage}{96}
+\indexentry{PyPedal::pyp_template@{PyPedal::pyp\_\discretionary {-}{}{}template}|hyperpage}{97}
+\indexentry{PyPedal::pyp_template@{PyPedal::pyp\_\discretionary {-}{}{}template}!yourFunctionName@{yourFunctionName}|hyperpage}{97}
+\indexentry{yourFunctionName@{yourFunctionName}!PyPedal::pyp_template@{PyPedal::pyp\_\discretionary {-}{}{}template}|hyperpage}{97}
+\indexentry{PyPedal::pyp_tests@{PyPedal::pyp\_\discretionary {-}{}{}tests}|hyperpage}{98}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{99}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!assign_offspring@{assign\_\discretionary {-}{}{}offspring}|hyperpage}{99}
+\indexentry{assign_offspring@{assign\_\discretionary {-}{}{}offspring}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{99}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!assign_sexes@{assign\_\discretionary {-}{}{}sexes}|hyperpage}{100}
+\indexentry{assign_sexes@{assign\_\discretionary {-}{}{}sexes}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{100}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!delete_id_map@{delete\_\discretionary {-}{}{}id\_\discretionary {-}{}{}map}|hyperpage}{100}
+\indexentry{delete_id_map@{delete\_\discretionary {-}{}{}id\_\discretionary {-}{}{}map}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{100}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!fast_reorder@{fast\_\discretionary {-}{}{}reorder}|hyperpage}{100}
+\indexentry{fast_reorder@{fast\_\discretionary {-}{}{}reorder}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{100}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!founders_from_list@{founders\_\discretionary {-}{}{}from\_\discretionary {-}{}{}list}|hyperpage}{101}
+\indexentry{founders_from_list@{founders\_\discretionary {-}{}{}from\_\discretionary {-}{}{}list}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{101}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!load_id_map@{load\_\discretionary {-}{}{}id\_\discretionary {-}{}{}map}|hyperpage}{102}
+\indexentry{load_id_map@{load\_\discretionary {-}{}{}id\_\discretionary {-}{}{}map}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{102}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!pedigree_range@{pedigree\_\discretionary {-}{}{}range}|hyperpage}{102}
+\indexentry{pedigree_range@{pedigree\_\discretionary {-}{}{}range}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{102}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!pyp_datestamp@{pyp\_\discretionary {-}{}{}datestamp}|hyperpage}{103}
+\indexentry{pyp_datestamp@{pyp\_\discretionary {-}{}{}datestamp}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{103}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!pyp_nice_time@{pyp\_\discretionary {-}{}{}nice\_\discretionary {-}{}{}time}|hyperpage}{103}
+\indexentry{pyp_nice_time@{pyp\_\discretionary {-}{}{}nice\_\discretionary {-}{}{}time}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{103}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!renumber@{renumber}|hyperpage}{103}
+\indexentry{renumber@{renumber}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{103}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!reorder@{reorder}|hyperpage}{104}
+\indexentry{reorder@{reorder}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{104}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!reverse_string@{reverse\_\discretionary {-}{}{}string}|hyperpage}{105}
+\indexentry{reverse_string@{reverse\_\discretionary {-}{}{}string}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{105}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!set_age@{set\_\discretionary {-}{}{}age}|hyperpage}{105}
+\indexentry{set_age@{set\_\discretionary {-}{}{}age}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{105}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!set_ancestor_flag@{set\_\discretionary {-}{}{}ancestor\_\discretionary {-}{}{}flag}|hyperpage}{106}
+\indexentry{set_ancestor_flag@{set\_\discretionary {-}{}{}ancestor\_\discretionary {-}{}{}flag}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{106}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!set_generation@{set\_\discretionary {-}{}{}generation}|hyperpage}{106}
+\indexentry{set_generation@{set\_\discretionary {-}{}{}generation}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{106}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!set_species@{set\_\discretionary {-}{}{}species}|hyperpage}{106}
+\indexentry{set_species@{set\_\discretionary {-}{}{}species}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{106}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!simple_histogram_dictionary@{simple\_\discretionary {-}{}{}histogram\_\discretionary {-}{}{}dictionary}|hyperpage}{107}
+\indexentry{simple_histogram_dictionary@{simple\_\discretionary {-}{}{}histogram\_\discretionary {-}{}{}dictionary}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{107}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!sort_dict_by_keys@{sort\_\discretionary {-}{}{}dict\_\discretionary {-}{}{}by\_\discretionary {-}{}{}keys}|hyperpage}{107}
+\indexentry{sort_dict_by_keys@{sort\_\discretionary {-}{}{}dict\_\discretionary {-}{}{}by\_\discretionary {-}{}{}keys}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{107}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!sort_dict_by_values@{sort\_\discretionary {-}{}{}dict\_\discretionary {-}{}{}by\_\discretionary {-}{}{}values}|hyperpage}{108}
+\indexentry{sort_dict_by_values@{sort\_\discretionary {-}{}{}dict\_\discretionary {-}{}{}by\_\discretionary {-}{}{}values}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{108}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!string_to_table_name@{string\_\discretionary {-}{}{}to\_\discretionary {-}{}{}table\_\discretionary {-}{}{}name}|hyperpage}{108}
+\indexentry{string_to_table_name@{string\_\discretionary {-}{}{}to\_\discretionary {-}{}{}table\_\discretionary {-}{}{}name}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{108}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!subpedigree@{subpedigree}|hyperpage}{109}
+\indexentry{subpedigree@{subpedigree}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{109}
+\indexentry{PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}!trim_pedigree_to_year@{trim\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}year}|hyperpage}{109}
+\indexentry{trim_pedigree_to_year@{trim\_\discretionary {-}{}{}pedigree\_\discretionary {-}{}{}to\_\discretionary {-}{}{}year}!PyPedal::pyp_utils@{PyPedal::pyp\_\discretionary {-}{}{}utils}|hyperpage}{109}
+\indexentry{PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}|hyperpage}{111}
+\indexentry{PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}!__call__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}call\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{112}
+\indexentry{__call__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}call\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}|hyperpage}{112}
+\indexentry{PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}!__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{112}
+\indexentry{__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}|hyperpage}{112}
+\indexentry{PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}!__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{112}
+\indexentry{__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}|hyperpage}{112}
+\indexentry{PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}!__delitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}delitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{112}
+\indexentry{__delitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}delitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}|hyperpage}{112}
+\indexentry{PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}!append@{append}|hyperpage}{113}
+\indexentry{append@{append}!PyPedal::odict::_items@{PyPedal::odict::\_\discretionary {-}{}{}items}|hyperpage}{113}
+\indexentry{PyPedal::odict::_keys@{PyPedal::odict::\_\discretionary {-}{}{}keys}|hyperpage}{114}
+\indexentry{PyPedal::odict::_keys@{PyPedal::odict::\_\discretionary {-}{}{}keys}!__call__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}call\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{115}
+\indexentry{__call__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}call\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_keys@{PyPedal::odict::\_\discretionary {-}{}{}keys}|hyperpage}{115}
+\indexentry{PyPedal::odict::_keys@{PyPedal::odict::\_\discretionary {-}{}{}keys}!__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{115}
+\indexentry{__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_keys@{PyPedal::odict::\_\discretionary {-}{}{}keys}|hyperpage}{115}
+\indexentry{PyPedal::odict::_keys@{PyPedal::odict::\_\discretionary {-}{}{}keys}!__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{115}
+\indexentry{__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_keys@{PyPedal::odict::\_\discretionary {-}{}{}keys}|hyperpage}{115}
+\indexentry{PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}|hyperpage}{116}
+\indexentry{PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}!__call__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}call\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{117}
+\indexentry{__call__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}call\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}|hyperpage}{117}
+\indexentry{PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}!__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{117}
+\indexentry{__getitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}getitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}|hyperpage}{117}
+\indexentry{PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}!__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{117}
+\indexentry{__setitem__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setitem\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}|hyperpage}{117}
+\indexentry{PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}!reverse@{reverse}|hyperpage}{117}
+\indexentry{reverse@{reverse}!PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}|hyperpage}{117}
+\indexentry{PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}!sort@{sort}|hyperpage}{117}
+\indexentry{sort@{sort}!PyPedal::odict::_values@{PyPedal::odict::\_\discretionary {-}{}{}values}|hyperpage}{117}
+\indexentry{PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}|hyperpage}{119}
+\indexentry{PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{120}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}|hyperpage}{120}
+\indexentry{PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}!printme@{printme}|hyperpage}{120}
+\indexentry{printme@{printme}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}|hyperpage}{120}
+\indexentry{PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}!stringme@{stringme}|hyperpage}{120}
+\indexentry{stringme@{stringme}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}|hyperpage}{120}
+\indexentry{PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}!trap@{trap}|hyperpage}{121}
+\indexentry{trap@{trap}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}|hyperpage}{121}
+\indexentry{PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}!pad_id@{pad\_\discretionary {-}{}{}id}|hyperpage}{121}
+\indexentry{pad_id@{pad\_\discretionary {-}{}{}id}!PyPedal::pyp_classes::Animal@{PyPedal::pyp\_\discretionary {-}{}{}classes::Animal}|hyperpage}{121}
+\indexentry{PyPedal::dict4ini::DictIni@{PyPedal::dict4ini::DictIni}|hyperpage}{122}
+\indexentry{PyPedal::dict4ini::DictNode@{PyPedal::dict4ini::DictNode}|hyperpage}{123}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{124}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{125}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{125}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}!printme@{printme}|hyperpage}{125}
+\indexentry{printme@{printme}!PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{125}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}!stringme@{stringme}|hyperpage}{125}
+\indexentry{stringme@{stringme}!PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{125}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}!dictme@{dictme}|hyperpage}{125}
+\indexentry{dictme@{dictme}!PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{125}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}!trap@{trap}|hyperpage}{126}
+\indexentry{trap@{trap}!PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{126}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}!pad_id@{pad\_\discretionary {-}{}{}id}|hyperpage}{126}
+\indexentry{pad_id@{pad\_\discretionary {-}{}{}id}!PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{126}
+\indexentry{PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}!string_to_int@{string\_\discretionary {-}{}{}to\_\discretionary {-}{}{}int}|hyperpage}{126}
+\indexentry{string_to_int@{string\_\discretionary {-}{}{}to\_\discretionary {-}{}{}int}!PyPedal::pyp_newclasses::LightAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::LightAnimal}|hyperpage}{126}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{128}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnFileOpenDialog@{OnFileOpenDialog}|hyperpage}{129}
+\indexentry{OnFileOpenDialog@{OnFileOpenDialog}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{129}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!SetFilename@{SetFilename}|hyperpage}{129}
+\indexentry{SetFilename@{SetFilename}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{129}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!Save@{Save}|hyperpage}{129}
+\indexentry{Save@{Save}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{129}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnPedMeta@{OnPedMeta}|hyperpage}{130}
+\indexentry{OnPedMeta@{OnPedMeta}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{130}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnPedList@{OnPedList}|hyperpage}{130}
+\indexentry{OnPedList@{OnPedList}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{130}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnPedView@{OnPedView}|hyperpage}{130}
+\indexentry{OnPedView@{OnPedView}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{130}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnAbout@{OnAbout}|hyperpage}{130}
+\indexentry{OnAbout@{OnAbout}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{130}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnAppExit@{OnAppExit}|hyperpage}{131}
+\indexentry{OnAppExit@{OnAppExit}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{131}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnSettingsViewLog@{OnSettingsViewLog}|hyperpage}{131}
+\indexentry{OnSettingsViewLog@{OnSettingsViewLog}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{131}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!ToDo@{ToDo}|hyperpage}{131}
+\indexentry{ToDo@{ToDo}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{131}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnGraphInbreed@{OnGraphInbreed}|hyperpage}{132}
+\indexentry{OnGraphInbreed@{OnGraphInbreed}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{132}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnMetricsInbreeding@{OnMetricsInbreeding}|hyperpage}{132}
+\indexentry{OnMetricsInbreeding@{OnMetricsInbreeding}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{132}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!OnMetricsEffectiveFounders@{OnMetricsEffectiveFounders}|hyperpage}{132}
+\indexentry{OnMetricsEffectiveFounders@{OnMetricsEffectiveFounders}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{132}
+\indexentry{PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}!filehistory@{filehistory}|hyperpage}{133}
+\indexentry{filehistory@{filehistory}!PyPedal::pyp_gui::MainWindow@{PyPedal::pyp\_\discretionary {-}{}{}gui::MainWindow}|hyperpage}{133}
+\indexentry{PyPedal::pyp_gui::MyApp@{PyPedal::pyp\_\discretionary {-}{}{}gui::MyApp}|hyperpage}{134}
+\indexentry{PyPedal::py2depgraph::mymf@{PyPedal::py2depgraph::mymf}|hyperpage}{135}
+\indexentry{PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}|hyperpage}{136}
+\indexentry{PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{136}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}|hyperpage}{136}
+\indexentry{PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}!form_a_matrix@{form\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix}|hyperpage}{137}
+\indexentry{form_a_matrix@{form\_\discretionary {-}{}{}a\_\discretionary {-}{}{}matrix}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}|hyperpage}{137}
+\indexentry{PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}!load@{load}|hyperpage}{137}
+\indexentry{load@{load}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}|hyperpage}{137}
+\indexentry{PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}!save@{save}|hyperpage}{137}
+\indexentry{save@{save}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}|hyperpage}{137}
+\indexentry{PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}!info@{info}|hyperpage}{138}
+\indexentry{info@{info}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}|hyperpage}{138}
+\indexentry{PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}!printme@{printme}|hyperpage}{138}
+\indexentry{printme@{printme}!PyPedal::pyp_newclasses::NewAMatrix@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAMatrix}|hyperpage}{138}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{140}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{141}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{141}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}!printme@{printme}|hyperpage}{141}
+\indexentry{printme@{printme}!PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{141}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}!stringme@{stringme}|hyperpage}{141}
+\indexentry{stringme@{stringme}!PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{141}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}!dictme@{dictme}|hyperpage}{142}
+\indexentry{dictme@{dictme}!PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{142}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}!trap@{trap}|hyperpage}{142}
+\indexentry{trap@{trap}!PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{142}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}!pad_id@{pad\_\discretionary {-}{}{}id}|hyperpage}{142}
+\indexentry{pad_id@{pad\_\discretionary {-}{}{}id}!PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{142}
+\indexentry{PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}!string_to_int@{string\_\discretionary {-}{}{}to\_\discretionary {-}{}{}int}|hyperpage}{143}
+\indexentry{string_to_int@{string\_\discretionary {-}{}{}to\_\discretionary {-}{}{}int}!PyPedal::pyp_newclasses::NewAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewAnimal}|hyperpage}{143}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{144}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{145}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{145}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!load@{load}|hyperpage}{145}
+\indexentry{load@{load}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{145}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!save@{save}|hyperpage}{145}
+\indexentry{save@{save}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{145}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!savegraph@{savegraph}|hyperpage}{146}
+\indexentry{savegraph@{savegraph}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{146}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!savegedcom@{savegedcom}|hyperpage}{146}
+\indexentry{savegedcom@{savegedcom}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{146}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!preprocess@{preprocess}|hyperpage}{147}
+\indexentry{preprocess@{preprocess}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{147}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!fromgraph@{fromgraph}|hyperpage}{147}
+\indexentry{fromgraph@{fromgraph}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{147}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!renumber@{renumber}|hyperpage}{147}
+\indexentry{renumber@{renumber}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{147}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!addanimal@{addanimal}|hyperpage}{148}
+\indexentry{addanimal@{addanimal}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{148}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!delanimal@{delanimal}|hyperpage}{148}
+\indexentry{delanimal@{delanimal}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{148}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!updateidmap@{updateidmap}|hyperpage}{148}
+\indexentry{updateidmap@{updateidmap}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{148}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!printoptions@{printoptions}|hyperpage}{149}
+\indexentry{printoptions@{printoptions}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{149}
+\indexentry{PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}!simulate@{simulate}|hyperpage}{149}
+\indexentry{simulate@{simulate}!PyPedal::pyp_newclasses::NewPedigree@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::NewPedigree}|hyperpage}{149}
+\indexentry{PyPedal::odict::OrderedDict@{PyPedal::odict::OrderedDict}|hyperpage}{151}
+\indexentry{PyPedal::odict::OrderedDict@{PyPedal::odict::OrderedDict}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{152}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::OrderedDict@{PyPedal::odict::OrderedDict}|hyperpage}{152}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{154}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{155}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{155}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!printme@{printme}|hyperpage}{155}
+\indexentry{printme@{printme}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{155}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!stringme@{stringme}|hyperpage}{155}
+\indexentry{stringme@{stringme}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{155}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!fileme@{fileme}|hyperpage}{156}
+\indexentry{fileme@{fileme}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{156}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!nus@{nus}|hyperpage}{156}
+\indexentry{nus@{nus}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{156}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!nud@{nud}|hyperpage}{156}
+\indexentry{nud@{nud}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{156}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!nug@{nug}|hyperpage}{156}
+\indexentry{nug@{nug}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{156}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!nuy@{nuy}|hyperpage}{157}
+\indexentry{nuy@{nuy}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{157}
+\indexentry{PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}!nuf@{nuf}|hyperpage}{157}
+\indexentry{nuf@{nuf}!PyPedal::pyp_classes::Pedigree@{PyPedal::pyp\_\discretionary {-}{}{}classes::Pedigree}|hyperpage}{157}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{159}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{160}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{160}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!printme@{printme}|hyperpage}{160}
+\indexentry{printme@{printme}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{160}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!stringme@{stringme}|hyperpage}{160}
+\indexentry{stringme@{stringme}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{160}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!fileme@{fileme}|hyperpage}{161}
+\indexentry{fileme@{fileme}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{161}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!nus@{nus}|hyperpage}{161}
+\indexentry{nus@{nus}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{161}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!nud@{nud}|hyperpage}{161}
+\indexentry{nud@{nud}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{161}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!nug@{nug}|hyperpage}{161}
+\indexentry{nug@{nug}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{161}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!nuy@{nuy}|hyperpage}{162}
+\indexentry{nuy@{nuy}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{162}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!nuf@{nuf}|hyperpage}{162}
+\indexentry{nuf@{nuf}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{162}
+\indexentry{PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}!nuherds@{nuherds}|hyperpage}{163}
+\indexentry{nuherds@{nuherds}!PyPedal::pyp_newclasses::PedigreeMetadata@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PedigreeMetadata}|hyperpage}{163}
+\indexentry{PyPedal::depgraph2dot::pydepgraphdot@{PyPedal::depgraph2dot::pydepgraphdot}|hyperpage}{164}
+\indexentry{PyPedal::pyp_newclasses::PyPedalError@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PyPedalError}|hyperpage}{165}
+\indexentry{PyPedal::pyp_gui_graphs::PyPedalGraphDialogInbreeding@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}graphs::PyPedalGraphDialogInbreeding}|hyperpage}{166}
+\indexentry{PyPedal::pyp_tests::PyPedalMetricsTestCases@{PyPedal::pyp\_\discretionary {-}{}{}tests::PyPedalMetricsTestCases}|hyperpage}{167}
+\indexentry{PyPedal::pyp_tests::PyPedalNrmTestCases@{PyPedal::pyp\_\discretionary {-}{}{}tests::PyPedalNrmTestCases}|hyperpage}{168}
+\indexentry{PyPedal::pyp_gui_utils::PyPedalOptionsDialog@{PyPedal::pyp\_\discretionary {-}{}{}gui\_\discretionary {-}{}{}utils::PyPedalOptionsDialog}|hyperpage}{169}
+\indexentry{PyPedal::pyp_newclasses::PyPedalPedigreeInputFileNameError@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::PyPedalPedigreeInputFileNameError}|hyperpage}{170}
+\indexentry{PyPedal::pyp_tests::PyPedalUtilsTestCases@{PyPedal::pyp\_\discretionary {-}{}{}tests::PyPedalUtilsTestCases}|hyperpage}{172}
+\indexentry{PyPedal::pyp_db::PypMean@{PyPedal::pyp\_\discretionary {-}{}{}db::PypMean}|hyperpage}{173}
+\indexentry{PyPedal::pyp_db::PypSSD@{PyPedal::pyp\_\discretionary {-}{}{}db::PypSSD}|hyperpage}{174}
+\indexentry{PyPedal::pyp_db::PypSum@{PyPedal::pyp\_\discretionary {-}{}{}db::PypSum}|hyperpage}{175}
+\indexentry{PyPedal::pyp_db::PypSVar@{PyPedal::pyp\_\discretionary {-}{}{}db::PypSVar}|hyperpage}{176}
+\indexentry{PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}|hyperpage}{177}
+\indexentry{PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{181}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}|hyperpage}{181}
+\indexentry{PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}!__setattr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setattr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{181}
+\indexentry{__setattr__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}setattr\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::odict::SequenceOrderedDict@{PyPedal::odict::SequenceOrderedDict}|hyperpage}{181}
+\indexentry{PyPedal::pyp_newclasses::SimAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::SimAnimal}|hyperpage}{183}
+\indexentry{PyPedal::pyp_newclasses::SimAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::SimAnimal}!__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}|hyperpage}{183}
+\indexentry{__init__@{\_\discretionary {-}{}{}\_\discretionary {-}{}{}init\_\discretionary {-}{}{}\_\discretionary {-}{}{}}!PyPedal::pyp_newclasses::SimAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::SimAnimal}|hyperpage}{183}
+\indexentry{PyPedal::pyp_newclasses::SimAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::SimAnimal}!printme@{printme}|hyperpage}{184}
+\indexentry{printme@{printme}!PyPedal::pyp_newclasses::SimAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::SimAnimal}|hyperpage}{184}
+\indexentry{PyPedal::pyp_newclasses::SimAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::SimAnimal}!stringme@{stringme}|hyperpage}{184}
+\indexentry{stringme@{stringme}!PyPedal::pyp_newclasses::SimAnimal@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::SimAnimal}|hyperpage}{184}
+\indexentry{PyPedal::pyp_newclasses::tail_recursive@{PyPedal::pyp\_\discretionary {-}{}{}newclasses::tail\_\discretionary {-}{}{}recursive}|hyperpage}{185}

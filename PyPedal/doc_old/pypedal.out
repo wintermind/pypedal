@@ -1,0 +1,26 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [1][-]{section.1.1}{Implemented Features}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Where to get information and code}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{Acknowledgments}{chapter.1}
+\BOOKMARK [1][-]{section.1.4}{Disclaimer}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Installing PyPedal}{}
+\BOOKMARK [1][-]{section.2.1}{Overview of installation}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Testing the Python installation}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Installing PyPedal}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{Testing the PyPedal Installation}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{High-Level Overview}{}
+\BOOKMARK [1][-]{section.3.1}{Interacting with PyPedal}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{The PyPedal Object Model}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Program Structure}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{Options}{chapter.3}
+\BOOKMARK [1][-]{section.3.5}{Pedigree Files}{chapter.3}
+\BOOKMARK [1][-]{section.3.6}{Renumbering a Pedigree}{chapter.3}
+\BOOKMARK [1][-]{section.3.7}{Logging}{chapter.3}
+\BOOKMARK [1][-]{section.3.8}{Simulating Pedigrees}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Input and Output}{}
+\BOOKMARK [1][-]{section.4.1}{Overview}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Input}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Output}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Working with Pedigrees}{}
+\BOOKMARK [1][-]{section.5.1}{Overview}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Inbreeding and Relationships}{chapter.5}

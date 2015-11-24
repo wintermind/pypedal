@@ -35,6 +35,7 @@
 #   list_union()
 #   list_intersection()
 #   guess_pedformat()
+#   which()
 ###############################################################################
 
 ## @package pyp_utils
@@ -1303,3 +1304,28 @@ def guess_pedformat(animal, ped_kw):
 			print '[ERROR]: You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!'
 
 		return False
+
+##
+# which() tries to determine if an executable program exists in the user's
+# path. The code was taken from Stack Overflow
+# (http://stackoverflow.com/questions/377017/test-if-executable-exists-in-python).
+# @param program The name of the program to find.
+# @retval A The name of the program, or "None".
+def which(program):
+
+    import os
+    def is_exe(fpath):
+        return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
+    fpath, fname = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return program
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            path = path.strip('"')
+            exe_file = os.path.join(path, program)
+            if is_exe(exe_file):
+                return exe_file
+
+    return None

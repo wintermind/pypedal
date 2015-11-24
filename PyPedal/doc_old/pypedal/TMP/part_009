@@ -1,0 +1,171 @@
+<tex2html_file>#./howtos.tex#
+\chapter<<1981>>HOWTOs<<1981>>
+\label<<1982>>cha:howtos<<1982>>
+\begin<<1983>>quote<<1983>>
+In this chapter, examples of common operations are presented.
+\end<<1984>>quote<<1984>>
+\section<<1985>>Basic Tasks<<1985>>
+\label<<1986>>sec:howto-basic-operations<<1986>>
+\index<<1987>>how do I!basic tasks<<1987>>
+\subsection<<1988>>How do I load a pedigree from a file?<<1988>>
+\label<<1989>>sec:howto-load-pedigree<<1989>>
+\index<<1990>>how do I!basic tasks!load a pedigree<<1990>>
+Each pedigree that you read must be passed its own dictionary of options that must have at least a pedigree file name (\var<<1991>>pedfile<<1991>>) and a pedigree format string (\var<<1992>>pedformat<<1992>>).  You then call \method<<1993>>pyp_newclasses.NewPedigree()<<1993>> and pass the options dictionary as an argument.  The following code fragment demonstrates how to read a pedigree file:
+\begin<<1994>>tex2html_preform<<1994>><tex2html_verbatim_mark>verbatim99#\end<<1995>>tex2html_preform<<1995>>
+The options dictionary may be named anything you like.  In this manual, and in the example programs distributed with PyPedal<<1996>><<1996>>, \var<<1997>>options<<1997>> is the name used.
+\subsection<<1998>>How do I load multiple pedigrees in one program?<<1998>>
+\label<<1999>>sec:howto-load-multiple-pedigrees<<1999>>
+\index<<2000>>how do I!basic tasks!load multiple pedigrees<<2000>>
+A PyPedal<<2001>><<2001>> program can load more than one pedigree at a time.  Each pedigree must be passed its own options dictionary, and the pedigrees must have different names.  This is easily done by creating a dictionary with global options and customizing it for each pedigree.  Once you have created a pedigree by calling \method<<2002>>pyp\_newclasses.NewPedigree('options')<<2002>> you can change the options dictionary without affecting that pedigree (a pedigree stores a copy of the options dictionary in its \member<<2003>>kw<<2003>> attribute).  The following code fragment demonstrates how to read two pedigree files in a single program:
+\begin<<2004>>tex2html_preform<<2004>><tex2html_verbatim_mark>verbatim100#\end<<2005>>tex2html_preform<<2005>>
+Note that \var<<2006>>pedformat<<2006>> only needs to be changed if the two pedigrees have different formats.  You do not even have to change \var<<2007>>pedfile<<2007>>.
+\subsection<<2008>>How do I renumber a pedigree?<<2008>>
+\label<<2009>>sec:howto-renumber-pedigree<<2009>>
+\index<<2010>>how do I!basic tasks!renumber a pedigree<<2010>>
+Set the \member<<2011>>renumber<<2011>> option to \begin<<2232>>tex2html_deferred<<2232>>\samp<<2012>>1<<2012>>\end<<2233>>tex2html_deferred<<2233>> before you load the pedigree.
+\begin<<2013>>tex2html_preform<<2013>><tex2html_verbatim_mark>verbatim101#\end<<2014>>tex2html_preform<<2014>>
+If you do not renumber a pedigree at load time and choose to renumber it later you must set the \member<<2015>>renumber<<2015>> option and call the pedigree's \method<<2016>>renumber()<<2016>> method:
+\begin<<2017>>tex2html_preform<<2017>><tex2html_verbatim_mark>verbatim102#\end<<2018>>tex2html_preform<<2018>>
+For more details on pedigree renumbering see Section \ref<<2019>>sec:renumbering<<2019>>.
+\subsection<<2020>>How do I turn off output messages?<<2020>>
+\label<<2021>>sec:howto-turn-off-messages<<2021>>
+\index<<2022>>how do I!basic tasks!turn off output<<2022>>
+You may want to suppress the output that is normally written to STDOUT by scripts.  You do this by setting the \member<<2023>>messages<<2023>> option:
+\begin<<2024>>tex2html_preform<<2024>><tex2html_verbatim_mark>verbatim103#\end<<2025>>tex2html_preform<<2025>>
+The default setting for \member<<2026>>messages<<2026>> is \begin<<2234>>tex2html_deferred<<2234>>\samp<<2027>>verbose<<2027>>\end<<2235>>tex2html_deferred<<2235>>, which produces lots of messages.
+\subsection<<2028>>How do I load a pedigree whose columns are tab-delimited?<<2028>>
+\label<<2029>>sec:howto-load-tab-delimited-pedigree<<2029>>
+\index<<2030>>how do I!basic tasks!load tab-delimited pedigree<<2030>>
+The default column-delimiter used by PyPedal<<2031>><<2031>> is a space (` ').  You can change the delimiter by setting the \var<<2032>>sepchar<<2032>> option:
+\begin<<2033>>tex2html_preform<<2033>><tex2html_verbatim_mark>verbatim104#\end<<2034>>tex2html_preform<<2034>>
+Commas are also commonly used as delimiters, and comma-separated value (CSV) files can be read by setting \var<<2035>>sepchar<<2035>> to \code<<2036>>','<<2036>>.  If you are using a configuration file, you \emph<<2037>>must<<2037>> enclose any delimiter containing a backslash in double quotation marks (``''):
+\begin<<2038>>tex2html_preform<<2038>><tex2html_verbatim_mark>verbatim105#\end<<2039>>tex2html_preform<<2039>>
+If you do not enclose the delimiter properly you will receive an error message such as:
+\begin<<2040>>tex2html_preform<<2040>><tex2html_verbatim_mark>verbatim106#\end<<2041>>tex2html_preform<<2041>>
+\section<<2042>>Calculating Measures of Genetic Variation<<2042>>
+\label<<2043>>sec:howto-genetic-variation<<2043>>
+\index<<2044>>how do I!calculate genetic variation<<2044>>
+\subsection<<2045>>How do I calculate coefficients of inbreeding?<<2045>>
+\label<<2046>>sec:howto-calculate-inbreeding<<2046>>
+\index<<2047>>how do I!calculate genetic variation!coefficients of inbreeding<<2047>>
+This requires that you have a renumbered pedigree (HOWTO \ref<<2048>>sec:howto-renumber-pedigree<<2048>>).
+\begin<<2049>>tex2html_preform<<2049>><tex2html_verbatim_mark>verbatim107#\end<<2050>>tex2html_preform<<2050>>
+The dictionary returned by \function<<2051>>pyp_nrm.inbreeding(example)<<2051>>, \var<<2052>>example_inbreeding<<2052>>, contains two dictionaries: \var<<2053>>fx<<2053>> contains coefficients of inbreeding (COI) keyed to renumbered animal IDs and \var<<2054>>metadata<<2054>> contains summary statistics.  \var<<2055>>metadata<<2055>> also contains two dictionaries: \var<<2056>>all<<2056>> contains summary statistics for all animals, while \var<<2057>>nonzero<<2057>> contains summary statistics for only animals with non-zero coefficients of inbreeding.  If you print \var<<2058>>example_inbreeding<<2058>> you'll get the following:
+\begin<<2059>>tex2html_preform<<2059>><tex2html_verbatim_mark>verbatim108#\end<<2060>>tex2html_preform<<2060>>
+Obtaining the COI for a given animal, say 28, is simple:
+\begin<<2061>>tex2html_preform<<2061>><tex2html_verbatim_mark>verbatim109#\end<<2062>>tex2html_preform<<2062>>
+To print the mean COI for the pedigree:
+\begin<<2063>>tex2html_preform<<2063>><tex2html_verbatim_mark>verbatim110#\end<<2064>>tex2html_preform<<2064>>
+\section<<2065>>Databases and Report Generation<<2065>>
+\label<<2066>>sec:howto-databases-and-reports<<2066>>
+\index<<2067>>how do I!databases and reports<<2067>>
+\subsection<<2068>>How do I load a pedigree into a database?<<2068>>
+\label<<2069>>sec:howto-load-pedigree-db<<2069>>
+\index<<2070>>how do I!databases and reports!load a pedigree<<2070>>
+The \module<<2071>>pyp\_reports<<2071>> module (\ref<<2072>>sec:pyp-reports<<2072>>) uses the \module<<2073>>pyp\_db<<2073>> module (Section \ref<<2074>>sec:pyp-db<<2074>>)
+to store and manipulate a pedigree in an SQLite database.  In order to use these tools you must first load your pedigree into
+the database.  This is done with a call to \function<<2075>>pyp\_db.loadPedigreeTable()<<2075>>:
+\begin<<2076>>tex2html_preform<<2076>><tex2html_verbatim_mark>verbatim111#\end<<2077>>tex2html_preform<<2077>>
+The routines in \module<<2078>>pyp\_reports<<2078>> will check to see if your pedigree has already been loaded; if it
+has not, a table will be created and populated for you.
+\subsection<<2079>>How do I update a pedigree in the database?<<2079>>
+\label<<2080>>sec:howto-pedigree-db-update-table<<2080>>
+\index<<2081>>how do I!databases and reports!update pedigree table<<2081>>
+Changes to a PyPedal<<2082>><<2082>> pedigree object are not automatically saved to the database.  If you have changed
+your pedigree, such as by calculating coefficients of inbreeding, and you want those changes visible to the
+database you have to call \function<<2083>>pyp\_db.loadPedigreeTable()<<2083>> again.  \textbf<<2084>>IMPORTANT NOTE:<<2084>> If you call
+\function<<2085>>pyp\_db.loadPedigreeTable()<<2085>> after you have already loaded your pedigree into the database it will
+drop the existing table and reload it; all data in the existing table will be lost!  In the following
+example, the pedigree is written to table \textbf<<2086>>hartlandclark<<2086>> in the database \textbf<<2087>>pypedal<<2087>>:
+\begin<<2088>>tex2html_preform<<2088>><tex2html_verbatim_mark>verbatim112#\end<<2089>>tex2html_preform<<2089>>
+\member<<2090>>pypedal<<2090>> is the default database name used by PyPedal<<2091>><<2091>>, and can be changed using a pedigree's \member<<2092>>database_name<<2092>> option.  By default, table names are formed from the pedigree file name.  A table name can be specified using a pedigree's \member<<2093>>dbtable_name<<2093>> option.  Continuing the above example, suppose that I calculated coefficients of inbreeding on my pedigree and want to store the resulting pedigree in a new table named \var<<2094>>noordwijck_and_scharloo_inbreeding<<2094>>:
+\begin<<2095>>tex2html_preform<<2095>><tex2html_verbatim_mark>verbatim113#\end<<2096>>tex2html_preform<<2096>>
+You should see messages in the log telling you that the table has been created and populated:
+\begin<<2097>>tex2html_preform<<2097>><tex2html_verbatim_mark>verbatim114#\end<<2098>>tex2html_preform<<2098>>
+\section<<2099>>Pedigrees as Graphs<<2099>>
+\label<<2100>>sec:howto-pedigrees-graphs<<2100>>
+\index<<2101>>how do I!pedigrees as graphs<<2101>>
+PyPedal<<2102>><<2102>> includes tools for working with pedigrees as algebraic structures known as directed graphs, or digraphs. Digraphs are not graphs in the sense of graphics for presentation or display. Rather, they are mathematical abstractions, the study of which can provide interesting information about the structure of a population. A digraph represents a pedigree as a set of vertices (also called nodes), which correspond to animals, and a collection of edges, which connect nodes to one another. In the context of a pedigree, edges indicate that a parent--offspring relationship exists between two animals.  If a path can be constructed between two vertices (animals) in the graph then those animals are related. If no path can be constructed between teo nodes, then no relatinship exists between the two. Routines for working with graphs (also called networwks) are contained in the \module<<2103>>pyp\_network<<2103>> module (\ref<<2104>>sec:pyp-network<<2104>>)
+\subsection<<2105>>How do I convert a pedigree to a graph?<<2105>>
+\label<<2106>>sec:howto-pedigree-to-graph<<2106>>
+\index<<2107>>how do I!pedigrees as graphs!pedigree to graph<<2107>>
+The function \function<<2108>>pyp\_network.ped\_to\_graph()<<2108>> takes a PyPedal<<2109>><<2109>> pedigree object as its argument and returns a NetworkX (\begin<<2236>>tex2html_deferred<<2236>>\url<<2110>>https://networkx.lanl.gov/<<2110>>\end<<2237>>tex2html_deferred<<2237>>) XDiGraph object:
+\begin<<2111>>tex2html_preform<<2111>><tex2html_verbatim_mark>verbatim115#\end<<2112>>tex2html_preform<<2112>>
+Once you've got a graph, you use the NetworkX API to operate on the graph. For example, the number of animals in the pedigree is simply the number of nodes in the graph:
+\begin<<2113>>tex2html_preform<<2113>><tex2html_verbatim_mark>verbatim116#\end<<2114>>tex2html_preform<<2114>>
+\subsection<<2115>>How do I convert a graph to a pedigree?<<2115>>
+\label<<2116>>sec:howto-graph-to-pedigree<<2116>>
+\index<<2117>>how do I!pedigrees as graphs!graph to pedigree<<2117>>
+It is possible to create a PyPedal<<2118>><<2118>> pedigree from a NetworkX graph. This is useful, for example, when you'd like to create a pedigree representing a subset of the population in a \class<<2119>>NewPedigree<<2119>> object. \function<<2120>>pyp\_nrm.recurse\_pedigree()<<2120>> and related functions won't do the trick because they return only lists of animal IDs, not actual \class<<2121>>NewPedigree<<2121>> instances. To create a pedigree from a graph you simply build your options dictionary and call \function<<2122>>pyp\_newclasses.loadPedigree()<<2122>>:
+\begin<<2123>>tex2html_preform<<2123>><tex2html_verbatim_mark>verbatim117#\end<<2124>>tex2html_preform<<2124>>
+You must provide a non-null \texttt<<2125>>pedfile<<2125>> keyword in your options dictionary, as well as the \texttt<<2126>>pedsource<<2126>> and \texttt<<2127>>pedgraph<<2127>> arguments to \function<<2128>>pyp\_newclasses.loadPedigree()<<2128>>.
+\begin<<2238>>tex2html_deferred<<2238>>\par\end<<2239>>tex2html_deferred<<2239>>
+There is a known bug with logfile creation when loading a pedigree from a digraph.
+\subsection<<2129>>How do I load a pedigree from a file containing a graph stored as an adjacency list?<<2129>>
+\label<<2130>>sec:howto-pedigree-from-graph-file<<2130>>
+\index<<2131>>how do I!pedigrees as graphs!pedigree from graph file<<2131>>
+ PyPedal<<2132>><<2132>> can read graphs stored in text files as adjacency lists, which is one way of representing directed graphs:
+\begin<<2133>>tex2html_preform<<2133>><tex2html_verbatim_mark>verbatim118#\end<<2134>>tex2html_preform<<2134>>
+\subsection<<2135>>How do I save a graph as an adjacency list?<<2135>>
+\label<<2136>>sec:howto-graph-to-file<<2136>>
+\index<<2137>>how do I!pedigrees as graphs!graph to file<<2137>>
+PyPedal<<2138>><<2138>>, using NetworkX, can save graphs as adjacency lists:
+\begin<<2139>>tex2html_preform<<2139>><tex2html_verbatim_mark>verbatim119#\end<<2140>>tex2html_preform<<2140>>
+\section<<2141>>Miscellaneous<<2141>>
+\label<<2142>>sec:howto-miscellaneous<<2142>>
+\index<<2143>>how do I!miscellaneous<<2143>>
+\subsection<<2144>>How do I export a numerator relationship matrix so that I can read it into Octave?<<2144>>
+\label<<2145>>sec:howto-export-nrm-to-octave<<2145>>
+\index<<2146>>how do I!miscellaneous!export NRM to Octave<<2146>>
+Numerator relationship matrices may be exported to text files for use with, e.g., Octave using the \method<<2147>>NewAMatrix.save<<2147>> method:
+\begin<<2148>>tex2html_preform<<2148>><tex2html_verbatim_mark>verbatim120#\end<<2149>>tex2html_preform<<2149>>
+When matrices are written to text files array elements are separated by \var<<2150>>sepchar<<2150>> (Table \ref<<2151>>tbl:options<<2151>>).
+\begin<<2240>>tex2html_deferred<<2240>>\par\end<<2241>>tex2html_deferred<<2241>>
+Matrices may also be written to a binary format. The default value of the \var<<2152>>nrm\_format<<2152>> pedigree option is \texttt<<2153>>text<<2153>>. To write files in binary format you must either specify the  value of the \var<<2154>>nrm\_format<<2154>> option as \texttt<<2155>>binary<<2155>> before you load your pedigree file or use the \var<<2156>>nrm\_format<<2156>> keyword when you call \method<<2157>>NewAMatrix.save<<2157>>:
+\begin<<2158>>tex2html_preform<<2158>><tex2html_verbatim_mark>verbatim121#\end<<2159>>tex2html_preform<<2159>>
+Once you've saved the NRM to a file, say \texttt<<2160>>'Ainv.txt'<<2160>>, in text format you can easily read it into Octave:
+\begin<<2161>>tex2html_preform<<2161>><tex2html_verbatim_mark>verbatim122#\end<<2162>>tex2html_preform<<2162>>
+This has been verified with Octave 2.1.57 under RedHat Enterprise Linux on small matrices.
+\subsection<<2163>>How else can I export a NRM to a file?<<2163>>
+\label<<2164>>sec:howto-export-nrm-to-ijk-file<<2164>>
+\index<<2165>>how do I!miscellaneous!export NRM to a file<<2165>>
+Numerator relationship matrices may be exported to a text file in ``ijk format'',
+where each line is of the form ``animal\_A animal\_B rAB'' using the \function<<2166>>pyp\_io.save\_ijk()<<2166>> function. Diagonal entries are \begin<<2222>>tex2html_wrap_inline<<2222>>$1 + f_a$\end<<2223>>tex2html_wrap_inline<<2223>>, where \begin<<2224>>tex2html_wrap_inline<<2224>>$f_a$\end<<2225>>tex2html_wrap_inline<<2225>>\space is the animal's coefficient of inbreedin.
+\begin<<2167>>tex2html_preform<<2167>><tex2html_verbatim_mark>verbatim123#\end<<2168>>tex2html_preform<<2168>>
+Suppose that the example above produces the following file:
+\begin<<2169>>tex2html_preform<<2169>><tex2html_verbatim_mark>verbatim124#\end<<2170>>tex2html_preform<<2170>>
+In order to get \begin<<2226>>tex2html_wrap_inline<<2226>>$f_a$\end<<2227>>tex2html_wrap_inline<<2227>>\space for animal 4627 you need to find the corresponding diagonal element and subtract 1 from it:
+\begin<<2220>>displaymath<<2220>>
+f_a = 1.125 - 1.0 = 0.125
+\end<<2221>>displaymath<<2221>>
+The coefficient of relationship between 4627 and 5538 is \begin<<2228>>tex2html_wrap_inline<<2228>>$0.5$\end<<2229>>tex2html_wrap_inline<<2229>>\space (4627 is probably a parent of 5538). Note that the file \var<<2171>>nrm\_ijk.txt<<2171>> will include only the diagonal and upper off-diagonal elements of the NRM, and should have \begin<<2230>>tex2html_wrap_inline<<2230>>$n + n(n+1)/2$\end<<2231>>tex2html_wrap_inline<<2231>>\space lines.
+\subsection<<2172>>How do I load a pedigree from a GEDCOM file?<<2172>>
+\label<<2173>>sec:howto-load-gedcom-pedigree<<2173>>
+\index<<2174>>how do I!miscellaneous!load a GEDCOM pedigree<<2174>>
+As of version 2 release candidate 1  PyPedal<<2175>><<2175>> can load pedigrees from GEDCOM 5.5 files. This is done by passing the \function<<2176>>pedsource<<2176>>\index<<2177>>pedsource<<2177>> keyword to \function<<2178>>pyp_newclasses.loadPedigree<<2178>> with a value of \begin<<2242>>tex2html_deferred<<2242>>\samp<<2179>>gedcomfile<<2179>>\end<<2243>>tex2html_deferred<<2243>>:
+\begin<<2180>>tex2html_preform<<2180>><tex2html_verbatim_mark>verbatim125#\end<<2181>>tex2html_preform<<2181>>
+Note that only a limited subset of the GEDCOM format is supported, and it is possible to lose metadata when converting a pedigree from GEDCOM to PyPedal<<2182>><<2182>>. More details on PyPedal<<2183>><<2183>>'s GEDCOM handling can be found in Appendix \ref<<2184>>GEDCOM<<2184>>.
+\subsection<<2185>>How do I save a pedigree to a GEDCOM file?<<2185>>
+\label<<2186>>sec:howto-save-gedcom-pedigree<<2186>>
+\index<<2187>>how do I!miscellaneous!save to GEDCOM pedigree<<2187>>
+As of version 2 release candidate 1 PyPedal<<2188>><<2188>> can write pedigrees to GEDCOM 5.5-formatted files using the \function<<2189>>savegedcom<<2189>>\index<<2190>>savegedcom<<2190>> method of \function<<2191>>pyp_newclasses.NewPedigree<<2191>> objects. The method takes an output file name as its argument:
+\begin<<2192>>tex2html_preform<<2192>><tex2html_verbatim_mark>verbatim126#\end<<2193>>tex2html_preform<<2193>>
+Note that not all attributes of \function<<2194>>pyp_newclasses.NewAnimal<<2194>> objects are written to the output file. More details on PyPedal<<2195>><<2195>>'s GEDCOM handling can be found in Appendix \ref<<2196>>GEDCOM<<2196>>.
+\subsection<<2197>>How do I load a pedigree from a string?<<2197>>
+\label<<2198>>sec:howto-load-from-string<<2198>>
+\index<<2199>>how do I!miscellaneous!load a pedigree from a string<<2199>>
+There are some use cases for which it is desirable to load pedigrees from strings rather than from files. This is done by passing the \function<<2200>>pedsource<<2200>>\index<<2201>>pedsource<<2201>> keyword to \function<<2202>>pyp_newclasses.loadPedigree<<2202>> with a value of \begin<<2244>>tex2html_deferred<<2244>>\samp<<2203>>textstream<<2203>>\end<<2245>>tex2html_deferred<<2245>>, along with a string named \begin<<2246>>tex2html_deferred<<2246>>\samp<<2204>>pedstream<<2204>>\end<<2247>>tex2html_deferred<<2247>> (Figure \ref<<2205>>fig:ped-from-string<<2205>>):
+\begin<<2206>>tex2html_preform<<2206>><tex2html_verbatim_mark>verbatim127#\end<<2207>>tex2html_preform<<2207>>
+Note that only ASD-formatted pedigrees can be loaded this way, individual IDs are separated with commas, and successive records are separated by newlines. All records must contain a newline, including the last record in the string! You must also set the \begin<<2248>>tex2html_deferred<<2248>>\samp<<2208>>pedfile<<2208>>\end<<2249>>tex2html_deferred<<2249>> option to a value, even if that value is just an empty string as in the example.
+\begin<<2209>>figure<<2209>>
+  \begin<<2210>>center<<2210>>
+    \includegraphics[width=4in]<<2211>>pedfromstring.eps<<2211>>
+    \begin<<2250>>tex2html_deferred<<2250>>\caption<<2212>>Pedigree loaded from a string<<2212>>\end<<2251>>tex2html_deferred<<2251>>
+    \label<<2213>>fig:ped-from-string<<2213>>
+  \end<<2214>>center<<2214>>
+\end<<2215>>figure<<2215>>
+\section<<2216>>Contribute a HOWTO<<2216>>
+\label<<2217>>sec:howto-contribute<<2217>>
+\index<<2218>>how do I!contribute a HOWTO<<2218>>
+Users are invited to contribute HOWTOs demonstrating how to solve problems they've found interesting.  In order for such HOWTOs to be considered for inclusion in this manual they must be licensed under the GNU Free Documentation License version 1.2 or later (\begin<<2252>>tex2html_deferred<<2252>>\url<<2219>>http://www.gnu.org/copyleft/fdl.html<<2219>>\end<<2253>>tex2html_deferred<<2253>>).  Authorship will be acknowledged, and copyright will remain with the author of the HOWTO.
+<tex2html_endfile>#./howtos.tex#

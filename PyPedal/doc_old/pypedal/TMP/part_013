@@ -1,0 +1,25 @@
+<tex2html_file>#./glossary.tex#
+\chapter<<2693>>Glossary<<2693>>
+\label<<2694>>cha:glossary<<2694>>
+\begin<<2695>>quote<<2695>>
+This chapter provides a glossary of terms.\begin<<2708>>tex2html_deferred<<2708>>\footnote<<2696>>Please let me know of any additions to this list which you feel would be helpful.<<2696>>\end<<2709>>tex2html_deferred<<2709>>
+\end<<2697>>quote<<2697>>
+\begin<<2698>>description<<2698>>
+\item[ancestor loss coefficient] See: pedigree completeness.
+\item[coefficient of ancestral inbreeding] The probability that an individual jas inherited an allele that has undergone inbreeding in the past at least once.
+\item[coefficient of inbreeding] Probability that two alleles selected at random are identical by descent.
+\item[coefficient of partial inbreeding] The probability that the alleles at an arbitrary locus in an individual are identitical-by-descent, and that the alleles were derived from an allele in a particular founder.
+\item[coefficient of relationship] Proportion of genes that two individuals share on average.
+\item[effective ancestor number] The number of equally-contributing ancestors, not necessarily founders, needed to produce a population with the heterozygosity of the studied population \cite<<2699>>ref352<<2699>>.
+\item[effective founder number] The number of equally-contributing founders needed to produce a population with the heterozygosity of the studied population \cite<<2700>>ref640<<2700>>.
+\item[effective population size] The effective population size is the size of an ideal population that would lose heterozygosity at a rate equal to that of the studied population \cite<<2701>>ref91<<2701>>.
+\item[founder] An animal with unknown parents that is assumed to be unrelated to all other founders.
+\item[internal report] A PyPedal() report that is intended for use by other PyPedal() procedures, such as plotting
+routines, and not for printing.
+\item[numerator relationship matrix] Matrix of additive genetic covariances among the animals in a population.
+\item[pedigree] A PyPedal<<2702>><<2702>> pedigree consists of a Python list containing instances of PyPedal<<2703>><<2703>> \method<<2704>>NewAnimal()<<2704>> objects.
+\item[pedigree completeness] The proportion of known pedigree information for an arbitrary number of generations.
+\item[renumbering] Many calculations require that the animals in a pedigree be ordered from oldest to youngest, with sires and dams preceding offspring, and renumbered  starting with 1.  This is a computational necessity, and results in an animal's ID (\texttt<<2705>>animalID<<2705>>) being changed to reflect that animal's order in the pedigree.  All animals have their original IDs stored in their \texttt<<2706>>originalName<<2706>> attribute.
+\item[reordering] The process of arranging animals in a pedigree so that parents appear before their offspring; this is a necessary step in renumbering a pedigree.
+\end<<2707>>description<<2707>>
+<tex2html_endfile>#./glossary.tex#

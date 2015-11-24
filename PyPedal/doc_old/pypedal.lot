@@ -1,0 +1,39 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Packages and compatible versions used by PyPedal{}.}}{9}{table.2.1}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Options for controlling PyPedal.}}{16}{table.3.1}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Pedigree format codes.}}{21}{table.3.2}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces PyPedal{} input and output methods.}}{25}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Database parameters.}}{32}{table.4.2}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Attributes of \texttt {NewAnimal} objects.}}{47}{table.6.1}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Methods of \texttt {NewAnimal} objects.}}{50}{table.6.2}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Attributes of \texttt {LightAnimal} objects.}}{50}{table.6.3}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Methods of \texttt {LightAnimal} objects.}}{51}{table.6.4}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Attributes of \texttt {SimAnimal} objects.}}{51}{table.6.5}
+\contentsline {table}{\numberline {6.6}{\ignorespaces Methods of \texttt {SimAnimal} objects.}}{52}{table.6.6}
+\contentsline {table}{\numberline {6.7}{\ignorespaces Attributes of \texttt {NewPedigree} objects.}}{52}{table.6.7}
+\contentsline {table}{\numberline {6.8}{\ignorespaces Methods of \texttt {NewPedigree} objects.}}{52}{table.6.8}
+\contentsline {table}{\numberline {6.9}{\ignorespaces Attributes of \texttt {PedigreeMetadata} objects.}}{53}{table.6.9}
+\contentsline {table}{\numberline {6.10}{\ignorespaces Methods of \texttt {PedigreeMetadata} objects.}}{54}{table.6.10}
+\contentsline {table}{\numberline {6.11}{\ignorespaces Attributes of \texttt {NewAMatrix} objects.}}{55}{table.6.11}
+\contentsline {table}{\numberline {6.12}{\ignorespaces Methods of \texttt {NewAMatrix} objects.}}{55}{table.6.12}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Animal identification and cross-references.}}{58}{table.7.1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {9.1}{\ignorespaces Default graphics formats.}}{73}{table.9.1}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {10.1}{\ignorespaces Columns in pedigree database tables.}}{81}{table.10.1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Example programs distributed with PyPedal{}.}}{97}{table.A.1}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces GEDCOM 5.5 data records and tags imported by PyPedal{}.}}{99}{table.B.1}
+\contentsline {table}{\numberline {B.2}{\ignorespaces GEDCOM 5.5 data records and tags exported by PyPedal{}.}}{99}{table.B.2}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {C.1}{\ignorespaces GENES 1.20 data records and tags exported by PyPedal{}.}}{101}{table.C.1}

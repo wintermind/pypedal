@@ -1,0 +1,266 @@
+% This file was converted from HTML to LaTeX with
+% Tomasz Wegrzanowski's <maniek@beer.com> gnuhtml2latex program
+% Version : 0.1
+\documentclass{article}
+\begin{document}
+
+\section*{The pyp\_io Module}
+\par pyp\_io contains several procedures for writing structures to and reading them from
+disc (e.g. using pickle() to store and retrieve A and A-inverse).  It also includes a set
+of functions used to render strings as HTML or plaintext for use in generating output
+files.
+\begin{description}
+\item[\textbf{a\_inverse\_from\_file(inputfile)} ⇒ matrix [\#]
+]
+\par a\_inverse\_from\_file() uses the Python pickle system for persistent objects to read the inverse of
+a relationship matrix from a file.
+\begin{description}
+\item[\textit{inputfile}
+]
+The name of the input file.
+\item[Returns:
+]
+The inverse of a numerator relationship matrix.
+\end{description}\\
+
+\item[\textbf{a\_inverse\_to\_file(pedobj, ainv='')} ⇒ integer [\#]
+]
+\par a\_inverse\_to\_file() uses the Python pickle system for persistent objects to write the
+inverse of a relationship matrix to a file.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[\textit{filetag}
+]
+A descriptor prepended to output file names.
+\item[Returns:
+]
+True (1) on success, false (0) on failure
+\end{description}\\
+
+\item[\textbf{dissertation\_pedigree\_to\_file(pedobj)} ⇒ integer [\#]
+]
+\par dissertation\_pedigree\_to\_file() takes a pedigree in 'asdxfg' format and writes is to a file.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[Returns:
+]
+True (1) on success, false (0) on failure
+\end{description}\\
+
+\item[\textbf{dissertation\_pedigree\_to\_pedig\_format(pedobj)} ⇒ integer [\#]
+]
+\par dissertation\_pedigree\_to\_pedig\_format() takes a pedigree in 'asdbxfg' format, formats it into
+the form used by Didier Boichard's 'pedig' suite of programs, and writes it to a file.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[Returns:
+]
+True (1) on success, false (0) on failure
+\end{description}\\
+
+\item[\textbf{dissertation\_pedigree\_to\_pedig\_format\_mask(pedobj)} ⇒ integer [\#]
+]
+\par dissertation\_pedigree\_to\_pedig\_format\_mask() Takes a pedigree in 'asdbxfg' format,
+formats it into the form used by Didier Boichard's 'pedig' suite of programs, and
+writes it to a file.  THIS FUNCTION MASKS THE GENERATION ID WITH A FAKE BIRTH YEAR
+AND WRITES THE FAKE BIRTH YEAR TO THE FILE INSTEAD OF THE TRUE BIRTH YEAR.  THIS IS
+AN ATTEMPT TO FOOL PEDIG TO GET f\_e, f\_a et al. BY GENERATION.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[Returns:
+]
+True (1) on success, false (0) on failure
+\end{description}\\
+
+\item[\textbf{dissertation\_pedigree\_to\_pedig\_interest\_format(pedobj)} ⇒ integer [\#]
+]
+\par dissertation\_pedigree\_to\_pedig\_interest\_format() takes a pedigree in 'asdbxfg' format,
+formats it into the form used by Didier Boichard's parente program for the studied
+individuals file.
+\begin{description}
+\item[\textit{pedobj}
+]
+A PyPedal pedigree object.
+\item[Returns:
+]
+True (1) on success, false (0) on failure
+\end{description}\\
+
+\item[\textbf{load\_from\_gedcom(infilename, messages='verbose', standalone=1, missing\_sex='u', missing\_parent=0, missing\_name='Unknown Name', missing\_byear='0001', debug=0)} ⇒ integer [\#]
+]
+\par load\_from\_gedcom() reads and parses pedigree data that conform to
+a subset of the GEDCOM 5.5 specification. Not all valid GEDCOM
+are supported; unsupported tags are ignored.
+\begin{description}
+\item[\textit{infilename}
+]
+The file to which the matrix should be written.
+\item[\textit{messages}
+]
+Controls output to the screen
+\item[\textit{standalone}
+]
+Uses logging if called by a NewPedigree method
+\item[\textit{missing\_sex}
+]
+Value assigned to an animal with unknown sex
+\item[\textit{missing\_parent}
+]
+Value assigned to unknown parents
+\item[\textit{missing\_name}
+]
+Name assigned by default
+\item[\textit{missing\_byear}
+]
+VAlue assigned to unknown birth years
+\item[\textit{debug}
+]
+Flag turning debugging messages on (1) and off (0)
+\item[Returns:
+]
+A save status indicator (0: failed, 1: success).
+\end{description}\\
+
+\item[\textbf{pickle\_pedigree(pedobj, filename='')} ⇒ integer [\#]
+]
+\par pickle\_pedigree() pickles a pedigree.
+\begin{description}
+\item[\textit{pedobj}
+]
+An instance of a PyPedal pedigree object.
+\item[\textit{filename}
+]
+The name of the file to which the pedigree object should be pickled (optional).
+\item[Returns:
+]
+A 1 on success, a 0 otherwise.
+\end{description}\\
+
+\item[\textbf{pyp\_file\_footer(ofhandle, caller="Unknown PyPedal routine")} [\#]
+]
+\par pyp\_file\_footer() writes a footer to a page of PyPedal output.
+\begin{description}
+\item[\textit{ofhandle}
+]
+A Python file handle.
+\item[\textit{caller}
+]
+A string indicating the name of the calling routine.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{pyp\_file\_header(ofhandle, caller="Unknown PyPedal routine")} [\#]
+]
+\par pyp\_file\_header() writes a header to a page of PyPedal output.
+\begin{description}
+\item[\textit{ofhandle}
+]
+A Python file handle.
+\item[\textit{caller}
+]
+A string indicating the name of the calling routine.
+\item[Returns:
+]
+None
+\end{description}\\
+
+\item[\textbf{renderBodyText(text\_string)} [\#]
+]
+\par renderBodyText() renders page contents (produces HTML output by default).
+
+\item[\textbf{renderTitle(title\_string, title\_level="1")} [\#]
+]
+\par renderTitle() renders page titles (produces HTML output by default).
+
+\item[\textbf{save\_from\_gedcom(outfilename, assembled)} ⇒ string [\#]
+]
+\par save\_from\_gedcom() takes pedigree data parsed by load\_from\_gedcom() and
+writes it to a text file in an ASD format that PyPedal can easily read.
+\begin{description}
+\item[\textit{outfilename}
+]
+The file to which the matrix should be written.
+\item[\textit{fam2ids}
+]
+Dictionary mapping family IDs to parents and offspring
+\item[\textit{missing\_parent}
+]
+Value assigned to unknown parents
+\item[\textit{id2name}
+]
+Dictionary mapping IDs to names
+\item[\textit{id2birth}
+]
+Dictionary mapping IDs to birth years
+\item[Returns:
+]
+A string containing the pedigree format code. 'xxxx' if there was a problem.
+\end{description}\\
+
+\item[\textbf{save\_ijk(pedobj, nrm\_filename)} ⇒ integer [\#]
+]
+\par save\_ijk() saves an NRM to a file in the form "animal A" "animal B" "rAB".
+\begin{description}
+\item[\textit{nrm\_filename}
+]
+The file to which the matrix should be written.
+\item[Returns:
+]
+A save status indicator (0: failed, 1: success).
+\end{description}\\
+
+\item[\textbf{save\_to\_gedcom(pedobj, outfilename)} ⇒ integer [\#]
+]
+\par save\_to\_gedcom() writes a PyPedal NewPedigree object to a file in
+GEDCOM 5.5 format.
+\begin{description}
+\item[\textit{pedobj}
+]
+An instance of a PyPedal NewPedigree object
+\item[\textit{filename}
+]
+The file to which the matrix should be written
+\item[Returns:
+]
+A save status indicator (0: failed, 1: success).
+\end{description}\\
+
+\item[\textbf{summary\_inbreeding(f\_metadata)} ⇒ string [\#]
+]
+\par summary\_inbreeding() returns a string representation of the data contained in
+the 'metadata' dictionary contained in the output dictionary returned by
+pyp\_nrm/pyp\_inbreeding().
+\begin{description}
+\item[\textit{f\_metadata}
+]
+Dictionary of inbreeding metadata.
+\item[Returns:
+]
+A string on success, a 0 otherwise.
+\end{description}\\
+
+\item[\textbf{unpickle\_pedigree(filename='')} ⇒ object [\#]
+]
+\par unpickle\_pedigree() reads a pickled pedigree in from a file and returns the unpacked
+pedigree object.
+\begin{description}
+\item[\textit{filename}
+]
+The name of the pickle file.
+\item[Returns:
+]
+An instance of a NewPedigree object on success, a 0 otherwise.
+\end{description}\\
+
+\end{description}
+\end{document}

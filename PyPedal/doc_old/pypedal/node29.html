@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node31.html" />
+<link rel="prev" href="node27.html" />
+<link rel="parent" href="node23.html" />
+<link rel="next" href="node30.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>3.5 Pedigree Files</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.4.1 Configuration Files"
+  href="node28.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.5.1 Pedigree Format Codes"
+  href="node30.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node28.html">3.4.1 Configuration Files</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node30.html">3.5.1 Pedigree Format Codes</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION043500000000000000000"></A>
+<A NAME="sec:pedigree-files"></A><a id='l2h-27' xml:id='l2h-27'></a>
+<BR>
+3.5 Pedigree Files
+</H1>
+Pedigree files consist of plain-text files (also known as ASCII or flatfiles) whose rows contain
+records on individual animals and whose columns contain different variables.  The columns are
+delimited (separated from one another) by some character such as a space or a tab (&#92;t).  Pedigree
+files may also contain comments (notes) about the pedigree that are ignored by PyPedal; comments
+always begin with an octothorpe (#).  For example, the following pedigree contains records for 13
+animals, and each record contains three variables (animal ID, sire ID, and dam ID):
+<div class="verbatim"><pre>
+# This pedigree is taken from Boichard et al. (1997).
+# Each records contains an animal ID, a sire ID, and
+# a dam ID.
+1 0 0
+2 0 0
+3 0 0
+4 0 0
+5 2 3
+6 0 0
+7 5 6
+8 0 0
+9 1 2
+10 4 5
+11 7 8
+12 7 8
+13 7 8
+</pre></div>
+When this pedigree is processed by PyPedal the comments are ignored.  If you need to change the
+default column delimiter <a id='l2h-28' xml:id='l2h-28'></a>, which is a space (' '), set the <var>sepchar</var> option to the desired
+value.  For example, if your columns are tab-delimited you would set the option as:
+<div class="verbatim"><pre>
+options['sepchar'] = '\t'
+</pre></div>
+Options are discussed at length in section <A HREF="node27.html#sec:pypedal-options">3.4</A>. PyPedal also provides tools for pedigree simulation, which are discussed in section <A HREF="node34.html#sec:pedigree-simulation">3.8</A>. More details about pedigree input may be found in Chapter <A HREF="node35.html#cha:inputoutput">4</A>.
+
+<p><br /></p><hr class='online-navigation' />
+<div class='online-navigation'>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></a>
+
+<UL CLASS="ChildLinks">
+<LI><A href="node30.html">3.5.1 Pedigree Format Codes</a>
+</ul>
+<!--End of Table of Child-Links-->
+</div>
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.4.1 Configuration Files"
+  href="node28.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.5.1 Pedigree Format Codes"
+  href="node30.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node28.html">3.4.1 Configuration Files</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node30.html">3.5.1 Pedigree Format Codes</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

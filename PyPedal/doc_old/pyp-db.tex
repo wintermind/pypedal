@@ -1,0 +1,100 @@
+pyp\_db\index[func]{pyp_db} contains a set of procedures for accessing SQLite 3 (\url{http://www.sqlite.org/}) databases.
+\label{sec:pyp-db}
+\subsection*{Module Contents}
+\begin{description}
+\item[\textbf{createPedigreeDatabase(dbname='pypedal')} $\Rightarrow$ integer]
+\index[func]{pyp_db!createPedigreeDatabase()}
+createPedigreeDatabase() creates a new database in SQLite.
+\begin{description}
+\item[\emph{dbname}] The name of the database to create.
+\item[Returns:] A 1 on successful database creation, a 0 otherwise.
+\end{description}
+\item[\textbf{createPedigreeTable(curs, tablename='example')} $\Rightarrow$ integer]
+\index[func]{pyp_db!createPedigreeTable()}
+createPedigreeDatabase() creates a new pedigree table in a SQLite database.
+\begin{description}
+\item[\emph{tablename}] The name of the table to create.
+\item[Returns:] A 1 on successful table creation, a 0 otherwise.
+\end{description}
+\item[\textbf{databaseQuery(sql, curs=0, dbname='pypedal')} $\Rightarrow$ string]
+\index[func]{pyp_db!databaseQuery()}
+databaseQuery() executes an SQLite query. This is a wrapper function used by the reporting functions that need to fetch data from SQLite. I wrote it so that any changes that need to be made in the way PyPedal talks to SQLite will only need to be changed in one place.
+\begin{description}
+\item[\emph{sql}] A string containing an SQL query.
+\item[\emph{\_curs}] An [optional] SQLite cursor.
+\item[\emph{dbname}] The database into which the pedigree will be loaded.
+\item[Returns:] The results of the query, or 0 if no resultset.
+\end{description}
+\item[\textbf{getCursor(dbname='pypedal')} $\Rightarrow$ cursor]
+\index[func]{pyp_db!getCursor()}
+getCursor() creates a database connection and returns a cursor on success or a 0 on failure. It isvery useful for non-trivial queries because it creates SQLite aggrefates before returning the cursor. The reporting routines in pyp\_reports make heavy use of getCursor().
+\begin{description}
+\item[\emph{dbname}] The database into which the pedigree will be loaded.
+\item[Returns:] An SQLite cursor if the database exists, a 0 otherwise.
+\end{description}
+\item[\textbf{loadPedigreeTable(pedobj)} $\Rightarrow$ integer]
+\index[func]{pyp_db!loadPedigreeTable()}
+loadPedigreeDatabase() takes a PyPedal pedigree object and loads the animal records in that pedigree into an SQLite table.
+\begin{description}
+\item[\emph{pedobj}] A PyPedal pedigree object.
+\item[\emph{dbname}] The database into which the pedigree will be loaded.
+\item[\emph{tablename}] The table into which the pedigree will be loaded.
+\item[Returns:] A 1 on successful table load, a 0 otherwise.
+\end{description}
+\item[\textbf{tableCountRows(dbname='pypedal', tablename='example')} $\Rightarrow$ integer]
+\index[func]{pyp_db!tableCountRows()}
+tableCountRows() returns the number of rows in a table.
+\begin{description}
+\item[\emph{dbname}] The database into which the pedigree will be loaded.
+\item[\emph{tablename}] The table into which the pedigree will be loaded.
+\item[Returns:] The number of rows in the table 1 or 0.
+\end{description}
+\item[\textbf{tableDropRows(dbname='pypedal', tablename='example')} $\Rightarrow$ integer]
+\index[func]{pyp_db!tableDropRows()}
+tableDropRows() drops all of the data from an existing table.
+\begin{description}
+\item[\emph{dbname}] The database from which data will be dropped.
+\item[\emph{tablename}] The table from which data will be dropped.
+\item[Returns:] A 1 if the data were dropped, a 0 otherwise.
+\end{description}
+\item[\textbf{tableDropTable(dbname='pypedal', tablename='example')} $\Rightarrow$ integer]
+\index[func]{pyp_db!tableDropTable()}
+tableDropTable() drops an existing table from the database.
+\begin{description}
+\item[\emph{dbname}] The database from which the table will be dropped.
+\item[\emph{tablename}] The table which will be dropped.
+\item[Returns:] 1.
+\end{description}
+\item[\textbf{tableExists(dbname='pypedal', tablename='example')} $\Rightarrow$ integer]
+\index[func]{pyp_db!tableExists()}
+tableExists() queries the sqlite\_master view in an SQLite database to determine whether or not a table exists.
+\begin{description}
+\item[\emph{dbname}] The database into which the pedigree will be loaded.
+\item[\emph{tablename}] The table into which the pedigree will be loaded.
+\item[Returns:] A 1 if the table exists, a 0 otherwise.
+\end{description}
+\end{description}
+\subsection*{The PypMean Class}
+\begin{description}
+\item[\textbf{PypMean()} (class)]
+\index[func]{pyp_db!PypMean}
+PypMean is a user-defined aggregate for SQLite for returning means from queries.
+\end{description}
+\subsection*{The PypSSD Class}
+\index[func]{pyp_db!PypSSD}
+\begin{description}
+\item[\textbf{PypSSD()} (class)]
+PypSSD is a user-defined aggregate for SQLite for returning sample standard deviations from queries.
+\end{description}
+\subsection*{The PypSum Class}
+\begin{description}
+\item[\textbf{PypSum()} (class)]
+\index[func]{pyp_db!PypSum}
+PypSum is a user-defined aggregate for SQLite for returning sums from queries.
+\end{description}
+\subsection*{The PypSVar Class}
+\begin{description}
+\item[\textbf{PypSVar()} (class)]
+\index[func]{pyp_db!PypSVar}
+PypSVar is a user-defined aggregate for SQLite for returning sample variances from queries.
+\end{description}

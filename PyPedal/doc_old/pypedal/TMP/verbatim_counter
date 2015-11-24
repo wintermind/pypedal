@@ -1,0 +1,59 @@
+
+<tex2html_mydb_mark>#160#$\blacktriangleright \blacktriangleright \blacktriangleright$
+<tex2html_mydb_mark>#161#$\blacktriangleleft \blacktriangleleft \blacktriangleleft$
+<tex2html_mydb_mark>#162#\begin{displaymath}
+N_{e(t)} = \dfrac{ 4 N_m N_f } { N_m + N_f }
+\end{displaymath}
+<tex2html_mydb_mark>#163#\begin{displaymath}
+N_{e(t)} = \dfrac{1}{2 \Delta f}
+\end{displaymath}
+<tex2html_mydb_mark>#164#$f_a = [f_{a(s)} + (1 - f_{a(s)})f_s + f_{a(d)} + (1 - f_{a(d)})f_d ]/2$
+<tex2html_mydb_mark>#165#$f_{i} = \sum_{j} F_{ij}$
+<tex2html_mydb_mark>#166#$0.21875 + 0.09375 + 0.0625 = 0.375$
+<tex2html_mydb_mark>#167#\begin{displaymath}
+GC_o = \dfrac{ ( GC_s + GC_d ) } { 2 } + 1
+\end{displaymath}
+<tex2html_mydb_mark>#168#\begin{displaymath}
+f_e = \dfrac{ 1 } { \sum{ p_i^2 } }
+\end{displaymath}
+<tex2html_mydb_mark>#169#\begin{displaymath}
+f_g = \dfrac{ 1 } { \sum{ \dfrac{p_i} {r_i} } }
+\end{displaymath}
+<tex2html_mydb_mark>#170#\begin{displaymath}
+f_a = \dfrac{1}{\sum{q_i^2}}
+\end{displaymath}
+<tex2html_mydb_mark>#171#\begin{displaymath}
+c_p = \dfrac{a_k}{\sum_{i=1}^g{2^i}}
+\end{displaymath}
+<tex2html_mydb_mark>#172#\begin{displaymath}
+f_a = 1.125 - 1.0 = 0.125
+\end{displaymath}
+<tex2html_mydb_mark>#173#$n + n(n+1)/2$
+<tex2html_mydb_mark>#174#$\blacktriangleright \blacktriangleright \blacktriangleright$
+<tex2html_mydb_mark>#175#$\blacktriangleleft \blacktriangleleft \blacktriangleleft$
+<tex2html_mydb_mark>#176#\begin{displaymath}
+\scriptsize
+    \left[ \begin{array}{llllllllllllllllllll}
+        1. & 0. & 0. & 0. & 0.5 & 0. & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 1. & 0. & 0. & 0.5 & 0. & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 1. & 0. & 0.  & 0.5 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0. & 1. & 0. & 0.5 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.5 & 0.5 & 0. & 0. & 1. & 0. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0.5 & 0.5 & 0. & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0.5 & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1. & 0. & 0. & 0. & 0. & 0. & 0. \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 1. & 0. & 0.5 & 0.5 & 0.5 & 0.5 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 1. & 0.5 & 0.5 & 0.5 & 0.5 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 1. & 0.5 & 0.75 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.5 & 1. & 0.75 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.75 & 0.75 & 1.25 & 0.75 \\
+        0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0. & 0.5 & 0.5 & 0.75 & 0.75 & 0.75 & 1.25
+    \end{array} \right]
+    \normalsize
+\end{displaymath}

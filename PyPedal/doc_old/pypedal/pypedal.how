@@ -1,0 +1,2284 @@
++++ TEXINPUTS=/home/jcole/pypedal/PyPedal/doc:/home/jcole/pypedal/PyPedal/doc/paper-letter:/home/jcole/pypedal/PyPedal/doc/texinputs:
++++ latex pypedal
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(/home/jcole/pypedal/PyPedal/doc/pypedal.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, croatian, bulgarian, russian, ukrainian, czech, slovak, danish, dut
+ch, finnish, finnish, french, basque, french, german, ngerman, german, ngerman,
+ greek, monogreek, ancientgreek, ibycus, hungarian, hungarian, italian, italian
+, latin, latin, mongolian, mongolian, norsk, norsk, coptic, esperanto, estonian
+, icelandic, indonesian, interlingua, romanian, serbian, slovenian, turkish, up
+persorbian, welsh, polish, polish, portuguese, portuguese, spanish, catalan, ga
+lician, spanish, catalan, galician, swedish, swedish, loaded.
+(/home/jcole/pypedal/PyPedal/doc/manual.cls
+Document Class: manual 1998/03/03 Document class (Python manual)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty)
+(/home/jcole/pypedal/PyPedal/doc/pypaper.sty
+(/usr/share/texmf-texlive/tex/latex/psnfss/times.sty)
+Using Times instead of Computer Modern.
+) (/usr/share/texmf-texlive/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.3 <2000/09/19> (tvz)
+) (/usr/share/texmf-texlive/tex/latex/base/report.cls
+Document Class: report 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo))
+(/home/jcole/pypedal/PyPedal/doc/fancyhdr.sty)
+Using fancier footers than usual.
+(/home/jcole/pypedal/PyPedal/doc/fncychap.sty)
+Using fancy chapter headings.
+(/home/jcole/pypedal/PyPedal/doc/python.sty
+(/usr/share/texmf-texlive/tex/latex/tools/longtable.sty)
+(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty)
+(/usr/share/texmf-texlive/tex/latex/base/alltt.sty)
+(/home/jcole/pypedal/PyPedal/doc/underscore.sty)))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def))
+(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def))
+(/usr/share/texmf-texlive/tex/latex/preprint/fullpage.sty)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty)
+(/etc/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def)))
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty)
+(/usr/share/texmf-texlive/tex/latex/index/index.sty)
+(/home/jcole/pypedal/PyPedal/doc/chicago.sty
+Using Chicago Manual of Style bibliography: 31 August 1992
+) (/home/jcole/texmf/tex/latex/xtab/xtab.sty)
+(/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf-texlive/tex/latex/psnfss/courier.sty)
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+(/etc/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def))
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def)
+(/etc/texmf/tex/latex/config/hyperref.cfg)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty)
+Implicit mode ON; LaTeX internals redefined
+)
+*hyperref using default driver hdvips*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hdvips.def
+(/usr/share/texmf-texlive/tex/latex/hyperref/pdfmark.def))
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+(/usr/share/texmf-texlive/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg))
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty)
+(/home/jcole/pypedal/PyPedal/doc/pypedal.aux)
+(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd)
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty))
+(/home/jcole/pypedal/PyPedal/doc/pypedal.out)
+(/home/jcole/pypedal/PyPedal/doc/pypedal.out)
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd) [1]
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd)
+Adding blank page after the abstract.
+[1]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [2]
+(/home/jcole/pypedal/PyPedal/doc/copyright.tex)
+Overfull \vbox (12.0pt too high) has occurred while \output is active [1]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [2]
+(/home/jcole/pypedal/PyPedal/doc/pypedal.toc
+Overfull \vbox (12.0pt too high) has occurred while \output is active [3])
+Overfull \vbox (12.0pt too high) has occurred while \output is active [4]
+(/home/jcole/pypedal/PyPedal/doc/pypedal.lot
+Overfull \vbox (12.0pt too high) has occurred while \output is active [1])
+Overfull \vbox (12.0pt too high) has occurred while \output is active [2]
+(/home/jcole/pypedal/PyPedal/doc/pypedal.lof)
+(/home/jcole/pypedal/PyPedal/doc/introduction.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [3]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [4]
+Chapter 1.
+
+LaTeX Warning: Reference `cha:license' on page 5 undefined on input line 16.
+
+
+LaTeX Warning: Reference `cha:api' on page 5 undefined on input line 26.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [5]
+
+LaTeX Warning: Reference `cha:api' on page 6 undefined on input line 33.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd)
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+\OT1/ptm/m/n/10 forge site, [][][]$\OT1/pcr/m/n/10 http : / / sourceforge . net
+ / projects / pypedal/$[][][][]\OT1/ptm/m/n/10 , pro-vides tools for re-port-in
+g bugs
+
+Overfull \hbox (5.52425pt too wide) in paragraph at lines 61--62
+\OT1/ptm/m/n/10 ture re-quests ([][][]$\OT1/pcr/m/n/10 https : / / sourceforge 
+. net / tracker / ?func = add&group _ id = 106679&atid = 645236$[][][][]\OT1/pt
+m/m/n/10 ),
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [6])
+(/home/jcole/pypedal/PyPedal/doc/installation.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [7]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [8]
+Chapter 2.
+
+Overfull \hbox (20.85306pt too wide) in paragraph at lines 19--27
+ [] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [9]
+Overfull \hbox (19.73347pt too wide) in paragraph at lines 27--35
+ [] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [10]
+
+LaTeX Warning: Reference `cha:api' on page 11 undefined on input line 64.
+
+
+Overfull \hbox (2.5pt too wide) in paragraph at lines 72--73
+[][]\OT1/ptm/m/n/10 .
+(/usr/share/texmf-texlive/tex/latex/psnfss/omspcr.fd)
+Overfull \vbox (12.0pt too high) has occurred while \output is active [11])
+(/home/jcole/pypedal/PyPedal/doc/overview.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [12]
+Chapter 3.
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [13]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [14]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [15]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [16]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [17]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [18]
+(/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd)
+Overfull \vbox (12.0pt too high) has occurred while \output is active [19]
+
+LaTeX Warning: Reference `fig:boichard-pedigree-basic' on page 20 undefined on 
+input line 245.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [20]
+Overfull \hbox (17.6972pt too wide) in paragraph at lines 316--316
+[]\OT1/pcr/m/n/9 Fri, 06 May 2005 10:27:22 WARNING  Reached end-of-line in boic
+hard2.ped after reading[] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [21]
+Overfull \hbox (1.49722pt too wide) in paragraph at lines 331--331
+[]\OT1/pcr/m/n/9 Thu, 04 Aug 2005 15:36:18 INFO     Pedigree comment (line 2): 
+# in Hartl and Clark[] 
+
+Overfull \hbox (1.49722pt too wide) in paragraph at lines 331--331
+[]                                   \OT1/pcr/m/n/9 does not have the same numb
+er of columns (4) as[] 
+
+Overfull \hbox (1.49722pt too wide) in paragraph at lines 331--331
+[]                                   \OT1/pcr/m/n/9 should (3). Please check yo
+ur pedigree file and[] 
+<./graphics/simulatedPedigree.eps>)
+(/home/jcole/pypedal/PyPedal/doc/inputoutput.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [22]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [23]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [24]
+Chapter 4.
+
+Underfull \hbox (badness 6332) in paragraph at lines 28--29
+\OT1/pcr/m/n/10 NewPedigree::load() \OT1/ptm/m/n/10 method, while out-put meth-
+ods are im-ple-mented as in-di-vid-ual meth-ods of
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [25]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [26]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [27]
+Overfull \hbox (44.69717pt too wide) in paragraph at lines 115--115
+[]    \OT1/pcr/m/n/9 test = pyp_newclasses.loadPedigree(options,pedsource='text
+stream',pedstream=pedstream)[] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+\OT1/ptm/m/n/10 PyPedal can write \OT1/pcr/m/n/10 NewPedigree \OT1/ptm/m/n/10 p
+edi-grees to ASDx-formatted SQLite ta-bles us-ing the
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [28])
+(/home/jcole/pypedal/PyPedal/doc/objects.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [29]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [30]
+Chapter 5.
+
+LaTeX Warning: Reference `sec:functions-pyp-newclasses' on page 31 undefined on
+ input line 10.
+
+
+Underfull \hbox (badness 7151) in paragraph at lines 30--31
+\OT1/pcr/m/n/10 BASE_-DEMOGRAPHIC_-YEAR \OT1/ptm/m/n/10 de-fined in
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\OT1/pcr/m/n/10 pyp_-utils.set_-ancestor_-flag()
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [31]
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+[]\OT1/ptm/m/n/10 Generation in-ferred by \OT1/pcr/m/n/10 pyp_-
+
+Overfull \hbox (39.67879pt too wide) in paragraph at lines 34--49
+ [] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [32]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [33]
+Overfull \hbox (97.42001pt too wide) in paragraph at lines 75--76
+[][][]$\OT1/pcr/m/n/10 http : / / www . brpreiss . com / books / opus7 / html /
+ page220 . html # progstrnga$[][][][]\OT1/ptm/m/n/10 .| 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [34]
+Overfull \hbox (97.42001pt too wide) in paragraph at lines 114--115
+[][][]$\OT1/pcr/m/n/10 http : / / www . brpreiss . com / books / opus7 / html /
+ page220 . html # progstrnga$[][][][]\OT1/ptm/m/n/10 .| 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [35]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [36]
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+\OT1/ptm/m/n/10 method from Matvec 1.1a (sr-c/-class-es/-pedi-gree.cpp;
+
+Overfull \hbox (52.74997pt too wide) in paragraph at lines 189--190
+[][][]$\OT1/pcr/m/n/10 http : / / statistics . unl . edu / faculty / steve / so
+ftware / matvec/$[][][][]\OT1/ptm/m/n/10 ),
+
+Overfull \hbox (1.51448pt too wide) in paragraph at lines 205--223
+ [] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [37]
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
+[]\OT1/ptm/m/n/10 Prints a sum-mary of the pedi-gree meta-data stored in the
+
+Underfull \hbox (badness 8038) in paragraph at lines 248--249
+[]\OT1/ptm/m/n/10 Returns a sum-mary of the pedi-gree meta-data stored in the
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [38]
+Underfull \hbox (badness 7151) in paragraph at lines 277--278
+[]\OT1/ptm/m/n/10 Calls \OT1/pcr/m/n/10 pyp_-nrm.fast_-a_-matrix() \OT1/ptm/m/n
+/10 or \OT1/pcr/m/n/10 pyp_-nrm.fast_-a_-
+) (/home/jcole/pypedal/PyPedal/doc/methodology.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [39]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [40]
+Chapter 6.
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [41]
+Overfull \hbox (17.6972pt too wide) in paragraph at lines 32--32
+[]\OT1/pcr/m/n/9 >>> print newf_f['fx'][example.idmap[example.namemap['Kaptn Kv
+ols von Widdersdorf']]][] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [42]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [43]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [44]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [45])
+(/home/jcole/pypedal/PyPedal/doc/howtos.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [46]
+Chapter 7.
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [47]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [48]
+Overfull \hbox (1.49722pt too wide) in paragraph at lines 118--118
+[]\OT1/pcr/m/n/9 28: 0.25, 29: 0.0, 30: 0.0, 31: 0.25, 32: 0.0, 33: 0.0, 34: 0.
+0, 35: 0.0, 36: 0.0,[] 
+
+Overfull \hbox (1.49722pt too wide) in paragraph at lines 118--118
+[]\OT1/pcr/m/n/9 37: 0.0, 38: 0.21875, 39: 0.0, 40: 0.0625, 41: 0.0, 42: 0.0, 4
+3: 0.03125, 44: 0.0,[] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [49]
+
+LaTeX Warning: Reference `sec:pyp-reports' on page 50 undefined on input line 1
+35.
+
+
+LaTeX Warning: Reference `sec:pyp-db' on page 50 undefined on input line 135.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [50]
+
+LaTeX Warning: Reference `sec:pyp-network' on page 51 undefined on input line 1
+86.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [51]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [52]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [53]
+Overfull \hbox (44.69717pt too wide) in paragraph at lines 320--320
+[]    \OT1/pcr/m/n/9 test = pyp_newclasses.loadPedigree(options,pedsource='text
+stream',pedstream=pedstream)[] 
+
+Overfull \hbox (120.29709pt too wide) in paragraph at lines 320--320
+[]    \OT1/pcr/m/n/9 pyp_graphics.new_draw_pedigree(test, gfilename='partial', 
+gtitle='Text Stream', gorient='p',gname=1)[] 
+<./graphics/pedfromstring.eps>
+Overfull \vbox (12.0pt too high) has occurred while \output is active [54])
+(/home/jcole/pypedal/PyPedal/doc/graphics.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [55]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [56]
+Chapter 8.
+<./graphics/boichard2Pedigree.eps> <./graphics/BoichardPedigreeBasic.eps>
+<./graphics/dougPRlNotitle.eps>
+
+LaTeX Warning: Reference `sec:pyp-graphics-draw-pedigree' on page 57 undefined 
+on input line 58.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [57]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [58]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [59]
+<./graphics/newfoundland.eps>
+Overfull \vbox (12.0pt too high) has occurred while \output is active [60]
+<./graphics/ayCoiByYear.eps>
+
+LaTeX Warning: Reference `sec:pyp-reports-mean-metric-by' on page 61 undefined 
+on input line 88.
+
+
+LaTeX Warning: Reference `sec:pyp-graphics-plot-line-xy' on page 61 undefined o
+n input line 90.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [61]
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 98.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 121.
+
+
+
+Overfull \hbox (14.30162pt too wide) detected at line 122
+[]
+<./graphics/boichard2Pcolor.eps> <./graphics/boichard2Spy.eps>)
+(/home/jcole/pypedal/PyPedal/doc/reports.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [62]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [63]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [64]
+Chapter 9.
+
+LaTeX Warning: Reference `sec:pyp-db' on page 65 undefined on input line 10.
+
+
+LaTeX Warning: Reference `sec:pyp-reports' on page 65 undefined on input line 1
+0.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [65]
+
+LaTeX Warning: Reference `sec:pyp-reports-pdf-three-gen-ped' on page 66 undefin
+ed on input line 55.
+
+<./graphics/greensDingoPedigree.eps>
+
+LaTeX Warning: Float too large for page by 10.70406pt on input line 62.
+
+
+Overfull \hbox (17.6972pt too wide) in paragraph at lines 85--85
+[]    \OT1/pcr/m/n/9 if not pyp_db.tableExists(pedobj.kw['database_name'], pedo
+bj.kw['dbtable_name']):[] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [66]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [67]
+Overfull \hbox (12.29721pt too wide) in paragraph at lines 106--106
+[]\OT1/pcr/m/n/9 def pdfInbreedingByYear(pedobj,results,titlepage=0,reporttitle
+='',reportauthor='', \[] 
+
+Overfull \hbox (6.89722pt too wide) in paragraph at lines 106--106
+[]        \OT1/pcr/m/n/9 _pdfOutfile = '%s_inbreeding_by_year.pdf' % ( pedobj.k
+w['default_report'] )[] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [68]
+Overfull \hbox (6.89722pt too wide) in paragraph at lines 156--156
+[]    \OT1/pcr/m/n/9 # Paginate the document if the contents of a textLine are 
+longer than one page.[] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [69])
+(/home/jcole/pypedal/PyPedal/doc/newfeatures.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [70]
+Chapter 10.
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [71]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [72]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [73]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [74]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [75]
+<./graphics/BoichardPedigreeColored.eps>
+Overfull \vbox (12.0pt too high) has occurred while \output is active [76]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [77])
+(/home/jcole/pypedal/PyPedal/doc/glossary.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [78]
+Chapter 11.
+) (/home/jcole/pypedal/PyPedal/doc/appendix.tex
+Overfull \vbox (12.0pt too high) has occurred while \output is active [79]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [80]
+Appendix A.
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+[]\OT1/ptm/m/n/10 Configuration
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+[]\OT1/ptm/m/n/10 Configuration
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+[]\OT1/ptm/m/n/10 Configuration
+
+Underfull \hbox (badness 7116) in paragraph at lines 19--20
+[]\OT1/ptm/m/n/10 Demonstrates use of \OT1/pcr/m/n/10 pyp_-graphics.draw_-
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]\OT1/ptm/m/n/10 new[]-in-breed-
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]\OT1/ptm/m/n/10 new[]-renum-ber-
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]\OT1/ptm/m/n/10 new[]-in-breed-
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\OT1/ptm/m/n/10 ing2.ini,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\OT1/ptm/m/n/10 new[]-in-breed-
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]\OT1/ptm/m/n/10 new[]-renum-
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\OT1/ptm/m/n/10 ber-ing.ped,
+
+Overfull \hbox (22.27452pt too wide) in paragraph at lines 12--23
+ [] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [81]
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]\OT1/ptm/m/n/10 Configuration
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]\OT1/ptm/m/n/10 new[]-lacy.ini,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]\OT1/ptm/m/n/10 new[]-lacy.ped,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+[]\OT1/ptm/m/n/10 Use of \OT1/pcr/m/n/10 pyp_-metrics.related_-animals()
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]\OT1/ptm/m/n/10 new[]-net-
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]\OT1/ptm/m/n/10 new[]-renum-ber-
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]\OT1/ptm/m/n/10 new[]-renum-ber-
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]\OT1/ptm/m/n/10 new[]-renum-ber-
+
+Overfull \hbox (25.60448pt too wide) in paragraph at lines 23--32
+ [] 
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [82]
+Appendix B.
+
+LaTeX Warning: Reference `tbl:gedcom-supported-records-and-tags-import,tbl:gedc
+om-supported-records-and-tags-export' on page 83 undefined on input line 38.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active [83])
+(/home/jcole/pypedal/PyPedal/doc/pypedal.bbl
+Overfull \vbox (12.0pt too high) has occurred while \output is active [84]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [85])
+(/home/jcole/pypedal/PyPedal/doc/pypedal.ind
+Overfull \vbox (12.0pt too high) has occurred while \output is active [86]
+Overfull \vbox (12.0pt too high) has occurred while \output is active [87])
+(/home/jcole/pypedal/PyPedal/doc/pypedal.fnd)
+(/home/jcole/pypedal/PyPedal/doc/pypedal.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)
+Output written on pypedal.dvi (94 pages, 420368 bytes).
+Transcript written on pypedal.log.
++++ latex2html -init_file pypedal.l2h -dir /home/jcole/pypedal/PyPedal/doc/pypedal /home/jcole/pypedal/PyPedal/doc/pypedal.tex
+Note: Initialising with file: pypedal.l2h
+Prototype mismatch: sub main::top_navigation_panel: none vs () at pypedal.l2h line 255.
+Prototype mismatch: sub main::bot_navigation_panel: none vs () at pypedal.l2h line 265.
+Prototype mismatch: sub main::add_special_link: none vs ($$$) at pypedal.l2h line 307.
+Prototype mismatch: sub main::add_idx: none vs () at pypedal.l2h line 349.
+Prototype mismatch: sub main::make_head_and_body: none vs ($$) at pypedal.l2h line 777.
+This is LaTeX2HTML Version 2002-2-1 (1.71)
+by Nikos Drakos, Computer Based Learning Unit, University of Leeds.
+
+Revised and extended by:
+ Marcus Hennecke, Ross Moore, Herb Swan and others
+...producing markup for HTML version 4.0  
+
+
+
+Extension: loading /usr/share/latex2html/versions/latin1.pl
+HTML version: loading /usr/share/latex2html/versions/html4_0.pl
+
+ *** processing declarations ***
+
+Setting $TEXINPUTS to /home/jcole/pypedal/PyPedal/doc:/home/jcole/pypedal/PyPedal/doc:/home/jcole/pypedal/PyPedal/doc/texinputs:/home/jcole/pypedal/PyPedal/doc:/home/jcole/pypedal/PyPedal/doc/paper-letter:/home/jcole/pypedal/PyPedal/doc/texinputs:
+
+OPENING /home/jcole/pypedal/PyPedal/doc/pypedal.tex 
+
+Cannot create directory /home/jcole/pypedal/PyPedal/doc/pypedal/: File exists, reusing it.
+
+Note: Working directory is /home/jcole/pypedal/PyPedal/doc/pypedal
+Note: Images will be generated in /tmp/l2h16736
+
+texexpand V2002-2-1 (Revision 1.12)
+
+
+
+Loading /usr/share/latex2html/styles/texdefs.perl...
+Package: loading /home/jcole/pypedal/PyPedal/doc/manual.perl
+Package: loading /usr/share/latex2html/styles/report.perl
+Package: loading /usr/share/latex2html/styles/alltt.perl
+Package: loading /home/jcole/pypedal/PyPedal/doc/python.perlSubroutine do_cmd_textasciitilde redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 89, <STYLES> line 1.
+Subroutine do_cmd_textasciicircum redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 90, <STYLES> line 1.
+Subroutine do_cmd_textbar redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 91, <STYLES> line 1.
+Subroutine do_cmd_textgreater redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 93, <STYLES> line 1.
+Subroutine do_cmd_textless redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 94, <STYLES> line 1.
+Subroutine do_cmd_LaTeX redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 110, <STYLES> line 1.
+Subroutine do_cmd_TeX redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 111, <STYLES> line 1.
+Subroutine do_cmd_email redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 235, <STYLES> line 1.
+Subroutine do_cmd_emph redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 245, <STYLES> line 1.
+Subroutine do_cmd_textbf redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 257, <STYLES> line 1.
+Subroutine do_cmd_textit redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 259, <STYLES> line 1.
+Subroutine do_cmd_url redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 330, <STYLES> line 1.
+Subroutine do_cmd_maketitle redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 1694, <STYLES> line 1.
+Subroutine do_env_alltt redefined at /home/jcole/pypedal/PyPedal/doc/python.perl line 2015, <STYLES> line 1.
+Subroutine do_cmd_index redefined at (eval 494) line 1, <STYLES> line 1.
+
+Warning: No implementation found for option: `letterpaper' for `manual' package
+
+Warning: No implementation found for option: `hyperref' for `manual' package
+
+Warning: No implementation found for option: `titlepage' for `manual' package
+
+Package: loading /usr/share/latex2html/styles/amsmath.perl
+Package: loading /usr/share/latex2html/styles/more_amsmath.perl
+Package: loading /usr/share/latex2html/styles/inputenc.perl
+Package: loading /usr/share/latex2html/styles/textcomp.perl
+Package: loading /usr/share/latex2html/styles/graphixx.perl
+Package: loading /usr/share/latex2html/styles/graphics-support.perl
+Package: loading /usr/share/latex2html/styles/getimagesize.perl
+Package: loading /usr/share/latex2html/styles/color.perl
+ *** initialising colors ***
+
+Warning: No implementation found for option: `breaklinks_true' for `hyperref' package
+
+Warning: No implementation found for option: `colorlinks_true' for `hyperref' package
+
+Warning: No implementation found for option: `urlcolor_blue' for `hyperref' package
+
+Warning: No implementation found for option: `linkcolor_darkorange' for `hyperref' package
+
+Warning: No implementation found for option: `citecolor_darkgreen' for `hyperref' package
+
+Reading ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%,,,,,,,++$$
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing ./copyright.tex 
+
+Processing macros ...++
+@@@@@@@@@@@@@@
+
+Doing ./introduction.tex 
+%
+Processing macros ...++.........................
+@@@@@@@@@@@@@@@@@@@@@@
+
+Doing ./installation.tex 
+'''''''''
+Processing macros ...++...................$$
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing ./overview.tex 
+%%''''''''''''''''
+Processing macros ...++...........................................
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing ./inputoutput.tex 
+'''''''''''
+Processing macros ...++...........
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing ./objects.tex 
+'
+Processing macros ...++.......
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing ./methodology.tex 
+'
+Processing macros ...++......
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing ./howtos.tex 
+%%'''''''''''''''''''''''''''''
+Processing macros ...++...............
+@@@@@@@@@@@
+
+Doing ./graphics.tex 
+''
+Processing macros ...++...$$
+@@@@@@@@@@@@@@@@@@@
+
+Doing ./reports.tex 
+%%%%%%%''''''''
+Processing macros ...++..........
+@@@@@@@@@@
+
+Doing ./newfeatures.tex 
+%%%%%%%%'''''''
+Processing macros ...++..........
+@@@@@@
+
+Doing ./glossary.tex 
+
+Processing macros ...++....
+@
+
+Doing ./appendix.tex 
+
+Processing macros ...++..............
+@@@@@@@@@@@@@@
+
+add_bbl_and_idx_dummy_commands ==> no index found
+Reading aux file: /home/jcole/pypedal/PyPedal/doc/pypedal.aux ...
+Processing macros ...,,,, *** Could not find argument for command \providecommand ***
+\HyPL@Entry[1]<<2869>><<2869>>
+\HyPL@Entry<<2870>>0 ;SPMlt;;SPMlt; /S /r ;SPMgt;;SPMgt; <<2870>>
+\HyPL@Entry<<2871>>1 ;SPMlt;;SPMlt; /S /r ;SPMgt;;SPMgt; <<2871>>
+\HyPL@Entry<<2872>>3 ;SPMlt;;SPMlt; /S /r ;SPMgt;;SPMgt; <<2872>>
+\newlabel<<2873>>sec:legal-notice<<2873>><<4965>><<2874>><<2874>><<2875>>i<<2875>><<2876>>Legal Notice\relax <<2876>><<2877>>section*.1<<2877>><<2878>><<2878>><<4965>>
+\newlabel<<2879>>sec:license<<2879>><<4966>><<2880>><<2880>><<2881>>i<<2881>><<2882>>License\relax <<2882>><<2883>>section*.3<<2883>><<2884>><<2884>><<4966>>
+\@writefile<<2885>>default<<2885>><<4967>>\indexentry<<2886>>license|hyperpage<<2886>><<2887>>i<<2887>><<4967>>
+\HyPL@Entry<<2888>>7 ;SPMlt;;SPMlt; /S /D ;SPMgt;;SPMgt; <<2888>>
+\@writefile<<2889>>default<<2889>><<5555>>\indexentry<<5404>>pypedal@<<4968>>\py@idxcode <<2890>>pypedal<<2890>><<4968>> (extension module)|textbf<<5404>><<2891>>3<<2891>><<5555>>
+\newlabel<<2892>>module-pypedal<<2892>><<4969>><<2893>><<2893>><<2894>>3<<2894>><<2895>>\listfigurename \relax <<2895>><<2896>>chapter*.6<<2896>><<2897>><<2897>><<4969>>
+\@writefile<<2898>>toc<<2898>><<5405>>\contentsline <<2899>>chapter<<2899>><<4970>>\numberline <<2900>>1<<2900>>Introduction<<4970>><<2901>>5<<2901>><<2902>>chapter.1<<2902>><<5405>>
+\@writefile<<2903>>lof<<2903>><<4971>>\addvspace <<2904>>10\p@ <<2904>><<4971>>
+\@writefile<<2905>>lot<<2905>><<4972>>\addvspace <<2906>>10\p@ <<2906>><<4972>>
+\newlabel<<2907>>cha:introduction<<2907>><<4973>><<2908>>1<<2908>><<2909>>5<<2909>><<2910>>Introduction\relax <<2910>><<2911>>chapter.1<<2911>><<2912>><<2912>><<4973>>
+\citation<<2913>>LacyAW1996,GulisijaGWT2006<<2913>>
+\citation<<2914>>Ballou1997<<2914>>
+\citation<<2915>>SuwanleeBSC2007<<2915>>
+\citation<<2916>>ref143<<2916>>
+\citation<<2917>>ref235<<2917>>
+\citation<<2918>>ref640<<2918>>
+\citation<<2919>>ref352<<2919>>
+\citation<<2920>>ref352<<2920>>
+\citation<<2921>>Cole2004a,Cole2007a<<2921>>
+\@writefile<<2922>>toc<<2922>><<5406>>\contentsline <<2923>>section<<2923>><<4974>>\numberline <<2924>>1.1<<2924>>Implemented Features<<4974>><<2925>>6<<2925>><<2926>>section.1.1<<2926>><<5406>>
+\@writefile<<2927>>toc<<2927>><<5407>>\contentsline <<2928>>section<<2928>><<4975>>\numberline <<2929>>1.2<<2929>>Where to get information and code<<4975>><<2930>>7<<2930>><<2931>>section.1.2<<2931>><<5407>>
+\@writefile<<2932>>toc<<2932>><<5408>>\contentsline <<2933>>section<<2933>><<4976>>\numberline <<2934>>1.3<<2934>>Acknowledgments<<4976>><<2935>>7<<2935>><<2936>>section.1.3<<2936>><<5408>>
+\@writefile<<2937>>default<<2937>><<4977>>\indexentry<<2938>>Acknowledgments|hyperpage<<2938>><<2939>>7<<2939>><<4977>>
+\@writefile<<2940>>toc<<2940>><<5409>>\contentsline <<2941>>section<<2941>><<4978>>\numberline <<2942>>1.4<<2942>>Disclaimer<<4978>><<2943>>7<<2943>><<2944>>section.1.4<<2944>><<5409>>
+\@writefile<<2945>>default<<2945>><<4979>>\indexentry<<2946>>Disclaimer|hyperpage<<2946>><<2947>>7<<2947>><<4979>>
+\@writefile<<2948>>toc<<2948>><<5410>>\contentsline <<2949>>chapter<<2949>><<4980>>\numberline <<2950>>2<<2950>>Installing PyPedal<<4980>><<2951>>9<<2951>><<2952>>chapter.2<<2952>><<5410>>
+\@writefile<<2953>>lof<<2953>><<4981>>\addvspace <<2954>>10\p@ <<2954>><<4981>>
+\@writefile<<2955>>lot<<2955>><<4982>>\addvspace <<2956>>10\p@ <<2956>><<4982>>
+\newlabel<<2957>>cha:installation<<2957>><<4983>><<2958>>2<<2958>><<2959>>9<<2959>><<2960>>Installing PyPedal\relax <<2960>><<2961>>chapter.2<<2961>><<2962>><<2962>><<4983>>
+\@writefile<<2963>>default<<2963>><<4984>>\indexentry<<2964>>installation|hyperpage<<2964>><<2965>>9<<2965>><<4984>>
+\@writefile<<2966>>toc<<2966>><<5411>>\contentsline <<2967>>section<<2967>><<4985>>\numberline <<2968>>2.1<<2968>>Overview of installation<<4985>><<2969>>9<<2969>><<2970>>section.2.1<<2970>><<5411>>
+\newlabel<<2971>>sec:installation-overview<<2971>><<4986>><<2972>>2.1<<2972>><<2973>>9<<2973>><<2974>>Overview of installation\relax <<2974>><<2975>>section.2.1<<2975>><<2976>><<2976>><<4986>>
+\newlabel<<2977>>tbl:extensions<<2977>><<4987>><<2978>>2.1<<2978>><<2979>>9<<2979>><<2980>>Overview of installation\relax <<2980>><<2981>>table.2.1<<2981>><<2982>><<2982>><<4987>>
+\@writefile<<2983>>default<<2983>><<4988>>\indexentry<<2984>>installation!extensions|hyperpage<<2984>><<2985>>9<<2985>><<4988>>
+\@writefile<<2986>>lot<<2986>><<5412>>\contentsline <<2987>>table<<2987>><<4989>>\numberline <<2988>>2.1<<2988>><<2989>>\ignorespaces Third-party extensions used by PyPedal.<<2989>><<4989>><<2990>>9<<2990>><<2991>>table.2.1<<2991>><<5412>>
+\gdef \PWST@i<<2992>>2<<2992>>
+\@writefile<<2993>>toc<<2993>><<5413>>\contentsline <<2994>>section<<2994>><<4990>>\numberline <<2995>>2.2<<2995>>Testing the Python installation<<4990>><<2996>>10<<2996>><<2997>>section.2.2<<2997>><<5413>>
+\@writefile<<2998>>toc<<2998>><<5414>>\contentsline <<2999>>section<<2999>><<4991>>\numberline <<3000>>2.3<<3000>>Installing PyPedal<<4991>><<3001>>10<<3001>><<3002>>section.2.3<<3002>><<5414>>
+\newlabel<<3003>>sec:installing-pypedal<<3003>><<4992>><<3004>>2.3<<3004>><<3005>>10<<3005>><<3006>>Installing PyPedal\relax <<3006>><<3007>>section.2.3<<3007>><<3008>><<3008>><<4992>>
+\@writefile<<3009>>toc<<3009>><<5415>>\contentsline <<3010>>subsection<<3010>><<4993>>\numberline <<3011>>2.3.1<<3011>>Installing on Unix, Linux, and Mac OSX<<4993>><<3012>>10<<3012>><<3013>>subsection.2.3.1<<3013>><<5415>>
+\newlabel<<3014>>sec:installing-unix<<3014>><<4994>><<3015>>2.3.1<<3015>><<3016>>10<<3016>><<3017>>Installing on Unix, Linux, and Mac OSX\relax <<3017>><<3018>>subsection.2.3.1<<3018>><<3019>><<3019>><<4994>>
+\@writefile<<3020>>default<<3020>><<4995>>\indexentry<<3021>>installation!installation on Linux|hyperpage<<3021>><<3022>>10<<3022>><<4995>>
+\newlabel<<3023>>sec:tip:from-pypedal-import<<3023>><<4996>><<3024>>2.3.1<<3024>><<3025>>10<<3025>><<3026>>Important Tip\relax <<3026>><<3027>>section*.7<<3027>><<3028>><<3028>><<4996>>
+\@writefile<<3029>>toc<<3029>><<5416>>\contentsline <<3030>>subsection<<3030>><<4997>>\numberline <<3031>>2.3.2<<3031>>Installing on Windows<<4997>><<3032>>11<<3032>><<3033>>subsection.2.3.2<<3033>><<5416>>
+\newlabel<<3034>>sec:installing-windows<<3034>><<4998>><<3035>>2.3.2<<3035>><<3036>>11<<3036>><<3037>>Installing on Windows\relax <<3037>><<3038>>subsection.2.3.2<<3038>><<3039>><<3039>><<4998>>
+\@writefile<<3040>>default<<3040>><<4999>>\indexentry<<3041>>installation!installation on Windows|hyperpage<<3041>><<3042>>11<<3042>><<4999>>
+\@writefile<<3043>>default<<3043>><<5000>>\indexentry<<3044>>installation!installation on Windows!Python Enthought Edition|hyperpage<<3044>><<3045>>11<<3045>><<5000>>
+\@writefile<<3046>>default<<3046>><<5001>>\indexentry<<3047>>PyGraphviz|hyperpage<<3047>><<3048>>11<<3048>><<5001>>
+\@writefile<<3049>>default<<3049>><<5002>>\indexentry<<3050>>installation!installation on Windows!environment variables|hyperpage<<3050>><<3051>>11<<3051>><<5002>>
+\@writefile<<3052>>default<<3052>><<5003>>\indexentry<<3053>>PATH|hyperpage<<3053>><<3054>>11<<3054>><<5003>>
+\@writefile<<3055>>default<<3055>><<5417>>\indexentry<<5004>>environment variables!<<3056>>PATH<<3056>>|hyperpage<<5004>><<3057>>11<<3057>><<5417>>
+\@writefile<<3058>>default<<3058>><<5005>>\indexentry<<3059>>PYTHONPATH|hyperpage<<3059>><<3060>>11<<3060>><<5005>>
+\@writefile<<3061>>default<<3061>><<5418>>\indexentry<<5006>>environment variables!<<3062>>PYTHONPATH<<3062>>|hyperpage<<5006>><<3063>>11<<3063>><<5418>>
+\@writefile<<3064>>default<<3064>><<5007>>\indexentry<<3065>>installation!installation on Windows!SQLite|hyperpage<<3065>><<3066>>11<<3066>><<5007>>
+\@writefile<<3067>>toc<<3067>><<5008>>\contentsline <<3068>>subsubsection<<3068>><<3069>>Installation from source<<3069>><<3070>>11<<3070>><<3071>>section*.8<<3071>><<5008>>
+\newlabel<<3072>>sec:installation-from-source<<3072>><<5009>><<3073>>2.3.2<<3073>><<3074>>11<<3074>><<3075>>Installation from source\relax <<3075>><<3076>>section*.8<<3076>><<3077>><<3077>><<5009>>
+\@writefile<<3078>>default<<3078>><<5010>>\indexentry<<3079>>installation!installation from source|hyperpage<<3079>><<3080>>11<<3080>><<5010>>
+\@writefile<<3081>>toc<<3081>><<5011>>\contentsline <<3082>>subsubsection<<3082>><<3083>>Installation on Cygwin<<3083>><<3084>>12<<3084>><<3085>>section*.9<<3085>><<5011>>
+\newlabel<<3086>>sec:installation-cygwin<<3086>><<5012>><<3087>>2.3.2<<3087>><<3088>>12<<3088>><<3089>>Installation on Cygwin\relax <<3089>><<3090>>section*.9<<3090>><<3091>><<3091>><<5012>>
+\@writefile<<3092>>default<<3092>><<5013>>\indexentry<<3093>>installation!installation on Cygwin|hyperpage<<3093>><<3094>>12<<3094>><<5013>>
+\@writefile<<3095>>toc<<3095>><<5419>>\contentsline <<3096>>section<<3096>><<5014>>\numberline <<3097>>2.4<<3097>>Testing the PyPedal Installation<<5014>><<3098>>12<<3098>><<3099>>section.2.4<<3099>><<5419>>
+\newlabel<<3100>>sec:installation-testing<<3100>><<5015>><<3101>>2.4<<3101>><<3102>>12<<3102>><<3103>>Testing the PyPedal Installation\relax <<3103>><<3104>>section.2.4<<3104>><<3105>><<3105>><<5015>>
+\@writefile<<3106>>default<<3106>><<5016>>\indexentry<<3107>>installation!testing the installation|hyperpage<<3107>><<3108>>12<<3108>><<5016>>
+\@writefile<<3109>>toc<<3109>><<5420>>\contentsline <<3110>>chapter<<3110>><<5017>>\numberline <<3111>>3<<3111>>High-Level Overview<<5017>><<3112>>13<<3112>><<3113>>chapter.3<<3113>><<5420>>
+\@writefile<<3114>>lof<<3114>><<5018>>\addvspace <<3115>>10\p@ <<3115>><<5018>>
+\@writefile<<3116>>lot<<3116>><<5019>>\addvspace <<3117>>10\p@ <<3117>><<5019>>
+\newlabel<<3118>>cha:high-level-overview<<3118>><<5020>><<3119>>3<<3119>><<3120>>13<<3120>><<3121>>High-Level Overview\relax <<3121>><<3122>>chapter.3<<3122>><<3123>><<3123>><<5020>>
+\@writefile<<3124>>toc<<3124>><<5421>>\contentsline <<3125>>section<<3125>><<5021>>\numberline <<3126>>3.1<<3126>>Interacting with PyPedal<<5021>><<3127>>13<<3127>><<3128>>section.3.1<<3128>><<5421>>
+\newlabel<<3129>>sec:interacting<<3129>><<5022>><<3130>>3.1<<3130>><<3131>>13<<3131>><<3132>>Interacting with PyPedal\relax <<3132>><<3133>>section.3.1<<3133>><<3134>><<3134>><<5022>>
+\@writefile<<3135>>default<<3135>><<5023>>\indexentry<<3136>>interacting with PyPedal|hyperpage<<3136>><<3137>>13<<3137>><<5023>>
+\@writefile<<3138>>default<<3138>><<5024>>\indexentry<<3139>>interacting with PyPedal!interactively|hyperpage<<3139>><<3140>>13<<3140>><<5024>>
+\@writefile<<3141>>default<<3141>><<5025>>\indexentry<<3142>>interacting with PyPedal!programmatically|hyperpage<<3142>><<3143>>13<<3143>><<5025>>
+\@writefile<<3144>>toc<<3144>><<5422>>\contentsline <<3145>>section<<3145>><<5026>>\numberline <<3146>>3.2<<3146>>The PyPedal Object Model<<5026>><<3147>>13<<3147>><<3148>>section.3.2<<3148>><<5422>>
+\newlabel<<3149>>sec:pypedal-objects<<3149>><<5027>><<3150>>3.2<<3150>><<3151>>13<<3151>><<3152>>The PyPedal Object Model\relax <<3152>><<3153>>section.3.2<<3153>><<3154>><<3154>><<5027>>
+\@writefile<<3155>>default<<3155>><<5028>>\indexentry<<3156>>objects|hyperpage<<3156>><<3157>>13<<3157>><<5028>>
+\@writefile<<3158>>toc<<3158>><<5423>>\contentsline <<3159>>section<<3159>><<5029>>\numberline <<3160>>3.3<<3160>>Program Structure<<5029>><<3161>>13<<3161>><<3162>>section.3.3<<3162>><<5423>>
+\newlabel<<3163>>sec:overview-program-structure<<3163>><<5030>><<3164>>3.3<<3164>><<3165>>13<<3165>><<3166>>Program Structure\relax <<3166>><<3167>>section.3.3<<3167>><<3168>><<3168>><<5030>>
+\@writefile<<3169>>default<<3169>><<5031>>\indexentry<<3170>>program structure|hyperpage<<3170>><<3171>>13<<3171>><<5031>>
+\citation<<3172>>ref640<<3172>>
+\@writefile<<3173>>default<<3173>><<5032>>\indexentry<<3174>>configuration file|hyperpage<<3174>><<3175>>14<<3175>><<5032>>
+\@writefile<<3176>>toc<<3176>><<5424>>\contentsline <<3177>>section<<3177>><<5033>>\numberline <<3178>>3.4<<3178>>Options<<5033>><<3179>>15<<3179>><<3180>>section.3.4<<3180>><<5424>>
+\newlabel<<3181>>sec:pypedal-options<<3181>><<5034>><<3182>>3.4<<3182>><<3183>>15<<3183>><<3184>>Options\relax <<3184>><<3185>>section.3.4<<3185>><<3186>><<3186>><<5034>>
+\@writefile<<3187>>default<<3187>><<5035>>\indexentry<<3188>>options|hyperpage<<3188>><<3189>>15<<3189>><<5035>>
+\newlabel<<3190>>tbl:options<<3190>><<5036>><<3191>>3.1<<3191>><<3192>>16<<3192>><<3193>>Options\relax <<3193>><<3194>>table.3.1<<3194>><<3195>><<3195>><<5036>>
+\@writefile<<3196>>default<<3196>><<5037>>\indexentry<<3197>>options!list|hyperpage<<3197>><<3198>>16<<3198>><<5037>>
+\@writefile<<3199>>lot<<3199>><<5425>>\contentsline <<3200>>table<<3200>><<5038>>\numberline <<3201>>3.1<<3201>><<3202>>\ignorespaces Options for controlling PyPedal.<<3202>><<5038>><<3203>>16<<3203>><<3204>>table.3.1<<3204>><<5425>>
+\citation<<3205>>Pattie1965<<3205>>
+\gdef \PWST@ii<<3206>>3<<3206>>
+\@writefile<<3207>>toc<<3207>><<5426>>\contentsline <<3208>>subsection<<3208>><<5039>>\numberline <<3209>>3.4.1<<3209>>Configuration Files<<5039>><<3210>>18<<3210>><<3211>>subsection.3.4.1<<3211>><<5426>>
+\newlabel<<3212>>sec:pypedal-options-file<<3212>><<5040>><<3213>>3.4.1<<3213>><<3214>>18<<3214>><<3215>>Configuration Files\relax <<3215>><<3216>>subsection.3.4.1<<3216>><<3217>><<3217>><<5040>>
+\@writefile<<3218>>default<<3218>><<5041>>\indexentry<<3219>>configuration files|hyperpage<<3219>><<3220>>18<<3220>><<5041>>
+\@writefile<<3221>>default<<3221>><<5042>>\indexentry<<3222>>Dict4Ini|hyperpage<<3222>><<3223>>18<<3223>><<5042>>
+\@writefile<<3224>>toc<<3224>><<5427>>\contentsline <<3225>>section<<3225>><<5043>>\numberline <<3226>>3.5<<3226>>Pedigree Files<<5043>><<3227>>19<<3227>><<3228>>section.3.5<<3228>><<5427>>
+\newlabel<<3229>>sec:pedigree-files<<3229>><<5044>><<3230>>3.5<<3230>><<3231>>19<<3231>><<3232>>Pedigree Files\relax <<3232>><<3233>>section.3.5<<3233>><<3234>><<3234>><<5044>>
+\@writefile<<3235>>default<<3235>><<5045>>\indexentry<<3236>>pedigree files|hyperpage<<3236>><<3237>>19<<3237>><<5045>>
+\@writefile<<3238>>default<<3238>><<5046>>\indexentry<<3239>>column delimiter|hyperpage<<3239>><<3240>>19<<3240>><<5046>>
+\@writefile<<3241>>toc<<3241>><<5428>>\contentsline <<3242>>subsection<<3242>><<5047>>\numberline <<3243>>3.5.1<<3243>>Pedigree Format Codes<<5047>><<3244>>19<<3244>><<3245>>subsection.3.5.1<<3245>><<5428>>
+\newlabel<<3246>>sec:pedigree-format-codes<<3246>><<5048>><<3247>>3.5.1<<3247>><<3248>>19<<3248>><<3249>>Pedigree Format Codes\relax <<3249>><<3250>>subsection.3.5.1<<3250>><<3251>><<3251>><<5048>>
+\@writefile<<3252>>default<<3252>><<5049>>\indexentry<<3253>>pedigree format codes|hyperpage<<3253>><<3254>>19<<3254>><<5049>>
+\citation<<3255>>Pattie1965<<3255>>
+\newlabel<<3256>>tbl:pedigree-format-codes<<3256>><<5050>><<3257>>3.2<<3257>><<3258>>20<<3258>><<3259>>Pedigree Format Codes\relax <<3259>><<3260>>table.3.2<<3260>><<3261>><<3261>><<5050>>
+\@writefile<<3262>>default<<3262>><<5051>>\indexentry<<3263>>pedigree format codes!list|hyperpage<<3263>><<3264>>20<<3264>><<5051>>
+\@writefile<<3265>>lot<<3265>><<5429>>\contentsline <<3266>>table<<3266>><<5052>>\numberline <<3267>>3.2<<3267>><<3268>>\ignorespaces Pedigree format codes.<<3268>><<5052>><<3269>>20<<3269>><<3270>>table.3.2<<3270>><<5429>>
+\gdef \PWST@iii<<3271>>2<<3271>>
+\@writefile<<3272>>toc<<3272>><<5430>>\contentsline <<3273>>section<<3273>><<5053>>\numberline <<3274>>3.6<<3274>>Renumbering a Pedigree<<5053>><<3275>>21<<3275>><<3276>>section.3.6<<3276>><<5430>>
+\newlabel<<3277>>sec:renumbering<<3277>><<5054>><<3278>>3.6<<3278>><<3279>>21<<3279>><<3280>>Renumbering a Pedigree\relax <<3280>><<3281>>section.3.6<<3281>><<3282>><<3282>><<5054>>
+\@writefile<<3283>>default<<3283>><<5055>>\indexentry<<3284>>renumbering pedigrees|hyperpage<<3284>><<3285>>21<<3285>><<5055>>
+\@writefile<<3286>>toc<<3286>><<5431>>\contentsline <<3287>>subsection<<3287>><<5056>>\numberline <<3288>>3.6.1<<3288>>Animal Identification<<5056>><<3289>>21<<3289>><<3290>>subsection.3.6.1<<3290>><<5431>>
+\newlabel<<3291>>sec:renumbering-animal-id<<3291>><<5057>><<3292>>3.6.1<<3292>><<3293>>21<<3293>><<3294>>Animal Identification\relax <<3294>><<3295>>subsection.3.6.1<<3295>><<3296>><<3296>><<5057>>
+\@writefile<<3297>>default<<3297>><<5058>>\indexentry<<3298>>renumbering pedigrees!animal identification|hyperpage<<3298>><<3299>>21<<3299>><<5058>>
+\@writefile<<3300>>toc<<3300>><<5432>>\contentsline <<3301>>section<<3301>><<5059>>\numberline <<3302>>3.7<<3302>>Logging<<5059>><<3303>>21<<3303>><<3304>>section.3.7<<3304>><<5432>>
+\newlabel<<3305>>sec:logging<<3305>><<5060>><<3306>>3.7<<3306>><<3307>>21<<3307>><<3308>>Logging\relax <<3308>><<3309>>section.3.7<<3309>><<3310>><<3310>><<5060>>
+\@writefile<<3311>>default<<3311>><<5061>>\indexentry<<3312>>logging|hyperpage<<3312>><<3313>>21<<3313>><<5061>>
+\@writefile<<3314>>toc<<3314>><<5433>>\contentsline <<3315>>section<<3315>><<5062>>\numberline <<3316>>3.8<<3316>>Simulating Pedigrees<<5062>><<3317>>22<<3317>><<3318>>section.3.8<<3318>><<5433>>
+\newlabel<<3319>>sec:pedigree-simulation<<3319>><<5063>><<3320>>3.8<<3320>><<3321>>22<<3321>><<3322>>Simulating Pedigrees\relax <<3322>><<3323>>section.3.8<<3323>><<3324>><<3324>><<5063>>
+\@writefile<<3325>>default<<3325>><<5064>>\indexentry<<3326>>pedigree simulation|hyperpage<<3326>><<3327>>22<<3327>><<5064>>
+\@writefile<<3328>>lof<<3328>><<5434>>\contentsline <<3329>>figure<<3329>><<5065>>\numberline <<3330>>3.1<<3330>><<3331>>\ignorespaces Simulated pedigree using default options<<3331>><<5065>><<3332>>23<<3332>><<3333>>figure.3.1<<3333>><<5434>>
+\newlabel<<3334>>fig:example-simulated-pedigree<<3334>><<5066>><<3335>>3.1<<3335>><<3336>>23<<3336>><<3337>>Simulated pedigree using default options\relax <<3337>><<3338>>figure.3.1<<3338>><<3339>><<3339>><<5066>>
+\gdef \PWST@iv<<3340>>1<<3340>>
+\@writefile<<3341>>toc<<3341>><<5435>>\contentsline <<3342>>chapter<<3342>><<5067>>\numberline <<3343>>4<<3343>>Input and Output<<5067>><<3344>>25<<3344>><<3345>>chapter.4<<3345>><<5435>>
+\@writefile<<3346>>lof<<3346>><<5068>>\addvspace <<3347>>10\p@ <<3347>><<5068>>
+\@writefile<<3348>>lot<<3348>><<5069>>\addvspace <<3349>>10\p@ <<3349>><<5069>>
+\newlabel<<3350>>cha:inputoutput<<3350>><<5070>><<3351>>4<<3351>><<3352>>25<<3352>><<3353>>Input and Output\relax <<3353>><<3354>>chapter.4<<3354>><<3355>><<3355>><<5070>>
+\@writefile<<3356>>toc<<3356>><<5436>>\contentsline <<3357>>section<<3357>><<5071>>\numberline <<3358>>4.1<<3358>>Overview<<5071>><<3359>>25<<3359>><<3360>>section.4.1<<3360>><<5436>>
+\newlabel<<3361>>sec:io-overview<<3361>><<5072>><<3362>>4.1<<3362>><<3363>>25<<3363>><<3364>>Overview\relax <<3364>><<3365>>section.4.1<<3365>><<3366>><<3366>><<5072>>
+\newlabel<<3367>>tbl:io-methods<<3367>><<5073>><<3368>>4.1<<3368>><<3369>>25<<3369>><<3370>>Overview\relax <<3370>><<3371>>table.4.1<<3371>><<3372>><<3372>><<5073>>
+\@writefile<<3373>>lot<<3373>><<5556>>\contentsline <<3374>>table<<3374>><<5437>>\numberline <<3375>>4.1<<3375>><<5074>>\ignorespaces PyPedal<<3376>><<3376>> input and output methods.<<5074>><<5437>><<3377>>25<<3377>><<3378>>table.4.1<<3378>><<5556>>
+\@writefile<<3379>>toc<<3379>><<5438>>\contentsline <<3380>>section<<3380>><<5075>>\numberline <<3381>>4.2<<3381>>Input<<5075>><<3382>>26<<3382>><<3383>>section.4.2<<3383>><<5438>>
+\newlabel<<3384>>sec:io-input<<3384>><<5076>><<3385>>4.2<<3385>><<3386>>26<<3386>><<3387>>Input\relax <<3387>><<3388>>section.4.2<<3388>><<3389>><<3389>><<5076>>
+\@writefile<<3390>>default<<3390>><<5077>>\indexentry<<3391>>input|hyperpage<<3391>><<3392>>26<<3392>><<5077>>
+\@writefile<<3393>>default<<3393>><<5078>>\indexentry<<3394>>input!integrity checks|hyperpage<<3394>><<3395>>26<<3395>><<5078>>
+\@writefile<<3396>>toc<<3396>><<5439>>\contentsline <<3397>>subsection<<3397>><<5079>>\numberline <<3398>>4.2.1<<3398>>Databases<<5079>><<3399>>26<<3399>><<3400>>subsection.4.2.1<<3400>><<5439>>
+\newlabel<<3401>>sec:io-input-database<<3401>><<5080>><<3402>>4.2.1<<3402>><<3403>>26<<3403>><<3404>>Databases\relax <<3404>><<3405>>subsection.4.2.1<<3405>><<3406>><<3406>><<5080>>
+\@writefile<<3407>>default<<3407>><<5081>>\indexentry<<3408>>input!databases|hyperpage<<3408>><<3409>>26<<3409>><<5081>>
+\@writefile<<3410>>toc<<3410>><<5440>>\contentsline <<3411>>subsection<<3411>><<5082>>\numberline <<3412>>4.2.2<<3412>>Graph Objects<<5082>><<3413>>26<<3413>><<3414>>subsection.4.2.2<<3414>><<5440>>
+\newlabel<<3415>>sec:io-input-xdigraph<<3415>><<5083>><<3416>>4.2.2<<3416>><<3417>>26<<3417>><<3418>>Graph Objects\relax <<3418>><<3419>>subsection.4.2.2<<3419>><<3420>><<3420>><<5083>>
+\@writefile<<3421>>default<<3421>><<5084>>\indexentry<<3422>>input!graph objects|hyperpage<<3422>><<3423>>26<<3423>><<5084>>
+\@writefile<<3424>>toc<<3424>><<5441>>\contentsline <<3425>>subsection<<3425>><<5085>>\numberline <<3426>>4.2.3<<3426>><<3427>>GEDCOM<<3427>> Files<<5085>><<3428>>27<<3428>><<3429>>subsection.4.2.3<<3429>><<5441>>
+\newlabel<<3430>>sec:io-input-gedcom<<3430>><<5442>><<3431>>4.2.3<<3431>><<3432>>27<<3432>><<5086>><<3433>>GEDCOM<<3433>> Files\relax <<5086>><<3434>>subsection.4.2.3<<3434>><<3435>><<3435>><<5442>>
+\@writefile<<3436>>default<<3436>><<5087>>\indexentry<<3437>>input!GEDCOM files|hyperpage<<3437>><<3438>>27<<3438>><<5087>>
+\@writefile<<3439>>toc<<3439>><<5443>>\contentsline <<3440>>subsection<<3440>><<5088>>\numberline <<3441>>4.2.4<<3441>>Text Files<<5088>><<3442>>27<<3442>><<3443>>subsection.4.2.4<<3443>><<5443>>
+\newlabel<<3444>>sec:io-input-text-files<<3444>><<5089>><<3445>>4.2.4<<3445>><<3446>>27<<3446>><<3447>>Text Files\relax <<3447>><<3448>>subsection.4.2.4<<3448>><<3449>><<3449>><<5089>>
+\@writefile<<3450>>default<<3450>><<5090>>\indexentry<<3451>>input!text files|hyperpage<<3451>><<3452>>27<<3452>><<5090>>
+\@writefile<<3453>>toc<<3453>><<5444>>\contentsline <<3454>>subsection<<3454>><<5091>>\numberline <<3455>>4.2.5<<3455>>Text Streams<<5091>><<3456>>28<<3456>><<3457>>subsection.4.2.5<<3457>><<5444>>
+\newlabel<<3458>>sec:io-input-text-streams<<3458>><<5092>><<3459>>4.2.5<<3459>><<3460>>28<<3460>><<3461>>Text Streams\relax <<3461>><<3462>>subsection.4.2.5<<3462>><<3463>><<3463>><<5092>>
+\@writefile<<3464>>default<<3464>><<5093>>\indexentry<<3465>>input!text streams|hyperpage<<3465>><<3466>>28<<3466>><<5093>>
+\@writefile<<3467>>default<<3467>><<5094>>\indexentry<<3468>>pedsource|hyperpage<<3468>><<3469>>28<<3469>><<5094>>
+\@writefile<<3470>>toc<<3470>><<5445>>\contentsline <<3471>>section<<3471>><<5095>>\numberline <<3472>>4.3<<3472>>Output<<5095>><<3473>>28<<3473>><<3474>>section.4.3<<3474>><<5445>>
+\newlabel<<3475>>sec:io-output<<3475>><<5096>><<3476>>4.3<<3476>><<3477>>28<<3477>><<3478>>Output\relax <<3478>><<3479>>section.4.3<<3479>><<3480>><<3480>><<5096>>
+\@writefile<<3481>>default<<3481>><<5097>>\indexentry<<3482>>output|hyperpage<<3482>><<3483>>28<<3483>><<5097>>
+\@writefile<<3484>>toc<<3484>><<5446>>\contentsline <<3485>>subsection<<3485>><<5098>>\numberline <<3486>>4.3.1<<3486>>Databases<<5098>><<3487>>28<<3487>><<3488>>subsection.4.3.1<<3488>><<5446>>
+\newlabel<<3489>>sec:io-output-database<<3489>><<5099>><<3490>>4.3.1<<3490>><<3491>>28<<3491>><<3492>>Databases\relax <<3492>><<3493>>subsection.4.3.1<<3493>><<3494>><<3494>><<5099>>
+\@writefile<<3495>>default<<3495>><<5100>>\indexentry<<3496>>output!databases|hyperpage<<3496>><<3497>>28<<3497>><<5100>>
+\@writefile<<3498>>toc<<3498>><<5447>>\contentsline <<3499>>subsection<<3499>><<5101>>\numberline <<3500>>4.3.2<<3500>><<3501>>GEDCOM<<3501>> Files<<5101>><<3502>>29<<3502>><<3503>>subsection.4.3.2<<3503>><<5447>>
+\newlabel<<3504>>sec:io-output-gedcom<<3504>><<5448>><<3505>>4.3.2<<3505>><<3506>>29<<3506>><<5102>><<3507>>GEDCOM<<3507>> Files\relax <<5102>><<3508>>subsection.4.3.2<<3508>><<3509>><<3509>><<5448>>
+\@writefile<<3510>>default<<3510>><<5103>>\indexentry<<3511>>output!GEDCOM files|hyperpage<<3511>><<3512>>29<<3512>><<5103>>
+\@writefile<<3513>>toc<<3513>><<5449>>\contentsline <<3514>>subsection<<3514>><<5104>>\numberline <<3515>>4.3.3<<3515>>Graph Objects<<5104>><<3516>>29<<3516>><<3517>>subsection.4.3.3<<3517>><<5449>>
+\newlabel<<3518>>sec:io-output-xdigraph<<3518>><<5105>><<3519>>4.3.3<<3519>><<3520>>29<<3520>><<3521>>Graph Objects\relax <<3521>><<3522>>subsection.4.3.3<<3522>><<3523>><<3523>><<5105>>
+\@writefile<<3524>>default<<3524>><<5106>>\indexentry<<3525>>output!graph objects|hyperpage<<3525>><<3526>>29<<3526>><<5106>>
+\@writefile<<3527>>toc<<3527>><<5450>>\contentsline <<3528>>subsection<<3528>><<5107>>\numberline <<3529>>4.3.4<<3529>>Text Files<<5107>><<3530>>29<<3530>><<3531>>subsection.4.3.4<<3531>><<5450>>
+\newlabel<<3532>>sec:io-output-text-files<<3532>><<5108>><<3533>>4.3.4<<3533>><<3534>>29<<3534>><<3535>>Text Files\relax <<3535>><<3536>>subsection.4.3.4<<3536>><<3537>><<3537>><<5108>>
+\@writefile<<3538>>default<<3538>><<5109>>\indexentry<<3539>>output!text files|hyperpage<<3539>><<3540>>29<<3540>><<5109>>
+\@writefile<<3541>>toc<<3541>><<5451>>\contentsline <<3542>>chapter<<3542>><<5110>>\numberline <<3543>>5<<3543>>Using PyPedal Objects<<5110>><<3544>>31<<3544>><<3545>>chapter.5<<3545>><<5451>>
+\@writefile<<3546>>lof<<3546>><<5111>>\addvspace <<3547>>10\p@ <<3547>><<5111>>
+\@writefile<<3548>>lot<<3548>><<5112>>\addvspace <<3549>>10\p@ <<3549>><<5112>>
+\newlabel<<3550>>cha:using-pypedal-objects<<3550>><<5113>><<3551>>5<<3551>><<3552>>31<<3552>><<3553>>Using PyPedal Objects\relax <<3553>><<3554>>chapter.5<<3554>><<3555>><<3555>><<5113>>
+\@writefile<<3556>>default<<3556>><<5114>>\indexentry<<3557>>PyPedal objects|hyperpage<<3557>><<3558>>31<<3558>><<5114>>
+\@writefile<<3559>>toc<<3559>><<5452>>\contentsline <<3560>>section<<3560>><<5115>>\numberline <<3561>>5.1<<3561>>Animal Objects<<5115>><<3562>>31<<3562>><<3563>>section.5.1<<3563>><<5452>>
+\newlabel<<3564>>sec:objects-animal-objects<<3564>><<5116>><<3565>>5.1<<3565>><<3566>>31<<3566>><<3567>>Animal Objects\relax <<3567>><<3568>>section.5.1<<3568>><<3569>><<3569>><<5116>>
+\@writefile<<3570>>default<<3570>><<5117>>\indexentry<<3571>>PyPedal objects!Animal objects|hyperpage<<3571>><<3572>>31<<3572>><<5117>>
+\@writefile<<3573>>toc<<3573>><<5453>>\contentsline <<3574>>subsection<<3574>><<5118>>\numberline <<3575>>5.1.1<<3575>>The NewAnimal Class<<5118>><<3576>>31<<3576>><<3577>>subsection.5.1.1<<3577>><<5453>>
+\newlabel<<3578>>sec:objects-animal-objects-new-animal<<3578>><<5119>><<3579>>5.1.1<<3579>><<3580>>31<<3580>><<3581>>The NewAnimal Class\relax <<3581>><<3582>>subsection.5.1.1<<3582>><<3583>><<3583>><<5119>>
+\@writefile<<3584>>default<<3584>><<5120>>\indexentry<<3585>>PyPedal objects!Animal objects!NewAnimal|hyperpage<<3585>><<3586>>31<<3586>><<5120>>
+\newlabel<<3587>>tbl:objects-animal-objects-new-animal-attributes<<3587>><<5121>><<3588>>5.1<<3588>><<3589>>31<<3589>><<3590>>The NewAnimal Class\relax <<3590>><<3591>>table.5.1<<3591>><<3592>><<3592>><<5121>>
+\@writefile<<3593>>lot<<3593>><<5557>>\contentsline <<3594>>table<<3594>><<5454>>\numberline <<3595>>5.1<<3595>><<5122>>\ignorespaces Attributes of \texttt  <<3596>>NewAnimal<<3596>> objects.<<5122>><<5454>><<3597>>31<<3597>><<3598>>table.5.1<<3598>><<5557>>
+\citation<<3599>>Pattie1965<<3599>>
+\gdef \PWST@v<<3600>>3<<3600>>
+\newlabel<<3601>>tbl:objects-animal-objects-new-animal-methods<<3601>><<5123>><<3602>>5.2<<3602>><<3603>>33<<3603>><<3604>>The NewAnimal Class\relax <<3604>><<3605>>table.5.2<<3605>><<3606>><<3606>><<5123>>
+\@writefile<<3607>>lot<<3607>><<5558>>\contentsline <<3608>>table<<3608>><<5455>>\numberline <<3609>>5.2<<3609>><<5124>>\ignorespaces Methods of \texttt  <<3610>>NewAnimal<<3610>> objects.<<5124>><<5455>><<3611>>33<<3611>><<3612>>table.5.2<<3612>><<5558>>
+\gdef \PWST@vi<<3613>>2<<3613>>
+\gdef \PWST@vii<<3614>>1<<3614>>
+\@writefile<<3615>>toc<<3615>><<5456>>\contentsline <<3616>>subsection<<3616>><<5125>>\numberline <<3617>>5.1.2<<3617>>The LightAnimal Class<<5125>><<3618>>34<<3618>><<3619>>subsection.5.1.2<<3619>><<5456>>
+\newlabel<<3620>>sec:objects-animal-objects-light-animal<<3620>><<5126>><<3621>>5.1.2<<3621>><<3622>>34<<3622>><<3623>>The LightAnimal Class\relax <<3623>><<3624>>subsection.5.1.2<<3624>><<3625>><<3625>><<5126>>
+\@writefile<<3626>>default<<3626>><<5127>>\indexentry<<3627>>PyPedal objects!Animal objects!LightAnimal|hyperpage<<3627>><<3628>>34<<3628>><<5127>>
+\newlabel<<3629>>tbl:objects-animal-objects-light-animal-attributes<<3629>><<5128>><<3630>>5.3<<3630>><<3631>>34<<3631>><<3632>>The LightAnimal Class\relax <<3632>><<3633>>table.5.3<<3633>><<3634>><<3634>><<5128>>
+\@writefile<<3635>>lot<<3635>><<5559>>\contentsline <<3636>>table<<3636>><<5457>>\numberline <<3637>>5.3<<3637>><<5129>>\ignorespaces Attributes of \texttt  <<3638>>LightAnimal<<3638>> objects.<<5129>><<5457>><<3639>>34<<3639>><<3640>>table.5.3<<3640>><<5559>>
+\newlabel<<3641>>tbl:objects-animal-objects-light-animal-methods<<3641>><<5130>><<3642>>5.4<<3642>><<3643>>34<<3643>><<3644>>The LightAnimal Class\relax <<3644>><<3645>>table.5.4<<3645>><<3646>><<3646>><<5130>>
+\@writefile<<3647>>lot<<3647>><<5560>>\contentsline <<3648>>table<<3648>><<5458>>\numberline <<3649>>5.4<<3649>><<5131>>\ignorespaces Methods of \texttt  <<3650>>LightAnimal<<3650>> objects.<<5131>><<5458>><<3651>>34<<3651>><<3652>>table.5.4<<3652>><<5560>>
+\gdef \PWST@viii<<3653>>2<<3653>>
+\gdef \PWST@ix<<3654>>1<<3654>>
+\gdef \PWST@x<<3655>>1<<3655>>
+\@writefile<<3656>>toc<<3656>><<5459>>\contentsline <<3657>>subsection<<3657>><<5132>>\numberline <<3658>>5.1.3<<3658>>The SimAnimal Class<<5132>><<3659>>35<<3659>><<3660>>subsection.5.1.3<<3660>><<5459>>
+\newlabel<<3661>>sec:objects-animal-objects-sim-animal<<3661>><<5133>><<3662>>5.1.3<<3662>><<3663>>35<<3663>><<3664>>The SimAnimal Class\relax <<3664>><<3665>>subsection.5.1.3<<3665>><<3666>><<3666>><<5133>>
+\@writefile<<3667>>default<<3667>><<5134>>\indexentry<<3668>>PyPedal objects!Animal objects!SimAnimal|hyperpage<<3668>><<3669>>35<<3669>><<5134>>
+\newlabel<<3670>>tbl:objects-animal-objects-sim-animal-attributes<<3670>><<5135>><<3671>>5.5<<3671>><<3672>>35<<3672>><<3673>>The SimAnimal Class\relax <<3673>><<3674>>table.5.5<<3674>><<3675>><<3675>><<5135>>
+\@writefile<<3676>>lot<<3676>><<5561>>\contentsline <<3677>>table<<3677>><<5460>>\numberline <<3678>>5.5<<3678>><<5136>>\ignorespaces Attributes of \texttt  <<3679>>SimAnimal<<3679>> objects.<<5136>><<5460>><<3680>>35<<3680>><<3681>>table.5.5<<3681>><<5561>>
+\newlabel<<3682>>tbl:objects-animal-objects-sim-animal-methods<<3682>><<5137>><<3683>>5.6<<3683>><<3684>>35<<3684>><<3685>>The SimAnimal Class\relax <<3685>><<3686>>table.5.6<<3686>><<3687>><<3687>><<5137>>
+\@writefile<<3688>>lot<<3688>><<5562>>\contentsline <<3689>>table<<3689>><<5461>>\numberline <<3690>>5.6<<3690>><<5138>>\ignorespaces Methods of \texttt  <<3691>>SimAnimal<<3691>> objects.<<5138>><<5461>><<3692>>35<<3692>><<3693>>table.5.6<<3693>><<5562>>
+\@writefile<<3694>>toc<<3694>><<5462>>\contentsline <<3695>>section<<3695>><<5139>>\numberline <<3696>>5.2<<3696>>The NewPedigree Class<<5139>><<3697>>35<<3697>><<3698>>section.5.2<<3698>><<5462>>
+\newlabel<<3699>>sec:objects-pedigree-objects<<3699>><<5140>><<3700>>5.2<<3700>><<3701>>35<<3701>><<3702>>The NewPedigree Class\relax <<3702>><<3703>>section.5.2<<3703>><<3704>><<3704>><<5140>>
+\@writefile<<3705>>default<<3705>><<5141>>\indexentry<<3706>>PyPedal objects!Pedigree objects|hyperpage<<3706>><<3707>>35<<3707>><<5141>>
+\newlabel<<3708>>tbl:objects-newpedigree-attributes<<3708>><<5142>><<3709>>5.7<<3709>><<3710>>35<<3710>><<3711>>The NewPedigree Class\relax <<3711>><<3712>>table.5.7<<3712>><<3713>><<3713>><<5142>>
+\@writefile<<3714>>lot<<3714>><<5563>>\contentsline <<3715>>table<<3715>><<5463>>\numberline <<3716>>5.7<<3716>><<5143>>\ignorespaces Attributes of \texttt  <<3717>>NewPedigree<<3717>> objects.<<5143>><<5463>><<3718>>35<<3718>><<3719>>table.5.7<<3719>><<5563>>
+\gdef \PWST@xi<<3720>>2<<3720>>
+\newlabel<<3721>>tbl:objects-newpedigree-methods<<3721>><<5144>><<3722>>5.8<<3722>><<3723>>36<<3723>><<3724>>The NewPedigree Class\relax <<3724>><<3725>>table.5.8<<3725>><<3726>><<3726>><<5144>>
+\@writefile<<3727>>lot<<3727>><<5564>>\contentsline <<3728>>table<<3728>><<5464>>\numberline <<3729>>5.8<<3729>><<5145>>\ignorespaces Methods of \texttt  <<3730>>NewPedigree<<3730>> objects.<<5145>><<5464>><<3731>>36<<3731>><<3732>>table.5.8<<3732>><<5564>>
+\gdef \PWST@xii<<3733>>2<<3733>>
+\gdef \PWST@xiii<<3734>>1<<3734>>
+\@writefile<<3735>>toc<<3735>><<5465>>\contentsline <<3736>>section<<3736>><<5146>>\numberline <<3737>>5.3<<3737>>The PedigreeMetadata Class<<5146>><<3738>>37<<3738>><<3739>>section.5.3<<3739>><<5465>>
+\newlabel<<3740>>sec:objects-metadata-objects<<3740>><<5147>><<3741>>5.3<<3741>><<3742>>37<<3742>><<3743>>The PedigreeMetadata Class\relax <<3743>><<3744>>section.5.3<<3744>><<3745>><<3745>><<5147>>
+\@writefile<<3746>>default<<3746>><<5148>>\indexentry<<3747>>PyPedal objects!Metadata objects|hyperpage<<3747>><<3748>>37<<3748>><<5148>>
+\newlabel<<3749>>tbl:objects-metadata-attributes<<3749>><<5149>><<3750>>5.9<<3750>><<3751>>37<<3751>><<3752>>The PedigreeMetadata Class\relax <<3752>><<3753>>table.5.9<<3753>><<3754>><<3754>><<5149>>
+\@writefile<<3755>>lot<<3755>><<5565>>\contentsline <<3756>>table<<3756>><<5466>>\numberline <<3757>>5.9<<3757>><<5150>>\ignorespaces Attributes of \texttt  <<3758>>PedigreeMetadata<<3758>> objects.<<5150>><<5466>><<3759>>37<<3759>><<3760>>table.5.9<<3760>><<5565>>
+\gdef \PWST@xiv<<3761>>1<<3761>>
+\gdef \PWST@xv<<3762>>1<<3762>>
+\newlabel<<3763>>tbl:objects-metadata-methods<<3763>><<5151>><<3764>>5.10<<3764>><<3765>>38<<3765>><<3766>>The PedigreeMetadata Class\relax <<3766>><<3767>>table.5.10<<3767>><<3768>><<3768>><<5151>>
+\@writefile<<3769>>lot<<3769>><<5566>>\contentsline <<3770>>table<<3770>><<5467>>\numberline <<3771>>5.10<<3771>><<5152>>\ignorespaces Methods of \texttt  <<3772>>PedigreeMetadata<<3772>> objects.<<5152>><<5467>><<3773>>38<<3773>><<3774>>table.5.10<<3774>><<5566>>
+\@writefile<<3775>>toc<<3775>><<5468>>\contentsline <<3776>>section<<3776>><<5153>>\numberline <<3777>>5.4<<3777>>The NewAMatrix Class<<5153>><<3778>>38<<3778>><<3779>>section.5.4<<3779>><<5468>>
+\newlabel<<3780>>sec:objects-amatrix-objects<<3780>><<5154>><<3781>>5.4<<3781>><<3782>>38<<3782>><<3783>>The NewAMatrix Class\relax <<3783>><<3784>>section.5.4<<3784>><<3785>><<3785>><<5154>>
+\@writefile<<3786>>default<<3786>><<5155>>\indexentry<<3787>>PyPedal objects!AMatrix objects|hyperpage<<3787>><<3788>>38<<3788>><<5155>>
+\newlabel<<3789>>tbl:objects-amatrix-attributes<<3789>><<5156>><<3790>>5.11<<3790>><<3791>>38<<3791>><<3792>>The NewAMatrix Class\relax <<3792>><<3793>>table.5.11<<3793>><<3794>><<3794>><<5156>>
+\@writefile<<3795>>lot<<3795>><<5567>>\contentsline <<3796>>table<<3796>><<5469>>\numberline <<3797>>5.11<<3797>><<5157>>\ignorespaces Attributes of \texttt  <<3798>>NewAMatrix<<3798>> objects.<<5157>><<5469>><<3799>>38<<3799>><<3800>>table.5.11<<3800>><<5567>>
+\newlabel<<3801>>tbl:objects-amatrix-methods<<3801>><<5158>><<3802>>5.12<<3802>><<3803>>38<<3803>><<3804>>The NewAMatrix Class\relax <<3804>><<3805>>table.5.12<<3805>><<3806>><<3806>><<5158>>
+\@writefile<<3807>>lot<<3807>><<5568>>\contentsline <<3808>>table<<3808>><<5470>>\numberline <<3809>>5.12<<3809>><<5159>>\ignorespaces Methods of \texttt  <<3810>>NewAMatrix<<3810>> objects.<<5159>><<5470>><<3811>>38<<3811>><<3812>>table.5.12<<3812>><<5568>>
+\gdef \PWST@xvi<<3813>>2<<3813>>
+\citation<<3814>>Cormen2003<<3814>>
+\@writefile<<3815>>toc<<3815>><<5471>>\contentsline <<3816>>chapter<<3816>><<5160>>\numberline <<3817>>6<<3817>>Methodology<<5160>><<3818>>41<<3818>><<3819>>chapter.6<<3819>><<5471>>
+\@writefile<<3820>>lof<<3820>><<5161>>\addvspace <<3821>>10\p@ <<3821>><<5161>>
+\@writefile<<3822>>lot<<3822>><<5162>>\addvspace <<3823>>10\p@ <<3823>><<5162>>
+\newlabel<<3824>>cha:methodology<<3824>><<5163>><<3825>>6<<3825>><<3826>>41<<3826>><<3827>>Methodology\relax <<3827>><<3828>>chapter.6<<3828>><<3829>><<3829>><<5163>>
+\@writefile<<3830>>toc<<3830>><<5472>>\contentsline <<3831>>section<<3831>><<5164>>\numberline <<3832>>6.1<<3832>>Reordering and Renumbering<<5164>><<3833>>41<<3833>><<3834>>section.6.1<<3834>><<5472>>
+\newlabel<<3835>>sec:methodology-reordering-and-renumbering<<3835>><<5165>><<3836>>6.1<<3836>><<3837>>41<<3837>><<3838>>Reordering and Renumbering\relax <<3838>><<3839>>section.6.1<<3839>><<3840>><<3840>><<5165>>
+\@writefile<<3841>>default<<3841>><<5166>>\indexentry<<3842>>reordering and renumbering|hyperpage<<3842>><<3843>>41<<3843>><<5166>>
+\gdef \PWST@xvii<<3844>>1<<3844>>
+\citation<<3845>>Wright1922<<3845>>
+\citation<<3846>>ref351<<3846>>
+\citation<<3847>>ref337<<3847>>
+\@writefile<<3848>>toc<<3848>><<5473>>\contentsline <<3849>>section<<3849>><<5167>>\numberline <<3850>>6.2<<3850>>Animal Identification and Cross-References<<5167>><<3851>>42<<3851>><<3852>>section.6.2<<3852>><<5473>>
+\newlabel<<3853>>sec:methodology-id-mapping<<3853>><<5168>><<3854>>6.2<<3854>><<3855>>42<<3855>><<3856>>Animal Identification and Cross-References\relax <<3856>><<3857>>section.6.2<<3857>><<3858>><<3858>><<5168>>
+\@writefile<<3859>>default<<3859>><<5169>>\indexentry<<3860>>ID mapping|hyperpage<<3860>><<3861>>42<<3861>><<5169>>
+\newlabel<<3862>>tbl:methodology-id-mapping<<3862>><<5170>><<3863>>6.1<<3863>><<3864>>42<<3864>><<3865>>Animal Identification and Cross-References\relax <<3865>><<3866>>table.6.1<<3866>><<3867>><<3867>><<5170>>
+\@writefile<<3868>>lot<<3868>><<5474>>\contentsline <<3869>>table<<3869>><<5171>>\numberline <<3870>>6.1<<3870>><<3871>>\ignorespaces Animal identification and cross-references.<<3871>><<5171>><<3872>>42<<3872>><<3873>>table.6.1<<3873>><<5474>>
+\@writefile<<3874>>toc<<3874>><<5475>>\contentsline <<3875>>section<<3875>><<5172>>\numberline <<3876>>6.3<<3876>>Measures of Genetic Variation<<5172>><<3877>>42<<3877>><<3878>>section.6.3<<3878>><<5475>>
+\newlabel<<3879>>sec:methodology-genetic-variation<<3879>><<5173>><<3880>>6.3<<3880>><<3881>>42<<3881>><<3882>>Measures of Genetic Variation\relax <<3882>><<3883>>section.6.3<<3883>><<3884>><<3884>><<5173>>
+\@writefile<<3885>>default<<3885>><<5174>>\indexentry<<3886>>measures of genetic variation|hyperpage<<3886>><<3887>>42<<3887>><<5174>>
+\citation<<3888>>Wright1931<<3888>>
+\citation<<3889>>ref640<<3889>>
+\citation<<3890>>ref352<<3890>>
+\citation<<3891>>ref640<<3891>>
+\citation<<3892>>ref352<<3892>>
+\citation<<3893>>ref817<<3893>>
+\citation<<3894>>ref435<<3894>>
+\citation<<3895>>ref641<<3895>>
+\citation<<3896>>ref337<<3896>>
+\citation<<3897>>ref91<<3897>>
+\citation<<3898>>Ballou1997<<3898>>
+\@writefile<<3899>>toc<<3899>><<5476>>\contentsline <<3900>>section<<3900>><<5175>>\numberline <<3901>>6.4<<3901>>Computational Details<<5175>><<3902>>43<<3902>><<3903>>section.6.4<<3903>><<5476>>
+\newlabel<<3904>>sec:methodology-computational-details<<3904>><<5176>><<3905>>6.4<<3905>><<3906>>43<<3906>><<3907>>Computational Details\relax <<3907>><<3908>>section.6.4<<3908>><<3909>><<3909>><<5176>>
+\@writefile<<3910>>default<<3910>><<5177>>\indexentry<<3911>>computational details|hyperpage<<3911>><<3912>>43<<3912>><<5177>>
+\@writefile<<3913>>toc<<3913>><<5477>>\contentsline <<3914>>subsection<<3914>><<5178>>\numberline <<3915>>6.4.1<<3915>>Inbreeding and Related Measures<<5178>><<3916>>43<<3916>><<3917>>subsection.6.4.1<<3917>><<5477>>
+\newlabel<<3918>>sec:methodology-computation-inbreeding<<3918>><<5179>><<3919>>6.4.1<<3919>><<3920>>43<<3920>><<3921>>Inbreeding and Related Measures\relax <<3921>><<3922>>subsection.6.4.1<<3922>><<3923>><<3923>><<5179>>
+\@writefile<<3924>>default<<3924>><<5180>>\indexentry<<3925>>computational details!inbreeding and related measures|hyperpage<<3925>><<3926>>43<<3926>><<5180>>
+\citation<<3927>>SuwanleeBSC2007<<3927>>
+\citation<<3928>>ref1719<<3928>>
+\citation<<3929>>LacyAW1996<<3929>>
+\citation<<3930>>GulisijaGWT2006<<3930>>
+\citation<<3931>>GulisijaC2007<<3931>>
+\citation<<3932>>Pattie1965<<3932>>
+\@writefile<<3933>>toc<<3933>><<5478>>\contentsline <<3934>>subsection<<3934>><<5181>>\numberline <<3935>>6.4.2<<3935>>Ancestral Inbreeding<<5181>><<3936>>44<<3936>><<3937>>subsection.6.4.2<<3937>><<5478>>
+\newlabel<<3938>>sec:methodology-ancestral-inbreeding<<3938>><<5182>><<3939>>6.4.2<<3939>><<3940>>44<<3940>><<3941>>Ancestral Inbreeding\relax <<3941>><<3942>>subsection.6.4.2<<3942>><<3943>><<3943>><<5182>>
+\@writefile<<3944>>default<<3944>><<5183>>\indexentry<<3945>>computational details!ancestral inbreeding|hyperpage<<3945>><<3946>>44<<3946>><<5183>>
+\@writefile<<3947>>toc<<3947>><<5479>>\contentsline <<3948>>subsection<<3948>><<5184>>\numberline <<3949>>6.4.3<<3949>>Partial Inbreeding<<5184>><<3950>>44<<3950>><<3951>>subsection.6.4.3<<3951>><<5479>>
+\newlabel<<3952>>sec:methodology-partial-inbreeding<<3952>><<5185>><<3953>>6.4.3<<3953>><<3954>>44<<3954>><<3955>>Partial Inbreeding\relax <<3955>><<3956>>subsection.6.4.3<<3956>><<3957>><<3957>><<5185>>
+\@writefile<<3958>>default<<3958>><<5186>>\indexentry<<3959>>computational details!partial inbreeding|hyperpage<<3959>><<3960>>44<<3960>><<5186>>
+\@writefile<<3961>>toc<<3961>><<5480>>\contentsline <<3962>>subsection<<3962>><<5187>>\numberline <<3963>>6.4.4<<3963>>Generation Coefficients<<5187>><<3964>>44<<3964>><<3965>>subsection.6.4.4<<3965>><<5480>>
+\newlabel<<3966>>sec:methodology-computation-generation-coefficients<<3966>><<5188>><<3967>>6.4.4<<3967>><<3968>>44<<3968>><<3969>>Generation Coefficients\relax <<3969>><<3970>>subsection.6.4.4<<3970>><<3971>><<3971>><<5188>>
+\@writefile<<3972>>default<<3972>><<5189>>\indexentry<<3973>>computational details!generation coefficients|hyperpage<<3973>><<3974>>44<<3974>><<5189>>
+\@writefile<<3975>>toc<<3975>><<5481>>\contentsline <<3976>>subsection<<3976>><<5190>>\numberline <<3977>>6.4.5<<3977>>Effective Founder Number<<5190>><<3978>>44<<3978>><<3979>>subsection.6.4.5<<3979>><<5481>>
+\newlabel<<3980>>sec:methodology-computation-effective-founder-number<<3980>><<5191>><<3981>>6.4.5<<3981>><<3982>>44<<3982>><<3983>>Effective Founder Number\relax <<3983>><<3984>>subsection.6.4.5<<3984>><<3985>><<3985>><<5191>>
+\@writefile<<3986>>default<<3986>><<5192>>\indexentry<<3987>>computational details!effective founder number|hyperpage<<3987>><<3988>>44<<3988>><<5192>>
+\citation<<3989>>ref640<<3989>>
+\citation<<3990>>ref640<<3990>>
+\citation<<3991>>ref1719<<3991>>
+\citation<<3992>>ref640<<3992>>
+\citation<<3993>>ref640<<3993>>
+\citation<<3994>>ref352<<3994>>
+\citation<<3995>>Cassell2003a<<3995>>
+\@writefile<<3996>>toc<<3996>><<5482>>\contentsline <<3997>>subsection<<3997>><<5193>>\numberline <<3998>>6.4.6<<3998>>Founder Genome Equivalents<<5193>><<3999>>45<<3999>><<4000>>subsection.6.4.6<<4000>><<5482>>
+\newlabel<<4001>>sec:methodology-computation-founder-genome-equivalents<<4001>><<5194>><<4002>>6.4.6<<4002>><<4003>>45<<4003>><<4004>>Founder Genome Equivalents\relax <<4004>><<4005>>subsection.6.4.6<<4005>><<4006>><<4006>><<5194>>
+\@writefile<<4007>>default<<4007>><<5195>>\indexentry<<4008>>computational details!founder genome equivalents|hyperpage<<4008>><<4009>>45<<4009>><<5195>>
+\@writefile<<4010>>toc<<4010>><<5483>>\contentsline <<4011>>subsection<<4011>><<5196>>\numberline <<4012>>6.4.7<<4012>>Effective Ancestor Number<<5196>><<4013>>45<<4013>><<4014>>subsection.6.4.7<<4014>><<5483>>
+\newlabel<<4015>>sec:methodology-computation-effective-ancestor-number<<4015>><<5197>><<4016>>6.4.7<<4016>><<4017>>45<<4017>><<4018>>Effective Ancestor Number\relax <<4018>><<4019>>subsection.6.4.7<<4019>><<4020>><<4020>><<5197>>
+\@writefile<<4021>>default<<4021>><<5198>>\indexentry<<4022>>computational details!effective ancestor number|hyperpage<<4022>><<4023>>45<<4023>><<5198>>
+\@writefile<<4024>>toc<<4024>><<5484>>\contentsline <<4025>>subsection<<4025>><<5199>>\numberline <<4026>>6.4.8<<4026>>Pedigree Completeness<<5199>><<4027>>46<<4027>><<4028>>subsection.6.4.8<<4028>><<5484>>
+\newlabel<<4029>>sec:methodology-pedigre-completeness<<4029>><<5200>><<4030>>6.4.8<<4030>><<4031>>46<<4031>><<4032>>Pedigree Completeness\relax <<4032>><<4033>>subsection.6.4.8<<4033>><<4034>><<4034>><<5200>>
+\@writefile<<4035>>default<<4035>><<5201>>\indexentry<<4036>>computational details!pedigree completeness|hyperpage<<4036>><<4037>>46<<4037>><<5201>>
+\@writefile<<4038>>default<<4038>><<5202>>\indexentry<<4039>>ancestor loss coefficient|hyperpage<<4039>><<4040>>46<<4040>><<5202>>
+\@writefile<<4041>>toc<<4041>><<5485>>\contentsline <<4042>>chapter<<4042>><<5203>>\numberline <<4043>>7<<4043>>HOWTOs<<5203>><<4044>>47<<4044>><<4045>>chapter.7<<4045>><<5485>>
+\@writefile<<4046>>lof<<4046>><<5204>>\addvspace <<4047>>10\p@ <<4047>><<5204>>
+\@writefile<<4048>>lot<<4048>><<5205>>\addvspace <<4049>>10\p@ <<4049>><<5205>>
+\newlabel<<4050>>cha:howtos<<4050>><<5206>><<4051>>7<<4051>><<4052>>47<<4052>><<4053>>HOWTOs\relax <<4053>><<4054>>chapter.7<<4054>><<4055>><<4055>><<5206>>
+\@writefile<<4056>>toc<<4056>><<5486>>\contentsline <<4057>>section<<4057>><<5207>>\numberline <<4058>>7.1<<4058>>Basic Tasks<<5207>><<4059>>47<<4059>><<4060>>section.7.1<<4060>><<5486>>
+\newlabel<<4061>>sec:howto-basic-operations<<4061>><<5208>><<4062>>7.1<<4062>><<4063>>47<<4063>><<4064>>Basic Tasks\relax <<4064>><<4065>>section.7.1<<4065>><<4066>><<4066>><<5208>>
+\@writefile<<4067>>default<<4067>><<5209>>\indexentry<<4068>>how do I!basic tasks|hyperpage<<4068>><<4069>>47<<4069>><<5209>>
+\@writefile<<4070>>toc<<4070>><<5487>>\contentsline <<4071>>subsection<<4071>><<5210>>\numberline <<4072>>7.1.1<<4072>>How do I load a pedigree from a file?<<5210>><<4073>>47<<4073>><<4074>>subsection.7.1.1<<4074>><<5487>>
+\newlabel<<4075>>sec:howto-load-pedigree<<4075>><<5211>><<4076>>7.1.1<<4076>><<4077>>47<<4077>><<4078>>How do I load a pedigree from a file?\relax <<4078>><<4079>>subsection.7.1.1<<4079>><<4080>><<4080>><<5211>>
+\@writefile<<4081>>default<<4081>><<5212>>\indexentry<<4082>>how do I!basic tasks!load a pedigree|hyperpage<<4082>><<4083>>47<<4083>><<5212>>
+\@writefile<<4084>>toc<<4084>><<5488>>\contentsline <<4085>>subsection<<4085>><<5213>>\numberline <<4086>>7.1.2<<4086>>How do I load multiple pedigrees in one program?<<5213>><<4087>>47<<4087>><<4088>>subsection.7.1.2<<4088>><<5488>>
+\newlabel<<4089>>sec:howto-load-multiple-pedigrees<<4089>><<5214>><<4090>>7.1.2<<4090>><<4091>>47<<4091>><<4092>>How do I load multiple pedigrees in one program?\relax <<4092>><<4093>>subsection.7.1.2<<4093>><<4094>><<4094>><<5214>>
+\@writefile<<4095>>default<<4095>><<5215>>\indexentry<<4096>>how do I!basic tasks!load multiple pedigrees|hyperpage<<4096>><<4097>>47<<4097>><<5215>>
+\@writefile<<4098>>toc<<4098>><<5489>>\contentsline <<4099>>subsection<<4099>><<5216>>\numberline <<4100>>7.1.3<<4100>>How do I renumber a pedigree?<<5216>><<4101>>48<<4101>><<4102>>subsection.7.1.3<<4102>><<5489>>
+\newlabel<<4103>>sec:howto-renumber-pedigree<<4103>><<5217>><<4104>>7.1.3<<4104>><<4105>>48<<4105>><<4106>>How do I renumber a pedigree?\relax <<4106>><<4107>>subsection.7.1.3<<4107>><<4108>><<4108>><<5217>>
+\@writefile<<4109>>default<<4109>><<5218>>\indexentry<<4110>>how do I!basic tasks!renumber a pedigree|hyperpage<<4110>><<4111>>48<<4111>><<5218>>
+\@writefile<<4112>>toc<<4112>><<5490>>\contentsline <<4113>>subsection<<4113>><<5219>>\numberline <<4114>>7.1.4<<4114>>How do I turn off output messages?<<5219>><<4115>>48<<4115>><<4116>>subsection.7.1.4<<4116>><<5490>>
+\newlabel<<4117>>sec:howto-turn-off-messages<<4117>><<5220>><<4118>>7.1.4<<4118>><<4119>>48<<4119>><<4120>>How do I turn off output messages?\relax <<4120>><<4121>>subsection.7.1.4<<4121>><<4122>><<4122>><<5220>>
+\@writefile<<4123>>default<<4123>><<5221>>\indexentry<<4124>>how do I!basic tasks!turn off output|hyperpage<<4124>><<4125>>48<<4125>><<5221>>
+\@writefile<<4126>>toc<<4126>><<5491>>\contentsline <<4127>>subsection<<4127>><<5222>>\numberline <<4128>>7.1.5<<4128>>How do I load a pedigree whose columns are tab-delimited?<<5222>><<4129>>49<<4129>><<4130>>subsection.7.1.5<<4130>><<5491>>
+\newlabel<<4131>>sec:howto-load-tab-delimited-pedigree<<4131>><<5223>><<4132>>7.1.5<<4132>><<4133>>49<<4133>><<4134>>How do I load a pedigree whose columns are tab-delimited?\relax <<4134>><<4135>>subsection.7.1.5<<4135>><<4136>><<4136>><<5223>>
+\@writefile<<4137>>default<<4137>><<5224>>\indexentry<<4138>>how do I!basic tasks!load tab-delimited pedigree|hyperpage<<4138>><<4139>>49<<4139>><<5224>>
+\@writefile<<4140>>toc<<4140>><<5492>>\contentsline <<4141>>section<<4141>><<5225>>\numberline <<4142>>7.2<<4142>>Calculating Measures of Genetic Variation<<5225>><<4143>>49<<4143>><<4144>>section.7.2<<4144>><<5492>>
+\newlabel<<4145>>sec:howto-genetic-variation<<4145>><<5226>><<4146>>7.2<<4146>><<4147>>49<<4147>><<4148>>Calculating Measures of Genetic Variation\relax <<4148>><<4149>>section.7.2<<4149>><<4150>><<4150>><<5226>>
+\@writefile<<4151>>default<<4151>><<5227>>\indexentry<<4152>>how do I!calculate genetic variation|hyperpage<<4152>><<4153>>49<<4153>><<5227>>
+\@writefile<<4154>>toc<<4154>><<5493>>\contentsline <<4155>>subsection<<4155>><<5228>>\numberline <<4156>>7.2.1<<4156>>How do I calculate coefficients of inbreeding?<<5228>><<4157>>49<<4157>><<4158>>subsection.7.2.1<<4158>><<5493>>
+\newlabel<<4159>>sec:howto-calculate-inbreeding<<4159>><<5229>><<4160>>7.2.1<<4160>><<4161>>49<<4161>><<4162>>How do I calculate coefficients of inbreeding?\relax <<4162>><<4163>>subsection.7.2.1<<4163>><<4164>><<4164>><<5229>>
+\@writefile<<4165>>default<<4165>><<5230>>\indexentry<<4166>>how do I!calculate genetic variation!coefficients of inbreeding|hyperpage<<4166>><<4167>>49<<4167>><<5230>>
+\@writefile<<4168>>toc<<4168>><<5494>>\contentsline <<4169>>section<<4169>><<5231>>\numberline <<4170>>7.3<<4170>>Databases and Report Generation<<5231>><<4171>>50<<4171>><<4172>>section.7.3<<4172>><<5494>>
+\newlabel<<4173>>sec:howto-databases-and-reports<<4173>><<5232>><<4174>>7.3<<4174>><<4175>>50<<4175>><<4176>>Databases and Report Generation\relax <<4176>><<4177>>section.7.3<<4177>><<4178>><<4178>><<5232>>
+\@writefile<<4179>>default<<4179>><<5233>>\indexentry<<4180>>how do I!databases and reports|hyperpage<<4180>><<4181>>50<<4181>><<5233>>
+\@writefile<<4182>>toc<<4182>><<5495>>\contentsline <<4183>>subsection<<4183>><<5234>>\numberline <<4184>>7.3.1<<4184>>How do I load a pedigree into a database?<<5234>><<4185>>50<<4185>><<4186>>subsection.7.3.1<<4186>><<5495>>
+\newlabel<<4187>>sec:howto-load-pedigree-db<<4187>><<5235>><<4188>>7.3.1<<4188>><<4189>>50<<4189>><<4190>>How do I load a pedigree into a database?\relax <<4190>><<4191>>subsection.7.3.1<<4191>><<4192>><<4192>><<5235>>
+\@writefile<<4193>>default<<4193>><<5236>>\indexentry<<4194>>how do I!databases and reports!load a pedigree|hyperpage<<4194>><<4195>>50<<4195>><<5236>>
+\@writefile<<4196>>toc<<4196>><<5496>>\contentsline <<4197>>subsection<<4197>><<5237>>\numberline <<4198>>7.3.2<<4198>>How do I update a pedigree in the database?<<5237>><<4199>>50<<4199>><<4200>>subsection.7.3.2<<4200>><<5496>>
+\newlabel<<4201>>sec:howto-pedigree-db-update-table<<4201>><<5238>><<4202>>7.3.2<<4202>><<4203>>50<<4203>><<4204>>How do I update a pedigree in the database?\relax <<4204>><<4205>>subsection.7.3.2<<4205>><<4206>><<4206>><<5238>>
+\@writefile<<4207>>default<<4207>><<5239>>\indexentry<<4208>>how do I!databases and reports!update pedigree table|hyperpage<<4208>><<4209>>50<<4209>><<5239>>
+\@writefile<<4210>>toc<<4210>><<5497>>\contentsline <<4211>>section<<4211>><<5240>>\numberline <<4212>>7.4<<4212>>Pedigrees as Graphs<<5240>><<4213>>51<<4213>><<4214>>section.7.4<<4214>><<5497>>
+\newlabel<<4215>>sec:howto-pedigrees-graphs<<4215>><<5241>><<4216>>7.4<<4216>><<4217>>51<<4217>><<4218>>Pedigrees as Graphs\relax <<4218>><<4219>>section.7.4<<4219>><<4220>><<4220>><<5241>>
+\@writefile<<4221>>default<<4221>><<5242>>\indexentry<<4222>>how do I!pedigrees as graphs|hyperpage<<4222>><<4223>>51<<4223>><<5242>>
+\@writefile<<4224>>toc<<4224>><<5498>>\contentsline <<4225>>subsection<<4225>><<5243>>\numberline <<4226>>7.4.1<<4226>>How do I convert a pedigree to a graph?<<5243>><<4227>>51<<4227>><<4228>>subsection.7.4.1<<4228>><<5498>>
+\newlabel<<4229>>sec:howto-pedigree-to-graph<<4229>><<5244>><<4230>>7.4.1<<4230>><<4231>>51<<4231>><<4232>>How do I convert a pedigree to a graph?\relax <<4232>><<4233>>subsection.7.4.1<<4233>><<4234>><<4234>><<5244>>
+\@writefile<<4235>>default<<4235>><<5245>>\indexentry<<4236>>how do I!pedigrees as graphs!pedigree to graph|hyperpage<<4236>><<4237>>51<<4237>><<5245>>
+\@writefile<<4238>>toc<<4238>><<5499>>\contentsline <<4239>>subsection<<4239>><<5246>>\numberline <<4240>>7.4.2<<4240>>How do I convert a graph to a pedigree?<<5246>><<4241>>52<<4241>><<4242>>subsection.7.4.2<<4242>><<5499>>
+\newlabel<<4243>>sec:howto-graph-to-pedigree<<4243>><<5247>><<4244>>7.4.2<<4244>><<4245>>52<<4245>><<4246>>How do I convert a graph to a pedigree?\relax <<4246>><<4247>>subsection.7.4.2<<4247>><<4248>><<4248>><<5247>>
+\@writefile<<4249>>default<<4249>><<5248>>\indexentry<<4250>>how do I!pedigrees as graphs!graph to pedigree|hyperpage<<4250>><<4251>>52<<4251>><<5248>>
+\@writefile<<4252>>toc<<4252>><<5500>>\contentsline <<4253>>subsection<<4253>><<5249>>\numberline <<4254>>7.4.3<<4254>>How do I load a pedigree from a file containing a graph stored as an adjacency list?<<5249>><<4255>>52<<4255>><<4256>>subsection.7.4.3<<4256>><<5500>>
+\newlabel<<4257>>sec:howto-pedigree-from-graph-file<<4257>><<5250>><<4258>>7.4.3<<4258>><<4259>>52<<4259>><<4260>>How do I load a pedigree from a file containing a graph stored as an adjacency list?\relax <<4260>><<4261>>subsection.7.4.3<<4261>><<4262>><<4262>><<5250>>
+\@writefile<<4263>>default<<4263>><<5251>>\indexentry<<4264>>how do I!pedigrees as graphs!pedigree from graph file|hyperpage<<4264>><<4265>>52<<4265>><<5251>>
+\@writefile<<4266>>toc<<4266>><<5501>>\contentsline <<4267>>subsection<<4267>><<5252>>\numberline <<4268>>7.4.4<<4268>>How do I save a graph as an adjacency list?<<5252>><<4269>>53<<4269>><<4270>>subsection.7.4.4<<4270>><<5501>>
+\newlabel<<4271>>sec:howto-graph-to-file<<4271>><<5253>><<4272>>7.4.4<<4272>><<4273>>53<<4273>><<4274>>How do I save a graph as an adjacency list?\relax <<4274>><<4275>>subsection.7.4.4<<4275>><<4276>><<4276>><<5253>>
+\@writefile<<4277>>default<<4277>><<5254>>\indexentry<<4278>>how do I!pedigrees as graphs!graph to file|hyperpage<<4278>><<4279>>53<<4279>><<5254>>
+\@writefile<<4280>>toc<<4280>><<5502>>\contentsline <<4281>>section<<4281>><<5255>>\numberline <<4282>>7.5<<4282>>Miscellaneous<<5255>><<4283>>53<<4283>><<4284>>section.7.5<<4284>><<5502>>
+\newlabel<<4285>>sec:howto-miscellaneous<<4285>><<5256>><<4286>>7.5<<4286>><<4287>>53<<4287>><<4288>>Miscellaneous\relax <<4288>><<4289>>section.7.5<<4289>><<4290>><<4290>><<5256>>
+\@writefile<<4291>>default<<4291>><<5257>>\indexentry<<4292>>how do I!miscellaneous|hyperpage<<4292>><<4293>>53<<4293>><<5257>>
+\@writefile<<4294>>toc<<4294>><<5503>>\contentsline <<4295>>subsection<<4295>><<5258>>\numberline <<4296>>7.5.1<<4296>>How do I export a numerator relationship matrix so that I can read it into Octave?<<5258>><<4297>>53<<4297>><<4298>>subsection.7.5.1<<4298>><<5503>>
+\newlabel<<4299>>sec:howto-export-nrm-to-octave<<4299>><<5259>><<4300>>7.5.1<<4300>><<4301>>53<<4301>><<4302>>How do I export a numerator relationship matrix so that I can read it into Octave?\relax <<4302>><<4303>>subsection.7.5.1<<4303>><<4304>><<4304>><<5259>>
+\@writefile<<4305>>default<<4305>><<5260>>\indexentry<<4306>>how do I!miscellaneous!export NRM to Octave|hyperpage<<4306>><<4307>>53<<4307>><<5260>>
+\@writefile<<4308>>toc<<4308>><<5504>>\contentsline <<4309>>subsection<<4309>><<5261>>\numberline <<4310>>7.5.2<<4310>>How else can I export a NRM to a file?<<5261>><<4311>>53<<4311>><<4312>>subsection.7.5.2<<4312>><<5504>>
+\newlabel<<4313>>sec:howto-export-nrm-to-ijk-file<<4313>><<5262>><<4314>>7.5.2<<4314>><<4315>>53<<4315>><<4316>>How else can I export a NRM to a file?\relax <<4316>><<4317>>subsection.7.5.2<<4317>><<4318>><<4318>><<5262>>
+\@writefile<<4319>>default<<4319>><<5263>>\indexentry<<4320>>how do I!miscellaneous!export NRM to a file|hyperpage<<4320>><<4321>>53<<4321>><<5263>>
+\@writefile<<4322>>toc<<4322>><<5505>>\contentsline <<4323>>subsection<<4323>><<5264>>\numberline <<4324>>7.5.3<<4324>>How do I load a pedigree from a GEDCOM file?<<5264>><<4325>>54<<4325>><<4326>>subsection.7.5.3<<4326>><<5505>>
+\newlabel<<4327>>sec:howto-load-gedcom-pedigree<<4327>><<5265>><<4328>>7.5.3<<4328>><<4329>>54<<4329>><<4330>>How do I load a pedigree from a GEDCOM file?\relax <<4330>><<4331>>subsection.7.5.3<<4331>><<4332>><<4332>><<5265>>
+\@writefile<<4333>>default<<4333>><<5266>>\indexentry<<4334>>how do I!miscellaneous!load a GEDCOM pedigree|hyperpage<<4334>><<4335>>54<<4335>><<5266>>
+\@writefile<<4336>>default<<4336>><<5267>>\indexentry<<4337>>pedsource|hyperpage<<4337>><<4338>>54<<4338>><<5267>>
+\@writefile<<4339>>toc<<4339>><<5506>>\contentsline <<4340>>subsection<<4340>><<5268>>\numberline <<4341>>7.5.4<<4341>>How do I save a pedigree to a GEDCOM file?<<5268>><<4342>>54<<4342>><<4343>>subsection.7.5.4<<4343>><<5506>>
+\newlabel<<4344>>sec:howto-save-gedcom-pedigree<<4344>><<5269>><<4345>>7.5.4<<4345>><<4346>>54<<4346>><<4347>>How do I save a pedigree to a GEDCOM file?\relax <<4347>><<4348>>subsection.7.5.4<<4348>><<4349>><<4349>><<5269>>
+\@writefile<<4350>>default<<4350>><<5270>>\indexentry<<4351>>how do I!miscellaneous!save to GEDCOM pedigree|hyperpage<<4351>><<4352>>54<<4352>><<5270>>
+\@writefile<<4353>>default<<4353>><<5271>>\indexentry<<4354>>savegedcom|hyperpage<<4354>><<4355>>54<<4355>><<5271>>
+\@writefile<<4356>>toc<<4356>><<5507>>\contentsline <<4357>>subsection<<4357>><<5272>>\numberline <<4358>>7.5.5<<4358>>How do I load a pedigree from a string?<<5272>><<4359>>54<<4359>><<4360>>subsection.7.5.5<<4360>><<5507>>
+\newlabel<<4361>>sec:howto-load-from-string<<4361>><<5273>><<4362>>7.5.5<<4362>><<4363>>54<<4363>><<4364>>How do I load a pedigree from a string?\relax <<4364>><<4365>>subsection.7.5.5<<4365>><<4366>><<4366>><<5273>>
+\@writefile<<4367>>default<<4367>><<5274>>\indexentry<<4368>>how do I!miscellaneous!load a pedigree from a string|hyperpage<<4368>><<4369>>54<<4369>><<5274>>
+\@writefile<<4370>>default<<4370>><<5275>>\indexentry<<4371>>pedsource|hyperpage<<4371>><<4372>>54<<4372>><<5275>>
+\@writefile<<4373>>lof<<4373>><<5508>>\contentsline <<4374>>figure<<4374>><<5276>>\numberline <<4375>>7.1<<4375>><<4376>>\ignorespaces Pedigree loaded from a string<<4376>><<5276>><<4377>>55<<4377>><<4378>>figure.7.1<<4378>><<5508>>
+\newlabel<<4379>>fig:ped-from-string<<4379>><<5277>><<4380>>7.1<<4380>><<4381>>55<<4381>><<4382>>Pedigree loaded from a string\relax <<4382>><<4383>>figure.7.1<<4383>><<4384>><<4384>><<5277>>
+\@writefile<<4385>>toc<<4385>><<5509>>\contentsline <<4386>>section<<4386>><<5278>>\numberline <<4387>>7.6<<4387>>Contribute a HOWTO<<5278>><<4388>>55<<4388>><<4389>>section.7.6<<4389>><<5509>>
+\newlabel<<4390>>sec:howto-contribute<<4390>><<5279>><<4391>>7.6<<4391>><<4392>>55<<4392>><<4393>>Contribute a HOWTO\relax <<4393>><<4394>>section.7.6<<4394>><<4395>><<4395>><<5279>>
+\@writefile<<4396>>default<<4396>><<5280>>\indexentry<<4397>>how do I!contribute a HOWTO|hyperpage<<4397>><<4398>>55<<4398>><<5280>>
+\gdef \PWST@xviii<<4399>>1<<4399>>
+\citation<<4400>>ref352<<4400>>
+\@writefile<<4401>>toc<<4401>><<5510>>\contentsline <<4402>>chapter<<4402>><<5281>>\numberline <<4403>>8<<4403>>Graphics<<5281>><<4404>>57<<4404>><<4405>>chapter.8<<4405>><<5510>>
+\@writefile<<4406>>lof<<4406>><<5282>>\addvspace <<4407>>10\p@ <<4407>><<5282>>
+\@writefile<<4408>>lot<<4408>><<5283>>\addvspace <<4409>>10\p@ <<4409>><<5283>>
+\newlabel<<4410>>cha:graphics<<4410>><<5284>><<4411>>8<<4411>><<4412>>57<<4412>><<4413>>Graphics\relax <<4413>><<4414>>chapter.8<<4414>><<4415>><<4415>><<5284>>
+\@writefile<<4416>>toc<<4416>><<5511>>\contentsline <<4417>>section<<4417>><<5285>>\numberline <<4418>>8.1<<4418>>PyPedal Graphics<<5285>><<4419>>57<<4419>><<4420>>section.8.1<<4420>><<5511>>
+\newlabel<<4421>>sec:graphics-overview<<4421>><<5286>><<4422>>8.1<<4422>><<4423>>57<<4423>><<4424>>PyPedal Graphics\relax <<4424>><<4425>>section.8.1<<4425>><<4426>><<4426>><<5286>>
+\@writefile<<4427>>default<<4427>><<5287>>\indexentry<<4428>>graphics|hyperpage<<4428>><<4429>>57<<4429>><<5287>>
+\newlabel<<4430>>tbl:pypedal-graphics-formats<<4430>><<5288>><<4431>>8.1<<4431>><<4432>>57<<4432>><<4433>>PyPedal Graphics\relax <<4433>><<4434>>table.8.1<<4434>><<4435>><<4435>><<5288>>
+\@writefile<<4436>>lot<<4436>><<5512>>\contentsline <<4437>>table<<4437>><<5289>>\numberline <<4438>>8.1<<4438>><<4439>>\ignorespaces Default graphics formats.<<4439>><<5289>><<4440>>57<<4440>><<4441>>table.8.1<<4441>><<5512>>
+\@writefile<<4442>>toc<<4442>><<5513>>\contentsline <<4443>>subsection<<4443>><<5290>>\numberline <<4444>>8.1.1<<4444>>Drawing Pedigrees<<5290>><<4445>>57<<4445>><<4446>>subsection.8.1.1<<4446>><<5513>>
+\newlabel<<4447>>sec:graphics-drawing-pedigrees<<4447>><<5291>><<4448>>8.1.1<<4448>><<4449>>57<<4449>><<4450>>Drawing Pedigrees\relax <<4450>><<4451>>subsection.8.1.1<<4451>><<4452>><<4452>><<5291>>
+\@writefile<<4453>>default<<4453>><<5292>>\indexentry<<4454>>graphics!drawing pedigrees|hyperpage<<4454>><<4455>>57<<4455>><<5292>>
+\@writefile<<4456>>lof<<4456>><<5514>>\contentsline <<4457>>figure<<4457>><<5293>>\numberline <<4458>>8.1<<4458>><<4459>>\ignorespaces Pedigree 2 from Boichard et al. (1997)<<4459>><<5293>><<4460>>58<<4460>><<4461>>figure.8.1<<4461>><<5514>>
+\newlabel<<4462>>fig:boichard2-pedigree<<4462>><<5294>><<4463>>8.1<<4463>><<4464>>58<<4464>><<4465>>Pedigree 2 from Boichard et al. (1997)\relax <<4465>><<4466>>figure.8.1<<4466>><<4467>><<4467>><<5294>>
+\@writefile<<4468>>lof<<4468>><<5515>>\contentsline <<4469>>figure<<4469>><<5295>>\numberline <<4470>>8.2<<4470>><<4471>>\ignorespaces A pedigree with strings as animal IDs<<4471>><<5295>><<4472>>59<<4472>><<4473>>figure.8.2<<4473>><<5515>>
+\newlabel<<4474>>fig:new-ids2-pedigree-basic<<4474>><<5296>><<4475>>8.2<<4475>><<4476>>59<<4476>><<4477>>A pedigree with strings as animal IDs\relax <<4477>><<4478>>figure.8.2<<4478>><<4479>><<4479>><<5296>>
+\@writefile<<4480>>lof<<4480>><<5516>>\contentsline <<4481>>figure<<4481>><<5297>>\numberline <<4482>>8.3<<4482>><<4483>>\ignorespaces German Shepherd pedigree<<4483>><<5297>><<4484>>59<<4484>><<4485>>figure.8.3<<4485>><<5516>>
+\newlabel<<4486>>fig:doug-pedigree-basic<<4486>><<5298>><<4487>>8.3<<4487>><<4488>>59<<4488>><<4489>>German Shepherd pedigree\relax <<4489>><<4490>>figure.8.3<<4490>><<4491>><<4491>><<5298>>
+\@writefile<<4492>>lof<<4492>><<5517>>\contentsline <<4493>>figure<<4493>><<5299>>\numberline <<4494>>8.4<<4494>><<4495>>\ignorespaces Newfoundland colored pedigree<<4495>><<5299>><<4496>>60<<4496>><<4497>>figure.8.4<<4497>><<5517>>
+\newlabel<<4498>>fig:newfoundland-colored-pedigree<<4498>><<5300>><<4499>>8.4<<4499>><<4500>>60<<4500>><<4501>>Newfoundland colored pedigree\relax <<4501>><<4502>>figure.8.4<<4502>><<4503>><<4503>><<5300>>
+\@writefile<<4504>>lof<<4504>><<5518>>\contentsline <<4505>>figure<<4505>><<5301>>\numberline <<4506>>8.5<<4506>><<4507>>\ignorespaces Average inbreeding by birth year for the US Ayrshire cattle population<<4507>><<5301>><<4508>>61<<4508>><<4509>>figure.8.5<<4509>><<5518>>
+\newlabel<<4510>>fig:ayrshire-coi-graph<<4510>><<5302>><<4511>>8.5<<4511>><<4512>>61<<4512>><<4513>>Average inbreeding by birth year for the US Ayrshire cattle population\relax <<4513>><<4514>>figure.8.5<<4514>><<4515>><<4515>><<5302>>
+\@writefile<<4516>>toc<<4516>><<5519>>\contentsline <<4517>>subsection<<4517>><<5303>>\numberline <<4518>>8.1.2<<4518>>Drawing Line Graphs<<5303>><<4519>>61<<4519>><<4520>>subsection.8.1.2<<4520>><<5519>>
+\newlabel<<4521>>sec:graphics-drawing-line-graphs<<4521>><<5304>><<4522>>8.1.2<<4522>><<4523>>61<<4523>><<4524>>Drawing Line Graphs\relax <<4524>><<4525>>subsection.8.1.2<<4525>><<4526>><<4526>><<5304>>
+\@writefile<<4527>>default<<4527>><<5305>>\indexentry<<4528>>graphics!drawing line graphs|hyperpage<<4528>><<4529>>61<<4529>><<5305>>
+\@writefile<<4530>>toc<<4530>><<5520>>\contentsline <<4531>>subsection<<4531>><<5306>>\numberline <<4532>>8.1.3<<4532>>Visualizing Numerator Relationship Matrices<<5306>><<4533>>61<<4533>><<4534>>subsection.8.1.3<<4534>><<5520>>
+\newlabel<<4535>>sec:graphics-visualizing-nrm<<4535>><<5307>><<4536>>8.1.3<<4536>><<4537>>61<<4537>><<4538>>Visualizing Numerator Relationship Matrices\relax <<4538>><<4539>>subsection.8.1.3<<4539>><<4540>><<4540>><<5307>>
+\@writefile<<4541>>default<<4541>><<5308>>\indexentry<<4542>>graphics!visualizing relationship matrices|hyperpage<<4542>><<4543>>61<<4543>><<5308>>
+\@writefile<<4544>>lof<<4544>><<5521>>\contentsline <<4545>>figure<<4545>><<5309>>\numberline <<4546>>8.6<<4546>><<4547>>\ignorespaces Pseudocolored NRM from the Boichard et al. (1997) pedigree<<4547>><<5309>><<4548>>62<<4548>><<4549>>figure.8.6<<4549>><<5521>>
+\newlabel<<4550>>fig:boichard2-pseudocolor<<4550>><<5310>><<4551>>8.6<<4551>><<4552>>62<<4552>><<4553>>Pseudocolored NRM from the Boichard et al. (1997) pedigree\relax <<4553>><<4554>>figure.8.6<<4554>><<4555>><<4555>><<5310>>
+\@writefile<<4556>>lof<<4556>><<5522>>\contentsline <<4557>>figure<<4557>><<5311>>\numberline <<4558>>8.7<<4558>><<4559>>\ignorespaces Sparsity of the NRM from the Boichard et al. (1997) pedigree<<4559>><<5311>><<4560>>63<<4560>><<4561>>figure.8.7<<4561>><<5522>>
+\newlabel<<4562>>fig:boichard2-sparsity<<4562>><<5312>><<4563>>8.7<<4563>><<4564>>63<<4564>><<4565>>Sparsity of the NRM from the Boichard et al. (1997) pedigree\relax <<4565>><<4566>>figure.8.7<<4566>><<4567>><<4567>><<5312>>
+\@writefile<<4568>>toc<<4568>><<5523>>\contentsline <<4569>>chapter<<4569>><<5313>>\numberline <<4570>>9<<4570>>Report Generation<<5313>><<4571>>65<<4571>><<4572>>chapter.9<<4572>><<5523>>
+\@writefile<<4573>>lof<<4573>><<5314>>\addvspace <<4574>>10\p@ <<4574>><<5314>>
+\@writefile<<4575>>lot<<4575>><<5315>>\addvspace <<4576>>10\p@ <<4576>><<5315>>
+\newlabel<<4577>>cha:reports<<4577>><<5316>><<4578>>9<<4578>><<4579>>65<<4579>><<4580>>Report Generation\relax <<4580>><<4581>>chapter.9<<4581>><<4582>><<4582>><<5316>>
+\@writefile<<4583>>toc<<4583>><<5524>>\contentsline <<4584>>section<<4584>><<5317>>\numberline <<4585>>9.1<<4585>>Overview<<5317>><<4586>>65<<4586>><<4587>>section.9.1<<4587>><<5524>>
+\newlabel<<4588>>sec:reports-overview<<4588>><<5318>><<4589>>9.1<<4589>><<4590>>65<<4590>><<4591>>Overview\relax <<4591>><<4592>>section.9.1<<4592>><<4593>><<4593>><<5318>>
+\@writefile<<4594>>default<<4594>><<5319>>\indexentry<<4595>>report generation|hyperpage<<4595>><<4596>>65<<4596>><<5319>>
+\newlabel<<4597>>tbl:reports-db-column-names<<4597>><<5320>><<4598>>9.1<<4598>><<4599>>65<<4599>><<4600>>Overview\relax <<4600>><<4601>>table.9.1<<4601>><<4602>><<4602>><<5320>>
+\@writefile<<4603>>lot<<4603>><<5525>>\contentsline <<4604>>table<<4604>><<5321>>\numberline <<4605>>9.1<<4605>><<4606>>\ignorespaces Columns in pedigree database tables.<<4606>><<5321>><<4607>>65<<4607>><<4608>>table.9.1<<4608>><<5525>>
+\gdef \PWST@xix<<4609>>2<<4609>>
+\@writefile<<4610>>toc<<4610>><<5526>>\contentsline <<4611>>subsection<<4611>><<5322>>\numberline <<4612>>9.1.1<<4612>>Three Generation Pedigrees<<5322>><<4613>>66<<4613>><<4614>>subsection.9.1.1<<4614>><<5526>>
+\newlabel<<4615>>sec:reports-three-gen-peds<<4615>><<5323>><<4616>>9.1.1<<4616>><<4617>>66<<4617>><<4618>>Three Generation Pedigrees\relax <<4618>><<4619>>subsection.9.1.1<<4619>><<4620>><<4620>><<5323>>
+\@writefile<<4621>>default<<4621>><<5324>>\indexentry<<4622>>report generation!three generation pedigrees|hyperpage<<4622>><<4623>>66<<4623>><<5324>>
+\@writefile<<4624>>toc<<4624>><<5527>>\contentsline <<4625>>section<<4625>><<5325>>\numberline <<4626>>9.2<<4626>>Creating a Custom Internal Report<<5325>><<4627>>66<<4627>><<4628>>section.9.2<<4628>><<5527>>
+\newlabel<<4629>>sec:reports-custom-internal-reports<<4629>><<5326>><<4630>>9.2<<4630>><<4631>>66<<4631>><<4632>>Creating a Custom Internal Report\relax <<4632>><<4633>>section.9.2<<4633>><<4634>><<4634>><<5326>>
+\@writefile<<4635>>default<<4635>><<5327>>\indexentry<<4636>>report generation!creating custom internal reports|hyperpage<<4636>><<4637>>66<<4637>><<5327>>
+\@writefile<<4638>>default<<4638>><<5328>>\indexentry<<4639>>internal reports|hyperpage<<4639>><<4640>>66<<4640>><<5328>>
+\@writefile<<4641>>lof<<4641>><<5528>>\contentsline <<4642>>figure<<4642>><<5329>>\numberline <<4643>>9.1<<4643>><<4644>>\ignorespaces Example of a printed three generation pedigree.<<4644>><<5329>><<4645>>67<<4645>><<4646>>figure.9.1<<4646>><<5528>>
+\newlabel<<4647>>fig:reports-three-gen-ped<<4647>><<5330>><<4648>>9.1<<4648>><<4649>>67<<4649>><<4650>>Example of a printed three generation pedigree<<4650>><<4651>>figure.9.1<<4651>><<4652>><<4652>><<5330>>
+\@writefile<<4653>>toc<<4653>><<5529>>\contentsline <<4654>>section<<4654>><<5331>>\numberline <<4655>>9.3<<4655>>Creating a Custom Printed Report<<5331>><<4656>>68<<4656>><<4657>>section.9.3<<4657>><<5529>>
+\newlabel<<4658>>sec:reports-custom-printed-reports<<4658>><<5332>><<4659>>9.3<<4659>><<4660>>68<<4660>><<4661>>Creating a Custom Printed Report\relax <<4661>><<4662>>section.9.3<<4662>><<4663>><<4663>><<5332>>
+\@writefile<<4664>>default<<4664>><<5333>>\indexentry<<4665>>report generation!creating custom printed reports|hyperpage<<4665>><<4666>>68<<4666>><<5333>>
+\@writefile<<4667>>toc<<4667>><<5530>>\contentsline <<4668>>chapter<<4668>><<5334>>\numberline <<4669>>10<<4669>>Implementing New Features<<5334>><<4670>>71<<4670>><<4671>>chapter.10<<4671>><<5530>>
+\@writefile<<4672>>lof<<4672>><<5335>>\addvspace <<4673>>10\p@ <<4673>><<5335>>
+\@writefile<<4674>>lot<<4674>><<5336>>\addvspace <<4675>>10\p@ <<4675>><<5336>>
+\newlabel<<4676>>cha:newfeatures<<4676>><<5337>><<4677>>10<<4677>><<4678>>71<<4678>><<4679>>Implementing New Features\relax <<4679>><<4680>>chapter.10<<4680>><<4681>><<4681>><<5337>>
+\@writefile<<4682>>toc<<4682>><<5531>>\contentsline <<4683>>section<<4683>><<5338>>\numberline <<4684>>10.1<<4684>>Overview<<5338>><<4685>>71<<4685>><<4686>>section.10.1<<4686>><<5531>>
+\newlabel<<4687>>sec:newfeatures-overview<<4687>><<5339>><<4688>>10.1<<4688>><<4689>>71<<4689>><<4690>>Overview\relax <<4690>><<4691>>section.10.1<<4691>><<4692>><<4692>><<5339>>
+\@writefile<<4693>>default<<4693>><<5340>>\indexentry<<4694>>new features|hyperpage<<4694>><<4695>>71<<4695>><<5340>>
+\@writefile<<4696>>toc<<4696>><<5532>>\contentsline <<4697>>subsection<<4697>><<5341>>\numberline <<4698>>10.1.1<<4698>>Defining the Problem<<5341>><<4699>>71<<4699>><<4700>>subsection.10.1.1<<4700>><<5532>>
+\newlabel<<4701>>sec:newfeatures-overview-problem<<4701>><<5342>><<4702>>10.1.1<<4702>><<4703>>71<<4703>><<4704>>Defining the Problem\relax <<4704>><<4705>>subsection.10.1.1<<4705>><<4706>><<4706>><<5342>>
+\@writefile<<4707>>default<<4707>><<5343>>\indexentry<<4708>>new features!defining the problem|hyperpage<<4708>><<4709>>71<<4709>><<5343>>
+\@writefile<<4710>>toc<<4710>><<5533>>\contentsline <<4711>>section<<4711>><<5344>>\numberline <<4712>>10.2<<4712>>Module Template<<5344>><<4713>>72<<4713>><<4714>>section.10.2<<4714>><<5533>>
+\newlabel<<4715>>sec:newfeatures-template<<4715>><<5345>><<4716>>10.2<<4716>><<4717>>72<<4717>><<4718>>Module Template\relax <<4718>><<4719>>section.10.2<<4719>><<4720>><<4720>><<5345>>
+\@writefile<<4721>>default<<4721>><<5346>>\indexentry<<4722>>new features!module template|hyperpage<<4722>><<4723>>72<<4723>><<5346>>
+\@writefile<<4724>>default<<4724>><<5347>>\indexentry<<4725>>new features!module template!header|hyperpage<<4725>><<4726>>72<<4726>><<5347>>
+\@writefile<<4727>>default<<4727>><<5348>>\indexentry<<4728>>new features!module template!imports|hyperpage<<4728>><<4729>>72<<4729>><<5348>>
+\@writefile<<4730>>default<<4730>><<5349>>\indexentry<<4731>>new features!module template!function prototype|hyperpage<<4731>><<4732>>72<<4732>><<5349>>
+\@writefile<<4733>>toc<<4733>><<5534>>\contentsline <<4734>>section<<4734>><<5350>>\numberline <<4735>>10.3<<4735>>Solving the Problem<<5350>><<4736>>73<<4736>><<4737>>section.10.3<<4737>><<5534>>
+\newlabel<<4738>>sec:newfeatures-solving-the-problem<<4738>><<5351>><<4739>>10.3<<4739>><<4740>>73<<4740>><<4741>>Solving the Problem\relax <<4741>><<4742>>section.10.3<<4742>><<4743>><<4743>><<5351>>
+\@writefile<<4744>>default<<4744>><<5352>>\indexentry<<4745>>new features!solving the problem|hyperpage<<4745>><<4746>>73<<4746>><<5352>>
+\@writefile<<4747>>lof<<4747>><<5569>>\contentsline <<4748>>figure<<4748>><<5535>>\numberline <<4749>>10.1<<4749>><<5353>>\ignorespaces Colorized version of the pedigree in Figure \ref  <<4750>>fig:new-ids2-pedigree-basic<<4750>><<5353>><<5535>><<4751>>77<<4751>><<4752>>figure.10.1<<4752>><<5569>>
+\newlabel<<4753>>fig:boichard2-pedigree-colorized<<4753>><<5536>><<4754>>10.1<<4754>><<4755>>77<<4755>><<5354>>Colorized version of the pedigree in Figure \ref <<4756>>fig:new-ids2-pedigree-basic<<4756>>\relax <<5354>><<4757>>figure.10.1<<4757>><<4758>><<4758>><<5536>>
+\@writefile<<4759>>toc<<4759>><<5537>>\contentsline <<4760>>section<<4760>><<5355>>\numberline <<4761>>10.4<<4761>>Contributing Code to PyPedal<<5355>><<4762>>78<<4762>><<4763>>section.10.4<<4763>><<5537>>
+\newlabel<<4764>>sec:newfeatures-overview-contributing-code<<4764>><<5356>><<4765>>10.4<<4765>><<4766>>78<<4766>><<4767>>Contributing Code to PyPedal\relax <<4767>><<4768>>section.10.4<<4768>><<4769>><<4769>><<5356>>
+\@writefile<<4770>>default<<4770>><<5357>>\indexentry<<4771>>new features!contributing code|hyperpage<<4771>><<4772>>78<<4772>><<5357>>
+\citation<<4773>>ref352<<4773>>
+\citation<<4774>>ref640<<4774>>
+\citation<<4775>>ref91<<4775>>
+\@writefile<<4776>>toc<<4776>><<5538>>\contentsline <<4777>>chapter<<4777>><<5358>>\numberline <<4778>>11<<4778>>Glossary<<5358>><<4779>>79<<4779>><<4780>>chapter.11<<4780>><<5538>>
+\@writefile<<4781>>lof<<4781>><<5359>>\addvspace <<4782>>10\p@ <<4782>><<5359>>
+\@writefile<<4783>>lot<<4783>><<5360>>\addvspace <<4784>>10\p@ <<4784>><<5360>>
+\newlabel<<4785>>cha:glossary<<4785>><<5361>><<4786>>11<<4786>><<4787>>79<<4787>><<4788>>Glossary\relax <<4788>><<4789>>chapter.11<<4789>><<4790>><<4790>><<5361>>
+\@writefile<<4791>>toc<<4791>><<5362>>\contentsline <<4792>>chapter<<4792>><<4793>>Appendices<<4793>><<4794>>79<<4794>><<4795>>chapter.11<<4795>><<5362>>
+\@writefile<<4796>>toc<<4796>><<5539>>\contentsline <<4797>>chapter<<4797>><<5363>>\numberline <<4798>>A<<4798>>Example Programs<<5363>><<4799>>81<<4799>><<4800>>appendix.A<<4800>><<5539>>
+\@writefile<<4801>>lof<<4801>><<5364>>\addvspace <<4802>>10\p@ <<4802>><<5364>>
+\@writefile<<4803>>lot<<4803>><<5365>>\addvspace <<4804>>10\p@ <<4804>><<5365>>
+\newlabel<<4805>>tbl:examples-program-list<<4805>><<5366>><<4806>>A.1<<4806>><<4807>>81<<4807>><<4808>>Example Programs\relax <<4808>><<4809>>table.A.1<<4809>><<4810>><<4810>><<5366>>
+\@writefile<<4811>>lot<<4811>><<5570>>\contentsline <<4812>>table<<4812>><<5540>>\numberline <<4813>>A.1<<4813>><<5367>>\ignorespaces Example programs distributed with PyPedal<<4814>><<4814>>.<<5367>><<5540>><<4815>>81<<4815>><<4816>>table.A.1<<4816>><<5570>>
+\gdef \PWST@xx<<4817>>2<<4817>>
+\gdef \PWST@xxi<<4818>>1<<4818>>
+\@writefile<<4819>>toc<<4819>><<5541>>\contentsline <<4820>>chapter<<4820>><<5368>>\numberline <<4821>>B<<4821>>GEDCOM File Handling<<5368>><<4822>>83<<4822>><<4823>>appendix.B<<4823>><<5541>>
+\@writefile<<4824>>lof<<4824>><<5369>>\addvspace <<4825>>10\p@ <<4825>><<5369>>
+\@writefile<<4826>>lot<<4826>><<5370>>\addvspace <<4827>>10\p@ <<4827>><<5370>>
+\newlabel<<4828>>GEDCOM<<4828>><<5371>><<4829>>B<<4829>><<4830>>83<<4830>><<4831>>GEDCOM File Handling\relax <<4831>><<4832>>appendix.B<<4832>><<4833>><<4833>><<5371>>
+\@writefile<<4834>>default<<4834>><<5372>>\indexentry<<4835>>GEDCOM files|hyperpage<<4835>><<4836>>83<<4836>><<5372>>
+\newlabel<<4837>>tbl:gedcom-supported-records-and-tags-import<<4837>><<5373>><<4838>>B.1<<4838>><<4839>>83<<4839>><<4840>>GEDCOM File Handling\relax <<4840>><<4841>>table.B.1<<4841>><<4842>><<4842>><<5373>>
+\@writefile<<4843>>lot<<4843>><<5571>>\contentsline <<4844>>table<<4844>><<5542>>\numberline <<4845>>B.1<<4845>><<5374>>\ignorespaces GEDCOM 5.5 data records and tags imported by PyPedal<<4846>><<4846>>.<<5374>><<5542>><<4847>>83<<4847>><<4848>>table.B.1<<4848>><<5571>>
+\newlabel<<4849>>tbl:gedcom-supported-records-and-tags-export<<4849>><<5375>><<4850>>B.2<<4850>><<4851>>83<<4851>><<4852>>GEDCOM File Handling\relax <<4852>><<4853>>table.B.2<<4853>><<4854>><<4854>><<5375>>
+\@writefile<<4855>>lot<<4855>><<5572>>\contentsline <<4856>>table<<4856>><<5543>>\numberline <<4857>>B.2<<4857>><<5376>>\ignorespaces GEDCOM 5.5 data records and tags exported by PyPedal<<4858>><<4858>>.<<5376>><<5543>><<4859>>83<<4859>><<4860>>table.B.2<<4860>><<5572>>
+\gdef \PWST@xxii<<4861>>2<<4861>>
+\bibstyle<<4862>>chicago<<4862>>
+\bibdata<<4863>>references<<4863>>
+\bibcite<<4864>>Ballou1997<<4864>><<5377>>\citeauthoryear <<4865>>Ballou<<4865>><<4866>>Ballou<<4866>><<4867>>1997<<4867>><<5377>>
+\bibcite<<4868>>ref352<<4868>><<5544>>\citeauthoryear <<4869>>Boichard, Maignel, and Verrier<<4869>><<5378>>Boichard et\nobreakspace  <<4870>><<4870>>al.<<5378>><<4871>>1997<<4871>><<5544>>
+\bibcite<<4872>>ref817<<4872>><<5379>>\citeauthoryear <<4873>>Caballero and Toro<<4873>><<4874>>Caballero and Toro<<4874>><<4875>>2000<<4875>><<5379>>
+\bibcite<<4876>>Cassell2003a<<4876>><<5545>>\citeauthoryear <<4877>>Cassell, Adamec, and Pearson<<4877>><<5380>>Cassell et\nobreakspace  <<4878>><<4878>>al.<<5380>><<4879>>2003<<4879>><<5545>>
+\bibcite<<4880>>Cole2007a<<4880>><<5381>>\citeauthoryear <<4881>>Cole<<4881>><<4882>>Cole<<4882>><<4883>>2007<<4883>><<5381>>
+\bibcite<<4884>>Cole2004a<<4884>><<5546>>\citeauthoryear <<4885>>Cole, Franke, and Leighton<<4885>><<5382>>Cole et\nobreakspace  <<4886>><<4886>>al.<<5382>><<4887>>2004<<4887>><<5546>>
+\bibcite<<4888>>Cormen2003<<4888>><<5547>>\citeauthoryear <<4889>>Cormen, Leiserson, Rivest, and Stein<<4889>><<5383>>Cormen et\nobreakspace  <<4890>><<4890>>al.<<5383>><<4891>>2003<<4891>><<5547>>
+\bibcite<<4892>>ref91<<4892>><<5384>>\citeauthoryear <<4893>>Falconer and MacKay<<4893>><<4894>>Falconer and MacKay<<4894>><<4895>>1996<<4895>><<5384>>
+\bibcite<<4896>>GulisijaC2007<<4896>><<5385>>\citeauthoryear <<4897>>Gulisija and Crow<<4897>><<4898>>Gulisija and Crow<<4898>><<4899>>2007<<4899>><<5385>>
+\bibcite<<4900>>GulisijaGWT2006<<4900>><<5548>>\citeauthoryear <<4901>>Gulisija, Gianola, Weigel, and Toro<<4901>><<5386>>Gulisija et\nobreakspace  <<4902>><<4902>>al.<<5386>><<4903>>2006<<4903>><<5548>>
+\bibcite<<4904>>ref143<<4904>><<5387>>\citeauthoryear <<4905>>Henderson<<4905>><<4906>>Henderson<<4906>><<4907>>1976<<4907>><<5387>>
+\bibcite<<4908>>ref640<<4908>><<5388>>\citeauthoryear <<4909>>Lacy<<4909>><<4910>>Lacy<<4910>><<4911>>1989<<4911>><<5388>>
+\bibcite<<4912>>LacyAW1996<<4912>><<5549>>\citeauthoryear <<4913>>Lacy, Alaks, and Walsh<<4913>><<5389>>Lacy et\nobreakspace  <<4914>><<4914>>al.<<5389>><<4915>>1996<<4915>><<5549>>
+\bibcite<<4916>>ref1719<<4916>><<5550>>\citeauthoryear <<4917>>MacCluer, VandeBerg, Read, and Ryder<<4917>><<5390>>MacCluer et\nobreakspace  <<4918>><<4918>>al.<<5390>><<4919>>1986<<4919>><<5550>>
+\bibcite<<4920>>Pattie1965<<4920>><<5391>>\citeauthoryear <<4921>>Pattie<<4921>><<4922>>Pattie<<4922>><<4923>>1965<<4923>><<5391>>
+\bibcite<<4924>>ref235<<4924>><<5392>>\citeauthoryear <<4925>>Quaas<<4925>><<4926>>Quaas<<4926>><<4927>>1976<<4927>><<5392>>
+\bibcite<<4928>>ref641<<4928>><<5551>>\citeauthoryear <<4929>>Roughsedge, Brotherstone, and Visscher<<4929>><<5393>>Roughsedge et\nobreakspace  <<4930>><<4930>>al.<<5393>><<4931>>1999<<4931>><<5551>>
+\bibcite<<4932>>SuwanleeBSC2007<<4932>><<5552>>\citeauthoryear <<5394>>Suwanlee, Baumung, S<<4933>>\"o<<4933>>lkner, and Curik<<5394>><<5395>>Suwanlee et\nobreakspace  <<4934>><<4934>>al.<<5395>><<4935>>2007<<4935>><<5552>>
+\bibcite<<4936>>ref435<<4936>><<5553>>\citeauthoryear <<4937>>Toro, Rodriganez, Silio., and Rodriguez<<4937>><<5396>>Toro et\nobreakspace  <<4938>><<4938>>al.<<5396>><<4939>>2000<<4939>><<5553>>
+\bibcite<<4940>>ref337<<4940>><<5554>>\citeauthoryear <<5397>>Wiggans, Van\nobreakspace  <<4941>><<4941>>Raden, and Zuurbier<<5397>><<5398>>Wiggans et\nobreakspace  <<4942>><<4942>>al.<<5398>><<4943>>1995<<4943>><<5554>>
+\bibcite<<4944>>Wright1922<<4944>><<5399>>\citeauthoryear <<4945>>Wright<<4945>><<4946>>Wright<<4946>><<4947>>1922<<4947>><<5399>>
+\bibcite<<4948>>Wright1931<<4948>><<5400>>\citeauthoryear <<4949>>Wright<<4949>><<4950>>Wright<<4950>><<4951>>1931<<4951>><<5400>>
+\bibcite<<4952>>ref351<<4952>><<5401>>\citeauthoryear <<4953>>Young and Seykora<<4953>><<4954>>Young and Seykora<<4954>><<4955>>1996<<4955>><<5401>>
+\newlabel<<4956>>genindex<<4956>><<5402>><<4957>>B<<4957>><<4958>>87<<4958>><<4959>>GEDCOM File Handling\relax <<4959>><<4960>>appendix*.10<<4960>><<4961>><<4961>><<5402>>
+
+
+
+*** no brace for \ , before:
+\HyPL@Entry[1]{}
+*** using "\HyPL" as the argument instead; is this correct?  ***
+
+,,,,,,,,,,,,,,,,,,,,,,++...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+*** no brace for \ , before:
+@Entry[1]{}
+*** using "@" as the argument instead; is this correct?  ***
+
+......................
+@.......................
+@....
+@....
+@......
+@......
+@................
+@..............
+@.....
+@....
+@........
+@..............
+@..........................
+@.........
+@.........
+@..........
+@..............
+@..............
+@..........
+@.............
+@................
+@......
+@............
+@............
+@.................
+@.....
+@..........
+@..........
+@..........
+@..........
+@.........
+@..............
+@............
+@.....
+@............
+@..........
+@..........
+@..........
+@..........
+@............
+@..........
+@..........
+@..........
+@..........
+@..........
+@................
+@..........
+@..............
+@...........
+@......
+@..............
+@..........
+@......
+@..............
+@..........
+@......
+@..............
+@..........
+@......
+@..............
+@..........
+@......
+@..............
+@..........
+@.......
+@..............
+@.............
+@..............
+@.....
+@.....................
+@..........
+@................
+@..........
+@..........
+@..........
+@.................
+@..........
+@..........
+@............
+@..............
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@..........
+@............
+@............
+@............
+@.........
+@...........
+@..............
+@..............
+@.....
+@..........
+@.........
+@.........
+@.........
+@.........
+@.........
+@..........
+@..........
+@.........
+@.........
+@..............
+@..............
+@.....
+@..........
+@............
+@........
+@..........
+@..............
+@..........
+@..........
+@................
+@..........
+@...........
+@.............
+@..............
+@...
+@..............
+@.....
+@....................
+@.........
+@......................................................................
+Reading lof file: /home/jcole/pypedal/PyPedal/doc/pypedal.lof ...
+Processing macros ...++...................................................................................................................................
+Reading lot file: /home/jcole/pypedal/PyPedal/doc/pypedal.lot ...
+Processing macros ...++......................................................................................................................................................................................................................................
+Translating ...0/115.
+*** redefining \abs ***
+.............
+Warning: No implementation found for option: `letterpaper' for `manual' package
+
+Warning: No implementation found for option: `hyperref' for `manual' package
+
+Warning: No implementation found for option: `titlepage' for `manual' package
+.....
+Warning: No implementation found for package: fullpage.
+Warning: No implementation found for package: graphicx..
+Warning: No implementation found for package: url.
+Warning: No implementation found for package: index.
+Warning: No implementation found for package: chicago.
+Warning: No implementation found for package: xtab.
+Warning: No implementation found for package: multirow.
+Warning: No implementation found for package: courier.
+Warning: No implementation found for package: fullpage..new color: (darkorange) = #b53603
+.new color: (darkgreen) = #1f8a1c
+.
+Warning: No implementation found for package: hyperref..
+redefining existing color: orange = #cc6600
+.
+Warning: No implementation found for package: listings........;..,........;..
+1/115.;;
+2/115..;.;.
+3/115..;...;
+4/115.;..;
+5/115...;...;
+6/115.;;..
+7/115.;;.
+8/115.;..[pypedal].;..
+9/115...;.,......,.;..............
+10/115...;,,,,,,,,,.;.................
+11/115...;......;
+12/115....;.......;.....
+13/115....;;
+14/115....;,;
+15/115....;...,...........;.....
+16/115...;..,;.
+17/115....;..;
+18/115......;,,;
+19/115..;..,;.
+20/115......;....,....,...,....;...................
+21/115.......;,.,,..;..
+22/115.......;;
+23/115.....;.,,;
+24/115...;,;
+25/115.....;;..
+26/115.....;...;...........
+27/115.....;,...,,..,,,.;..........
+28/115.....;,...,.,...........;................
+29/115......;....,;....
+.
+Doing footnotes ...30/115.....;,,;.......
+31/115......;,.......,...........;.........
+32/115.....;,,;
+33/115......;;.
+34/115.....;,,;...
+35/115.....;........,.,,,,........;......................
+36/115...;,;
+37/115....;,............;.......
+38/115.....;..;...
+39/115......;...,,.;...
+40/115......;,..,.;...
+41/115......;.;.
+42/115......;,,.;
+43/115......;..,...;....
+44/115.....;.;
+45/115......;.....,...;....
+46/115......;.;.
+47/115......;,.,.;..
+48/115......;....,..;..
+49/115....;,;
+50/115.....;.;........
+51/115......;,...
+
+*** no brace for \multirow , before:
+& \multicolumn{2}{|c|}{Default} & \multirow{2}{2.5in}{Description} \\
+*** using ";" as the argument instead; is this correct?  ***
+
+..
+
+*** no brace for \multirow , before:
+\\
+*** using "\\" as the argument instead; is this correct?  ***
+
+...............,...........;....
+52/115......;.,...........,...........;........
+53/115......;,...........,...........;.......
+54/115.....;,...........,...........;....
+55/115.....;,...........,.,...........;.......
+56/115.....;,...........,...........;...
+57/115...;,;
+58/115.....;.,.......;...................
+59/115.....;.,..,....
+
+*** no brace for \multirow , before:
+& \multicolumn{2}{c|}{<TT>asd</TT> format} & \multicolumn{2}{c|}{<TT>ASD</TT> format}  & \multicolumn{2}{c}{Renumbered}\\
+*** using ";" as the argument instead; is this correct?  ***
+
+..............;.........
+60/115.....;..;...........
+61/115.....;;
+62/115......;,,,,.,,.,..,.,,,,,;..........
+63/115......;,,,,,.;..........
+64/115......;,,,,,,.,,;.....
+65/115......;.,.,,,;..
+66/115......;,.,.,,,.,;.....
+67/115......;,.,.,,,,,,,;..........
+68/115......;,.,.,;.....
+69/115......;.,.,,,.;......
+70/115...;,;
+71/115.....;;
+72/115......;,;....
+73/115......;.,;....
+74/115......;.,,;....
+75/115......;,.;..
+76/115......;,,,;....
+77/115.....;;
+78/115......;,,,,;.........
+79/115.....;;
+80/115......;...,.;......
+81/115......;..,,,;.........
+82/115.....;.;..
+83/115......;....,,;.
+84/115......;...,..;........
+85/115......;,;
+86/115......;,;
+87/115.....;;
+88/115......;,....,,;..........
+89/115......;..,,,,,,,.,;........
+90/115......;.,;....
+91/115......;,;.....
+92/115......;..,.,,...;....
+93/115.....;.;
+94/115...;,;
+95/115.....;,..........;.
+96/115......;.,,,...,,...,,...........,,.....,..........,..;.....................
+97/115......;..,,,...........;..........
+98/115......;.,,,,.,,...,,...;...........
+99/115...;,;
+100/115.....;.................,...........;..................
+101/115......;,,....;.....
+102/115.....;.....,...;.........
+103/115.....;.,....,.,,,,,;...............
+104/115...;,;
+105/115.....;.;.
+106/115......;,.;..
+107/115.....;...,....,,;.............
+108/115.....;,......,.........,.......,.....,,,.....;...................
+109/115.....;....;.
+110/115...;,...,;........
+.
+Doing footnotes ...111/115..;,...........;.
+112/115....;,.................,................;.....
+.
+Doing footnotes ...113/115..
+Reading bbl file: /home/jcole/pypedal/PyPedal/doc/pypedal.bbl ...
+Processing macros ...++..................................................................................................................................................................
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,..................................................................................................................................................................
+;.;
+114/115.;.;.
+115/115..;;.
+
+Writing image file ...
+
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./images.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, croatian, bulgarian, russian, ukrainian, czech, slovak, danish, dut
+ch, finnish, finnish, french, basque, french, german, ngerman, german, ngerman,
+ greek, monogreek, ancientgreek, ibycus, hungarian, hungarian, italian, italian
+, latin, latin, mongolian, mongolian, norsk, norsk, coptic, esperanto, estonian
+, icelandic, indonesian, interlingua, romanian, serbian, slovenian, turkish, up
+persorbian, welsh, polish, polish, portuguese, portuguese, spanish, catalan, ga
+lician, spanish, catalan, galician, swedish, swedish, loaded.
+
+
+ *** processing 84 images ***
+
+Generating postscript images using dvips ...
+This is dvips(k) 5.96.1 Copyright 2007 Radical Eye Software (www.radicaleye.com)
+' TeX output 2008.03.04:1551' -> /tmp/l2h16736/image
+(-> /tmp/l2h16736/image001) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[1] 
+(-> /tmp/l2h16736/image002) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[2] 
+(-> /tmp/l2h16736/image003) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[3] 
+(-> /tmp/l2h16736/image004) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[4] 
+(-> /tmp/l2h16736/image005) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[5] 
+(-> /tmp/l2h16736/image006) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/ams/msam10.pfb>[6] 
+(-> /tmp/l2h16736/image007) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/ams/msam10.pfb>[7] 
+(-> /tmp/l2h16736/image008) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[8] 
+(-> /tmp/l2h16736/image009) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[9] 
+(-> /tmp/l2h16736/image010) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[10] 
+(-> /tmp/l2h16736/image011) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[11] 
+(-> /tmp/l2h16736/image012) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[12
+/usr/bin/dvips: Could not find figure file simulatedPedigree.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image013) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[13] 
+(-> /tmp/l2h16736/image014) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[14] 
+(-> /tmp/l2h16736/image015) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[15] 
+(-> /tmp/l2h16736/image016) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[16] 
+(-> /tmp/l2h16736/image017) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[17] 
+(-> /tmp/l2h16736/image018) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[18] 
+(-> /tmp/l2h16736/image019) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[19] 
+(-> /tmp/l2h16736/image020) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>[20] 
+(-> /tmp/l2h16736/image021) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[21] 
+(-> /tmp/l2h16736/image022) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>[22] 
+(-> /tmp/l2h16736/image023) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[23] 
+(-> /tmp/l2h16736/image024) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[24] 
+(-> /tmp/l2h16736/image025) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[25] 
+(-> /tmp/l2h16736/image026) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[26] 
+(-> /tmp/l2h16736/image027) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[27] 
+(-> /tmp/l2h16736/image028) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[28] 
+(-> /tmp/l2h16736/image029) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[29] 
+(-> /tmp/l2h16736/image030) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[30] 
+(-> /tmp/l2h16736/image031) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[31] 
+(-> /tmp/l2h16736/image032) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[32] 
+(-> /tmp/l2h16736/image033) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[33] 
+(-> /tmp/l2h16736/image034) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[34] 
+(-> /tmp/l2h16736/image035) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[35] 
+(-> /tmp/l2h16736/image036) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[36] 
+(-> /tmp/l2h16736/image037) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[37] 
+(-> /tmp/l2h16736/image038) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[38] 
+(-> /tmp/l2h16736/image039) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[39] 
+(-> /tmp/l2h16736/image040) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[40] 
+(-> /tmp/l2h16736/image041) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[41] 
+(-> /tmp/l2h16736/image042) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[42] 
+(-> /tmp/l2h16736/image043) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[43] 
+(-> /tmp/l2h16736/image044) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[44] 
+(-> /tmp/l2h16736/image045) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[45] 
+(-> /tmp/l2h16736/image046) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[46] 
+(-> /tmp/l2h16736/image047) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[47] 
+(-> /tmp/l2h16736/image048) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[48] 
+(-> /tmp/l2h16736/image049) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[49] 
+(-> /tmp/l2h16736/image050) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[50] 
+(-> /tmp/l2h16736/image051) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[51] 
+(-> /tmp/l2h16736/image052) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[52] 
+(-> /tmp/l2h16736/image053) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[53] 
+(-> /tmp/l2h16736/image054) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[54] 
+(-> /tmp/l2h16736/image055) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[55] 
+(-> /tmp/l2h16736/image056) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[56] 
+(-> /tmp/l2h16736/image057) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[57] 
+(-> /tmp/l2h16736/image058) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[58] 
+(-> /tmp/l2h16736/image059) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[59] 
+(-> /tmp/l2h16736/image060) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[60] 
+(-> /tmp/l2h16736/image061) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[61] 
+(-> /tmp/l2h16736/image062) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[62] 
+(-> /tmp/l2h16736/image063) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[63] 
+(-> /tmp/l2h16736/image064) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[64] 
+(-> /tmp/l2h16736/image065) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[65] 
+(-> /tmp/l2h16736/image066) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[66] 
+(-> /tmp/l2h16736/image067) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[67] 
+(-> /tmp/l2h16736/image068) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[68
+/usr/bin/dvips: Could not find figure file pedfromstring.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image069) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[69] 
+(-> /tmp/l2h16736/image070) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[70
+/usr/bin/dvips: Could not find figure file boichard2Pedigree.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image071) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[71
+/usr/bin/dvips: Could not find figure file BoichardPedigreeBasic.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image072) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[72
+/usr/bin/dvips: Could not find figure file dougPRlNotitle.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image073) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[73
+/usr/bin/dvips: Could not find figure file newfoundland.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image074) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[74
+/usr/bin/dvips: Could not find figure file ayCoiByYear.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image075) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb>[75] 
+(-> /tmp/l2h16736/image076) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb>
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb>[76] 
+(-> /tmp/l2h16736/image077) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[77
+/usr/bin/dvips: Could not find figure file boichard2Pcolor.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image078) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[78
+/usr/bin/dvips: Could not find figure file boichard2Spy.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image079) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[79] 
+(-> /tmp/l2h16736/image080) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[80
+/usr/bin/dvips: Could not find figure file greensDingoPedigree.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image081) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[81
+/usr/bin/dvips: Could not find figure file BoichardPedigreeColored.eps; continuing.
+Note that an absolute path or a relative path with .. are denied in -R2 mode.
+] (-> /tmp/l2h16736/image082) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[82] 
+(-> /tmp/l2h16736/image083) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[83] 
+(-> /tmp/l2h16736/image084) </usr/share/texmf-texlive/dvips/base/tex.pro>
+</etc/texmf/dvips/config/alt-rule.pro>
+</home/jcole/texmf/fonts/enc/dvips/8r.enc>
+</usr/share/texmf-texlive/dvips/base/texps.pro>
+</usr/share/texmf-texlive/dvips/base/special.pro>
+</usr/share/texmf-texlive/dvips/base/color.pro>[84] 
+Converting image #39
+Converting image #31
+Converting image #53
+Converting image #1
+Converting image #51
+Converting image #37
+Converting image #6
+Converting image #83
+Converting image #28
+Converting image #66
+Converting image #43
+Converting image #36
+Converting image #62
+Converting image #26
+Converting image #8
+Converting image #13
+Converting image #9
+Converting image #45
+Converting image #73
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17037.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img73.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #48
+Converting image #19
+Converting image #40
+Converting image #11
+Converting image #54
+Converting image #7
+Converting image #17
+Converting image #55
+Converting image #21
+Converting image #12
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17165.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img12.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #77
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17174.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img77.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #84
+Converting image #80
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17195.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img80.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #78
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17203.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img78.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #18
+Converting image #29
+Converting image #56
+Converting image #42
+Converting image #15
+Converting image #60
+Converting image #70
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17293.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img70.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #61
+Converting image #79
+Converting image #2
+Converting image #68
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17339.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img68.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #69
+Converting image #65
+Converting image #67
+Converting image #82
+Converting image #20
+Converting image #4
+Converting image #71
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17422.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img71.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #47
+Converting image #76
+Converting image #59
+Converting image #32
+Converting image #63
+Converting image #41
+Converting image #27
+Converting image #81
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17540.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img81.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #72
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17548.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img72.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #49
+Converting image #58
+Converting image #10
+Converting image #46
+Converting image #34
+Converting image #23
+Converting image #25
+Converting image #75
+Converting image #44
+Converting image #35
+Converting image #57
+Converting image #14
+Converting image #22
+Converting image #64
+Converting image #24
+Converting image #16
+Converting image #33
+Converting image #52
+Converting image #38
+Converting image #50
+Converting image #74
+pstoimg: Error: "/usr/bin/pnmcrop -verbose  < /tmp/l2h16736/p17834.pnm | /usr/bin/ppmquant -floyd 256 | /usr/bin/pnmtopng -interlace -trans 'gray85'  > img74.png" failed: Bad file descriptor
+
+Error while converting image
+Converting image #3
+Converting image #30
+Converting image #5
+
+Doing section links ...............
+Doing table of contents ...........................,...............................................................................................................................................................................................
+Building HTML for the index ...

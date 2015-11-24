@@ -1,0 +1,194 @@
+% Complete documentation on the extended LaTeX markup used for Python
+% documentation is available in ``Documenting Python'', which is part
+% of the standard documentation for Python.  It may be found online
+% at:
+%
+%     http://www.python.org/doc/current/doc/doc.html
+
+\documentclass[letterpaper,hyperref,titlepage]{manual}
+
+% latex2html doesn't know [T1]{fontenc}, so we cannot use that:(
+
+\usepackage{amsmath}
+\usepackage{amssymb} 	% We need this for blacktriangleright and
+											% blacktriangleleft.
+\usepackage[latin1]{inputenc}
+\usepackage{textcomp}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\graphicspath{{./graphics/}}
+\usepackage{url}
+\usepackage{index}
+\usepackage{chicago}
+\usepackage{supertabular}
+\usepackage{multirow}
+%\setlongtables
+%\usepackage{epsfig}
+
+% The commands of this document do not reset module names at section level
+% (nor at chapter level).
+% --> You have to do that manually when a new module starts!
+%     (use \py@reset)
+%begin{latexonly}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+   {-3.5ex \@plus -1ex \@minus -.2ex}%
+   {2.3ex \@plus.2ex}%
+   {\reset@font\Large\py@HeaderFamily}}
+\makeatother
+%end{latexonly}
+
+% additional mathematical functions
+\DeclareMathOperator{\abs}{abs}
+
+%%%
+%%% Start of preamble ``borrowed'' from a Fernando Perez post tn the
+%%% NumPy listserv on 02/11/06.
+%%%
+
+% This gives us a better font in URL links (otherwise the default
+% MonoSpace font is bitmapped, and it looks horrible in PDF)
+\usepackage{courier}
+\usepackage{fullpage}
+\usepackage{color}  % so we can use red for the fixme warnings
+
+% The hyperref package gives us a pdf with properly built
+% internal navigation ('pdf bookmarks' for the table of contents,
+% internal cross-reference links, web links for URLs, etc.)
+
+% A few colors to replace the defaults for certain link types
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+
+\usepackage[
+  %pdftex,  % needed for pdflatex
+  breaklinks=true,  % so long urls are correctly broken across lines
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=darkorange,
+  citecolor=darkgreen,
+  ]{hyperref}
+
+% This helps prevent overly long lines that stretch beyond the margins
+\sloppy
+
+% Define a \fixme command to mark visually things needing fixing in the draft.
+% For final printing or to simply disable these bright warnings, simply
+% uncomment the \renewcommand redefinition below
+
+\newcommand{\fixme}[1] {
+\textcolor{red}{
+{\fbox{ {\bf FIX}
+\ensuremath{\blacktriangleright \blacktriangleright \blacktriangleright}}
+{\bf #1}
+\fbox{\ensuremath{ \blacktriangleleft \blacktriangleleft \blacktriangleleft }
+} } }
+}
+% Uncomment the next line to make the \fixme command be a no-op
+%\renewcommand{\fixme}[1]{}
+
+%%% If you also want to use the listings package for nicely formatted
+%%% Python source code, this configuration produces good on-paper and
+%%% on-screen results:
+
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+% Use and configure listings package for nicely formatted code
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\small\ttfamily,
+  commentstyle=\ttfamily\color{blue},
+  stringstyle=\ttfamily\color{orange},
+  showstringspaces=false,
+  breaklines=true,
+  postbreak = \space\dots
+}
+
+%%%
+%%% End of preamble ``borrowed'' from a Fernando Perez post tn the
+%%% NumPy listserv on 02/11/06.
+%%%
+
+% some convenience declarations
+\newcommand{\pypedal}{PyPedal}
+\newcommand{\PyPedal}{PyPedal}  % Only beginning of sentence, otherwise use \pypedal{}
+\newcommand{\PYPEDAL}{PyPedal}
+\newcommand{\python}{Python}
+
+% mark internal comments
+% for any published version switch to the second (empty) definition of the macro!
+% \newcommand{\remark}[1]{(\textbf{Note to authors: #1})}
+\newcommand{\remark}[1]{}
+
+\title{A Manual for use of PyPedal\\A software package for pedigree analysis}
+\author{John B. Cole}
+\authoraddress{Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture, Room 306 Bldg 005 BARC-West, 10300 Baltimore Avenue, Beltsville, MD 20705-2350}
+
+% I use date to indicate the manual-updates,
+% release below gives the matching software version.
+%\date{December 01, 2005}        % update before release!
+\date{November 29, 2005 \\ Revised \today}                   % update before release!
+                                % Use an explicit date so that reformatting
+                                % doesn't cause a new date to be used.  Setting
+                                % the date to \today can be used during draft
+                                % stages to make it easier to handle versions.
+
+\release{2.0.0b20}               % (software) release version;
+\setshortversion{2.0}           % this is used to define the \version macro
+\makeindex                      % tell \index to actually write the .idx file
+\newindex{func}{fdx}{fnd}{Function Index}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Cole, J.B.  2007.  A Manual for use of PyPedal: A software package for pedigree analysis.  Animal Improvement Programs Laboratory, Agricultural Research Service, United States Department of Agriculture.
+
+This manual in twelve chapters describes PyPedal (v 2.0), a software package for pedigree analysis, report generation, and data visualization.  Metrics include coefficients of inbreeding and relationship, effective founder and ancestor numbers, and founder genome equivalents.  Tools are provided for identifying ancestors and descendants, computing coefficients of inbreeding from potential matings, quantifying pedigree completeness, and visualizing pedigrees.  Scripting support is provided by the Python programming language; this language may be used to easily automate analyses and implement new features. Input and output files utilize plain-text formats.  The program has been used for the analysis of dairy cattle and working dog pedigrees.  PyPedal runs on the GNU/Linux and Microsoft Windows operating systems.  The program, documentation, and examples of usage are available at \url{http://pypedal.sourceforge.net/}.
+
+Mention of trade names or commercial products in this manual is solely for the purpose of providing specific information and does not imply recommendation or endorsement by the U.S. Department of Agriculture.
+
+All programs and services of the U.S. Department of Agriculture are offered on a nondiscriminatory basis without regard to race, color, national origin, religion, sex, age, marital status, or handicap.
+
+Revised \today
+\end{abstract}
+
+% This makes the contents more accessible from the front page of the HTML.
+\ifhtml
+\part*{General}
+\chapter*{Front Matter}
+\label{front}
+\fi
+
+\input{copyright}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\declaremodule{extension}{pypedal}
+\moduleauthor{John B. Cole}{jcole@aipl.arsusda.gov}
+\modulesynopsis{Py{P}edal}
+\input{lesser}
+\input{introduction}
+\input{installation}
+\input{overview}
+\input{objects}
+\input{methodology}
+\input{howtos}
+\input{graphics}
+\input{reports}
+\input{newfeatures}
+\input{api}
+%%%\input{tutorial}
+\input{glossary}
+\input{appendix}
+
+\bibliographystyle{chicago}
+\bibliography{references}
+
+\printindex
+\printindex[func]
+
+\end{document}

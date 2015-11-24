@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=us-ascii' />
+<title>The pyp_nrm Module</title>
+</head>
+<body>
+<h1>The pyp_nrm Module</h1>
+<p>pyp_nrm contains several procedures for computing numerator relationship matrices and for
+performing operations on those matrices.  It also contains routines for computing CoI on
+large pedigrees using the recursive method of VanRaden (1992).</p>
+<h2>Module Contents</h2>
+<dl>
+<dt><a id='pyp_nrm.a_decompose-function' name='pyp_nrm.a_decompose-function'><b>a_decompose(pedobj)</b></a> &rArr; matrices [<a href='#pyp_nrm.a_decompose-function'>#</a>]</dt>
+<dd>
+<p>Form the decomposed form of A, TDT', directly from a pedigree (after
+Henderson, 1976; Thompson, 1977; Mrode, 1996).  Return D, a diagonal
+matrix, and T, a lower triagular matrix such that A = TDT'.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+A diagonal matrix, D, and a lower triangular matrix, T.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.a_inverse_df-function' name='pyp_nrm.a_inverse_df-function'><b>a_inverse_df(pedobj)</b></a> &rArr; matrix [<a href='#pyp_nrm.a_inverse_df-function'>#</a>]</dt>
+<dd>
+<p>Directly form the inverse of A from the pedigree file - accounts for
+inbreeding - using the method of Quaas (1976).</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+The inverse of the NRM, A, accounting for inbreeding.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.a_inverse_dnf-function' name='pyp_nrm.a_inverse_dnf-function'><b>a_inverse_dnf(pedobj, filetag='_a_inverse_dnf_')</b></a> &rArr; matrix [<a href='#pyp_nrm.a_inverse_dnf-function'>#</a>]</dt>
+<dd>
+<p>Form the inverse of A directly using the method of Henderson (1976) which
+does not account for inbreeding.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+The inverse of the NRM, A, not accounting for inbreeding.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.a_matrix-function' name='pyp_nrm.a_matrix-function'><b>a_matrix(pedobj, save=0)</b></a> &rArr; array [<a href='#pyp_nrm.a_matrix-function'>#</a>]</dt>
+<dd>
+<p>a_matrix() is used to form a numerator relationship matrix from a pedigree.  DEPRECATED.
+use fast_a_matrix() instead.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>save</i></dt>
+<dd>
+Flag to indicate whether or not the relationship matrix is written to a file.</dd>
+<dt>Returns:</dt>
+<dd>
+The NRM as a NumPy matrix.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.fast_a_matrix-function' name='pyp_nrm.fast_a_matrix-function'><b>fast_a_matrix(pedigree, pedopts, save=0, method='dense', debug=0)</b></a> &rArr; matrix [<a href='#pyp_nrm.fast_a_matrix-function'>#</a>]</dt>
+<dd>
+<p>Form a numerator relationship matrix from a pedigree.  fast_a_matrix() is a hacked version of a_matrix()
+modified to try and improve performance.  Lists of animal, sire, and dam IDs are formed and accessed rather
+than myped as it is much faster to access a member of a simple list rather than an attribute of an object in a
+list.  Further note that only the diagonal and upper off-diagonal of A are populated.  This is done to save
+n(n+1) / 2 matrix writes.  For a 1000-element array, this saves 500,500 writes.</p>
+<dl>
+<dt><i>pedigree</i></dt>
+<dd>
+A PyPedal pedigree.</dd>
+<dt><i>pedopts</i></dt>
+<dd>
+PyPedal options.</dd>
+<dt><i>save</i></dt>
+<dd>
+Flag to indicate whether or not the relationship matrix is written to a file.</dd>
+<dt><i>method</i></dt>
+<dd>
+Use dense or sparse matrix storage.</dd>
+<dt><i>debug</i></dt>
+<dd>
+Print NRM for debugging</dd>
+<dt>Returns:</dt>
+<dd>
+The NRM as Numarray matrix.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.fast_a_matrix_r-function' name='pyp_nrm.fast_a_matrix_r-function'><b>fast_a_matrix_r(pedigree, pedopts, save=0, method='dense')</b></a> &rArr; matrix [<a href='#pyp_nrm.fast_a_matrix_r-function'>#</a>]</dt>
+<dd>
+<p>Form a relationship matrix from a pedigree.  fast_a_matrix_r() differs from fast_a_matrix() in that the
+coefficients of relationship are corrected for the inbreeding of the parents.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>save</i></dt>
+<dd>
+Flag to indicate whether or not the relationship matrix is written to a file.</dd>
+<dt>Returns:</dt>
+<dd>
+A relationship as Numarray matrix.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.form_d_nof-function' name='pyp_nrm.form_d_nof-function'><b>form_d_nof(pedobj)</b></a> &rArr; matrix [<a href='#pyp_nrm.form_d_nof-function'>#</a>]</dt>
+<dd>
+<p>Form the diagonal matrix, D, used in decomposing A and forming the direct
+inverse of A.  This function does not write output to a file - if you need D in
+a file, use the a_decompose()  function.  form_d() is a convenience function
+used by other functions.  Note that inbreeding is not considered in the
+formation of D.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt>Returns:</dt>
+<dd>
+A diagonal matrix, D.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.inbreeding-function' name='pyp_nrm.inbreeding-function'><b>inbreeding(pedobj, method='tabular', gens=0, rels=0)</b></a> &rArr; dictionary [<a href='#pyp_nrm.inbreeding-function'>#</a>]</dt>
+<dd>
+<p>inbreeding() is a proxy function used to dispatch pedigrees to the appropriate
+function for computing CoI.  By default, small pedigrees &lt; 10,000 animals) are
+processed with the tabular method directly.  For larger pedigrees, or if requested,
+the recursive method of VanRaden (1992) is used.
+</p><dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>method</i></dt>
+<dd>
+Keyword indicating which method of computing CoI should be used (tabular|vanraden).</dd>
+<dt><i>gens</i></dt>
+<dd>
+The number of generations from the pedigree to be used for calculating CoI.  By default, gens=0, which uses the complete pedigree.</dd>
+<dt><i>rels</i></dt>
+<dd>
+Flag indicating whether or not summary statistics should be computed for coefficients of relationship.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of CoI keyed to renumbered animal IDs.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.inbreeding_tabular-function' name='pyp_nrm.inbreeding_tabular-function'><b>inbreeding_tabular(pedobj, gens=0, rels=0)</b></a> &rArr; dictionary [<a href='#pyp_nrm.inbreeding_tabular-function'>#</a>]</dt>
+<dd>
+<p>inbreeding_tabular() computes CoI using the tabular method by calling
+fast_a_matrix() to form the NRM directly.  In order for this routine
+to return successfully requires that you are able to allocate a matrix
+of floats of dimension len(myped)**2.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>gens</i></dt>
+<dd>
+The number of generations from the pedigree to be used for calculating CoI.  By default, gens=0, which uses the complete pedigree.</dd>
+<dt><i>rels</i></dt>
+<dd>
+Flag indicating whether or not summary statistics should be computed for coefficients of relationship.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of CoI keyed to renumbered animal IDs</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.inbreeding_vanraden-function' name='pyp_nrm.inbreeding_vanraden-function'><b>inbreeding_vanraden(pedobj, cleanmaps=0, gens=0, rels=0)</b></a> &rArr; dictionary [<a href='#pyp_nrm.inbreeding_vanraden-function'>#</a>]</dt>
+<dd>
+<p>inbreeding_vanraden() uses VanRaden's (1992) method for computing coefficients of
+inbreeding in a large pedigree.  The method works as follows:
+  1.  Take a large pedigree and order it from youngest animal to oldest (n, n-1, ..., 1);
+  2.  Recurse through the pedigree to find all of the ancestors of that animal n;
+  3.  Reorder and renumber that &quot;subpedigree&quot;;
+  4.  Compute coefficients of inbreeding for that &quot;subpedigree&quot; using the tabular
+      method (Emik and Terrill, 1949);
+  5.  Put the coefficients of inbreeding in a dictionary;
+  6.  Repeat 2 - 5 for animals n-1 through 1; the process is slowest for the early
+      pedigrees and fastest for the later pedigrees.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree object.</dd>
+<dt><i>cleanmaps</i></dt>
+<dd>
+Flag to denote whether or not subpedigree ID maps should be deleted after they are used (0|1).</dd>
+<dt><i>gens</i></dt>
+<dd>
+The number of generations from the pedigree to be used for calculating CoI.  By default, gens=0, which uses the complete pedigree.</dd>
+<dt><i>rels</i></dt>
+<dd>
+Flag indicating whether or not summary statistics should be computed for coefficients of relationship.</dd>
+<dt>Returns:</dt>
+<dd>
+A dictionary of CoI keyed to renumbered animal IDs</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.recurse_pedigree-function' name='pyp_nrm.recurse_pedigree-function'><b>recurse_pedigree(pedobj, anid, _ped)</b></a> &rArr; list [<a href='#pyp_nrm.recurse_pedigree-function'>#</a>]</dt>
+<dd>
+<p>recurse_pedigree() performs the recursion needed to build the subpedigrees used by
+inbreeding_vanraden().  For the animal with animalID anid recurse_pedigree() will
+recurse through the pedigree myped and add references to the relatives of anid to
+the temporary pedigree, _ped.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The ID of the animal whose relatives are being located.</dd>
+<dt><i>_ped</i></dt>
+<dd>
+A temporary PyPedal pedigree that stores references to relatives of anid.</dd>
+<dt>Returns:</dt>
+<dd>
+A list of references to the relatives of anid contained in myped.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.recurse_pedigree_idonly-function' name='pyp_nrm.recurse_pedigree_idonly-function'><b>recurse_pedigree_idonly(pedobj, anid, _ped)</b></a> &rArr; list [<a href='#pyp_nrm.recurse_pedigree_idonly-function'>#</a>]</dt>
+<dd>
+<p>recurse_pedigree_idonly() performs the recursion needed to build subpedigrees.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The ID of the animal whose relatives are being located.</dd>
+<dt><i>_ped</i></dt>
+<dd>
+A PyPedal list that stores the animalIDs of relatives of anid.</dd>
+<dt>Returns:</dt>
+<dd>
+A list of animalIDs of the relatives of anid contained in myped.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.recurse_pedigree_idonly_side-function' name='pyp_nrm.recurse_pedigree_idonly_side-function'><b>recurse_pedigree_idonly_side(pedobj, anid, _ped, side='s')</b></a> &rArr; list [<a href='#pyp_nrm.recurse_pedigree_idonly_side-function'>#</a>]</dt>
+<dd>
+<p>recurse_pedigree_idonly_side() performs the recursion needed to build
+a subpedigree containing only animal IDs for either all sires or all
+dams.  That is, a pedigree would go sire-paternal grandsire-paternal
+great-grandsire, etc.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The ID of the animal whose relatives are being located.</dd>
+<dt><i>_ped</i></dt>
+<dd>
+A PyPedal list that stores the animalIDs of relatives of anid.</dd>
+<dt><i>side</i></dt>
+<dd>
+The side of the pedigree to follow ('s'|'d').</dd>
+<dt>Returns:</dt>
+<dd>
+A list of animalIDs of the relatives of anid contained in myped.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.recurse_pedigree_n-function' name='pyp_nrm.recurse_pedigree_n-function'><b>recurse_pedigree_n(pedobj, anid, _ped, depth=3)</b></a> &rArr; list [<a href='#pyp_nrm.recurse_pedigree_n-function'>#</a>]</dt>
+<dd>
+<p>recurse_pedigree_n() recurses to build a pedigree of depth n.  A depth less than 1 returns
+the animal whose relatives were to be identified.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The ID of the animal whose relatives are being located.</dd>
+<dt><i>_ped</i></dt>
+<dd>
+A temporary PyPedal pedigree that stores references to relatives of anid.</dd>
+<dt><i>depth</i></dt>
+<dd>
+The depth of the pedigree to return.</dd>
+<dt>Returns:</dt>
+<dd>
+A list of references to the relatives of anid contained in myped.</dd>
+</dl><br />
+</dd>
+<dt><a id='pyp_nrm.recurse_pedigree_onesided-function' name='pyp_nrm.recurse_pedigree_onesided-function'><b>recurse_pedigree_onesided(pedobj, anid, _ped, side)</b></a> &rArr; list [<a href='#pyp_nrm.recurse_pedigree_onesided-function'>#</a>]</dt>
+<dd>
+<p>recurse_pedigree_onesided() recurses to build a subpedigree from either the sire
+or dam side of a pedigree.</p>
+<dl>
+<dt><i>pedobj</i></dt>
+<dd>
+A PyPedal pedigree.</dd>
+<dt><i>side</i></dt>
+<dd>
+The side to build: 's' for sire and 'd' for dam.</dd>
+<dt><i>anid</i></dt>
+<dd>
+The ID of the animal whose relatives are being located.</dd>
+<dt><i>_ped</i></dt>
+<dd>
+A temporary PyPedal pedigree that stores references to relatives of anid.</dd>
+<dt>Returns:</dt>
+<dd>
+A list of references to the relatives of anid contained in myped.</dd>
+</dl><br />
+</dd>
+</dl>
+</body></html>
