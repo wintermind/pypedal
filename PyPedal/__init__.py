@@ -10,4 +10,4 @@
 __init__.py
 """
 __all__ = ["adodb", "pyp_db", "pyp_demog", "pyp_graphics", "pyp_io", "pyp_metrics", "pyp_network",  "pyp_newclasses", "pyp_nrm", "pyp_reports", "pyp_tests", "pyp_utils", "pyp_jbc", "pyp_template", "pyp_reports_templates"]
-__version__ = '2.0.2'
+__version__ = '2.0.4'
