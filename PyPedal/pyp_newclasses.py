@@ -621,11 +621,11 @@ class NewPedigree:
             merged_pedname = 'Merged Pedigree: %s + %s' % \
                              (self.kw['pedname'], other.kw['pedname'])
             new_options = {
-                'messages': self.kw['messages']
-                'pedname': merged_pedname
-                'renumber': 1
-                'pedfile': filename
-                'pedformat': self.kw['pedformat']
+                'messages': self.kw['messages'],
+                'pedname': merged_pedname,
+                'renumber': 1,
+                'pedfile': filename,
+                'pedformat': self.kw['pedformat'],
             }
             # Load the new pedigree and return it.
             try:
