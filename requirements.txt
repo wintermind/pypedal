@@ -2,5 +2,6 @@ numpy
 networkx
 pydot
 reportlab
+matplotlib
 setuptools
 pysparse
