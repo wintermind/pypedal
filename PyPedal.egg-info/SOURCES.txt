@@ -28,7 +28,6 @@ PyPedal/adodb_odbc_mssql.py
 PyPedal/adodb_postgres.py
 PyPedal/adodb_sqlite.py
 PyPedal/adodb_vfp.py
-PyPedal/depgraph2dot.py
 PyPedal/deps.py
 PyPedal/dict4ini.py
 PyPedal/kernprof.py
@@ -118,10 +117,7 @@ PyPedal/examples/new_inbreeding2.ped
 PyPedal/examples/new_inbreeding2.py
 PyPedal/examples/new_inbreeding2multiple.ini
 PyPedal/examples/new_inbreeding3.py
-PyPedal/examples/new_inbreeding3.py.lprof
 PyPedal/examples/new_inbreeding4.py
-PyPedal/examples/new_inbreeding4.py.lprof
-PyPedal/examples/new_inbreeding4.py.prof
 PyPedal/examples/new_inbreeding_2.ini
 PyPedal/examples/new_inbreeding_2.ped
 PyPedal/examples/new_inbreeding_2_inbreeding.dat
