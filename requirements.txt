@@ -1,5 +1,6 @@
 numpy
 networkx
 pydot
+reportlab
 setuptools
 pysparse
