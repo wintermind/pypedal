@@ -1,3 +1,5 @@
 numpy
 networkx
 pydot
+setuptools
+pysparse
