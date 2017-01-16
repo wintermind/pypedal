@@ -1,8 +1,0 @@
-README.txt
-setup.cfg
-setup.py
-PyPedal/PyPedal.egg-info/PKG-INFO
-PyPedal/PyPedal.egg-info/SOURCES.txt
-PyPedal/PyPedal.egg-info/dependency_links.txt
-PyPedal/PyPedal.egg-info/requires.txt
-PyPedal/PyPedal.egg-info/top_level.txt
