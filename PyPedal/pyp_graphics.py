@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+from __future__ import print_function
 ###############################################################################
 # NAME: pyp_graphics.py
 # VERSION: 2.0.0 (29SEPTEMBER2010)
@@ -86,7 +86,7 @@ def rmuller_spy_matrix_pil(A,fname='tmp.png',cutoff=0.1,do_outline=0, height=300
         # around the diagonal.
         if n == m:
             for j in range(i,n-1):
-#                 print 'i: %s, j: %s' % ( i, j )
+#                 print('i: %s, j: %s' % ( i, j ))
                 ymin = height*j/float(m)
                 ymax = height*(j+1)/float(m)
                 if abs(A[i,j]) > cutoff:
@@ -178,7 +178,7 @@ def rmuller_pcolor_matrix_pil(A, fname='tmp.png', do_outline=0, height=300, widt
             else:
                 draw.rectangle((xmin,ymin,xmax,ymax),fill=color)
 
-    #print key_dict
+    #print(key_dict)
     img.save(fname)
     return
 
@@ -243,19 +243,19 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
     from pyp_utils import string_to_table_name
     _gtitle = string_to_table_name(gtitle)
 #     if pedobj.kw['messages'] == 'verbose':
-#         print 'gtitle: %s' % ( gtitle )
-#         print '_gtitle: %s' % ( _gtitle )
+#         print('gtitle: %s' % ( gtitle ))
+#         print('_gtitle: %s' % ( _gtitle ))
 
     if gtitloc not in ['t','b']:
         gtitloc = 'b'
     if gtitjust not in ['c','l','r']:
         gtitjust = 'c'
 
-    #print pedobj.metadata.unique_gen_list
+    #print(pedobj.metadata.unique_gen_list)
 
     if not pedobj.kw['pedigree_is_renumbered']:
         if pedobj.kw['messages'] != 'quiet':
-            print '[GRAPH]: The pedigree that you passed to pyp_graphics/draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling draw_pedigree().'
+            print('[GRAPH]: The pedigree that you passed to pyp_graphics/draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling draw_pedigree().')
         logging.error('The pedigree that you passed to pyp_graphics/draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling draw_pedigree().')
 
     #try:
@@ -281,7 +281,7 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
     if gfontsize < 10:
         gfontsize = 10
     gfontsize = str(gfontsize)
-#     print 'gfontsize = %s' % (gfontsize)
+#     print('gfontsize = %s' % (gfontsize))
     # Check the resolution and set if it's a positive integer, otherwise set it to the default.
     dpi = int(gdpi)
     if dpi <= 0: dpi = 150
@@ -480,13 +480,13 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
             sg.set_rank(_sg_list)
             g.add_subgraph(sg)
             #try:
-                #print sg.get_node_list()
+                #print(sg.get_node_list())
             #except:
-                #print 'Could not get node list for subgraph!'
+                #print('Could not get node list for subgraph!')
             #try:
-                #print sg.get_edge_list()
+                #print(sg.get_edge_list())
             #except:
-                #print 'Could not get edge list for subgraph!'
+                #print('Could not get edge list for subgraph!')
 
     # For large graphs it is nice to write out the .dot file so that it does
     # not have to be recreated whenever new_draw_pedigree is called.
@@ -497,7 +497,7 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
         g.write(dfn)
         #except:
         #    if pedobj.kw['messages'] == 'verbose':
-        #        print '[ERROR]: pyp_graphics/draw_pedigree() was unable to write the dotfile %s.' % (dfn)
+        #        print('[ERROR]: pyp_graphics/draw_pedigree() was unable to write the dotfile %s.' % (dfn))
         #    logging.error('pyp_graphics/draw_pedigree() was unable to draw the dotfile %s.', (dfn))
 
     # Write the graph to an output file.
@@ -508,7 +508,7 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
     #except:
     #    outfile = '%s.%s' % (gfilename,gformat)
     #    if pedobj.kw['messages'] == 'verbose':
-    #        print '[ERROR]: pyp_graphics/draw_pedigree() was unable to draw the pedigree %s.' % (outfile)
+    #        print('[ERROR]: pyp_graphics/draw_pedigree() was unable to draw the pedigree %s.' % (outfile))
     #    logging.error('pyp_graphics/draw_pedigree() was unable to draw the pedigree %s.', (outfile))
     #    return 0
 
@@ -530,12 +530,12 @@ def plot_founders_by_year(pedobj, gfilename='founders_by_year', gtitle='Founders
         import pylab
     except ImportError:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/plot_founders_by_year() was unable to import the matplotlib module!'
+            print('[ERROR]: pyp_graphics/plot_founders_by_year() was unable to import the matplotlib module!')
         logging.error('pyp_graphics/plot_founders_by_year() was unable to import the matplotlib module!')
         return 0
 
     fby = pyp_demog.founders_by_year(pedobj)
-    #print fby
+    #print(fby)
     try:
         pylab.clf()
         pylab.bar(fby.keys(),fby.values())
@@ -543,16 +543,16 @@ def plot_founders_by_year(pedobj, gfilename='founders_by_year', gtitle='Founders
         pylab.xlabel('Year')
         pylab.ylabel('Number of founders')
         plotfile = '%s.png' % (gfilename)
-        #print 'plotfile: ', plotfile
+        #print('plotfile: ', plotfile)
         myplotfile = open(plotfile,'w')
-        #print 'myplotfile: ', myplotfile
+        #print('myplotfile: ', myplotfile)
         pylab.savefig(myplotfile)
         myplotfile.close()
         return 1
     except:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/plot_founders_by_year() was unable to create the plot \'%s\' (%s.png).' % ( gtitle, gfilename )
-        #print gtitle, gfilename
+            print('[ERROR]: pyp_graphics/plot_founders_by_year() was unable to create the plot \'%s\' (%s.png).' % ( gtitle, gfilename ))
+        #print(gtitle, gfilename)
         logging.error('pyp_graphics/plot_founders_by_year() was unable to create the plot \'%s\' (%s.png).', gtitle, gfilename)
         return 0
 
@@ -574,7 +574,7 @@ def plot_founders_pct_by_year(pedobj, gfilename='founders_pct_by_year', gtitle='
         import pylab
     except ImportError:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/plot_founders_pct_by_year() was unable to import the matplotlib module!'
+            print('[ERROR]: pyp_graphics/plot_founders_pct_by_year() was unable to import the matplotlib module!')
         logging.error('pyp_graphics/plot_founders_pct_by_year() was unable to import the matplotlib module!')
         return 0
 
@@ -598,7 +598,7 @@ def plot_founders_pct_by_year(pedobj, gfilename='founders_pct_by_year', gtitle='
         return 1
     except:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/plot_pct_founders_by_year() was unable to create the plot \'%s\' (%s.png).' % (gtitle,gfilename)
+            print('[ERROR]: pyp_graphics/plot_pct_founders_by_year() was unable to create the plot \'%s\' (%s.png).' % (gtitle,gfilename))
         logging.error('pyp_graphics/plot_pct_founders_by_year() was unable to create the plot \'%s\' (%s.png).' % (gtitle,gfilename))
         return 0
 
@@ -621,7 +621,7 @@ def pcolor_matrix_pylab(A, fname='pcolor_matrix_matplotlib'):
         import pylab
     except ImportError:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/pcolor_matrix_pylab() was unable to import the matplotlib module!'
+            print('[ERROR]: pyp_graphics/pcolor_matrix_pylab() was unable to import the matplotlib module!')
         logging.error('pyp_graphics/pcolor_matrix_pylab() was unable to import the matplotlib module!')
         return 0
 
@@ -648,7 +648,7 @@ def pcolor_matrix_pylab(A, fname='pcolor_matrix_matplotlib'):
         return 1
     except:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/pcolor_matrix_pylab() was unable to create the plot %s.' % (plotfile)
+            print('[ERROR]: pyp_graphics/pcolor_matrix_pylab() was unable to create the plot %s.' % (plotfile))
         logging.error('pyp_graphics/pcolor_matrix_pylab() was unable to create the plot %s.', (plotfile))
         return 0
 
@@ -671,7 +671,7 @@ def spy_matrix_pylab(A, fname='spy_matrix_matplotlib'):
         import pylab
     except ImportError:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/spy_matrix_pylab() was unable to import the matplotlib module!'
+            print('[ERROR]: pyp_graphics/spy_matrix_pylab() was unable to import the matplotlib module!')
         logging.error('pyp_graphics/spy_matrix_pylab() was unable to import the matplotlib module!')
         return 0
 
@@ -686,7 +686,7 @@ def spy_matrix_pylab(A, fname='spy_matrix_matplotlib'):
         return 1
     except:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/spy_matrix_pylab() was unable to create the plot %s.' % (plotfile)
+            print('[ERROR]: pyp_graphics/spy_matrix_pylab() was unable to create the plot %s.' % (plotfile))
         logging.error('pyp_graphics/spy_matrix_pylab() was unable to create the plot %s.', (plotfile))
         return 0
 
@@ -711,7 +711,7 @@ def plot_line_xy(xydict, gfilename='plot_line_xy', gtitle='Value by key', gxlabe
         import pylab
     except ImportError:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/plot_line_xy() was unable to import the matplotlib module!'
+            print('[ERROR]: pyp_graphics/plot_line_xy() was unable to import the matplotlib module!')
         logging.error('pyp_graphics/plot_line_xy() was unable to import the matplotlib module!')
         return 0
 
@@ -737,7 +737,7 @@ def plot_line_xy(xydict, gfilename='plot_line_xy', gtitle='Value by key', gxlabe
         _status = 1
     except:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/plot_line_xy() was unable to create the plot \'%s\' (%s.%s).' % (gtitle,gfilename,gformat)
+            print('[ERROR]: pyp_graphics/plot_line_xy() was unable to create the plot \'%s\' (%s.%s).' % (gtitle,gfilename,gformat))
         logging.error('pyp_graphics/plot_line_xy() was unable to create the plot \'%s\' (%s.%s).' % (gtitle,gfilename,gformat))
         _status = 0
     return _status
@@ -781,7 +781,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         import pygraphviz
     except ImportError:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!'
+            print('[ERROR]: pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!')
         logging.error('pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!')
         return 0
 
@@ -799,7 +799,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
 
     if not pedobj.kw['pedigree_is_renumbered']:
         if pedobj.kw['messages'] != 'quiet':
-            print '[GRAPH]: The pedigree that you passed to pyp_graphics/new_draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling new_draw_pedigree().'
+            print('[GRAPH]: The pedigree that you passed to pyp_graphics/new_draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling new_draw_pedigree().')
         logging.error('The pedigree that you passed to pyp_graphics/new_draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling new_draw_pedigree().')
 
     # Create an empty pygraphviz graph using the Agraph class.
@@ -858,7 +858,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         n.attr['fontname'] = 'Helvetica'
         n.attr['fontsize'] = str(pedobj.kw['default_fontsize'])
         n.attr['height'] = '0.35'
-        #print '[DEBUG]: sex = ', _m.sex
+        #print('[DEBUG]: sex = ', _m.sex)
         if _m.sex == 'M' or _m.sex == 'm':
             n.attr['shape'] = 'box'
         elif _m.sex == 'F' or _m.sex == 'f':
@@ -880,7 +880,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             g.add_edge(_sire_edge,_node_name)
             if not _tf[garrow]:
                 #e = g.get_edge(_sire_edge,_anim_node)
-		e = g.get_edge(_sire_edge,n)
+                e = g.get_edge(_sire_edge,n)
                 e.attr['dir'] = 'none'
         if int(_m.damID) != pedobj.kw['missing_parent']:
             if gname:
@@ -890,7 +890,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             g.add_edge(_dam_edge,_node_name)
             if not _tf[garrow]:
                 #e = g.get_edge(_dam_edge,_anim_node)
-		e = g.get_edge(_dam_edge,n)
+                e = g.get_edge(_dam_edge,n)
                 e.attr['dir'] = 'none'
 
     # For large graphs it is nice to write out the .dot file so that it does
@@ -902,7 +902,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             g.write(dfn)
         except:
             if pedobj.kw['messages'] == 'verbose':
-                print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to write the dotfile %s.' % (dfn)
+                print('[ERROR]: pyp_graphics/new_draw_pedigree() was unable to write the dotfile %s.' % (dfn))
             logging.error('pyp_graphics/new_draw_pedigree() was unable to draw the dotfile %s.', (dfn))
 
     # Write the graph to an output file.
@@ -913,6 +913,6 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
     except:
         outfile = '%s.%s' % (gfilename,gformat)
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.' % (outfile)
+            print('[ERROR]: pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.' % (outfile))
         logging.error('pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.', (outfile))
         return 0

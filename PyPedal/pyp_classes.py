@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: pyp_classes.py
 # VERSION: 2.0.0a10 (14APRIL2005)
@@ -94,24 +94,24 @@ class Animal:
         self.sireID = int(self.sireID)
         self.damID = int(self.damID)
         self.by = int(self.by)
-        print 'ANIMAL %s RECORD' % (self.animalID)
-        print '\tAnimal ID:\t%s' % (self.animalID)
-        print '\tAnimal name:\t%s' % (self.name)
-        print '\tSire ID:\t%s' % (self.sireID)
-        print '\tDam ID:\t\t%s' % (self.damID)
-        print '\tGeneration:\t%s' % (self.gen)
-        print '\tInferred gen.:\t%s' % (self.igen)
-        print '\tBirth Year:\t%s' % (self.by)
-        print '\tSex:\t\t%s' % (self.sex)
-        print '\tCoI (f_a):\t%s' % (self.fa)
-        print '\tFounder:\t%s' % (self.founder)
-        print '\tAncestor:\t%s' % (self.ancestor)
-        print '\tAlleles:\t%s' % (self.alleles)
-        print '\tRenumbered ID:\t%s' % (self.renumberedID)
-        print '\tPedigree Comp.:\t%s' % (self.pedcomp)
-        print '\tBreed:\t%s' % (self.breed)
-        print '\tAge:\t%s' % (self.age)
-        print '\tAlive:\t%s' % (self.alive)
+        print('ANIMAL %s RECORD' % (self.animalID))
+        print('\tAnimal ID:\t%s' % (self.animalID))
+        print('\tAnimal name:\t%s' % (self.name))
+        print('\tSire ID:\t%s' % (self.sireID))
+        print('\tDam ID:\t\t%s' % (self.damID))
+        print('\tGeneration:\t%s' % (self.gen))
+        print('\tInferred gen.:\t%s' % (self.igen))
+        print('\tBirth Year:\t%s' % (self.by))
+        print('\tSex:\t\t%s' % (self.sex))
+        print('\tCoI (f_a):\t%s' % (self.fa))
+        print('\tFounder:\t%s' % (self.founder))
+        print('\tAncestor:\t%s' % (self.ancestor))
+        print('\tAlleles:\t%s' % (self.alleles))
+        print('\tRenumbered ID:\t%s' % (self.renumberedID))
+        print('\tPedigree Comp.:\t%s' % (self.pedcomp))
+        print('\tBreed:\t%s' % (self.breed))
+        print('\tAge:\t%s' % (self.age))
+        print('\tAlive:\t%s' % (self.alive))
     ##
     # stringme() returns a summary of the data stored in the Animal() object
     # as a string.
@@ -167,13 +167,13 @@ class Animal:
     def trap(self):
         """Trap common errors in pedigree file entries."""
         if int(self.animalID) == int(self.sireID):
-            print '[ERROR]: Animal %s has an ID number equal to its sire\'s ID (sire ID %s).\n' % (self.animalID,self.sireID)
+            print('[ERROR]: Animal %s has an ID number equal to its sire\'s ID (sire ID %s).\n' % (self.animalID,self.sireID))
         if int(self.animalID) == int(self.damID):
-            print '[ERROR]: Animal %s has an ID number equal to its dam\'s ID (dam ID %s).\n' % (self.animalID,self.damID)
+            print('[ERROR]: Animal %s has an ID number equal to its dam\'s ID (dam ID %s).\n' % (self.animalID,self.damID))
         if int(self.animalID) < int(self.sireID):
-            print '[ERROR]: Animal %s is older than its sire (sire ID %s).\n' % (self.animalID,self.sireID)
+            print('[ERROR]: Animal %s is older than its sire (sire ID %s).\n' % (self.animalID,self.sireID))
         if int(self.animalID) < int(self.damID):
-            print '[ERROR]: Animal %s is older than its dam (dam ID %s).\n' % (self.animalID,self.damID)
+            print('[ERROR]: Animal %s is older than its dam (dam ID %s).\n' % (self.animalID,self.damID))
 
     ##
     # pad_id() takes an Animal ID, pads it to fifteen digits, and prepends the birthyear
@@ -213,59 +213,59 @@ class Pedigree:
     def __init__(self,myped,inputfile,name,pedcode='asd',reord=0,renum=0,debug=0):
         """Initialize a pedigree record."""
        	if debug == 1:
-            print '\t\t[DEBUG]:  Instantiating a new Pedigree() object...'
+            print('\t\t[DEBUG]:  Instantiating a new Pedigree() object...')
         if debug == 1:
-            print '\t\t[DEBUG]:  Naming the Pedigree()...'
+            print('\t\t[DEBUG]:  Naming the Pedigree()...')
             self.name = name
         if debug == 1:
-            print '\t\t[DEBUG]:  Assigning a filename...'
+            print('\t\t[DEBUG]:  Assigning a filename...')
             self.filename = inputfile
         if debug == 1:
-            print '\t\t[DEBUG]:  Attaching a pedigree...'
+            print('\t\t[DEBUG]:  Attaching a pedigree...')
             self.myped = myped
         if debug == 1:
-            print '\t\t[DEBUG]:  Setting the pedcode...'
+            print('\t\t[DEBUG]:  Setting the pedcode...')
             self.pedcode = pedcode
         if debug == 1:
-            print '\t\t[DEBUG]:  Counting the number of animals in the pedigree...'
+            print('\t\t[DEBUG]:  Counting the number of animals in the pedigree...')
             self.num_records = len(self.myped)
         if debug == 1:
-            print '\t\t[DEBUG]:  Counting and finding unique sires...'
+            print('\t\t[DEBUG]:  Counting and finding unique sires...')
             self.num_unique_sires, self.unique_sire_list = self.nus()
         if debug == 1:
-            print '\t\t[DEBUG]:  Counting and finding unique dams...'
+            print('\t\t[DEBUG]:  Counting and finding unique dams...')
             self.num_unique_dams, self.unique_dam_list = self.nud()
         if debug == 1:
-            print '\t\t[DEBUG]:  Setting reord flag...'
+            print('\t\t[DEBUG]:  Setting reord flag...')
             self.reordered = reord
         if debug == 1:
-            print '\t\t[DEBUG]:  Setting renum flag...'
+            print('\t\t[DEBUG]:  Setting renum flag...')
             self.renumbered = renum
         if debug == 1:
-            print '\t\t[DEBUG]:  Counting and finding unique generations...'
+            print('\t\t[DEBUG]:  Counting and finding unique generations...')
             self.num_unique_gens, self.unique_gen_list = self.nug()
         if debug == 1:
-            print '\t\t[DEBUG]:  Counting and finding unique birthyears...'
+            print('\t\t[DEBUG]:  Counting and finding unique birthyears...')
             self.num_unique_years, self.unique_year_list = self.nuy()
         if debug == 1:
-            print '\t\t[DEBUG]:  Counting and finding unique founders...'
+            print('\t\t[DEBUG]:  Counting and finding unique founders...')
             self.num_unique_founders, self.unique_founder_list = self.nuf()
         if debug == 1:
-            print '\t\t[DEBUG]:  Detaching pedigree...'
+            print('\t\t[DEBUG]:  Detaching pedigree...')
             self.myped = []
     ##
     # printme() prints a summary of the metadata stored in the Pedigree() object.
     # @param self Reference to the current Pedigree() object
     def printme(self):
         """Print the pedigree metadata."""
-        print 'PEDIGREE %s (%s)' % (self.name,self.filename)
-        print '\tRecords:\t\t%s' % (self.num_records)
-        print '\tUnique Sires:\t\t%s' % (self.num_unique_sires)
-        print '\tUnique Dams:\t\t%s' % (self.num_unique_dams)
-        print '\tUnique Gens:\t\t%s' % (self.num_unique_gens)
-        print '\tUnique Years:\t\t%s' % (self.num_unique_years)
-        print '\tUnique Founders:\t%s' % (self.num_unique_founders)
-        print '\tPedigree Code:\t\t%s' % (self.pedcode)
+        print('PEDIGREE %s (%s)' % (self.name,self.filename))
+        print('\tRecords:\t\t%s' % (self.num_records))
+        print('\tUnique Sires:\t\t%s' % (self.num_unique_sires))
+        print('\tUnique Dams:\t\t%s' % (self.num_unique_dams))
+        print('\tUnique Gens:\t\t%s' % (self.num_unique_gens))
+        print('\tUnique Years:\t\t%s' % (self.num_unique_years))
+        print('\tUnique Founders:\t%s' % (self.num_unique_founders))
+        print('\tPedigree Code:\t\t%s' % (self.pedcode))
     ##
     # stringme() returns a summary of the metadata stored in the pedigree as
     # a string.

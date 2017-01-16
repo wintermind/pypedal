@@ -14,7 +14,7 @@
 #     Saving the order of the items
 #     Adding float format
 #
-
+from __future__ import print_function
 __version__ = '0.4'
 
 import sys
@@ -402,21 +402,21 @@ if __name__ == '__main__':
 #    d.q = [p, p]
 #
 #    x = d.dict()
-#    print type(x), x
-#    print type(x['t']['m']), x['t']['m']
+#    print(type(x), x)
+#    print(type(x['t']['m']), x['t']['m'])
 #    d.setfilename('test.ini')
 #    d.t.m.comment('p', 'PTesting')
-#    print d.getfilename()
-#    print '---------------------'
+#    print(d.getfilename())
+#    print('---------------------')
 #
 #    d.save('test.ini')
 #
 #    a = process_value('1,abc,"aa cc",,"  ,\\"sdf",u"aaa"', 'ascii')
-#    print a
-#    print uni_prt(a, 'utf-8')
+#    print(a)
+#    print(uni_prt(a, 'utf-8'))
 #
 #    t = DictIni(inifile='test.ini')
-#    print t
+#    print(t)
 #
 #    t.setfilename('test1.ini')
 #    t.save()

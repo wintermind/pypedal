@@ -14,7 +14,7 @@
 ## @package pyp_jbc
 # pyp_template provides a skeleton on which user-defined modules may be built.
 ##
-
+from __future__ import print_function
 import logging, math, numpy
 from PyPedal import  pyp_graphics
 from PyPedal import pyp_network
@@ -84,7 +84,7 @@ def color_pedigree(pedobj, metric='descendants', places=2, drawer='new', **kw):
     elif metric == 'sons':
         for _p in pedobj.pedigree:
             _dprop[_p.animalID] = float(len(_p.sons))
-        #print _dprop
+        #print(_dprop)
     else:
       return 0
     if drawer == 'new':
@@ -133,7 +133,7 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
     if gtitjust not in ['c','l','r']:
         gtitjust = 'c'
 
-    print '[DEBUG]: Entered draw_colored_pedigree()'
+    print('[DEBUG]: Entered draw_colored_pedigree()')
 
 #     try:
     import pydot
@@ -152,7 +152,7 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
     if gfontsize < 10:
         gfontsize = 10
     gfontsize = str(gfontsize)
-#     print 'gfontsize = %s' % (gfontsize)
+#     print('gfontsize = %s' % (gfontsize))
     g.set_page("8.5,11")
     g.set_size("7.5,10")
     if gorient == 'l':
@@ -178,11 +178,11 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
     color_map = {}
     if len(gens) <= 1:
         animalCounter = 0
-        print '\t[DEBUG]: Only one generation'
+        print('\t[DEBUG]: Only one generation')
         for _m in pedobj.pedigree:
             animalCounter = animalCounter + 1
             if numpy.fmod(animalCounter,pedobj.kw['counter']) == 0:
-                print '\t[DEBUG]: Records read: %s ' % ( animalCounter )
+                print('\t[DEBUG]: Records read: %s ' % ( animalCounter ))
             # Add a node for the current animal and set some properties.
             if gname:
                 _node_name = _m.name
@@ -199,7 +199,7 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
                 _an_node.set_shape('ellipse')
             else:
                 pass
-            #print _m.userField, ghatch, ( _m.userField == ghatch )
+            #print(_m.userField, ghatch, ( _m.userField == ghatch ))
             if _m.userField == ghatch:
                 _an_node.set_style('filled,peripheries=2')
             else:
@@ -209,7 +209,7 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
             except KeyError:
                 _color = get_color_32(shading[_m.animalID], colormin, colormax)
                 color_map[shading[_m.animalID]] = _color
-                print '\t[DEBUG]: %s added to cache' % ( _color )
+                print('\t[DEBUG]: %s added to cache' % ( _color ))
             _an_node.set_fillcolor(_color)
             g.add_node(_an_node)
             # Add the edges to the parent nodes, if any.
@@ -238,7 +238,7 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
     # Otherwise we can draw a nice graph.
     else:
         for _g in gens:
-            print '\t[DEBUG]: Looping over generations'
+            print('\t[DEBUG]: Looping over generations')
             _sg_anims = []
             _sg_name = 'sg%s' % (_g)
             sg = pydot.Subgraph(graph_name=_sg_name, suppress_disconnected=True, simplify=True)
@@ -247,7 +247,7 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
             for _m in pedobj.pedigree:
                 animalCounter = animalCounter + 1
                 if numpy.fmod(animalCounter,pedobj.kw['counter']) == 0:
-                    print '\t[DEBUG]: Records read: %s ' % ( animalCounter )
+                    print('\t[DEBUG]: Records read: %s ' % ( animalCounter ))
                 if int(_m.gen) == int(_g):
                     _sg_anims.append(_m.animalID)
                 # Add a node for the current animal and set some properties.
@@ -363,7 +363,7 @@ def new_draw_colored_pedigree(pedobj, shading, gfilename='pedigree', \
         import pygraphviz
     except ImportError:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!'
+            print('[ERROR]: pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!')
         logging.error('pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!')
         return 0
 
@@ -381,7 +381,7 @@ def new_draw_colored_pedigree(pedobj, shading, gfilename='pedigree', \
 
     if not pedobj.kw['pedigree_is_renumbered']:
         if pedobj.kw['messages'] != 'quiet':
-            print '[GRAPH]: The pedigree that you passed to pyp_graphics/draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling draw_pedigree().'
+            print('[GRAPH]: The pedigree that you passed to pyp_graphics/draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling draw_pedigree().')
         logging.error('The pedigree that you passed to pyp_graphics/draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling draw_pedigree().')
 
     # Create an empty pygraphviz graph using the Agraph class.
@@ -445,7 +445,7 @@ def new_draw_colored_pedigree(pedobj, shading, gfilename='pedigree', \
         n.attr['fontname'] = 'Helvetica'
         n.attr['fontsize'] = str(pedobj.kw['default_fontsize'])
         n.attr['height'] = '0.35'
-        #print '[DEBUG]: sex = ', _m.sex
+        #print('[DEBUG]: sex = ', _m.sex)
         if _m.sex == 'M' or _m.sex == 'm':
             n.attr['shape'] = 'box'
         elif _m.sex == 'F' or _m.sex == 'f':
@@ -498,7 +498,7 @@ def new_draw_colored_pedigree(pedobj, shading, gfilename='pedigree', \
             g.write(dfn)
         except:
             if pedobj.kw['messages'] == 'verbose':
-                print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to write the dotfile %s.' % (dfn)
+                print('[ERROR]: pyp_graphics/new_draw_pedigree() was unable to write the dotfile %s.' % (dfn))
             logging.error('pyp_graphics/new_draw_pedigree() was unable to draw the dotfile %s.', (dfn))
 
 
@@ -516,7 +516,7 @@ def new_draw_colored_pedigree(pedobj, shading, gfilename='pedigree', \
     #except:
         #outfile = '%s_color_map.txt' % (gfilename)
         #if pedobj.kw['messages'] == 'verbose':
-            #print '[ERROR]: pyp_jbc/new_draw_colored_pedigree() was unable to write the color map %s.' % (outfile)
+            #print('[ERROR]: pyp_jbc/new_draw_colored_pedigree() was unable to write the color map %s.' % (outfile))
         #logging.error('pyp_jbc/new_draw_colored_pedigree() was unable to write the color map %s.', (outfile))
         #return 0
 
@@ -528,6 +528,6 @@ def new_draw_colored_pedigree(pedobj, shading, gfilename='pedigree', \
     #except:
         #outfile = '%s.%s' % (gfilename,gformat)
         #if pedobj.kw['messages'] == 'verbose':
-            #print '[ERROR]: pyp_jbc/new_draw_colored_pedigree() was unable to draw the pedigree %s.' % (outfile)
+            #print('[ERROR]: pyp_jbc/new_draw_colored_pedigree() was unable to draw the pedigree %s.' % (outfile))
         #logging.error('pyp_jbc/new_draw_colored_pedigree() was unable to draw the pedigree %s.', (outfile))
         #return 0

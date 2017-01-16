@@ -6,7 +6,7 @@
 ###############################################################################
 # FUNCTIONS:
 ###############################################################################
-
+from __future__ import print_function
 # Consider the following code sequence which provides a very simple "hello world" example
 # for Platypus.
 
@@ -49,7 +49,7 @@ def myLaterPages(_pdfSettings, canvas, doc):
 
 def go(_pdfSettings):
       doc = SimpleDocTemplate("phello.pdf")
-      print 'Writing PDF to %s' % ( "phello.pdf" )
+      print('Writing PDF to %s' % ( "phello.pdf" ))
       Story = [Spacer(1,2*inch)]
       style = styles["Normal"]
       for i in range(100):

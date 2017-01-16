@@ -16,7 +16,7 @@
 
 ## @package pyp_db
 # pyp_db contains a set of procedures used to create, modify, and query pedigrees stored in relational databases.
-
+from __future__ import print_function
 import logging, math, os, string, sys
 import pyp_io
 import pyp_nrm
@@ -25,7 +25,7 @@ import pyp_utils
 try:
     from PyPedal import adodb
 except ImportError:
-    print '[ERRROR]: Unable to import adodb in pyp_db.py!'
+    print('[ERRROR]: Unable to import adodb in pyp_db.py!')
     #logging.error('Unable to import adodb in pyp_db.py!')
 
 ##
@@ -41,8 +41,8 @@ def connectToDatabase(pedobj):
     drivers = ['mysql', 'postgres', 'sqlite']
     if pedobj.kw['database_type'] not in drivers:
         if pedobj.kw['database_debug']:
-            print '[ERROR]: The database type %s is not recognized by pyp_db/connectToDatabase!' % \
-                ( pedobj.kw['database_type'] )
+            print('[ERROR]: The database type %s is not recognized by pyp_db/connectToDatabase!' % \
+                ( pedobj.kw['database_type'] ))
         logging.error('The database type %s is not recognized by pyp_db/connectToDatabase!', \
             pedobj.kw['database_type'])
         conn = False
@@ -106,18 +106,18 @@ def createPedigreeTable(pedobj,conn=False,drop=False):
     # If the table already exists we need to warn the user instead of clobbering their data.
     if doesTableExist(pedobj,conn=conn):
         if pedobj.kw['database_debug']:
-            print '[INFO]: The table %s already exists in the database %s in pyp_db/createPedigreeTable().' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+            print('[INFO]: The table %s already exists in the database %s in pyp_db/createPedigreeTable().' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
         logging.info('The table %s already exists in the database %s in pyp_db/createPedigreeTable().', pedobj.kw['database_table'], pedobj.kw['database_name'])
         # Only delete data if specifically told to do so.
         if drop:
             tableDropRows(pedobj,conn=conn)
             if pedobj.kw['database_debug']:
-                print '[WARNING]: Dropping rows from the table %s in the database %s in pyp_db/createPedigreeTable() because you told me to.' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+                print('[WARNING]: Dropping rows from the table %s in the database %s in pyp_db/createPedigreeTable() because you told me to.' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
             logging.warning('Dropping rows from the table %s in the database %s in pyp_db/createPedigreeTable() because you told me to.', pedobj.kw['database_table'], pedobj.kw['database_name'])
         # Warn that data may be lost so the operation was cancelled.
         else:
             if pedobj.kw['database_debug']:
-                print '[INFO]: The table %s in the database %s in pyp_db/createPedigreeTable() already exists and contains data that you did not tell me to delete.' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+                print('[INFO]: The table %s in the database %s in pyp_db/createPedigreeTable() already exists and contains data that you did not tell me to delete.' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
             logging.info('The table %s in the database %s in pyp_db/createPedigreeTable() already exists and contains data that you did not tell me to delete.', pedobj.kw['database_table'], pedobj.kw['database_name'])
             if created_conn == True:
                 conn.Close()
@@ -160,7 +160,7 @@ def createPedigreeTable(pedobj,conn=False,drop=False):
         # Crumbs...something went horribly wrong here!
         except:
             if pedobj.kw['database_debug']:
-                print '[ERROR]: Could not create the table %s in the database %s in pyp_db/connectToDatabase!' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+                print('[ERROR]: Could not create the table %s in the database %s in pyp_db/connectToDatabase!' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
             logging.error('Could not create the table %s in the database %s in pyp_db/connectToDatabase!', pedobj.kw['database_table'], pedobj.kw['database_name'])
     # Clean up any connections we opened. The database administrator will thank you for it.
     if created_conn == True:
@@ -203,7 +203,7 @@ def deleteTable(pedobj, tablename=False, conn=False):
         # ...or not.
         except:
             if pedobj.kw['database_debug']:
-                print '[ERROR]: Could not delete the table %s from the database %s in pyp_db/deleteTable()!' % ( tablename, pedobj.kw['database_name'] )
+                print('[ERROR]: Could not delete the table %s from the database %s in pyp_db/deleteTable()!' % ( tablename, pedobj.kw['database_name'] ))
             logging.error('Could not delete the table %s from the database %s in pyp_db/deleteTable()!', tablename, pedobj.kw['database_name'])
     # Clean up any connections we opened. The database administrator will thank you for it.
     if created_conn == True:
@@ -236,7 +236,7 @@ def populatePedigreeTable(pedobj,conn=False):
     else:
         # If the pedigree table doesn't exist try and create it.
         if not doesTableExist(pedobj, conn=conn):
-            #print 'Pedigree table does not exist!'
+            #print('Pedigree table does not exist!')
             created_table = createPedigreeTable(pedobj,conn)
             # If we can't create the table then we have to bail out.
             if not created_table:
@@ -246,24 +246,24 @@ def populatePedigreeTable(pedobj,conn=False):
                 logging.info('Created pedigree table in pyp_db/populatePedigreeTable()!')
         # Okay, the pedigree table should now exist.
         if doesTableExist(pedobj, conn=conn):
-            #print 'Pedigree table does exist!'
+            #print('Pedigree table does exist!')
             try:
                 for _p in pedobj.pedigree:
                     alleles = '__'.join(_p.alleles)
                     sql = 'INSERT INTO %s (animalID, animalName, sireID, sireName, damID,damName, generation, infGeneration, birthyear, sex, coi, founder, ancestor, originalID, renumberedID, pedigreeComp, breed, age, alive, num_sons, num_daus, num_unk, herd, gencoeff, alleles, userField) VALUES (%d, \'%s\', %d, \'%s\', %d, \'%s\', %s, %s, %d, \'%s\', %s, \'%s\', \'%s\', \'%s\', \'%s\', %s, \'%s\', %d, \'%s\', %d, %d, %d, \'%s\', %s, \'%s\', \'%s\' )' % ( pedobj.kw['database_table'], _p.animalID, _p.name, _p.sireID, _p.sireName, _p.damID, _p.damName, float(_p.gen), float(_p.igen), int(_p.by), _p.sex, float(_p.fa), _p.founder, _p.ancestor, _p.originalID, _p.originalID , float(_p.pedcomp), _p.breed, int(_p.age), _p.alive, len(_p.sons), len(_p.daus), len(_p.unks), _p.originalHerd, float(_p.gencoeff), alleles, str(_p.userField) )
-                    #print sql
+                    #print(sql)
                     cursor = conn.Execute(sql)
                     cursor.Close()
             except:
                 if pedobj.kw['database_debug']:
-                    print '[ERROR]: Unable to write to the table %s in the database %s!' % \
-                        ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+                    print('[ERROR]: Unable to write to the table %s in the database %s!' % \
+                        ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
                 logging.error('Unable to write to the table %s in the database %s!', \
                     pedobj.kw['database_table'], pedobj.kw['database_name'])
         # Try and create the table
         else:
             if pedobj.kw['database_debug']:
-                print '[ERROR]: The pedigree table %s does not exist in the database %s in pyp_db/populatePedigreeTable()!' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+                print('[ERROR]: The pedigree table %s does not exist in the database %s in pyp_db/populatePedigreeTable()!' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
             logging.error('The pedigree table %s does not exist in the database %s in pyp_db/populatePedigreeTable()!', pedobj.kw['database_table'], pedobj.kw['database_name'])
     if created_conn == True:
         conn.Close()
@@ -302,8 +302,8 @@ def doesTableExist(pedobj,tablename=False,conn=False):
             cursor.Close()
         except:
             if pedobj.kw['database_debug']:
-                print '[ERROR]: The table %s does not exist in the database %s!' % \
-                    ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+                print('[ERROR]: The table %s does not exist in the database %s!' % \
+                    ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
             logging.error('The table %s does not exist in the database %s!', \
                 pedobj.kw['database_table'], pedobj.kw['database_name'])
     if created_conn == True:
@@ -383,7 +383,7 @@ def tableDropRows(pedobj,tablename=False,conn=False):
                 cursor.Close()
             except:
                 if pedobj.kw['messages'] != 'quiet':
-                    print '[ERROR]: pyp_db/tableDropRows() could not delete rows from the table %s in the database %s!' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] )
+                    print('[ERROR]: pyp_db/tableDropRows() could not delete rows from the table %s in the database %s!' % ( pedobj.kw['database_table'], pedobj.kw['database_name'] ))
                 logging.error('pyp_db/tableDropRows() could not delete rows from the table %s in the database %s!', pedobj.kw['database_table'], pedobj.kw['database_name'])
         # doesTableExist() should have logged the table's non-existance for us, so we
         # can simply carry on.

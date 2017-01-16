@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: pyp_demog.py
 # VERSION: 2.0.0 (29SEPTEMBER2010)
@@ -82,15 +82,15 @@ def age_distribution(pedobj,sex=1):
                 age_dict[pedobj.pedigree[i].age] = 1
         age_hist = pyp_utils.simple_histogram_dictionary(age_dict)
         if pedobj.kw['debug_messages']:
-            print '-'*80
-            print 'Population Age Distribution'
-            print '-'*80
-            print '\tAge\tCount\tFrequency\tHistogram'
+            print('-'*80)
+            print('Population Age Distribution')
+            print('-'*80)
+            print('\tAge\tCount\tFrequency\tHistogram')
             for key in age_dict.keys():
                 age_freq_total = age_freq_total + float(age_dict[key])/float(len(pedobj.pedigree))
-                print '\t%s\t%s\t%s\t%s' % (key,age_dict[key],float(age_dict[key])/float(len(pedobj.pedigree)),age_hist[key])
-            print '\tTOTAL\t%s\t%s' % (len(pedobj.pedigree),age_freq_total)
-            print '-'*80
+                print('\t%s\t%s\t%s\t%s' % (key,age_dict[key],float(age_dict[key])/float(len(pedobj.pedigree)),age_hist[key]))
+            print('\tTOTAL\t%s\t%s' % (len(pedobj.pedigree),age_freq_total))
+            print('-'*80)
     else:
         males = []
         females = []
@@ -124,33 +124,33 @@ def age_distribution(pedobj,sex=1):
         female_hist = pyp_utils.simple_histogram_dictionary(female_dict)
         unknown_hist = pyp_utils.simple_histogram_dictionary(unknown_dict)
         if pedobj.kw['messages'] == 'verbose':
-            print '-'*80
-            print 'Population Age Distribution by Sex'
-            print '-'*80
+            print('-'*80)
+            print('Population Age Distribution by Sex')
+            print('-'*80)
             age_freq_total = 0.0
-            print 'Males'
-            print '\tAge\tCount\tFrequency\tHistogram'
+            print('Males')
+            print('\tAge\tCount\tFrequency\tHistogram')
             for key in male_dict.keys():
                 age_freq_total = age_freq_total + float(male_dict[key])/float(len(males))
-                print '\t%s\t%s\t%s\t%s' % (key,male_dict[key],float(male_dict[key])/float(len(males)),male_hist[key])
-            print '\tTOTAL\t%s\t%s' % (len(males),age_freq_total)
-            print '-'*80
+                print('\t%s\t%s\t%s\t%s' % (key,male_dict[key],float(male_dict[key])/float(len(males)),male_hist[key]))
+            print('\tTOTAL\t%s\t%s' % (len(males),age_freq_total))
+            print('-'*80)
             age_freq_total = 0.0
-            print 'Females'
-            print '\tAge\tCount\tFrequency\tHistogram'
+            print('Females')
+            print('\tAge\tCount\tFrequency\tHistogram')
             for key in female_dict.keys():
                 age_freq_total = age_freq_total + float(female_dict[key])/float(len(females))
-                print '\t%s\t%s\t%s\t%s' % (key,female_dict[key],float(female_dict[key])/float(len(females)),female_hist[key])
-            print '\tTOTAL\t%s\t%s' % (len(females),age_freq_total)
-            print '-'*80
+                print('\t%s\t%s\t%s\t%s' % (key,female_dict[key],float(female_dict[key])/float(len(females)),female_hist[key]))
+            print('\tTOTAL\t%s\t%s' % (len(females),age_freq_total))
+            print('-'*80)
             age_freq_total = 0.0
-            print 'Unknowns'
-            print '\tAge\tCount\tFrequency\tHistogram'
+            print('Unknowns')
+            print('\tAge\tCount\tFrequency\tHistogram')
             for key in unknown_dict.keys():
                 age_freq_total = age_freq_total + float(unknown_dict[key])/float(len(unknowns))
-                print '\t%s\t%s\t%s\t%s' % (key,unknown_dict[key],float(unknown_dict[key])/float(len(unknowns)),unknown_hist[key])
-            print '\tTOTAL\t%s\t%s' % (len(unknowns),age_freq_total)
-            print '-'*80
+                print('\t%s\t%s\t%s\t%s' % (key,unknown_dict[key],float(unknown_dict[key])/float(len(unknowns)),unknown_hist[key]))
+            print('\tTOTAL\t%s\t%s' % (len(unknowns),age_freq_total))
+            print('-'*80)
 
 ##
 # sex_ratio() returns a dictionary containing the proportion of males and females in the population.
@@ -170,22 +170,22 @@ def sex_ratio(pedobj):
         else:
             sexratiodict[pedobj.pedigree[i].sex] = 1
     if pedobj.kw['messages'] == 'verbose':
-        print '-'*80
-        print 'Overall Sex Ratio'
-        print '-'*80
-        print '(n = %s)' % (len(pedobj.pedigree))
-        print 'Sex\tCount\tFrequency'
+        print('-'*80)
+        print('Overall Sex Ratio')
+        print('-'*80)
+        print('(n = %s)' % (len(pedobj.pedigree)))
+        print('Sex\tCount\tFrequency')
         for s in sexratiodict.keys():
-            print '%s:\t%s\t%s' % (SEX_CODE_MAP[s],sexratiodict[s],float(sexratiodict[s])/float(len(pedobj.pedigree)))
-        print '-'*80
+            print('%s:\t%s\t%s' % (SEX_CODE_MAP[s],sexratiodict[s],float(sexratiodict[s])/float(len(pedobj.pedigree))))
+        print('-'*80)
         if int(sexratiodict['u']) > 0:
             marginal = sexratiodict['m'] + sexratiodict['f']
-            print 'Conditional Sex Ratio'
-            print '-'*80
-            print '(n = %s)' % (marginal)
-            print 'Sex\tCount\tFrequency'
-            print '%s:\t%s\t%s' % (SEX_CODE_MAP['m'],sexratiodict['m'],float(sexratiodict['m'])/marginal)
-            print '%s:\t%s\t%s' % (SEX_CODE_MAP['f'],sexratiodict['f'],float(sexratiodict['f'])/marginal)
+            print('Conditional Sex Ratio')
+            print('-'*80)
+            print('(n = %s)' % (marginal))
+            print('Sex\tCount\tFrequency')
+            print('%s:\t%s\t%s' % (SEX_CODE_MAP['m'],sexratiodict['m'],float(sexratiodict['m'])/marginal))
+            print('%s:\t%s\t%s' % (SEX_CODE_MAP['f'],sexratiodict['f'],float(sexratiodict['f'])/marginal))
     return sexratiodict
 
 ##
@@ -206,21 +206,21 @@ def founders_by_year(pedobj):
     else:
         for _f in pedobj.metadata.unique_founder_list:
             _by = pedobj.pedigree[int(_f)-1].by
-            #print _by
+            #print(_by)
             try:
                 founderbyyeardict[_by] = founderbyyeardict[_by] + 1
             except KeyError:
                 founderbyyeardict[_by] = 1
     # If the dictionary has more than one birthyear in it we should iterate through the list
     # to fill in any gaps in years.  This will make downstream graphing much easier.
-    #print founderbyyeardict.keys()
+    #print(founderbyyeardict.keys())
     _years = founderbyyeardict.keys()
     _years.sort()
-    #print _years
+    #print(_years)
     for _f in range(_years[0],_years[-1]):
         try:
             _c = founderbyyeardict[_f]
         except KeyError:
             founderbyyeardict[_f] = 0
-    #print founderbyyeardict
+    #print(founderbyyeardict)
     return founderbyyeardict

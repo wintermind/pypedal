@@ -13,7 +13,7 @@
 # pyp_tests contains a series of unit tests for verifying that PyPedal works
 # correctly.
 ##
-
+from __future__ import print_function
 import pyp_demog
 import pyp_metrics
 import pyp_newclasses
@@ -40,8 +40,8 @@ class PyPedalMetricsTestCases(unittest.TestCase):
         #example.nrm.info()
 
         high_coi, low_coi = pyp_metrics.min_max_f(example,n=5)
-        print high_coi
-        print low_coi
+        print(high_coi)
+        print(low_coi)
         #self.assertEqual(2.91, round(fe,2))
 
     def testMetricsEffectiveFoundersLacy(self):
@@ -180,5 +180,5 @@ if __name__ == '__main__':
         import testoob
         testoob.main()
     except ImportError:
-        print 'Could not import testoob module (https://opensvn.csie.org/traccgi/testoob/trac.cgi/wiki)!'
+        print('Could not import testoob module (https://opensvn.csie.org/traccgi/testoob/trac.cgi/wiki)!')
         sys.exit(0)

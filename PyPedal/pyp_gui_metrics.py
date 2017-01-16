@@ -14,7 +14,7 @@
 # pyp_gui_metrics contains convenience functions for entries in the Metrics
 # menu to reduce repetitive code in pyp_gui.
 ##
-
+from __future__ import print_function
 import PIL.Image
 import os
 import wx
@@ -35,7 +35,7 @@ def MetricsInbreeding(self):
     if hasattr(self,'_pedigree'):
         self._inbreeding = pyp_nrm.inbreeding(self._pedigree)
         self.textbox.Clear()
-        #print pyp_io.summary_inbreeding(self._inbreeding['metadata'])
+        #print(pyp_io.summary_inbreeding(self._inbreeding['metadata']))
         self.textbox.AppendText(pyp_io.summary_inbreeding(self._inbreeding['metadata']))
     else:
         pyp_gui_graphs.PyPedalShowErrorDialog(self,sedTitle='Calculate inbreeding', sedMessage='This calculation cannot be displayed because you have not yet loaded a pedigree!')
@@ -44,7 +44,7 @@ def MetricsEffectiveFounders(self):
     if hasattr(self,'_pedigree'):
         self._inbreeding = pyp_nrm.inbreeding(self._pedigree)
         self.textbox.Clear()
-        print pyp_io.summary_inbreeding(self._inbreeding['metadata'])
+        print(pyp_io.summary_inbreeding(self._inbreeding['metadata']))
         self.textbox.AppendText(pyp_io.summary_inbreeding(self._inbreeding['metadata']))
     else:
         pyp_gui_graphs.PyPedalShowErrorDialog(self,sedTitle='Calculate effective founder', sedMessage='This calculation cannot be displayed because you have not yet loaded a pedigree!')

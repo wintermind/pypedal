@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: pyp_io.py
 # VERSION: 2.0.0 (29SEPTEMBER2010)
@@ -110,9 +110,9 @@ def dissertation_pedigree_to_file(pedobj):
     except: pass
     try:
         length = len(pedobj.pedigree)
-        #print 'DEBUG: length of pedigree is %s' % (length)
+        #print('DEBUG: length of pedigree is %s' % (length))
         outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_diss','.ped')
-        print '\t\tWriting dissertation pedigree to %s' % (outputfile)
+        print('\t\tWriting dissertation pedigree to %s' % (outputfile))
         aout = open(outputfile,'w')
         aout.write('# DISSERTATION pedigree produced by PyPedal.\n')
         aout.write('% asdbxfg\n')
@@ -324,11 +324,11 @@ def pickle_pedigree(pedobj, filename=''):
           _pfn = '%s.pkl' % ( pedobj.kw['filetag'] )
         else:
             _pfn = '%s.pkl' % ( filename )
-        print _pfn
+        print(_pfn)
         pickle.dump(pedobj,open(_pfn,'w'))
         logging.info('Pickled pedigree %s to file %s', pedobj.kw['pedname'], _pfn )
         if pedobj.kw['messages'] == 'verbose':
-            print 'Pickled pedigree %s to file %s' % ( pedobj.kw['pedname'], _pfn )
+            print('Pickled pedigree %s to file %s' % ( pedobj.kw['pedname'], _pfn ))
     except:
         logging.error('Unable to pickle pedigree %s to file %s', self.kw['pedname'], _pfn )
         _r = 0
@@ -412,7 +412,7 @@ def save_ijk(pedobj, nrm_filename):
     save_ijk() saves an NRM to a file in the form "animal A" "animal B" "rAB".
     """
     if pedobj.kw['messages'] == 'verbose':
-        print '[INFO]: Saving A-matrix to file %s at %s.' % ( nrm_filename, pyp_utils.pyp_nice_time() )
+        print('[INFO]: Saving A-matrix to file %s at %s.' % ( nrm_filename, pyp_utils.pyp_nice_time() ))
     logging.info('Saving A-matrix to file %s', nrm_filename)
     #try:
     of = file(nrm_filename,"w")
@@ -422,7 +422,7 @@ def save_ijk(pedobj, nrm_filename):
             of.write(line)
     of.close()
     if pedobj.kw['messages'] == 'verbose':
-        print '[INFO]: A-matrix successfully saved to file %s at %s.' % ( nrm_filename, pyp_utils.pyp_nice_time() )
+        print('[INFO]: A-matrix successfully saved to file %s at %s.' % ( nrm_filename, pyp_utils.pyp_nice_time() ))
     logging.info('A-matrix successfully saved to file %s', nrm_filename)
     return 1
 
@@ -493,9 +493,9 @@ def load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='
                 except IndexError:
                     all_done = 1
             if messages == 'debug':
-                print '-'*80
-                print _curr_rec
-                print '-'*80
+                print('-'*80)
+                print(_curr_rec)
+                print('-'*80)
             firstlinelist = _curr_rec[0].strip().rstrip('\r').rstrip('\n').split(' ')
             if firstlinelist[-1] == 'INDI':
                 _tag, _name, _sex, _famc, _fams, _byr = 0, 0, 0, 0, [], 0
@@ -509,7 +509,7 @@ def load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='
                     else: break
                     if _tag in known_tags:
                         if messages == 'debug':
-                            print 'Processing tag %s' % ( _tag )
+                            print('Processing tag %s' % ( _tag ))
                         if _tag.upper() == 'NAME':
                             _name =  ' '.join(linelist[2:])
                         elif _tag.upper() == 'SEX':
@@ -529,7 +529,7 @@ def load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='
                         else: pass
                     else:
                         if messages == 'debug':
-                            print 'Skipping unknown tag %s' % ( _tag )
+                            print('Skipping unknown tag %s' % ( _tag ))
                     # Once we've read the entire record we can process the data.
                     # Here's the basic idea: put the details from the INDI and
                     # FAM records into dictionaries (lookup tables) as we sweep
@@ -565,7 +565,7 @@ def load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='
                     else: break
                     if _tag in known_tags:
                         if messages == 'debug':
-                            print 'Processing tag %s' % ( _tag )
+                            print('Processing tag %s' % ( _tag ))
                         if _tag.upper() == 'HUSB':
                             _husb =  linelist[2][1:-1]
                         elif _tag.upper() == 'WIFE':
@@ -574,7 +574,7 @@ def load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='
                             _child.append(linelist[2][1:-1])
                         else:
                             if messages == 'debug':
-                                print 'Skipping unknown tag %s' % ( _tag )
+                                print('Skipping unknown tag %s' % ( _tag ))
                     if c == len(_curr_rec)-1:
                         if _husb:
                             fam2husb[_fam] = _husb
@@ -586,13 +586,13 @@ def load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='
                                 fam2chil[_fam][_ch] = _ch
 
         if debug:
-            print 'indi2sex: ', indi2sex
-            print 'indi2birth: ', indi2birth
-            print 'indi2name: ', indi2name
-            print 'indi2famc: ', indi2famc
-            print 'indi2fams: ', indi2fams
-            print 'fam2husb: ', fam2husb
-            print 'fam2wife: ', fam2wife
+            print('indi2sex: ', indi2sex)
+            print('indi2birth: ', indi2birth)
+            print('indi2name: ', indi2name)
+            print('indi2famc: ', indi2famc)
+            print('indi2fams: ', indi2fams)
+            print('fam2husb: ', fam2husb)
+            print('fam2wife: ', fam2wife)
 
         # Now we walk through the INDI records and assemble everything. Note
         # that there is no error-checking here. I don't want to have error-
@@ -615,15 +615,15 @@ def load_from_gedcom(infilename, messages='verbose', standalone=1, missing_sex='
             except KeyError:
                 assembled[i]['dam'] = missing_parent
         if debug:
-            print 'assembled: ', assembled
+            print('assembled: ', assembled)
         if messages == 'verbose':
-            print '[INFO]: Successfully imported pedigree from the GEDCOM file %s!' \
-                % ( infilename )
+            print('[INFO]: Successfully imported pedigree from the GEDCOM file %s!' \
+                % ( infilename ))
         logging.info('Successfully imported pedigree from the GEDCOM file %s!',infilename)
     except:
         if messages == 'verbose':
-            print '[ERROR]: Unable to import pedigree from the GEDCOM file %s!' \
-                % ( infilename )
+            print('[ERROR]: Unable to import pedigree from the GEDCOM file %s!' \
+                % ( infilename ))
         logging.error('Unable to import pedigree from the GEDCOM file %s!',infilename)
 
     # Save the GEDCOM file in ASD format and update the
@@ -771,7 +771,7 @@ def save_to_gedcom(pedobj, outfilename):
                 fam[_fam] = '%s1 WIFE @%s@\n' % ( fam[_fam], p.damName )
             fam[_fam] = '%s1 CHIL @%s@\n' % ( fam[_fam], \
                 pedobj.namebackmap[pedobj.backmap[p.animalID]] )
-            #print fam[_fam]
+            #print(fam[_fam])
         # Now loop and write the contents of indi and fam to the file.
         for i in indi.values():
             ofh.write(i)
@@ -781,14 +781,14 @@ def save_to_gedcom(pedobj, outfilename):
         ofh.write('0 TRLR\n')
         ofh.close()
         if pedobj.kw['messages'] == 'verbose':
-            print '[INFO]: Successfully exported pedigree to the GEDCOM file %s!' \
-                % ( outfilename )
+            print('[INFO]: Successfully exported pedigree to the GEDCOM file %s!' \
+                % ( outfilename ))
         logging.info('Successfully exported pedigree to the GEDCOM file %s!',outfilename)
         return 1
     except:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: Unable to save pedigree to the GEDCOM file %s!' \
-                % ( outfilename )
+            print('[ERROR]: Unable to save pedigree to the GEDCOM file %s!' \
+                % ( outfilename ))
         logging.error('Unable to export pedigree to the GEDCOM file %s!',outfilename)
         return 0
 
@@ -833,12 +833,12 @@ def load_from_genes(infilename, messages='verbose', standalone=1, missing_sex='u
         name = name.replace('\0', '')       # eliminate NULs from string
         fields.append((name, typ, size, deci))
     #yield [field[0] for field in fields]
-    #print fields
+    #print(fields)
     #if debug:
-    #    print [field[0] for field in fields]
+    #    print([field[0] for field in fields])
     #yield [tuple(field[1:]) for field in fields]
     #if debug:
-    #    print [tuple(field[1:]) for field in fields]
+    #    print([tuple(field[1:]) for field in fields])
     terminator = f.read(1)
     assert terminator == '\r'
     fields.insert(0, ('DeletionFlag', 'C', 1, 0))
@@ -876,8 +876,8 @@ def load_from_genes(infilename, messages='verbose', standalone=1, missing_sex='u
     # Check inputs visually
     #if debug:
     #    for r in record_list:
-    #        print r
-    #    print [field[0] for field in fields]
+    #        print(r)
+    #    print([field[0] for field in fields])
     # Here we go...
     field_list = [field[0] for field in fields]
     assembled = {}
@@ -918,10 +918,10 @@ def load_from_genes(infilename, messages='verbose', standalone=1, missing_sex='u
         # Age should be okay as-is
         assembled[r[anidx]]['age'] = r[field_list.index('AGE') - 1]
         #if debug:
-        #    print assembled[r[anidx]]
+        #    print(assembled[r[anidx]])
     if messages == 'verbose':
-        print '[INFO]: Successfully imported pedigree from the GENES 1.20 file %s!' \
-            % ( infilename )
+        print('[INFO]: Successfully imported pedigree from the GENES 1.20 file %s!' \
+            % ( infilename ))
     logging.info('Successfully imported pedigree from the GENES 1.20 file %s!',infilename)
 
     # Save the GENES file in ASD format and update the
@@ -1052,7 +1052,7 @@ def save_to_genes(pedobj, outfilename):
                     if len(str(value)) > size:
                         value = str(value[0:size+1])
                         if messages == 'verbose':
-                            print '[WARNING]: Truncated field %s while exporting to GENES 1.20 file %s!' % ( name, outfilename )
+                            print('[WARNING]: Truncated field %s while exporting to GENES 1.20 file %s!' % ( name, outfilename ))
                         logging.warn('Truncated field %s while exporting to GENES 1.20 file %s!', name, outfilename)
                     value = str(value)[:size].ljust(size, ' ')
                 # Double-check that lengths are correct before writing the record
@@ -1064,15 +1064,15 @@ def save_to_genes(pedobj, outfilename):
         ### and modified slightly for PyPedal.
         f.close()
         if pedobj.kw['messages'] == 'verbose':
-            print '[INFO]: Successfully exported pedigree to the GENES file %s!' \
-                % ( outfilename )
+            print('[INFO]: Successfully exported pedigree to the GENES file %s!' \
+                % ( outfilename ))
         logging.info('Successfully exported pedigree to the GENES file %s!',outfilename)
         return 1
     # If the pedigree could not be exported then tell the user that something went wrong.
     except:
         if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: Unable to export pedigree to the GENES file %s!' \
-                % ( outfilename )
+            print('[ERROR]: Unable to export pedigree to the GENES file %s!' \
+                % ( outfilename ))
         logging.error('Unable to export pedigree to the GENES file %s!',outfilename)
         return 0
 

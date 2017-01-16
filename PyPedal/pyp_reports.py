@@ -17,7 +17,7 @@
 ## @package pyp_reports
 # pyp_reports contains a set of procedures for ...
 ##
-
+from __future__ import print_function
 import logging, os, string, sys
 import pyp_db
 import pyp_io
@@ -69,7 +69,7 @@ def meanMetricBy(pedobj, metric='fa', byvar='by', createpdf=False, conn=False):
             sql = 'select %s, avg(%s) from %s group by %s order by %s' % ( byvar_to_column[byvar], \
                 metric_to_column[metric], pedobj.kw['database_table'], byvar_to_column[byvar], \
                 byvar_to_column[byvar] )
-            #print sql
+            #print(sql)
             cursor = conn.Execute(sql)
             while not cursor.EOF:
                 result_dict[cursor.fields[0]] = cursor.fields[1]
@@ -123,7 +123,7 @@ def pdfMeanMetricBy(pedobj, results, titlepage=0, reporttitle='', reportauthor='
         else:
             _pdfOutfile = reportfile
         if pedobj.kw['messages'] == 'verbose':
-            print 'Writing meanMetricBy report to %s' % ( _pdfOutfile )
+            print('Writing meanMetricBy report to %s' % ( _pdfOutfile ))
         logging.info('Writing meanMetricBy report to %s', _pdfOutfile )
 
         _pdfSettings = _pdfInitialize(pedobj)
@@ -191,7 +191,7 @@ def pdfPedigreeMetadata(pedobj, titlepage=0, reporttitle='', reportauthor='', re
     else:
         _pdfOutfile = reportfile
     if pedobj.kw['messages'] == 'verbose':
-        print 'Writing metadata report to %s' % ( _pdfOutfile )
+        print('Writing metadata report to %s' % ( _pdfOutfile ))
     logging.info('Writing metadata report to %s', _pdfOutfile )
 
     # The _pdfSettings dictionary contains several settings, such as page size,
@@ -234,7 +234,7 @@ def pdfPedigreeMetadata(pedobj, titlepage=0, reporttitle='', reportauthor='', re
 
             pg = canv.getPageNumber()
             if pedobj.kw['messages'] == 'verbose' and pg % 10 == 0:
-                print 'Printed page %d' % pg
+                print('Printed page %d' % pg)
 
     # Finish the document.  You need to draw the text object to the canvas and
     # call the showPage() method on the canvas so that your changes are visible.
@@ -281,11 +281,11 @@ def pdf3GenPed(animalID, pedobj, titlepage=0, reporttitle='', reportauthor='', r
     else:
         _pdfOutfile = reportfile
     if pedobj.kw['messages'] == 'verbose':
-        print 'Writing 3GenPed to %s' % ( _pdfOutfile )
+        print('Writing 3GenPed to %s' % ( _pdfOutfile ))
     logging.info('Writing 3GenPed to %s', _pdfOutfile )
 
     _pdfSettings = _pdfInitialize(pedobj)
-    #print _pdfSettings
+    #print(_pdfSettings)
     canv = canvas.Canvas(_pdfOutfile, invariant=1)
     canv.setPageCompression(1)
 
@@ -363,7 +363,7 @@ def pdf3GenPed(animalID, pedobj, titlepage=0, reporttitle='', reportauthor='', r
                 _places['dds'] = pedobj.kw['missing_parent']
                 _places['ddd'] = pedobj.kw['missing_parent']
             #for k,v in _places.iteritems():
-            #        print k,v
+            #        print(k,v)
 
             _sill_width = _pdfSettings['_pdfCalcs']['_frame_width'] * 0.25
             _16 = _pdfSettings['_pdfCalcs']['_frame_height'] / 16.
@@ -581,7 +581,7 @@ def _pdfCreateTitlePage(canv, _pdfSettings, reporttitle = '', reportauthor = '')
             # characters when using the default 36-point typeface.
             if len(_b) > 26:
                 _b_wrapped = textwrap.wrap(_b, 26, break_long_words=True)
-#                 print _b_wrapped
+#                 print(_b_wrapped)
                 for _bw in _b_wrapped:
                     canv.drawCentredString( 0.5 * _pdfSettings['_pdfCalcs']['_page'][0], \
                         _title_y, _bw)

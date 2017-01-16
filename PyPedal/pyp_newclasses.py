@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: pyp_newclasses.py
 # VERSION: 2.0.0 (29SEPTEMBER2010)
@@ -52,8 +52,8 @@ class NewPedigree:
             import dict4ini
             kw = dict4ini.DictIni(kwfile)
             if kw == {}:
-                print '[ERROR]: pyp_newclasses.NewPedigree.__init__() was unable to load a configuration file named ' \
-                      '%s!' % kwfile
+                print('[ERROR]: pyp_newclasses.NewPedigree.__init__() was unable to load a configuration file named ' \
+                      '%s!' % kwfile)
                 import sys
                 sys.exit(0)
             # The dict method converts the Dict4Ini object to an actual
@@ -290,7 +290,7 @@ class NewPedigree:
 
         # Now that we have processed all of the arguments in the options dictionary
         # we need to attach it to this object.
-        #         print 'Ending kw: %s' % ( kw )
+        #         print('Ending kw: %s' % ( kw ))
         self.kw = kw
 
         # Initialize the Big Main Data Structures to null values
@@ -342,7 +342,7 @@ class NewPedigree:
                             datefmt='%a, %d %b %Y %H:%M:%S', filename=kw['logfile'], filemode='w')
         logging.info('Logfile %s instantiated.', kw['logfile'])
         if kw['messages'] == 'verbose' and kw['pedigree_summary']:
-            print '[INFO]: Logfile %s instantiated.' % (kw['logfile'])
+            print('[INFO]: Logfile %s instantiated.' % (kw['logfile']))
         # Deal with aberrant cases of log_ped_lines here.
         try:
             kw['log_ped_lines'] = int(kw['log_ped_lines'])
@@ -367,8 +367,8 @@ class NewPedigree:
             logging.info('Adding pedigrees %s and %s', self.kw['pedname'], \
                          other.kw['pedname'])
             if self.kw['debug_messages']:
-                print '[DEBUG]: self and other both are NewPedigree objects. We can start combining them.'
-                print '[DEBUG]: Using match rule: %s' % (self.kw['match_rule'])
+                print('[DEBUG]: self and other both are NewPedigree objects. We can start combining them.')
+                print('[DEBUG]: Using match rule: %s' % (self.kw['match_rule']))
             logging.info('Using match rule %s to merge pedigrees', \
                          self.kw['match_rule'])
             # Pedigrees must be renumbered
@@ -394,11 +394,11 @@ class NewPedigree:
                 ped_to_write['a'][a.animalID] = True
                 for b in other.pedigree:
                     mismatches = 0  # Count places where the animals don't match
-                    # print 'Comparing animal %s in a and animal %s in b' % \
-                    #    ( a.animalID, b.animalID )
+                    # print('Comparing animal %s in a and animal %s in b' % \
+                    #    ( a.animalID, b.animalID ))
                     for match in self.kw['match_rule']:
-                        # print 'First match criterion: %s (%s)' % \
-                        #    ( match, self.new_animal_attr[match] )
+                        # print('First match criterion: %s (%s)' % \
+                        #    ( match, self.new_animal_attr[match] ))
                         # If we're comparing animal IDs, make sure that we
                         # compare original IDs, not renumbered IDs.
                         if match in ['a', 'A']:
@@ -443,14 +443,14 @@ class NewPedigree:
                                 pass
                         elif getattr(a, self.new_animal_attr[match]) != \
                                 getattr(b, self.new_animal_attr[match]):
-                            # print '%s == %s' % ( \
+                            # print('%s == %s' % ( \
                             #    getattr(a, self.new_animal_attr[match]), \
-                            #    getattr(b, self.new_animal_attr[match]) )
+                            #    getattr(b, self.new_animal_attr[match]) ))
                             mismatches += 1
                         else:
-                            # print '%s != %s' % ( \
+                            # print('%s != %s' % ( \
                             #    getattr(a, self.new_animal_attr[match]), \
-                            #    getattr(b, self.new_animal_attr[match]) )
+                            #    getattr(b, self.new_animal_attr[match]) ))
                             pass
                     # If there are no mismatches then the two animals are identical
                     # based on the match rule and only one of them needs to be written
@@ -459,21 +459,21 @@ class NewPedigree:
                         # Animals are identical
                         ped_to_write['b'][b.animalID] = False
                         if self.kw['debug_messages']:
-                            print '[DEBUG]: Animals %s and %s are identical:' % \
-                                  (a.animalID, b.animalID)
+                            print('[DEBUG]: Animals %s and %s are identical:' % \
+                                  (a.animalID, b.animalID))
                     else:
                         # Animals are different
                         ped_to_write['b'][b.animalID] = True
                         if self.kw['debug_messages']:
-                            print '[DEBUG]: Animals %s and %s are different:' % \
-                                  (a.animalID, b.animalID)
+                            print('[DEBUG]: Animals %s and %s are different:' % \
+                                  (a.animalID, b.animalID))
                     if self.kw['debug_messages']:
-                        print '[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % (a.animalID,
+                        print('[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % (a.animalID,
                                                                     self.pedigree[a.sireID - 1].originalID,
-                                                                    self.pedigree[a.damID - 1].originalID)
-                        print '[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % (b.animalID,
+                                                                    self.pedigree[a.damID - 1].originalID))
+                        print('[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % (b.animalID,
                                                                     other.pedigree[b.sireID - 1].originalID,
-                                                                    other.pedigree[b.damID - 1].originalID)
+                                                                    other.pedigree[b.damID - 1].originalID))
             # Once we have matches, we are going to write a new pedigree
             # file to disc, and we will load that file to get the new
             # pedigree.
@@ -486,7 +486,7 @@ class NewPedigree:
             if filename == False:
                 filename = '%s_%s.ped' % (self.kw['pedname'], \
                                           other.kw['pedname'])
-                print '[INFO]: filename = %s' % (filename)
+                print('[INFO]: filename = %s' % (filename))
             self.save(filename=filename, write_list=ped_to_write['a'],
                       pedformat=self.kw['pedformat'], originalID=True)
             other.save(filename=filename, write_list=ped_to_write['b'],
@@ -507,15 +507,15 @@ class NewPedigree:
             try:
                 new_pedigree = loadPedigree(new_options, debugLoad=True)
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Loaded merged pedigree %s from file %s!' % \
-                          (merged_pedname, filename)
+                    print('[INFO]: Loaded merged pedigree %s from file %s!' % \
+                          (merged_pedname, filename))
                 logging.info('Loaded merged pedigree %s from file %s.',
                              merged_pedname, filename)
                 return new_pedigree
             except:
                 if self.kw['messages'] == 'verbose':
-                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
-                          (merged_pedname, filename)
+                    print('[ERROR]: Could not load merged pedigree %s from file %s!' % \
+                          (merged_pedname, filename))
                 logging.error('Could not load merged pedigree %s from file %s!',
                               merged_pedname, filename)
                 return False
@@ -536,8 +536,8 @@ class NewPedigree:
         if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
             logging.info('Subtracting pedigrees %s and %s', self.kw['pedname'],
                          other.kw['pedname'])
-            # print 'self and other both are NewPedigree objects. We can start combining them'
-            # print 'Using match rule: %s' % ( self.kw['match_rule'])
+            # print('self and other both are NewPedigree objects. We can start combining them')
+            # print('Using match rule: %s' % ( self.kw['match_rule']))
             logging.info('Using match rule %s to subtract pedigrees',
                          self.kw['match_rule'])
             # Pedigrees must be renumbered
@@ -564,11 +564,11 @@ class NewPedigree:
                 for b in other.pedigree:
                     ped_to_write['b'][b.animalID] = False
                     mismatches = 0  # Count places where the animals don't match
-                    # print 'Comparing animal %s in a and animal %s in b' % \
-                    #    ( a.animalID, b.animalID )
+                    # print('Comparing animal %s in a and animal %s in b' % \
+                    #    ( a.animalID, b.animalID ))
                     for match in self.kw['match_rule']:
-                        # print 'First match criterion: %s (%s)' % \
-                        #    ( match, self.new_animal_attr[match] )
+                        # print('First match criterion: %s (%s)' % \
+                        #    ( match, self.new_animal_attr[match] ))
                         # If we're comparing animal IDs, make sure that we
                         # compare original IDs, not renumbered IDs.
                         if match in ['a', 'A']:
@@ -609,7 +609,7 @@ class NewPedigree:
             if filename == False:
                 filename = '%s_%s.ped' % (self.kw['pedname'], \
                                           other.kw['pedname'])
-                print '[INFO]: filename = %s' % (filename)
+                print('[INFO]: filename = %s' % (filename))
             self.save(filename=filename, write_list=ped_to_write['a'], \
                       pedformat=self.kw['pedformat'], originalID=True)
             other.save(filename=filename, write_list=ped_to_write['b'], \
@@ -631,14 +631,14 @@ class NewPedigree:
             try:
                 new_pedigree = loadPedigree(new_options, debugLoad=True)
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Loaded merged pedigree %s from file %s!' % \
-                          (merged_pedname, filename)
+                    print('[INFO]: Loaded merged pedigree %s from file %s!' % \
+                          (merged_pedname, filename))
                 logging.info('Cannot complete __add__() operation becuase types do not match.')
                 return new_pedigree
             except:
                 if self.kw['messages'] == 'verbose':
-                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
-                          (merged_pedname, filename)
+                    print('[ERROR]: Could not load merged pedigree %s from file %s!' % \
+                          (merged_pedname, filename))
                 logging.error('Could not load merged pedigree %s from file %s!', \
                               merged_pedname, filename)
                 return False
@@ -691,11 +691,11 @@ class NewPedigree:
             for a in self.pedigree:
                 for b in other.pedigree:
                     matches = 0  # Count places where the animals match
-                    # print 'Comparing animal %s in a and animal %s in b' % \
-                    #    ( a.animalID, b.animalID )
+                    # print('Comparing animal %s in a and animal %s in b' % \
+                    #    ( a.animalID, b.animalID ))
                     for match in self.kw['match_rule']:
-                        # print 'First match criterion: %s (%s)' % \
-                        #    ( match, self.new_animal_attr[match] )
+                        # print('First match criterion: %s (%s)' % \
+                        #    ( match, self.new_animal_attr[match] ))
                         # If we're comparing animal IDs, make sure that we
                         # compare original IDs, not renumbered IDs.
                         if match in ['a', 'A']:
@@ -711,14 +711,14 @@ class NewPedigree:
                                 matches += 1
                         elif getattr(a, self.new_animal_attr[match]) == \
                                 getattr(b, other.new_animal_attr[match]):
-                            # print '%s == %s' % ( \
+                            # print('%s == %s' % ( \
                             #    getattr(a, self.new_animal_attr[match]), \
-                            #    getattr(b, self.new_animal_attr[match]) )
+                            #    getattr(b, self.new_animal_attr[match]) ))
                             matches += 1
                         else:
-                            # print '%s != %s' % ( \
+                            # print('%s != %s' % ( \
                             #    getattr(a, self.new_animal_attr[match]), \
-                            #    getattr(b, self.new_animal_attr[match]) )
+                            #    getattr(b, self.new_animal_attr[match]) ))
                             pass
                 # If there are no mismatches then the two animals are identical
                 # based on the match rule and only one of them needs to be written
@@ -738,7 +738,7 @@ class NewPedigree:
             if filename == False:
                 filename = '%s_%s.ped' % (self.kw['pedname'], other.kw['pedname'])
                 if self.kw['debug_messages']:
-                    print '[INFO]: filename = %s' % (filename)
+                    print('[INFO]: filename = %s' % (filename))
                 pyp_io.save_newanimals_to_file(animals_to_write, filename, self.pedformat,
                                                self.kw['sepchar'])
             # Now we need to load the new pedigree and return it. This should be
@@ -757,14 +757,14 @@ class NewPedigree:
             try:
                 new_pedigree = loadPedigree(new_options, debugLoad=True)
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Loaded merged pedigree %s from file %s!' % \
-                          (merged_pedname, filename)
+                    print('[INFO]: Loaded merged pedigree %s from file %s!' % \
+                          (merged_pedname, filename))
                     logging.info('Cannot complete intersection operation because types do not match.')
                     return new_pedigree
             except:
                 if self.kw['messages'] == 'verbose':
-                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
-                          (merged_pedname, filename)
+                    print('[ERROR]: Could not load merged pedigree %s from file %s!' % \
+                          (merged_pedname, filename))
                 logging.error('Could not load merged pedigree %s from file %s!',
                               merged_pedname, filename)
                 return False
@@ -803,8 +803,8 @@ class NewPedigree:
             ###logging.warning('Loading from database %s.%s at %s.',self.kw['database_name'], \
             ###    self.kw['database_table'], pyp_utils.pyp_nice_time())
             ###if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            ###    print '[INFO]: Loading from database %s.%s' % ( self.kw['database_name'], \
-            ###        self.kw['database_table'] )        # Create the table
+            ###    print('[INFO]: Loading from database %s.%s' % ( self.kw['database_name'], \
+            ###        self.kw['database_table'] ))        # Create the table
             pass
         # If the user wants to simulate a pedigree we don't need to
         # call self.preprocess(), which loads pedigrees from files.
@@ -817,8 +817,8 @@ class NewPedigree:
             logging.info('Loading from database %s.%s at %s.', self.kw['database_name'],
                          self.kw['database_table'], pyp_utils.pyp_nice_time())
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '[INFO]: Loading from database %s.%s' % (self.kw['database_name'],
-                                                               self.kw['database_table'])  # Create the table
+                print('[INFO]: Loading from database %s.%s' % (self.kw['database_name'],
+                                                               self.kw['database_table']))  # Create the table
             try:
                 # Connect to the database
                 if pyp_db.doesTableExist(self):
@@ -837,16 +837,16 @@ class NewPedigree:
                         logging.error('Unable to connect to the database %s at %s.',
                                       self.kw['database_name'], pyp_utils.pyp_nice_time())
                         if self.kw['messages'] == 'verbose':
-                            print '[ERROR]: Unable to connect to the database %s at %s.' % \
-                                  (self.kw['database_name'], pyp_utils.pyp_nice_time())
+                            print('[ERROR]: Unable to connect to the database %s at %s.' % \
+                                  (self.kw['database_name'], pyp_utils.pyp_nice_time()))
                         sys.exit(0)
             except:
                 logging.error('Unable to load pedigree from database %s.%s at %s.',
                               self.kw['database_name'], self.kw['database_table'], pyp_utils.pyp_nice_time())
                 if self.kw['messages'] == 'verbose':
-                    print '[ERROR]: Unable to load pedigree from database %s.%s' % (
+                    print('[ERROR]: Unable to load pedigree from database %s.%s' % (
                         self.kw['database_name'],
-                        self.kw['database_table'])
+                        self.kw['database_table']))
                 sys.exit(0)
         # Load the pedigree from an DiGraph object that already exists.
         elif pedsource == 'graph':
@@ -908,7 +908,7 @@ class NewPedigree:
                 # try:
                 # Load a GEDCOM file
                 if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                    print '[INFO]: Loading GEDCOM file %s.' % self.kw['pedfile']
+                    print('[INFO]: Loading GEDCOM file %s.' % self.kw['pedfile'])
                 pedformat = pyp_io.load_from_gedcom(infilename=self.kw['pedfile'],
                                                     standalone=0,
                                                     messages=self.kw['messages'],
@@ -918,8 +918,8 @@ class NewPedigree:
                                                     missing_byear=self.kw['missing_byear'])
                 if pedformat != 'xxxx':
                     if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                        print '[INFO]: Changing pedformat from %s to %s as part of GEDCOM file processing.' % (
-                            self.kw['pedformat'], pedformat)
+                        print('[INFO]: Changing pedformat from %s to %s as part of GEDCOM file processing.' % (
+                            self.kw['pedformat'], pedformat))
                     logging.info('Changing pedformat from %s to %s.tmp as part of GEDCOM file processing.',
                                  self.kw['pedformat'], pedformat)
                     self.kw['pedformat'] = pedformat
@@ -929,8 +929,8 @@ class NewPedigree:
                     self.kw['sepchar'] = ','
 
                     if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                        print '[INFO]: Changing pedfile from %s to %s.tmp as part of GEDCOM file processing.' % (
-                            self.kw['pedfile'], self.kw['pedfile'])
+                        print('[INFO]: Changing pedfile from %s to %s.tmp as part of GEDCOM file processing.' % (
+                            self.kw['pedfile'], self.kw['pedfile']))
                     logging.info('Changing pedfile from %s to %s.tmp as part of GEDCOM file processing.',
                                  self.kw['pedfile'], self.kw['pedfile'])
                     self.kw['pedfile'] = '%s.tmp' % self.kw['pedfile']
@@ -938,27 +938,27 @@ class NewPedigree:
                     self.preprocess()
                 else:
                     if self.kw['messages'] == 'verbose':
-                        print '[load] Unable to load pedigree from a GEDCOM file because an invalid pedigree format ' \
-                              'code, %s, was returned!' % pedformat
+                        print('[load] Unable to load pedigree from a GEDCOM file because an invalid pedigree format ' \
+                              'code, %s, was returned!' % pedformat)
                     logging.error(
                         'Unable to load pedigree from a GEDCOM file because an invalid pedigree format code, %s, ' +
                         'was returned!', pedformat
                     )
                     # except:
                     # if self.kw['messages'] == 'verbose':
-                    # print '[load] Unable to load pedigree from a GEDCOM file because an exception was raised!'
+                    # print('[load] Unable to load pedigree from a GEDCOM file because an exception was raised!')
                     # logging.error('Unable to load pedigree from a GEDCOM file because an exception was raised!')
                     # sys.exit(0)
             else:
                 if self.kw['messages'] == 'verbose':
-                    print '[load] Unable to load pedigree from a GEDCOM file because no filename was provided!'
+                    print('[load] Unable to load pedigree from a GEDCOM file because no filename was provided!')
                 logging.error('Unable to load pedigree from a GEDCOM file because no filename was provided!')
                 sys.exit(0)
         # The genesfile pedsource reads files that conform to the dBase III format used by GENES v1.2.
         elif pedsource == 'genesfile':
             if self.kw['pedfile']:
                 if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                    print '[INFO]: Loading GENES v1.20 file %s.' % (self.kw['pedfile'])
+                    print('[INFO]: Loading GENES v1.20 file %s.' % (self.kw['pedfile']))
                 pedformat = pyp_io.load_from_genes(infilename=self.kw['pedfile'],
                                                    standalone=0,
                                                    messages=self.kw['messages'],
@@ -968,8 +968,8 @@ class NewPedigree:
                                                    missing_bdate=self.kw['missing_bdate'])
                 if pedformat != 'xxxx':
                     if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                        print '[INFO]: Changing pedformat from %s to %s as part of GENES v1.20 file processing.' % (
-                            self.kw['pedformat'], pedformat)
+                        print('[INFO]: Changing pedformat from %s to %s as part of GENES v1.20 file processing.' % (
+                            self.kw['pedformat'], pedformat))
                     logging.info('Changing pedformat from %s to %s as part of GENES v1.20 file processing.',
                                  self.kw['pedformat'], pedformat)
                     self.kw['pedformat'] = pedformat
@@ -979,8 +979,8 @@ class NewPedigree:
                     self.kw['sepchar'] = ','
 
                     if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                        print '[INFO]: Changing pedfile from %s to %s.tmp as part of GENES v1.20 file processing.' % (
-                            self.kw['pedfile'], self.kw['pedfile'])
+                        print('[INFO]: Changing pedfile from %s to %s.tmp as part of GENES v1.20 file processing.' % (
+                            self.kw['pedfile'], self.kw['pedfile']))
                     logging.info('Changing pedfile from %s to %s.tmp as part of GENES v1.20 file processing.',
                                  self.kw['pedfile'], self.kw['pedfile'])
                     self.kw['pedfile'] = '%s.tmp' % (self.kw['pedfile'])
@@ -988,15 +988,15 @@ class NewPedigree:
                     self.preprocess()
                 else:
                     if self.kw['messages'] == 'verbose':
-                        print '[load] Unable to load pedigree from a GENES v1.20 file because an invalid pedigree ' \
-                              'format code, %s, was returned!' % pedformat
+                        print('[load] Unable to load pedigree from a GENES v1.20 file because an invalid pedigree ' \
+                              'format code, %s, was returned!' % pedformat)
                     logging.error(
                         'Unable to load pedigree from a GENES v1.20 file because an invalid pedigree format code, ' +
                         '%s, was returned!', pedformat
                     )
             else:
                 if self.kw['messages'] == 'verbose':
-                    print '[load] Unable to load pedigree from a GENES v1.2 file because no filename was provided!'
+                    print('[load] Unable to load pedigree from a GENES v1.2 file because no filename was provided!')
                 logging.error('Unable to load pedigree from a GENES v1.2 file because no filename was provided!')
                 sys.exit(0)
         # A user requested this feature so that he can run PyPedal as a web service
@@ -1008,18 +1008,18 @@ class NewPedigree:
             self.kw['sepchar'] = ','
             logging.info('Preprocessing a textstream')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '[INFO]: Preprocessing a textstream'
+                print('[INFO]: Preprocessing a textstream')
             self.preprocess(textstream=pedstream)
         else:
             logging.info('Preprocessing %s', self.kw['pedfile'])
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '[INFO]: Preprocessing %s' % (self.kw['pedfile'])
+                print('[INFO]: Preprocessing %s' % (self.kw['pedfile']))
             self.preprocess()
         # Now that we've got the animals loaded, take care of the
         # renumbering etc.
         if self.kw['reorder'] == 1 and not self.kw['renumber']:
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Reordering pedigree at %s' % (pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Reordering pedigree at %s' % (pyp_utils.pyp_nice_time()))
             logging.info('Reordering pedigree')
             if not self.kw['slow_reorder']:
                 self.pedigree = pyp_utils.fast_reorder(self.pedigree)
@@ -1032,36 +1032,36 @@ class NewPedigree:
         if self.kw['set_generations']:
             logging.info('Assigning generations')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Assigning generations at %s' % (pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Assigning generations at %s' % (pyp_utils.pyp_nice_time()))
             pyp_utils.set_generation(self)
         if self.kw['set_ancestors']:
             logging.info('Setting ancestor flags')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Setting ancestor flags at %s' % (pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Setting ancestor flags at %s' % (pyp_utils.pyp_nice_time()))
             pyp_utils.set_ancestor_flag(self)
         if self.kw['set_sexes']:
             logging.info('Assigning sexes')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Assigning sexes at %s' % (pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Assigning sexes at %s' % (pyp_utils.pyp_nice_time()))
             pyp_utils.assign_sexes(self)
         if self.kw['set_alleles']:
             logging.info('Gene dropping to compute founder genome equivalents')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Gene dropping at %s' % (pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Gene dropping at %s' % (pyp_utils.pyp_nice_time()))
             pyp_metrics.effective_founder_genomes(self)
         if self.kw['form_nrm']:
             logging.info('Forming numerator relationship matrix')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Forming numerator relationship matrix at %s' % (pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Forming numerator relationship matrix at %s' % (pyp_utils.pyp_nice_time()))
             self.nrm = NewAMatrix(self.kw)
             self.nrm.form_a_matrix(self.pedigree)
         if self.kw['set_offspring'] and not self.kw['renumber']:
             logging.info('Assigning offspring')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Assigning offspring at %s' % (pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Assigning offspring at %s' % (pyp_utils.pyp_nice_time()))
             pyp_utils.assign_offspring(self)
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '[INFO]: Creating pedigree metadata object'
+            print('[INFO]: Creating pedigree metadata object')
         self.metadata = PedigreeMetadata(self.pedigree, self.kw)
         if self.kw['messages'] != 'quiet' and self.kw['pedigree_summary']:
             self.metadata.printme()
@@ -1069,7 +1069,7 @@ class NewPedigree:
         if self.kw['pedcomp']:
             logging.info('Calculating %s generation pedigree completeness', self.kw['pedcomp_gens'])
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '[INFO]: Calculating %s generation pedigree completeness' % (self.kw['pedcomp_gens'])
+                print('[INFO]: Calculating %s generation pedigree completeness' % (self.kw['pedcomp_gens']))
             _foo = pyp_metrics.pedigree_completeness(self, self.kw['pedcomp_gens'])
 
     ##
@@ -1095,12 +1095,12 @@ class NewPedigree:
         if filename == '':
             filename = '%s_saved.ped' % (self.kw['filetag'])
             if self.kw['messages'] == 'verbose':
-                print '[WARNING]: Saving pedigree to file %s to avoid overwriting %s.' % (filename, self.kw['pedfile'])
+                print('[WARNING]: Saving pedigree to file %s to avoid overwriting %s.' % (filename, self.kw['pedfile']))
             logging.warning('Saving pedigree to file %s to avoid overwriting %s.', filename, self.kw['pedfile'])
         try:
             ofh = file(filename, 'w')
             if self.kw['messages'] == 'verbose':
-                print '[INFO]: Opened file %s for pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time())
+                print('[INFO]: Opened file %s for pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time()))
             logging.info('Opened file %s for pedigree save at %s.', filename, pyp_utils.pyp_nice_time())
 
             if outformat == 'l':
@@ -1164,12 +1164,12 @@ class NewPedigree:
                 ofh.write('%s\n' % (_outstring))
             ofh.close()
             if self.kw['messages'] == 'verbose':
-                print '[INFO]: Closed file %s after pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time())
+                print('[INFO]: Closed file %s after pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time()))
             logging.info('Closed file %s after pedigree save at %s.', filename, pyp_utils.pyp_nice_time())
             return 1
         except:
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Unable to open file %s for pedigree save!' % (filename)
+                print('[ERROR]: Unable to open file %s for pedigree save!' % (filename))
             logging.error('Unable to open file %s for pedigree save.', filename)
             return 0
 
@@ -1201,15 +1201,15 @@ class NewPedigree:
                 pedformat = '%s%s' % (pedformat, pf)
             else:
                 if self.kw['messages'] == 'verbose':
-                    print '[WARNING]: Invalid pedigree format code, %s, in NewPedigree::save(). Not included in pedformat_ckd.' % (
-                        pf)
+                    print('[WARNING]: Invalid pedigree format code, %s, in NewPedigree::save(). Not included in pedformat_ckd.' % (
+                        pf))
                 logging.warning(
                     'Invalid pedigree format code, %s, in NewPedigree::save(). Not included in pedformat_ckd.', pf)
         # Warn the user if they are not outputting incomplete information (e.g., animals without sires or dams).
         if ('ASD' not in pedformat) and ('asd' not in pedformat):
             if self.kw['messages'] == 'verbose':
-                print '[WARNING]: The pedigree format code, %s, does not contain the sequence \'asd\' or \'ASD\', and the resulting pedigree may have incomplete parentage information.' % (
-                    pedformat)
+                print('[WARNING]: The pedigree format code, %s, does not contain the sequence \'asd\' or \'ASD\', and the resulting pedigree may have incomplete parentage information.' % (
+                    pedformat))
             logging.warning(
                 'The pedigree format code, %s, does not contain the sequence \'asd\' or \'ASD\', and the resulting pedigree may have incomplete parentage information.',
                 pedformat)
@@ -1217,8 +1217,8 @@ class NewPedigree:
         if sepchar == '':
             sepchar = self.kw['sepchar']
             if self.kw['messages'] == 'verbose':
-                print '[WARNING]: Invalid sepchar \'\' in NewPedigree::save(). Changed to \'%s\' to keep columns from running together.' % (
-                    sepchar)
+                print('[WARNING]: Invalid sepchar \'\' in NewPedigree::save(). Changed to \'%s\' to keep columns from running together.' % (
+                    sepchar))
             logging.warning(
                 'Invalid sepchar \'\' in NewPedigree::save(). Changed to \'%s\' to keep columns from running together.',
                 sepchar)
@@ -1228,25 +1228,25 @@ class NewPedigree:
         if filename == '':
             filename = '%s_saved.ped' % (self.kw['filetag'])
             if self.kw['messages'] == 'verbose':
-                print '[WARNING]: Saving pedigree to file %s to avoid overwriting %s.' % (filename, self.kw['pedfile'])
+                print('[WARNING]: Saving pedigree to file %s to avoid overwriting %s.' % (filename, self.kw['pedfile']))
             logging.warning('Saving pedigree to file %s to avoid overwriting %s.', filename, self.kw['pedfile'])
         try:
             if append == False:
                 ofh = file(filename, 'w')
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Opened file %s for pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time())
+                    print('[INFO]: Opened file %s for pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time()))
                 logging.info('Opened file %s for pedigree save at %s.', filename, pyp_utils.pyp_nice_time())
             else:
                 ofh = file(filename, 'a')
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Opened file %s for pedigree save in append mode at %s.' % (
-                        filename, pyp_utils.pyp_nice_time())
+                    print('[INFO]: Opened file %s for pedigree save in append mode at %s.' % (
+                        filename, pyp_utils.pyp_nice_time()))
                 logging.info('Opened file %s for pedigree save in append mode at %s.', filename,
                              pyp_utils.pyp_nice_time())
 
             # Let the user know which pedigree format code is being used.
             if self.kw['messages'] == 'verbose':
-                print '\t[INFO]: Writing pedigree file with format code %s in NewPedigree::save().' % (pedformat)
+                print('\t[INFO]: Writing pedigree file with format code %s in NewPedigree::save().' % (pedformat))
             logging.info('Pedigree format code %s being used to write pedigree file %s in NewPedigree::save().',
                          pedformat, filename)
 
@@ -1274,8 +1274,8 @@ class NewPedigree:
                             value = getattr(_a, self.new_animal_attr[pf])
                         else:
                             # if self.kw['debug_messages']:
-                            #    print '[DEBUG]: Using original IDs for pedigree %s' % \
-                            #    ( self.kw['pedname'] )
+                            #    print('[DEBUG]: Using original IDs for pedigree %s' % \
+                            #    ( self.kw['pedname'] ))
                             if pf in ['a', 'A']:
                                 value = _a.originalID
                             # This cascade may break if the pedigree is not
@@ -1302,12 +1302,12 @@ class NewPedigree:
                     ofh.write('%s\n' % (_outstring))
             ofh.close()
             if self.kw['messages'] == 'verbose':
-                print '\t[INFO]: Closed file %s after pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time())
+                print('\t[INFO]: Closed file %s after pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time()))
             logging.info('Closed file %s after pedigree save at %s.', filename, pyp_utils.pyp_nice_time())
             return 1
         except:
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Unable to open file %s for pedigree save!' % (filename)
+                print('[ERROR]: Unable to open file %s for pedigree save!' % (filename))
             logging.error('Unable to open file %s for pedigree save.', filename)
             return 0
 
@@ -1405,8 +1405,8 @@ class NewPedigree:
                     pass
             else:
                 if self.kw['messages'] == 'verbose':
-                    print '[WARNING]: The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!' % (
-                        self.kw['database_table'], self.kw['database_name'])
+                    print('[WARNING]: The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!' % (
+                        self.kw['database_table'], self.kw['database_name']))
                 logging.warning(
                     'The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!',
                     self.kw['database_table'], self.kw['database_name'])
@@ -1433,15 +1433,15 @@ class NewPedigree:
             pass
         if _table_loaded:
             if self.kw['messages'] == 'verbose':
-                print '[INFO]: Saved pedigree to %s.%s at %s.' % (self.kw['database_name'], \
-                                                                  self.kw['database_table'], pyp_utils.pyp_nice_time())
+                print('[INFO]: Saved pedigree to %s.%s at %s.' % (self.kw['database_name'], \
+                                                                  self.kw['database_table'], pyp_utils.pyp_nice_time()))
             logging.info('Saved pedigree to %s.%s at %s.', self.kw['database_name'], \
                          self.kw['database_table'], pyp_utils.pyp_nice_time())
             _savedb_status = True
         else:
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Could not save pedigree to %s.%s at %s.' % ( \
-                    self.kw['database_name'], self.kw['database_table'], pyp_utils.pyp_nice_time())
+                print('[ERROR]: Could not save pedigree to %s.%s at %s.' % ( \
+                    self.kw['database_name'], self.kw['database_table'], pyp_utils.pyp_nice_time()))
             logging.error('Could not save pedigree to %s.%s at %s.', self.kw['database_name'], \
                           self.kw['database_table'], pyp_utils.pyp_nice_time())
         return _savedb_status
@@ -1471,12 +1471,12 @@ class NewPedigree:
         # REQUIRED in the input file, and any found will be ignored.  The index of the single-
         # digit code in the format string indicates the column in which the corresponding
         # variable is found.  Duplicate values in the pedformat atring are ignored.
-        # print self.kw['pedformat']
+        # print(self.kw['pedformat'])
         if not self.kw['pedformat']:
             self.kw['pedformat'] = 'asd'
             logging.error('Null pedigree format string assigned a default value of %s.', self.kw['pedformat'])
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Null pedigree format string assigned a default value of %s.' % (self.kw['pedformat'])
+                print('[ERROR]: Null pedigree format string assigned a default value of %s.' % (self.kw['pedformat']))
         # This is where we check the format string to figure out what we have in the input file.
         # Check for valid characters...
         _pedformat = []
@@ -1486,7 +1486,7 @@ class NewPedigree:
             elif _char in self.pedformat_codes and _char == 'Z':
                 _pedformat.append('.')
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Skipping one or more columns in the input file'
+                    print('[INFO]: Skipping one or more columns in the input file')
                 logging.info(
                     'Skipping one or more columns in the input file as requested by the pedigree format string %s',
                     self.kw['pedformat'])
@@ -1494,7 +1494,7 @@ class NewPedigree:
                 # Replace the invalid code with a period, which is ignored when the string is parsed.
                 _pedformat.append('.')
                 if self.kw['messages'] == 'verbose':
-                    print '[DEBUG]: Invalid format code, %s, encountered!' % (_char)
+                    print('[DEBUG]: Invalid format code, %s, encountered!' % (_char))
                 logging.error('Invalid column format code %s found while reading pedigree format string %s', _char,
                               self.kw['pedformat'])
         for _char in _pedformat:
@@ -1504,8 +1504,8 @@ class NewPedigree:
                 try:
                     pedformat_locations['animal'] = _pedformat.index('A')
                 except ValueError:
-                    print '[CRITICAL]: No animal identification code was specified in the pedigree format string %s!  This is a critical error and the program will halt.' % (
-                        _pedformat)
+                    print('[CRITICAL]: No animal identification code was specified in the pedigree format string %s!  This is a critical error and the program will halt.' % (
+                        _pedformat))
                     critical_count = critical_count + 1
             try:
                 pedformat_locations['sire'] = _pedformat.index('s')
@@ -1513,8 +1513,8 @@ class NewPedigree:
                 try:
                     pedformat_locations['sire'] = _pedformat.index('S')
                 except ValueError:
-                    print '[CRITICAL]: No sire identification code was specified in the pedigree format string %s!  This is a critical error and the program will halt.' % (
-                        _pedformat)
+                    print('[CRITICAL]: No sire identification code was specified in the pedigree format string %s!  This is a critical error and the program will halt.' % (
+                        _pedformat))
                     critical_count = critical_count + 1
             try:
                 pedformat_locations['dam'] = _pedformat.index('d')
@@ -1522,16 +1522,16 @@ class NewPedigree:
                 try:
                     pedformat_locations['dam'] = _pedformat.index('D')
                 except ValueError:
-                    print '[CRITICAL]: No dam identification code was specified in the pedigree format string %s!  This is a critical error and the program will halt.' % (
-                        _pedformat)
+                    print('[CRITICAL]: No dam identification code was specified in the pedigree format string %s!  This is a critical error and the program will halt.' % (
+                        _pedformat))
                     critical_count = critical_count + 1
             try:
                 pedformat_locations['generation'] = _pedformat.index('g')
             except ValueError:
                 pedformat_locations['generation'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No generation code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No generation code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['gencoeff'] = _pedformat.index('p')
                 if not self.kw['gen_coeff']:
@@ -1541,101 +1541,101 @@ class NewPedigree:
                 if self.kw['gen_coeff']:
                     self.kw['gen_coeff'] = 0
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No generation coefficient was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No generation coefficient was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['sex'] = _pedformat.index('x')
             except ValueError:
                 pedformat_locations['sex'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No sex code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No sex code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['birthyear'] = _pedformat.index('y')
             except ValueError:
                 pedformat_locations['birthyear'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No birth date (YYYY) code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No birth date (YYYY) code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['inbreeding'] = _pedformat.index('f')
             except ValueError:
                 pedformat_locations['inbreeding'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No coeffcient of inbreeding code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No coeffcient of inbreeding code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['breed'] = _pedformat.index('r')
             except ValueError:
                 pedformat_locations['breed'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No breed code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No breed code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['name'] = _pedformat.index('n')
             except ValueError:
                 pedformat_locations['name'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No name code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No name code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['birthdate'] = _pedformat.index('b')
             except ValueError:
                 pedformat_locations['birthdate'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No birth date (MMDDYYYY) code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No birth date (MMDDYYYY) code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['alive'] = _pedformat.index('l')
             except ValueError:
                 pedformat_locations['alive'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No alive/dead code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No alive/dead code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['age'] = _pedformat.index('e')
             except ValueError:
                 pedformat_locations['age'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No age code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No age code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['alleles'] = _pedformat.index('L')
                 if self.kw['alleles_sepchar'] == self.kw['sepchar']:
                     if self.kw['messages'] == 'all':
-                        print '[DEBUG]: The same separating character was specified for both columns of input (option sepchar) and alleles (option alleles_sepchar) in an animal\'s allelotype.  The allelotypes will not be used in this pedigree.'
+                        print('[DEBUG]: The same separating character was specified for both columns of input (option sepchar) and alleles (option alleles_sepchar) in an animal\'s allelotype.  The allelotypes will not be used in this pedigree.')
                     logging.warning(
                         'The same separating character was specified for both columns of input (option sepchar) and alleles (option alleles_sepchar) in an animal\'s allelotype.  The allelotypes will not be used in this pedigree.')
                     pedformat_locations['alleles'] = -999
             except ValueError:
                 pedformat_locations['alleles'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No alleles code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No alleles code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['herd'] = _pedformat.index('h')
             except ValueError:
                 pedformat_locations['herd'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No herd code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No herd code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['herd'] = _pedformat.index('H')
             except ValueError:
                 pedformat_locations['herd'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No herd code was specified in the pedigree format string %s.  This program will continue.' % (
-                        self.kw['pedformat'])
+                    print('[DEBUG]: No herd code was specified in the pedigree format string %s.  This program will continue.' % (
+                        self.kw['pedformat']))
             try:
                 pedformat_locations['userfield'] = _pedformat.index('u')
             except ValueError:
                 pedformat_locations['userfield'] = -999
                 if self.kw['messages'] == 'all':
-                    print '[DEBUG]: No user-defined field was specified in the pedigree format string %s. This program will continue.' % (
-                        self.kw['pedformat'])
-        # print self.kw['pedformat']
-        # print _pedformat
-        # print pedformat_locations
+                    print('[DEBUG]: No user-defined field was specified in the pedigree format string %s. This program will continue.' % (
+                        self.kw['pedformat']))
+        # print(self.kw['pedformat'])
+        # print(_pedformat)
+        # print(pedformat_locations)
         # If the pedigree file includes coefficients of inbreeding flag the
         # pedigree.
         if 'f' in self.kw['pedformat']:
@@ -1644,7 +1644,7 @@ class NewPedigree:
             sys.exit(0)
         else:
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '[INFO]: Opening pedigree file %s' % (self.kw['pedfile'])
+                print('[INFO]: Opening pedigree file %s' % (self.kw['pedfile']))
             logging.info('Opening pedigree file %s', self.kw['pedfile'])
             if textstream == '' and dbstream == '':
                 infile = open(self.kw['pedfile'], 'r')
@@ -1665,7 +1665,7 @@ class NewPedigree:
                 elif dbstream == '':
                     try:
                         line = infile.pop()
-                        # print 'line: %s' % ( line )
+                        # print('line: %s' % ( line ))
                     except IndexError:
                         logging.warning('Reached the end of the textstream after reading %s records.', lineCounter)
                         line = False
@@ -1698,7 +1698,7 @@ class NewPedigree:
                         logging.info(
                             'Converted the first line in the input file into a comment because the pedigree file has a header row.')
                         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                            print '[INFO]: Converted the first line in the input file into a comment because the pedigree file has a header row.'
+                            print('[INFO]: Converted the first line in the input file into a comment because the pedigree file has a header row.')
                         line = '# %s' % (line)
                     # Handle comment lines.
                     if line[0] == '#':
@@ -1726,7 +1726,7 @@ class NewPedigree:
                         # most notably spaces. Is there a nice way to deal with the situation
                         # of multiple sepchars with no data between them?
                         l = string.split(string.strip(line), self.kw['sepchar'])
-                        # print l
+                        # print(l)
                         # I am adding in a check here to make sure that the number of fields
                         # expected from the pedigree format string and the number of fields in
                         # the datalines of the pedigree are the same.  If they are not, there is
@@ -1734,8 +1734,8 @@ class NewPedigree:
                         if len(self.kw['pedformat']) == len(l):
                             self.namemap = {}
                             self.namebackmap = {}
-                            # print line
-                            # print l
+                            # print(line)
+                            # print(l)
                             # Some people *cough* Brad Heins *cough* insist on sending me pedigree
                             # files vomited out by Excel, which pads cells in a column with spaces
                             # to right-align them...
@@ -1744,8 +1744,8 @@ class NewPedigree:
                             if len(l) < 3:
                                 errorString = 'The record on line %s of file %s is too short - all records must contain animal, sire, and dam ID numbers (%s fields detected).\n' % (
                                     lineCounter, self.kw['pedfile'], len(l))
-                                print '[ERROR]: %s' % (errorString)
-                                print '[ERROR]: %s' % (line)
+                                print('[ERROR]: %s' % (errorString))
+                                print('[ERROR]: %s' % (line))
                                 sys.exit(0)
                             else:
                                 if l[0] != self.kw['missing_parent']:
@@ -1753,25 +1753,25 @@ class NewPedigree:
                                         an = LightAnimal(pedformat_locations, l, self.kw)
                                     else:
                                         an = NewAnimal(pedformat_locations, l, self.kw)
-                                        # print an.animalID,' ',an.sireID,' ',an.damID
+                                        # print(an.animalID,' ',an.sireID,' ',an.damID)
                                         # an.printme()
                                 else:
                                     errorString = 'The record on line %s of file %s has an animal ID that is the same as the missing value code specified for the pedigree. This animal is being skipped and will not have an entry in the pedigree.\n' % (
                                         lineCounter, self.kw['pedfile'])
-                                    print '[ERROR]: %s' % (errorString)
+                                    print('[ERROR]: %s' % (errorString))
                                     logging.error(errorString)
-                                # print 'Animal Name: ', an.name
+                                # print('Animal Name: ', an.name)
                                 # If strings are used for sire and dam IDs we need
                                 # to put the names in the _sires or _dams dictionary
                                 # rather than the ID.  If we put in the IDs the
                                 # missing sire and dam catcher code will not work
                                 # correctly.
-                                # print 'Animal ID: ', an.animalID
+                                # print('Animal ID: ', an.animalID)
                                 if 'S' in self.kw['pedformat']:
                                     if an.sireName != self.kw['missing_name']:
                                         _sires[an.sireName] = an.sireName
                                     else:
-                                        # print '\tAnimal %s has sire %s' % ( an.animalID, an.sireID )
+                                        # print('\tAnimal %s has sire %s' % ( an.animalID, an.sireID ))
                                         pass
                                 else:
                                     # if str(an.sireID) != str(self.kw['missing_parent']):
@@ -1781,13 +1781,13 @@ class NewPedigree:
                                     if an.damName != self.kw['missing_name']:
                                         _dams[an.damName] = an.damName
                                     else:
-                                        # print '\tAnimal %s has dam %s' % ( an.animalID, an.damID )
+                                        # print('\tAnimal %s has dam %s' % ( an.animalID, an.damID ))
                                         pass
                                 else:
                                     if str(an.damID) != str(self.kw['missing_parent']):
                                         _dams[an.damID] = an.damID
-                                # print an.sireID
-                                # print an.damID
+                                # print(an.sireID)
+                                # print(an.damID)
                                 self.pedigree.append(an)
                                 # If strings are used for animals names we need
                                 # to put those names in idmap and backmap so that
@@ -1814,7 +1814,7 @@ class NewPedigree:
                             errorString = 'The record on line %s of file %s has %s columns, but the pedigree format string (%s) says that it should have %s columns. Please check your pedigree file and the pedigree format string for errors.\n' % (
                                 lineCounter, self.kw['pedfile'], len(l), \
                                 self.kw['pedformat'], len(self.kw['pedformat']))
-                            print '[ERROR]: %s' % (errorString)
+                            print('[ERROR]: %s' % (errorString))
                             logging.error(errorString)
                             sys.exit(0)
             #
@@ -1828,10 +1828,10 @@ class NewPedigree:
             _null_locations['animal'] = 0
             _null_locations['sire'] = 1
             _null_locations['dam'] = 2
-            # print _null_locations
-            # print 'INFO: idmap = %s' % (self.idmap)
-            # print 'INFO: _sires = %s' % (_sires)
-            # print 'INFO: _dams = %s' % (_dams)
+            # print(_null_locations)
+            # print('INFO: idmap = %s' % (self.idmap))
+            # print('INFO: _sires = %s' % (_sires))
+            # print('INFO: _dams = %s' % (_dams))
             for _s in _sires.keys():
                 try:
                     _i = self.idmap[_s]
@@ -1848,7 +1848,7 @@ class NewPedigree:
                         self.namebackmap[an.animalID] = an.name
                         logging.info('Added pedigree entry for sire %s' % (_s))
                         if self.kw['messages'] == 'verbose':
-                            print '[NOTE]: Added pedigree entry for sire %s' % (_s)
+                            print('[NOTE]: Added pedigree entry for sire %s' % (_s))
             for _d in _dams.keys():
                 try:
                     _i = self.idmap[_d]
@@ -1865,7 +1865,7 @@ class NewPedigree:
                         self.namebackmap[an.animalID] = an.name
                         logging.info('Added pedigree entry for dam %s' % (_d))
                         if self.kw['messages'] == 'verbose':
-                            print '[NOTE]: Added pedigree entry for dam %s' % (_d)
+                            print('[NOTE]: Added pedigree entry for dam %s' % (_d))
             #
             # Finish up.
             #
@@ -1900,9 +1900,9 @@ class NewPedigree:
         for _m in missing:
             pedformat_locations[_m] = -999
         for _n in pedgraph.nodes():
-            # print pedgraph.node[_n]
-            # print 'sire: ', pedgraph.node[_n]['sire']
-            # print 'dam:  ', pedgraph.node[_n]['dam']
+            # print(pedgraph.node[_n])
+            # print('sire: ', pedgraph.node[_n]['sire'])
+            # print('dam:  ', pedgraph.node[_n]['dam'])
             _s = pedgraph.node[_n]['sire']
             _d = pedgraph.node[_n]['dam']
             an = NewAnimal(pedformat_locations, [_n, _s, _d], self.kw)
@@ -1952,7 +1952,7 @@ class NewPedigree:
                     logging.info('Added pedigree entry for animal %s' % (animal.originalID))
         else:
             if self.kw['messages']:
-                print '[ERROR]: Could not create a pedigree from an empty animal list!'
+                print('[ERROR]: Could not create a pedigree from an empty animal list!')
             logging.error('Could not create a pedigree from an empty animal list!')
             return False
 
@@ -1976,11 +1976,11 @@ class NewPedigree:
                     da = self.kw['missing_parent']
                 streamout = '%s%s,%s,%s\\n' % (streamout, an, si, da)
             if self.kw['messages'] == 'verbose':
-                print '[INFO]: Created text stream from pedigree.'
+                print('[INFO]: Created text stream from pedigree.')
             logging.info('Created text stream from pedigree.')
         except:
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Could not create text stream from pedigree!'
+                print('[ERROR]: Could not create text stream from pedigree!')
             logging.error('Could not create text stream from pedigree!')
         return streamout
 
@@ -1995,8 +1995,8 @@ class NewPedigree:
         references are to renumbered rather than original IDs.
         """
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]: Renumbering pedigree at %s' % (pyp_utils.pyp_nice_time())
-            print '\t\t[INFO]: Reordering pedigree at %s' % (pyp_utils.pyp_nice_time())
+            print('\t[INFO]: Renumbering pedigree at %s' % (pyp_utils.pyp_nice_time()))
+            print('\t\t[INFO]: Reordering pedigree at %s' % (pyp_utils.pyp_nice_time()))
         logging.info('Reordering pedigree')
         if ('b' in self.kw['pedformat'] or 'y' in self.kw['pedformat']) and not self.kw['slow_reorder']:
             self.pedigree = pyp_utils.fast_reorder(self.pedigree)
@@ -2005,17 +2005,17 @@ class NewPedigree:
                                               max_rounds=self.kw['reorder_max_rounds'])
         # self.pedigree = pyp_utils.reorder(self.pedigree,missingparent=self.kw['missing_parent'],max_rounds=self.kw['reorder_max_rounds'])
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t\t[INFO]: Renumbering at %s' % (pyp_utils.pyp_nice_time())
+            print('\t\t[INFO]: Renumbering at %s' % (pyp_utils.pyp_nice_time()))
         logging.info('Renumbering pedigree')
         self.pedigree = pyp_utils.renumber(self.pedigree, missingparent=self.kw['missing_parent'],
                                            animaltype=self.kw['animal_type'])
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t\t[INFO]: Updating ID map at %s' % (pyp_utils.pyp_nice_time())
+            print('\t\t[INFO]: Updating ID map at %s' % (pyp_utils.pyp_nice_time()))
         logging.info('Updating ID map')
         self.updateidmap()
 
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]: Assigning offspring at %s' % (pyp_utils.pyp_nice_time())
+            print('\t[INFO]: Assigning offspring at %s' % (pyp_utils.pyp_nice_time()))
         logging.info('Assigning offspring')
         pyp_utils.assign_offspring(self)
         self.kw['pedigree_is_renumbered'] = 1
@@ -2029,9 +2029,9 @@ class NewPedigree:
     # @param damID Dam ID of the new animal to be added to the pedigree.
     # @retval 1 on success, 0 on failure
     def addanimal(self, animalID, sireID, damID):
-        # print 'animalID: ', animalID
-        # print 'sireID: ', sireID
-        # print 'damID: ', damID
+        # print('animalID: ', animalID)
+        # print('sireID: ', sireID)
+        # print('damID: ', damID)
         _added = 0
         if not self.kw['pedigree_is_renumbered']:
             logging.warning('Adding an animal to an unrenumbered pedigree using NewPedigree::addanimal() is unsafe!')
@@ -2075,7 +2075,7 @@ class NewPedigree:
             # If the pedigree is renumbered, we need to
             # renumber the new animal or we'll get index
             # out of range errors.
-            # print 'animalID: ', an.animalID
+            # print('animalID: ', an.animalID)
             an.animalID = max(self.idmap.values()) + 1
             an.renumberedID = an.animalID
             if 'n' in self.kw['pedformat']:
@@ -2089,7 +2089,7 @@ class NewPedigree:
             self.backmap[an.animalID] = an.originalID
             self.namemap[an.name] = an.originalID
             self.namebackmap[an.originalID] = an.name
-            # print self.idmap
+            # print(self.idmap)
             _added = 1
         except:
             _added = 0
@@ -2131,7 +2131,7 @@ class NewPedigree:
         updateidmap() updates the ID map after a pedigree has been renumbered so that
         all references are to renumbered rather than original IDs.
         """
-        # print '[updateidmap]: Entered...'
+        # print('[updateidmap]: Entered...')
         self.idmap = {}
         self.backmap = {}
         self.namemap = {}
@@ -2139,20 +2139,20 @@ class NewPedigree:
         for _a in self.pedigree:
             try:
                 # if str(_a.originalID) == '43859378':
-                #    print '[updateidmap]: originalID = 43859378'
-                #    print '[updateidmap]: animalID = ', _a.animalID
-                #    print '[updateidmap]: sireID = ', _a.sireID
-                #    print '[updateidmap]: damID = ', _a.damID
+                #    print('[updateidmap]: originalID = 43859378')
+                #    print('[updateidmap]: animalID = ', _a.animalID)
+                #    print('[updateidmap]: sireID = ', _a.sireID)
+                #    print('[updateidmap]: damID = ', _a.damID)
                 self.idmap[_a.originalID] = _a.animalID
                 self.backmap[_a.renumberedID] = _a.originalID
                 if self.kw['animal_type'] == 'new':
                     self.namemap[_a.name] = _a.originalID
                     self.namebackmap[_a.originalID] = _a.name
-                    # print '%s => %s' % ( _a.renumberedID, self.backmap[_a.renumberedID] )
+                    # print('%s => %s' % ( _a.renumberedID, self.backmap[_a.renumberedID] ))
             except KeyError:
                 pass
-            #         print self.idmap
-            #         print self.backmap
+            #         print(self.idmap)
+            #         print(self.backmap)
 
     ##
     # printoptions() prints the contents of the options dictionary.
@@ -2162,12 +2162,12 @@ class NewPedigree:
         """
         printoptions() prints the contents of the options dictionary.
         """
-        print '%s OPTIONS' % (self.kw['pedname'])
+        print('%s OPTIONS' % (self.kw['pedname']))
         for _k, _v in self.kw.iteritems():
             if len(_k) <= 14:
-                print '\t%s:\t\t%s' % (_k, _v)
+                print('\t%s:\t\t%s' % (_k, _v))
             else:
-                print '\t%s:\t%s' % (_k, _v)
+                print('\t%s:\t%s' % (_k, _v))
 
     ##
     # simulate() simulates an arbitrary pedigree of size n with g generations
@@ -2187,7 +2187,7 @@ class NewPedigree:
         """
         # import random
         if self.kw['messages'] == 'verbose':
-            print '[SIMULATE]: Preparing to simulate a pedigree'
+            print('[SIMULATE]: Preparing to simulate a pedigree')
             logging.info('Preparing to simulate a pedigree')
         # If the current pedigree object has already been populated with
         # animals simulate() will not overwrite those entries.
@@ -2197,8 +2197,8 @@ class NewPedigree:
                 'already been populated with animals.', self.kw['pedname']
             )
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: The simulate() method did not create a new randomly-generated pedigree because the ' \
-                      'pedigree %s has already been populated with animals.' % self.kw['pedname']
+                print('[ERROR]: The simulate() method did not create a new randomly-generated pedigree because the ' \
+                      'pedigree %s has already been populated with animals.' % self.kw['pedname'])
         # Check arguments and assign defaults when invalid values are
         # provided by the user.  Write messages to the log and console
         # whenever user-specified values are overridden.
@@ -2215,8 +2215,8 @@ class NewPedigree:
                 'number of animals, 15, is being used.', self.kw['simulate_n']
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree containing an invalid number of animals, %s, be ' \
-                      'simulated. The default number of animals, 15, is being used.' % self.kw['simulate_n']
+                print('\t[SIMULATE]: You asked that a pedigree containing an invalid number of animals, %s, be ' \
+                      'simulated. The default number of animals, 15, is being used.' % self.kw['simulate_n'])
             self.kw['simulate_n'] = 15
         if self.kw['simulate_g'] < 1:
             logging.warning(
@@ -2224,8 +2224,8 @@ class NewPedigree:
                 'default number of generations, 3, is being used.', self.kw['simulate_g']
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree containing an invalid number of generations, %s, be ' \
-                      'simulated. The default number of generations, 3, is being used.' % self.kw['simulate_g']
+                print('\t[SIMULATE]: You asked that a pedigree containing an invalid number of generations, %s, be ' \
+                      'simulated. The default number of generations, 3, is being used.' % self.kw['simulate_g'])
             self.kw['simulate_g'] = 3
         if self.kw['simulate_ns'] < 1:
             logging.warning(
@@ -2233,8 +2233,8 @@ class NewPedigree:
                 'number of sires, 4, is being used.', self.kw['simulate_ns']
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree containing an invalid number of sires, %s, be ' \
-                      'simulated. The default number of sires, 4, is being used.' % self.kw['simulate_ns']
+                print('\t[SIMULATE]: You asked that a pedigree containing an invalid number of sires, %s, be ' \
+                      'simulated. The default number of sires, 4, is being used.' % self.kw['simulate_ns'])
             self.kw['simulate_ns'] = 4
         if self.kw['simulate_nd'] < 1:
             logging.warning(
@@ -2242,8 +2242,8 @@ class NewPedigree:
                 'number of dams, 4, is being used.', self.kw['simulate_nd']
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree containing an invalid number of dams, %s, be ' \
-                      'simulated. The default number of dams, 4, is being used.' % self.kw['simulate_nd']
+                print('\t[SIMULATE]: You asked that a pedigree containing an invalid number of dams, %s, be ' \
+                      'simulated. The default number of dams, 4, is being used.' % self.kw['simulate_nd'])
             self.kw['simulate_nd'] = 4
         if self.kw['simulate_sr'] < 0. or self.kw['simulate_sr'] > 1.:
             logging.warning(
@@ -2251,8 +2251,8 @@ class NewPedigree:
                 ' is being used.', self.kw['simulate_sr']
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree containing an invalid sex ratio, %s, be simulated. ' \
-                      'The default sex ratio, 0.5, is being used.' % self.kw['simulate_sr']
+                print('\t[SIMULATE]: You asked that a pedigree containing an invalid sex ratio, %s, be simulated. ' \
+                      'The default sex ratio, 0.5, is being used.' % self.kw['simulate_sr'])
             self.kw['simulate_sr'] = 0.5
         if self.kw['simulate_ir'] < 0. or self.kw['simulate_ir'] > 1.:
             logging.warning(
@@ -2260,8 +2260,8 @@ class NewPedigree:
                 '0.5, is being used.', self.kw['simulate_ir']
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree containing an invalid immigration rate, %s, be ' \
-                      'simulated. The default rate, 0.5, is being used.' % self.kw['simulate_ir']
+                print('\t[SIMULATE]: You asked that a pedigree containing an invalid immigration rate, %s, be ' \
+                      'simulated. The default rate, 0.5, is being used.' % self.kw['simulate_ir'])
             self.kw['simulate_ir'] = 0.5
         if self.kw['simulate_ns'] >= self.kw['simulate_n']:
             logging.error(
@@ -2269,8 +2269,8 @@ class NewPedigree:
                 'fatal error!'
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree with more founder sires than total animals be ' \
-                      'simulated.  This is a fatal error!'
+                print('\t[SIMULATE]: You asked that a pedigree with more founder sires than total animals be ' \
+                      'simulated.  This is a fatal error!')
             sys.exit(0)
         if self.kw['simulate_nd'] >= self.kw['simulate_n']:
             logging.error(
@@ -2278,8 +2278,8 @@ class NewPedigree:
                 'error!'
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree with more founder dams than total animals be ' \
-                      'simulated.  This is a fatal error!'
+                print('\t[SIMULATE]: You asked that a pedigree with more founder dams than total animals be ' \
+                      'simulated.  This is a fatal error!')
             sys.exit(0)
         if (self.kw['simulate_ns'] + self.kw['simulate_ns']) > self.kw['simulate_n']:
             logging.error(
@@ -2287,8 +2287,8 @@ class NewPedigree:
                 'fatal error!'
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You asked that a pedigree with more founder parents than total animals be ' \
-                      'simulated.  This is a fatal error!'
+                print('\t[SIMULATE]: You asked that a pedigree with more founder parents than total animals be ' \
+                      'simulated.  This is a fatal error!')
             sys.exit(0)
         if self.kw['simulate_pmd'] < 1:
             logging.warning(
@@ -2296,8 +2296,8 @@ class NewPedigree:
                 '100, is being used.', self.kw['simulate_pmd']
             )
             if self.kw['messages'] == 'verbose':
-                print '\t[SIMULATE]: You specified an invalid number of maximum parent draws, %s. The default ' \
-                      'number of maximum draws, 100, is being used.' % self.kw['simulate_pmd']
+                print('\t[SIMULATE]: You specified an invalid number of maximum parent draws, %s. The default ' \
+                      'number of maximum draws, 100, is being used.' % self.kw['simulate_pmd'])
             self.kw['simulate_pmd'] = 100
         # Seed the RNG
         seed = 5048665
@@ -2357,7 +2357,7 @@ class NewPedigree:
         for i in range(_snd):
             # females[i] = i
             females.append(i)
-        # print 'females:\t%s' % ( females )
+        # print('females:\t%s' % ( females ))
         for i in range(_sns):
             if i == 0:
                 # males[i] = 0
@@ -2365,7 +2365,7 @@ class NewPedigree:
             else:
                 # males[i] = _snd + i
                 males.append(_snd + i)
-        # print 'males:\t\t%s' % ( males )
+        # print('males:\t\t%s' % ( males ))
         # Number of slots unavailable b/c they are used by sires
         # and dams.
         _totalna = _snd + _sns
@@ -2409,8 +2409,8 @@ class NewPedigree:
                     # MP, OP, and FS restrictions.
                     _ntry = 0
                     while 1:
-                        # print 'females:\t%s' % ( females )
-                        # print 'males:\t\t%s' % ( males )
+                        # print('females:\t%s' % ( females ))
+                        # print('males:\t\t%s' % ( males ))
                         # Select a random sire and dam
                         # _selsire = random.randint(0,len(males)-1)
                         _selsire = numpy.random.randint(0, len(males) - 1)
@@ -2430,10 +2430,10 @@ class NewPedigree:
                         # reason for the "1 - _smp" below.
                         if _selsire == 0:
                             _selsire = 1 - _smp
-                        # print '_selsire:\t%s' % ( _selsire )
+                        # print('_selsire:\t%s' % ( _selsire ))
                         if _seldam == 0:
                             _seldam = 1 - _smp
-                        # print '_seldam:\t%s' % ( _seldam )
+                        # print('_seldam:\t%s' % ( _seldam ))
                         # Now we're going to store the sire and dam IDs,
                         # as well as their parents' IDs, for use in
                         # detecting parent-offspring and full-sib matings.
@@ -2444,13 +2444,13 @@ class NewPedigree:
                         _sd = _pedholder[_s].damID
                         _ss = _pedholder[_s].sireID
                         _tryagain = 0
-                        # print 'Animal: %s' % ( _totalna )
-                        # print 'Sire: %s' % ( _s )
-                        # print 'Dam: %s' % ( _d )
-                        # print 'Dam-Dam: %s' % ( _dd )
-                        # print 'Dam-Sire: %s' % ( _ds )
-                        # print 'Sire-Dam: %s' % ( _sd )
-                        # print 'Sire-Sire: %s' % ( _ss )
+                        # print('Animal: %s' % ( _totalna ))
+                        # print('Sire: %s' % ( _s ))
+                        # print('Dam: %s' % ( _d ))
+                        # print('Dam-Dam: %s' % ( _dd ))
+                        # print('Dam-Sire: %s' % ( _ds ))
+                        # print('Sire-Dam: %s' % ( _sd ))
+                        # print('Sire-Sire: %s' % ( _ss ))
                         # If offspring-parent matings are not allowed,
                         # check to see if both parents are known. If one
                         # or both is unknown, draw new samples until they
@@ -2474,7 +2474,7 @@ class NewPedigree:
                         if _tryagain:
                             _ntry = _ntry + 1
                         if _ntry > _spmd:
-                            # print '> %d draws required to meet all parental restrictions. Parents set to missing.' % ( _spmd )
+                            # print('> %d draws required to meet all parental restrictions. Parents set to missing.' % ( _spmd ))
                             _tryagain = 0
                             _seldam = 0
                             _selsire = 0
@@ -2482,7 +2482,7 @@ class NewPedigree:
                         # we're done and can exit the loop.
                         if not _tryagain:
                             break
-                            # print '%d draws required to meet all parental restrictions.' % ( _ntry+1 )
+                            # print('%d draws required to meet all parental restrictions.' % ( _ntry+1 ))
                 else:
                     # The new animal is an immigrant with unknown
                     # parents.
@@ -2514,8 +2514,8 @@ class NewPedigree:
                 ### End of big. long generate animal loop.
                 ###
 
-                # print '_pedholder:'
-                # print '\tAnimal\tSire\tDam\tSex'
+                # print('_pedholder:')
+                # print('\tAnimal\tSire\tDam\tSex')
                 # for _ip in range(len(_pedholder)):
                 # if _pedholder[_ip]:
                 # _pedholder[_ip].printme()
@@ -2630,8 +2630,8 @@ class SimAnimal:
     # @retval None
     def printme(self):
         try:
-            print '\t%s\t%s\t%s\t%s\t%s' % (self.animalID, self.sireID, \
-                                            self.damID, self.sex, self.gen)
+            print('\t%s\t%s\t%s\t%s\t%s' % (self.animalID, self.sireID, \
+                                            self.damID, self.sex, self.gen))
         except:
             pass
 
@@ -2664,8 +2664,8 @@ class NewAnimal:
         """
         __init__() initializes a NewAnimal() object.
         """
-        # print locations
-        # print data
+        # print(locations)
+        # print(data)
         if locations['animal'] != -999:
             # If the animal's ID is actually a string, we need to be clever.
             # Put a copy of the string in the 'Name' field.  Then use the
@@ -2819,7 +2819,7 @@ class NewAnimal:
         else:
             # self.userField = ''
             self.userField = mykw['missing_userfield']
-            # print '%s\t%s\t%s' % (self.animalID, self.sireID, self.damID)
+            # print('%s\t%s\t%s' % (self.animalID, self.sireID, self.damID))
 
     ##
     # __equals() is used to determine if two NewAnimal objects are identical.
@@ -2830,7 +2830,7 @@ class NewAnimal:
             logging.info('Testing animals %s and %s for equality', self.animalID,
                          other.animalID)
         if mykw['debug_messages']:
-            print '[DEBUG]: self and other both are NewAnimal objects. We can test them for equality.'
+            print('[DEBUG]: self and other both are NewAnimal objects. We can test them for equality.')
         # The naive way to do this is to compare each attribute of the two animals
         # to determine if they're identical. This seems inelegant...
         #
@@ -2910,36 +2910,36 @@ class NewAnimal:
         """
         Print the contents of an animal record - used for debugging.
         """
-        print 'ANIMAL %s RECORD' % self.animalID
-        print '\tAnimal ID:\t%s' % self.animalID
-        print '\tAnimal name:\t%s' % self.name
-        print '\tSire ID:\t%s' % self.sireID
-        print '\tSire name:\t%s' % self.sireName
-        print '\tDam ID:\t\t%s' % self.damID
-        print '\tDam name:\t%s' % self.damName
-        print '\tGeneration:\t%s' % self.gen
-        print '\tGen coeff:\t%s' % self.gencoeff
-        print '\tInferred gen.:\t%s' % self.igen
-        print '\tBirth Year:\t%s' % self.by
-        print '\tBirth Date:\t%s' % self.bd
-        print '\tSex:\t\t%s' % self.sex
-        print '\tCoI (f_a):\t%s' % self.fa
-        print '\tFounder:\t%s' % self.founder
-        print '\tSons:\t\t%s' % self.sons
-        print '\tDaughters:\t%s' % self.daus
-        print '\tUnknowns:\t%s' % self.unks
-        print '\tAncestor:\t%s' % self.ancestor
-        print '\tAlleles:\t%s' % self.alleles
-        print '\tOriginal ID:\t%s' % self.originalID
-        print '\tRenumbered ID:\t%s' % self.renumberedID
-        print '\tPedigree Comp.:\t%s' % self.pedcomp
-        print '\tBreed:\t%s' % self.breed
-        print '\tAge:\t%s' % self.age
-        print '\tAlive:\t%s' % self.alive
-        print '\tHerd:\t%s' % self.herd
-        print '\tHerd name:\t%s' % self.originalHerd
+        print('ANIMAL %s RECORD' % self.animalID)
+        print('\tAnimal ID:\t%s' % self.animalID)
+        print('\tAnimal name:\t%s' % self.name)
+        print('\tSire ID:\t%s' % self.sireID)
+        print('\tSire name:\t%s' % self.sireName)
+        print('\tDam ID:\t\t%s' % self.damID)
+        print('\tDam name:\t%s' % self.damName)
+        print('\tGeneration:\t%s' % self.gen)
+        print('\tGen coeff:\t%s' % self.gencoeff)
+        print('\tInferred gen.:\t%s' % self.igen)
+        print('\tBirth Year:\t%s' % self.by)
+        print('\tBirth Date:\t%s' % self.bd)
+        print('\tSex:\t\t%s' % self.sex)
+        print('\tCoI (f_a):\t%s' % self.fa)
+        print('\tFounder:\t%s' % self.founder)
+        print('\tSons:\t\t%s' % self.sons)
+        print('\tDaughters:\t%s' % self.daus)
+        print('\tUnknowns:\t%s' % self.unks)
+        print('\tAncestor:\t%s' % self.ancestor)
+        print('\tAlleles:\t%s' % self.alleles)
+        print('\tOriginal ID:\t%s' % self.originalID)
+        print('\tRenumbered ID:\t%s' % self.renumberedID)
+        print('\tPedigree Comp.:\t%s' % self.pedcomp)
+        print('\tBreed:\t%s' % self.breed)
+        print('\tAge:\t%s' % self.age)
+        print('\tAlive:\t%s' % self.alive)
+        print('\tHerd:\t%s' % self.herd)
+        print('\tHerd name:\t%s' % self.originalHerd)
         if self.userField != '':
-            print '\tUser field:\t%s' % self.userField
+            print('\tUser field:\t%s' % self.userField)
 
     ##
     # stringme() returns a summary of the data stored in the NewAnimal() object
@@ -3036,15 +3036,15 @@ class NewAnimal:
         Trap common errors in pedigree file entries.
         """
         if int(self.animalID) == int(self.sireID):
-            print '[ERROR]: Animal %s has an ID number equal to its sire\'s ID (sire ID %s).\n' % (
-                self.animalID, self.sireID)
+            print('[ERROR]: Animal %s has an ID number equal to its sire\'s ID (sire ID %s).\n' % (
+                self.animalID, self.sireID))
         if int(self.animalID) == int(self.damID):
-            print '[ERROR]: Animal %s has an ID number equal to its dam\'s ID (dam ID %s).\n' % (
-                self.animalID, self.damID)
+            print('[ERROR]: Animal %s has an ID number equal to its dam\'s ID (dam ID %s).\n' % (
+                self.animalID, self.damID))
         if int(self.animalID) < int(self.sireID):
-            print '[ERROR]: Animal %s is older than its sire (sire ID %s).\n' % (self.animalID, self.sireID)
+            print('[ERROR]: Animal %s is older than its sire (sire ID %s).\n' % (self.animalID, self.sireID))
         if int(self.animalID) < int(self.damID):
-            print '[ERROR]: Animal %s is older than its dam (dam ID %s).\n' % (self.animalID, self.damID)
+            print('[ERROR]: Animal %s is older than its dam (dam ID %s).\n' % (self.animalID, self.damID))
 
     ##
     # pad_id() takes an Animal ID, pads it to fifteen digits, and prepends the birthyear
@@ -3058,7 +3058,7 @@ class NewAnimal:
         if the birth year is unknown).  The order of elements is: birthyear, animalID,
         count of zeros, zeros.
         """
-        # print 'Animal ID: ', self.animalID
+        # print('Animal ID: ', self.animalID)
         l = len(str(self.animalID))
         pl = 15 - l - 1
         if pl > 0:
@@ -3197,14 +3197,14 @@ class LightAnimal:
         """
         Print the contents of an animal record - used for debugging.
         """
-        print 'ANIMAL %s RECORD' % (int(self.animalID))
-        print '\tAnimal ID:\t%s' % (int(self.animalID))
-        print '\tSire ID:\t%s' % (int(self.sireID))
-        print '\tDam ID:\t\t%s' % (int(self.damID))
-        print '\tBirth Year:\t%s' % (int(self.by))
-        print '\tSex:\t\t%s' % (self.sex)
-        print '\tOriginal ID:\t%s' % (self.originalID)
-        print '\tRenumbered ID:\t%s' % (self.renumberedID)
+        print('ANIMAL %s RECORD' % (int(self.animalID)))
+        print('\tAnimal ID:\t%s' % (int(self.animalID)))
+        print('\tSire ID:\t%s' % (int(self.sireID)))
+        print('\tDam ID:\t\t%s' % (int(self.damID)))
+        print('\tBirth Year:\t%s' % (int(self.by)))
+        print('\tSex:\t\t%s' % (self.sex))
+        print('\tOriginal ID:\t%s' % (self.originalID))
+        print('\tRenumbered ID:\t%s' % (self.renumberedID))
 
     ##
     # stringme() returns a summary of the data stored in the LightAnimal() object
@@ -3258,15 +3258,15 @@ class LightAnimal:
         Trap common errors in pedigree file entries.
         """
         if int(self.animalID) == int(self.sireID):
-            print '[ERROR]: Animal %s has an ID number equal to its sire\'s ID (sire ID %s).\n' % (
-                self.animalID, self.sireID)
+            print('[ERROR]: Animal %s has an ID number equal to its sire\'s ID (sire ID %s).\n' % (
+                self.animalID, self.sireID))
         if int(self.animalID) == int(self.damID):
-            print '[ERROR]: Animal %s has an ID number equal to its dam\'s ID (dam ID %s).\n' % (
-                self.animalID, self.damID)
+            print('[ERROR]: Animal %s has an ID number equal to its dam\'s ID (dam ID %s).\n' % (
+                self.animalID, self.damID))
         if int(self.animalID) < int(self.sireID):
-            print '[ERROR]: Animal %s is older than its sire (sire ID %s).\n' % (self.animalID, self.sireID)
+            print('[ERROR]: Animal %s is older than its sire (sire ID %s).\n' % (self.animalID, self.sireID))
         if int(self.animalID) < int(self.damID):
-            print '[ERROR]: Animal %s is older than its dam (dam ID %s).\n' % (self.animalID, self.damID)
+            print('[ERROR]: Animal %s is older than its dam (dam ID %s).\n' % (self.animalID, self.damID))
 
     ##
     # pad_id() takes an Animal ID, pads it to fifteen digits, and prepends the birthyear
@@ -3280,7 +3280,7 @@ class LightAnimal:
         if the birth year is unknown).  The order of elements is: birthyear, animalID,
         count of zeros, zeros.
         """
-        # print self.animalID
+        # print(self.animalID)
         l = len(self.animalID)
         pl = 15 - l - 1
         if pl > 0:
@@ -3358,45 +3358,45 @@ class PedigreeMetadata:
         """
         self.kw = kw
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Instantiating a new PedigreeMetadata() object...'
+            print('\t[INFO]:  Instantiating a new PedigreeMetadata() object...')
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Naming the Pedigree()...'
+            print('\t[INFO]:  Naming the Pedigree()...')
         self.name = kw['pedname']
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Assigning a filename...'
+            print('\t[INFO]:  Assigning a filename...')
         self.filename = kw['pedfile']
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Attaching a pedigree...'
+            print('\t[INFO]:  Attaching a pedigree...')
         self.myped = myped
         if kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Setting the pedcode...'
+            print('\t[INFO]:  Setting the pedcode...')
         self.pedcode = kw['pedformat']
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Counting the number of animals in the pedigree...'
+            print('\t[INFO]:  Counting the number of animals in the pedigree...')
         self.num_records = len(self.myped)
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Counting and finding unique sires...'
+            print('\t[INFO]:  Counting and finding unique sires...')
         self.num_unique_sires, self.unique_sire_list = self.nus()
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Counting and finding unique dams...'
+            print('\t[INFO]:  Counting and finding unique dams...')
         self.num_unique_dams, self.unique_dam_list = self.nud()
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Setting renumbered flag...'
+            print('\t[INFO]:  Setting renumbered flag...')
         self.renumbered = kw['renumber']
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Counting and finding unique generations...'
+            print('\t[INFO]:  Counting and finding unique generations...')
         self.num_unique_gens, self.unique_gen_list = self.nug()
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Counting and finding unique birthyears...'
+            print('\t[INFO]:  Counting and finding unique birthyears...')
         self.num_unique_years, self.unique_year_list = self.nuy()
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Counting and finding unique founders...'
+            print('\t[INFO]:  Counting and finding unique founders...')
         self.num_unique_founders, self.unique_founder_list = self.nuf()
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Counting and finding unique herds...'
+            print('\t[INFO]:  Counting and finding unique herds...')
         self.num_unique_herds, self.unique_herd_list = self.nuherds()
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-            print '\t[INFO]:  Detaching pedigree...'
+            print('\t[INFO]:  Detaching pedigree...')
         self.myped = []
 
     ##
@@ -3407,27 +3407,27 @@ class PedigreeMetadata:
         """
         Print the pedigree metadata.
         """
-        print 'Metadata for %s (%s)' % (self.name, self.filename)
-        print '\tRecords:\t\t%s' % (self.num_records)
-        print '\tUnique Sires:\t\t%s' % (self.num_unique_sires)
+        print('Metadata for %s (%s)' % (self.name, self.filename))
+        print('\tRecords:\t\t%s' % (self.num_records))
+        print('\tUnique Sires:\t\t%s' % (self.num_unique_sires))
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary'] > 1:
-            print '\tSires:\t\t%s' % (self.unique_sire_list)
-        print '\tUnique Dams:\t\t%s' % (self.num_unique_dams)
+            print('\tSires:\t\t%s' % (self.unique_sire_list))
+        print('\tUnique Dams:\t\t%s' % (self.num_unique_dams))
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary'] > 1:
-            print '\tDams:\t\t%s' % (self.unique_dam_list)
-        print '\tUnique Gens:\t\t%s' % (self.num_unique_gens)
+            print('\tDams:\t\t%s' % (self.unique_dam_list))
+        print('\tUnique Gens:\t\t%s' % (self.num_unique_gens))
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary'] > 1:
-            print '\tGenerations:\t\t%s' % (self.unique_gen_list)
-        print '\tUnique Years:\t\t%s' % (self.num_unique_years)
+            print('\tGenerations:\t\t%s' % (self.unique_gen_list))
+        print('\tUnique Years:\t\t%s' % (self.num_unique_years))
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary'] > 1:
-            print '\tYear:\t\t%s' % (self.unique_year_list)
-        print '\tUnique Founders:\t%s' % (self.num_unique_founders)
+            print('\tYear:\t\t%s' % (self.unique_year_list))
+        print('\tUnique Founders:\t%s' % (self.num_unique_founders))
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary'] > 1:
-            print '\tFounders:\t\t%s' % (self.unique_founder_list)
-        print '\tUnique Herds:\t\t%s' % (self.num_unique_herds)
+            print('\tFounders:\t\t%s' % (self.unique_founder_list))
+        print('\tUnique Herds:\t\t%s' % (self.num_unique_herds))
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary'] > 1:
-            print '\tHerds:\t\t%s' % (self.unique_herd_list)
-        print '\tPedigree Code:\t\t%s' % (self.pedcode)
+            print('\tHerds:\t\t%s' % (self.unique_herd_list))
+        print('\tPedigree Code:\t\t%s' % (self.pedcode))
 
     ##
     # stringme() returns a summary of the metadata stored in the pedigree as
@@ -3601,7 +3601,7 @@ class NewAMatrix:
         if self.kw['nrm_method'] not in ['nrm', 'frm']:
             self.kw['nrm_method'] = 'nrm'
         if self.kw['messages'] == 'verbose':
-            print '[INFO]: Forming A-matrix from pedigree at %s.' % (pyp_utils.pyp_nice_time())
+            print('[INFO]: Forming A-matrix from pedigree at %s.' % (pyp_utils.pyp_nice_time()))
         logging.info('Forming A-matrix from pedigree')
         # Try and form the NRM where COI are not adjusted for the inbreeding
         # of parents.
@@ -3609,13 +3609,13 @@ class NewAMatrix:
             try:
                 self.nrm = pyp_nrm.fast_a_matrix(pedigree, self.kw)
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix() at %s.' % (
-                        pyp_utils.pyp_nice_time())
+                    print('[INFO]: Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix() at %s.' % (
+                        pyp_utils.pyp_nice_time()))
                 logging.info('Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()')
             except:
                 if self.kw['messages'] == 'verbose':
-                    print '[ERROR]: Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix() at %s.' % (
-                        pyp_utils.pyp_nice_time())
+                    print('[ERROR]: Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix() at %s.' % (
+                        pyp_utils.pyp_nice_time()))
                 logging.error('Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix()')
                 return 0
         # Otherwise try and form the NRM where COI are adjusted for the inbreeding
@@ -3624,13 +3624,13 @@ class NewAMatrix:
             try:
                 self.nrm = pyp_nrm.fast_a_matrix_r(pedigree, self.kw)
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix_r() at %s.' % (
-                        pyp_utils.pyp_nice_time())
+                    print('[INFO]: Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix_r() at %s.' % (
+                        pyp_utils.pyp_nice_time()))
                 logging.info('Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix_r()')
             except:
                 if self.kw['messages'] == 'verbose':
-                    print '[ERROR]: Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix_r() at %s.' % (
-                        pyp_utils.pyp_nice_time())
+                    print('[ERROR]: Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix_r() at %s.' % (
+                        pyp_utils.pyp_nice_time()))
                 logging.error('Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix_r()')
                 return 0
 
@@ -3647,19 +3647,19 @@ class NewAMatrix:
         """
         import math
         if self.kw['messages'] == 'verbose':
-            print '[INFO]: Loading A-matrix from file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time())
+            print('[INFO]: Loading A-matrix from file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time()))
         logging.info('Loading A-matrix from file %s', nrm_filename)
         try:
             self.nrm = numpy.fromfile(nrm_filename, dtype='Float64', sep=self.kw['sepchar'])
             self.nrm = numpy.reshape(self.nrm, (int(math.sqrt(self.nrm.shape[0])), int(math.sqrt(self.nrm.shape[0]))))
             if self.kw['messages'] == 'verbose':
-                print '[INFO]: A-matrix successfully loaded from file %s at %s.' % (
-                    nrm_filename, pyp_utils.pyp_nice_time())
+                print('[INFO]: A-matrix successfully loaded from file %s at %s.' % (
+                    nrm_filename, pyp_utils.pyp_nice_time()))
             logging.info('A-matrix successfully loaded from file %s', nrm_filename)
             return 1
         except:
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Unable to load A-matrix from file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time())
+                print('[ERROR]: Unable to load A-matrix from file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time()))
             logging.error('Unable to load A-matrix from file %s', nrm_filename)
             return 0
 
@@ -3674,7 +3674,7 @@ class NewAMatrix:
         save() uses the NumPy method "tofile()" to save an array to a binary file.
         """
         if self.kw['messages'] == 'verbose':
-            print '[INFO]: Saving A-matrix to file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time())
+            print('[INFO]: Saving A-matrix to file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time()))
         logging.info('Saving A-matrix to file %s', nrm_filename)
         try:
             # If the user passes in an nrm_format keyword it overrides the
@@ -3687,13 +3687,13 @@ class NewAMatrix:
             else:
                 self.nrm.tofile(nrm_filename, sep=self.kw['sepchar'])
             if self.kw['messages'] == 'verbose':
-                print '[INFO]: A-matrix successfully saved to file %s at %s.' % (
-                    nrm_filename, pyp_utils.pyp_nice_time())
+                print('[INFO]: A-matrix successfully saved to file %s at %s.' % (
+                    nrm_filename, pyp_utils.pyp_nice_time()))
             logging.info('A-matrix successfully saved to file %s', nrm_filename)
             return 1
         except:
             if self.kw['messages'] == 'verbose':
-                print '[ERROR]: Unable to save A-matrix to file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time())
+                print('[ERROR]: Unable to save A-matrix to file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time()))
             logging.error('Unable to save A-matrix to file %s', nrm_filename)
             return 0
 
@@ -3706,7 +3706,7 @@ class NewAMatrix:
         printme() prints the NRM to the screen.
         """
         try:
-            print self.nrm
+            print(self.nrm)
         except:
             pass
 
@@ -3731,7 +3731,7 @@ def loadPedigree(options={}, optionsfile='pypedal.ini', pedsource='file', pedgra
     is empty.
     """
     if debugLoad:
-        print '[DEBUG]: Debugging pyp_newclasses/loadPedigree()...'
+        print('[DEBUG]: Debugging pyp_newclasses/loadPedigree()...')
         _pedigree = NewPedigree(kw=options, kwfile=optionsfile)
         _pedigree.load(pedsource=pedsource, pedgraph=pedgraph, pedstream=pedstream)
         return _pedigree
@@ -3741,7 +3741,7 @@ def loadPedigree(options={}, optionsfile='pypedal.ini', pedsource='file', pedgra
             _pedigree.load(pedsource=pedsource, pedgraph=pedgraph, pedstream=pedstream)
             return _pedigree
         except:
-            print '[ERROR]: pyp_newclasses.loadPedigree() was unable to instantiate and load the pedigree.'
+            print('[ERROR]: pyp_newclasses.loadPedigree() was unable to instantiate and load the pedigree.')
         return 0
 
 

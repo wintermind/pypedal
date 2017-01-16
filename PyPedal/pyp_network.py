@@ -33,13 +33,13 @@
 # pyp_network contains a set of procedures for working with pedigrees as directed
 # graphs.
 ##
-
+from __future__ import print_function
 import copy, logging
 
 try:
     import networkx
 except ImportError:
-    print '[WARNING]: The networkx module could not be imported in pyp_network.  Routines using networkx functionality are not available.'
+    print('[WARNING]: The networkx module could not be imported in pyp_network.  Routines using networkx functionality are not available.')
 
 ##
 # ped_to_graph() Takes a PyPedal pedigree object and returns a networkx DiGraph
@@ -58,17 +58,17 @@ def ped_to_graph(pedobj, oid=0):
         # The order in which we pass arguments to add_edge() is important -- the
         # parent has to be the first argument and the offspring the second if the
         # graph is to be ordered in the correct direction.
-	#print 'Adding node %s' % ( i )
+	#print('Adding node %s' % ( i ))
 	if oid:
 	    G.add_node(int(pedobj.pedigree[i].originalID),
   	        sire=str(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID),
 	        dam=str(pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID))
-	    #print G.node[int(pedobj.pedigree[i].originalID)]
+	    #print(G.node[int(pedobj.pedigree[i].originalID)])
 	else:
             G.add_node(int(pedobj.pedigree[i].animalID),
 	        sire=str(pedobj.pedigree[i].sireID),
 		dam=str(pedobj.pedigree[i].damID))
-	    #print G.node[int(pedobj.pedigree[i].animalID)]
+	    #print(G.node[int(pedobj.pedigree[i].animalID)])
         if str(pedobj.pedigree[i].sireID) != str(pedobj.kw['missing_parent']):
             if oid:
                 G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID, int(pedobj.pedigree[i].originalID), sex='s')
@@ -101,13 +101,13 @@ def find_ancestors(pedgraph,anid,_ancestors=[]):
     find_ancestors() identifies the ancestors of an animal and returns them in a list.
     """
     anid = int(anid)
-    #print 'anid:\t\t%d' % ( anid )
+    #print('anid:\t\t%d' % ( anid ))
     try:
         _pred = pedgraph.predecessors(anid)
         for _p in _pred:
             if _p not in _ancestors:
                 _ancestors.append(int(_p))
-            #print _ancestors
+            #print(_ancestors)
             find_ancestors(pedgraph,_p,_ancestors)
     except:
         pass
@@ -124,21 +124,21 @@ def find_ancestors_g(pedgraph, anid, _ancestors={}, gens=3):
     """
     find_ancestors_g() identifies the ancestors of an animal and returns them in a list.
     """
-    #print 'anid:\t\t%d' % ( anid )
-    #print 'gens:\t\t%d' % ( gens )
+    #print('anid:\t\t%d' % ( anid ))
+    #print('gens:\t\t%d' % ( gens ))
     if gens == 0:
         return _ancestors
     else:
         try:
             _pred = pedgraph.predecessors(anid)
-            #print '_pred:\t\t%s' % ( _pred )
+            #print('_pred:\t\t%s' % ( _pred ))
             for _p in _pred:
                 if _p not in _ancestors:
                     _ancestors[_p] = gens
                     find_ancestors_g(pedgraph, _p, _ancestors, gens-1)
         except:
             pass
-    #print 'ancestors:\t%s' % ( _ancestors )
+    #print('ancestors:\t%s' % ( _ancestors ))
     return _ancestors
 
 ##
@@ -152,7 +152,7 @@ def find_descendants(pedgraph, anid, _descendants=[]):
     find_descendants() identifies the descendants of an animal and returns them in a list.
     """
     try:
-        #print '\t%s\t%s' % ( anid, _descendants )
+        #print('\t%s\t%s' % ( anid, _descendants ))
         _desc = pedgraph.successors(anid)
         for _d in _desc:
             if _d not in _descendants:
@@ -230,7 +230,7 @@ def most_influential_offspring(pedgraph, anid, resolve='all'):
         if resolve == 'all':
             _tempoffdict = {}
         _offspring = offspring_influence(pedgraph,anid)
-        #print _offspring
+        #print(_offspring)
         for _o in _offspring:
             # If there are ties, return the ID for the first offspring
             # seen with that number of progeny.
@@ -281,7 +281,7 @@ def get_founder_descendants(pedgraph):
             _desc = {}
             _desc = find_descendants(pedgraph,_n,[])
             founder_desc[_n] = _desc
-            print '\t%s\t%s' % ( _n, founder_desc[_n] )
+            print('\t%s\t%s' % ( _n, founder_desc[_n] ))
     try: logging.info('Exited get_founder_descendants()')
     except: pass
     return founder_desc
@@ -377,8 +377,8 @@ def mean_geodesic(pg, debug=0):
     except:
         geodesic = -999.
     if debug:
-        print 'length_sum:\t', length_sum
-        print 'n_pairs_with_paths:\t', n_pairs_with_paths
+        print('length_sum:\t', length_sum)
+        print('n_pairs_with_paths:\t', n_pairs_with_paths)
     return geodesic
 
 ##
@@ -430,7 +430,7 @@ def dyad_census(pg, debug=0, debuglog=0):
                 elif u in pg.predecessors(v) and v in pg.successors(u):
                     census['mutual'] = census['mutual'] + 1
                     if debug:
-                        print 'Nodes %s and %s link to one another!' % ( u, v )
+                        print('Nodes %s and %s link to one another!' % ( u, v ))
                     if debuglog:
                         logging.error('Nodes %s and %s link to one another!',u, v)
                 elif u in pg.predecessors(v) and v not in pg.successors(u):
