@@ -415,6 +415,7 @@ def fast_a_matrix_r(pedigree, pedopts, save=0, method='dense'):
                 else:
                     pass
     except:
+        import numpy
         a = numpy.zeros([1,1],'d')
     # print(a)
     if save == 1:
