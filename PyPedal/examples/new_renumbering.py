@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_graphics.py
 # VERSION: 2.0.0b5 (19DECEMBER2005)
@@ -15,12 +15,12 @@ if __name__ == '__main__':
 
     example = pyp_newclasses.loadPedigree(optionsfile='new_renumbering.ini')
 
-    print '-'*80
-    print 'INFO: Pedigree ID map: %s' % (example.idmap)
-    print '-'*80
-    print 'INFO: Pedigree ID reverse map: %s' % (example.backmap)
-    print '-'*80
+    print('-'*80)
+    print('INFO: Pedigree ID map: %s' % (example.idmap))
+    print('-'*80)
+    print('INFO: Pedigree ID reverse map: %s' % (example.backmap))
+    print('-'*80)
     myinbr = pyp_nrm.inbreeding(example)
-    print 'INFO: Coefficients of inbreeding: %s' % (myinbr)
+    print('INFO: Coefficients of inbreeding: %s' % (myinbr))
 
     pyp_graphics.draw_pedigree(example,gfilename='new_renumbering',gtitle='My  Pedigree')

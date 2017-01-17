@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_reporting.py
 # VERSION: 2.0.0b7 (11APRIL2006)
@@ -27,13 +27,13 @@ if __name__ == '__main__':
     #coi_by_year = pyp_reports.meanMetricBy(example,metric='fa',byvar='by',createpdf=1)
     #coi_by_year
 
-    #print ib
+    #print(ib)
     #for _e in example.pedigree:
-        #print _e.name, _e.fa
+        #print(_e.name, _e.fa)
 
-    print example.kw['paper_size']
+    print(example.kw['paper_size'])
 
-    #print example.backmap
+    #print(example.backmap)
     ## Use with new_renumbering.ped.
     #pyp_reports.pdf3GenPed([56,72], example)
     ## Use with horse.ped.
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     #pyp_metrics.mating_coi_group(matings,example,names=1)
 
     pg = pyp_network.ped_to_graph(example)
-    #print pg, pg.degree(), pg.nodes()
+    #print(pg, pg.degree(), pg.nodes())
     census = pyp_network.dyad_census(pg,debug=1)
-    print 'max dyads:\t', ( ( pg.order()*(pg.order()-1) ) / 2 )
-    print 'census:\t\t', census
+    print('max dyads:\t', ( ( pg.order()*(pg.order()-1) ) / 2 ))
+    print('census:\t\t', census)

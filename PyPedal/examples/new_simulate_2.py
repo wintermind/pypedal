@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_simulate.py
 # VERSION: 2.0.0b15 (08JUNE2005)
@@ -15,6 +15,6 @@ import networkx
 if __name__ == '__main__':
 
     for i in range(1):
-        print 'Simulating and drawing pedigree %d' % ( i )
+        print('Simulating and drawing pedigree %d' % ( i ))
         example = pyp_newclasses.loadPedigree(optionsfile='new_simulate.ini')
-        print example
+        print(example)

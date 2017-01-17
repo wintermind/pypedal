@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_db.py
 # VERSION: 2.0.0b5 (29DECEMBER2005)
@@ -28,17 +28,17 @@ if __name__ == '__main__':
     example = pyp_newclasses.loadPedigree(options)
     pyp_nrm.inbreeding(example)
 
-    print 'Dropping existing table...'
+    print('Dropping existing table...')
     pyp_db.deleteTable(example)
-    print 'Checking to see if the table is gone...'
+    print('Checking to see if the table is gone...')
     pyp_db.doesTableExist(example)
-    print 'Creating the table...'
+    print('Creating the table...')
     pyp_db.createPedigreeTable(example)
-    print 'Populating the table...'
+    print('Populating the table...')
     pyp_db.populatePedigreeTable(example)
 
     mean_inbreeding = pyp_reports.meanMetricBy(example,metric='fa',byvar='by')
-    print mean_inbreeding
+    print(mean_inbreeding)
 
     pyp_graphics.plot_line_xy(mean_inbreeding, gfilename='great_tit_coi_by_year', \
         gtitle='', gxlabel='Birth year', gylabel='Coefficient of inbreeding')

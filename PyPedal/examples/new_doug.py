@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_doug.py
 # VERSION: 2.0.0b5 (13DECEMBER2005)
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     example = pyp_newclasses.loadPedigree(optionsfile='new_doug.ini')
 
     if example.kw['messages'] == 'verbose':
-        print '[INFO]: Calling pyp_graphics.draw_pedigree() at %s' % (pyp_nice_time())
+        print('[INFO]: Calling pyp_graphics.draw_pedigree() at %s' % (pyp_nice_time()))
 
     pyp_graphics.draw_pedigree(example, gfilename='doug_below',
         gtitle='Doug the German Shepherd (B)', gorient='p', gname=1, gdirec='',

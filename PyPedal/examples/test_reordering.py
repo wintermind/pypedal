@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_amatrix.py
 # VERSION: 2.0.0rc7 (07MAY2008)
@@ -16,7 +16,7 @@ import time
 
 if __name__ == '__main__':
 
-    print 'Starting pypedal.py at %s' % (pyp_nice_time())
+    print('Starting pypedal.py at %s' % (pyp_nice_time()))
 
     example = pyp_newclasses.loadPedigree(optionsfile='new_amatrix.ini')
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
 #    amatrix2.load('boichard2_pedigree.bin')
 
     # Calculate coefficients of inbreeding on this pedigree.
-    print '\tEntering pyp_nrm.inbreeding() at %s' % (pyp_nice_time())
+    print('\tEntering pyp_nrm.inbreeding() at %s' % (pyp_nice_time()))
     example_inbreeding = pyp_nrm.inbreeding(example,method='vanraden')
-    print '\tReturning from pyp_nrm.inbreeding() at %s' % (pyp_nice_time())
-    print example_inbreeding['metadata']
+    print('\tReturning from pyp_nrm.inbreeding() at %s' % (pyp_nice_time()))
+    print(example_inbreeding['metadata'])

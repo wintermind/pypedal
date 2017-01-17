@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_graphics.py
 # VERSION: 2.0.0b5 (13DECEMBER2005)
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     pyp_db.deleteTable(example)
     pyp_db.populatePedigreeTable(example)
     coi_by_year = pyp_reports.meanMetricBy(example, metric='fa', byvar='by')
-    print 'coi_by_year: ', coi_by_year
+    print('coi_by_year: ', coi_by_year)
     cby = coi_by_year
     del(cby[1900])
     pyp_graphics.plot_line_xy(coi_by_year, gfilename='dog_coi_by_year',

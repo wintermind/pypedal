@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: example_a_matrix.py
 # VERSION: 2.0.0 (29 August 2013)
@@ -24,7 +24,7 @@ options['renumber'] = 1
 
 if __name__ == '__main__':
 
-    print 'Starting pypedal.py at %s' % (pyp_utils.pyp_nice_time())
+    print('Starting pypedal.py at %s' % (pyp_utils.pyp_nice_time()))
 
     # example is a PyPedal NewPedigree object that stores the individual
     # animal records, as well as other information about the pedigree.
@@ -53,20 +53,20 @@ if __name__ == '__main__':
     # VanRaden's method is slow, but it will work (eventually) on just about any
     # pedigree you give it. It also is the only method that will allow you to
     # compute summary statistics about coefficients of relationship.
-    print '\tEntering pyp_nrm.inbreeding() at %s' % (pyp_utils.pyp_nice_time())
+    print('\tEntering pyp_nrm.inbreeding() at %s' % (pyp_utils.pyp_nice_time()))
     example_inbreeding = pyp_nrm.inbreeding(example,method='vanraden')
-    print '\tReturning from pyp_nrm.inbreeding() at %s' % (pyp_utils.pyp_nice_time())
-    print example_inbreeding['metadata']
+    print('\tReturning from pyp_nrm.inbreeding() at %s' % (pyp_utils.pyp_nice_time()))
+    print(example_inbreeding['metadata'])
 
     # If all you want are fast calculations of inbreeding coefficients, then you
     # should use the Meuwissen & Luo or modified Meuwissen & Luo methods.
-    print '\tStarted computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
+    print('\tStarted computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time()))
     test_inbreeding_ml = pyp_nrm.inbreeding(example, method='meu_luo')
-    print '\tFinished computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
-    print test_inbreeding_ml['metadata']
+    print('\tFinished computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time()))
+    print(test_inbreeding_ml['metadata'])
 
     # All methods should produce the same coefficients of inbreeding.
-    print '\n\tStarted computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
+    print('\n\tStarted computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time()))
     test_inbreeding_qu = pyp_nrm.inbreeding(example, method='mod_meu_luo')
-    print '\tFinished computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
-    print test_inbreeding_qu['metadata']
+    print('\tFinished computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time()))
+    print(test_inbreeding_qu['metadata'])

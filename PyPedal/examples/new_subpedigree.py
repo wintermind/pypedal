@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_subpedigree.py
 # VERSION: 2.0.0b14 (16MAY2006)
@@ -16,7 +16,7 @@ from PyPedal.pyp_utils import pyp_nice_time
 if __name__ == '__main__':
 
     example = pyp_newclasses.loadPedigree(optionsfile='new_subpedigree.ini')
-    print '='*70
+    print('='*70)
     keepid = []
     for k in ['Clover','Dewey','Wicket']:
         ped = pyp_nrm.recurse_pedigree(example,example.idmap[example.namemap[k]],[])

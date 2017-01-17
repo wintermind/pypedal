@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_hartl.py
 # VERSION: 2.0.0b12 (15MAY2060)
@@ -20,6 +20,5 @@ if __name__ == '__main__':
         gorient='p', gname=0, gdirec='', gfontsize=12, garrow=0)
 
     example_inbreeding = pyp_nrm.inbreeding(example)
-    print example_inbreeding
+    print(example_inbreeding)
 
-	

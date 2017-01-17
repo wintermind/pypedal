@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_inbreeding.py
 # VERSION: 2.0.0b10 (10MAY2006)
@@ -29,22 +29,22 @@ if __name__ == '__main__':
 		options['simulate_n'] = size
 		options['pedname'] = 'Simulated Pedigree ' + str(size)
 		options['pedfile'] = 'simulated_pedigree_' +  str(size) + '.ped'
-		print '\nStarted pedigree simulation with %s animals at %s' % (size, pyp_utils.pyp_nice_time())
+		print('\nStarted pedigree simulation with %s animals at %s' % (size, pyp_utils.pyp_nice_time()))
 	        test = pyp_newclasses.loadPedigree(options)
-		print 'Finished pedigree simulation with %s animals at %s' % (size, pyp_utils.pyp_nice_time())
+		print('Finished pedigree simulation with %s animals at %s' % (size, pyp_utils.pyp_nice_time()))
 
-		print '\n\tStarted computing inbreeding using VanRaden\'s method  at %s' % (pyp_utils.pyp_nice_time())
+		print('\n\tStarted computing inbreeding using VanRaden\'s method  at %s' % (pyp_utils.pyp_nice_time()))
 		test_inbreeding_vr = pyp_nrm.inbreeding(test, method='vanraden')
-		print '\tFinished computing inbreeding using VanRaden\'s method  at %s' % (pyp_utils.pyp_nice_time())
+		print('\tFinished computing inbreeding using VanRaden\'s method  at %s' % (pyp_utils.pyp_nice_time()))
 
-		print '\n\tStarted computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
+		print('\n\tStarted computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time()))
 		test_inbreeding_ml = pyp_nrm.inbreeding(test, method='meu_luo')
-		print '\tFinished computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time())
+		print('\tFinished computing inbreeding using Meuwissen and Luo\'s method  at %s' % (pyp_utils.pyp_nice_time()))
 
-		print '\n\tStarted computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
+		print('\n\tStarted computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time()))
 		test_inbreeding_qu = pyp_nrm.inbreeding(test, method='mod_meu_luo')
-		print '\tFinished computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time())
+		print('\tFinished computing inbreeding using Meuwissen and Luo\'s modified method  at %s' % (pyp_utils.pyp_nice_time()))
 
-		print '\n\tVanRaden                  : ', test_inbreeding_vr['metadata']
-		print '\n\tMeuwissen and Luo         : ', test_inbreeding_ml['metadata']
-		print '\n\tModified Meuwissen and Luo: ', test_inbreeding_qu['metadata']
+		print('\n\tVanRaden                  : ', test_inbreeding_vr['metadata'])
+		print('\n\tMeuwissen and Luo         : ', test_inbreeding_ml['metadata'])
+		print('\n\tModified Meuwissen and Luo: ', test_inbreeding_qu['metadata'])

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 ###############################################################################
 # NAME: new_graphics3.py
 # VERSION: 2.0.0b15 (18SEPTEMBER2006)
@@ -17,11 +17,11 @@ from PyPedal.pyp_utils import pyp_nice_time
 
 if __name__ == '__main__':
 
-    print 'Starting pypedal.py at %s' % (pyp_nice_time())
+    print('Starting pypedal.py at %s' % (pyp_nice_time()))
 
     example = pyp_newclasses.loadPedigree(optionsfile='new_graphics3.ini')
     if example.kw['messages'] == 'verbose':
-        print '[INFO]: Calling pyp_graphics.new_draw_pedigree() at %s' % (pyp_nice_time())
+        print('[INFO]: Calling pyp_graphics.new_draw_pedigree() at %s' % (pyp_nice_time()))
     pyp_graphics.new_draw_pedigree(example, gfilename='graphics3', gtitle='graphics3 pedigree', gorient='p')
 
     pyp_jbc.color_pedigree(example,gfilename='graphics3', ghatch='0', \
