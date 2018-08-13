@@ -32,11 +32,16 @@
 # large pedigrees using the recursive method of VanRaden (1992).
 ##
 
+import datetime
+import logging
+import numpy
+import subprocess
+import time
 try:
     from pysparse import spmatrix
 except ImportError:
-    #logging.info('Could not import the spmatrix module from PySparse! Using NumPY dense matrices instead.')
-    print '[INFO]: Could not import the spmatrix module from PySparse in pyp_nrm! NumPY dense matrices will be used instead.'
+    #logging.info('Could not import the spmatrix module from PySparse! Using NumPy dense matrices instead.')
+    print '[INFO]: Could not import the spmatrix module from PySparse in pyp_nrm! NumPy dense matrices will be used instead.'
 import pyp_utils
 
 ##
@@ -462,7 +467,7 @@ def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0, amet
     except: pass
     fx = {}
     metadata = {}
-    if method not in ['vanraden','tabular','meu_luo', 'mod_meu_luo', 'aguilar']:
+    if method not in ['vanraden', 'tabular', 'meu_luo', 'mod_meu_luo', 'aguilar']:
         try: logging.warning('You passed an unrecognized method, %s, to pyp_nrm/inbreeding(); the method was changed to the default of \'tabular\'.', method)
         except: pass
         method = 'tabular'
@@ -535,7 +540,8 @@ def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0, amet
                 logging.warning('You asked pyp_nrm.inbreeding() to compute relationships as well as inbreeding, but requested method %s, which does not provide coefficients of relationship. Only coefficients of inbreeding will be returned.', method)
             fx = inbreeding_modified_meuwissen_luo(pedobj, gens=gens, rels=rels)
         elif method == 'aguilar':
-            logging.info('Using the INBUPGF90 program to compute inbreeding with method ', amethod)
+            try: logging.info('Using the INBUPGF90 program to compute inbreeding with method %s.' % amethod)
+            except: pass
             fx = inbreeding_aguilar(pedobj, amethod)
         else:
             if rels:

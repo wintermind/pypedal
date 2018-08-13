@@ -12,11 +12,51 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
-*** 11/23/2015  Began work on a brand nre, from-scratch manual using Sphinx.
+### 05/15/2018  The gen/gencoeff/igen mess needs to be fixed.
+??? 05/15/2018  pyp_metrics/a_effective_ancestors_definite() may only work correctly
+    if the founders occur in the first generation (see example from Lucy Egan).
+??? 04/12/2018  It looks as though pysparse isn't an active project anymore,
+    so the option should probably be removed from pyp_nrm. Maybe replace with
+    scipy.sparse?
+!!! 03/05/2018  pyp_utils/set_upg() needs a flag that will force addition of
+    UPG to a reordered, renumbered pedigree. The pedigree will be reordered and
+    renumbered again.
+XXX 03/05/2018  pyp_utils/assign_upg() is now deprecated in favor of
+    pyp_utils/set_upg().
+XXX 03/05/2018  pyp_utils/assign_offspring() is now deprecated in favor of
+    pyp_utils/set_offspring().
+XXX 03/05/2018  pyp_utils/assign_sexes() is now deprecated in favor of
+    pyp_utils/set_sexes().
+''' 03/05/2018  pyp_utils/set_age() now uses kw['missing_value'] instead of
+    -999 for missing values.
+??? 03/05/2018  Should pyp_utils/set_generation() check the flags to ensure
+    that the pedigree is reordered and renumbered? It would be better to give
+    the user a warning there's a problem instead of doing weird things with
+    no indication there's an issue.
+??? 03/05/2018  Can pyp_utils/set_ancestor_flag() use the parent list from
+    the pedigree metadata to avoid walking the pedigree to find the parents?
+    It seems redundant...
++++ 03/05/2018  Added pyp_utils/remove_missing(), which removes from the
+    pedigree any animal with the missing parent indicator as its ID.
+''' 03/05/2018  pyp_network::find_ancestors() has been rewritten to make
+    use of NetworkX functions instead of my hand-rolled recursion.
+''' 03/05/2018  pyp_network::find_descendants() has been rewritten to make
+    use of NetworkX functions instead of my hand-rolled recursion.
+### 03/05/2018  NetworkX 2 is out, and there have been some changes that
+    break things in pyp_network.py. Fixes won't result in any user-facing API
+    changes. I don't think.
+''' 03/05/2018  Added a new option, 'missing_value' to pyp_newclasses::NewPedigree().
+    Functions that return numneric values will be revised to use this as the
+    missing value indicator.
+??? 09/09/2016  pyp_graphics/draw_pedigree() is not working with DOT on
+    El Capitan -- jpg is not a valid extension?
+??? 09/09/2016  pyp_graphics/draw_pedigree() may not properly assign the
+    "unknown sex" shape when sex is "u".
+*** 11/23/2015  Began work on a brand new, from-scratch manual using Sphinx.
     The old documentation is in doc_old. This will, hopefully, result in a
     substantially improved user experience.
 ''' 11/22/2015  Fixed the range-checking for the 'foundercoi' option so
-    that it is not properly constrained to be [0., 1.].
+    that it is [not?] properly constrained to be [0., 1.].
 ### 11/22/2015  Should all of the option processing move to a method,
     instead of sitting in __init__()?
 XXX 11/22/2015  Removed all Psyco imports and messages since it's been a
@@ -183,7 +223,7 @@ XXX 07/05/2012  Removed the unused tail_recursive decorator from
     it's going on the list of "nice to have, but not essential"
     things.
 +++ 05/17/2012  Implemented the Meuwissen and Luo algorithm (1992)
-    algorithm for fast inbrreding calculations as modified by Quaas
+    algorithm for fast inbreeding calculations as modified by Quaas
     (1995). This is a more efficient algorithm, but the difference
     is not noticeable for small pedigrees. The code is in
     pyp_nrm/inbreeding_modified_meuwissen_luo(), and you use it by

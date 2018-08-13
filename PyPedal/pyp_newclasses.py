@@ -91,11 +91,13 @@ class NewPedigree:
                 kw['simulate_ir'] = 0.0
             if 'simulate_pmd' not in kw.keys():
                 kw['simulate_pmd'] = 100
-            if 'simulate_mpsave' not in kw.keys():
+            if 'simulate_save' not in kw.keys():
                 kw['simulate_save'] = 0
         else:
             if 'pedfile' not in kw.keys():
                 raise PyPedalPedigreeInputFileNameError
+        if 'pedigree_save' not in kw.keys():
+            kw['pedigree_save'] = 0
         if 'pedformat' not in kw.keys():
             kw['pedformat'] = 'asd'
         if 'has_header' not in kw.keys():
@@ -171,6 +173,8 @@ class NewPedigree:
             kw['missing_alleles'] = ['', '']
         if 'missing_userfield' not in kw.keys():
             kw['missing_userfield'] = ''
+        if 'missing_value' not in kw.keys():
+            kw['missing_value'] = -999.
         # End of default missing values for NewAnimal objects.
         if 'file_io' not in kw.keys():
             kw['file_io'] = '1'
@@ -621,11 +625,11 @@ class NewPedigree:
             merged_pedname = 'Merged Pedigree: %s + %s' % \
                              (self.kw['pedname'], other.kw['pedname'])
             new_options = {
-                'messages': self.kw['messages']
-                'pedname': merged_pedname
-                'renumber': 1
-                'pedfile': filename
-                'pedformat': self.kw['pedformat']
+                'messages': self.kw['messages'],
+                'pedname': merged_pedname,
+                'renumber': 1,
+                'pedfile': filename,
+                'pedformat': self.kw['pedformat'],
             }
             # Load the new pedigree and return it.
             try:

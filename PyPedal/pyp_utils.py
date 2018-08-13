@@ -11,8 +11,11 @@
 #   set_generation()
 #   set_age()
 #   set_species()
+#   set_sexes()
 #   assign_sexes()
+#   set_offspring()
 #   assign_offspring()
+#   set_upg()
 #   assign_upg()
 #   reorder()
 #   fast_reorder()
@@ -36,6 +39,7 @@
 #   list_intersection()
 #   guess_pedformat()
 #   which()
+#   remove_missing()
 ###############################################################################
 
 ## @package pyp_utils
@@ -112,8 +116,8 @@ def set_ancestor_flag(pedobj):
 
 ##
 # set_generation() Works through a pedigree to infer the generation to which an animal
-# belongs based on founders belonging to generation 1.  The igen assigned to an animal
-# as the larger of sire.igen+1 and dam.igen+1.  This routine assumes that myped is
+# belongs based on founders belonging to generation 1. The igen assigned to an animal
+# as the larger of sire.igen+1 and dam.igen+1. This routine assumes that myped is
 # reordered and renumbered.
 # @param pedobj A PyPedal NewPedigree object.
 # @retval 0 for failure and 1 for success.
@@ -129,7 +133,7 @@ def set_generation(pedobj):
             print '[NOTE]: pyp_utils/set_generation() assigning inferred generations in pedigree %s.' % (pedobj.kw['pedname'])
         for i in range(pedobj.metadata.num_records):
             #if int(pedobj.pedigree[i].sireID) == 0 and int(pedobj.pedigree[i].damID) == 0:
-            if pedobj.pedigree[i].sireID == pedobj.kw['missing_parent'] and  pedobj.pedigree[i].damID == pedobj.kw['missing_parent']:
+            if pedobj.pedigree[i].sireID == pedobj.kw['missing_parent'] and pedobj.pedigree[i].damID == pedobj.kw['missing_parent']:
                 if pedobj.kw['gen_coeff']:
                     pedobj.pedigree[i].gencoeff = 1.
                     pedobj.pedigree[i].igen = int(round(pedobj.pedigree[i].gencoeff))
@@ -163,8 +167,8 @@ def set_generation(pedobj):
 
 ##
 # set_age() Computes ages for all animals in a pedigree based on the global
-# BASE_DEMOGRAPHIC_YEAR defined in pyp_demog.py.  If the by is unknown, the
-# inferred generation is used.  If the inferred generation is unknown, the
+# BASE_DEMOGRAPHIC_YEAR defined in pyp_demog.py. If the by is unknown, the
+# inferred generation is used. If the inferred generation is unknown, the
 # age is set to -999.
 # @param pedobj A PyPedal pedigree object.
 # @retval 0 for failure and 1 for success.
@@ -180,9 +184,9 @@ def set_age(pedobj):
             print '[NOTE]: pyp_utils/set_age() assigning inferred ages in pedigree %s.' % (pedobj.kw['pedname'])
         l = len(pedobj.pedigree)
         for i in range(l):
-            if pedobj.pedigree[i].by == -999 and pedobj.pedigree[i].igen == -999:
-                pedobj.pedigree[i].age = -999
-            elif pedobj.pedigree[i].by == -999 and pedobj.pedigree[i].igen != -999:
+            if pedobj.pedigree[i].by == pedobj.kw['missing_value'] and pedobj.pedigree[i].igen == pedobj.kw['missing_value']:
+                pedobj.pedigree[i].age = pedobj.kw['missing_value']
+            elif pedobj.pedigree[i].by == pedobj.kw['missing_value'] and pedobj.pedigree[i].igen != -pedobj.kw['missing_value']:
                 pedobj.pedigree[i].age = pedobj.pedigree[i].igen
             else:
                 pedobj.pedigree[i].age = pedobj.pedigree[i].by - pyp_demog.BASE_DEMOGRAPHIC_YEAR
@@ -217,17 +221,17 @@ def set_species(pedobj, species='u'):
         return 0
 
 ##
-# assign_sexes() assigns a sex to every animal in the pedigree using sire and daughter lists for improved accuracy.
+# set_sexes() assigns a sex to every animal in the pedigree using sire and daughter lists for improved accuracy.
 # @param pedobj A renumbered and reordered PyPedal pedigree object.
 # @retval 0 for failure and 1 for success.
-def assign_sexes(pedobj):
+def set_sexes(pedobj):
     """
-    assign_sexes() assigns a sex to every animal in the pedigree using sire and daughter
+    set_sexes() assigns a sex to every animal in the pedigree using sire and daughter
     lists for improved accuracy.
     """
     try:
         if pedobj.kw['messages'] == 'verbose':
-            print '[NOTE]: pyp_utils/assign_sexes() assigning a sex to all animals in pedigree %s.' % (pedobj.kw['pedname'])
+            print '[NOTE]: pyp_utils/set_sexes() assigning a sex to all animals in pedigree %s.' % (pedobj.kw['pedname'])
         for _m in pedobj.pedigree:
             if _m.sireID == pedobj.kw['missing_parent'] and  _m.damID == pedobj.kw['missing_parent']:
                 pass
@@ -250,24 +254,40 @@ def assign_sexes(pedobj):
                     if pedobj.kw['debug_messages']:
                         print '\t\tAnimal %s sex changed from\t%s\tto\tm' % (_m.sireID,pedobj.pedigree[int(_m.sireID)-1].sex)
                     pedobj.pedigree[int(_m.sireID)-1].sex = 'm'
-        logging.info('pyp_utils/assign_sexes() assigned sexes in pedigree %s' % (pedobj.kw['pedname']))
+        logging.info('pyp_utils/set_sexes() assigned sexes in pedigree %s' % (pedobj.kw['pedname']))
         return 1
+    except:
+        logging.error('pyp_utils/set_sexes() was unable to assign sexes in pedigree %s' % (pedobj.kw['pedname']))
+        return 0
+
+##
+# assign_sexes() assigns a sex to every animal in the pedigree using sire and daughter lists for improved accuracy.
+# @param pedobj A renumbered and reordered PyPedal pedigree object.
+# @retval 0 for failure and 1 for success.
+def assign_sexes(pedobj):
+    """
+    assign_sexes() assigns a sex to every animal in the pedigree using sire and daughter
+    lists for improved accuracy.
+    """
+    print '[DEPRECATION WARNING]: pyp_utils/assign_sexes() will be replaced by pyp_utils/set_sexes() in version 2.1!'
+    try:
+        set_sexes(pedobj)
     except:
         logging.error('pyp_utils/assign_sexes() was unable to assign sexes in pedigree %s' % (pedobj.kw['pedname']))
         return 0
 
 ##
-# assign_offspring() assigns offspring to their parent(s)'s unknown sex offspring list (well, dictionary).
+# set_offspring() assigns offspring to their parent(s)'s unknown sex offspring list (well, dictionary).
 # @param pedobj An instance of a NewPedigree object.
 # @retval 0 for failure and 1 for success.
-def assign_offspring(pedobj):
+def set_offspring(pedobj):
     """
-    assign_offspring() assigns offspring to their parent(s)'s unknown sex offspring list
+    set_offspring() assigns offspring to their parent(s)'s unknown sex offspring list
     (well, dictionary).
     """
     try:
         if pedobj.kw['messages'] == 'debug':
-            print '[NOTE]: pyp_utils/assign_offspring() assigning offspring to all parents in pedigree %s.' % (species, pedobj.kw['pedname'])
+            print '[NOTE]: pyp_utils/set_offspring() assigning offspring to all parents in pedigree %s.' % (species, pedobj.kw['pedname'])
         for _m in pedobj.pedigree:
             pedobj.pedigree[int(_m.animalID)-1].sons = {}
             pedobj.pedigree[int(_m.animalID)-1].daus = {}
@@ -308,40 +328,74 @@ def assign_offspring(pedobj):
                     if _m.damID != pedobj.kw['missing_parent']:
                         #print 'Dam %s has unknown %s' % (_m.sireID, _m.animalID)
                         pedobj.pedigree[int(_m.damID)-1].unks[_m.animalID] = _m.animalID
-        logging.info('pyp_utils/assign_offspring() assigned offspring in pedigree %s' % (pedobj.kw['pedname']))
+        logging.info('pyp_utils/set_offspring() assigned offspring in pedigree %s' % (pedobj.kw['pedname']))
         return 1
     except:
-        logging.error('pyp_utils/assign_offspring() was unable to assign offspring in pedigree %s' % (pedobj.kw['pedname']))
+        logging.error('pyp_utils/set_offspring() was unable to assign offspring in pedigree %s' % (pedobj.kw['pedname']))
         return 0
 
 ##
-# assign_upg() assigns pseudo-parents to animals with unknown (missing) parents. The
-# pseudo-parents can bbe used as Westell groups in an animal model.
+# assign_offspring() assigns offspring to their parent(s)'s specific sex offspring list (well, dictionary).
+# @param pedobj A renumbered and reordered PyPedal pedigree object.
+# @retval 0 for failure and 1 for success.
+def assign_offspring(pedobj):
+    """
+    assigns offspring to their parent(s)'s specific sex offspring list.
+    """
+    print '[DEPRECATION WARNING]: pyp_utils/assign_offspring() will be replaced by pyp_utils/set_offspring() in version 2.1!'
+    try:
+        set_offspring(pedobj)
+    except:
+        logging.error('pyp_utils/assign_offspring() was unable to assign sexes in pedigree %s' % (pedobj.kw['pedname']))
+        return 0
+
+##
+# set_upg() assigns pseudo-parents to animals with unknown (missing) parents. The
+# pseudo-parents can be used as Westell groups in an animal model.
 # @param pedobj An instance of a PyPedal NewPedigree object.
+# @param upg_rule Text string indicating how UPG should be assigned.
+# @retval None
+def set_upg(pedobj, upg_rule='asd'):
+    """
+    set_upg() assigns pseudo-parents to animals with unknown (missing) parents. The
+    pseudo-parents can be used as Westell groups in an animal model.
+    """
+    if not pedobj.kw['pedigree_is_renumbered']:
+        for p in pedobj:
+            if pedobk.kw['pedformat'] in ['asd', 'ASD']:
+                if p.sireID == peobj.kw['missing_parent']:
+                    p.sireID = -999999
+                    p.sireName = 'Sire_UPG'
+                if p.damID == peobj.kw['missing_parent']:
+                    p.damID = -888888
+                    p.damName = 'Dam_UPG'
+            else:
+                logging.error('No rule for assigning unknown parent group %s!', upg_rule)
+                if pedobj.kw['message'] == 'verbose':
+                    print '[ERROR]: No rule for assigning unknown parent group %s!' % ( upg_code )
+    else:
+        logging.error('Cannot assign unknown parent groups to a renumbered pedigree!')
+        if pedobj.kw['message'] == 'verbose':
+            print '[ERROR]: Cannot assign unknown parent groups to a renumbered pedigree!'
+
+##
+# assign_upg() assigns pseudo-parents to animals with unknown (missing) parents. The
+# pseudo-parents can be used as Westell groups in an animal model.
+# @param pedobj A renumbered and reordered PyPedal pedigree object.
 # @param upg_rule Text string indicating how UPG should be assigned.
 # @retval None
 def assign_upg(pedobj, upg_rule='asd'):
     """
     assign_upg() assigns pseudo-parents to animals with unknown (missing) parents. The
-    pseudo-parents can bbe used as Westell groups in an animal model.
+    pseudo-parents can be used as Westell groups in an animal model.
     """
-    if not pedobj.kw['pedigree_is_renumbered']:
-        for p in pedobj:
-            if pedobk.kw['pedformat'] == 'asd' or  pedobk.kw['pedformat'] == 'ASD':
-		if p.sireID == peobj.kw['missing_parent']:
-	            p.sireID = -999999
-	            p.sireName = 'Sire_UPG'
-                if p.damID == peobj.kw['missing_parent']:
-	            p.damID = -888888
-	            p.damName = 'Dam_UPG'
-	    else:
-	        logging.error('No rule for assigning unknown parent group %s!', upg_rule)
-	        if pedobj.kw['message'] == 'verbose':
-	            print '[ERROR]: No rule for assigning unknown parent group %s!' % ( upg_code )
-    else:
-	logging.error('Cannot assign unknown parent groups to a renumbered pedigree!')
-	if pedobj.kw['message'] == 'verbose':
-	    print '[ERROR]: Cannot assign unknown parent groups to a renumbered pedigree!'
+    print '[DEPRECATION WARNING]: pyp_utils/assign_upg() will be replaced by pyp_utils/set_upg() in version 2.1!'
+    try:
+        set_upg(pedobj, upg_rule)
+    except:
+        logging.error(
+            'pyp_utils/assign_upg() was unable to assign unknown parent groups in pedigree %s' % (pedobj.kw['pedname']))
+        return 0
 
 ##
 # reorder() renumbers a pedigree such that parents precede their offspring in the
@@ -404,9 +458,9 @@ def reorder(myped, filetag='_reordered_', io='no', missingparent=0, debug=0, max
         mypedins(0, _founder)
 
     # order is a list that is used to keep track of each animal's
-    # position in the pedigree. IT needs to be updated after any
+    # position in the pedigree. It needs to be updated after any
     # movement of founders and before the main loop begins so that
-    # the correct indices are use for sires and dams. If you don't
+    # the correct indices are used for sires and dams. If you don't
     # have it in the correct place you get duplication of records,
     # inexplicably incorrect parent information, etc.
     orderdict, orderbackdict = {}, {}
@@ -1162,37 +1216,37 @@ def founder_allele_freq(pedobj, anlist, allele_map, allele_mat, column):
 # @param pedobjs A list of PyPedal pedigrees.
 # @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
 def list_intersection(pedobjs):
-	"""
-	list_intersection() returns a PyPedal pedigree object which contains the animals that are common to
-	both input pedigrees. If there are no animals in common between the two pedgrees, a value
-	of false is returned.
-	"""
-	if len(pedobjs) > 0:
-		if pedobjs[0].kw['debug_messages']:
-			print '[INFO]: Computing intersection of %s pedigrees' % ( len(pedobjs) )
-                logging.info('Computing intersection of %s pedigrees', len(pedobjs))
-		plen = len(pedobjs)
-		# If there is only one pedigree in the list this is easy: A \cap A = A.
-		if plen == 1:
-			return pedobjs[0]
-		# If there is more than one pedigree in the list we use the following factorization
-		# to compute the intersection of those pedigrees:
-		#
-		# A \cap B \cap C \cap D ... Y \cap Z = (A \cap (B \cap (C \cap (D \cap ... (Y \cap Z) ) ) ) )
-		#
-		# See: http://en.wikipedia.org/wiki/Intersection_%28set_theory%29).
-		else:
-			intersected = pyp_newclasses.loadPedigree({'pedfile':'null'}, pedsource='null')
-			for p in range(plen-1, -1, -1):
-				if pedobjs[p].__class__.__name__ != 'NewPedigree':
-					if pedobjs[0].kw['debug_messages']:
-						print '[ERROR]: Pedigree %s in pyp_utils.list_intersection() is not a NewPedigree instance! Skippng.' % ( p )
-					logging.error('Pedigree %s in pyp_utils.list_intersection() is not a NewPedigree instance! Skippng.', p)
-				else:
-					intersected = intersected.intersection(pedobjs[p])
-		return intersected
-	else:
-		logging.error('An empty list was passed to pyp_utils/list_intersection()! Cannot compute intersection on 0 pedigrees.')
+    """
+    list_intersection() returns a PyPedal pedigree object which contains the animals that are common to
+    both input pedigrees. If there are no animals in common between the two pedgrees, a value
+    of false is returned.
+    """
+    if len(pedobjs) > 0:
+        if pedobjs[0].kw['debug_messages']:
+            print '[INFO]: Computing intersection of %s pedigrees' % ( len(pedobjs) )
+        logging.info('Computing intersection of %s pedigrees', len(pedobjs))
+        plen = len(pedobjs)
+        # If there is only one pedigree in the list this is easy: A \cap A = A.
+        if plen == 1:
+            return pedobjs[0]
+        # If there is more than one pedigree in the list we use the following factorization
+        # to compute the intersection of those pedigrees:
+        #
+        # A \cap B \cap C \cap D ... Y \cap Z = (A \cap (B \cap (C \cap (D \cap ... (Y \cap Z) ) ) ) )
+        #
+        # See: http://en.wikipedia.org/wiki/Intersection_%28set_theory%29).
+        else:
+            intersected = pyp_newclasses.loadPedigree({'pedfile':'null'}, pedsource='null')
+            for p in range(plen-1, -1, -1):
+                if pedobjs[p].__class__.__name__ != 'NewPedigree':
+                    if pedobjs[0].kw['debug_messages']:
+                        print '[ERROR]: Pedigree %s in pyp_utils.list_intersection() is not a NewPedigree instance! Skippng.' % ( p )
+                    logging.error('Pedigree %s in pyp_utils.list_intersection() is not a NewPedigree instance! Skippng.', p)
+                else:
+                    intersected = intersected.intersection(pedobjs[p])
+        return intersected
+    else:
+        logging.error('An empty list was passed to pyp_utils/list_intersection()! Cannot compute intersection on 0 pedigrees.')
 
 ##
 # list_union() returns a PyPedal pedigree object which contains all animals included in both of the
@@ -1200,44 +1254,44 @@ def list_intersection(pedobjs):
 # @param pedobjs A list of PyPedal pedigrees.
 # @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
 def list_union(pedobjs):
-	"""
-	list_union() returns a PyPedal pedigree object which contains all animals included in both of the
-	input pedigrees.
-	"""
-	if len(pedobjs) > 0:
-		logging.info('Computing union of %s pedigrees', len(pedobjs))
-		for p in range(len(pedobjs)):
-			# The first time through create a null (empty) pedigree and use it to build-up
-			# the union of the input pedigrees.
-			if p == 0:
-				new_pedigree = pyp_newclasses.loadPedigree({'pedfile':'null'}, pedsource='null')
-			if pedobjs[p].__class__.__name__ != 'NewPedigree':
-				logging.info('Pedigree %s in pyp_utils.list_union() is not a NewPedigree instance! Skippng.', p)
-			# Renumber the input pedigrees, if necessary, and compute the union of new_pedigree and
-			# the first entry in the pedobjs list. new_pedigree starts out as an empty (null)
-			# pedigree, and each valid input pedigree is added to that to build-up the union of
-			# all of the inputs.
-			else:
-				logging.info('Using match rule %s to compare pedigrees', pedobjs[p].kw['match_rule'])
-				# Pedigrees must be renumbered
-				if p > 0 and new_pedigree.kw['pedigree_is_renumbered'] != 1:
-					new_pedigree.renumber()
-					logging.info('Renumbering pedigree %s', new_pedigree.kw['pedname'])
-				if pedobjs[p].kw['pedigree_is_renumbered'] != 1:
-                			pedobjs[p].renumber()
-                			logging.info('Renumbering pedigree %s', pedobjs[p].kw['pedname'])
-				# Compute the union of new_pedigree and the current entry in pedobjs using
-				# the NewPedigree::__add__() method.
-				try:
-					new_pedigree = new_pedigree + pedobjs[p]
-				except:
-					logging.error('Could not compute union of input pedigrees.')
-					return False
-		# Once we've looped all the way through pedobjs we can return the new pedigree.
-		return new_pedigree
-	else:
-		logging.error('Cannot complete union operation because types do not match.')
-		return NotImplemented
+    """
+    list_union() returns a PyPedal pedigree object which contains all animals included in both of the
+    input pedigrees.
+    """
+    if len(pedobjs) > 0:
+        logging.info('Computing union of %s pedigrees', len(pedobjs))
+        for p in range(len(pedobjs)):
+            # The first time through create a null (empty) pedigree and use it to build-up
+            # the union of the input pedigrees.
+            if p == 0:
+                new_pedigree = pyp_newclasses.loadPedigree({'pedfile':'null'}, pedsource='null')
+            if pedobjs[p].__class__.__name__ != 'NewPedigree':
+                logging.info('Pedigree %s in pyp_utils.list_union() is not a NewPedigree instance! Skippng.', p)
+            # Renumber the input pedigrees, if necessary, and compute the union of new_pedigree and
+            # the first entry in the pedobjs list. new_pedigree starts out as an empty (null)
+            # pedigree, and each valid input pedigree is added to that to build-up the union of
+            # all of the inputs.
+            else:
+                logging.info('Using match rule %s to compare pedigrees', pedobjs[p].kw['match_rule'])
+                # Pedigrees must be renumbered
+                if p > 0 and new_pedigree.kw['pedigree_is_renumbered'] != 1:
+                    new_pedigree.renumber()
+                    logging.info('Renumbering pedigree %s', new_pedigree.kw['pedname'])
+                if pedobjs[p].kw['pedigree_is_renumbered'] != 1:
+                            pedobjs[p].renumber()
+                            logging.info('Renumbering pedigree %s', pedobjs[p].kw['pedname'])
+                # Compute the union of new_pedigree and the current entry in pedobjs using
+                # the NewPedigree::__add__() method.
+                try:
+                    new_pedigree = new_pedigree + pedobjs[p]
+                except:
+                    logging.error('Could not compute union of input pedigrees.')
+                    return False
+        # Once we've looped all the way through pedobjs we can return the new pedigree.
+        return new_pedigree
+    else:
+        logging.error('Cannot complete union operation because types do not match.')
+        return NotImplemented
 
 ##
 # guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided as
@@ -1252,58 +1306,58 @@ def list_union(pedobjs):
 # @param ped_kw The kw dictionary from a NewPedigree object.
 # @retval A string containing the best-guess pedformat, or False.
 def guess_pedformat(animal, ped_kw):
-	"""
-	guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided
-	as input based on the animal attributes as comapared to the default missing values for those attributes.
-	I know that you're wondering why we can't just use the pedformat that's in the pedigree options dictionary,
-	and it's because this is intended primarily for use with functions that take as input NewAnimal objects
-	which may come from different pedigrees with different pedformats. Note that the logic of guess_pedformat()
-	depends entirely on the single NewAnimal passed as input. If you make a judicious (read: lucky) choice, then
-	you can feel pretty good about the result. Otherwise, you may want to call guess_pedformat() several times
-	with different inputs to develop a consensus pedformat.
-	"""
-	if animal.__class__.__name__ == 'NewAnimal':
-		# Loop over each NewAnimal attribute and check to see if it's been assigned a
-		# missing value. 
-		pedformat = ''
-		# The following code differentiates between 'asd' and 'ASD' formats. Recall
-		# that a pedigree must be 'asd' or 'ASD', you can't mix types of animal,
-		# sire, and dam names. Consequently, we only need to figure out if the
-		# animal ID was originally a string or an integer.
-		if isinstance(animal.originalID, int):
-			pedformat = 'asd'
-		elif isinstance(animal.originalID, str):
-			pedformat = 'ASD'
-		else:
-			logging.error('pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!')
-			if ped_kw['messages'] == 'verbose':
-				print '[ERROR]: pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!'
-			return False
-		# Now figure out other attributes.
-		if animal.bd != ped_kw['missing_bdate']: pedformat.append('b')
-		if animal.by != ped_kw['missing_byear']: pedformat.append('y')
-		if animal.name != ped_kw['missing_name']: pedformat.append('n')
-		if animal.breed != ped_kw['missing_nreed']: pedformat.append('r')
-		if animal.herd != ped_kw['missing_herd']: pedformat.append('H')
-		if animal.sex != ped_kw['missing_sex']: pedformat.appenx('x')
-		if animal.fa != ped_kw['missing_inbreeding']: pedformat.append('f')
-		if animal.alive != ped_kw['missing_alive']: pedformat.append('l')
-		if animal.age != ped_kw['missing_age']: pedformat.append('e')
-		if animal.gen != ped_kw['missing_gen']: pedformat.append('g')
-		if animal.gencoeff != ped_kw['missing_gencoeff']: pedformat.append('p')
-		if animal.alleles != ped_kw['missing_alleles']: pedformat.append('L')
-		if animal.userField != ped_kw['missing_userfield']: pedformat.append('u')
-		# Let the user know what's going on (at the top of my lungs).
-		logging.info('The best-guess pedformat is: \'%s\'', pedformat)
-		if ped_kw['messages'] == 'verbose':
-			print '[INFO]: The best-guess pedformat is: \'%s\'' % (pedformat)
-		return pedformat
-	else:
-		logging.error('You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!')
-		if ped_kw['messages'] == 'verbose':
-			print '[ERROR]: You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!'
+    """
+    guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided
+    as input based on the animal attributes as comapared to the default missing values for those attributes.
+    I know that you're wondering why we can't just use the pedformat that's in the pedigree options dictionary,
+    and it's because this is intended primarily for use with functions that take as input NewAnimal objects
+    which may come from different pedigrees with different pedformats. Note that the logic of guess_pedformat()
+    depends entirely on the single NewAnimal passed as input. If you make a judicious (read: lucky) choice, then
+    you can feel pretty good about the result. Otherwise, you may want to call guess_pedformat() several times
+    with different inputs to develop a consensus pedformat.
+    """
+    if animal.__class__.__name__ == 'NewAnimal':
+        # Loop over each NewAnimal attribute and check to see if it's been assigned a
+        # missing value.
+        pedformat = ''
+        # The following code differentiates between 'asd' and 'ASD' formats. Recall
+        # that a pedigree must be 'asd' or 'ASD', you can't mix types of animal,
+        # sire, and dam names. Consequently, we only need to figure out if the
+        # animal ID was originally a string or an integer.
+        if isinstance(animal.originalID, int):
+            pedformat = 'asd'
+        elif isinstance(animal.originalID, str):
+            pedformat = 'ASD'
+        else:
+            logging.error('pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!')
+            if ped_kw['messages'] == 'verbose':
+                print '[ERROR]: pyp_utils/guess_pedformat() cannot process animal.originalID if it is not a string or an integer type!'
+            return False
+        # Now figure out other attributes.
+        if animal.bd != ped_kw['missing_bdate']: pedformat.append('b')
+        if animal.by != ped_kw['missing_byear']: pedformat.append('y')
+        if animal.name != ped_kw['missing_name']: pedformat.append('n')
+        if animal.breed != ped_kw['missing_nreed']: pedformat.append('r')
+        if animal.herd != ped_kw['missing_herd']: pedformat.append('H')
+        if animal.sex != ped_kw['missing_sex']: pedformat.appenx('x')
+        if animal.fa != ped_kw['missing_inbreeding']: pedformat.append('f')
+        if animal.alive != ped_kw['missing_alive']: pedformat.append('l')
+        if animal.age != ped_kw['missing_age']: pedformat.append('e')
+        if animal.gen != ped_kw['missing_gen']: pedformat.append('g')
+        if animal.gencoeff != ped_kw['missing_gencoeff']: pedformat.append('p')
+        if animal.alleles != ped_kw['missing_alleles']: pedformat.append('L')
+        if animal.userField != ped_kw['missing_userfield']: pedformat.append('u')
+        # Let the user know what's going on (at the top of my lungs).
+        logging.info('The best-guess pedformat is: \'%s\'', pedformat)
+        if ped_kw['messages'] == 'verbose':
+            print '[INFO]: The best-guess pedformat is: \'%s\'' % (pedformat)
+        return pedformat
+    else:
+        logging.error('You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!')
+        if ped_kw['messages'] == 'verbose':
+            print '[ERROR]: You passed an item to pyp_utils/guess_pedformat() that is not a NewAnimal!'
 
-		return False
+        return False
 
 ##
 # which() tries to determine if an executable program exists in the user's
@@ -1329,3 +1383,36 @@ def which(program):
                 return exe_file
 
     return None
+
+##
+# remove_missing() takes a NewPedigree object and removes any animals whose ID
+# is equal to the missing animal identifier.
+# @param pedobj PyPedal pedigree object.
+# @retval An instance of a NewPedigree object with no animals with missing-valued IDs.
+def remove_missing(pedobj):
+    """
+    remove_missing() takes a NewPedigree object and removes any animals whose ID
+    is equal to the missing animal identifier.
+    """
+    try:
+        n_removed = 0
+        for _p in pedobj.pedigree:
+            if _p.animalID == pedobj.kw['missing_parent']:
+                # Delete the animal from the pedigree and the
+                # ID maps.
+                del pedobj.namemap[pedobj.namebackmap[pedobj.backmap[_p.animalID]]]
+                del pedobj.namebackmap[pedobj.backmap[_p.animalID]]
+                del pedobj.idmap[pedobj.backmap[_p.animalID]]
+                del pedobj.backmap[_p.animalID]
+                n_removed += 1
+        # Updae pedigree metadata since animal counts, offspring counts, etc. may have
+        # changed.
+        pedobj.metadata = pyp_newclasses.PedigreeMetadata(pedobj.pedigree, pedobj.kw)
+        # Renumber the pedigree.
+        if pedobj.kw['renumber']:
+            pedobj.renumber()
+        if ped_kw['messages'] == 'verbose':
+            print '[INFO]: pyp_utils/remove_missing() removed %s animals with missing IDs from the pedigree!' % n_removed
+    except:
+        pass
+    return pedobj
