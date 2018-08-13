@@ -31,6 +31,12 @@
 #   ballou_ancestral_inbreeding()
 ###############################################################################
 
+import copy
+import logging
+import numpy
+import pyp_nrm
+import pyp_utils
+
 ## @package pyp_metrics
 # pyp_metrics contains a set of procedures for calculating metrics on PyPedal
 # pedigree objects.  These metrics include coefficients of inbreeding and
@@ -100,8 +106,9 @@ def min_max_f(pedobj, a='', n=10, forma='dense'):
 # pedigree using the exact method of Lacy.
 # @param pedobj A PyPedal pedigree object.
 # @param a A numerator relationship matrix (optional).
+# @param half Use half founders or not, default is to use only full founders (Boolean, optional).
 # @retval A dictionary of results, including the effective founder number.
-def a_effective_founders_lacy(pedobj, a=''):
+def a_effective_founders_lacy(pedobj, a='', half=False, debug=False):
     """
     Calculate the number of effective founders in a pedigree using the exact method of Lacy.
     """
@@ -122,11 +129,26 @@ def a_effective_founders_lacy(pedobj, a=''):
     ds = []
     for i in range(l):
         animalid = int(pedobj.pedigree[i].animalID)
+	sireid = int(pedobj.pedigree[i].sireID)
+	damid = int(pedobj.pedigree[i].damID)
         #
-        if pedobj.pedigree[i].founder == 'y' and str(animalid) != mp:
+        if pedobj.pedigree[i].founder == 'y' and animalid != mp:
             n_f = n_f + 1
             fs.append(animalid)
-        elif animalid != 0:
+	# An animal with a missing parent is a half-founder. Note that this
+	# is not a part of Lacy's original derivation, and I haven't proven
+	# it works, either. This is a strictly heuristic approach at the
+	# moment. An alternative approach might be to create metafounders
+	# in place of half founders.
+	elif pedobj.pedigree[i].founder == 'n' and ( sireid == mp or damid == mp ):
+		if debug:
+	                print '[pyp_metrics]: Animal % is a half-founder...' % ( animalid )
+		#n_f = n_f + 0.5
+		# Can't be 0.5 b/c of table below listing relationship between founders and descendants
+		n_f += 1
+            	fs.append(animalid)
+	#elif animalid != 0:
+        elif str(animalid) != mp:
             n_d = n_d + 1
             ds.append(animalid)
         else:
@@ -450,7 +472,7 @@ def a_effective_founders_boichard(pedobj, a='', gen=''):
 ##
 # a_effective_ancestors_definite() uses the algorithm in Appendix B of Boichard et al.
 # (1996) to compute the effective ancestor number for a myped pedigree.
-# NOTE: One problem here is that if you pass a pedigree WITHOUT generations and error
+# NOTE: One problem here is that if you pass a pedigree WITHOUT generations an error
 # is not thrown.  You simply end up wth a list of generations that contains the default
 # value for Animal() objects, 0.
 # Boichard's algorithm requires information about the GENERATION of animals.  If you
@@ -470,8 +492,9 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
     is not thrown.  You simply end up wth a list of generations that contains the
     default value for Animal() objects, 0.
     """
-    try: logging.info('Entered a_effective_ancestors_definite()')
-    except: pass
+    #try:
+    logging.info('Entered a_effective_ancestors_definite()')
+    #except: pass
     #print '='*80
     if not a:
         try:
@@ -499,11 +522,12 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
             gens.append(g)
     gens.sort()
     #print '[DEBUG]: gens: %s' % (gens)
-    if gens[-1] == -999:
-        try: logging.warning('pyp_metrics/a_effective_ancestors_definite() assumes that generations are defined in the pedigree.  That is not the case with %s.  Solutions from this routine may be inaccurate or nonsensical.', pedobj.kw['pedname'])
-        except: pass
+    if int(gens[-1]) == -999:
+        #try:
+        logging.warning('pyp_metrics/a_effective_ancestors_definite() assumes that generations are defined in the pedigree.  That is not the case with %s.  Solutions from this routine may be inaccurate or nonsensical.', pedobj.kw['pedname'])
+        #except: pass
     for i in range(l):
-    #print 'DEBUG: Animal: %s\tGen: %s' % (pedobj.pedigree[i].animalID,pedobj.pedigree[i].gen)
+        #print 'DEBUG: Animal: %s\tGen: %s' % (pedobj.pedigree[i].animalID,pedobj.pedigree[i].gen)
         if pedobj.pedigree[i].gen != gens[len(gens)-1]:
             n_f = n_f + 1
             fs.append(int(pedobj.pedigree[i].animalID))
@@ -705,8 +729,9 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
     aout.write('%s\n' % line)
     aout.close()
 
-    try: logging.info('Exited a_effective_ancestors_definite()')
-    except: pass
+    #try:
+    logging.info('Exited a_effective_ancestors_definite()')
+    #except: pass
     return f_a
 
 ##
@@ -762,6 +787,9 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
         else:
             gens.append(g)
     gens.sort()
+    # 05/15/2018: This code is supposed to quickly count founders and descendants, but it's not actually doing that.
+    #             What it's really doing is counting the number of animals in the earliest generation and calling
+    #             them founders, while all other animals are labeled as descendants.
     for i in range(l):
         if pedobj.pedigree[i].gen != gens[len(gens)-1]:
             n_f = n_f + 1
@@ -824,11 +852,14 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     picked.append(l-max_p_index-1)
     tempped[l-max_p_index-1].sireID = pedobj.kw['missing_parent']          # delete sire in pedobj.pedigree (forward order)
     tempped[l-max_p_index-1].damID = pedobj.kw['missing_parent']           # delete dam in pedobj.pedigree (forward order)
-    ancestors.append(pedobj.pedigree[max_p_index].animalID)   # add the animal with largest q to the
-                            # list of ancestors
+    ancestors.append(pedobj.pedigree[max_p_index].animalID)                # add the animal with largest q to the
+                                                                           # list of ancestors
 
     # Tricky here... now we have to deal with the fact that we may not want as many contributions are there
     # are ancestors.
+    print 'Number of founders in the pedigree file:    ', n
+    print 'Number of animals in the pedigree file:     ', l
+    print 'Number of descendants in the pedigree file: ', n_d
     if n >= ( l - n_d ):
         print '-'*60
         print 'WARNING: (pyp_metrics/a_effective_ancestors_indefinite()): Setting n (%s) to be equal to the actual number of founders (%s) in the pedigree!' % (n, n_f)
