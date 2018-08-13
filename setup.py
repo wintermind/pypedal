@@ -4,8 +4,6 @@
 #
 # Copyright: See COPYING file that comes with this distribution
 ###########################################################################
-import ez_setup
-ez_setup.use_setuptools()
 from setuptools import setup, find_packages
 
 setup(
