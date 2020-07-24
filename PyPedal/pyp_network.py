@@ -39,7 +39,7 @@ import copy, logging
 try:
     import networkx
 except ImportError:
-    print '[WARNING]: The NetworkX module could not be imported in pyp_network.  Routines using networkx functionality are not available.'
+    print '[WARNING]: The NetworkX module could not be imported in pyp_network. Routines using networkx functionality are not available.'
 
 ##
 # ped_to_graph() Takes a PyPedal pedigree object and returns a networkx DiGraph
@@ -67,17 +67,27 @@ def ped_to_graph(pedobj, oid=0):
             G.add_node(int(pedobj.pedigree[i].animalID),
                sire=str(pedobj.pedigree[i].sireID),
                dam=str(pedobj.pedigree[i].damID))
-    # Add parent-to-child edges.
-    if str(pedobj.pedigree[i].sireID) != str(pedobj.kw['missing_parent']):
-        if oid:
-            G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID, int(pedobj.pedigree[i].originalID), sex='s')
-        else:
-            G.add_edge(int(pedobj.pedigree[i].sireID), int(pedobj.pedigree[i].animalID), sex='s')
-    if str(pedobj.pedigree[i].damID) != str(pedobj.kw['missing_parent']):
-        if oid:
-            G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID, int(pedobj.pedigree[i].originalID), sex='d')
-        else:
-            G.add_edge(int(pedobj.pedigree[i].damID), int(pedobj.pedigree[i].animalID), sex='d')
+        # Add parent-to-child edges.
+        #print 'Animal %s has sire %s' % ( pedobj.pedigree[i].animalID, pedobj.pedigree[i].sireID )
+        if str(pedobj.pedigree[i].sireID) != str(pedobj.kw['missing_parent']):
+            if oid:
+                G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID, int(pedobj.pedigree[i].originalID), sex='s')
+                #print 'Adding sire edge from %s to %s' % ( pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID,
+                #                                      int(pedobj.pedigree[i].originalID))
+            else:
+                G.add_edge(int(pedobj.pedigree[i].sireID), int(pedobj.pedigree[i].animalID), sex='s')
+                #print 'Adding sire edge from %s to %s' % (int(pedobj.pedigree[i].sireID),
+                #                                          int(pedobj.pedigree[i].animalID))
+        #print 'Animal %s has dam %s' % (pedobj.pedigree[i].animalID, pedobj.pedigree[i].damID)
+        if str(pedobj.pedigree[i].damID) != str(pedobj.kw['missing_parent']):
+            if oid:
+                G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID, int(pedobj.pedigree[i].originalID), sex='d')
+                #print 'Adding dam edge from %s to %s' % (pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID,
+                #                                         int(pedobj.pedigree[i].originalID))
+            else:
+                G.add_edge(int(pedobj.pedigree[i].damID), int(pedobj.pedigree[i].animalID), sex='d')
+                #print 'Adding dam edge from %s to %s' % (int(pedobj.pedigree[i].damID),
+                #                                         int(pedobj.pedigree[i].animalID))
     return G
 
 ##

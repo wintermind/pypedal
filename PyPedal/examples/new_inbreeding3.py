@@ -22,16 +22,19 @@ options['pedformat'] = 'asdxg'
 
 if __name__ == '__main__':
 
-	sizes = [100, 1000, 10000, 100000]
+	sizes = [20, 100, 1000, 10000, 100000]
 	#sizes = [100, 500, 1000]
 	for size in sizes:
-
 		options['simulate_n'] = size
 		options['pedname'] = 'Simulated Pedigree ' + str(size)
 		options['pedfile'] = 'simulated_pedigree_' +  str(size) + '.ped'
 		print '\nStarted pedigree simulation with %s animals at %s' % (size, pyp_utils.pyp_nice_time())
 	        test = pyp_newclasses.loadPedigree(options)
 		print 'Finished pedigree simulation with %s animals at %s' % (size, pyp_utils.pyp_nice_time())
+
+		#for p in test.pedigree:
+		#	p.printids()
+		#print 'Missing parent: ', test.kw['missing_parent']
 
 		print '\n\tStarted computing inbreeding using VanRaden\'s method  at %s' % (pyp_utils.pyp_nice_time())
 		test_inbreeding_vr = pyp_nrm.inbreeding(test, method='vanraden')
