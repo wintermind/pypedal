@@ -13,7 +13,7 @@ from PyPedal.pyp_utils import pyp_nice_time
 
 options = {}
 options['messages'] = 'verbose'
-options['renumber'] = 1
+options['renumber'] = 0
 #options['pedfile'] = 'new_renumbering.ped'
 options['pedfile'] = 'mrode.ped'
 #options['pedformat'] = 'asdgb'
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     example = pyp_newclasses.loadPedigree(options)
     print example
 
-    print '[DEBUG]: matrix_type = ', example.kw['matrix_type']
+    #print '[DEBUG]: matrix_type = ', example.kw['matrix_type']
 
     print 'Started computing inbreeding at %s' % (pyp_nice_time())
     example_inbreeding_vr = pyp_nrm.inbreeding(example,method='vanraden')

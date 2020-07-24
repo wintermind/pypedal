@@ -31,13 +31,15 @@
 # performing operations on those matrices.  It also contains routines for computing CoI on
 # large pedigrees using the recursive method of VanRaden (1992).
 ##
+import copy, logging, numpy, string
+import pyp_utils
+#from pyp_newclasses import tail_recursive
 
 try:
-    from pysparse import spmatrix
+    import scipy.sparse as sps
 except ImportError:
-    #logging.info('Could not import the spmatrix module from PySparse! Using NumPY dense matrices instead.')
-    print '[INFO]: Could not import the spmatrix module from PySparse in pyp_nrm! NumPY dense matrices will be used instead.'
-import pyp_utils
+    #logging.info('Could not import scipy.sparse, using NumPy dense matrices instead.')
+    print '[INFO]: Could not import scipy.sparse, using NumPy dense matrices instead.'
 
 ##
 # a_matrix() is used to form a numerator relationship matrix from a pedigree.  DEPRECATED.
@@ -166,22 +168,13 @@ def fast_a_matrix(pedigree, pedopts, save=0, method='dense', debug=0, fill=1):
     # relationship matrices.
     if method == 'sparse':
         try:
-#            from pysparse import spmatrix
-            a = spmatrix.ll_mat_sym(l*l)
-            for i in xrange(l):
-                a[i,i] = 1.
+            a = sps.lil_matrix((l,l))
         except:
-#            logging.error('Could not import the spmatrix module from PySparse! Using NumPY dense matrices instead.')
-#            print '[ERROR]: Could not import the spmatrix module from PySparse! Using NumPY dense matrices instead.'
-            #a = numpy.zeros([l,l],'d')
-	    try:
-                a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros of appropriate size
-	    except MemoryError:
-	        a = numpy.memmap('fast_a_matrix_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
-	    except:
-	        print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix()!' % ( l )
-	        logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix()!', l)
-	        return False
+            if pedopts['messages'] != 'quiet':
+                print '[WARNING]: Could not create a sparse identity matrix in fast_a_matrix()!'
+            logging.warning('Could not create a sparse identity matrix in fast_a_matrix()!.')
+            a = fast_a_matrix(pedigree, pedopts, save=save, method='dense', debug=debug, fill=fill)
+            return a
     # Otherwise, use Numpy and its dense matrices
     else:
 	# First, try and allocate the vectors in RAM. If that does not work, try and allocate them using
@@ -294,46 +287,35 @@ def fast_a_matrix_r(pedigree, pedopts, save=0, method='dense'):
     fast_a_matrix() in that the coefficients of relationship are corrected for the
     inbreeding of the parents.
     """
-    #try: logging.info('Entered fast_a_matrix_r()')
-    #except: pass
     import math   # We need it for sqrt()
     animals = []
     sires = []
     dams = []
-    #print pedigree
     l = len(pedigree)
-    #method = 'dense'
-    if method not in ['dense','sparse']:
+    if method not in ['dense', 'sparse']:
         method = 'dense'
     try:
         # Use PySparse to provide sparse matrix storage for large
         # relationship matrices.
         if method == 'sparse':
+            print 'making a sparse matrix'
             try:
-                a = spmatrix.ll_mat_sym(l*l)
-                for i in xrange(l):
-                    a[i,i] = 1.
+                a = sps.lil_matrix((l,l))
             except:
-                #a = numpy.zeros([l,l],'d')
-	        try:
-                    a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros of appropriate size
-	        except MemoryError:
-	            a = numpy.memmap('fast_a_matrix_r_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
-	        except:
-	            print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!' % ( l )
-	            logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!', l)
-                    return False
-
-        # Otherwise, use NumPy and its dense matrices
+                if pedopts['messages'] != 'quiet':
+                    print '[WARNING]: Could not create a sparse identity matrix in fast_a_matrix_r()!'
+                logging.warning('Could not create a sparse identity matrix in fast_a_matrix_r()!.')
+                a = fast_a_matrix_r(pedigree, pedopts, save=save, method='dense')
+                return a
+        # Otherwise, use Numpy and its dense matrices
         else:
-            #a = numpy.zeros([l,l],'d')
-	    try:
-                a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros of appropriate size
-	    except MemoryError:
-	        a = numpy.memmap('fast_a_matrix_r_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
-	    except:
-	        print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!' % ( l )
-	        logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!', l)
+            try:
+                a = numpy.zeros((l,l), 'd')  # initialize a matrix of zeros of appropriate size
+            except MemoryError:
+                a = numpy.memmap('fast_a_matrix_r_mmap.bin', dtype='float32', mode='w+', shape=(l,l))
+            except:
+                print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!' % ( l )
+                logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_a_matrix_r()!', l)
                 return False
 
         for i in xrange(l):
@@ -394,7 +376,7 @@ def fast_a_matrix_r(pedigree, pedopts, save=0, method='dense'):
                     # sire known, dam unknown
                     if row != col and a[row,col] > 0.:
                         numerator = 0.5 * a[row,sires[col]-1]
-                        denominator = sqrt ( a[sires[col]-1,sires[col]-1] )
+                        denominator = math.sqrt ( a[sires[col]-1,sires[col]-1] )
                         try:
                             coefficient = numerator / denominator
                         except:
@@ -414,9 +396,10 @@ def fast_a_matrix_r(pedigree, pedopts, save=0, method='dense'):
                         a[col,row] = a[row,col]
                 else:
                     pass
+    # I'm not sure that it makes sense to return a 1x1 matrix if things fail,
+    # it probably makes more sense to return False.
     except:
         a = numpy.zeros([1,1],'d')
-    # print a
     if save == 1:
         a_outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_a_matrix_r_','.dat')
         aout = open(a_outputfile,'w')
@@ -722,7 +705,7 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
             # Make sure that we only include animals from the user-
             # specified generations.
             if top_peddict[_j] <= gens:
-                top_r.append(copy.copy(pedobj.pedigree[int(_j)-1]))
+                top_r.append(copy.deepcopy(pedobj.pedigree[int(_j)-1]))
                 # Animals in the earliest generation need to have
                 # their sire and dam IDs set to unknown.
                 if top_peddict[_j] == 1:
@@ -802,10 +785,10 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
                         # This is VERY important -- rather than append a reference
                         # to _ped[j-1] to _r we need to append a COPY of _ped[j-1]
                         # to _r.  If you change this code and get rid of the call to
-                        # copy.copy() then things will not work correctly.  You will
+                        # copy.deepcopy() then things will not work correctly.  You will
                         # realize what you have done when your renumberings seem to
                         # be spammed.
-                        _r.append(copy.copy(pedobj.pedigree[int(j)-1]))
+                        _r.append(copy.deepcopy(pedobj.pedigree[int(j)-1]))
                 # We also need to honor the slow_reorder option.
                 if pedobj.kw['slow_reorder']:
                     _r = pyp_utils.reorder(_r,_tag)      # Reorder the pedigree
@@ -821,7 +804,7 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
                 # fast_a_matrix as "_tag" is expected to be a pedoptions dictionary.
                 # Hm...I think that passing a copy of the kw dictionary from pedobj
                 # with the filetag changed as appropriate will do the trick.
-                _opts = copy.copy(pedobj.kw)
+                _opts = copy.deepcopy(pedobj.kw)
                 _opts['filetag'] = _tag
                 # We need to accomodate the 'nrm_method' option, too.  The need for
                 # this is clearly demonstrated by horse.ped in the examples/ subdirectory -
@@ -829,10 +812,10 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
                 # have r_xy >= 1. if we do not adjust the elements of A for parental in-
                 # breeding.
                 if pedobj.kw['nrm_method'] == 'nrm':
-                    _a = fast_a_matrix(_s,_opts,method=pedobj.kw['matrix_type'])     # Form the NRM w/the tabular method
+                    _a = fast_a_matrix(_s,_opts, method=pedobj.kw['matrix_type'])     # Form the NRM w/the tabular method
                 else:
-                    _a = fast_a_matrix_r(_s,_opts,method=pedobj.kw['matrix_type'])
-                #print 'len(_ped): ', len(_ped)
+                    _a = fast_a_matrix_r(_s,_opts, method=pedobj.kw['matrix_type'])
+
                 for j in xrange(len(_ped)):
                     _orig_id = _backmap[_s[j].animalID]
                     # The same animal can appear in many different pedigrees, but
@@ -845,28 +828,28 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
                         _check = fx[_orig_id]
                     except KeyError:
                         #print _a
-                        fx[_orig_id] = _a[j][j] - 1.
+                        fx[_orig_id] = _a[j, j] - 1.
                         _f_counter = _f_counter + 1
                     if rels:
                         for k in xrange(j, len(_ped)):
                             if j != k:
                                 _rxykey = '%s_%s' % (_backmap[_s[j].animalID], \
                                     _backmap[_s[k].animalID])
-                                if _a[j][k] > 0.:
+                                if _a[j, k] > 0.:
                                     try:
                                         _rxy = _related[_rxykey]
                                     except KeyError:
-                                        _related[_rxykey] = _a[j][k]
+                                        _related[_rxykey] = _a[j, k]
                                     reldict['r_nonzero_count'] = \
                                         reldict['r_nonzero_count'] + 1
                                     reldict['r_nonzero_sum'] = \
-                                        reldict['r_nonzero_sum'] + _a[j][k]
+                                        reldict['r_nonzero_sum'] + _a[j, k]
                                     if _a[j][k] > reldict['r_max']:
-                                        reldict['r_max'] = _a[j][k]
+                                        reldict['r_max'] = _a[j, k]
                                     if _a[j][k] < reldict['r_min']:
-                                        reldict['r_min'] = _a[j][k]
+                                        reldict['r_min'] = _a[j, k]
                                 reldict['r_count'] = reldict['r_count'] + 1
-                                reldict['r_sum'] = reldict['r_sum'] + _a[j][k]
+                                reldict['r_sum'] = reldict['r_sum'] + _a[j, k]
                     try:
                         _ptest = _parents[_parent_key]
                     except KeyError:
@@ -918,21 +901,12 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
 # @profile
 def inbreeding_aguilar(pedobj, amethod=3):
     """
-    inbreeding_aguilar() uses use Ignacio Aguilar's INBUPGF90 program to compute coefficients of
+    inbreeding_aguilar() uses use Ignacio Aguilar's INBUPGF90 programto compute coefficients of
     inbreeding in large pedigrees.
     :param pedobj:
     :param amethod:
     :return:
     """
-    # Before we do anything let's see if the INBUPGF90 executable is visible to PyPedal.
-    if not pyp_utils.which('inbupgf90') and not pyp_utils.which('inbupgf90.exe'):
-        if pedobj.kw['messages'] == 'verbose':
-            print '\t[inbreeding_aguilar]: Cannot find the INBUPGF90 executable tat %s!' % \
-                  datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-            logging.error('[inbreeding_aguilar]: cannot find the INBUPGF90 executable at %s!',
-                          datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-        return None
-
     # Per an e-mail from Ignacio Aguilar on 06/25/2014, INBUPGF90 does NOT emit a proper
     # status return code when it exits, which makes it tricky to know for sure when the
     # job is done. I've observed a number of cases where the simulation appears to stall
@@ -991,8 +965,8 @@ def inbreeding_aguilar(pedobj, amethod=3):
     if pedobj.kw['messages'] == 'verbose':
         print '\t[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' \
             % (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-    logging.info('[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' % \
-            (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
+    logging.info('[inbreeding_aguilar]: Putting coefficients of inbreeding from %s.solinb in a dictionary at %s' \
+        % (pedfile, datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
     inbr = {}
     ifh = open(coifile, 'r')
     for line in ifh:
@@ -1000,17 +974,7 @@ def inbreeding_aguilar(pedobj, amethod=3):
         inbr[pieces[0]] = float(pieces[1])
     ifh.close()
 
-    # Now, assign the coefficients of inbreeding to the animal records
-#    for c in cows: c[10] = inbr[c[0]]
-#    for dc in dead_cows: dc[10] = inbr[dc[0]]
-#    for b in bulls: b[10] = inbr[b[0]]
-#    for db in dead_bulls: db[10] = inbr[db[0]]
-
-    # Clean-up
-    os.remove(pedfile)
-    os.remove('%.solinb') % (pedfile)
-    os.remove('%s.errors') % (pedfile)
-    os.remove('%.inbavgs') % (pedfile)
+    ### Need cleanup code to remove temporary files from filesystem.
 
     # Send back the coefficients of inbreeding to the caller.
     return inbr
@@ -1205,7 +1169,7 @@ def inbreeding_tabular(pedobj, gens=0, rels=0):
         _a, _s, _r = [], [], []
         _map = {}
         for j in _ped:
-            _r.append(copy.copy(pedobj.pedigree[int(j)-1]))
+            _r.append(copy.deepcopy(pedobj.pedigree[int(j)-1]))
         if pedobj.kw['slow_reorder']:
             _r = pyp_utils.reorder(_r,_tag)      # Reorder the pedigree
         else:
@@ -1214,7 +1178,7 @@ def inbreeding_tabular(pedobj, gens=0, rels=0):
         _backmap = {}
         for _mk, _mv in _map.iteritems():
             _backmap[_mv] = _mk
-        _opts = copy.copy(pedobj.kw)
+        _opts = copy.deepcopy(pedobj.kw)
         _opts['filetag'] = _tag
         if pedobj.kw['nrm_method'] == 'nrm':
             _a = fast_a_matrix(pedobj.pedigree,pedobj.kw,method=pedobj.kw['matrix_type'])
@@ -1963,7 +1927,7 @@ def partial_inbreeding(pedobj, animals=[], gens=0, rels=1, cleanmaps=1):
             # Make sure that we only include animals from the user-
             # specified generations.
             if top_peddict[_j] <= gens:
-                top_r.append(copy.copy(pedobj.pedigree[int(_j)-1]))
+                top_r.append(copy.deepcopy(pedobj.pedigree[int(_j)-1]))
                 # Animals in the earliest generation need to have
                 # their sire and dam IDs set to unknown.
                 if top_peddict[_j] == 1:
@@ -2030,7 +1994,7 @@ def partial_inbreeding(pedobj, animals=[], gens=0, rels=1, cleanmaps=1):
                                 # changing the data in pedobj.pedigree.
                     _map = {}
                     for j in _ped:
-                        _r.append(copy.copy(pedobj.pedigree[int(j)-1]))
+                        _r.append(copy.deepcopy(pedobj.pedigree[int(j)-1]))
                 _r = pyp_utils.reorder(_r,_tag)      # Reorder the pedigree
                 _s, _map = pyp_utils.renumber(_r,_tag, returnmap=1, \
                     debug=pedobj.kw['debug_messages'], \
@@ -2044,7 +2008,7 @@ def partial_inbreeding(pedobj, animals=[], gens=0, rels=1, cleanmaps=1):
                 _backmap = {}
                 for _mk, _mv in _map.iteritems():
                     _backmap[_mv] = _mk
-                _opts = copy.copy(pedobj.kw)
+                _opts = copy.deepcopy(pedobj.kw)
                 for _f in _flist:
                     _opts['filetag'] = '%s_%s' % ( _tag, _f )
                     _f = fast_partial_a_matrix(_s, _f, _flist, _opts,method=pedobj.kw['matrix_type'])
@@ -2102,21 +2066,32 @@ def fast_partial_a_matrix(pedigree, founder, founderlist, pedopts, method='dense
     _sires = {}
     _dams = {}
     l = len(pedigree)
-    if method not in ['dense','sparse']:
+    if method not in ['dense', 'sparse']:
         method = 'dense'
     # Use PySparse to provide sparse matrix storage for large
     # relationship matrices.
     if method == 'sparse':
         try:
-            from pysparse import spmatrix
-            a = spmatrix.ll_mat_sym(l*l)
-            a = 0.0
-        except ImportError:
-            logging.error('Could not import spmatrix from PySparse; using Numpy instead!')
-            a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros
+            a = sps.lil_matrix((l, l))
+        except:
+            if pedopts['messages'] != 'quiet':
+                print '[WARNING]: Could not create a sparse identity matrix in fast_a_matrix()!'
+            logging.warning('Could not create a sparse identity matrix in fast_a_matrix()!.')
+            a = fast_partial_a_matrix(pedigree, founder, founderlist, pedopts, method='dense', debug=debug)
+            return a
     # Otherwise, use Numpy and its dense matrices
     else:
-        a = numpy.zeros([l,l],'d')  # initialize a matrix of zeros
+    # First, try and allocate the vectors in RAM. If that does not work, try and allocate them using
+    # memory-mapped files. If that does not work, well, give up.
+        try:
+            a = numpy.zeros([l, l], 'd')  # initialize a matrix of zeros of appropriate size
+        except MemoryError:
+            a = numpy.memmap('fast_partial_a_matrix_mmap.bin', dtype='float32', mode='w+', shape=(l, l))
+        except:
+            print '[ERROR]: Unable to allocate a matrix of rank %s in pyp_nrm.fast_partial_a_matrix()!' % (l)
+            logging.error('Unable to allocate a matrix of rank %s in pyp_nrm.fast_partial_a_matrix()!', l)
+            return False
+
     if pedopts['debug_messages'] and pedopts['messages'] != 'quiet':
         print '\t\t[pyp_nrm/fast_partial_a_matrix()] Started forming animal, sire, and dam lists at %s' %  pyp_utils.pyp_nice_time()
     for i in xrange(l):

@@ -12,11 +12,176 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
-*** 11/23/2015  Began work on a brand nre, from-scratch manual using Sphinx.
+''' 07/23/2020  Added pyp_snp/generate_random_genotype() to generate simple random
+    strings for testing. Each string from a call to the routine is independent from
+    others and has no genealogical significance.
+''' 07/23/2020  pyp_snp/compute_genomic_homozygosity_from_snp() computes genomic
+    homozygosity from the SNP genotypes attached to a pedigree.
+''' 07/23/2020  pyp_snp/renumber_snp_ids() renumbers the IDs in the SNP dataframe
+    attached to a pedigree. It is called in NewPedigree::preprocess() immediately
+    after pyp_utils/renumber() is run.
+''' 07/22/2020  Added pyp_utils/resolve_duplicates() to do some simple identification
+    of duplicate animals. At present, it's based only on originalID attributes, but
+    it's a starting point. It returns a list of messages about duplicate records.
+''' 07/21/2020  Added pyp_newclasses::NewAnimal.printids(), which prints only the
+    ID information from a NewAnimal instance, to help debug issues with duplicates.
+XXX 07/21/2020  Removed Psyco code from pyp_metrics, pyp_graphics, and pyp_network.
+### 07/21/2020  I noticed today that PyPedal doesn't detect and deal with duplicate
+    entries in the pedigree. This caused me a lot of headache with some Jersey pedigrees
+    today. I need to add a resolve_duplicates() routine to pyp_utils, possibly one that
+    uses the __equals__() method of NewAnimals. Other comparisons will be needed, too,
+    especially to deal with cases where one record has an animal coded with unknown
+    parents, while another record has the same animal coded with known parents. I
+    started sketching out some ideas.
+*** 07/21/2020  copy.copy() has been replaced with copy.deepcopy() throughout PyPedal.
+    I feel as though copy.copy used to be a deep-copy, many years ago? Well, regardless,
+    it's fixed now.
+??? 07/21/2020  pyp_utils/subpedigree() may not be completely fixed for SNP data -- I
+    may need to loop over it (when present) and delete as appropriate, as for the
+    ID/name maps.
+''' 07/21/2020  Fixed pyp_utils/subpedigree() to work with SNP data (needed to call
+    pyp_newclasses::PedigreeeMetadata()).
+??? 07/21/2020  Duplicate animals in pedigree files cause problems -- I thought there
+    were already checks for that?
+''' 07/20/2020  Hit a tricky rough edge...it's not unusual for cattle to have both
+    a registration number (a string) and a pedigree name (also a string). The problem
+    is that, when the animal's ID is a string, the name field is filled with the ID,
+    which is then hashed into an integer that's stored in the animalID field. This means
+    that I cannot draw a pedigree that uses pedigree names in place of registration
+    numbers. For now, I've hacked a "displayName" property into NewAnimal instances,
+    but I'm not sure I really like this as a solution.
+''' 07/20/2020  The keywords 'set_sexes' and 'assign_sexes' can be used inter-
+    changeably.
+''' 07/20/2020  Added new arguments, colorByUser and colorByUserPalette, to
+    pyp_graphics/new_draw_pedigree() to automatically shade nodes based on the
+    contents of the userField pedigree attribute.
++++ 07/20/2020  Added code to pyp_newclasses/PedigreeMetadata() to produce
+    summary statistics for userField data.
+??? 07/16/2020  What fresh hell is this reldict/rel_dict nonsense in pyp_nrm/
+    inbreeding()? Did I write that on a plane?!
++++ 07/16/2020  Added support for genomic inbreeding coefficients to
+    pyp_newclasses/NewPedigree and pyp_newclasses/NewAnimal.
++++ 07/16/2020  Added support for genomic inbreeding coefficients to
+    NewAnimal::printme() and NewAnimal::stringme().
+''' 07/16/2020  Fixed an indexing bug in NewAnimal::dictme().
+''' 07/16/2020  Fixed pedformat processing to work with SNP data.
+--- 07/15/2020  The pedformat checking doesn't work properly for when the genotypes
+    are stored in another file because the format has, e.g., 4 values ('asdP') but
+    the .ped file only has, e.g., 3 columns because the SNP genotypes are in another
+    file.`
+??? 07/08/2020  Is there a way to force nodes to be laid out in a fixed order
+    by an attribute? I would like it to always be male top/left and female
+    bottom/right.
+''' 07/08/2020  Added a new argument, gdpi, to pyp_graphics/new_draw_pedigree()
+    that lets you specify the resolution of rater images. The default is 300.
+XXX 06/03/2020  pyp_graphics/draw_pedigree() is deprecated and will be
+    dropped at some future time. Changes/updates/bugfixes will be made to
+    pyp_graphics/new_draw_pedigree() instead.
+''' 06/03/2020  Added support for the bold text attribute to
+    pyp_graphics/new_draw_pedigree() through a new "gbold" attribute.
+''' 06/03/2020  Added support for the penwidth attribute to
+    pyp_graphics/new_draw_pedigree() through a "gpenwidth" attribute.
+''' 06/02/2020  Added a gfontsize attribute to pyp_graphics/new_draw_pedigree()
+    to make it easier to change labels.
+??? 06/02/2020  pyp_graphics/new_draw_pedigree() doesn't work properly
+    in landscape mode? (This may be a macOS-specific issue:
+    https://gitlab.com/graphviz/graphviz/-/issues/1434) Also, check the values
+    set for both gorient and gdirec -- there is an "incompatibility" where
+    landscape graphs are not rotated if the graph is oriented top-to-
+    bottom. There probably needs to be better logic for enforcing only
+    valid combinations here.
+''' 06/02/2020  Updated dict4ini from version 0.4 to version 0.9.9 (for
+    details see: https://code.google.com/archive/p/dict4ini/sourcex).
+### 06/02/2020  For some reason, dict4ini has trouble when single
+    quotes are used instead of double quotes for commas -- I think it
+    ends up treating the row/entry as an empty list.
+''' 06/02/2020  NewPedigree.__init__() will  now print the contents
+    of self.kw to the logfile if messages == 'verbose' and
+    debug_messages > 0 to help with debugging load issues.
++++ 05/12/2020  Started stubbing-in pyp_snp, which will provide
+    tools for working with SNP genotypes that are attached to
+    pedigrees. For now, I'm just working with the format we use
+    at AGIL and CDCB that is also recognized by the University
+    of Georgia BLUPF90-family program. If someone really wants to
+    handle PLINK or BIMBAM or whatever they'll need to first convert
+    their files. This is also my first experiment with using Pandas
+    dataframes for some PyPedal features. It's a lot easier to filter
+    dataframes than loop over lists or dictionaries to find certain
+    values.
+''' 05/12/2020  Added pedformat code 'S', for SNP genotypes.
+??? 04/23/2020  Looking at "03/05/2018 pyp_utils/set_upg() needs a
+    flag..." suggests that I need to completely rethink the UPG
+    rules. Should I just mimic what renumf90 does?
+??? 04/23/2020  IT looks like ADODB is a defunct/abandoned project.
+    I need to figure out what to do about a general DB access
+    solution. Perhaps I need to just support sqlite3. Not sure.
+*** 04/23/2020  Replaced pysparse usage in pyp_mrn with scipy.sparse
+    calls instead (fast_a_matrix, fast_a_matrix_r, fast_partial_a_matrix).
+''' 04/23/2020  Added a new test program, examples/new_inbreeding5.py,
+    which shows that sparse and dense matrices work as expected for
+    both NRM and FRM.
+??? 04/23/2020  Does it make sense for pyp_nrm/fat_a_matrix() and
+    pyp_nrm/fat_a_matrix_r() to return [[0.0]] on failure, or would
+    False be better? The former can lead to some weird,  non-obvious
+    behavior. In some places I do return False, so the currently state
+    of affairs is even worse than it seems...
+''' 04/23/2020  Fixed "09/09/2016 pyp_graphics/draw_pedigree() may not
+    properly assign the "unknown sex" shape when sex is "u"." Animal IDs with
+    unknown sex are now enclosed in an octagon.
+''' 04/23/2020  While fixing "09/09/2016 pyp_graphics/draw_pedigree() may not
+    properly assign the "unknown sex" shape when sex is "u".", fixed a but in
+    the construction of the subgraph list in draw_pedigree(). Elements were comma-
+    separated and they're supposed to be space-delimited. I'm not siure if the DOT
+    syntax changed (unlikely) or if this has been broken for a long time (most
+    likely).
+!!! 04/23/2020  I'm not happy with birth date formatting. Currently, the only
+    thing accepted is MMDDYYYY format. I'd like to at least include a separator
+    so that I don't have to recode dates saved from Excel/LibreOffice. I don't
+    really to put in a full-blown formatting system so that users can specify
+    any format they want, I feel like that's a lot of work for not much benefit.
+    I think I'm going to add a "date_sepchar" argument.
+??? 04/12/2018  It looks as though pysparse isn't an active project anymore,
+    so the option should probably be removed from pyp_nrm. Maybe replace with
+    scipy.sparse?
+!!! 03/05/2018  pyp_utils/set_upg() needs a flag that will force addition of
+    UPG to a reordered, renumbered pedigree. The pedigree will be reordered and
+    renumbered again.
+XXX 03/05/2018  pyp_utils/assign_upg() is now deprecated in favor of
+    pyp_utils/set_upg().
+XXX 03/05/2018  pyp_utils/assign_offspring() is now deprecated in favor of
+    pyp_utils/set_offspring().
+XXX 03/05/2018  pyp_utils/assign_sexes() is now deprecated in favor of
+    pyp_utils/set_sexes().
+''' 03/05/2018  pyp_utils/set_age() now uses kw['missing_value'] instead of
+    -999 for missing values.
+??? 03/05/2018  Should pyp_utils/set_generation() check the flags to ensure
+    that the pedigree is reordered and renumbered? It would be better to give
+    the user a warning there's a problem instead of doing weird things with
+    no indication there's an issue.
+??? 03/05/2018  Can pyp_utils/set_ancestor_flag() use the parent list from
+    the pedigree metadata to avoid walking the pedigree to find the parents?
+    It seems redundant...
++++ 03/05/2018  Added pyp_utils/remove_missing(), which removes from the
+    pedigree any animal with the missing parent indicator as its ID.
+''' 03/05/2018  pyp_network::find_ancestors() has been rewritten to make
+    use of NetworkX functions instead of my hand-rolled recursion.
+''' 03/05/2018  pyp_network::find_descendants() has been rewritten to make
+    use of NetworkX functions instead of my hand-rolled recursion.
+### 03/05/2018  NetworkX 2 is out, and there have been some changes that
+    break things in pyp_network.py. Fixes won't result in any user-facing API
+    changes. I don't think.
+''' 03/05/2018  Added a new option, 'missing_value' to pyp_newclasses::NewPedigree().
+    Functions that return numneric values will be revised to use this as the
+    missing value indicator.
+??? 09/09/2016  pyp_graphics/draw_pedigree() is not working with DOT on
+    El Capitan -- jpg is not a valid extension?
+??? 09/09/2016  pyp_graphics/draw_pedigree() may not properly assign the
+    "unknown sex" shape when sex is "u".
+*** 11/23/2015  Began work on a brand new, from-scratch manual using Sphinx.
     The old documentation is in doc_old. This will, hopefully, result in a
     substantially improved user experience.
 ''' 11/22/2015  Fixed the range-checking for the 'foundercoi' option so
-    that it is not properly constrained to be [0., 1.].
+    that it is [not?] properly constrained to be [0., 1.].
 ### 11/22/2015  Should all of the option processing move to a method,
     instead of sitting in __init__()?
 XXX 11/22/2015  Removed all Psyco imports and messages since it's been a

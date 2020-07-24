@@ -18,6 +18,8 @@
 #   pcolor_matrix_pylab()
 #   spy_matrix_pylab()
 #   new_draw_pedigree()
+#   closest_colour()
+#   get_colour_name()
 ###############################################################################
 # [1] These routines were taken from the ASPN Python Cookbook
 #     (http://aspn.activestate.com/ASPN/Cookbook/Python/) and are used under
@@ -53,6 +55,14 @@
 # Note that the matplotlib functionality in PyPedal requires only the Agg backend, which
 # means that you do not have to install GTK/PyGTK or WxWidgets/PyWxWidgets just to use
 # PyPedal. Please consult the sites above for licensing and installation information.
+
+import logging
+import math, string
+from PyPedal import pyp_demog
+
+##import matplotlib
+##matplotlib.use('Agg')
+##import pylab
 
 ##
 # rmuller_spy_matrix_pil() implements a matlab-like 'spy' function to display the
@@ -225,11 +235,8 @@ def rmuller_get_color(a, cmin, cmax):
 # @param gtitjust Indicates if the title should be center- ('c'), left- ('l'), or right-justified ('r').
 # @param gshowall Draws animals with no links to other ancestors in the pedigree (1) or suppresses them (0).
 # @param gclusters Indicates if subgraph clusters should be used when drawing the pedigree, which may improve layout in some pedigrees.
-# @param gwidth Width of the canvas to plot on, in inches
-# @param gheight Height of the canvas to plot on, in inches
-# @param gdpi Resolution of image in DPI
 # @retval A 1 for success and a 0 for failure.
-def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize='f', gdot='1', gorient='p', gdirec='', gname=0, gfontsize=10, garrow=1, gtitloc='b', gtitjust='c', gshowall=1, gclusters=0, gwidth=8.5, gheight=11, gdpi=150):
+def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize='f', gdot='1', gorient='p', gdirec='', gname=0, gfontsize=10, garrow=1, gtitloc='b', gtitjust='c', gshowall=1, gclusters=0):
     """
     draw_pedigree() uses the pydot bindings to the graphviz library -- if they
     are available on your system -- to produce a directed graph of your pedigree
@@ -282,39 +289,20 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
         gfontsize = 10
     gfontsize = str(gfontsize)
 #     print 'gfontsize = %s' % (gfontsize)
-    # Check the resolution and set if it's a positive integer, otherwise set it to the default.
-    dpi = int(gdpi)
-    if dpi <= 0: dpi = 150
-    g.set_dpi(dpi)
-    # If the user specifies a height and width for the canvas use it if it's a plausible
-    # value. Anything smaller than 8.5 x 11 is set to that size. Values larger than 8.5 x 11
-    # are left alone.
-    if gheight and gwidth:
-        gheight = float(gheight)
-	gwidth = float(gwidth)
-        if gwidth <= 8.5: gwidth = 8.5
-        if gheight <= 11.: gwidth = 11.
-        try:
-            page = "%.1f,%.1f" % ( gwidth, gheight )
-            size = "%.1f,%.1f" % ( gwidth-1, gheight-1 )
-        except:
-            page = "8.5,11"
-            size = "7.5,10"
-    else:
-        page = "8.5,11"
-        size = "7.5,10"
-    g.set_page(page)
-    g.set_size(size)
-    # Handle the orientation of the document.
+    g.set_page("8.5,11")
+    g.set_size("7.5,10")
     if gorient == 'l':
         g.set_orientation("landscape")
     else:
         g.set_orientation("portrait")
     if gsize != 'l':
         g.set_ratio("auto")
-    if gdirec not in ['RL', 'LR', 'TB', 'BT']:
-        gdirec = 'TB'
-    g.set_rankdir(gdirec)
+    if gdirec == 'RL':
+        g.set_rankdir('RL')
+    elif gdirec == 'LR':
+        g.set_rankdir('LR')
+    else:
+        pass
     g.set_center('true')
     g.set_concentrate('true')
     g.set_ordering('out')
@@ -324,46 +312,45 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
     if len(pedobj.metadata.unique_gen_list) <= 1:
         for _m in pedobj.pedigree:
             # Add a node for the current animal and set some properties.
-            if str(_m.animalID) != str(pedobj.kw['missing_parent']):
+            if gname:
+                _node_name = _m.name
+            else:
+                _node_name = _m.animalID
+            _an_node = pydot.Node(str(_node_name))
+            _an_node.set_fontname('Helvetica')
+            # _an_node.set_fontsize('10')
+            _an_node.set_fontsize(str(gfontsize))
+            _an_node.set_height('0.35')
+            if _m.sex == 'M' or _m.sex == 'm':
+                _an_node.set_shape('box')
+            elif _m.sex == 'F' or _m.sex == 'f':
+                _an_node.set_shape('ellipse')
+            else:
+                _an_node.set_shape('octagon')
+            g.add_node(_an_node)
+            # Add the edges to the parent nodes, if any.
+            if int(_m.sireID) != pedobj.kw['missing_parent']:
                 if gname:
-                    _node_name = _m.name
-                else:
-                    _node_name = _m.animalID
-                _an_node = pydot.Node(str(_node_name))
-                _an_node.set_fontname('Helvetica')
-                # _an_node.set_fontsize('10')
-                _an_node.set_fontsize(str(gfontsize))
-                _an_node.set_height('0.35')
-                if _m.sex == 'M' or _m.sex == 'm':
-                    _an_node.set_shape('box')
-                elif _m.sex == 'F' or _m.sex == 'f':
-                    _an_node.set_shape('ellipse')
-                else:
-                    pass
-                g.add_node(_an_node)
-                # Add the edges to the parent nodes, if any.
-                if str(_m.sireID) != str(pedobj.kw['missing_parent']):
-                    if gname:
-                        if garrow:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name)))
-                        else:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name), dir='none'))
+                    if garrow:
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name)))
                     else:
-                        if garrow:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].originalID), str(_m.originalID)))
-                        else:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].originalID), str(_m.originalID), dir='none'))
-                if str(_m.damID) != str(pedobj.kw['missing_parent']):
-                    if gname:
-                        if garrow:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name)))
-                        else:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name), dir='none'))
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name), dir='none'))
+                else:
+                    if garrow:
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].originalID), str(_m.originalID)))
                     else:
-                        if garrow:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].originalID), str(_m.originalID)))
-                        else:
-                            g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].originalID), str(_m.originalID), dir='none'))
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].originalID), str(_m.originalID), dir='none'))
+            if int(_m.damID) != pedobj.kw['missing_parent']:
+                if gname:
+                    if garrow:
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name)))
+                    else:
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name), dir='none'))
+                else:
+                    if garrow:
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].originalID), str(_m.originalID)))
+                    else:
+                        g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].originalID), str(_m.originalID), dir='none'))
     # Or test the new subgraph clusters
     elif gclusters:
         for _g in pedobj.metadata.unique_gen_list:
@@ -377,25 +364,24 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
                 if int(_m.gen) == int(_g):
                     _sg_anims.append(_m.animalID)
                     # Add a node for the current animal and set some properties.
-                    if str(_m.animalID) != str(pedobj.kw['missing_parent']):
-                        if gname:
-                            _node_name = _m.name
-                        else:
-                            _node_name = str(_m.animalID)
-                        _an_node = pydot.Node(str(_node_name))
-                        _an_node.set_fontname('Helvetica')
-                        _an_node.set_fontsize(gfontsize)
-                        _an_node.set_height('0.35')
-                        if _m.sex == 'M' or _m.sex == 'm':
-                            _an_node.set_shape('box')
-                        if _m.sex == 'F' or _m.sex == 'f':
-                            _an_node.set_shape('ellipse')
-                        sg.add_node(_an_node)
+                    if gname:
+                        _node_name = _m.name
+                    else:
+                        _node_name = str(_m.animalID)
+                    _an_node = pydot.Node(str(_node_name))
+                    _an_node.set_fontname('Helvetica')
+                    _an_node.set_fontsize(gfontsize)
+                    _an_node.set_height('0.35')
+                    if _m.sex == 'M' or _m.sex == 'm':
+                        _an_node.set_shape('box')
+                    if _m.sex == 'F' or _m.sex == 'f':
+                        _an_node.set_shape('ellipse')
+                    sg.add_node(_an_node)
             g.add_subgraph(sg)
         # Now that we've added the clusters to the graph, define the
         # edges.
         for _m in pedobj.pedigree:
-            if str(_m.sireID) != str(pedobj.kw['missing_parent']):
+            if _m.sireID != pedobj.kw['missing_parent']:
                 if gname:
                     if garrow:
                         g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name)))
@@ -406,7 +392,7 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
                         g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].animalID), str(_m.animalID)))
                     else:
                         g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].animalID), str(_m.animalID), dir='none'))
-            if str(_m.damID) != str(pedobj.kw['missing_parent']):
+            if _m.damID != pedobj.kw['missing_parent']:
                 if gname:
                     if garrow:
                         g.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name)))
@@ -427,56 +413,55 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
             else:
                 sg = pydot.Subgraph(graph_name=str(_sg_name), suppress_disconnected=True, simplify=True, rank='same')
             for _m in pedobj.pedigree:
-                if str(_m.animalID) != str(pedobj.kw['missing_parent']):
-                    if int(_m.gen) == int(_g):
-                        _sg_anims.append(_m.animalID)
-                        ## ->
-                        # Add a node for the current animal and set some properties.
+                if int(_m.gen) == int(_g):
+                    _sg_anims.append(_m.animalID)
+                    ## ->
+                    # Add a node for the current animal and set some properties.
+                    if gname:
+                        _node_name = _m.name
+                    else:
+                        _node_name = str(_m.animalID)
+                    _an_node = pydot.Node(str(_node_name))
+                    _an_node.set_fontname('Helvetica')
+                    _an_node.set_fontsize(str(gfontsize))
+                    _an_node.set_height('0.35')
+                    if _m.sex == 'M' or _m.sex == 'm':
+                        _an_node.set_shape('box')
+                    if _m.sex == 'F' or _m.sex == 'f':
+                        _an_node.set_shape('ellipse')
+                    sg.add_node(_an_node)
+                    ## <-
+                    # Add the edges to the parent nodes, if any.
+                    if _m.sireID != pedobj.kw['missing_parent']:
                         if gname:
-                            _node_name = _m.name
+                            if garrow:
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name)))
+                            else:
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name), dir='none'))
                         else:
-                            _node_name = str(_m.animalID)
-                        _an_node = pydot.Node(str(_node_name))
-                        _an_node.set_fontname('Helvetica')
-                        _an_node.set_fontsize(str(gfontsize))
-                        _an_node.set_height('0.35')
-                        if _m.sex == 'M' or _m.sex == 'm':
-                            _an_node.set_shape('box')
-                        if _m.sex == 'F' or _m.sex == 'f':
-                            _an_node.set_shape('ellipse')
-                        sg.add_node(_an_node)
-                        ## <-
-                        # Add the edges to the parent nodes, if any.
-                        if str(_m.sireID) != str(pedobj.kw['missing_parent']):
-                            if gname:
-                                if garrow:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name)))
-                                else:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].name), str(_m.name), dir='none'))
+                            if garrow:
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].animalID), str(_m.animalID)))
                             else:
-                                if garrow:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].animalID), str(_m.animalID)))
-                                else:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].animalID), str(_m.animalID), dir='none'))
-                        if str(_m.damID) != str(pedobj.kw['missing_parent']):
-                            if gname:
-                                if garrow:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name)))
-                                else:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name), dir='none'))
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.sireID)-1].animalID), str(_m.animalID), dir='none'))
+                    if _m.damID != pedobj.kw['missing_parent']:
+                        if gname:
+                            if garrow:
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name)))
                             else:
-                                if garrow:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].animalID), str(_m.animalID)))
-                                else:
-                                    sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].animalID), str(_m.animalID), dir='none'))
-                        ## <-
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].name), str(_m.name), dir='none'))
+                        else:
+                            if garrow:
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].animalID), str(_m.animalID)))
+                            else:
+                                sg.add_edge(pydot.Edge(str(pedobj.pedigree[int(_m.damID)-1].animalID), str(_m.animalID), dir='none'))
+                    ## <-
             if len(_sg_anims) > 0:
                 _sg_list = ''
                 for _a in _sg_anims:
                     if len(_sg_list) == 0:
                         _sg_list = '%s' % (_a)
                     else:
-                        _sg_list = '%s,%s' % (_sg_list,_a)
+                        _sg_list = '%s %s' % (_sg_list,_a)
             sg.set_rank(_sg_list)
             g.add_subgraph(sg)
             #try:
@@ -493,24 +478,24 @@ def draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', gsize=
     # Especially when I am debugging.
     if gdot:
         dfn = '%s.dot' % (gfilename)
-        #try:
-        g.write(dfn)
-        #except:
-        #    if pedobj.kw['messages'] == 'verbose':
-        #        print '[ERROR]: pyp_graphics/draw_pedigree() was unable to write the dotfile %s.' % (dfn)
-        #    logging.error('pyp_graphics/draw_pedigree() was unable to draw the dotfile %s.', (dfn))
+        try:
+            g.write(dfn)
+        except:
+            if pedobj.kw['messages'] == 'verbose':
+                print '[ERROR]: pyp_graphics/draw_pedigree() was unable to write the dotfile %s.' % (dfn)
+            logging.error('pyp_graphics/draw_pedigree() was unable to draw the dotfile %s.', (dfn))
 
     # Write the graph to an output file.
-    #try:
-    outfile = '%s.%s' % (gfilename,gformat)
-    g.write(outfile, prog='dot', format=gformat)
-    #    return 1
-    #except:
-    #    outfile = '%s.%s' % (gfilename,gformat)
-    #    if pedobj.kw['messages'] == 'verbose':
-    #        print '[ERROR]: pyp_graphics/draw_pedigree() was unable to draw the pedigree %s.' % (outfile)
-    #    logging.error('pyp_graphics/draw_pedigree() was unable to draw the pedigree %s.', (outfile))
-    #    return 0
+    try:
+        outfile = '%s.%s' % (gfilename,gformat)
+        g.write(outfile, prog='dot', format=gformat)
+        return 1
+    except:
+        outfile = '%s.%s' % (gfilename,gformat)
+        if pedobj.kw['messages'] == 'verbose':
+            print '[ERROR]: pyp_graphics/draw_pedigree() was unable to draw the pedigree %s.' % (outfile)
+        logging.error('pyp_graphics/draw_pedigree() was unable to draw the pedigree %s.', (outfile))
+        return 0
 
 ##
 # founders_by_year() uses matplotlib -- if available on your system -- to produce a
@@ -756,20 +741,27 @@ def plot_line_xy(xydict, gfilename='plot_line_xy', gtitle='Value by key', gxlabe
 # @param gdot Whether or not to write the dot code for the pedigree graph to a file (can produce large files).
 # @param gorient The orientation of the graph: 'p': portrait, 'l': landscape.
 # @param gdirec Direction of flow from parents to offspring: 'TB': top-bottom, 'LR': left-right, 'RL': right-left.
-# @param gname Flag indicating whether ID numbers (0) or names (1) should be used to label nodes.
+# @param gname Flag indicating whether ID numbers (id), animal names (name), or display names (display) should be used to label nodes.
 # @param garrow Flag indicating whether or not arrowheads should be drawn.
 # @param gtitloc Indicates if the title be drawn or above ('t') or below ('b') the graph.
 # @param gtitjust Indicates if the title should be center- ('c'), left- ('l'), or right-justified ('r').
 # @param gshowall Draws animals with no links to other ancestors in the pedigree (1) or suppresses them (0).
 # @param gprog Specify which program should be used to position and render the graph.
+# @param gfontsize Specify size of font used for labels.
+# @param gpenwidth Specify thickness of pen used to draw lines around nodes and edges.
+# @param gbold Specify bold font is sued for labels.
+# @param gdpi Resolution for raster images (e.g., PNG & JPG).
+# @param colorByUser Shade nodes by values contained in the pedigree's User
 # @retval A 1 for success and a 0 for failure.
 def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
-    gsize='f', gdot=1, gorient='p', gdirec='', gname=0, garrow=1, \
-    gtitloc='b', gtitjust='c', gshowall=1, gprog='dot'):
+    gsize='f', gdot=1, gorient='p', gdirec='TB', gname='id', garrow=1, \
+    gtitloc='b', gtitjust='c', gshowall=1, gprog='dot', gfontsize=False,
+    gpenwidth=3, gbold=True, gfont='Helvetica', gdpi=300, colorByUser=False,
+    colorByUserPalette=False):
     """
     new_draw_pedigree() uses the pygraphviz to produce a directed graph of your
     pedigree with paths of inheritance as edges and animals as nodes.  If there
-    is more than one generation in the pedigree as determined by the "gen"
+    is more than one generation in the pedigree as determind by the "gen"
     attributes of the animals in the pedigree, draw_pedigree() will use subgraphs
     to try and group animals in the same generation together in the drawing.
 
@@ -784,6 +776,30 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!'
         logging.error('pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!')
         return 0
+
+    # Check for valid values of gname.
+    if gname and gname not in ['id', 'animal', 'display', 'animal_display', 'id_display']:
+        if pedobj.kw['messages'] == 'verbose':
+            print '[ERROR]: pyp_graphics/new_draw_pedigree() was provided an invalid value of gname' \
+                  ' (%s), defaulting to a value of \'id\'!' % (gname)
+        logging.error('pyp_graphics/new_draw_pedigree() was provided an invalid value of gname (%s), '
+                      'defaulting to a value of \'id\'!', gname)
+        gname = 'id'
+
+    # Handle colormaps when shading nodes.
+    if colorByUser:
+        if 'u' not in pedobj.kw['pedformat']:
+            if pedobj.kw['messages'] == 'verbose':
+                print '[WARNING]: pyp_graphics/new_draw_pedigree() cannot honor the colorByUser argument because the' \
+                      'pedigree does not include userField information!'
+            logging.error('pyp_graphics/new_draw_pedigree() cannot honor the colorByUser argument because the pedigree '
+                          'does not include userField information!')
+        else:
+            # Use "Accent" from the qualitative colormaps.
+            import matplotlib.pyplot as plt
+            import matplotlib.colors
+            cmap = plt.cm.get_cmap('Accent', pedobj.metadata.num_unique_fields)
+            _fields = list(pedobj.metadata.unique_field_list)
 
     # Maps the 0/1 flags taken by the function and maps them to Python
     # True/False for settine edge and node attributes.
@@ -803,7 +819,13 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         logging.error('The pedigree that you passed to pyp_graphics/new_draw_pedigree() is not renumbered. Because of this, there may be errors in the rendered pedigree. In order to insure that the pedigree drawing is accurate, you should renumber the pedigree before calling new_draw_pedigree().')
 
     # Create an empty pygraphviz graph using the Agraph class.
-    g = pygraphviz.AGraph(directed=True,strict=False)
+    g = pygraphviz.AGraph(directed=True, strict=False)
+
+    # Some quality issues at default 72 dpi
+    if int(gdpi) < 72:
+        g.graph_attr['dpi'] = 72
+    else:
+        g.graph_attr['dpi'] = int(gdpi)
 
     # I'm not sure if I need to have this here or not.
     g.graph_attr['type'] = 'graph'
@@ -820,16 +842,33 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         g.graph_attr['label'] = gtitle
         g.graph_attr['labelloc'] = gtitloc
         g.graph_attr['labeljust'] = gtitjust
+        # Handle font and bold attributes
+        if gfont and gbold:
+            g.graph_attr['fontname'] = '%s bold' % gfont
+        elif gfont and not gbold:
+            g.graph_attr['fontname'] = gfont
+        elif not gfont and gbold:
+            g.graph_attr['fontname'] = 'Helvetica bold'
+        else:
+            g.graph_attr['fontname'] = 'Helvetica'
+        g.graph_attr['penwidth'] = int(gpenwidth)
 
     # Set the page paper size and writeable area.
     g.graph_attr['page'] = '8.5,11'
     g.graph_attr['size'] = '7.5,10'
 
     # Set the page orientation.
+    # 06/03/2020: Neither the "orientation" attribute nor the "rotate" attribute
+    #             appear to work correctly on macOS. The "hack" for now is to use
+    #             a gdirec of TB.
     if gorient == 'l':
-        g.graph_attr['orientation'] = 'landscape'
+        #g.graph_attr['orientation'] = 'landscape'
+        #g.graph_attr['rotate'] = 90
+        pass
     else:
-        g.graph_attr['orientation'] = 'portrait'
+        #g.graph_attr['orientation'] = 'portrait'
+        #g.graph_attr['rotate'] = 0
+        pass
 
     if gsize != 'l':
         g.graph_attr['ratio'] = 'auto'
@@ -837,40 +876,84 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         g.graph_attr['rankdir'] = 'RL'
     elif gdirec == 'LR':
         g.graph_attr['rankdir'] = 'LR'
+    elif gdirec == 'TB':
+        g.graph_attr['rankdir'] = 'TB'
     else:
         pass
 
     # Set a few other graph properties.
     g.graph_attr['center'] = 'True'
     g.graph_attr['concentrate'] = 'True'
-    g.graph_attr['fontsize'] = str(pedobj.kw['default_fontsize'])
+    if not gfontsize:
+        g.graph_attr['fontsize'] = str(pedobj.kw['default_fontsize'])
+    else:
+        g.graph_attr['fontsize'] = int(gfontsize)
     g.graph_attr['ordering'] = 'out'
+    g.graph_attr['penwidth'] = int(gpenwidth)
 
     for _m in pedobj.pedigree:
         # Add a node for the current animal and set some node properties.
+        # 'id', 'animal', 'display', 'animal_display', 'id_display'
         if gname:
-            _node_name = _m.name
+            if gname == 'id':
+                _node_name = _m.animalID
+            elif gname == 'animal':
+                _node_name = _m.name
+            elif gname == 'display':
+                _node_name = _m.displayName
+            elif gname == 'animal_display':
+                _node_name = '%s\n%s' % ( _m.name, _m.displayName )
+            elif gname == 'id_display':
+                _node_name = '%s\n%s' % ( _m.animalID, _m.displayName )
+            else:
+                _node_name = _m.animalID
         else:
             _node_name = _m.animalID
         g.add_node(_node_name)
         n = g.get_node(_node_name)
         n.attr['shape'] = 'box'
-        n.attr['fontname'] = 'Helvetica'
-        n.attr['fontsize'] = str(pedobj.kw['default_fontsize'])
+        n.attr['fontname'] = g.graph_attr['fontname']
+        if not gfontsize:
+            n.attr['fontsize'] = str(pedobj.kw['default_fontsize'])
+        else:
+            n.attr['fontsize'] = int(gfontsize)
         n.attr['height'] = '0.35'
-        #print '[DEBUG]: sex = ', _m.sex
-        if _m.sex == 'M' or _m.sex == 'm':
+        if _m.sex in ['M', 'm']:
             n.attr['shape'] = 'box'
-        elif _m.sex == 'F' or _m.sex == 'f':
+        elif _m.sex in ['F', 'f']:
             n.attr['shape'] = 'ellipse'
         else:
             n.attr['shape'] = 'octagon'
-            #pass
+        n.attr['penwidth'] = int(gpenwidth)
+        # Assign fill values, if requested.
+        if colorByUser:
+            n.attr['style'] = 'filled'
+            if colorByUserPalette:
+                n.attr['fillcolor'] = colorByUserPalette[_m.userField]
+            else:
+                # I have to split the tuple because the RGB tuples returned from Matplotlib colormaps
+                # include transparency, which I don't need.
+                _rgb = cmap(_fields.index(_m.userField))
+                n.attr['fillcolor'] = get_colour_name( (int(_rgb[0]*255), int(_rgb[1]*255),  int(_rgb[2]*255)) )
 
         # Add the edges to the parent nodes, if any.
         if int(_m.sireID) != pedobj.kw['missing_parent']:
             if gname:
-                _sire_edge = pedobj.pedigree[int(_m.sireID)-1].name
+                #_sire_edge = pedobj.pedigree[int(_m.sireID)-1].name
+                if gname == 'id':
+                    _sire_edge = pedobj.pedigree[int(_m.sireID) - 1].animalID
+                elif gname == 'animal':
+                    _sire_edge = pedobj.pedigree[int(_m.sireID) - 1].name
+                elif gname == 'display':
+                    _sire_edge = pedobj.pedigree[int(_m.sireID) - 1].displayName
+                elif gname == 'animal_display':
+                    _sire_edge =  '%s\n%s' % ( pedobj.pedigree[int(_m.sireID) - 1].name,
+                                               pedobj.pedigree[int(_m.sireID) - 1].displayName)
+                elif gname == 'id_display':
+                    _sire_edge =  '%s\n%s' % ( pedobj.pedigree[int(_m.sireID) - 1].animalID,
+                                               pedobj.pedigree[int(_m.sireID) - 1].displayName)
+                else:
+                    _sire_edge = pedobj.pedigree[int(_m.sireID) - 1].animalID
             else:
                 # Check some outputs -- should I be using the animalID or the
                 # originalID to assign edges? Nodes are based on the animalID,
@@ -878,19 +961,33 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
                 #_sire_edge = pedobj.pedigree[int(_m.sireID)-1].originalID
                 _sire_edge = pedobj.pedigree[int(_m.sireID)-1].animalID
             g.add_edge(_sire_edge,_node_name)
+            e = g.get_edge(_sire_edge, n)
+            e.attr['penwidth'] = int(gpenwidth)
             if not _tf[garrow]:
-                #e = g.get_edge(_sire_edge,_anim_node)
-		e = g.get_edge(_sire_edge,n)
                 e.attr['dir'] = 'none'
         if int(_m.damID) != pedobj.kw['missing_parent']:
             if gname:
-                _dam_edge = pedobj.pedigree[int(_m.damID)-1].name
+                #_dam_edge = pedobj.pedigree[int(_m.damID)-1].name
+                if gname == 'id':
+                    _dam_edge = pedobj.pedigree[int(_m.damID) - 1].animalID
+                elif gname == 'animal':
+                    _dam_edge = pedobj.pedigree[int(_m.damID) - 1].name
+                elif gname == 'display':
+                    _dam_edge = pedobj.pedigree[int(_m.damID) - 1].displayName
+                elif gname == 'animal_display':
+                    _dam_edge = '%s\n%s' % ( pedobj.pedigree[int(_m.damID) - 1].name,
+                                             pedobj.pedigree[int(_m.damID) - 1].displayName)
+                elif gname == 'id_display':
+                    _dam_edge = '%s\n%s' % ( pedobj.pedigree[int(_m.damID) - 1].animalID,
+                                             pedobj.pedigree[int(_m.damID) - 1].displayName)
+                else:
+                    _dam_edge = pedobj.pedigree[int(_m.damID) - 1].animalID
             else:
                 _dam_edge = pedobj.pedigree[int(_m.damID)-1].animalID
             g.add_edge(_dam_edge,_node_name)
+            e = g.get_edge(_dam_edge, n)
+            e.attr['penwidth'] = int(gpenwidth)
             if not _tf[garrow]:
-                #e = g.get_edge(_dam_edge,_anim_node)
-		e = g.get_edge(_dam_edge,n)
                 e.attr['dir'] = 'none'
 
     # For large graphs it is nice to write out the .dot file so that it does
@@ -916,3 +1013,39 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.' % (outfile)
         logging.error('pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.', (outfile))
         return 0
+
+##
+# closest_colour() uses the webcolors library to convert a 3-tuple of integers, suitable for use in an rgb() color
+# triplet, to its corresponding normalized color name, if any such name exists.
+#
+# Source: https://stackoverflow.com/a/9694246.
+#
+# @param requested_colour A 3-tuple of RGB values from a Matplotlib colormap.
+# @retval A 1 for success and a 0 for failure.
+def closest_colour(requested_colour):
+    import webcolors
+    min_colours = {}
+    for key, name in webcolors.css3_hex_to_names.items():
+        r_c, g_c, b_c = webcolors.hex_to_rgb(key)
+        rd = (r_c - requested_colour[0]) ** 2
+        gd = (g_c - requested_colour[1]) ** 2
+        bd = (b_c - requested_colour[2]) ** 2
+        min_colours[(rd + gd + bd)] = name
+    return min_colours[min(min_colours.keys())]
+
+##
+# get_colour_name() delivers the closest matching name for the requested RGB colour. It matches by Euclidian distance
+# in the RGB space.
+#
+# Source: https://stackoverflow.com/a/9694246.
+#
+# @param pedobj A PyPedal pedigree object.
+# @retval A 1 for success and a 0 for failure.
+def get_colour_name(requested_colour):
+    import webcolors
+    try:
+        closest_name = actual_name = webcolors.rgb_to_name(requested_colour)
+    except ValueError:
+        closest_name = closest_colour(requested_colour)
+        actual_name = None
+    return closest_name

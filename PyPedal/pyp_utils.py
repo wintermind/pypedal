@@ -35,7 +35,7 @@
 #   list_union()
 #   list_intersection()
 #   guess_pedformat()
-#   which()
+#   resolve_duplicates()
 ###############################################################################
 
 ## @package pyp_utils
@@ -384,7 +384,7 @@ def reorder(myped, filetag='_reordered_', io='no', missingparent=0, debug=0, max
     # http://wiki.python.org/moin/PythonSpeed/PerformanceTips
     mypedins = myped.insert
     mypedidx = myped.index
-    copycopy = copy.copy
+    copycopy = copy.deepcopy
 
     # Move all founders to the start of the pedigree
     founderlist = []
@@ -398,13 +398,13 @@ def reorder(myped, filetag='_reordered_', io='no', missingparent=0, debug=0, max
     for f in founderlist:
         # Make a copy of the founder
         _founder = copycopy(myped[f])
-        # Delete the original the original founder record
+        # Delete the original founder record
         del myped[f]
         # Prepend the copy of the founder record to the pedigree
         mypedins(0, _founder)
 
     # order is a list that is used to keep track of each animal's
-    # position in the pedigree. IT needs to be updated after any
+    # position in the pedigree. It needs to be updated after any
     # movement of founders and before the main loop begins so that
     # the correct indices are use for sires and dams. If you don't
     # have it in the correct place you get duplication of records,
@@ -413,6 +413,9 @@ def reorder(myped, filetag='_reordered_', io='no', missingparent=0, debug=0, max
     for i in xrange(len(myped)):
         orderdict[myped[i].animalID] = i
         orderbackdict[i] = myped[i].animalID
+
+    #print 'len(myped): ', len(myped)
+    #print 'orderdict : ', orderdict
 
     while(1):
         if debug:
@@ -752,10 +755,6 @@ def renumber(myped, filetag='_renumbered_', io='no', outformat='0', debug=0, ret
     # Clean-up
     if cleanmap == True:
         delete_id_map(filetag)
-
-    # Update the metadata for the pedigree
-    #myped.metadata = pyp_newclasses.PedigreeMetadata(myped.pedigree, myped.kw)
-
     #print 'ID map in renumber():%s' % (id_map)
     if not returnmap:
         return myped
@@ -1031,13 +1030,14 @@ def subpedigree(pedobj, anlist):
     animals in the animals list.
     """
     try:
-        NewPed = copy.copy(pedobj)
+        NewPed = copy.deepcopy(pedobj)
         order = []
-        _tempped = copy.copy(NewPed.pedigree)
+        _tempped = copy.deepcopy(NewPed.pedigree)
         for _p in _tempped:
             order.append(_p.animalID)
         for _p in NewPed.pedigree:
             if _p.animalID not in anlist:
+                #_p.printme()
                 # Delete the animal from the pedigree and the
                 # ID maps.
                 _anidx = order.index(_p.animalID)
@@ -1047,13 +1047,14 @@ def subpedigree(pedobj, anlist):
                 del NewPed.backmap[_p.animalID]
                 del _tempped[_anidx]
                 del order[_anidx]
+                ### We may need to remove SNP data for animals, too...
                 for _t in _tempped:
                     order.append(_t.animalID)
         # Update the metadata object.
         NewPed.pedigree = _tempped
         del(_tempped)
         del(order)
-        NewPed.metadata = pyp_newclasses.PedigreeMetadata(NewPed.pedigree, NewPed.kw)
+        NewPed.metadata = pyp_newclasses.PedigreeMetadata(NewPed.pedigree, NewPed.kw, NewPed.snp)
         # Renumber the pedigree.
         if NewPed.kw['renumber']:
             NewPed.renumber()
@@ -1241,7 +1242,7 @@ def list_union(pedobjs):
 
 ##
 # guess_pedformat() tries to guess the pedigree format code that best matches a NewAnimal instance provided as
-# input based on the animal attributes as comapared to the default missing values for those attributes. I know
+# input based on the animal attributes as compared to the default missing values for those attributes. I know
 # that you're wondering why we can't just use the pedformat that's in the pedigree options dictionary, and it's
 # because this is intended primarily for use with functions that take as input NewAnimal objects which may come
 # from different pedigrees with different pedformats. Note that the logic of guess_pedformat() depends entirely
@@ -1306,26 +1307,57 @@ def guess_pedformat(animal, ped_kw):
 		return False
 
 ##
-# which() tries to determine if an executable program exists in the user's
-# path. The code was taken from Stack Overflow
-# (http://stackoverflow.com/questions/377017/test-if-executable-exists-in-python).
-# @param program The name of the program to find.
-# @retval A The name of the program, or "None".
-def which(program):
-
-    import os
-    def is_exe(fpath):
-        return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
-
-    fpath, fname = os.path.split(program)
-    if fpath:
-        if is_exe(program):
-            return program
-    else:
-        for path in os.environ["PATH"].split(os.pathsep):
-            path = path.strip('"')
-            exe_file = os.path.join(path, program)
-            if is_exe(exe_file):
-                return exe_file
-
-    return None
+# resolve_duplicates() .
+# @param pedobj A PyPedal pedigree.
+# @retval ...
+def resolve_duplicates(pedobj):
+    _temp_ped = copy.deepcopy(pedobj.pedigree)
+    duplicate_id_count = {}
+    duplicates = []
+    if pedobj.kw['messages'] == 'verbose':
+        print '\t[INFO]: pyp_utils/resolve_duplicates(): There are %s animals in the pedigree.' % len(pedobj.pedigree)
+    logging.info('pyp_utils/resolve_duplicates(): There are %s animals in the pedigree.', len(pedobj.pedigree))
+    _p_idx = 0
+    for _p in pedobj.pedigree:
+        _p_printed = False
+        for _t_idx in xrange(_p_idx+1, len(pedobj.pedigree)):
+            _t = pedobj.pedigree[_t_idx]
+            if _p.originalID == _t.originalID:
+                if _p.originalID not in duplicate_id_count.keys():
+                    duplicate_id_count[_p.originalID] = 1
+                else:
+                    duplicate_id_count[_p.originalID] += 1
+                if not _p_printed:
+                    # Sire
+                    if _p.sireID == pedobj.kw['missing_parent']:
+                        _orig_sire = pedobj.kw['missing_parent']
+                    else:
+                        _orig_sire = pedobj.pedigree[_p.sireID-1].originalID
+                    # Dam
+                    if _p.damID == pedobj.kw['missing_parent']:
+                        _orig_dam = pedobj.kw['missing_parent']
+                    else:
+                        _orig_dam = pedobj.pedigree[_p.damID-1].originalID
+                    duplicates.append('Renumbered ID:\t%s\toriginalID:\t%s\tsire ID:\t%s\tdam ID:\t%s'% \
+                                      (_p.animalID, _p.originalID, _orig_sire, _orig_dam))
+                    _p_printed = True
+                # Sire
+                if _t.sireID == pedobj.kw['missing_parent']:
+                    _orig_sire = pedobj.kw['missing_parent']
+                else:
+                    _orig_sire = pedobj.pedigree[_t.sireID-1].originalID
+                # Dam
+                if _t.damID == pedobj.kw['missing_parent']:
+                    _orig_dam = pedobj.kw['missing_parent']
+                else:
+                    _orig_dam = pedobj.pedigree[_t.damID-1].originalID
+                duplicates.append('Renumbered ID:\t%s\toriginalID:\t%s\tsire ID:\t%s\tdam ID:\t%s' % (_t.animalID, \
+                                                                                                      _t.originalID, \
+                                                                                                      _orig_sire, \
+                                                                                                      _orig_dam))
+        _p_idx += 1
+    for k, v in duplicate_id_count.iteritems():
+        if pedobj.kw['messages'] == 'verbose':
+            print '\t[INFO]: pyp_utils/resolve_duplicates(): originalID %s occurs %s time in the pedigree file!' % ( k, v )
+        logging.info('pyp_utils/resolve_duplicates(): originalID %s occurs %s time in the pedigree file!'%(k, v))
+    return duplicates

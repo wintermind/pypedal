@@ -18,7 +18,9 @@ PyPedal/locale
 PyPedal/*.bmp
 PyPedal/doc/tools
 PyPedal/doc/perl
-
+PyPedal/examples/jersey
+PyPedal/examples/sandcut
+PyPedal/examples/viszla
 
 # Python
 # https://github.com/github/gitignore/blob/master/Python.gitignore

@@ -324,7 +324,7 @@ def draw_colored_pedigree(pedobj, shading, gfilename='pedigree', gtitle='My_Pedi
 #         return 0
 
 ##
-# new_draw_colored_pedigree() uses the pyygraphviz to produce a directed graph of your
+# new_draw_colored_pedigree() uses pyygraphviz to produce a directed graph of your
 # pedigree with paths of inheritance as edges and animals as nodes.  If there
 # is more than one generation in the pedigree as determind by the "gen"
 # attributes of the animals in the pedigree, draw_pedigree() will use subgraphs

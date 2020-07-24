@@ -38,6 +38,13 @@
 # and effective ancestor number.
 ##
 
+import copy, logging, numpy, os, pickle, random, string, sys
+import pyp_io
+import pyp_network
+import pyp_nrm
+import pyp_utils
+from numpy import random
+
 ##
 # min_max_f() takes a pedigree and returns a list of the individuals with the n
 # largest and n smallest coefficients of inbreeding.  Individuals with CoI of
@@ -182,8 +189,8 @@ def a_effective_founders_lacy(pedobj, a=''):
     line = '='*60+'\n'
     aout.write('%s\n' % line)
     aout.write('%s animals\n' % l)
-    aout.write('%s founders: %s\n' % (n_f,fs))
-    aout.write('%s descendants: %s\n' % (n_d,ds))
+    aout.write('%s founders: %s\n' % n_f,fs)
+    aout.write('%s descendants: %s\n' % n_d,ds)
     aout.write('effective number of founders: %s\n' % f_e)
     aout.write('%s\n' % line)
     aout.close()
@@ -233,13 +240,13 @@ def effective_founders_lacy(pedobj):
         l = len(_f_peds[f])
         _r = []
         for _k,_v in _f_peds[f].iteritems():
-            _r.append(copy.copy(pedobj.pedigree[int(_k)-1]))
+            _r.append(copy.deepcopy(pedobj.pedigree[int(_k)-1]))
         # Don't forget to add the founder to the pedigree!
-        _r.append(copy.copy(pedobj.pedigree[int(pedobj.idmap[f])-1]))
+        _r.append(copy.deepcopy(pedobj.pedigree[int(pedobj.idmap[f])-1]))
         _tag = '%s_%s' % (pedobj.kw['filetag'],pedobj.idmap[f])
         _r = pyp_utils.fast_reorder(_r,_tag)      # Reorder the pedigree
         _s = pyp_utils.renumber(_r,_tag)          # Renumber the pedigree
-        _opts = copy.copy(pedobj.kw)
+        _opts = copy.deepcopy(pedobj.kw)
         _opts['filetag'] = _tag
         _a = pyp_nrm.fast_a_matrix(_s,_opts)       # Form the NRM w/the tabular method
         #_a = pyp_nrm.fast_a_matrix(_s,_tag)       # Form the NRM w/the tabular method
@@ -1439,7 +1446,7 @@ def related_animals(anim, pedobj):
     #except: pass
     _ped = []
     try:
-        _ped = pyp_nrm.recurse_pedigree_idonly(pedobj,anim,_ped)
+        _ped = pyp_nrm.recurse_pedigree_idonly(pedobj, anim,_ped)
     except:
         pass
     #try: logging.info('Exited related_animals()')
@@ -1510,7 +1517,7 @@ def relationship(anim_a, anim_b, pedobj, renumber=False):
                 _tag = '%s' % (pedobj.kw['filetag'])
                 _reord = []
                 for j in range(len(_ped)):
-                    _reord.append(copy.copy(_ped[j-1]))
+                    _reord.append(copy.deepcopy(_ped[j-1]))
                 if pedobj.kw['slow_reorder']:
                     _reord = pyp_utils.reorder(_reord,_tag,debug=pedobj.kw['debug_messages'])
                 else:
@@ -1520,7 +1527,7 @@ def relationship(anim_a, anim_b, pedobj, renumber=False):
                 _backmap = {}
                 for _mk, _mv in _map.iteritems():
                     _backmap[_mv] = _mk
-                _opts = copy.copy(pedobj.kw)
+                _opts = copy.deepcopy(pedobj.kw)
                 _opts['filetag'] = _tag
                 if pedobj.kw['nrm_method'] == 'nrm':
                     _a = pyp_nrm.fast_a_matrix(_s,_opts)
@@ -1595,7 +1602,7 @@ def mating_coi(anim_a, anim_b, pedobj, gens=0):
                     top_r, _anids = [], []
                     for _j in top_ped:
                         if top_peddict[_j] <= gens:
-                            top_r.append(copy.copy(pedobj.pedigree[int(_j)-1]))
+                            top_r.append(copy.deepcopy(pedobj.pedigree[int(_j)-1]))
                             if top_peddict[_j] == 1:
                                 top_r[-1].sireID = pedobj.kw['missing_parent']
                                 top_r[-1].damID = pedobj.kw['missing_parent']
@@ -1624,7 +1631,7 @@ def mating_coi(anim_a, anim_b, pedobj, gens=0):
                     _map = {}
                     #print '\t\tCopying pedigree for %s.' % ( pedobj.pedigree[-1].originalID )
                     for j in _ped:
-                        _r.append(copy.copy(pedobj.pedigree[int(j)-1]))
+                        _r.append(copy.deepcopy(pedobj.pedigree[int(j)-1]))
                 #print '\t\tReordering pedigree for %s.' % ( pedobj.pedigree[-1].animalID )
                 _tag = '%s_%s' % (pedobj.kw['filetag'],pedobj.pedigree[-1].animalID)
                 if pedobj.kw['slow_reorder']:
@@ -1636,7 +1643,7 @@ def mating_coi(anim_a, anim_b, pedobj, gens=0):
                 _backmap = {}
                 for _mk, _mv in _map.iteritems():
                     _backmap[_mv] = _mk
-                _opts = copy.copy(pedobj.kw)
+                _opts = copy.deepcopy(pedobj.kw)
                 _opts['filetag'] = _tag
                 #print '\t\tForming the A matrix for %s\'s pedigree.' % ( pedobj.pedigree[-1].animalID )
                 if pedobj.kw['nrm_method'] == 'nrm':
@@ -2308,8 +2315,7 @@ def founder_descendants(pedobj):
     except: pass
     founder_peds = {}
     for f in pedobj.metadata.unique_founder_list:
-        #_desc = descendants(pedobj.idmap[f],pedobj,{})
-	_desc = descendants(f,pedobj,{})
+        _desc = descendants(pedobj.idmap[f],pedobj,{})
         founder_peds[f] = _desc
     try: logging.info('Exited founder_descendants()')
     except: pass
