@@ -140,6 +140,10 @@ XXX 06/03/2020  pyp_graphics/draw_pedigree() is deprecated and will be
     really to put in a full-blown formatting system so that users can specify
     any format they want, I feel like that's a lot of work for not much benefit.
     I think I'm going to add a "date_sepchar" argument.
+=======
+### 05/15/2018  The gen/gencoeff/igen mess needs to be fixed.
+??? 05/15/2018  pyp_metrics/a_effective_ancestors_definite() may only work correctly
+    if the founders occur in the first generation (see example from Lucy Egan).
 ??? 04/12/2018  It looks as though pysparse isn't an active project anymore,
     so the option should probably be removed from pyp_nrm. Maybe replace with
     scipy.sparse?
@@ -348,7 +352,7 @@ XXX 07/05/2012  Removed the unused tail_recursive decorator from
     it's going on the list of "nice to have, but not essential"
     things.
 +++ 05/17/2012  Implemented the Meuwissen and Luo algorithm (1992)
-    algorithm for fast inbrreding calculations as modified by Quaas
+    algorithm for fast inbreeding calculations as modified by Quaas
     (1995). This is a more efficient algorithm, but the difference
     is not noticeable for small pedigrees. The code is in
     pyp_nrm/inbreeding_modified_meuwissen_luo(), and you use it by

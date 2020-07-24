@@ -35,11 +35,19 @@ import copy, logging, numpy, string
 import pyp_utils
 #from pyp_newclasses import tail_recursive
 
+import datetime
+import logging
+import numpy
+import subprocess
+import time
 try:
     import scipy.sparse as sps
 except ImportError:
     #logging.info('Could not import scipy.sparse, using NumPy dense matrices instead.')
     print '[INFO]: Could not import scipy.sparse, using NumPy dense matrices instead.'
+    #logging.info('Could not import the spmatrix module from PySparse! Using NumPy dense matrices instead.')
+    print '[INFO]: Could not import the spmatrix module from PySparse in pyp_nrm! NumPy dense matrices will be used instead.'
+import pyp_utils
 
 ##
 # a_matrix() is used to form a numerator relationship matrix from a pedigree.  DEPRECATED.
@@ -445,7 +453,7 @@ def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0, amet
     except: pass
     fx = {}
     metadata = {}
-    if method not in ['vanraden','tabular','meu_luo', 'mod_meu_luo', 'aguilar']:
+    if method not in ['vanraden', 'tabular', 'meu_luo', 'mod_meu_luo', 'aguilar']:
         try: logging.warning('You passed an unrecognized method, %s, to pyp_nrm/inbreeding(); the method was changed to the default of \'tabular\'.', method)
         except: pass
         method = 'tabular'
@@ -518,7 +526,8 @@ def inbreeding(pedobj, method='tabular', gens=0, rels=0, output=1, force=0, amet
                 logging.warning('You asked pyp_nrm.inbreeding() to compute relationships as well as inbreeding, but requested method %s, which does not provide coefficients of relationship. Only coefficients of inbreeding will be returned.', method)
             fx = inbreeding_modified_meuwissen_luo(pedobj, gens=gens, rels=rels)
         elif method == 'aguilar':
-            logging.info('Using the INBUPGF90 program to compute inbreeding with method ', amethod)
+            try: logging.info('Using the INBUPGF90 program to compute inbreeding with method %s.' % amethod)
+            except: pass
             fx = inbreeding_aguilar(pedobj, amethod)
         else:
             if rels:
@@ -683,22 +692,27 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
     try: logging.info('Entered inbreeding_vanraden()')
     except: pass
 
-    #print 'Entered inbreeding_vanraden()'
+    #print 'Entered inbreeding_vanraden()...'
+    #print '\tThe pedigree has %s animals in it.' % len(pedobj.pedigree)
     #print '\tConverting pedigree to graph.'
+
     from PyPedal import pyp_network
     # Using pyp_network.ped_to_graph() instead of pyp_nrm.recurse_pedigree()
     # provides a gain in performance of at least an order of magnitude.
     ng = pyp_network.ped_to_graph(pedobj)
 
+    #print 'Number of edges: ', ng.number_of_edges()
+    #print 'Number of nodes: ', ng.number_of_nodes()
+
     _ped = []       # This is a temporary pedigree
     top_ped = []
 
     if int(gens) > 0:
-#         print 'gens: %s' % ( gens )
+        # print 'gens: %s' % ( gens )
         top_peddict = pyp_network.find_ancestors_g(ng, len(pedobj.idmap), {}, gens)
         top_peddict[len(pedobj.idmap)] = 1
         top_ped = top_peddict.keys()
-        #print 'top_ped: ', top_ped
+        # print 'top_ped: ', top_ped
         top_r = []
         _anids = []
         for _j in top_ped:
@@ -772,8 +786,10 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
                 else:
                     _ped = pyp_network.find_ancestors(ng, i, [])
                     _ped.append(i)
+
                 #print 'ped len: %d' % ( len(_ped) )
                 #print 'ped: %s' % ( _ped )
+
                 if int(gens) > 0:
                     _r = top_r
                 else:
@@ -784,11 +800,13 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
                     for j in _ped:
                         # This is VERY important -- rather than append a reference
                         # to _ped[j-1] to _r we need to append a COPY of _ped[j-1]
-                        # to _r.  If you change this code and get rid of the call to
-                        # copy.deepcopy() then things will not work correctly.  You will
+                        # to _r. If you change this code and get rid of the call to
+                        # copy.copy() then things will not work correctly. You will
                         # realize what you have done when your renumberings seem to
                         # be spammed.
                         _r.append(copy.deepcopy(pedobj.pedigree[int(j)-1]))
+                #print 'len(_r): ', len(_r)
+
                 # We also need to honor the slow_reorder option.
                 if pedobj.kw['slow_reorder']:
                     _r = pyp_utils.reorder(_r,_tag)      # Reorder the pedigree
@@ -806,7 +824,7 @@ def inbreeding_vanraden(pedobj, cleanmaps=1, gens=0, rels=0):
                 # with the filetag changed as appropriate will do the trick.
                 _opts = copy.deepcopy(pedobj.kw)
                 _opts['filetag'] = _tag
-                # We need to accomodate the 'nrm_method' option, too.  The need for
+                # We need to accommodate the 'nrm_method' option, too.  The need for
                 # this is clearly demonstrated by horse.ped in the examples/ subdirectory -
                 # the inbreeding is so intense in that pedigree that four of the animals
                 # have r_xy >= 1. if we do not adjust the elements of A for parental in-

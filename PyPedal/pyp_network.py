@@ -39,7 +39,7 @@ import copy, logging
 try:
     import networkx
 except ImportError:
-    print '[WARNING]: The networkx module could not be imported in pyp_network.  Routines using networkx functionality are not available.'
+    print '[WARNING]: The NetworkX module could not be imported in pyp_network.  Routines using networkx functionality are not available.'
 
 ##
 # ped_to_graph() Takes a PyPedal pedigree object and returns a networkx DiGraph
@@ -58,36 +58,26 @@ def ped_to_graph(pedobj, oid=0):
         # The order in which we pass arguments to add_edge() is important -- the
         # parent has to be the first argument and the offspring the second if the
         # graph is to be ordered in the correct direction.
-	#print 'Adding node %s' % ( i )
-	if oid:
-	    G.add_node(int(pedobj.pedigree[i].originalID),
-  	        sire=str(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID),
-	        dam=str(pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID))
-	    #print G.node[int(pedobj.pedigree[i].originalID)]
-	else:
+        #print 'Adding node %s' % ( i )
+        if oid:
+            G.add_node(int(pedobj.pedigree[i].originalID),
+               sire=str(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID),
+               dam=str(pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID))
+        else:
             G.add_node(int(pedobj.pedigree[i].animalID),
-	        sire=str(pedobj.pedigree[i].sireID),
-		dam=str(pedobj.pedigree[i].damID))
-	    #print G.node[int(pedobj.pedigree[i].animalID)]
-        if str(pedobj.pedigree[i].sireID) != str(pedobj.kw['missing_parent']):
-            if oid:
-                G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID, int(pedobj.pedigree[i].originalID), sex='s')
-            else:
-                G.add_edge(int(pedobj.pedigree[i].sireID), int(pedobj.pedigree[i].animalID), sex='s')
-        if str(pedobj.pedigree[i].damID) != str(pedobj.kw['missing_parent']):
-            if oid:
-                G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID, int(pedobj.pedigree[i].originalID), sex='d')
-            else:
-                G.add_edge(int(pedobj.pedigree[i].damID), int(pedobj.pedigree[i].animalID), sex='d')
-#        if str(pedobj.pedigree[i].sireID) == str(pedobj.kw['missing_parent']) and str(pedobj.pedigree[i].damID) == str(pedobj.kw['missing_parent']):
-#            if oid:
-#                G.add_node(int(pedobj.pedigree[i].originalID),
-#		    sire=str(pedobj.kw['missing_parent']),
-#		    dam=str(pedobj.kw['missing_parent']))
-#            else:
-#                G.add_node(int(pedobj.pedigree[i].animalID),
-#		    sire=str(pedobj.kw['missing_parent']),
-#		    dam=str(pedobj.kw['missing_parent']))
+               sire=str(pedobj.pedigree[i].sireID),
+               dam=str(pedobj.pedigree[i].damID))
+    # Add parent-to-child edges.
+    if str(pedobj.pedigree[i].sireID) != str(pedobj.kw['missing_parent']):
+        if oid:
+            G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].sireID)].originalID, int(pedobj.pedigree[i].originalID), sex='s')
+        else:
+            G.add_edge(int(pedobj.pedigree[i].sireID), int(pedobj.pedigree[i].animalID), sex='s')
+    if str(pedobj.pedigree[i].damID) != str(pedobj.kw['missing_parent']):
+        if oid:
+            G.add_edge(pedobj.pedigree[int(pedobj.pedigree[i].damID)].originalID, int(pedobj.pedigree[i].originalID), sex='d')
+        else:
+            G.add_edge(int(pedobj.pedigree[i].damID), int(pedobj.pedigree[i].animalID), sex='d')
     return G
 
 ##
@@ -96,21 +86,22 @@ def ped_to_graph(pedobj, oid=0):
 # @param anid The animal for whom ancestors are to be found.
 # @param _ancestors The list of ancestors already found.
 # @retval List of ancestors of anid.
-def find_ancestors(pedgraph,anid,_ancestors=[]):
+def find_ancestors(pedgraph, anid,_ancestors=[]):
     """
     find_ancestors() identifies the ancestors of an animal and returns them in a list.
     """
-    anid = int(anid)
-    #print 'anid:\t\t%d' % ( anid )
-    try:
-        _pred = pedgraph.predecessors(anid)
-        for _p in _pred:
-            if _p not in _ancestors:
-                _ancestors.append(int(_p))
-            #print _ancestors
-            find_ancestors(pedgraph,_p,_ancestors)
-    except:
-        pass
+#    anid = int(anid)
+#    #print 'anid:\t\t%d' % ( anid )
+#    try:
+#        _pred = pedgraph.predecessors(anid)
+#        for _p in _pred:
+#            if _p not in _ancestors:
+#                _ancestors.append(int(_p))
+#            #print _ancestors
+#            find_ancestors(pedgraph,_p,_ancestors)
+#    except:
+#        pass
+    _ancestors = list(networkx.algorithms.dag.ancestors(pedgraph, anid))
     return _ancestors
 
 ##
@@ -151,15 +142,16 @@ def find_descendants(pedgraph, anid, _descendants=[]):
     """
     find_descendants() identifies the descendants of an animal and returns them in a list.
     """
-    try:
-        #print '\t%s\t%s' % ( anid, _descendants )
-        _desc = pedgraph.successors(anid)
-        for _d in _desc:
-            if _d not in _descendants:
-                _descendants.append(_d)
-                find_descendants(pedgraph,_d,_descendants)
-    except:
-        pass
+#    try:
+#        #print '\t%s\t%s' % ( anid, _descendants )
+#        _desc = pedgraph.successors(anid)
+#        for _d in _desc:
+#            if _d not in _descendants:
+#                _descendants.append(_d)
+#                find_descendants(pedgraph,_d,_descendants)
+#    except:
+#        pass
+    _descendants = list(networkx.algorithms.dag.descendants(pedgraph, anid))
     return _descendants
 
 ##

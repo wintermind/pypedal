@@ -126,6 +126,110 @@ class NewPedigree:
         if not kw.has_key('missing_pedcomp'): kw['missing_pedcomp'] = -999.
         if not kw.has_key('missing_alleles'): kw['missing_alleles'] = ['','']
         if not kw.has_key('missing_userfield'): kw['missing_userfield'] = ''
+        if 'simulate_n' not in kw.keys():
+            kw['simulate_n'] = 15
+        if 'simulate_g' not in kw.keys():
+            kw['simulate_g'] = 3
+        if 'simulate_ns' not in kw.keys():
+            kw['simulate_ns'] = 4
+        if 'simulate_nd' not in kw.keys():
+            kw['simulate_nd'] = 4
+        if 'simulate_mp' not in kw.keys():
+            kw['simulate_mp'] = 0
+        if 'simulate_po' not in kw.keys():
+            kw['simulate_po'] = 0
+        if 'simulate_fs' not in kw.keys():
+            kw['simulate_fs'] = 0
+        if 'simulate_sr' not in kw.keys():
+            kw['simulate_sr'] = 0.5
+        if 'simulate_ir' not in kw.keys():
+            kw['simulate_ir'] = 0.0
+        if 'simulate_pmd' not in kw.keys():
+            kw['simulate_pmd'] = 100
+        if 'simulate_save' not in kw.keys():
+            kw['simulate_save'] = 0
+        else:
+            if 'pedfile' not in kw.keys():
+                raise PyPedalPedigreeInputFileNameError
+        if 'pedigree_save' not in kw.keys():
+            kw['pedigree_save'] = 0
+        if 'pedformat' not in kw.keys():
+            kw['pedformat'] = 'asd'
+        if 'has_header' not in kw.keys():
+            kw['has_header'] = 0
+        if 'pedname' not in kw.keys():
+            kw['pedname'] = 'Untitled'
+        if 'messages' not in kw.keys():
+            kw['messages'] = 'verbose'
+        if 'renumber' not in kw.keys():
+            kw['renumber'] = 1
+        if 'reorder' not in kw.keys():
+            kw['reorder'] = 0
+        if 'reorder_max_rounds' not in kw.keys():
+            kw['reorder_max_rounds'] = 100
+        if 'pedigree_is_renumbered' not in kw.keys():
+            kw['pedigree_is_renumbered'] = 0
+        if 'set_generations' not in kw.keys():
+            kw['set_generations'] = 0
+        if 'gen_coeff' not in kw.keys():
+            kw['gen_coeff'] = 0
+        if 'set_ancestors' not in kw.keys():
+            kw['set_ancestors'] = 0
+        if 'set_alleles' not in kw.keys():
+            kw['set_alleles'] = 0
+        if 'set_offspring' not in kw.keys():
+            kw['set_offspring'] = 0
+        if 'set_sexes' not in kw.keys():
+            kw['set_sexes'] = 0
+        if 'pedcomp' not in kw.keys():
+            kw['pedcomp'] = 0
+        if 'pedcomp_gens' not in kw.keys():
+            kw['pedcomp_gens'] = 3
+        if 'sepchar' not in kw.keys():
+            kw['sepchar'] = ' '
+        if 'alleles_sepchar' not in kw.keys():
+            kw['alleles_sepchar'] = '/'
+        if 'counter' not in kw.keys():
+            kw['counter'] = 1000
+        if 'slow_reorder' not in kw.keys():
+            kw['slow_reorder'] = 1
+        if 'update_sexes' not in kw.keys():
+            kw['update_sexes'] = 0
+        # Default missing values for NewAnimal objects.
+        if 'missing_bdate' not in kw.keys():
+            kw['missing_bdate'] = '01011900'
+        if 'missing_byear' not in kw.keys():
+            kw['missing_byear'] = 1900
+        if 'missing_parent' not in kw.keys():
+            kw['missing_parent'] = 0
+        if 'missing_name' not in kw.keys():
+            kw['missing_name'] = 'Unknown_Name'
+        if 'missing_breed' not in kw.keys():
+            kw['missing_breed'] = 'Unknown_Breed'
+        if 'missing_herd' not in kw.keys():
+            kw['missing_herd'] = 'Unknown_Herd'
+        if 'missing_sex' not in kw.keys():
+            kw['missing_sex'] = 'u'
+        if 'missing_inbreeding' not in kw.keys():
+            kw['missing_inbreeding'] = 0.
+        if 'missing_alive' not in kw.keys():
+            kw['missing_alive'] = 0
+        if 'missing_age' not in kw.keys():
+            kw['missing_age'] = -999
+        if 'missing_gen' not in kw.keys():
+            kw['missing_gen'] = -999.
+        if 'missing_gencoeff' not in kw.keys():
+            kw['missing_gencoeff'] = -999.
+        if 'missing_igen' not in kw.keys():
+            kw['missing_igen'] = -999.
+        if 'missing_pedcomp' not in kw.keys():
+            kw['missing_pedcomp'] = -999.
+        if 'missing_alleles' not in kw.keys():
+            kw['missing_alleles'] = ['', '']
+        if 'missing_userfield' not in kw.keys():
+            kw['missing_userfield'] = ''
+        if 'missing_value' not in kw.keys():
+            kw['missing_value'] = -999.
         # End of default missing values for NewAnimal objects.
         if not kw.has_key('file_io'): kw['file_io'] = '1'
         if not kw.has_key('debug_messages'): kw['debug_messages'] = 0
@@ -569,6 +673,13 @@ class NewPedigree:
             new_options['renumber'] = 1
             new_options['pedfile'] = filename
             new_options['pedformat'] = self.kw['pedformat']
+            new_options = {
+                'messages': self.kw['messages'],
+                'pedname': merged_pedname,
+                'renumber': 1,
+                'pedfile': filename,
+                'pedformat': self.kw['pedformat'],
+            }
             # Load the new pedigree and return it.
             try:
                 new_pedigree = loadPedigree(new_options, debugLoad=True)
@@ -2451,6 +2562,8 @@ class NewPedigree:
         pedformat_locations['gencoeff'] = -999
         pedformat_locations['birthyear'] = -999
         pedformat_locations['inbreeding'] = -999
+        pedformat_locations['genomic_inbreeding'] = -999
+        pedformat_locations['homozygosity'] = -999
         pedformat_locations['breed'] = -999
         pedformat_locations['name'] = -999
         pedformat_locations['birthdate'] = -999
@@ -2562,7 +2675,7 @@ class SimAnimal:
 ##
 # The NewAnimal() class is holds animals records read from a pedigree file.
 class NewAnimal:
-    """A simple class to hold animapyp_utils/union(), and pyp_utils/intersection() ls records read from a pedigree file."""
+    """A simple class to hold animal records read from a pedigree file."""
     ##
     # __init__() initializes a NewAnimal() object.
     # @param self Reference to current object.
