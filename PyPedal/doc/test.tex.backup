@@ -1,0 +1,5 @@
+\documentclass{article}
+
+\begin{document}
+There should be a subscript here $x_i$.
+\end{document}

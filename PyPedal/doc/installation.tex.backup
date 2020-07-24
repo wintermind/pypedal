@@ -1,0 +1,110 @@
+\chapter{Installing PyPedal}\label{cha:installation}\index{installation}
+\begin{quote}
+As we acquire more knowledge, things do not become more comprehensible, but more mysterious. --- Will Durant
+\end{quote}
+This chapter explains how to install and test \PyPedal{} under Posix-type operating systems and Microsoft Windows.
+
+\section{Overview of installation}\label{sec:installation-overview}
+Before we can begin the tutorial, you need install and test Python, Numarray and some other Python extensions, and \PyPedal{} itself. \PyPedal{} requires Python 2.4 or later. The extensions that you need to install in order to use all of the features of \PyPedal{} are listed in Table \ref{tbl:extensions}.  Note that some extensions need to be installed before others: \module{NumPy} should be installed first, SQLite must be installed before \module{pysqlite}, and \module{pyparsing} and Graphviz must be installed before \module{pydot}.
+
+If you do not install one or more optional modules you will still be able to use \PyPedal{}, although some features may not be available to you.  Details on installing the extensions listed above can be found on their respective websites.  All of these extensions are available for Unix-type operating systems (e.g. Linux, Mac OS X) as well as for Microsoft Windows; most sites also provide binary installers for Windows.  Python extensions can usually be installed by unzipping/untaring the archives, entering the folder, and issuing the command \samp{python setup.py install} as a root/administrative user.
+
+Note that Graphviz, NetworkX, PyGraphviz, PythonDoc, ReportLab, and SQLite are not installed by the Enthought Python distribution for Windows.
+\begin{center}
+    \tablecaption{Third-party extensions used by PyPedal.}
+    \tablefirsthead{\hline Extension & Function & URL \\ \hline}
+    \tablehead{\hline Extension & Function & URL \\ \hline}
+    \tabletail{\hline \multicolumn{3}{l}{\small\sl continued on next page} \\ \hline}
+    \tablelasttail{\hline}
+    \label{tbl:extensions}
+    \index{installation!extensions}
+    \begin{xtabular}{llp{4in}}
+	elementtree & Lightweight XML processing & \url{http://effbot.org/zone/element-index.htm}\\
+	Graphviz & Draw directed graphs & \url{http://www.research.att.com/sw/tools/graphviz/}\\
+	matplotlib & Plotting, matrix visualization & \url{http://matplotlib.sourceforge.net/}\\
+	NetworkX & Network analysis & \url{https://networkx.lanl.gov/}\\
+	NumPy & Array manipulation & \url{http://www.numpy.org/}\\
+	PIL & Image processing & \url{http://effbot.org/zone/pil-index.htm}\\
+	pydot & Interface to Graphviz & \url{http://dkbza.org/pydot.html}\\
+	PyGraphviz & Interface to Graphviz & \url{https://networkx.lanl.gov/wiki/pygraphviz}\\
+	pyparsing & Text parsing & \url{http://pyparsing.sourceforge.net/}\\
+	pysqlite & Interface to SQLite & \url{http://initd.org/tracker/pysqlite}\\
+	PythonDoc & Generate API documentation & \url{http://effbot.org/zone/pythondoc.htm}\\
+	ReportLab & Generate PDF documents & \url{http://www.reportlab.org/}\\
+	SQLite & Lightweight SQL database & \url{http://www.sqlite.org/}\\
+	testoob & Advanced unit testing & \url{http://testoob.sourceforge.net/}\\
+    \end{xtabular}
+\end{center}
+\section{Testing the Python installation}
+The first step is to install Python 2.4 (or later) if you haven't already done so. Python is available at
+\url{http://sourceforge.net/projects/python/}.  Click on the link corresponding to your platform, and follow the instructions presented there. Python can usually be started by typing \samp{python} at the shell (Posix) or double-clicking on the Python interpreter (Windows).  When you start Python you should see a message like:
+\begin{verbatim}
+Python 2.5.2 (r252:60911, Apr  8 2008, 21:49:41)
+[GCC 4.2.3 (Ubuntu 4.2.3-2ubuntu7)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+\end{verbatim}
+If you have problems getting Python to work, contact your local support person or e-mail  \ulink{python-help@python.org}{mailto:python-help@python.org} for help.
+
+\section{Installing PyPedal}\label{sec:installing-pypedal}
+In order to get \PyPedal{}, visit the official website at \url{http://pypedal.sourceforge.net/}. Click on the "Sourceforge Page" link, click on the "Download PyPedal" button, and select the latest file release. Files whose names end in ``.tar.gz'' or ``.zip''are source code releases.
+
+\subsection{Installing on Unix, Linux, and Mac OSX}\label{sec:installing-unix}\index{installation!installation on Linux}
+The source distribution should be uncompressed and unpacked as follows (for example):
+\begin{verbatim}
+gunzip pypedal-2.0.0rc4.tar.gz
+tar xf pypedal-2.0.0rc4.tar.gz
+\end{verbatim}
+Follow the instructions in the top-level directory for compilation and installation. Installation is usually as simple as:
+\begin{verbatim}
+python setup.py install
+\end{verbatim}
+\paragraph*{Important Tip} \label{sec:tip:from-pypedal-import} Just like all Python modules and packages, the \PyPedal{} module can be invoked using either the \samp{import PyPedal} form, or the \samp{from PyPedal import ...} form.  All of the code samples will assume that they have been preceded by statements such as:
+\begin{verbatim}
+>>> from PyPedal import <module-name>
+\end{verbatim}
+A complete list of modules is provided in Chapter \ref{cha:api}.
+
+\subsection{Installing on Windows}\label{sec:installing-windows}\index{installation!installation on Windows}
+To install \PyPedal{}, you need to be logged into an account with Administrator privileges.  As a general rule, always remove any old version of \PyPedal{} before installing the current version.
+
+Please note that \PyPedal{} has been lightly-tested on Windows XP, but I cannot guarantee that it runs without problems on Win-32 platforms!  \PyPedal{} should install and run properly on Win-32 as long as the dependencies listed above are satisfied. \index{installation!installation on Windows!Python Enthought Edition}Enthought provides a Python distribution that is bundled with a number of extras, including most of the dependencies needed to install and run \PyPedal{} in the Windows environment (\url{http://enthought.com/products/epd.php}). It is a large download (>100 MB) but greatly simplifies installation. If you use the Enthought distribution you will still need to download and install ReportLab (Table \ref{tbl:extensions}). Please note that the Enthought Python Distribution is free for academic and hobbyist use; if you intend to use it commercially (as part of your business) please pay the license fee or do not use their product. With the exception of \module{PyGraphviz}, which is discussed below, the prerequisite packages are available as Windows installation (.msi) files that can be downloaded and installed individually.
+
+\fixme{There is not yet an easy way to install the \module{PyGraphviz}\index{PyGraphviz} library under Windows. \module{PyGraphviz} is used by some of the graphics routines for rendering pedigrees. Windows users will need to refer to Chapter \ref{cha:graphics} for details on routines which require this module.}
+
+It is possible that the installation may fail with the message \begin{verbatim}error: Download error: (10060, 'Operation timed out')\end{verbatim}. This means that the installer was trying to download a dependency and that operation was unsuccessful. This can usually be remedied by simply running the installer again.
+
+\index{installation!installation on Windows!environment variables}In order to get your installation working correctly you will need to set some environment variables.  Under Windows XP (and 2000) you access those variables by right-clicking on the \emph{My Computer} icon on your desktop, selecting \emph{Properties}, selecting the \emph{Advanced} tab, and clicking the \emph{Environment Variables} button.  First, add \texttt{;C:\textbackslash{}Python24} to the \envvar{PATH} by selecting it in the \emph{System Variables} list and clicking \emph{Edit}.  Next, create a \envvar{PYTHONPATH} environment variable by clicking the \texttt{New} button under \texttt{User Variables}, entering the path to the \PyPedal{} directory in the \texttt{Variable value} field.
+
+\index{installation!installation on Windows!SQLite}The documentation for SQLite for Windows is kind of vague.  I got it to work by downloading the files \file{sqlite-3_2_7.zip} and \file{sqlitedll-3_2_7.zip} and extracting their contents into \texttt{C:\textbackslash{}Windows}.  Your mileage may vary.
+
+\subsubsection{Installation from source}\label{sec:installation-from-source}\index{installation!installation from source}
+\begin{enumerate}
+\item Unpack the distribution using an unzipping utility such as 7-Zip (\url{http://www.7-zip.org/}) that understands gzipped-and-tarred files. Once you've done that, open a shell by left-clicking on "Start", selecting "Run", and typing \texttt{cmd} into the box. Navigate to the directory into which you unpacked the \PyPedal{} distributio(this is an example, your file location may vary):
+\begin{verbatim}
+C:\> cd C:\PyPedal
+\end{verbatim}
+\item Build it using the distutils defaults:
+\begin{verbatim}
+C:\PyPedal> python setup.py install
+\end{verbatim}
+This installs \PyPedal{} in \texttt{C:\textbackslash{}python24\textbackslash{}site-packages}.
+\end{enumerate}
+\subsubsection{Installation on Cygwin}\label{sec:installation-cygwin}\index{installation!installation on Cygwin}
+No information on installing \PyPedal{} on Cygwin is available.  If you manage to get it working, please let me know.
+\section{Testing the PyPedal Installation}\label{sec:installation-testing}\index{installation!testing the installation}
+To find out if you have correctly installed \PyPedal{}, type \samp{import PyPedal} at the Python prompt. You'll see one of two
+behaviors (throughout this document user input and Python interpreter output will be emphasized
+as shown in the block below):
+\begin{verbatim}
+>>> import PyPedal
+Traceback (innermost last):
+File "<stdin>", line 1, in ?
+ImportError: No module named PyPedal
+\end{verbatim}
+indicating that you don't have \PyPedal{} installed, or:
+\begin{verbatim}
+>>> import PyPedal
+>>> PyPedal.__version__.version
+'2.0.0b17'
+\end{verbatim}
+indicating that \PyPedal{} is installed.

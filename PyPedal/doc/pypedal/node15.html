@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node16.html" />
+<link rel="prev" href="node14.html" />
+<link rel="parent" href="node14.html" />
+<link rel="next" href="node16.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>2.1 Overview of installation</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="2. Installing PyPedal"
+  href="node14.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="2. Installing PyPedal"
+  href="node14.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="2.2 Testing the Python"
+  href="node16.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node14.html">2. Installing PyPedal</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node14.html">2. Installing PyPedal</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node16.html">2.2 Testing the Python</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION042100000000000000000"></A><A NAME="sec:installation-overview"></A>
+<BR>
+2.1 Overview of installation
+</H1>
+Before we can begin the tutorial, you need install and test Python, NumPy and some other Python extensions, and  PyPedal itself. PyPedal has been tested against the versions listed in Table <A HREF="#tbl:extensions">2.1</A>, and may not work with earlier releases of those packages. The extensions that you need to install in order to use all of the features of PyPedal are listed in Table <A HREF="#tbl:extensions">2.1</A>.  Note that some extensions need to be installed before others: <tt class="module">Numpy</tt> should be installed first, and <tt class="module">pyparsing</tt> and Graphviz must be installed before <tt class="module">pydot</tt>.
+
+<P>
+If you do not install one or more optional modules you will still be able to use  PyPedal, although some features may not be available to you. Details on installing the extensions listed above can be found on their respective websites.  All of these extensions are available for Unix-type operating systems (e.g. Linux, Mac OS X) as well as for Microsoft Windows; most sites also provide binary installers for Windows. Python extensions can usually be installed by unzipping/untaring the archives, entering the folder, and issuing the command "<tt class="samp">python setup.py install</tt>" as a root/administrative user. Note that NetworkX and ReportLab are not installed by the Enthought Python Distribution for Windows. I have found that installations from source on Linux are sometimes tricky, but I have found that Sage (<a class="url" href="http://www.sagemath.org/index.html">http://www.sagemath.org/index.html</a>) does a great job of getting clean builds of the trickier pieces, such as Numpy and matplotlib.
+<DIV ALIGN="CENTER">
+Packages and compatible versions used by PyPedal.
+    Extension &amp; Version &amp; Used for... &amp; URL 
+<BR>
+
+    
+    <A NAME="tbl:extensions"></A>    <a id='l2h-6' xml:id='l2h-6'></a>
+    <BR>
+<IMG
+ WIDTH="761" HEIGHT="225" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="\begin{xtabular}{lllp{4in}}
+elementtree &amp; &amp; Lightweight XML processing &amp; \url{h...
+...Advanced unit testing &amp; \url{http://testoob.sourceforge.net/}\\
+\end{xtabular}">
+<BR>
+</DIV>
+The PyPedal distribution includes a copy of the ADOdb for Python (<a class="url" href="http://http://phplens.com/lens/adodb/adodb-py-docs.htm/">http://http://phplens.com/lens/adodb/adodb-py-docs.htm/</a>) database abstraction library. It is installed with PyPedal and does not require a separate installation step.
+
+<P>
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="2. Installing PyPedal"
+  href="node14.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="2. Installing PyPedal"
+  href="node14.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="2.2 Testing the Python"
+  href="node16.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node14.html">2. Installing PyPedal</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node14.html">2. Installing PyPedal</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node16.html">2.2 Testing the Python</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node69.html" />
+<link rel="prev" href="node67.html" />
+<link rel="parent" href="node66.html" />
+<link rel="next" href="node69.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>7.2 Animal Identification and Cross-References</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="7.1 Reordering and Renumbering"
+  href="node67.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="7. Methodology"
+  href="node66.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="7.3 Measures of Genetic"
+  href="node69.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node67.html">7.1 Reordering and Renumbering</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node66.html">7. Methodology</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node69.html">7.3 Measures of Genetic</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION047200000000000000000"></A>
+<A NAME="sec:methodology-id-mapping"></A><a id='l2h-68' xml:id='l2h-68'></a>
+<BR>
+7.2 Animal Identification and Cross-References
+</H1>
+There are a number of identification attributes associated with animal objects in  PyPedal pedigrees. A description of those fields, as well as their default values, is provided in Table <A HREF="node60.html#tbl:objects-animal-objects-new-animal-attributes">6.1</A>. This section describes the data structures provided for mapping between various animal IDs. Table <A HREF="#tbl:methodology-id-mapping">7.1</A> lists the four structures provided for ID mapping and lists the default values for pedigrees with integral (<TT>asd</TT> formats) and string (<TT>ASD</TT> formats) IDs. Renumbered PyPedal pedigree objects store animal objects in a list that is typically indexed by renumbered ID. When animal IDs are strings (see <A HREF="node30.html#sec:pedigree-format-codes">3.5.1</A>) they are hashed to an integer and the original ID is stored in a name field. In renumbered pedigrees the original ID is stored and replaced by a renumbered ID.
+
+<P>
+Once your pedigree is renumbered it is quite easy to see how these maps can be used to convert between various IDs. The maps mean that you don't have to worry about renumbered IDs and can continue to think about your animals in terms of their original IDs, whether they be ID numbers or names. Consider the Newfoundland pedigree presented in Figure <A HREF="node106.html#fig:newfoundland-colored-pedigree">9.4</A> - it is much more convenient to think about the dog named Kaptn Kvols von Widdersdorf, rather than the dog whose name was hashed to the ID 5523557808241831142 amd renumbered to 48. For example, suppose you wanted to determine his coefficient of inbreeding. It is simple to do using the maps:
+<div class="verbatim"><pre>
+&gt;&gt;&gt; example = pyp_newclasses.loadPedigree(optionsfile='newfoundland.ini')
+&gt;&gt;&gt; newf_f = pyp_nrm.inbreeding(example)
+&gt;&gt;&gt; print newf_f['fx'][example.idmap[example.namemap['Kaptn Kvols von Widdersdorf']]]
+
+0.0
+</pre></div>
+<TT>example.namemap['Kaptn Kvols von Widdersdorf']</TT> returns the original ID assigned to the name, while <TT>example.idmap[...]</TT> converts from the original ID to the renumbered ID. This sort of ID/name mapping is sued in a number of places in  PyPedal, such as in the three generation pedigree routine in the <tt class="module">pyp_reports</tt> module.
+
+<P>
+Note that if an animal has its original ID as its name, which is the default when integral IDs and no animal names are provided, the name is changed to the renumbered ID when the pedigree is renumbered.
+<DIV ALIGN="CENTER">
+Animal identification and cross-references.
+    
+	<SPAN>;</SPAN>SPMamp; <SPAN><TT>asd</TT> format</SPAN> &amp; <SPAN><TT>ASD</TT> format</SPAN>  &amp; <SPAN>Renumbered</SPAN>
+<BR>	
+	 &amp; Key &amp; Value &amp; Key &amp; Value &amp; Key &amp; Value 
+<BR>	
+
+    
+    <A NAME="tbl:methodology-id-mapping"></A>    <BR>
+<IMG
+ WIDTH="597" HEIGHT="78" ALIGN="BOTTOM" BORDER="0"
+ SRC="img30.png"
+ ALT="\begin{xtabular}{l\vert l\vert l\vert l\vert l\vert l\vert l}
+idmap &amp; animal ID...
+...ackmap &amp; animal ID &amp; name &amp; name &amp; name &amp; original ID &amp; name \\
+\end{xtabular}">
+<BR>
+</DIV>
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="7.1 Reordering and Renumbering"
+  href="node67.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="7. Methodology"
+  href="node66.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="7.3 Measures of Genetic"
+  href="node69.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node67.html">7.1 Reordering and Renumbering</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node66.html">7. Methodology</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node69.html">7.3 Measures of Genetic</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node95.html" />
+<link rel="prev" href="node93.html" />
+<link rel="parent" href="node92.html" />
+<link rel="next" href="node95.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>8.4.2 How do I convert a graph to a pedigree?</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="8.4.1 How do I"
+  href="node93.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="8.4 Pedigrees as Graphs"
+  href="node92.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="8.4.3 How do I"
+  href="node95.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node93.html">8.4.1 How do I</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node92.html">8.4 Pedigrees as Graphs</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node95.html">8.4.3 How do I</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION048420000000000000000"></A>
+<A NAME="sec:howto-graph-to-pedigree"></A><a id='l2h-94' xml:id='l2h-94'></a>
+<BR>
+8.4.2 How do I convert a graph to a pedigree?
+</H2>
+It is possible to create a PyPedal pedigree from a NetworkX graph. This is useful, for example, when you'd like to create a pedigree representing a subset of the population in a <tt class="class">NewPedigree</tt> object. <tt class="function">pyp_nrm.recurse_pedigree()</tt> and related functions won't do the trick because they return only lists of animal IDs, not actual <tt class="class">NewPedigree</tt> instances. To create a pedigree from a graph you simply build your options dictionary and call <tt class="function">pyp_newclasses.loadPedigree()</tt>:
+<div class="verbatim"><pre>
+options = {}
+options['pedfile'] = 'dummy'
+options['messages'] = 'verbose'
+options['renumber'] = 1
+options['pedname'] = 'Testing fromgraph()'
+options['pedformat'] = 'asd'
+options['set_offspring'] = 1
+options['set_ancestors'] = 1
+options['set_sexes'] = 1
+options['set_generations'] = 1
+example2 = pyp_newclasses.loadPedigree(options,pedsource='graph',pedgraph=ng)
+</pre></div>
+You must provide a non-null <TT>pedfile</TT> keyword in your options dictionary, as well as the <TT>pedsource</TT> and <TT>pedgraph</TT> arguments to <tt class="function">pyp_newclasses.loadPedigree()</tt>.
+
+<P>
+There is a known bug with logfile creation when loading a pedigree from a digraph.
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="8.4.1 How do I"
+  href="node93.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="8.4 Pedigrees as Graphs"
+  href="node92.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="8.4.3 How do I"
+  href="node95.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node93.html">8.4.1 How do I</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node92.html">8.4 Pedigrees as Graphs</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node95.html">8.4.3 How do I</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

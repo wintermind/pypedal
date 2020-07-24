@@ -1,0 +1,26 @@
+# Pedigree for Family 1 from Figure 2 (p. 12) of:
+#   Boichard, D., L. Maignel, and E. Verrier.  1997.  The
+#       value of using probabilities of gene origin to
+#       measure genetic variability in a population.
+#       Genetics, Selection, Evolution.  29:5-23.
+# Used for unit testing of PyPedal.
+1 0 0 1 m
+2 0 0 1 f
+3 0 0 1 m
+4 0 0 1 f
+5 1 2 2 u
+6 3 4 2 u
+7 5 6 3 u
+8 5 6 3 u
+9 5 6 3 u
+10 5 6 3 u
+11 5 6 3 u
+12 5 6 3 u
+13 5 6 3 u
+14 5 6 3 u
+15 0 0 1 m
+16 0 0 1 f
+17 15 16 2 u
+18 15 16 2 u
+19 17 18 3 u
+20 17 18 3 u

@@ -1,0 +1,481 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}	% TODO: I don't need this package if the document is a single column one.
+\usepackage[normalem]{ulem}	% TODO: Package is only needed if you have underline/strikeout.
+\usepackage{color}	% TODO: Package is only needed if you have color.
+
+\begin{document}
+\documentclass[10pt,letterpaper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\title{PyPedal: Pedigree Analysis Software Written in the Python Programming Language}
+\author{John B. Cole, PhD}
+\maketitle
+
+\begin{abstract}
+
+PyPedal is a software package for animal pedigree analysis. It is intended
+
+for use by research and consulting geneticists. PyPedal is designed for
+
+exploratory data analysis on small to mediumsized data sets and calculates
+
+measures of allelic and genptypic diversity, including average coefficients of
+
+inbreeding and relationship, effective number of founders, and effective number
+
+of ancestors.
+
+\end{abstract}
+
+
+
+\section{Overview}
+
+
+
+PyPedal (\textbf{P}ython \textbf{Ped}igree An\textbf{al}ysis) is a tool for analyzing animal pedigree files.  It calculates several quantitative measures of allelic and genoytpic diversity from pedigrees, including average coefficients of inbreeding and relationship, effective number of founders, and effective number of ancestors.  Some qualitative checks are performed in order to catch some common mistakes, such as parents with more recent birthdates or ID numbers than their offspring.
+
+
+
+Routines are also provided for the decomposition of \$A\$ and the direct formation of \$A\^{}{1}\$ with and without taking account of inbreeding.  These are of academic interest rather than practical interest, but if a simple script is needed for the inversion of a reasonablysized pedigree PyPedal is quite adequate to the task.
+
+
+
+PyPedal is a Python language module that may be called by other Python programs or used interactively with the command line in the Python interpreter.  The Numerical Python module (http://www.pfdubois.com/numpy/) module is required by PyPedal, and is included with most Linux distributions.
+
+
+
+\subsection{Obtaining and Installing PyPedal}
+
+PyPedal may be obtained from the author's website at http://www.ednet.lsu.edu/jcole/pypedal/.  Installation is simple: untarandgz your download (pypedal0.01.tar.gz) and move the resulting files to a directory that is in your \texttt{\\$PYTHONPATH}.
+
+
+
+\subsection{Implemented Features}
+
+
+
+PyPedal is currently capable of the following operations:
+
+
+
+\begin{itemize}
+
+\item Reading pedigree files in several formats;
+
+\item Checking pedigree integrity (duplicate IDs, parents younger than
+
+offspring, etc.);
+
+\item Generating summary information such as frequency of appearance in the
+
+pedigree file;
+
+\item Computation of the numerator relationship matrix (\$A\$) from a pedigree
+
+file using the tabular method;
+
+\item Computation of average total and average individual coefficients of
+
+inbreeding and relationship;
+
+\item Decomposition of \$A\$ into \$T\$ and \$D\$ such that \$A=TDT'\$;
+
+\item Computation of the direct inverse of \$A\$ (not accounting for inbreeding)
+
+using the method of Henderson (1976);
+
+\item Computation of the direct inverse of \$A\$ (accounting for inbreeding) using
+
+the method of Quaas (1976);
+
+\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\item S}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}torage}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{} }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}of }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\$A\$ and }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}its inverse}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{} }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}between user sessions }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}as persistent Python objects (}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}using}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{} t}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}he}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{} }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\texttt}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}{Pickle} module) to }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}avoid unnecessar}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}y }\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}re}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}calculat}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}i}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}o}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}n}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}s;}
+
+\item Computation of effective founder number using the exact algorithm of
+
+Lacy (1989);
+
+\item Computation of effective founder number using the approximate algorithm
+
+of Boichard et al. (1996);
+
+\item Computation of effective ancestor number using the algorithm of Boichard
+
+et al. (1996);
+
+\item Output to ASCII text files, including matrices, coefficients
+
+of inbreeding and relationship, and summary information;
+
+\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\item Re}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}ord}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}ering of pedigree files}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{};}
+
+\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\item Renumbering of pedigree files}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}.}
+
+\end{itemize}
+
+
+
+\subsection{Planned Features}
+
+
+
+The following features are not yet implemented in PyPedal, but will probably
+
+be added in a future release:
+
+
+
+\begin{itemize}
+
+\item Direct calculation of the inverse of \$A\$ accounting for inbreeding using
+
+the method of Luo and Meuwissen (?);
+
+\item Calculation of theoretical effective population size;
+
+\item Calculation of actual effective population size based on the change in
+
+population average inbreeding;
+
+\item Calculation of some measure of effective family number (inspired by a post of D. Gianola's
+
+to the Animal Geneticists Discussion Group email list on 30 January 2001);
+
+\item Representation of pedigrees as an algebraic structure (i.e. graphs);
+
+\item Identification of disconnected subgroups (if any) in a pedigree;
+
+\item Fast operations on graphs;
+
+\end{itemize}
+
+
+
+\subsection{Input Files}
+
+PyPedal currently reads comma separated value (CSV) pedigree files.  Comment lines may be inlcuded in the pedigree file by preceding a line with a hash mark (\\#) symbol.  Users must provide a string in the pedigree file that describes the data found in the file.  The format string is preceded by a percent (\\%) symbol and consists of lowercase letters.  For example:
+
+
+
+\texttt{\\%asd}
+
+
+
+is the code used to indicate that the file contains three columns, corresponding to animal
+
+ID, sire ID, and dam ID, in that order.  The available codes are:
+
+
+
+a  animal ID number
+
+s  sire ID number
+
+d  dam ID number
+
+x  sex of the animal
+
+b  birth year of the animal
+
+f  coefficient of inbreeding of the animal
+
+
+
+At the moment, all formats must begin with the triplet 'asd', and all pedigree files must
+
+contain animal, sire, and dam IDs in their first three columns.  In addition, they must
+
+appear in the format string IN THE ORDER IN WHICH THEY APPEAR IN THE LIST ABOVE.  For example, a file with four columns, consisting of animal,sire, and dam IDs plus the coefficient of inbreeding of the animal, would have the following format string:
+
+
+
+\texttt{\\% asdf}
+
+
+
+A fivecolumn file of animal, sire, dam, sex, coefficient of inbreeding would ALWAYS be written as:
+
+
+
+\texttt{\\% asdxf}
+
+
+
+and \textbf{never} as:
+
+
+
+\texttt{\\% asdfx}
+
+
+
+In future revisions, the use of regular expressions will probably eliminate the order dependency
+
+in the format string.
+
+
+
+A pedigree file may be written as follows:
+
+
+
+\begin{verbatim}
+
+\# Sample pedigree file for John's Jerseys.
+
+\# A parent of '0' indicated an unknown parent.
+
+\% asdx
+
+1,0,0,m
+
+2,0,0,f
+
+3,1,2,m
+
+\end{verbatim}
+
+
+
+Sex codes may be written as either uppercase or lowercase "F"s or "M"s.  Any other character is
+
+ignored and the sex is inferred from progeny records or set to "U" for unknown.
+
+
+
+\subsection{Output Files}
+
+...
+
+
+
+\section{Application Programming Interface (API)}
+
+
+
+\subsection{Notes on Parameters}
+
+Some notes are in order with respect to the parameters required by functions detailed in the
+
+API.  The \textit{inputfilename} parameter refers to a file from which a pedigree should be read.
+
+The \textit{pedigreehandle} parameter refers to a named list of Animal() objects.  Animal() objects are created from the records in the pedigree file when the \textbf{preprocess()}
+
+function is called.  \textit{filetags} are descriptive strings prepended to output file names for
+
+easy identification.  \textit{a} parameters refer to \$A\$ matrices created by a call to the
+
+\textbf{a\\_matrix()}  function.  A sample program illustrating the use of these parameters
+
+may be found in the appendix.
+
+
+
+\subsection{preprocess(\textit{inputfilename})}
+
+The \textbf{preprocess()} function performs two key functions.  First, reads the contents of the pedigree file and creates a list of Animal() objects if the record format code is valid.  Second, it performs some simple checks on pedigree integrity to make sure that parents are older than offspring, ID codes are unique, etc.  The resulting list of Animal()s is referred to as a pedigree, and is returned by the function.  Multiple pedigrees may be open at the same time as long as the system running the software has enough RAM and disc space to store everything in memory.
+
+
+
+\subsection{ped\\_summary(\textit{pedigreehandle,filetag})}
+
+\textbf{ped\\_summary()} produces summary statistics on the pedigree file such as number of sires, number of dams, founders, and most frequently appearing individuals by sex.  Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\subsection{a\\_matrix(\textit{pedigreehandle,filetag})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\subsection{}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}a}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\_matrix}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\_to}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\_file(}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\textit{pedigreehandle,filetag,a}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{})}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}}
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\begin{flushleft}
+\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\subsection{}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}a}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\_matrix}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\_from}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\_file(}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\textit{}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}in}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}pu}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}t}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}filename}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{})}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}}}
+\end{flushleft}
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\subsection{a\\_decompose(\textit{pedigreehandle,filetag,a})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\subsection{form\\_d\\_nof(\textit{pedigreehandle})}
+
+
+
+\subsection{a\\_inverse\\_dnf(\textit{pedigreehandle,filetag})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\subsection{a\\_inverse\\_df(\textit{pedigreehandle,filetag})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\begin{flushleft}
+\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\subsection{a\\_}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}inverse}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\\_to\\_file(\textit{pedigreehandle,filetag,a})}}
+\end{flushleft}
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\begin{flushleft}
+\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\subsection{a\\_}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}inverse}\textcolor[rgb]{0.000,0.000,0.000}{{\normalsize{}\\_from\\_file(\textit{inputfilename})}}
+\end{flushleft}
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\subsection{a\\_coefficients(\textit{pedigreehandle,filetag,a})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\subsection{a\\_effective\\_founders\\_lacy(\textit{pedigreehandle,filetag,a})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\subsection{a\\_effective\\_founders\\_boichard(\textit{pedigreehandle,filetag,a})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\subsection{a\\_effective\\_ancestors\\_boichard(\textit{pedigreehandle,filetag,a})}
+
+Output is written to a file named \textit{filetag}\\_summary\\_.dat.
+
+
+
+\section{Methodology}
+
+Here is a citation about the methods used in the software \cite{Cole2002}.
+
+
+
+\bibliographystyle{alpha}
+
+\bibliography{pypedal\_manual}
+
+
+
+\section*{Appendix}
+
+The following sample program demonstrates the use of all of the functions detailed in the API.
+
+Some of the functions are not useful for daily analysis, but their use is demonstrated for the
+
+sake of completeness.
+
+
+
+\begin{verbatim}
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+\# Sample program to demonstrate the use of PyPedal    \#
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+\# we must import the functions in the pypedal module
+
+from pypedal import *
+
+\# read the pedigree file, create a list of Animal()
+
+\# objects, and return the pedigree, which will be
+
+\# called 'lacy'
+
+lacy = preprocess('lacy.ped')
+
+lacy\_a = a\_matrix(lacy,'lacy')  \# form the numerator relationship
+
+                                \# matrix, A, from the pedigree
+
+                                \# 'lacy'
+
+l\_t,l\_d = a\_decompose(lacy,'lacy',lacy\_a)
+
+                                \# decompose A into matrices D and
+
+                                \# T such that A=TDT'; a tuple of
+
+                                \# the form {T,D} is returned.
+
+l\_dnf = a\_inverse\_dnf(lacy,'lacy')  \# form the direct inverse of
+
+                                    \# A not accounting for inbreeding
+
+l\_df = a\_inverse\_df(lacy,'lacy')    \# form the direct inverse of
+
+                                    \# A accounting for inbreeding
+
+a\_coefficients(lacy,'lacy',lacy\_a)  \# compute average coefficients
+
+                                    \# of inbreeding and relationship
+
+                                    \# and individual coefficients of
+
+                                    \# inbreeding
+
+a\_effective\_founders\_lacy(lacy,'lacy')
+
+                                \# compute the effective number of
+
+                                \# founders using the method of Lacy
+
+a\_effective\_founders\_boichard(lacy,'lacy')
+
+                                \# compute the effective number of
+
+                                \# founders using the method of
+
+                                \# Boichard et al.
+
+a\_effective\_ancestors\_boichard(lacy,'lacy')
+
+                                \# compute the effective number of
+
+                                \# ancestors using the method of
+
+                                \# Boichard et al.
+
+\end{verbatim}
+
+
+
+Note that PyPedal programs write most of their output directly to files and write very little output to STDOUT.  This is convenient when scripting because you only have to redirect the output to a log file or to /dev/null if all you really want are the output files.
+
+
+
+\end{document}
+
+\end{document}

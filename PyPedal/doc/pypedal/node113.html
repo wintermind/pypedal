@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="prev" href="node112.html" />
+<link rel="parent" href="node109.html" />
+<link rel="next" href="node114.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>10.3 Creating a Custom Printed Report</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="10.2 Creating a Custom"
+  href="node112.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="10. Report Generation"
+  href="node109.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="11. Implementing New Features"
+  href="node114.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node112.html">10.2 Creating a Custom</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node109.html">10. Report Generation</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node114.html">11. Implementing New Features</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION0410300000000000000000"></A>
+<A NAME="sec:reports-custom-printed-reports"></A><a id='l2h-115' xml:id='l2h-115'></a>
+<BR>
+10.3 Creating a Custom Printed Report
+</H1>
+If you are interested in custom printed reports you should begin by opening the file <TT>pyp_reports.py</TT> and reading
+through the code for the <tt class="function">pdfPedigreeMetadata()</tt> report.  It has been heavily commented so that it can be used as
+a template for developing other reports.  ReportLab provides fairly low-level tools that you can use to assemble
+documents.  The basic idea is that you create a canvas on which your image will be drawn.  You then create text objects and
+draw them on the canvas.  When your report is assembled you save the canvas on which it's drawn to a file.  PyPedal provides
+a few convenience functions for such commonly-used layouts as title pages and page "frames".  In the following sections of code I will discuss the creation of a <tt class="function">pdfInbreedingByYear()</tt> printed report to accompany the
+<tt class="function">inbreedingByYear()</tt> internal report written in Section <A HREF="node112.html#sec:reports-custom-internal-reports">10.2</A>.  First, we import ReportLab and check to see if the user provided an output file name.  If they didn't, revert to a default.
+<div class="verbatim"><pre>
+def pdfInbreedingByYear(pedobj,results,titlepage=0,reporttitle='',reportauthor='', \
+    reportfile=''):
+    import reportlab
+    if reportfile == '':
+        _pdfOutfile = '%s_inbreeding_by_year.pdf' % ( pedobj.kw['default_report'] )
+    else:
+        _pdfOutfile = reportfile
+</pre></div>
+Next call <tt class="function">_pdfInitialize()</tt>, which returns a dictionary of settings, mostly related to page size and
+margin locations, that is used throughout the routine.  <tt class="function">_pdfInitialize()</tt> uses the <tt class="member">paper_size</tt> keyword
+in the pedigree's options dictionary, which is either `letter' or `A4', and the <tt class="member">default_unit</tt>, which is either
+`inch' or `cm' to populate the returned structure.  This should allow users to move between paper sizes without little
+or no work.  Once the PDF settings have been computed we instantiate a canvas object on which to draw.
+<div class="verbatim"><pre>
+_pdfSettings = _pdfInitialize(pedobj)
+canv = canvas.Canvas(_pdfOutfile, invariant=1)
+canv.setPageCompression(1)
+</pre></div>
+There is a hook in the code to toggle cover pages on and off.  It is arguably rather pointless to put a cover page on a one-page document, but all TPS reports require new coversheets.  The call to <tt class="function">_pdfDrawPageFrame()</tt> frames the page with a header and footer that includes the pedigree name, date and time the report was created, and the page number.
+<div class="verbatim"><pre>
+if titlepage:
+    if reporttitle == '':
+        reporttitle = 'meanMetricBy Report for Pedigree\n%s' \
+            % (pedobj.kw['pedname'])
+    _pdfCreateTitlePage(canv, _pdfSettings, reporttitle, reportauthor)
+_pdfDrawPageFrame(canv, _pdfSettings)
+</pre></div>
+The largest chunk of code in <tt class="function">pdfInbreedingByYear()</tt> is dedicated to looping over the input dictionary, <var>results</var>, and writing its contents to text objects.  If you want to change the typeface for the rendered text, you need to make the appropriate changes to all calls to <TT>canv.setFont("Times-Bold", 12)</TT>.  The ReportLab documentation includes a discussion of available typefaces.
+<div class="verbatim"><pre>
+canv.setFont("Times-Bold", 12)
+tx = canv.beginText( _pdfSettings['_pdfCalcs']['_left_margin'],
+    _pdfSettings['_pdfCalcs']['_top_margin'] - 0.5 * \
+        _pdfSettings['_pdfCalcs']['_unit'] )
+</pre></div>
+Every printed report will have a section of code in which the input is processed and written to text objects. In this case, the code loops over the key-and-value pairs in <var>results</var>, determines the width of the key, and creates a string with the proper spacing between the key and its value.  That string is then written to a <tt class="method">tx.textLine()</tt> object.
+<div class="verbatim"><pre>
+# This is where the actual content is written to a text object that
+# will be displayed on a canvas.
+for _k, _v in results.iteritems():
+    if len(str(_k)) &lt;= 14:
+        _line = '\t%s:\t\t%s' % (_k, _v)
+    else:
+        _line = '\t%s:\t%s' % (_k, _v)
+    tx.textLine(_line)
+</pre></div>
+ReportLab's text objects do not automatically paginate themselves.  If you write, say, ten pages of material to a text object and render it without manually paginating the object you're going to get a single page of chopped-off text.  The following section of code is where the actual pagination occurs, so careful cutting-and-pasting should make pagination seamless.
+<div class="verbatim"><pre>
+    # Paginate the document if the contents of a textLine are longer than one page.
+    if tx.getY() &lt; _pdfSettings['_pdfCalcs']['_bottom_margin'] + \
+        0.5 * _pdfSettings['_pdfCalcs']['_unit']:
+        canv.drawText(tx)
+        canv.showPage()
+        _pdfDrawPageFrame(canv, _pdfSettings)
+        canv.setFont('Times-Roman', 12)
+        tx = canv.beginText( _pdfSettings['_pdfCalcs']['_left_margin'],
+            _pdfSettings['_pdfCalcs']['_top_margin'] -
+            0.5 * _pdfSettings['_pdfCalcs']['_unit'] )
+</pre></div>
+Once we're done writing our text to text objects we need to draw the text object on the canvas and make the canvas visible.  If you omit this step, perhaps because of the kind of horrible cutting-and-pasting accident to which I am prone, your PDF will not be written to a file.
+<div class="verbatim"><pre>
+if tx:
+    canv.drawText(tx)
+    canv.showPage()
+canv.save()
+</pre></div>
+While PyPedal does not yet have any standard reports that include graphics, ReportLab does support adding graphics, such as a pedigree drawing, to a canvas.  Interested readers should refer to the ReportLab documentation.
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="10.2 Creating a Custom"
+  href="node112.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="10. Report Generation"
+  href="node109.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="11. Implementing New Features"
+  href="node114.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node112.html">10.2 Creating a Custom</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node109.html">10. Report Generation</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node114.html">11. Implementing New Features</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

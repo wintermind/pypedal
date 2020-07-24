@@ -1,0 +1,134 @@
+pyp\_network\index[func]{pyp_network} contains a set of procedures for working with pedigrees as directed graphs.
+
+\subsection*{Module Contents}
+
+\begin{description}
+\item[\textbf{count\_offspring(pedgraph, anid)} $\Rightarrow$ integer]\index[func]{pyp_network!count\_offspring()}
+count\_offspring() returns the number of offspring of an animal.
+\begin{description}
+\item[\emph{pedgraph}] An instance of a networkx DiGraph.
+\item[\emph{anid}] The animal whose offspring are to be counted.
+\item[Returns:] Count of offspring.
+\end{description}
+
+
+\item[\textbf{find\_ancestors(pedgraph, anid, \_ancestors=[])}
+ ⇒ list [\#]]
+
+ find\_ancestors() identifies the ancestors of an animal and returns them in a list.
+\begin{description}
+\item[\emph{pedgraph}
+] An instance of a networkx DiGraph.
+\item[\emph{anid}
+] The animal for whom ancestors are to be found.
+\item[\emph{\_ancestors}
+] The list of ancestors already found.
+\item[Returns:] List of ancestors of anid.
+
+\end{description}
+\\
+
+\item[\textbf{find\_ancestors\_g(pedgraph, anid, \_ancestors=\{\}, gens=3)}
+ ⇒ list [\#]]
+
+ find\_ancestors\_g() identifies the ancestors of an animal going back a user-specified number of generations and returns them in a list.
+\begin{description}
+\item[\emph{pedgraph}
+] An instance of a networkx DiGraph.
+\item[\emph{anid}
+] The animal for whom ancestors are to be found.
+\item[\emph{\_ancestors}
+] The list of ancestors already found.
+\item[Returns:] List of ancestors of anid.
+
+\end{description}
+\\
+
+\item[\textbf{find\_descendants(pedgraph, anid, \_descendants=[])}
+ ⇒ list [\#]]
+
+ find\_descendants() identifies the descendants of an animal and returns them in a list.
+\begin{description}
+\item[\emph{pedgraph}
+] An instance of a networkx DiGraph.
+\item[\emph{anid}
+] The animal for whom descendants are to be found.
+\item[\emph{\_descendants}
+] The list of descendants already found.
+\item[Returns:] List of descendants of anid.
+
+\end{description}
+\\
+
+\item[\textbf{get\_founder\_descendants(pedgraph)}
+ ⇒ dictionary [\#]]
+
+ get\_founder\_descendants() returns a dictionary containing a list of descendants of each founder in the pedigree.
+\begin{description}
+\item[\emph{pedgraph}
+] An instance of a NetworkX DiGraph.
+\item[Returns:] A dictionary containing a list of descendants for each founder in the graph.
+
+\end{description}
+\\
+
+\item[\textbf{immediate\_family(pedgraph, anid)}
+ ⇒ list [\#]]
+
+ immediate\_family() returns parents and offspring of an animal.
+\begin{description}
+\item[\emph{pedgraph}
+] An instance of a networkx DiGraph.
+\item[\emph{anid}
+] The animal for whom immediate family are to be found.
+\item[Returns:] List of immediate family members of anid.
+
+\end{description}
+\\
+
+\item[\textbf{most\_influential\_offspring(pedgraph, anid, resolve='all')}
+ ⇒ dictionary [\#]]
+
+ most\_influential\_offspring() returns the most influential offspring of an animal as measured by their number of offspring.
+\begin{description}
+\item[\emph{pedgraph}
+] An instance of a networkx DiGraph.
+\item[\emph{anid}
+] The animal for whom the most influential offspring is to be found.
+\item[\emph{resolve}
+] Indicates how ties should be handled ('first'|'last'|'all').
+\item[Returns:] The most influential offspring of anid.
+
+\end{description}
+\\
+
+\item[\textbf{offspring\_influence(pedgraph, anid)}
+ ⇒ dictionary [\#]]
+
+ offspring\_influence() returns the number of grand-children by each child of a given animal.
+\begin{description}
+\item[\emph{pedgraph}
+] An instance of a networkx DiGraph.
+\item[\emph{anid}
+] The animal for whom grand-progeny are to be counted.
+\item[Returns:] A dictionary of counts of progeny per child.
+
+\end{description}
+\\
+
+\item[\textbf{ped\_to\_graph(pedobj, oid=0)}
+ ⇒ graph [\#]]
+
+ ped\_to\_graph() Takes a PyPedal pedigree object and returns a networkx XDiGraph object.
+\begin{description}
+\item[\emph{pedobj}
+] A PyPedal pedigree object.
+\item[\emph{oid}
+] Flag indicating if original (1) or renumbered (0) IDs should be used.
+\item[Returns:] DiGraph object
+
+\end{description}
+\\
+
+
+\end{description}

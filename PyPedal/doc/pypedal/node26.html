@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node27.html" />
+<link rel="prev" href="node25.html" />
+<link rel="parent" href="node23.html" />
+<link rel="next" href="node27.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>3.3 Program Structure</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.2 The PyPedal Object"
+  href="node25.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.4 Options"
+  href="node27.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node25.html">3.2 The PyPedal Object</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node27.html">3.4 Options</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION043300000000000000000"></A>
+<A NAME="sec:overview-program-structure"></A><a id='l2h-21' xml:id='l2h-21'></a>
+<BR>
+3.3 Program Structure
+</H1>
+ PyPedal programs load pedigrees from files and operate on those pedigrees.  A program consists of four basic parts: a header, an options section, pedigree creation, and pedigree operations.  The program header is used to import modules used in that program, and may include any Python module available on your system.  You must import a module before you can use it:
+<div class="verbatim"><pre>
+# Program header -- load modules used by a program
+from PyPedal import pyp_newclasses
+from PyPedal import  pyp_metrics
+</pre></div>
+You should only import modules that you are going to use in your program; you do not need to import every PyPedal module in every program you write.
+
+<P>
+PyPedal recognizes a number of diffferent options that are used to control its behavior (Section <A HREF="node27.html#sec:pypedal-options">3.4</A>).  Before you can load your pedigree into a PyPedal object you must provide a pedigree file name ("<tt class="samp">pedname</tt>") and a pedigree format string ("<tt class="samp">pedformat</tt>").  This is done by either creating a Python dictionary and passing it as a parameter when <tt class="method">pyp_newclasses.loadPedigree()</tt> is called or by specifying a configuration file<a id='l2h-22' xml:id='l2h-22'></a> name.  For example, here is how you would create and populate an options dictionary:
+<div class="verbatim"><pre>
+options = {}
+options['messages'] = 'verbose'
+options['renumber'] = 0
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+options['pedname'] = 'Lacy (1989) Pedigree'
+</pre></div>
+The syntax used in a configuration file is similar.  Consider the file <span class="file">options.ini</span>, which contains the same options as set in the <var>options</var> dictionary in the previous example:
+<div class="verbatim"><pre>
+# options.ini
+# This is an example of a PyPedal configuration file
+messages = verbose
+renumber = 0
+pedfile = new_lacy.ped
+pedformat = asd
+pedname = Lacy (1989) Pedigree
+</pre></div>
+More details on configuration files are provided in Section <A HREF="node28.html#sec:pypedal-options-file">3.4.1</A>.
+
+<P>
+You may name your dictionary or configuration file whatever you like; the examples in this manual, as well as those distributed with  PyPedal, use the name "<tt class="samp">options</tt>".  Once you have defined your options to is time to load your pedigree.  This is as simple as calling <tt class="function">pyp_newclasses.NewPedigree()</tt>:
+<div class="verbatim"><pre>
+example = pyp_newclasses.loadPedigree(options)
+</pre></div>
+If you would like to use a configuration file to set your pedigree options, supply the configuration file name using the <var>optionsfile</var> keyword:
+<div class="verbatim"><pre>
+example = pyp_newclasses.loadPedigree(optionsfile='options.ini')
+</pre></div>
+Once you have loaded your pedigree file into a <tt class="class">NewPedigree</tt> object you can unleash the awesome power of a fully-functional PyPedal installation on it.  For example, calculating the effective number of founders in your pedigree using Lacy's ref640 exact method is as simple as:
+<div class="verbatim"><pre>
+pyp_metrics.effective_founders_lacy(example)
+</pre></div>
+Example programs that demonstrate how to use many of the features of PyPedal are included in the "<tt class="samp">examples</tt>" directory of the distribution.
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.2 The PyPedal Object"
+  href="node25.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.4 Options"
+  href="node27.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node25.html">3.2 The PyPedal Object</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node27.html">3.4 Options</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>

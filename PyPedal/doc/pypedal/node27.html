@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="STYLESHEET" href="pypedal.css" type='text/css' />
+<link rel="SHORTCUT ICON" href="manicons/pyfav.png" type="image/png" />
+<link rel='start' href='../index.html' title='Python Documentation Index' />
+<link rel="first" href="pypedal.html" title='A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis' />
+<link rel='contents' href='contents.html' title="Contents" />
+<link rel='last' href='about.html' title='About this document...' />
+<link rel='help' href='about.html' title='About this document...' />
+<link rel="next" href="node29.html" />
+<link rel="prev" href="node26.html" />
+<link rel="parent" href="node23.html" />
+<link rel="next" href="node28.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name='aesop' content='information' />
+<title>3.4 Options</title>
+</head>
+<body>
+<DIV CLASS="navigation">
+<div id='top-navigation-panel' xml:id='top-navigation-panel'>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.3 Program Structure"
+  href="node26.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.4.1 Configuration Files"
+  href="node28.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node26.html">3.3 Program Structure</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node28.html">3.4.1 Configuration Files</A>
+</div>
+<hr /></div>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION043400000000000000000"></A>
+<A NAME="sec:pypedal-options"></A><a id='l2h-23' xml:id='l2h-23'></a>
+<BR>
+3.4 Options
+</H1>
+Many aspects of PyPedal's operation can be controlled using a series of options.  A complete list of these options, their defaults, and a brief desription of their purpose is presented in Table <A HREF="#tbl:options">3.1</A>.  Options are stored in a Python dictionary that you must create in your programs.  You must specify values for the <var>pedfile</var> and <var>pedformat</var> options; all others are optional.  <var>pedfile</var> is a string containing the name of the file from which your pedigree will be read.  <var>pedformat</var> is a string containing a pedigree format code (see section <A HREF="node30.html#sec:pedigree-format-codes">3.5.1</A>) for each column in the datafile in the order in which those columns occur.  The following code fragement demonstrates how options are specified.
+<div class="verbatim"><pre>
+options = {}
+options['messages'] = 'verbose'
+options['renumber'] = 0
+options['counter'] = 5
+options['pedfile'] = 'new_lacy.ped'
+options['pedformat'] = 'asd'
+options['pedname'] = 'Lacy Pedigree'
+example = pyp_newclasses.loadPedigree(options)
+</pre></div>
+First, a dictionary named <var>options</var> is created; you may use any name you like as long as it is a valid Python variable name.  Next, values are assigned to several options.  Finally, <var>options</var> is passed to <tt class="function">pyp_newclasses.loadPedigree()</tt>, which requires that you pass it either a dictionary of options or a configuration file name.  If you do not provide one of these, PyPedal will halt with an error.
+
+<P>
+A single  PyPedal program may be used to read one or more pedigrees.  Each pedigree that you read must be passed its own dictionary of options.  The easiest way to do this is by creating a dictionary with global options.  You can then customize the dictionary for each pedigree you want to read.  Once you have created a PyPedal pedigree by calling <tt class="function">pyp_newclasses.NewPedigree(options)</tt> you can change the options dictionary without affecting that pedigree because it has a separate copy of those options stored in its <tt class="member">kw</tt> attribute.  The following code fragment demonstrates how to read two pedigree files using the same dictionary of options.
+<div class="verbatim"><pre>
+options = {}
+options['messages'] = 'verbose'
+options['renumber'] = 0
+options['counter'] = 5
+
+if __name__ == '__main__':
+#   Read the first pedigree
+    options['pedfile'] = 'new_lacy.ped'
+    options['pedformat'] = 'asd'
+    options['pedname'] = 'Lacy Pedigree'
+    example1 = pyp_newclasses.loadPedigree(options)
+#   Read the second pedigree
+    options['pedfile'] = 'new_boichard.ped'
+    options['pedformat'] = 'asdg'
+    options['pedname'] = 'Boichard Pedigree'
+    example2 = pyp_newclasses.loadPedigree(options)
+</pre></div>
+Note that <var>pedformat</var> only needs to be changed if the two pedigrees have different formats.  Only <var>pedfile</var> <em>has</em> to be changed at all.
+
+<P>
+All pedigree options other than <var>pedfile</var> and <var>pedformat</var> have default values.  If you provide a value that is invalid the option will revert to the default.  In most cases, a message to that effect will also be placed in the log file.
+<DIV ALIGN="CENTER">
+Options for controlling PyPedal.
+    Option &amp; Default &amp; Note(s) 
+<BR>
+
+    
+    <A NAME="tbl:options"></A>    <a id='l2h-24' xml:id='l2h-24'></a>
+    <BR>
+<IMG
+ WIDTH="777" HEIGHT="2218" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.png"
+ ALT="\begin{xtabular}
+% latex2html id marker 674
+{l\vert l\vert p{4in}}
+alleles\_sep...
+...! Careless use of this option can lead to erroneous results. \\
+\end{xtabular}">
+<BR>
+</DIV>
+<p><br /></p><hr class='online-navigation' />
+<div class='online-navigation'>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></a>
+
+<UL CLASS="ChildLinks">
+<LI><A href="node28.html">3.4.1 Configuration Files</a>
+</ul>
+<!--End of Table of Child-Links-->
+</div>
+
+<DIV CLASS="navigation">
+<div class='online-navigation'>
+<p></p><hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class='online-navigation'><a rel="prev" title="3.3 Program Structure"
+  href="node26.html"><img src='manicons/previous.png'
+  border='0' height='32'  alt='Previous Page' width='32' /></A></td>
+<td class='online-navigation'><a rel="parent" title="3. High-Level Overview"
+  href="node23.html"><img src='manicons/up.png'
+  border='0' height='32'  alt='Up One Level' width='32' /></A></td>
+<td class='online-navigation'><a rel="next" title="3.4.1 Configuration Files"
+  href="node28.html"><img src='manicons/next.png'
+  border='0' height='32'  alt='Next Page' width='32' /></A></td>
+<td align="center" width="100%">A Manual for use of PyPedal
+<BR>
+A software package for pedigree analysis</td>
+<td class='online-navigation'><a rel="contents" title="Table of Contents"
+  href="contents.html"><img src='manicons/contents.png'
+  border='0' height='32'  alt='Contents' width='32' /></A></td>
+<td class='online-navigation'><img src='manicons/blank.png'
+  border='0' height='32'  alt='' width='32' /></td>
+<td class='online-navigation'><a rel="index" title="Index"
+  href="genindex.html"><img src='manicons/index.png'
+  border='0' height='32'  alt='Index' width='32' /></A></td>
+</tr></table>
+<div class='online-navigation'>
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="node26.html">3.3 Program Structure</A>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="node23.html">3. High-Level Overview</A>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="node28.html">3.4.1 Configuration Files</A>
+</div>
+</div>
+<hr />
+<span class="release-info">Release 2.0.3, documentation updated on November 29, 2005 
+<BR>
+Revised May 15, 2012.</span>
+</DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</ADDRESS>
+</BODY>
+</HTML>
