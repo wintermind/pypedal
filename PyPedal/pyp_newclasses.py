@@ -103,7 +103,12 @@ class NewPedigree:
         if not kw.has_key('assign_sexes'): kw['assign_sexes'] = 0
         if not kw.has_key('pedcomp'): kw['pedcomp'] = 0
         if not kw.has_key('pedcomp_gens'): kw['pedcomp_gens'] = 3
-        if not kw.has_key('sepchar'): kw['sepchar'] = ' '
+        if not kw.has_key('sepchar'):
+            print '[WARNING]: You did not provide a value for the sepchar option, which tells PyPedal how to split ' \
+                  'lines in the pedigree file into different columns. A default value of \' \' ("whitespace") will ' \
+                  'be used. If your columns are separated by a different value, such as a comma, you may get errors ' \
+                  'when loading the pedigree file!'
+            kw['sepchar'] = ' '
         if not kw.has_key('alleles_sepchar'): kw['alleles_sepchar'] = '/'
         if not kw.has_key('counter'): kw['counter'] = 1000
         if not kw.has_key('slow_reorder'): kw['slow_reorder'] = 1
@@ -125,7 +130,7 @@ class NewPedigree:
         if not kw.has_key('missing_igen'): kw['missing_igen'] = -999.
         if not kw.has_key('missing_pedcomp'): kw['missing_pedcomp'] = -999.
         if not kw.has_key('missing_alleles'): kw['missing_alleles'] = ['','']
-        if not kw.has_key('missing_userfield'): kw['missing_userfield'] = ''
+        if not kw.has_key('missing_userfield'): kw['missing_userfield'] = 'Unknown'
         if 'simulate_n' not in kw.keys():
             kw['simulate_n'] = 15
         if 'simulate_g' not in kw.keys():
@@ -324,7 +329,11 @@ class NewPedigree:
         if not kw.has_key('trait_count'): kw['trait_count'] = 0
 
         # We need a match rule to use with the __add__() method.
-        if not kw.has_key('match_rule'): kw['match_rule'] = 'asd'
+        if not kw.has_key('match_rule'):
+            if 'A' in kw['pedformat'] and 'S' in kw['pedformat'] and 'D' in kw['pedformat']:
+                kw['match_rule'] = 'ASD'
+            else:
+                kw['match_rule'] = 'asd'
 
         # Now that we have processed all of the arguments in the options dictionary
         # we need to attach it to this object.
@@ -712,9 +721,9 @@ class NewPedigree:
     # common to both input pedigrees. If there are no animals in common between the two pedgrees,
     # a value of false is returned.
     # @param pedobj_b Another PyPedal pedigree.
-    # @param filename The file to which the new pedigree should be written
+    # @param newpedname Name of the new pedigree
     # @retval A new PyPedal pedigree containing the animals that are common to both input pedigrees.
-    def intersection(self, other, filename=False):
+    def intersection(self, other, newpedname='intersected_pedigree'):
         """
         intersection() returns a PyPedal pedigree object which contains the animals that are common to
         both input pedigrees. If there are no animals in common between the two pedgrees, a value
@@ -742,26 +751,45 @@ class NewPedigree:
             # NOTE: It's nagging at me that there may be a logic error in the
             # checking and flagging, so this code needs to be thoroughly tested!
             animals_to_write = []
+            #print 'Match rule: ', self.kw['match_rule']
             for a in self.pedigree:
                 for b in other.pedigree:
                     matches = 0    # Count places where the animals match
                     #print 'Comparing animal %s in a and animal %s in b' % \
                     #    ( a.animalID, b.animalID )
+                    #print '-'*40
                     for match in self.kw['match_rule']:
                         #print 'First match criterion: %s (%s)' % \
-                        #    ( match, self.new_animal_attr[match] )
+                        #   ( match, self.new_animal_attr[match] )
                         # If we're comparing animal IDs, make sure that we
                         # compare original IDs, not renumbered IDs.
-                        if match in ['a','A']:
+                        if match in ['a']:
+                            #print 'Animal: %s == %s' % ( a.originalID, b.originalID )
                             if a.originalID == b.originalID:
                                 matches = matches + 1
-                        elif match in ['s','S']:
+                        if match in ['A']:
+                            if a.name == b.name:
+                                #print 'Animal: %s == %s' % (a.name, b.name)
+                                matches = matches + 1
+                        elif match in ['s']:
+                            #print 'Sire: %s == %s' % (self.pedigree[a.sireID-1].originalID,
+                            #                          other.pedigree[b.sireID-1].originalID)
                             if self.pedigree[a.sireID-1].originalID == \
                                 other.pedigree[b.sireID-1].originalID:
                                 matches = matches + 1
-                        elif match in ['d','D']:
+                        elif match in ['S']:
+                            if a.sireName == b.sireName:
+                                #print '\tSire: %s == %s' % (a.sireName, b.sireName)
+                                matches = matches + 1
+                        elif match in ['d']:
+                            #print 'Dam: %s == %s' % (self.pedigree[a.damID-1].originalID,
+                            #                         other.pedigree[b.damID-1].originalID)
                             if self.pedigree[a.damID-1].originalID == \
                                 other.pedigree[b.damID-1].originalID:
+                                matches = matches + 1
+                        elif match in ['D']:
+                            if a.damName == b.damName:
+                                #print '\tDam: %s == %s' % (a.damName, b.damName)
                                 matches = matches + 1
                         elif getattr(a, self.new_animal_attr[match]) == \
                             getattr(b, other.new_animal_attr[match]):
@@ -774,12 +802,14 @@ class NewPedigree:
                             #    getattr(a, self.new_animal_attr[match]), \
                             #    getattr(b, self.new_animal_attr[match]) )
                             pass
-                # If there are no mismatches then the two animals are identical
-                # based on the match rule and only one of them needs to be written
-                # to the merged pedigree.
-                if ( matches == len(self.kw['match_rule']) ):
-                    # Animals are identical
-                    animals_to_write.append(a)
+                    #print '-'*40
+                    # If there are no mismatches then the two animals are identical
+                    # based on the match rule and only one of them needs to be written
+                    # to the merged pedigree.
+                    #print matches, len(self.kw['match_rule'])
+                    if ( matches == len(self.kw['match_rule']) ):
+                        # Animals are identical
+                        animals_to_write.append(a)
             # Once we have matches, we are going to write a new pedigree
             # file to disc, and we will load that file to get the new
             # pedigree.
@@ -789,12 +819,12 @@ class NewPedigree:
             # pedigree passed to __add__() will be used for both pedigrees. This
             # makes sense because you cannot have two different pedformats in
             # the same file.
-            if filename == False:
-                filename = '%s_%s.ped' % ( self.kw['pedname'], other.kw['pedname'] )
-		if self.kw['debug_messages']:
-                    print '[INFO]: filename = %s' % ( filename )
-                pyp_io.save_newanimals_to_file(animals_to_write, filename, self.pedformat, \
-                    self.kw['sepchar'])
+            filename = '%s.ped' % ( newpedname )
+            if self.kw['debug_messages']:
+                print '[INFO]: filename = %s' % ( filename )
+                print '[INFO]: There are %s animals in the intersection of pedigrees %s and %s.' % \
+                      ( len(animals_to_write), self.kw['pedname'], other.kw['pedname'] )
+            pyp_io.save_newanimals_to_file(animals_to_write, filename, self.kw, self.new_animal_attr)
             # Now we need to load the new pedigree and return it. This should be
             # dead easy.
             #
@@ -807,20 +837,21 @@ class NewPedigree:
             new_options['renumber'] = 1
             new_options['pedfile'] = filename
             new_options['pedformat'] = self.kw['pedformat']
+            new_options['sepchar'] = self.kw['sepchar']
             # Load the new pedigree and return it.
             try:
                 new_pedigree = loadPedigree(new_options, debugLoad=True)
                 if self.kw['messages'] == 'verbose':
                     print '[INFO]: Loaded merged pedigree %s from file %s!' % \
-                        ( merged_pedname, filename )
+                        ( newpedname, filename )
                     logging.info('Cannot complete intersection operation because types do not match.')
                     return new_pedigree
             except:
                 if self.kw['messages'] == 'verbose':
                     print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
-                        ( merged_pedname, filename )
+                        ( newpedname, filename )
                 logging.error('Could not load merged pedigree %s from file %s!', \
-                    merged_pedname, filename)
+                    newpedname, filename)
                 return False
         else:
             logging.error('Cannot complete intersection operation because types do not match.')
@@ -1788,15 +1819,17 @@ class NewPedigree:
                     # debugging that problem I realized that there was no check for null lines.  This 'elif'
                     # catches blank lines so that they are not treated as actuall records and logs them.
                     elif len(string.strip(line)) == 0:
-                        logging.warning('Encountered an empty (blank) record on line %s of the pedigree file.',lineCounter)
+                        logging.warning('Encountered an empty (blank) record on line %s of the pedigree file.',
+                                        lineCounter)
                     else:
                         animalCounter = animalCounter + 1
                         if numpy.fmod(animalCounter,self.kw['counter']) == 0:
-                            logging.info('Records read: %s ',animalCounter)
+                            logging.info('Records read: %s ', animalCounter)
                         # string.strip()-ing line deals with problems from trailing sepchars,
                         # most notably spaces. Is there a nice way to deal with the situation
                         # of multiple sepchars with no data between them?
-                        l = string.split(string.strip(line),self.kw['sepchar'])
+                        l = string.split(string.strip(line), self.kw['sepchar'])
+                        #print 'sepchar: ', self.kw['sepchar']
                         #print l
                         # I am adding in a check here to make sure that the number of fields
                         # expected from the pedigree format string and the number of fields in
@@ -1818,7 +1851,9 @@ class NewPedigree:
                             for i in range(len(l)):
                                 l[i] = string.strip(l[i])
                             if len(l) < 3:
-                                errorString = 'The record on line %s of file %s is too short - all records must contain animal, sire, and dam ID numbers (%s fields detected).\n' % (lineCounter,self.kw['pedfile'],len(l))
+                                errorString = 'The record on line %s of file %s is too short - all records must ' \
+                                              'contain animal, sire, and dam ID numbers (%s fields detected).\n' % \
+                                              (lineCounter, self.kw['pedfile'], len(l))
                                 print '[ERROR]: %s' % (errorString)
                                 print '[ERROR]: %s' % (line)
                                 sys.exit(0)
@@ -1888,8 +1923,11 @@ class NewPedigree:
                                         self.namemap[an.name] = an.animalID
                                         self.namebackmap[an.animalID] = an.name
                         else:
-                            errorString = 'The record on line %s of file %s has %s columns, but the pedigree format string (%s) says that it should have %s columns. Please check your pedigree file and the pedigree format string for errors.\n' % ( lineCounter, self.kw['pedfile'], len(l), \
-                            self.kw['pedformat'], len(self.kw['pedformat']) )
+                            errorString = 'The record on line %s of file %s has %s columns, but the pedigree format ' \
+                                          'string (%s) says that it should have %s columns. Please check your ' \
+                                          'pedigree file and the pedigree format string for errors.\n' % \
+                                          ( lineCounter, self.kw['pedfile'], len(l), self.kw['pedformat'],
+                                            len(self.kw['pedformat']) )
                             print '[ERROR]: %s' % (errorString)
                             logging.error(errorString)
                             sys.exit(0)
@@ -1914,7 +1952,8 @@ class NewPedigree:
                 except KeyError:
                     if ( 'S' in self.kw['pedformat'] and str(_s) != str(self.kw['missing_name']) ) or ( 's' in self.kw['pedformat'] and str(_s) != str(self.kw['missing_parent']) ):
                         print '[NOTE]: Adding sire %s to the pedigree' % ( _s )
-                        an = NewAnimal(_null_locations,[_s,self.kw['missing_parent'],self.kw['missing_parent']],self.kw)
+                        an = NewAnimal(_null_locations, [_s, self.kw['missing_parent'], self.kw['missing_parent']],
+                                       self.kw)
                         #an.printme()
                         self.pedigree.append(an)
                         self.idmap[an.animalID] = an.animalID
@@ -1928,7 +1967,8 @@ class NewPedigree:
                     _i = self.idmap[_d]
                 except KeyError:
                     if ( 'D' in self.kw['pedformat'] and str(_d) != str(self.kw['missing_name']) ) or ( 'd' in self.kw['pedformat'] and str(_d) != str(self.kw['missing_parent']) ):
-                        an = NewAnimal(_null_locations,[_d,self.kw['missing_parent'],self.kw['missing_parent']],self.kw)
+                        an = NewAnimal(_null_locations, [_d, self.kw['missing_parent'], self.kw['missing_parent']],
+                                       self.kw)
     #                    an.printme()
                         self.pedigree.append(an)
                         self.idmap[an.animalID] = an.animalID
@@ -2852,7 +2892,7 @@ class NewAnimal:
             self.userField = string.strip(data[locations['userfield']])
         else:
             #self.userField = ''
-	    self.userField = mykw['missing_userfield']
+	        self.userField = mykw['missing_userfield']
         # print '%s\t%s\t%s' % (self.animalID, self.sireID, self.damID)
 
     ##

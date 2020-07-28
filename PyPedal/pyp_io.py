@@ -1078,50 +1078,68 @@ def save_to_genes(pedobj, outfilename):
 
 ##
 # save_newanimals_to_file() take a list of PyPedal NewAnimal objects as input and writes them to a pedigree file.
-# @param animal_list A list of PyPedal NewAnimal bjects
-# @param filename The nae of the file t which the animals should be written
-# @param pedformat Pedigree format code for the output file
-def save_newanimals_to_file(animal_list, filename, pedformat, sepchar):
-	if len(animal_list) == 0:
-		pass
-	else:
-		# First, save the unique animals from the union of pedigrees a and
-		# b based on the match rule. Note that the pedformat from the first
-		# pedigree passed to __add__() will be used for both pedigrees. This
-		# makes sense because you cannot have two different pedformats in
-		# the same file.
-		try:
-			f = open(filename, 'w')
-			for animal in animal_list:
-				_outstring = ''
-				for pf in pedformat:
-					if originalID == False:
-						value = getattr(_a, self.new_animal_attr[pf])
-					else:
-						if pf in['a','A']:
-							value = _a.originalID
-						# This cascade may break if the pedigree is not
-						# renumbered...
-						elif pf in['s','S']:
-							if _a.sireID != self.kw['missing_parent']:
-								value = self.pedigree[_a.sireID-1].originalID
-							else:
-								value = 0
-						elif pf in['d','D']:
-							if _a.damID != self.kw['missing_parent']:
-								value = self.pedigree[_a.damID-1].originalID
-							else:
-								value = 0
-						else:
-							value = getattr(_a, self.new_animal_attr[pf])
-				# If we don't catch the special case of the first entry
-				# in an output line the a sepchar always will be the
-				# first character in the line.
-				if len(_outstring) > 0:
-					_outstring = '%s%s%s' % ( _outstring, sepchar, value )
-				else:
-					_outstring = '%s' % ( value )
-				ofh.write( '%s\n' % (_outstring) )
-			f.close()
-		except:
-			pass
+# @param animal_list A list of PyPedal NewAnimal objects
+# @param filename The name of the file to which the animals should be written
+# @param kw Dictionary of pedigree options
+# @param new_animal_attr Mapping of pedigree format codes to attributes of NewAnimal objects
+def save_newanimals_to_file(animal_list, filename, kw, new_animal_attr):
+    if len(animal_list) == 0:
+        if kw['messages'] == 'verbose':
+            print '[WARNING]: There were no animals in the list passed to pyp_io.save_newanimals_to_file()!'
+        logging.warning('There were no animals in the list passed to pyp_io.save_newanimals_to_file()!')
+        return False
+    else:
+        try:
+            ofh = open(filename, 'w')
+            for _a in animal_list:
+                _outstring = ''
+                for pf in kw['pedformat']:
+                    # I no longer remember what this is here for, awesome documentation!
+                    # Perhaps the idea was that there would be a keyword indicating that original
+                    # and not renumbered IDs would be used to make comparisons to the source
+                    # pedigrees easier, but we're not sending in the right information for that.
+                    #if _a.originalID == False:
+                    #    value = getattr(_a, self.new_animal_attr[pf])
+                    #else:
+                    if pf in ['a']:
+                        value = _a.animalID
+                        # This cascade may break if the pedigree is not
+                        # renumbered...
+                    elif pf in ['A']:
+                        value = _a.name
+                    # This cascade may break if the pedigree is not
+                    # renumbered...
+                    elif pf in ['s']:
+                        if _a.sireID != kw['missing_parent']:
+                            value = _a.sireID
+                        else:
+                            value = kw['missing_parent']
+                    elif pf in ['S']:
+                        if _a.sireID != kw['missing_parent']:
+                            value = _a.sireName
+                        else:
+                            value = kw['missing_parent']
+                    elif pf in ['d']:
+                        if _a.damID != kw['missing_parent']:
+                            value = _a.damID
+                        else:
+                            value = kw['missing_parent']
+                    elif pf in ['D']:
+                        if _a.damID != kw['missing_parent']:
+                            value = _a.damName
+                        else:
+                            value = kw['missing_parent']
+                    else:
+                        value = getattr(_a, new_animal_attr[pf])
+                    # If we don't catch the special case of the first entry
+                    # in an output line the sepchar always will be the
+                    # first character in the line.
+                    if len(_outstring) > 0:
+                        _outstring = '%s%s%s' % ( _outstring, kw['sepchar'], value )
+                    else:
+                        _outstring = '%s' % ( value )
+                ofh.write( '%s\n' % (_outstring) )
+            ofh.close()
+            return True
+        except:
+        	return False

@@ -12,6 +12,33 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+--- 07/27/2020  When using NewPedigree::intersect() to compose pedigrees not all of the pedigree attributes are
+    correctly propagated (e.g., names) for ASD-source pedigrees. Needs to be fixed because it's a form of
+    data loss.
+''' 07/28/2020  The default value for userField is now "Unknown".
+''' 07/28/2020  NewPedigree::__init__() now prints a warning when no value is provided for sepchar and the default
+    value is used.
+''' 07/28/2020  NewPedigree::intersection() now properly assigns the sepchar to new pedigrees.
+''' 07/28/2020  If a parent is automatically added as an individual to a pedigree and there is a
+    userField code in the pedigree format string the missing userField value is not assigned to
+    that animal. This was due to an indentation error that should be fixed now.
+''' 07/28/2020  It looks like pyp_io/save_newanimals_to_file() could never have worked
+    correctly. I must have never finished testing NewPedigree::intersection() back when
+    I first wrote it. What a mess.
+??? 07/28/2020  NewPedigree::union() probably needs the same sorts of fixes as
+    NewPedigree::intersection() did to work properly with ASD formats as well
+    as asd formats.
+??? 07/28/2020  It looks like there are lots of places where the support for ASD pedigree doesn't
+    work quite right with logic originally designed for asd pedigrees. This is typically in places
+    where IDs are compared. I think that the logic renumberedID/originalID/name needs to be reworked
+    so that it's consisted across ID types. What a mess.
+''' 07/28/2020  Modified NewPedigree::intersection() to work properly with ASD formats as well
+    as asd formats.
+''' 07/28/2020  Changed the default value of the match_rule keyword to match the animal,
+    sire, and dam formats in pedformat.
+''' 07/28/2020  Small tweaks to pedigree and file name handling in
+    NewPedigree::intersection().
+''' 07/28/2020  Fixed a typo in NewPedigree::intersection().
 ''' 07/23/2020  Added pyp_snp/generate_random_genotype() to generate simple random
     strings for testing. Each string from a call to the routine is independent from
     others and has no genealogical significance.
