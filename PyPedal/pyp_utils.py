@@ -38,7 +38,7 @@
 #   list_union()
 #   list_intersection()
 #   guess_pedformat()
-#   resolve_duplicates()
+#   list_duplicates()
 #   which()
 #   remove_missing()
 ###############################################################################
@@ -1364,10 +1364,12 @@ def guess_pedformat(animal, ped_kw):
         return False
 
 ##
-# resolve_duplicates() .
+# list_duplicates() identifies animals that are duplicates (have the same animal ID in the input pedigree file) and
+# decides which record to retain as the "correct" animal. It's incumbent on the
 # @param pedobj A PyPedal pedigree.
-# @retval ...
-def resolve_duplicates(pedobj):
+# @keep_rule string The rule to use to decide which duplicate record to keep.
+# @retval list A list of duplicates animals to delete.
+def list_duplicates(pedobj, keep_rule=''):
     _temp_ped = copy.deepcopy(pedobj.pedigree)
     duplicate_id_count = {}
     duplicates = []
@@ -1415,15 +1417,15 @@ def resolve_duplicates(pedobj):
         _p_idx += 1
     for k, v in duplicate_id_count.iteritems():
         if pedobj.kw['messages'] == 'verbose':
-            print '\t[INFO]: pyp_utils/resolve_duplicates(): originalID %s occurs %s time in the pedigree file!' % ( k, v )
-        logging.info('pyp_utils/resolve_duplicates(): originalID %s occurs %s time in the pedigree file!'%(k, v))
+            print '\t[INFO]: pyp_utils/resolve_duplicates(): originalID %s occurs %s times in the pedigree file!' % ( k, v )
+        logging.info('pyp_utils/resolve_duplicates(): originalID %s occurs %s times in the pedigree file!'%(k, v))
     return duplicates
 
 # which() tries to determine if an executable program exists in the user's
 # path. The code was taken from Stack Overflow
 # (http://stackoverflow.com/questions/377017/test-if-executable-exists-in-python).
 # @param program The name of the program to find.
-# @retval A The name of the program, or "None".
+# @retval The name of the program, or "None".
 def which(program):
 
     import os

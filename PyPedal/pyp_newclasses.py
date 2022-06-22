@@ -615,39 +615,39 @@ class NewPedigree:
             ped_to_write = {'a': {}, 'b': {}}
             for a in self.pedigree:
                 ped_to_write['a'][a.animalID] = True
-                for b in other.pedigree:
-            ped_to_write['b'][b.animalID] = False
-                    mismatches = 0		# Count places where the animals don't match
-                    #print 'Comparing animal %s in a and animal %s in b' % \
-                    #    ( a.animalID, b.animalID )
-                    for match in self.kw['match_rule']:
-                        #print 'First match criterion: %s (%s)' % \
-                        #    ( match, self.new_animal_attr[match] )
-                        # If we're comparing animal IDs, make sure that we
-                        # compare original IDs, not renumbered IDs.
-                        if match in ['a','A']:
-                            if a.originalID != b.originalID:
-                                mismatches = mismatches + 1
-                        elif match in ['s','S']:
-                            if self.pedigree[a.sireID-1].originalID != \
-                                other.pedigree[b.sireID-1].originalID:
-                                mismatches = mismatches + 1
-                        elif match in ['d','D']:
-                            if self.pedigree[a.damID-1].originalID != \
-                                other.pedigree[b.damID-1].originalID:
-                                mismatches = mismatches + 1
-                        elif getattr(a, self.new_animal_attr[match]) != \
-                            getattr(b, self.new_animal_attr[match]):
-                            mismatches = mismatches + 1
-                        else:
-                            pass
+            for b in other.pedigree:
+                ped_to_write['b'][b.animalID] = False
+            mismatches = 0		# Count places where the animals don't match
+            #print 'Comparing animal %s in a and animal %s in b' % \
+            #    ( a.animalID, b.animalID )
+            for match in self.kw['match_rule']:
+                #print 'First match criterion: %s (%s)' % \
+                #    ( match, self.new_animal_attr[match] )
+                # If we're comparing animal IDs, make sure that we
+                # compare original IDs, not renumbered IDs.
+                if match in ['a','A']:
+                    if a.originalID != b.originalID:
+                        mismatches = mismatches + 1
+                elif match in ['s','S']:
+                    if self.pedigree[a.sireID-1].originalID != \
+                        other.pedigree[b.sireID-1].originalID:
+                        mismatches = mismatches + 1
+                elif match in ['d','D']:
+                    if self.pedigree[a.damID-1].originalID != \
+                        other.pedigree[b.damID-1].originalID:
+                        mismatches = mismatches + 1
+                elif getattr(a, self.new_animal_attr[match]) != \
+                    getattr(b, self.new_animal_attr[match]):
+                    mismatches = mismatches + 1
+                else:
+                    pass
             # If there are no mismatches then the two animals are identical
             # based on the match rule and only one of them needs to be written
             # to the merged pedigree.
-            if ( mismatches == 0 ):
+            if mismatches == 0:
                 # Animals are identical. Do not write animals from self that are
-        # identical to animals in other.
-        ped_to_write['a'][a.animalID] = False
+                # identical to animals in other.
+                ped_to_write['a'][a.animalID] = False
             else:
                 # Animals are different
                 ped_to_write['b'][b.animalID] = True
@@ -661,12 +661,11 @@ class NewPedigree:
             # makes sense because you cannot have two different pedformats in
             # the same file.
             if filename == False:
-                filename = '%s_%s.ped' % ( self.kw['pedname'], \
-                other.kw['pedname'] )
-                print '[INFO]: filename = %s' % ( filename )
-            self.save(filename=filename, write_list=ped_to_write['a'], \
+                filename = '%s_%s.ped' % ( self.kw['pedname'], other.kw['pedname'] )
+                print '[INFO]: filename = %s' % filename
+            self.save(filename=filename, write_list=ped_to_write['a'],
                 pedformat=self.kw['pedformat'], originalID=True)
-            other.save(filename=filename, write_list=ped_to_write['b'], \
+            other.save(filename=filename, write_list=ped_to_write['b'],
                 pedformat=self.kw['pedformat'], originalID=True, append=True )
             # Now we need to load the new pedigree and return it. This should be
             # dead easy.
@@ -680,31 +679,21 @@ class NewPedigree:
             new_options['renumber'] = 1
             new_options['pedfile'] = filename
             new_options['pedformat'] = self.kw['pedformat']
-            new_options = {
-                'messages': self.kw['messages'],
-                'pedname': merged_pedname,
-                'renumber': 1,
-                'pedfile': filename,
-                'pedformat': self.kw['pedformat'],
-            }
             # Load the new pedigree and return it.
             try:
                 new_pedigree = loadPedigree(new_options, debugLoad=True)
                 if self.kw['messages'] == 'verbose':
-                    print '[INFO]: Loaded merged pedigree %s from file %s!' % \
-                        ( merged_pedname, filename )
+                    print '[INFO]: Loaded merged pedigree %s from file %s!' % ( merged_pedname, filename )
                 logging.info('Cannot complete __add__() operation becuase types do not match.')
                 return new_pedigree
             except:
                 if self.kw['messages'] == 'verbose':
-                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % \
-                        ( merged_pedname, filename )
-                logging.error('Could not load merged pedigree %s from file %s!', \
-                    merged_pedname, filename)
+                    print '[ERROR]: Could not load merged pedigree %s from file %s!' % ( merged_pedname, filename )
+                logging.error('Could not load merged pedigree %s from file %s!', merged_pedname, filename)
                 return False
         else:
-            logging.error('Cannot complete __add__() operation becuase types do not match.')
-            return NotImplemented            
+            logging.error('Cannot complete __add__() operation because types do not match.')
+            return NotImplemented
 
     ##
     # __union__() is an alias to NewPedigree::__add__().
@@ -1084,8 +1073,8 @@ class NewPedigree:
             if not self.kw['slow_reorder']:
                 self.pedigree = pyp_utils.fast_reorder(self.pedigree)
             else:
-                self.pedigree = pyp_utils.reorder(self.pedigree,missingparent=self.kw['missing_parent'],max_rounds=self.kw['reorder_max_rounds'])
-            #self.pedigree = pyp_utils.reorder(self.pedigree,missingparent=self.kw['missing_parent'],max_rounds=self.kw['reorder_max_rounds'])
+                self.pedigree = pyp_utils.reorder(self.pedigree, missingparent=self.kw['missing_parent'], max_rounds=self.kw['reorder_max_rounds'])
+                #self.pedigree = pyp_utils.reorder(self.pedigree,missingparent=self.kw['missing_parent'],max_rounds=self.kw['reorder_max_rounds'])
         if self.kw['renumber'] == 1:
             self.renumber()
             pyp_snp.renumber_snp_ids(self)
@@ -1103,7 +1092,7 @@ class NewPedigree:
             logging.info('Assigning sexes')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
                 print '\t[INFO]: Assigning sexes at %s' % ( pyp_utils.pyp_nice_time() )
-            pyp_utils.assign_sexes(self)
+            pyp_utils.set_sexes(self)
         if self.kw['set_alleles']:
             logging.info('Gene dropping to compute founder genome equivalents')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
@@ -1119,12 +1108,12 @@ class NewPedigree:
             logging.info('Assigning offspring')
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
                 print '\t[INFO]: Assigning offspring at %s' % ( pyp_utils.pyp_nice_time() )
-            pyp_utils.assign_offspring(self)
+            pyp_utils.set_offspring(self)
         # Provide information about duplicates, if requested.
         if self.kw['resolve_duplicates']:
             if self.kw['messages'] == 'verbose':
                 print '[INFO]: Identifying duplicate animals in the pedigree file.'
-            self.duplicates = pyp_utils.resolve_duplicates(self)
+            self.duplicates = pyp_utils.list_duplicates(self)
         else:
             self.duplicates = False
         if self.duplicates:
@@ -2183,7 +2172,7 @@ class NewPedigree:
         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
             print '\t[INFO]: Assigning offspring at %s' % ( pyp_utils.pyp_nice_time() )
         logging.info('Assigning offspring')
-        pyp_utils.assign_offspring(self)
+        pyp_utils.set_offspring(self)
         self.kw['pedigree_is_renumbered'] = 1
         self.kw['assign_offspring'] = 1
 
@@ -2269,9 +2258,9 @@ class NewPedigree:
     # than directly by users.
     # @param self Reference to current object
     # @param animalID ID of the animal to be deleted
-    # @retval 1 on success, 0 on failure
+    # @retval True on success, False on failure
     def delanimal(self, animalID):
-        _deleted = 0
+        _deleted = False
         if not self.kw['pedigree_is_renumbered']:
             logging.warning('Deleting an animal from an unrenumbered pedigree using NewPedigree::delanimal() is unsafe!')
         try:
@@ -2281,9 +2270,63 @@ class NewPedigree:
             del(self.backmap[self.pedigree[anidx].renumberedID])
             del(self.idmap[animalID])
             del(self.pedigree[anidx])
-            _deleted = 1
+            _deleted = True
         except:
-            _deleted
+            pass
+        return _deleted
+
+    ##
+    # delete_animals() deletes one or more animals from the pedigree. After the animals have been removed the
+    # pedigree metadata are updates.
+    # @param self Reference to current object
+    # @param animal_list List of IDs of animals to be deleted
+    # @retval 1 on success, 0 on failure
+    def delete_animals(self, animal_list):
+        _deleted = False
+        try:
+            for animalID in animal_list:
+                anidx = self.idmap[animalID] - 1
+                del (self.namebackmap[self.pedigree[anidx].originalID])
+                del (self.namemap[self.pedigree[anidx].name])
+                del (self.backmap[self.pedigree[anidx].renumberedID])
+                del (self.idmap[animalID])
+                del (self.pedigree[anidx])
+            # Now we need to update the metadata
+            self.metadata = PedigreeMetadata(self.pedigree, self.kw, self.snp)
+
+            if self.kw['reorder'] == 1 and not self.kw['renumber']:
+                if not self.kw['slow_reorder']:
+                    self.pedigree = pyp_utils.fast_reorder(self.pedigree)
+                else:
+                    self.pedigree = pyp_utils.reorder(self.pedigree, missingparent=self.kw['missing_parent'],
+                                                      max_rounds=self.kw['reorder_max_rounds'])
+            if self.kw['renumber'] == 1:
+                self.renumber()
+            if self.kw['set_generations']:
+                pyp_utils.set_generation(self)
+            if self.kw['set_ancestors']:
+                pyp_utils.set_ancestor_flag(self)
+            if self.kw['set_sexes'] or self.kw['assign_sexes']:
+                pyp_utils.set_sexes(self)
+            if self.kw['set_alleles']:
+                pyp_metrics.effective_founder_genomes(self)
+            if self.kw['form_nrm']:
+                self.nrm = NewAMatrix(self.kw)
+                self.nrm.form_a_matrix(self.pedigree)
+            if self.kw['set_offspring'] and not self.kw['renumber']:
+                pyp_utils.set_offspring(self)
+            if self.kw['resolve_duplicates']:
+                self.duplicates = pyp_utils.list_duplicates(self)
+            else:
+                self.duplicates = False
+            if self.duplicates:
+                print '[WARNING]: There are duplicate animals in the pedigree file, this requires manual intervention to ' \
+                      'correct!'
+                logging.warning('There are duplicate animals in the pedigree file, this requires manual intervention '
+                                'to correct!')
+            _deleted = True
+        except:
+            pass
         return _deleted
 
     ##

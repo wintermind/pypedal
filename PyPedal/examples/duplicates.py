@@ -28,11 +28,15 @@ if __name__ == '__main__':
 
 	example = pyp_newclasses.loadPedigree(options=options, debugLoad=True)
 
+        print
+        print 'List of duplciate animals'
+        print '-------------------------'
 	for d in example.duplicates:
-		print d
+            print '\t', d
 
+        print
+        print 'Drawing pedigree with duplicate animals'
 	gtitle = 'Pedigree of duplicate animals'
-
 	pyp_graphics.new_draw_pedigree(example, gfilename='duplicates', gtitle=gtitle,
-		gformat='jpg', gorient='l', gdirec='RL', gtitloc='t', gpenwidth=2, \
-		gfontsize=14)
+	    gformat='jpg', gorient='l', gdirec='RL', gtitloc='t', gpenwidth=2, \
+	    gfontsize=14)

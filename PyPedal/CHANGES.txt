@@ -4,14 +4,19 @@ PyPedal 2 CHANGELOG
 "+++" indicates a feature addition;
 "***" indicates an API change or a major bugfix;
 "'''" indicates a minor bugfix or feature enhancement.
-"???" indicates a possible problem (i.e. bug) that has
-      not been verified.
+"???" indicates a possible problem (i.e. bug) that has not been verified.
 "XXX" indicates a feature that has been deprecated or removed.
 "!!!" indicates a feature that is planned or stubbed, but is not yet working.
 "###" indicates a note or idea I don't want to forget.
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+!!! 06/22/2022  A test script is needed for pyp_newclasses::NewPedigree/delete_animals().
++++ 06/22/2022  Added pyp_newclasses::NewPedigree/delete_animals() because we need a safe way to delete animals
+    when we're processing duplicates.
+*** 06/22/2022  Renamed pyp_utils/resolve_duplicates() to pyp_utils/list_duplicates().
+''' 06/22/2022  Replaced a few "pyp_utils.assign_"s with their corresponding "pyp_utils.set_"s to fix some
+    deprecation warnings.
 *** 06/22/2022  pyp_newclasses::NewPedigree/savedb() has been tweaked to handle te new database options.
 *** 06/22/2022  pyp_db now works only with SQLite 3 databases. The ADODB library used for Python 2.x database
     connectivity is no longer maintained, and is not available for the Python 3 port. The pyodbc library is a
