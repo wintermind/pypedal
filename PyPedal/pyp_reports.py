@@ -7,6 +7,7 @@
 # FUNCTIONS:
 #   meanMetricBy()
 #   pdfMeanMetricBy()
+#   pdfMeanMetricBy_adodb()
 #   pdfPedigreeMetadata()
 #   pdf3GenPed()
 #   _pdfInitialize()
@@ -33,9 +34,9 @@ from reportlab.pdfgen import canvas
 global metric_to_column
 global byvar_to_column
 
-metric_to_column = {'fa':'coi'}
-byvar_to_column = {'by':'birthyear',
-                  'gen':'generation'}
+metric_to_column = {'fa': 'coi'}
+byvar_to_column = {'by': 'birthyear',
+                  'gen': 'generation'}
 
 ##
 # meanMetricBy() returns a dictionary of means keyed by levels of the 'byvar' that
@@ -70,6 +71,67 @@ def meanMetricBy(pedobj, metric='fa', byvar='by', createpdf=False, conn=False):
                 metric_to_column[metric], pedobj.kw['database_table'], byvar_to_column[byvar], \
                 byvar_to_column[byvar] )
             #print sql
+            cursor = conn.cursor()
+            cursor.execute(sql)
+            #while not cursor.EOF:
+            for row in cursor:
+                result_dict[row[0]] = row[1]
+            #    cursor.MoveNext()
+            conn.commit()
+            logging.info('pyp_reports/meanMetricBy() report completed.')
+        else:
+            logging.error('pyp_reports/meanMetricBy() report failed!')
+        if conn_created:
+            conn.Close()
+
+        if createpdf:
+            try:
+                mmbPdfTitle = '%s_mean_metric_%s_%s' % \
+                    (pedobj.kw['default_report'], metric, byvar)
+                _mmbPdf = pdfMeanMetricBy(pedobj, result_dict, 1, mmbPdfTitle)
+                if _mmbPdf:
+                    logging.info('pyp_reports/pdfMeanMetricBy() succeeded.')
+                else:
+                    logging.error('pyp_reports/pdfMeanMetricBy() failed.')
+            except:
+                pass
+    except:
+        pass
+    return result_dict
+
+##
+# meanMetricBy_adodb() returns a dictionary of means keyed by levels of the 'byvar' that
+# can be used to draw graphs or prepare reports of summary statistics.
+# @param pedobj A PyPedal pedigree object.
+# @param metric The variable to summarize on a BY variable.
+# @param byvar The variable on which to group the metric.
+# @param createpdf Flag indicating whether or not a PDF version of the report should be created.
+# @param conn Handle to a database connection, or False.
+# @retval A dictionary containing means for the metric variable keyed to levels of the byvar.
+def meanMetricBy_adodb(pedobj, metric='fa', byvar='by', createpdf=False, conn=False):
+    """
+    meanMetricBy_adodb() returns a dictionary of means keyed by levels of the 'byvar' that
+    can be used to draw graphs or prepare reports of summary statistics.
+    """
+    # If the user doesn't pass us a db_dict then try and connect to the database
+    conn_created = False
+    result_dict = {}
+    if conn == False:
+        conn = pyp_db.connectToDatabase_adodb(pedobj)
+        conn_created = True
+    try:
+        if metric not in ['fa']:
+            logging.warning('You passed an unrecognized variable, %s, to pyp_reports/animalMetricBy() in the METRIC field.  It has been changed to \'fa\' (coefficient of inbreeding).', metric)
+            metric = 'fa'
+        if byvar not in ['gen','sex','birthyear','by']:
+            logging.warning('You passed an unrecognized variable, %s, to pyp_reports/animalMetricBy() in the BYVAR field.  It has been changed to \'by\' (birth year).', byvar)
+            byvar = 'by'
+
+        if pyp_db.doesTableExist_adodb(pedobj, conn=conn):
+            sql = 'select %s, avg(%s) from %s group by %s order by %s' % ( byvar_to_column[byvar], \
+                metric_to_column[metric], pedobj.kw['database_table'], byvar_to_column[byvar], \
+                byvar_to_column[byvar] )
+            #print sql
             cursor = conn.Execute(sql)
             while not cursor.EOF:
                 result_dict[cursor.fields[0]] = cursor.fields[1]
@@ -87,9 +149,9 @@ def meanMetricBy(pedobj, metric='fa', byvar='by', createpdf=False, conn=False):
                     (pedobj.kw['default_report'], metric, byvar)
                 _mmbPdf = pdfMeanMetricBy(pedobj, result_dict, 1, mmbPdfTitle)
                 if _mmbPdf:
-                    logging.info('pyp_reports/pdfMeanMetricBy() succeeded.')
+                    logging.info('pyp_reports/pdfMeanMetricBy_adodb() succeeded.')
                 else:
-                    logging.error('pyp_reports/pdfMeanMetricBy() failed.')
+                    logging.error('pyp_reports/pdfMeanMetricBy_adodb() failed.')
             except:
                 pass
     except:

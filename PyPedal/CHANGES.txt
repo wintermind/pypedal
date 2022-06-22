@@ -12,6 +12,17 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+*** 06/22/2022  pyp_newclasses::NewPedigree/savedb() has been tweaked to handle te new database options.
+*** 06/22/2022  pyp_db now works only with SQLite 3 databases. The ADODB library used for Python 2.x database
+    connectivity is no longer maintained, and is not available for the Python 3 port. The pyodbc library is a
+    potential replacement, but I don't really want to go that direction. For backwards compatibility, the
+    "original" pyp_db procedures have been renamed with a prefix of "_adodb" (e.g., connectToDatabase_adodb()).
+*** 06/22/2022  pyp_reports/ pdfMeanMetricBy() now works with SQLite 3 only. Use pyp_reports/pdfMeanMetricBy_adodb()
+    if you are still using ADODB under Python 2 to access other SQL databases.
+??? 06/21/2022  With respect to "04/23/2020  I'm not happy with birth date formatting", there's probably already
+    a solution to this in the datetime module, don't reinvent the wheel!
+''' 03/10/2021  pyp_graphics/new_draw_pedigree() now properly sets the fontname attribute on graphs, nodes, and
+    edges.
 --- 07/27/2020  When using NewPedigree::intersect() to compose pedigrees not all of the pedigree attributes are
     correctly propagated (e.g., names) for ASD-source pedigrees. Needs to be fixed because it's a form of
     data loss.
@@ -20,7 +31,7 @@ CHANGES in PyPedal 2.0.4 (Vetinari)
     value is used.
 ''' 07/28/2020  NewPedigree::intersection() now properly assigns the sepchar to new pedigrees.
 ''' 07/28/2020  If a parent is automatically added as an individual to a pedigree and there is a
-    userField code in the pedigree format string the missing userField value is not assigned to
+    userField code in the pedigree format string the missing userField value was not assigned to
     that animal. This was due to an indentation error that should be fixed now.
 ''' 07/28/2020  It looks like pyp_io/save_newanimals_to_file() could never have worked
     correctly. I must have never finished testing NewPedigree::intersection() back when
@@ -139,7 +150,7 @@ XXX 06/03/2020  pyp_graphics/draw_pedigree() is deprecated and will be
 ??? 04/23/2020  Looking at "03/05/2018 pyp_utils/set_upg() needs a
     flag..." suggests that I need to completely rethink the UPG
     rules. Should I just mimic what renumf90 does?
-??? 04/23/2020  IT looks like ADODB is a defunct/abandoned project.
+??? 04/23/2020  It looks like ADODB is a defunct/abandoned project.
     I need to figure out what to do about a general DB access
     solution. Perhaps I need to just support sqlite3. Not sure.
 *** 04/23/2020  Replaced pysparse usage in pyp_mrn with scipy.sparse
@@ -147,8 +158,8 @@ XXX 06/03/2020  pyp_graphics/draw_pedigree() is deprecated and will be
 ''' 04/23/2020  Added a new test program, examples/new_inbreeding5.py,
     which shows that sparse and dense matrices work as expected for
     both NRM and FRM.
-??? 04/23/2020  Does it make sense for pyp_nrm/fat_a_matrix() and
-    pyp_nrm/fat_a_matrix_r() to return [[0.0]] on failure, or would
+??? 04/23/2020  Does it make sense for pyp_nrm/fast_a_matrix() and
+    pyp_nrm/fast_a_matrix_r() to return [[0.0]] on failure, or would
     False be better? The former can lead to some weird,  non-obvious
     behavior. In some places I do return False, so the currently state
     of affairs is even worse than it seems...
@@ -156,9 +167,9 @@ XXX 06/03/2020  pyp_graphics/draw_pedigree() is deprecated and will be
     properly assign the "unknown sex" shape when sex is "u"." Animal IDs with
     unknown sex are now enclosed in an octagon.
 ''' 04/23/2020  While fixing "09/09/2016 pyp_graphics/draw_pedigree() may not
-    properly assign the "unknown sex" shape when sex is "u".", fixed a but in
+    properly assign the "unknown sex" shape when sex is "u".", fixed a bit in
     the construction of the subgraph list in draw_pedigree(). Elements were comma-
-    separated and they're supposed to be space-delimited. I'm not siure if the DOT
+    separated and they're supposed to be space-delimited. I'm not sure if the DOT
     syntax changed (unlikely) or if this has been broken for a long time (most
     likely).
 !!! 04/23/2020  I'm not happy with birth date formatting. Currently, the only
@@ -202,7 +213,7 @@ XXX 03/05/2018  pyp_utils/assign_sexes() is now deprecated in favor of
     break things in pyp_network.py. Fixes won't result in any user-facing API
     changes. I don't think.
 ''' 03/05/2018  Added a new option, 'missing_value' to pyp_newclasses::NewPedigree().
-    Functions that return numneric values will be revised to use this as the
+    Functions that return numeric values will be revised to use this as the
     missing value indicator.
 ??? 09/09/2016  pyp_graphics/draw_pedigree() is not working with DOT on
     El Capitan -- jpg is not a valid extension?

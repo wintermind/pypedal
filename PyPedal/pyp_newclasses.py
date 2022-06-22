@@ -278,6 +278,7 @@ class NewPedigree:
         if not kw.has_key('database_passwd'): kw['database_passwd'] = 'anonymous'
         if not kw.has_key('database_port'): kw['database_port'] = ''
         if not kw.has_key('database_sql'): kw['database_sql'] = 'SELECT * FROM %s'
+        if not kw.has_key('database_compatibility'): kw['database_compatibility'] = 'sqlite'
         # This keyword is used by pyp_nrm/fast_a_matrix() to determine if the diagonals
         # of the relationship matrix should be augmented by founder coefficients of
         # inbreeding or not. This is disabled by default.
@@ -378,12 +379,11 @@ class NewPedigree:
             'h': 'herd',
             'H': 'originalHerd',
             'u': 'userField',
-            'u': 'userField',
             'T': 'traits',
             'P': 'SNPgenotype',
             'G': 'genomicInbreeding',
             'Y': 'genomicHomozygosity',
-	    }
+        }
         # Start logging!
         if not self.kw.has_key('logfile'):
             if kw['log_long_filenames']:
@@ -420,9 +420,9 @@ class NewPedigree:
         if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
             logging.info('Adding pedigrees %s and %s', self.kw['pedname'], \
                 other.kw['pedname'] )
-	    if self.kw['debug_messages']:
-		print '[DEBUG]: self and other both are NewPedigree objects. We can start combining them.'
-		print '[DEBUG]: Using match rule: %s' % ( self.kw['match_rule'])
+        if self.kw['debug_messages']:
+        print '[DEBUG]: self and other both are NewPedigree objects. We can start combining them.'
+        print '[DEBUG]: Using match rule: %s' % ( self.kw['match_rule'])
             logging.info('Using match rule %s to merge pedigrees', \
                 self.kw['match_rule'] )
             # Pedigrees must be renumbered
@@ -457,79 +457,79 @@ class NewPedigree:
                         # compare original IDs, not renumbered IDs.
                         if match in ['a','A']:
                             if a.originalID != b.originalID:
+                                mismatches += 1
+                            ##
+                            ## The sire and dam match rules don't work correctly
+                            ## when the sires or dams are unknown.
+                            ##
+                            elif match in ['s','S']:
+                                # Check and see if sires are unknown -- what do we do if
+                                # self and other have different missing parent indicators?
+                                # It doesn't matter -- an unknown parent is na unknown
+                                # parent.
+                                if self.pedigree[a.sireID] != self.kw['missing_parent'] and \
+                                    other.pedigree[b.sireID] != other.kw['missing_parent']:
+                                    if self.pedigree[a.sireID-1].originalID != \
+                                        other.pedigree[b.sireID-1].originalID:
+                                        mismatches += 1
+                                    # If one parent is unknown and the other is not then we have
+                                    # a mismatch.
+                                    elif self.pedigree[a.sireID] == self.kw['missing_parent'] and \
+                                        other.pedigree[b.sireID] != other.kw['missing_parent']:
+                                        mismatches += 1
+                                    elif self.pedigree[a.sireID] != self.kw['missing_parent'] and \
+                                        other.pedigree[b.sireID] == other.kw['missing_parent']:
+                                        mismatches += 1
+                                    # Otherwise, carry on.
+                                    else:
+                                        pass
+                            elif match in ['d','D']:
+                                if self.pedigree[a.damID] != self.kw['missing_parent'] and \
+                                    other.pedigree[b.damID] != other.kw['missing_parent']:
+                                    if self.pedigree[a.damID-1].originalID != \
+                                        other.pedigree[b.damID-1].originalID:
+                                        mismatches += 1
+                                    elif self.pedigree[a.sireID] == self.kw['missing_parent'] and \
+                                        other.pedigree[b.sireID] != other.kw['missing_parent']:
+                                        mismatches += 1
+                                    elif self.pedigree[a.sireID] != self.kw['missing_parent'] and \
+                                        other.pedigree[b.sireID] == other.kw['missing_parent']:
+                                        mismatches += 1
+                                    else:
+                                        pass
+                            elif getattr(a, self.new_animal_attr[match]) != \
+                                getattr(b, self.new_animal_attr[match]):
+                                #print '%s == %s' % ( \
+                                #    getattr(a, self.new_animal_attr[match]), \
+                                #    getattr(b, self.new_animal_attr[match]) )
                                 mismatches = mismatches + 1
-			##
-			## The sire and dam match rules don't work correctly
-			## when the sires or dams are unknown.
-			##
-                        elif match in ['s','S']:
-			    # Check and see if sires are unknown -- what do we do if
-			    # self and other have different missing parent indicators?
-			    # It doesn't matter -- an unknown parent is na unknown
-			    # parent.
-			    if self.pedigree[a.sireID] != self.kw['missing_parent'] and \
-			        other.pedigree[b.sireID] != other.kw['missing_parent']:
-                                if self.pedigree[a.sireID-1].originalID != \
-                                    other.pedigree[b.sireID-1].originalID:
-                                    mismatches = mismatches + 1
-                            # If one parent is unknown and the othe ris not then we have
-			    # a mismatch.
-		            elif self.pedigree[a.sireID] == self.kw['missing_parent'] and \
-			        other.pedigree[b.sireID] != other.kw['missing_parent']:
-				mismatches = mismatches + 1
-			    elif self.pedigree[a.sireID] != self.kw['missing_parent'] and \
-			        other.pedigree[b.sireID] == other.kw['missing_parent']:
-				mismatches = mismatches + 1
-			    # Otherwise, carry onn.
-			    else:
-				pass
-                        elif match in ['d','D']:
-			    if self.pedigree[a.damID] != self.kw['missing_parent'] and \
-			        other.pedigree[b.damID] != other.kw['missing_parent']:
-                                if self.pedigree[a.damID-1].originalID != \
-                                    other.pedigree[b.damID-1].originalID:
-                                    mismatches = mismatches + 1
-		            elif self.pedigree[a.sireID] == self.kw['missing_parent'] and \
-			        other.pedigree[b.sireID] != other.kw['missing_parent']:
-				mismatches = mismatches + 1
-			    elif self.pedigree[a.sireID] != self.kw['missing_parent'] and \
-			        other.pedigree[b.sireID] == other.kw['missing_parent']:
-				mismatches = mismatches + 1
-			    else:
-				pass
-                        elif getattr(a, self.new_animal_attr[match]) != \
-                            getattr(b, self.new_animal_attr[match]):
-                            #print '%s == %s' % ( \
-                            #    getattr(a, self.new_animal_attr[match]), \
-                            #    getattr(b, self.new_animal_attr[match]) )
-                            mismatches = mismatches + 1
-                        else:
-                            #print '%s != %s' % ( \
-                            #    getattr(a, self.new_animal_attr[match]), \
-                            #    getattr(b, self.new_animal_attr[match]) )
-                            pass
+                            else:
+                                #print '%s != %s' % ( \
+                                #    getattr(a, self.new_animal_attr[match]), \
+                                #    getattr(b, self.new_animal_attr[match]) )
+                                pass
                     # If there are no mismatches then the two animals are identical
                     # based on the match rule and only one of them needs to be written
                     # to the merged pedigree.
-                    if ( mismatches == 0 ):
+                    if mismatches == 0:
                         # Animals are identical
                         ped_to_write['b'][b.animalID] = False
-		        if self.kw['debug_messages']:
+                        if self.kw['debug_messages']:
                             print '[DEBUG]: Animals %s and %s are identical:' % \
-	                        ( a.animalID, b.animalID )
+                            ( a.animalID, b.animalID )
                     else:
                         # Animals are different
                         ped_to_write['b'][b.animalID] = True
                         if self.kw['debug_messages']:
-		            print '[DEBUG]: Animals %s and %s are different:' % \
-		                ( a.animalID, b.animalID )
-	            if self.kw['debug_messages']:
-	                print '[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % ( a.animalID, \
-		            self.pedigree[a.sireID-1].originalID, \
-	                    self.pedigree[a.damID-1].originalID )
-	                print '[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % ( b.animalID, \
-	                    other.pedigree[b.sireID-1].originalID, \
-	                    other.pedigree[b.damID-1].originalID )
+                            print '[DEBUG]: Animals %s and %s are different:' % \
+                        ( a.animalID, b.animalID )
+                if self.kw['debug_messages']:
+                    print '[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % ( a.animalID, \
+                        self.pedigree[a.sireID-1].originalID, \
+                        self.pedigree[a.damID-1].originalID )
+                    print '[DEBUG]: \tA: %s,\tS: %s,\tD: %s' % ( b.animalID, \
+                        other.pedigree[b.sireID-1].originalID, \
+                        other.pedigree[b.damID-1].originalID )
             # Once we have matches, we are going to write a new pedigree
             # file to disc, and we will load that file to get the new
             # pedigree.
@@ -540,8 +540,7 @@ class NewPedigree:
             # makes sense because you cannot have two different pedformats in
             # the same file.
             if filename == False:
-                filename = '%s_%s.ped' % ( self.kw['pedname'], \
-                other.kw['pedname'] )
+                filename = '%s_%s.ped' % ( self.kw['pedname'], other.kw['pedname'] )
                 print '[INFO]: filename = %s' % ( filename )
             self.save(filename=filename, write_list=ped_to_write['a'], \
                 pedformat=self.kw['pedformat'], originalID=True)
@@ -565,8 +564,7 @@ class NewPedigree:
                 if self.kw['messages'] == 'verbose':
                     print '[INFO]: Loaded merged pedigree %s from file %s!' % \
                         ( merged_pedname, filename )
-                logging.info('Loaded merged pedigree %s from file %s.', \
-		    merged_pedname, filename)
+                logging.info('Loaded merged pedigree %s from file %s.', merged_pedname, filename)
                 return new_pedigree
             except:
                 if self.kw['messages'] == 'verbose':
@@ -587,7 +585,7 @@ class NewPedigree:
         """
         Method to subtract two pedigree and return a new pedigree representing the
         first pedigree without any animals shared in common with the second pedigree,
-	or: A - B = A - (A \cap B).
+        or: A - B = A - (A \cap B).
         """
         if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
             logging.info('Subtracting pedigrees %s and %s', self.kw['pedname'], \
@@ -618,7 +616,7 @@ class NewPedigree:
             for a in self.pedigree:
                 ped_to_write['a'][a.animalID] = True
                 for b in other.pedigree:
-		    ped_to_write['b'][b.animalID] = False
+            ped_to_write['b'][b.animalID] = False
                     mismatches = 0		# Count places where the animals don't match
                     #print 'Comparing animal %s in a and animal %s in b' % \
                     #    ( a.animalID, b.animalID )
@@ -648,8 +646,8 @@ class NewPedigree:
             # to the merged pedigree.
             if ( mismatches == 0 ):
                 # Animals are identical. Do not write animals from self that are
-		# identical to animals in other.
-		ped_to_write['a'][a.animalID] = False
+        # identical to animals in other.
+        ped_to_write['a'][a.animalID] = False
             else:
                 # Animals are different
                 ped_to_write['b'][b.animalID] = True
@@ -711,9 +709,9 @@ class NewPedigree:
     ##
     # __union__() is an alias to NewPedigree::__add__().
     def union(self, other, filename=False, debugLoad=False):
-	"""
+    """
         __union__() is an alias to NewPedigree::__add__().
-	"""
+    """
         self.__add__(self, other, filename=filename, debugLoad=debugLoad)
 
     ##
@@ -875,25 +873,27 @@ class NewPedigree:
         forming lists of sires and dams, checking for common errors, setting ancestor
         flags, and renumbering the pedigree.
         """
-	# Check for valid values of pedsource
-	if pedsource not in ['file', 'db', 'graph', 'graphfile', 'null', 'animallist', 'gedcomfile', 'genesfile', 'textstream']:
+    # Check for valid values of pedsource
+    if pedsource not in ['file', 'db', 'graph', 'graphfile', 'null', 'animallist', 'gedcomfile', 'genesfile', 'textstream']:
             logging.error('Unable to load pedigree because an invalid value of %s was provided for pedsource!', pedsource)
             sys.exit(0)
-	# If the user has included traits in the pedigree file, we need to make sure that the
-	# names are properly handled.
-	if len(self.kw['trait_names']) > 0 and self.kw['trait_auto_name'] != 0:
-	    # Use the name list
-	    ###logging.warning('Loading from database %s.%s at %s.',self.kw['database_name'], \
+    # If the user has included traits in the pedigree file, we need to make sure that the
+    # names are properly handled.
+    if len(self.kw['trait_names']) > 0 and self.kw['trait_auto_name'] != 0:
+        # Use the name list
+        ###logging.warning('Loading from database %s.%s at %s.',self.kw['database_name'], \
             ###    self.kw['database_table'], pyp_utils.pyp_nice_time())
             ###if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
             ###    print '[INFO]: Loading from database %s.%s' % ( self.kw['database_name'], \
             ###        self.kw['database_table'] )        # Create the table
-	    pass
+        pass
         # If the user wants to simulate a pedigree we don't need to
         # call self.preprocess(), which loads pedigrees from files.
         if self.kw['simulate_pedigree']:
             self.simulate()
         # Load an ASDx pedigree from an SQLite databases.
+        #
+        # 06/22/2022: This was not modified for backwards compatiblity because it was already SQLite3-based code.
         elif pedsource == 'db':
             self.kw['pedformat'] = 'ASDx'
             self.kw['sepchar'] = ','
@@ -1369,8 +1369,8 @@ class NewPedigree:
                 ofh.write('#\tpedigree name: %s\n' % (self.kw['pedname']) )
                 ofh.write('#\tpedigree format: %s\n' % (pedformat) )
                 if self.kw['pedigree_is_renumbered'] == 1:
-		    if originalID:
-			ofh.write('#\tNOTE: Animal, sire, and dam IDs are original IDs!\n')
+                    if originalID:
+                        ofh.write('#\tNOTE: Animal, sire, and dam IDs are original IDs!\n')
                     else:
                         ofh.write('#\tNOTE: Animal, sire, and dam IDs are renumbered IDs!\n')
                 ofh.write('# Original pedigree metadata:\n')
@@ -1384,7 +1384,7 @@ class NewPedigree:
                         if originalID == False:
                             value = getattr(_a, self.new_animal_attr[pf])
                         else:
-			    #if self.kw['debug_messages']:
+                            #if self.kw['debug_messages']:
                             #    print '[DEBUG]: Using original IDs for pedigree %s' % \
                             #    ( self.kw['pedname'] )
                             if pf in['a','A']:
@@ -1495,62 +1495,114 @@ class NewPedigree:
         _savedb_status = False
         _table_loaded = False
         _table_created = False
-        # Create the database -- this will overwrite an existing DB with the
-        # same name!
-        if pyp_db.doesTableExist(self) and drop == True:
-            pyp_db.deleteTable(self)
-        conn = pyp_db.connectToDatabase(self)
-        if conn:
-            if not pyp_db.doesTableExist(self):
-                try:
-                    sql = 'create table %s ( \
-                        animalName   varchar(128) primary key, \
-                        sireName     varchar(128), \
-                        damName      varchar(128), \
-                        sex          char(1) \
-                    );' % ( self.kw['database_table'] )
-                    cursor = conn.Execute(sql)
-                    cursor.Close()
-                    _table_created = True
-                except:
-                    pass
+        if self.kw['database_compatibility'] == 'sqlite':
+            # Create the database -- this will overwrite an existing DB with the
+            # same name!
+            if pyp_db.doesTableExist(self) and drop == True:
+                pyp_db.deleteTable(self)
+            conn = pyp_db.connectToDatabase(self)
+            if conn:
+                if not pyp_db.doesTableExist(self):
+                    try:
+                        sql = 'create table %s ( \
+                            animalName   varchar(128) primary key, \
+                            sireName     varchar(128), \
+                            damName      varchar(128), \
+                            sex          char(1) \
+                        );' % ( self.kw['database_table'] )
+                        cursor = conn.cursor()
+                        cursor.execute(sql)
+                        cursor.commit()
+                        _table_created = True
+                    except:
+                        pass
+                else:
+                    if self.kw['messages'] == 'verbose':
+                        print '[WARNING]: The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!' % ( self.kw['database_table'], self.kw['database_name'] )
+                    logging.warning('The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!',self.kw['database_table'], self.kw['database_name'])
+                # Load the pedigree data into the table.
+                if pyp_db.doesTableExist(self):
+                    try:
+                        for p in self.pedigree:
+                            an = p.name
+                            si = p.sireName
+                            da = p.damName
+                            if si == self.kw['missing_name']:
+                                si = self.kw['missing_parent']
+                            if da == self.kw['missing_name']:
+                                da = self.kw['missing_parent']
+                            sql = "INSERT INTO %s ( animalName, sireName, damName, sex ) VALUES ('%s', '%s', '%s', '%s')" % ( self.kw['database_table'], an, si, da, p.sex )
+                            cursor = conn.cursor()
+                            cursor.execute(sql)
+                            cursor.commit()
+                        _table_loaded = True
+                    except:
+                        pass
+                conn.close()
             else:
-                if self.kw['messages'] == 'verbose':
-                    print '[WARNING]: The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!' % ( self.kw['database_table'], self.kw['database_name'] )
-                logging.warning('The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!',self.kw['database_table'], self.kw['database_name'])
-            # Load the pedigree data into the table.
-            if pyp_db.doesTableExist(self):
-                try:
-                    for p in self.pedigree:
-                        an = p.name
-                        si = p.sireName
-                        da = p.damName
-                        if si == self.kw['missing_name']:
-                            si = self.kw['missing_parent']
-                        if da == self.kw['missing_name']:
-                            da = self.kw['missing_parent']
-                        sql = "INSERT INTO %s ( animalName, sireName, damName, sex ) VALUES ('%s', '%s', '%s', '%s')" % ( self.kw['database_table'], an, si, da, p.sex )
+                pass
+        #
+        # This is the backwards-compatible code for people who still want to use ADODB on Python 2.
+        #
+        else:
+            # Create the database -- this will overwrite an existing DB with the
+            # same name!
+            if pyp_db.doesTableExist_adodb(self) and drop == True:
+                pyp_db.deleteTable_adodb(self)
+            conn = pyp_db.connectToDatabase_adodb(self)
+            if conn:
+                if not pyp_db.doesTableExist_adodb(self):
+                    try:
+                        sql = 'create table %s ( \
+                            animalName   varchar(128) primary key, \
+                            sireName     varchar(128), \
+                            damName      varchar(128), \
+                            sex          char(1) \
+                        );' % ( self.kw['database_table'] )
                         cursor = conn.Execute(sql)
                         cursor.Close()
-                    _table_loaded = True
-                except:
-                    pass
-            conn.Close()
-        else:
-            pass
+                        _table_created = True
+                    except:
+                        pass
+                else:
+                    if self.kw['messages'] == 'verbose':
+                        print '[WARNING]: The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!' % ( self.kw['database_table'], self.kw['database_name'] )
+                    logging.warning('The table %s already exists in database %s and you told me to save the existing data. You may end up with duplicate data or multiple pedigrees stored in the same table!',self.kw['database_table'], self.kw['database_name'])
+                # Load the pedigree data into the table.
+                if pyp_db.doesTableExist_adodb(self):
+                    try:
+                        for p in self.pedigree:
+                            an = p.name
+                            si = p.sireName
+                            da = p.damName
+                            if si == self.kw['missing_name']:
+                                si = self.kw['missing_parent']
+                            if da == self.kw['missing_name']:
+                                da = self.kw['missing_parent']
+                            sql = "INSERT INTO %s ( animalName, sireName, damName, sex ) VALUES ('%s', '%s', '%s', '%s')" % ( self.kw['database_table'], an, si, da, p.sex )
+                            cursor = conn.Execute(sql)
+                            cursor.Close()
+                        _table_loaded = True
+                    except:
+                        pass
+                conn.Close()
+            else:
+                pass
+
         if _table_loaded:
             if self.kw['messages'] == 'verbose':
-                print '[INFO]: Saved pedigree to %s.%s at %s.' % ( self.kw['database_name'], \
-                    self.kw['database_table'], pyp_utils.pyp_nice_time() )
-            logging.info('Saved pedigree to %s.%s at %s.',self.kw['database_name'], \
-                self.kw['database_table'], pyp_utils.pyp_nice_time())
+                print '[INFO]: Saved pedigree to %s.%s at %s.' % (self.kw['database_name'], \
+                                                                  self.kw['database_table'],
+                                                                  pyp_utils.pyp_nice_time())
+            logging.info('Saved pedigree to %s.%s at %s.', self.kw['database_name'], \
+                         self.kw['database_table'], pyp_utils.pyp_nice_time())
             _savedb_status = True
         else:
             if self.kw['messages'] == 'verbose':
                 print '[ERROR]: Could not save pedigree to %s.%s at %s.' % ( \
-                    self.kw['database_name'], self.kw['database_table'], pyp_utils.pyp_nice_time() )
-            logging.error('Could not save pedigree to %s.%s at %s.',self.kw['database_name'], \
-                self.kw['database_table'], pyp_utils.pyp_nice_time())
+                    self.kw['database_name'], self.kw['database_table'], pyp_utils.pyp_nice_time())
+            logging.error('Could not save pedigree to %s.%s at %s.', self.kw['database_name'], \
+                          self.kw['database_table'], pyp_utils.pyp_nice_time())
         return _savedb_status
 
     ##
@@ -1805,7 +1857,7 @@ class NewPedigree:
                         logging.info('Converted the first line in the input file into a comment because the pedigree file has a header row.')
                         if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
                             print '[INFO]: Converted the first line in the input file into a comment because the pedigree file has a header row.'
-			line = '# %s' % ( line )
+            line = '# %s' % ( line )
                     # Handle comment lines.
                     if line[0] == '#':
                         logging.info('Pedigree comment (line %s): %s',lineCounter,string.strip(line))
@@ -1929,6 +1981,9 @@ class NewPedigree:
                                           ( lineCounter, self.kw['pedfile'], len(l), self.kw['pedformat'],
                                             len(self.kw['pedformat']) )
                             print '[ERROR]: %s' % (errorString)
+                            if self.kw['debug'] == True:
+                                print '[DEBUG]: %s' % ( self.kw['pedformat'] )
+                                print '[DEBUG]: %s' % ( l )
                             logging.error(errorString)
                             sys.exit(0)
             #
@@ -2011,10 +2066,10 @@ class NewPedigree:
         for _m in missing:
             pedformat_locations[_m] = -999
         for _n in pedgraph.nodes():
-	    # print pedgraph.node[_n]
-	    # print 'sire: ', pedgraph.node[_n]['sire']
-	    # print 'dam:  ', pedgraph.node[_n]['dam']
-	    _s =  pedgraph.node[_n]['sire']
+        # print pedgraph.node[_n]
+        # print 'sire: ', pedgraph.node[_n]['sire']
+        # print 'dam:  ', pedgraph.node[_n]['dam']
+        _s =  pedgraph.node[_n]['sire']
             _d =  pedgraph.node[_n]['dam']
             an = NewAnimal(pedformat_locations,[_n,_s,_d],self.kw)
             self.pedigree.append(an)
@@ -2032,7 +2087,7 @@ class NewPedigree:
     def fromnull(self):
         """
          fromnull() creates a new pedigree with no animal records in it.
-	    """
+        """
         # Let's see if it's this easy!
         logging.info('Created a null (empty) pedigree.')
         return True
@@ -2046,10 +2101,10 @@ class NewPedigree:
     def fromanimallist(self, animallist):
         """
         fromanimallist() populates a NewPedigree with instances of NewAnimal objects.
-	    """
-	if len(animallist) > 0:
+        """
+    if len(animallist) > 0:
         # There is a lingering issue here with the pedformat. For now, we're
-	    # going to use my terribly clever pedformat guesser to figure it out.
+        # going to use my terribly clever pedformat guesser to figure it out.
             self.kw['pedformat'] = pyp_utils.guess_pedformat(animallist[0], self.kw)
             for an in animallist:
                 if an.__class__.__name__ == 'NewAnimal':
@@ -2058,7 +2113,7 @@ class NewPedigree:
                     self.backmap[an.animalID] = an.animalID
                     self.namemap[an.name] = an.animalID
                     self.namebackmap[an.animalID] = an.name
-		else:
+        else:
                     logging.error('An entry in the animallist was not a NewAnimal object, skipping!')
                 if self.kw['debug_messages'] > 0:
                     logging.info('Added pedigree entry for animal %s' % (animal.originalID))
@@ -2791,7 +2846,7 @@ class NewAnimal:
             self.gen = data[locations['generation']]
         else:
             #self.gen = -999
-	    self.gen =  mykw['missing_gen']
+        self.gen =  mykw['missing_gen']
         if locations['gencoeff'] != -999.:
             self.gencoeff = data[locations['gencoeff']]
         else:
@@ -2816,7 +2871,7 @@ class NewAnimal:
         if locations['inbreeding'] != -999:
             self.fa = float(string.strip(data[locations['inbreeding']]))
         else:
-	        self.fa =  mykw['missing_inbreeding']
+            self.fa =  mykw['missing_inbreeding']
         if locations['genomic_inbreeding'] != -999:
             self.fg = float(string.strip(data[locations['genomic_inbreeding']]))
         else:
@@ -2837,12 +2892,12 @@ class NewAnimal:
             self.age = int(string.strip(data[locations['age']]))
         else:
             #self.age = -999
-	    self.age =  mykw['missing_age']
+        self.age =  mykw['missing_age']
         if locations['alive'] != -999:
             self.alive = int(string.strip(data[locations['alive']]))
         else:
             #self.alive = 0
-	    self.alive =  mykw['missing_alive']
+        self.alive =  mykw['missing_alive']
         if locations['herd'] != -999:
             if 'H' in mykw['pedformat']:
                 self.herd = self.string_to_int(data[locations['herd']])
@@ -2885,14 +2940,14 @@ class NewAnimal:
                 self.alleles = [_allele_1,_allele_2]
             else:
                 #self.alleles = ['','']
-		self.alleles = mykw['missing_alleles']
+        self.alleles = mykw['missing_alleles']
         #self.pedcomp = -999.9
-	    self.pedcomp =  mykw['missing_pedcomp']
+        self.pedcomp =  mykw['missing_pedcomp']
         if locations['userfield'] != -999:
             self.userField = string.strip(data[locations['userfield']])
         else:
             #self.userField = ''
-	        self.userField = mykw['missing_userfield']
+            self.userField = mykw['missing_userfield']
         # print '%s\t%s\t%s' % (self.animalID, self.sireID, self.damID)
 
     ##
@@ -3822,7 +3877,7 @@ def loadPedigree(options='', optionsfile='pypedal.ini', pedsource='file', pedgra
         return _pedigree
         #except:
         #    print '[ERROR]: pyp_newclasses.loadPedigree() was unable to instantiate and load the pedigree.'
-	    #return 0
+        #return 0
 
 ##
 # PyPedalError is the base class for exceptions in PyPedal. The exceptions

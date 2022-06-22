@@ -11,55 +11,46 @@ John B. Cole, and may be freely (re)distributed.
 DOCUMENTATION
 
 Limited (read preliminary) documentation is available in TeX and
-Postscript format in this tarball.
+Postscript format in this repository. An HTML version of the manual
+also may be found at: http://pypedal.sourceforge.net/.
 
 
-INSTALLING PyPedal UNDER UNIX/LINUX
+INSTALLING PyPedal
 
-In most cases you can just place the PyPedal pyp_*.py files in your
-PYTHONPATH.  
+You should be able to use the usual setup.py installer that's included
+in the download.
 
-You MUST have Python 2.4 (or later) installed in order to use PyPedal.
-PyPedal depends on features in 2.4 that are not present in earlier versions
+You must have Python 2.7 (or later) installed in order to use PyPedal.
+PyPedal depends on features in 2.7 that are not present in earlier versions
 of Python.  You may find Python for your operating system at:
-http://www.python.org/
+http://www.python.org/.
 
-You MUST have the NumPy extension to Python installed.  You can
+You must have the NumPy extension to Python installed.  You can
 obtain NumPy as well as installation instructions, at:
-http://www.numpy.org/
+http://www.numpy.org/.
 
-
-INSTALLING PyPedal UNDER UNIX/LINUX
-
-I have not attempted to use PyPedal in any environments other than
-RedHat Linux 7 & 8 and Mandrake Linux 8 and 9.1.
+I've successfully used PyPedal in various flavors of RedHat Linux (including RHEL), Mandrake Linux,
+CentOS, and macOS (including Big Sur). I don't routinely use Windows, so I'm afraid I can't be too
+much help there.
 
 REPORTING BUGS
 
-To report a bug in PyPedal, send an email to "jcole@lsu.edu"
-Please include the PyPedal version, Python version, Numeric
-version, and operating system & version that you are using
-when describing the bug or problem.
+To report a bug in PyPedal, please open an issue on GitHub: https://github.com/wintermind/pypedal.
 
-For general support and questions, please e-mail the author
-at "jcole@aipl.arsusda.gov".
+For general support and questions, please e-mail the author at john.b.cole@gmail.com.
 
 
 TRADEMARKS
 
-Microsoft and Windows are registered trademarks of Microsoft
-Corporation. UNIX is a registered trademark of the X/Open
-Group, Inc.  Linux is a registered trademark of Linus
-Torvalds.
+Microsoft and Windows are registered trademarks of Microsoft Corporation. UNIX is a registered trademark of the X/Open
+Group, Inc.  Linux is a registered trademark of Linus Torvalds.
 
 
 COPYRIGHT
 
-PyPedal is copyright 2001-2015 by John B. Cole (jcole@aipl.arsusda.gov).
+PyPedal is copyright 2001-2022 by John B. Cole (john.b.cole@gmail.com).
 
 LICENSING
 
 PyPedal is available under the terms of the GNU Library General
-Public License v2.0.  <stolen from FLTK README>Contrary to popular
-belief, it can be used in commercial software! (Even Bill Gates
-could use it.) </stolen from FLTK README>
+Public License v2.0.

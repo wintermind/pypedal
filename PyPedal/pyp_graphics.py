@@ -777,8 +777,14 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         logging.error('pyp_graphics/new_draw_pedigree() was unable to import the pygraphviz module!')
         return 0
 
+    # Try and make PyGraphviz work on Windows...
+    import matplotlib
+    import platform
+    if platform.system() == 'Windows':
+        matplotlib.use('Qt5Agg')
+
     # Check for valid values of gname.
-    if gname and gname not in ['id', 'animal', 'display', 'animal_display', 'id_display']:
+    if gname and gname not in ['id', 'animal', 'display', 'animal_display', 'id_display', 'pvr']:
         if pedobj.kw['messages'] == 'verbose':
             print '[ERROR]: pyp_graphics/new_draw_pedigree() was provided an invalid value of gname' \
                   ' (%s), defaulting to a value of \'id\'!' % (gname)
@@ -834,6 +840,17 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
     # dotfile processing to break.
     g.graph_attr['name'] = _gtitle
 
+    # Font arrtibutes have to be set independently for graphs, nodes, and edges,
+    # that is, notes and edges don't inherit from the grapg properties.
+    if gfont and gbold:
+        gfontname = '%s bold' % gfont
+    elif gfont and not gbold:
+        gfontname = gfont
+    elif not gfont and gbold:
+        gfontname = 'Helvetica bold'
+    else:
+        gfontname = 'Helvetica'
+
     # Set some properties for the graph.  The label attribute is based on the gtitle.
     # In cases where an empty string, e.g. '', is provided as the gtitle dot engine
     # processing breaks.  In such cases, don't add a label.
@@ -843,14 +860,15 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         g.graph_attr['labelloc'] = gtitloc
         g.graph_attr['labeljust'] = gtitjust
         # Handle font and bold attributes
-        if gfont and gbold:
-            g.graph_attr['fontname'] = '%s bold' % gfont
-        elif gfont and not gbold:
-            g.graph_attr['fontname'] = gfont
-        elif not gfont and gbold:
-            g.graph_attr['fontname'] = 'Helvetica bold'
-        else:
-            g.graph_attr['fontname'] = 'Helvetica'
+        #if gfont and gbold:
+        #    g.graph_attr['fontname'] = '%s bold' % gfont
+        #elif gfont and not gbold:
+        #    g.graph_attr['fontname'] = gfont
+        #elif not gfont and gbold:
+        #    g.graph_attr['fontname'] = 'Helvetica bold'
+        #else:
+        #    g.graph_attr['fontname'] = 'Helvetica'
+        g.graph_attr['fontname'] = gfontname
         g.graph_attr['penwidth'] = int(gpenwidth)
 
     # Set the page paper size and writeable area.
@@ -902,9 +920,11 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             elif gname == 'display':
                 _node_name = _m.displayName
             elif gname == 'animal_display':
-                _node_name = '%s\n%s' % ( _m.name, _m.displayName )
+                _node_name = "%s\n%s" % ( _m.name, _m.displayName )
             elif gname == 'id_display':
-                _node_name = '%s\n%s' % ( _m.animalID, _m.displayName )
+                _node_name = "%s\n%s" % ( _m.animalID, _m.displayName )
+            elif gname == 'pvr':
+                _node_name = "%s\n%s" % ( _m.originalHerd, _m.name )
             else:
                 _node_name = _m.animalID
         else:
@@ -912,7 +932,11 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         g.add_node(_node_name)
         n = g.get_node(_node_name)
         n.attr['shape'] = 'box'
-        n.attr['fontname'] = g.graph_attr['fontname']
+        # PyGraphviz is broken on Windows...
+        try:
+            n.attr['fontname'] = g.graph_attr['fontname']
+        except KeyError:
+            pass
         if not gfontsize:
             n.attr['fontsize'] = str(pedobj.kw['default_fontsize'])
         else:
@@ -925,6 +949,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
         else:
             n.attr['shape'] = 'octagon'
         n.attr['penwidth'] = int(gpenwidth)
+        n.attr['fontname'] = gfontname
         # Assign fill values, if requested.
         if colorByUser:
             n.attr['style'] = 'filled'
@@ -947,11 +972,14 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
                 elif gname == 'display':
                     _sire_edge = pedobj.pedigree[int(_m.sireID) - 1].displayName
                 elif gname == 'animal_display':
-                    _sire_edge =  '%s\n%s' % ( pedobj.pedigree[int(_m.sireID) - 1].name,
+                    _sire_edge =  "%s\n%s" % ( pedobj.pedigree[int(_m.sireID) - 1].name,
                                                pedobj.pedigree[int(_m.sireID) - 1].displayName)
                 elif gname == 'id_display':
-                    _sire_edge =  '%s\n%s' % ( pedobj.pedigree[int(_m.sireID) - 1].animalID,
+                    _sire_edge =  "%s\n%s" % ( pedobj.pedigree[int(_m.sireID) - 1].animalID,
                                                pedobj.pedigree[int(_m.sireID) - 1].displayName)
+                elif gname == 'pvr':
+                    _sire_edge = "%s\n%s" % ( pedobj.pedigree[int(_m.sireID) - 1].originalHerd,
+                                              pedobj.pedigree[int(_m.sireID) - 1].name)
                 else:
                     _sire_edge = pedobj.pedigree[int(_m.sireID) - 1].animalID
             else:
@@ -963,6 +991,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             g.add_edge(_sire_edge,_node_name)
             e = g.get_edge(_sire_edge, n)
             e.attr['penwidth'] = int(gpenwidth)
+            e.attr['fontname'] = gfontname
             if not _tf[garrow]:
                 e.attr['dir'] = 'none'
         if int(_m.damID) != pedobj.kw['missing_parent']:
@@ -975,11 +1004,14 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
                 elif gname == 'display':
                     _dam_edge = pedobj.pedigree[int(_m.damID) - 1].displayName
                 elif gname == 'animal_display':
-                    _dam_edge = '%s\n%s' % ( pedobj.pedigree[int(_m.damID) - 1].name,
+                    _dam_edge = "%s\n%s" % ( pedobj.pedigree[int(_m.damID) - 1].name,
                                              pedobj.pedigree[int(_m.damID) - 1].displayName)
                 elif gname == 'id_display':
-                    _dam_edge = '%s\n%s' % ( pedobj.pedigree[int(_m.damID) - 1].animalID,
+                    _dam_edge = "%s\n%s" % ( pedobj.pedigree[int(_m.damID) - 1].animalID,
                                              pedobj.pedigree[int(_m.damID) - 1].displayName)
+                elif gname == 'pvr':
+                    _dam_edge = "%s\n%s" % ( pedobj.pedigree[int(_m.damID) - 1].originalHerd,
+                                             pedobj.pedigree[int(_m.damID) - 1].name)
                 else:
                     _dam_edge = pedobj.pedigree[int(_m.damID) - 1].animalID
             else:
@@ -987,6 +1019,7 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             g.add_edge(_dam_edge,_node_name)
             e = g.get_edge(_dam_edge, n)
             e.attr['penwidth'] = int(gpenwidth)
+            e.attr['fontname'] = gfontname
             if not _tf[garrow]:
                 e.attr['dir'] = 'none'
 
@@ -1003,16 +1036,16 @@ def new_draw_pedigree(pedobj, gfilename='pedigree', gtitle='', gformat='jpg', \
             logging.error('pyp_graphics/new_draw_pedigree() was unable to draw the dotfile %s.', (dfn))
 
     # Write the graph to an output file.
-    try:
-        outfile = '%s.%s' % (gfilename,gformat)
-        g.draw(outfile,prog=gprog)
-        return 1
-    except:
-        outfile = '%s.%s' % (gfilename,gformat)
-        if pedobj.kw['messages'] == 'verbose':
-            print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.' % (outfile)
-        logging.error('pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.', (outfile))
-        return 0
+    #try:
+    outfile = '%s.%s' % (gfilename,gformat)
+    g.draw(outfile,prog=gprog)
+    return 1
+    #except:
+    #    outfile = '%s.%s' % (gfilename,gformat)
+    #    if pedobj.kw['messages'] == 'verbose':
+    #        print '[ERROR]: pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.' % (outfile)
+    #    logging.error('pyp_graphics/new_draw_pedigree() was unable to draw the pedigree %s.', (outfile))
+    #    return 0
 
 ##
 # closest_colour() uses the webcolors library to convert a 3-tuple of integers, suitable for use in an rgb() color
