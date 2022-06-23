@@ -11,6 +11,21 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+''' 06/23/2022  Lots and lots of review and cleanup in pyp_newclasses.py to conform with PEP 8, cleanup unclear con-
+    ditionals, etc.
+''' 06/23/2022  Fixed an error in pyp_newclasses::NewPedigree/simulate(), LightAnimals don't have names.
+??? 06/23/2022  In pyp_newclasses::NewPedigree/preprocess() ca. line 1911, is there a logic error when skipping the
+    processing of a record from a pedigree file when the animalID is equal to the missing ID indocator? Shouldn't
+    there be a "break" out of the current iteration of input to actually skip processing that animal?
+### 06/23/2022  Ugh, once again PyCharm has decided to replace tabs with spaces. That's cool, but it looks like there
+    are now lots of places where things are screwed up. So, I guess an audit was needed anyway? :-( Why id I say "OK"?
+??? 06/23/2022  pyp_newclasses::NewPedigree/fromanimallist() should probably be using pyp_utils/guess_performat()
+    to figure out the pedigree format code, that may be why I wrote it.
+''' 06/23/2022  pyp_newclasses::NewPedigree/renumber() now returns True/False on success/failure.
+''' 06/23/2022  Added some docstrings in pyp_newclasses and replaced lots of 0/1 with True/False to indicate success
+    and failure. Yes, I realize that "1 == True" will return "True", but I think it's more semantically clear.
+??? 06/23/2022  pyp_newclasses::NewPedigree/addanimal() may need update to use the "missing_parent" keyword when
+    checking for unknown sires and dams.
 !!! 06/22/2022  A test script is needed for pyp_newclasses::NewPedigree/delete_animals().
 +++ 06/22/2022  Added pyp_newclasses::NewPedigree/delete_animals() because we need a safe way to delete animals
     when we're processing duplicates.
