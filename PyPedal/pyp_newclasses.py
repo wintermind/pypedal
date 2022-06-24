@@ -501,12 +501,17 @@ class NewPedigree:
     # @param self Reference to the current NewPedigree() object.
     # @param other Reference to the NewPedigree() object of animals to add.
     # @param filename The file name to be used for saving/loading.
-    # @param kwfile An optionsl configuration file name.
-    # @retval An instance of a NewPedigree() object with the contents of the merged pedigrees.
+    # @param debugLoad Toggle debugging messages during pedigree loading on (True) or off (False).
+    # @retval An instance of a NewPedigree() object with the contents of the merged pedigrees, of False (on failure).
     def __add__(self, other, filename=False, debugLoad=False):
         """
         Method to add two pedigree and return a new pedigree representing the
         merged pedigrees.
+        :param self: Reference to the current NewPedigree() object.
+        :param other: Reference to the NewPedigree() object of animals to add.
+        :param filename: The file name to be used for saving/loading.
+        :param debugLoad: Toggle debugging messages during pedigree loading on (True) or off (False).
+        :return: An instance of a NewPedigree() object with the contents of the merged pedigrees, of False (on failure).
         """
         if self.__class__.__name__ == 'NewPedigree' and other.__class__.__name__ == 'NewPedigree':
             logging.info('Adding pedigrees %s and %s', self.kw['pedname'], other.kw['pedname'])
@@ -1047,7 +1052,7 @@ class NewPedigree:
         elif pedsource == 'animallist':
             if animallist and len(animallist) > 0:
                 try:
-                    self.fromanimallist()
+                    self.fromanimallist(animallist)
                 except:
                     logging.error('Unable to create a pedigree from an animallist!')
                     sys.exit(0)
@@ -1339,7 +1344,7 @@ class NewPedigree:
             # Write file header.
             ofh.write('# %s created by PyPedal at %s\n' % (filename, pyp_utils.pyp_nice_time()))
             ofh.write('# Current pedigree metadata:\n')
-            ofh.write('#\tpedigree file: %s\n' % (filename))
+            ofh.write('#\tpedigree file: %s\n' % filename)
             ofh.write('#\tpedigree name: %s\n' % (self.kw['pedname']))
             ofh.write('#\tpedigree format: \'%s\'\n' % _newpedformat)
             if idformat == 'o':
@@ -2086,7 +2091,7 @@ class NewPedigree:
                                 # files vomited out by Excel, which pads cells in a column with spaces
                                 # to right-align them...
                                 for i in range(len(lfields)):
-                                    l[i] = string.strip(lfields[i])
+                                    lfields[i] = string.strip(lfields[i])
                                 if len(lfields) < 3:
                                     errorString = 'The record on line %s of file %s is too short - all records must ' \
                                                   'contain animal, sire, and dam ID numbers (%s fields detected).\n' % \
@@ -2155,12 +2160,12 @@ class NewPedigree:
                                 errorString = 'The record on line %s of file %s has %s columns, but the pedigree ' \
                                               'format string (%s) says that it should have %s columns. Please check ' \
                                               'your pedigree file and the pedigree format string for errors.\n' % \
-                                              (lineCounter, self.kw['pedfile'], len(l), self.kw['pedformat'],
+                                              (lineCounter, self.kw['pedfile'], len(lfields), self.kw['pedformat'],
                                                len(self.kw['pedformat']))
                                 print '[ERROR]: %s' % errorString
                                 if self.kw['debug']:
                                     print '[DEBUG]: %s' % self.kw['pedformat']
-                                    print '[DEBUG]: %s' % l
+                                    print '[DEBUG]: %s' % lfields
                                 logging.error(errorString)
                                 sys.exit(0)
                 #
@@ -2314,7 +2319,7 @@ class NewPedigree:
                 else:
                     logging.error('An entry in the animallist was not a NewAnimal object, skipping!')
                 if self.kw['debug_messages'] > 0:
-                    logging.info('Added pedigree entry for animal %s' % (an.originalID))
+                    logging.info('Added pedigree entry for animal %s' % an.originalID)
             _retval = True
         else:
             if self.kw['messages']:
@@ -2367,8 +2372,8 @@ class NewPedigree:
         """
         try:
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Renumbering pedigree at %s' % (pyp_utils.pyp_nice_time())
-                print '\t\t[INFO]: Reordering pedigree at %s' % (pyp_utils.pyp_nice_time())
+                print '\t[INFO]: Renumbering pedigree at %s' % pyp_utils.pyp_nice_time()
+                print '\t\t[INFO]: Reordering pedigree at %s' % pyp_utils.pyp_nice_time()
             logging.info('Reordering pedigree')
             if ('b' in self.kw['pedformat'] or 'y' in self.kw['pedformat']) and not self.kw['slow_reorder']:
                 self.pedigree = pyp_utils.fast_reorder(self.pedigree)
@@ -2378,17 +2383,17 @@ class NewPedigree:
             # self.pedigree = pyp_utils.reorder(self.pedigree, missingparent=self.kw['missing_parent'],
             # max_rounds=self.kw['reorder_max_rounds'])
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t\t[INFO]: Renumbering at %s' % (pyp_utils.pyp_nice_time())
+                print '\t\t[INFO]: Renumbering at %s' % pyp_utils.pyp_nice_time()
             logging.info('Renumbering pedigree')
             self.pedigree = pyp_utils.renumber(self.pedigree, missingparent=self.kw['missing_parent'],
                                                animaltype=self.kw['animal_type'])
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t\t[INFO]: Updating ID map at %s' % (pyp_utils.pyp_nice_time())
+                print '\t\t[INFO]: Updating ID map at %s' % pyp_utils.pyp_nice_time()
             logging.info('Updating ID map')
             self.updateidmap()
 
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
-                print '\t[INFO]: Assigning offspring at %s' % (pyp_utils.pyp_nice_time())
+                print '\t[INFO]: Assigning offspring at %s' % pyp_utils.pyp_nice_time()
             logging.info('Assigning offspring')
             pyp_utils.set_offspring(self)
             self.kw['pedigree_is_renumbered'] = 1
@@ -3004,10 +3009,11 @@ class NewPedigree:
         del females
         del _pedholder
 
+
 ##
 # The SimAnimal() class is a placeholder used for simulating animals.
 class SimAnimal:
-    """The simple class is a placeholder used for simulating animals."""
+    """The SimAnimal class is a placeholder used for simulating animals."""
 
     ##
     # __init__() initializes a SimAnimal() object.

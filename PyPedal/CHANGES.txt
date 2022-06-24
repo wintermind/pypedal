@@ -11,6 +11,19 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+??? 06/24/2022  pyp_utils/list_intersection() and pyp_utils/list_union() may be obsolete now that there are set
+    operations on NewPedigree instances.
+''' 06/24/2022  Rewrote pyp_utils/reverse_string() to 1) be simpler, and 2) work in Python 2.7.
+''' 06/24/2022  Changed default for "species" from "U" to "Unknown" in pyp_utils/set_species().
+??? 06/24/2022  What's the point of pyp_utils/set_species()? Shouldn't that properly be a property of a pedigree?
+''' 06/24/2022  The around() function used in pyp_utils/simple_histogram_dictionary() doesn't exist anymore, who knows
+    when that happened. Replaced with math.ceil().
+''' 06/24/2022  Fixed typos in pyp_utils/set_upg().
+### 06/24/2022  configparser doesn't appear to be a drop-in replacement for Dict4Ini because you have to hack around
+    its requirement for section names, which PyPedal doesn't use, but it might be best to kludge it so that I can
+    remove an external dependency.
+XXX 06/24/2022  Removed odict.py from repo as it isn't used anywhere in PyPedal at this time. If ordered dictionaries
+    are needed in the future there's the OrderedDict option in the collections module.
 ''' 06/23/2022  Lots and lots of review and cleanup in pyp_newclasses.py to conform with PEP 8, cleanup unclear con-
     ditionals, etc.
 ''' 06/23/2022  Fixed an error in pyp_newclasses::NewPedigree/simulate(), LightAnimals don't have names.
