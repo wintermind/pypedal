@@ -2,8 +2,8 @@
 
 ###############################################################################
 # NAME: pyp_utils.py
-# VERSION: 2.0.0 (29SEPTEMBER2010)
-# AUTHOR: John B. Cole, PhD (john.cole@ars.usda.gov)
+# VERSION: 2.0.4 (27JUNE2022)
+# AUTHOR: John B. Cole (john.b.cole@gmail.com)
 # LICENSE: LGPL
 ###############################################################################
 # FUNCTIONS:
@@ -48,7 +48,13 @@
 # This includes routines for reordering and renumbering pedigrees, as well as for modifying
 # pedigrees.
 
-import copy, logging, math, numpy, os, string, time
+import copy
+import logging
+import math
+import numpy
+import os
+import string
+import time
 import pyp_demog
 import pyp_newclasses
 
@@ -69,7 +75,7 @@ def set_ancestor_flag(pedobj):
     """
     a_outputfile = False
     try:
-        parents = {}        # holds a list of animals who are parents
+        parents = {}        # Holds a list of animals who are parents
         l = len(pedobj.pedigree)
         if l < 2:
             print '[ERROR]: pedobj.pedigree only contains one record -- nothing to do in set_ancestor_flag()!'
@@ -83,7 +89,7 @@ def set_ancestor_flag(pedobj):
                 print '[DEBUG]:\t\tanimal: %s\tsire: %s\tdam: %s' % (pedobj.pedigree[i].animalID,
                                                                      pedobj.pedigree[i].sireID,
                                                                      pedobj.pedigree[i].damID)
-            #if int(pedobj.pedigree[i].sireID) != 0:
+            # if int(pedobj.pedigree[i].sireID) != 0:
             if pedobj.pedigree[i].sireID != pedobj.kw['missing_parent']:
                 try:
                     _i = parents[int(pedobj.pedigree[i].sireID)]
@@ -91,7 +97,7 @@ def set_ancestor_flag(pedobj):
                     parents[int(pedobj.pedigree[i].sireID)] = int(pedobj.pedigree[i].sireID)
                     pedobj.pedigree[int(pedobj.pedigree[i].sireID)-1].ancestor = 1
 
-            #if int(pedobj.pedigree[i].damID) != 0:
+            # if int(pedobj.pedigree[i].damID) != 0:
             if pedobj.pedigree[i].damID != pedobj.kw['missing_parent']:
                 try:
                     _i = parents[int(pedobj.pedigree[i].damID)]
@@ -102,7 +108,7 @@ def set_ancestor_flag(pedobj):
 
         if pedobj.kw['file_io']:
             try:
-                a_outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_ancestors','.dat')
+                a_outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_ancestors', '.dat')
                 aout = open(a_outputfile,'w')
                 aout.write('# FILE: %s\n' % a_outputfile)
                 aout.write('# ANCESTOR list produced by PyPedal.\n')
@@ -345,24 +351,24 @@ def set_offspring(pedobj):
             for _m in pedobj.pedigree:
                 if _m.sex == 'm' or _m.sex == 'M':
                     if _m.sireID != pedobj.kw['missing_parent']:
-                        #print 'Sire %s has son %s' % (_m.sireID, _m.animalID)
+                        # print 'Sire %s has son %s' % (_m.sireID, _m.animalID)
                         pedobj.pedigree[int(_m.sireID)-1].sons[_m.animalID] = _m.animalID
                     if _m.damID != pedobj.kw['missing_parent']:
-                        #print 'Dam %s has son %s' % (_m.damID, _m.animalID)
+                        # print 'Dam %s has son %s' % (_m.damID, _m.animalID)
                         pedobj.pedigree[int(_m.damID)-1].sons[_m.animalID] = _m.animalID
                 elif _m.sex == 'f' or _m.sex == 'F':
                     if _m.sireID != pedobj.kw['missing_parent']:
-                        #print 'Sire %s has daughter %s' % (_m.sireID, _m.animalID)
+                        # print 'Sire %s has daughter %s' % (_m.sireID, _m.animalID)
                         pedobj.pedigree[int(_m.sireID)-1].daus[_m.animalID] = _m.animalID
                     if _m.damID != pedobj.kw['missing_parent']:
-                        #print 'Dam %s has daughter %s' % (_m.sireID, _m.animalID)
+                        # print 'Dam %s has daughter %s' % (_m.sireID, _m.animalID)
                         pedobj.pedigree[int(_m.damID)-1].daus[_m.animalID] = _m.animalID
                 else:
                     if _m.sireID != pedobj.kw['missing_parent']:
-                        #print 'Sire %s has unknown %s' % (_m.sireID, _m.animalID)
+                        # print 'Sire %s has unknown %s' % (_m.sireID, _m.animalID)
                         pedobj.pedigree[int(_m.sireID)-1].unks[_m.animalID] = _m.animalID
                     if _m.damID != pedobj.kw['missing_parent']:
-                        #print 'Dam %s has unknown %s' % (_m.sireID, _m.animalID)
+                        # print 'Dam %s has unknown %s' % (_m.sireID, _m.animalID)
                         pedobj.pedigree[int(_m.damID)-1].unks[_m.animalID] = _m.animalID
         logging.info('pyp_utils/set_offspring() assigned offspring in pedigree %s' % pedobj.kw['pedname'])
         return 1
@@ -547,7 +553,7 @@ def reorder(myped, filetag='_reordered_', io='no', missingparent=0, debug=0, max
             sirename = myped[i].sireName
             damname = myped[i].damName
 
-            #print animalid, animalname, sireid, sirename, damid, damname
+            # print animalid, animalname, sireid, sirename, damid, damname
 
             _anidx = orderdict[animalid]
 
@@ -564,15 +570,6 @@ def reorder(myped, filetag='_reordered_', io='no', missingparent=0, debug=0, max
                 _a = copycopy(myped[i])
                 # Insert the animal ahead of its parents.
                 mypedins(_maxidx+1, _a)
-                #if debug:
-                    #print 'Moving animal %s (%s) ahead of its parents (sire %s (%s), dam %s (%s).' %
-                    # ( animalid, animalname, sireid, sirename, damid, damname )
-                    #print '\tStarting animal index: ', _anidx
-                    #print '\tNew animal index: ', _maxidx+1
-                    #if str(sireid) != str(missingparent):
-                        #print '\tNew sire index:   ', orderdict[sireid]
-                    #if str(damid) != str(missingparent):
-                        #print '\tNew dam index:    ', orderdict[damid]
                 # Delete the original pedigree entry
                 del myped[i]
                 for idx in xrange(_anidx, _maxidx):
@@ -631,7 +628,7 @@ def reorder(myped, filetag='_reordered_', io='no', missingparent=0, debug=0, max
         for l in range(len(myped)):
             aout.write('%s, %s, %s\n' % (myped[l].animalID, myped[l].sireID, myped[l].damID))
         aout.close()
-        #del order
+        # del order
 
     return myped
 
@@ -668,9 +665,7 @@ def fast_reorder(myped, filetag='_new_reordered_', io='no', debug=0):
     l = len(myped)
     idlist = []
     animalmap = {}
-    # <kludge>
     myped.reverse()
-    # </kludge>
     if debug == 1:
         print '\tPedigree contains %s animals.' % l
         print '\tMaking a dictionary of animal objects'
@@ -782,7 +777,7 @@ def renumber(myped, filetag='_renumbered_', io='no', outformat='0', debug=False,
         # We cannot forget to renumber parents, too!
         s = myped[l].sireID
         if str(s) != str(missingparent):
-        # This is a hack to deal with offspring that have birthdates which precede their parents'.
+            # This is a hack to deal with offspring that have birthdates which precede their parents'.
             try:
                 if debug == 1:
                     print '\t\t[DEBUG]: Renumbering sire from %s to %s' % (s, id_map[s])
@@ -791,7 +786,7 @@ def renumber(myped, filetag='_renumbered_', io='no', outformat='0', debug=False,
                 myped[l].sireID = 0
         d = myped[l].damID
         if str(d) != str(missingparent):
-        # This is a hack to deal with offspring that have birthdates which precede their parents'.
+            # This is a hack to deal with offspring that have birthdates which precede their parents'.
             try:
                 if debug == 1:
                     print '\t\t[DEBUG]: Renumbering dam from %s to %s' % (d, id_map[d])
@@ -802,7 +797,7 @@ def renumber(myped, filetag='_renumbered_', io='no', outformat='0', debug=False,
         if debug == 1:
             print '[DEBUG]: animal ID = %s (%s)' % (myped[l].animalID, myped[l].originalID)
             print '[DEBUG]: An:%s\tSire: %s\tDam: %s' % (myped[l].animalID, myped[l].sireID, myped[l].damID)
-        #print
+        # print
 
     # This next bit renumbers the sons, daus, and unks dictionaries for
     # each animal.
@@ -839,17 +834,18 @@ def renumber(myped, filetag='_renumbered_', io='no', outformat='0', debug=False,
         pout.write(pname)
         pout.write('# RENUMBERED pedigree produced by PyPedal.\n')
         pout.write('% asd\n')
-        for l in range(len(myped)):
+        for litem in range(len(myped)):
             if outformat == '0' or outformat == 0:
-                pout.write('%s,%s,%s\n' % (myped[l].animalID, myped[l].sireID, myped[l].damID))
+                pout.write('%s, %s, %s\n' % (myped[litem].animalID, myped[litem].sireID, myped[litem].damID))
             else:
-                pout.write('%s,%s,%s,%s,%s,%s,%s\n' % (myped[l].animalID, myped[l].sireID, myped[l].damID, myped[l].by,
-                                                       myped[l].sex,myped[l].fa, myped[l].gen))
+                pout.write('%s, %s, %s, %s, %s, %s, %s\n' % (myped[litem].animalID, myped[litem].sireID,
+                                                             myped[litem].damID, myped[litem].by, myped[litem].sex,
+                                                             myped[litem].fa, myped[litem].gen))
         pout.close()
     if not returnmap:
         # Write the old ID -> new ID mapping to a file
         map_outputfile = '%s%s%s' % (filetag, '_id_map', '.map')
-        #print '[DEBUG]: ID map file name is %s' % (map_outputfile)
+        # print '[DEBUG]: ID map file name is %s' % (map_outputfile)
         mout = open(map_outputfile, 'w')
         mname = '# FILE: %s\n' % map_outputfile
         mout.write(mname)
@@ -859,14 +855,14 @@ def renumber(myped, filetag='_renumbered_', io='no', outformat='0', debug=False,
         mout.write('# Old ID\tRenum ID\n')
         k = id_map.keys()
         v = id_map.values()
-        for l in range(len(id_map)):
-            mout.write('%s,%s\n' % (k[l], v[l]))
-            #print 'Old ID = %s,  New ID = %s' % (k[l],v[l])
+        for litem in range(len(id_map)):
+            mout.write('%s, %s\n' % (k[litem], v[litem]))
+            # print 'Old ID = %s,  New ID = %s' % (k[litem],v[litem])
         mout.close()
     # Clean-up
     if cleanmap:
         delete_id_map(filetag)
-    #print 'ID map in renumber():%s' % (id_map)
+    # print 'ID map in renumber():%s' % (id_map)
     if not returnmap:
         return myped
     else:
@@ -954,14 +950,14 @@ def trim_pedigree_to_year(pedobj, year):
     try:
         indices = []
         modped = pedobj.pedigree[:]
-        for l in range(len(modped)):
-            if int(modped[l].by) == int(year):
+        for litem in range(len(modped)):
+            if int(modped[litem].by) == int(year):
                 pass
             else:
-                indices.append(l)
+                indices.append(litem)
         indices.reverse()
-        for i in range(len(indices)):
-            del modped[indices[i]]
+        for idx in range(len(indices)):
+            del modped[indices[idx]]
         return modped
     except:
         return []
@@ -1071,12 +1067,12 @@ def simple_histogram_dictionary(mydict, histchar='*', histstep=5):
             histstep = 5
         for k in mydict.keys():
             hist_sum = hist_sum + mydict[k]
-        #print '[DEBUG]: %s' % (hist_sum)
+        # print '[DEBUG]: %s' % (hist_sum)
         for k in mydict.keys():
             _freq = (float(mydict[k]) / float(hist_sum)) * 100.
-            #_v = around(_freq, 0)
+            # _v = around(_freq, 0)
             _v = math.ceil(_freq)
-            #_n_stars = int(around((_v / float(histstep)), 0))
+            # _n_stars = int(around((_v / float(histstep)), 0))
             _n_stars = int(math.ceil((_v / float(histstep))))
             if _n_stars > 0:
                 hist_dict[k] = '%s%s' % (histchar*_n_stars, ' '*(20-_n_stars))
@@ -1536,7 +1532,7 @@ def list_duplicates(pedobj, keep_rule=''):
                         _orig_dam = pedobj.kw['missing_parent']
                     else:
                         _orig_dam = pedobj.pedigree[_p.damID-1].originalID
-                    duplicates.append('Renumbered ID:\t%s\toriginalID:\t%s\tsire ID:\t%s\tdam ID:\t%s'% \
+                    duplicates.append('Renumbered ID:\t%s\toriginalID:\t%s\tsire ID:\t%s\tdam ID:\t%s' %
                                       (_p.animalID, _p.originalID, _orig_sire, _orig_dam))
                     _p_printed = True
                 # Sire

@@ -11,6 +11,19 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+''' 06/27/2022  Lots of small cleanups to pyp_graphics. Docstrings added to all functions.
+??? 06/27/2022  pyp_graphics/closest_colour() depends on the webcolors library, but it looks like it no longer
+    supports Python 2.x, only 3.x. An older version can be used, but this is more pressure to get the Python 3
+    version ported.
+??? 06/27/2022  It looks likes the image formats in pyp_graphics are hard-coded to PNGs...I wonder if this is
+    because of some problem I ran into in macOS...
+''' 06/27/2022  Added "debug" params to pyp_graphics/plot_line_xy() to fix lingering bugs that (incorrectly) assumed
+    that the input argument, xydict, was a NewPedigree object. In actuality, xydict is a dictionary.
+''' 06/27/2022  Added "debug" params to pyp_graphics/pcolor_matrix_pylab() and pyp_graphics/spy_matrix_pylab() to
+    fix lingering bugs that (incorrectly) assumed that the input argument, A, was a NewPedigree object. In actuality,
+    A is a 2-dimensional array.
+''' 06/27/2022  It looks like the spy2() routine is not longer part of pylab, so I've replaced it with spy() in
+    pyp_graphics/spy_matrix_pylab().
 ??? 06/24/2022  pyp_utils/list_intersection() and pyp_utils/list_union() may be obsolete now that there are set
     operations on NewPedigree instances.
 ''' 06/24/2022  Rewrote pyp_utils/reverse_string() to 1) be simpler, and 2) work in Python 2.7.
