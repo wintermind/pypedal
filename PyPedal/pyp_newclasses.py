@@ -68,7 +68,7 @@ class NewPedigree:
         # Here are the keywords used for simulating pedigrees. We need to set simulate_pedigree before we do anything
         # else; if the user wants to simulate a pedigree they do not need to provide a pedfile.
         if not kw.has_key('simulate_pedigree'):
-            kw['simulate_pedigree'] = 0
+            kw['simulate_pedigree'] = False
         if kw['simulate_pedigree']:
             # These defaults will produce a three-generation pedigree
             # in which each sire and dam has a single progeny.
@@ -81,11 +81,11 @@ class NewPedigree:
             if not kw.has_key('simulate_nd'):
                 kw['simulate_nd'] = 4
             if not kw.has_key('simulate_mp'):
-                kw['simulate_mp'] = 0
+                kw['simulate_mp'] = False
             if not kw.has_key('simulate_po'):
-                kw['simulate_po'] = 0
+                kw['simulate_po'] = False
             if not kw.has_key('simulate_fs'):
-                kw['simulate_fs'] = 0
+                kw['simulate_fs'] = False
             if not kw.has_key('simulate_sr'):
                 kw['simulate_sr'] = 0.5
             if not kw.has_key('simulate_ir'):
@@ -93,42 +93,42 @@ class NewPedigree:
             if not kw.has_key('simulate_pmd'):
                 kw['simulate_pmd'] = 100
             if not kw.has_key('simulate_save'):
-                kw['simulate_save'] = 0
+                kw['simulate_save'] = False
         else:
             if not kw.has_key('pedfile'):
                 raise PyPedalPedigreeInputFileNameError
         if not kw.has_key('pedformat'):
             kw['pedformat'] = 'asd'
         if not kw.has_key('has_header'):
-            kw['has_header'] = 0
+            kw['has_header'] = False
         if not kw.has_key('pedname'):
             kw['pedname'] = 'Untitled'
         if not kw.has_key('messages'):
             kw['messages'] = 'verbose'
         if not kw.has_key('renumber'):
-            kw['renumber'] = 1
+            kw['renumber'] = True
         if not kw.has_key('reorder'):
-            kw['reorder'] = 0
+            kw['reorder'] = False
         if not kw.has_key('reorder_max_rounds'):
             kw['reorder_max_rounds'] = 100
         if not kw.has_key('pedigree_is_renumbered'):
-            kw['pedigree_is_renumbered'] = 0
+            kw['pedigree_is_renumbered'] = False
         if not kw.has_key('set_generations'):
-            kw['set_generations'] = 0
+            kw['set_generations'] = False
         if not kw.has_key('gen_coeff'):
-            kw['gen_coeff'] = 0
+            kw['gen_coeff'] = False
         if not kw.has_key('set_ancestors'):
-            kw['set_ancestors'] = 0
+            kw['set_ancestors'] = False
         if not kw.has_key('set_alleles'):
-            kw['set_alleles'] = 0
+            kw['set_alleles'] = False
         if not kw.has_key('set_offspring'):
-            kw['set_offspring'] = 0
+            kw['set_offspring'] = False
         if not kw.has_key('set_sexes'):
-            kw['set_sexes'] = 0
+            kw['set_sexes'] = False
         if not kw.has_key('assign_sexes'):
-            kw['assign_sexes'] = 0
+            kw['assign_sexes'] = False
         if not kw.has_key('pedcomp'):
-            kw['pedcomp'] = 0
+            kw['pedcomp'] = False
         if not kw.has_key('pedcomp_gens'):
             kw['pedcomp_gens'] = 3
         if not kw.has_key('sepchar'):
@@ -144,7 +144,7 @@ class NewPedigree:
         if not kw.has_key('slow_reorder'):
             kw['slow_reorder'] = 1
         if not kw.has_key('resolve_duplicates'):
-            kw['resolve_duplicates'] = 0
+            kw['resolve_duplicates'] = False
         # Default missing values for NewAnimal objects.
         if not kw.has_key('missing_bdate'):
             kw['missing_bdate'] = '01011900'
@@ -189,11 +189,11 @@ class NewPedigree:
         if 'simulate_nd' not in kw.keys():
             kw['simulate_nd'] = 4
         if 'simulate_mp' not in kw.keys():
-            kw['simulate_mp'] = 0
+            kw['simulate_mp'] = False
         if 'simulate_po' not in kw.keys():
-            kw['simulate_po'] = 0
+            kw['simulate_po'] = False
         if 'simulate_fs' not in kw.keys():
-            kw['simulate_fs'] = 0
+            kw['simulate_fs'] = False
         if 'simulate_sr' not in kw.keys():
             kw['simulate_sr'] = 0.5
         if 'simulate_ir' not in kw.keys():
@@ -201,42 +201,42 @@ class NewPedigree:
         if 'simulate_pmd' not in kw.keys():
             kw['simulate_pmd'] = 100
         if 'simulate_save' not in kw.keys():
-            kw['simulate_save'] = 0
+            kw['simulate_save'] = False
         else:
             if 'pedfile' not in kw.keys():
                 raise PyPedalPedigreeInputFileNameError
         if 'pedigree_save' not in kw.keys():
-            kw['pedigree_save'] = 0
+            kw['pedigree_save'] = False
         if 'pedformat' not in kw.keys():
             kw['pedformat'] = 'asd'
         if 'has_header' not in kw.keys():
-            kw['has_header'] = 0
+            kw['has_header'] = False
         if 'pedname' not in kw.keys():
             kw['pedname'] = 'Untitled'
         if 'messages' not in kw.keys():
             kw['messages'] = 'verbose'
         if 'renumber' not in kw.keys():
-            kw['renumber'] = 1
+            kw['renumber'] = True
         if 'reorder' not in kw.keys():
-            kw['reorder'] = 0
+            kw['reorder'] = False
         if 'reorder_max_rounds' not in kw.keys():
             kw['reorder_max_rounds'] = 100
         if 'pedigree_is_renumbered' not in kw.keys():
-            kw['pedigree_is_renumbered'] = 0
+            kw['pedigree_is_renumbered'] = False
         if 'set_generations' not in kw.keys():
-            kw['set_generations'] = 0
+            kw['set_generations'] = False
         if 'gen_coeff' not in kw.keys():
-            kw['gen_coeff'] = 0
+            kw['gen_coeff'] = False
         if 'set_ancestors' not in kw.keys():
-            kw['set_ancestors'] = 0
+            kw['set_ancestors'] = False
         if 'set_alleles' not in kw.keys():
-            kw['set_alleles'] = 0
+            kw['set_alleles'] = False
         if 'set_offspring' not in kw.keys():
-            kw['set_offspring'] = 0
+            kw['set_offspring'] = False
         if 'set_sexes' not in kw.keys():
-            kw['set_sexes'] = 0
+            kw['set_sexes'] = False
         if 'pedcomp' not in kw.keys():
-            kw['pedcomp'] = 0
+            kw['pedcomp'] = False
         if 'pedcomp_gens' not in kw.keys():
             kw['pedcomp_gens'] = 3
         if 'sepchar' not in kw.keys():
@@ -246,9 +246,9 @@ class NewPedigree:
         if 'counter' not in kw.keys():
             kw['counter'] = 1000
         if 'slow_reorder' not in kw.keys():
-            kw['slow_reorder'] = 1
+            kw['slow_reorder'] = True
         if 'update_sexes' not in kw.keys():
-            kw['update_sexes'] = 0
+            kw['update_sexes'] = False
         # Default missing values for NewAnimal objects.
         if 'missing_bdate' not in kw.keys():
             kw['missing_bdate'] = '01011900'
@@ -288,24 +288,24 @@ class NewPedigree:
         if not kw.has_key('file_io'):
             kw['file_io'] = '1'
         if not kw.has_key('debug_messages'):
-            kw['debug_messages'] = 0
+            kw['debug_messages'] = False
         if not kw.has_key('form_nrm'):
-            kw['form_nrm'] = 0
+            kw['form_nrm'] = False
         if not kw.has_key('nrm_method'):
             kw['nrm_method'] = 'nrm'
         if not kw.has_key('nrm_format'):
             kw['nrm_format'] = 'text'
         if not kw.has_key('f_computed'):
-            kw['f_computed'] = 0
+            kw['f_computed'] = False
         # Computed genomic inbreeding
         if not kw.has_key('g_computed'):
-            kw['g_computed'] = 0
+            kw['g_computed'] = False
         if not kw.has_key('log_ped_lines'):
-            kw['log_ped_lines'] = 0
+            kw['log_ped_lines'] = False
         if not kw.has_key('log_long_filenames'):
-            kw['log_long_filenames'] = 0
+            kw['log_long_filenames'] = False
         if not kw.has_key('pedigree_summary'):
-            kw['pedigree_summary'] = 1
+            kw['pedigree_summary'] = True
         if kw['pedigree_summary'] not in [0, 1, 2]:
             kw['pedigree_summary'] = 1
         if not kw.has_key('animal_type'):
@@ -313,9 +313,9 @@ class NewPedigree:
         if kw['animal_type'] not in ['new', 'light']:
             kw['animal_type'] = 'new'
         if 'f' in kw['pedformat']:
-            kw['f_computed'] = 1
+            kw['f_computed'] = True
         if 'G' in kw['pedformat']:
-            kw['g_computed'] = 1
+            kw['g_computed'] = True
         # We have to check for the pedfile key in case this is a
         # simulated pedigree, which does not have a pedfile.
         if kw['simulate_pedigree']:
@@ -352,9 +352,9 @@ class NewPedigree:
         # of the relationship matrix should be augmented by founder coefficients of
         # inbreeding or not. This is disabled by default.
         if not kw.has_key('foundercoi'):
-            kw['foundercoi'] = 0
-        if kw['foundercoi'] not in [0, 1]:
-            kw['foundercoi'] = 0
+            kw['foundercoi'] = False
+        if kw['foundercoi'] not in [False, True]:
+            kw['foundercoi'] = False
         # If the user provides a paper size make sure that it is a supported value.
         # Right now, only a4 and letter are supported.  Note that 'a4' is silently
         # changed to 'A4' because ReportLab is case-sensitive.  Also handle setting
@@ -407,7 +407,7 @@ class NewPedigree:
         if not kw.has_key('trait_names'):
             kw['trait_names'] = []
         if not kw.has_key('trait_auto_name'):
-            kw['trait_auto_name'] = 1
+            kw['trait_auto_name'] = True
         if not kw.has_key('trait_count'):
             kw['trait_count'] = 0
 
@@ -520,10 +520,10 @@ class NewPedigree:
                 print '[DEBUG]: Using match rule: %s' % (self.kw['match_rule'])
             logging.info('Using match rule %s to merge pedigrees', self.kw['match_rule'])
             # Pedigrees must be renumbered
-            if self.kw['pedigree_is_renumbered'] != 1:
+            if not self.kw['pedigree_is_renumbered']:
                 self.renumber()
                 logging.info('Renumbering pedigree %s', self.kw['pedname'])
-            if other.kw['pedigree_is_renumbered'] != 1:
+            if not other.kw['pedigree_is_renumbered']:
                 other.renumber()
                 logging.info('Renumbering pedigree %s', other.kw['pedname'])
             # We need to compare each animal in self and other to see if they
@@ -646,7 +646,7 @@ class NewPedigree:
             new_options = {
                 'messages': self.kw['messages'],
                 'pedname': merged_pedname,
-                'renumber': 1,
+                'renumber': True,
                 'pedfile': filename,
                 'pedformat': self.kw['pedformat'],
             }
@@ -684,10 +684,10 @@ class NewPedigree:
             # print 'Using match rule: %s' % ( self.kw['match_rule'])
             logging.info('Using match rule %s to subtract pedigrees', self.kw['match_rule'])
             # Pedigrees must be renumbered
-            if self.kw['pedigree_is_renumbered'] != 1:
+            if not self.kw['pedigree_is_renumbered']:
                 self.renumber()
                 logging.info('Renumbering pedigree %s', self.kw['pedname'])
-            if other.kw['pedigree_is_renumbered'] != 1:
+            if not other.kw['pedigree_is_renumbered']:
                 other.renumber()
                 logging.info('Renumbering pedigree %s', other.kw['pedname'])
             # We need to compare each animal in self and other to see if they
@@ -765,7 +765,7 @@ class NewPedigree:
             new_options = {
                 'messages': self.kw['messages'],
                 'pedname': merged_pedname,
-                'renumber': 1,
+                'renumber': True,
                 'pedfile': filename,
                 'pedformat': self.kw['pedformat'],
             }
@@ -810,10 +810,10 @@ class NewPedigree:
             logging.info('Computing intersection of pedigrees %s and %s', self.kw['pedname'], other.kw['pedname'])
             logging.info('Using match rule %s to compare pedigrees', self.kw['match_rule'])
             # Pedigrees must be renumbered
-            if self.kw['pedigree_is_renumbered'] != 1:
+            if not self.kw['pedigree_is_renumbered']:
                 self.renumber()
                 logging.info('Renumbering pedigree %s', self.kw['pedname'])
-            if other.kw['pedigree_is_renumbered'] != 1:
+            if not other.kw['pedigree_is_renumbered']:
                 other.renumber()
                 logging.info('Renumbering pedigree %s', other.kw['pedname'])
             # We need to compare each animal in self and other to see if they
@@ -910,7 +910,7 @@ class NewPedigree:
             new_options = {
                 'messages': self.kw['messages'],
                 'pedname': intersect_pedname,
-                'renumber': 1,
+                'renumber': True,
                 'pedfile': filename,
                 'pedformat': self.kw['pedformat'],
                 'sepchar': self.kw['sepchar'],
@@ -1025,14 +1025,14 @@ class NewPedigree:
         # pedigree using the NewPedigree::fromgraph() method.
         elif pedsource == 'graphfile':
             try:
-                import networkx as NX
+                import networkx as nx
             except:
                 logging.error('Unable to load pedigree from a directed graph stored in adjacency list format because'
                               ' the NetworkX module could not be imported!')
                 sys.exit(0)
             if self.kw['pedfile']:
                 try:
-                    pedgraph = NX.read_adjlist(self.kw['pedfile'])
+                    pedgraph = nx.read_adjlist(self.kw['pedfile'])
                     self.fromgraph(pedgraph)
                 except:
                     logging.error('Unable to load pedigree from a directed graph stored in adjacency list format!')
@@ -1072,7 +1072,7 @@ class NewPedigree:
                 if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
                     print '[INFO]: Loading GEDCOM file %s.' % (self.kw['pedfile'])
                 pedformat = pyp_io.load_from_gedcom(infilename=self.kw['pedfile'],
-                                                    standalone=0,
+                                                    standalone=False,
                                                     messages=self.kw['messages'],
                                                     missing_sex=self.kw['missing_sex'],
                                                     missing_parent=self.kw['missing_parent'],
@@ -1120,7 +1120,7 @@ class NewPedigree:
                 if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
                     print '[INFO]: Loading GENES v1.20 file %s.' % (self.kw['pedfile'])
                 pedformat = pyp_io.load_from_genes(infilename=self.kw['pedfile'],
-                                                   standalone=0,
+                                                   standalone=False,
                                                    messages=self.kw['messages'],
                                                    missing_sex=self.kw['missing_sex'],
                                                    missing_parent=self.kw['missing_parent'],
@@ -1175,7 +1175,7 @@ class NewPedigree:
             self.preprocess()
         # Now that we've got the animals loaded, take care of the
         # renumbering etc.
-        if self.kw['reorder'] == 1 and not self.kw['renumber']:
+        if self.kw['reorder'] and not self.kw['renumber']:
             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
                 print '\t[INFO]: Reordering pedigree at %s' % (pyp_utils.pyp_nice_time())
             logging.info('Reordering pedigree')
@@ -1186,7 +1186,7 @@ class NewPedigree:
                                                   max_rounds=self.kw['reorder_max_rounds'])
                 # self.pedigree = pyp_utils.reorder(self.pedigree, missingparent=self.kw['missing_parent'],
                 # max_rounds=self.kw['reorder_max_rounds'])
-        if self.kw['renumber'] == 1:
+        if self.kw['renumber']:
             self.renumber()
             pyp_snp.renumber_snp_ids(self)
         if self.kw['set_generations']:
@@ -1390,12 +1390,12 @@ class NewPedigree:
             if self.kw['messages'] == 'verbose':
                 print '[INFO]: Closed file %s after pedigree save at %s.' % (filename, pyp_utils.pyp_nice_time())
             logging.info('Closed file %s after pedigree save at %s.', filename, pyp_utils.pyp_nice_time())
-            return 1
+            return True
         except:
             if self.kw['messages'] == 'verbose':
                 print '[ERROR]: Unable to open file %s for pedigree save!' % filename
             logging.error('Unable to open file %s for pedigree save.', filename)
-            return 0
+            return False
 
     ##
     # save() writes a PyPedal pedigree to a user-specified file.  The saved pedigree includes
@@ -1480,7 +1480,7 @@ class NewPedigree:
                 ofh.write('#\tpedigree file: %s\n' % filename)
                 ofh.write('#\tpedigree name: %s\n' % (self.kw['pedname']))
                 ofh.write('#\tpedigree format: %s\n' % pedformat)
-                if self.kw['pedigree_is_renumbered'] == 1:
+                if self.kw['pedigree_is_renumbered']:
                     if originalID:
                         ofh.write('#\tNOTE: Animal, sire, and dam IDs are original IDs!\n')
                     else:
@@ -1557,8 +1557,8 @@ class NewPedigree:
                 except:
                     logging.error('[savegraph]: Unable to convert pedigree to a directed graph.')
             try:
-                import networkx as NX
-                NX.write_adjlist(pedgraph, pedoutfile)
+                import networkx as nx
+                nx.write_adjlist(pedgraph, pedoutfile)
             except:
                 logging.error('[savegraph]: Unable to save directed graph to a file.')
             _retval = True
@@ -1571,7 +1571,7 @@ class NewPedigree:
     # @param self Reference to current object
     # @param pedoutfile Name of the file to which the graph is written
     # @retval None
-    def savegedcom(self, pedoutfile=0):
+    def savegedcom(self, pedoutfile=False):
         """
         Save a pedigree to a file in GEDCOM 5.5 format.
         :param self: NewPedigree object holding pedigree to save.
@@ -1596,7 +1596,7 @@ class NewPedigree:
     # @param self Reference to current object
     # @param pedoutfile Name of the file to which the graph is written
     # @retval None
-    def savegenes(self, pedoutfile=0):
+    def savegenes(self, pedoutfile=False):
         """
         Save a pedigree to a file in GENES 1.20 (dBase III) format.
         :param self: NewPedigree object holding pedigree to save.
@@ -1980,9 +1980,9 @@ class NewPedigree:
             # If the pedigree file includes coefficients of inbreeding flag the
             # pedigree.
             if 'f' in self.kw['pedformat']:
-                self.kw['f_computed'] = 1
+                self.kw['f_computed'] = True
             if 'G' in self.kw['pedformat']:
-                self.kw['g_computed'] = 1
+                self.kw['g_computed'] = True
             if critical_count > 0:
                 sys.exit(0)
             else:
@@ -2039,7 +2039,7 @@ class NewPedigree:
                             logging.info('Pedigree (line %s): %s', lineCounter, string.strip(line))
                         # This code prepends a comment character the first line of inpuit if the has_header
                         # option is set to 1.
-                        if lineCounter == 1 and self.kw['has_header'] == 1:
+                        if lineCounter == 1 and self.kw['has_header']:
                             logging.info('Converted the first line in the input file into a comment because the '
                                          'pedigree file has a header row.')
                             if self.kw['messages'] == 'verbose' and self.kw['pedigree_summary']:
@@ -2261,9 +2261,9 @@ class NewPedigree:
                 self.backmap[an.animalID] = an.animalID
                 self.namemap[an.name] = an.animalID
                 self.namebackmap[an.animalID] = an.name
-                if self.kw['debug_messages'] > 0:
+                if self.kw['debug_messages']:
                     logging.info('Added pedigree entry for animal %s' % _n)
-            if self.kw['debug_messages'] > 0:
+            if self.kw['debug_messages']:
                 logging.error('Added %s animals to the pedigree in pyp_newclasses::NewPedigree/fromgraph()!' %
                               len(pedgraph.nodes()))
             if self.kw['messages']:
@@ -2271,7 +2271,7 @@ class NewPedigree:
                       len(pedgraph.nodes())
             _retval = True
         except:
-            if self.kw['debug_messages'] > 0:
+            if self.kw['debug_messages']:
                 logging.error('Unable to add animals to the pedigree in pyp_newclasses::NewPedigree/fromgraph()!')
             if self.kw['messages']:
                 print '[ERROR]: Unable to add animals to the pedigree in pyp_newclasses::NewPedigree/fromgraph()!'
@@ -2318,7 +2318,7 @@ class NewPedigree:
                     self.namebackmap[an.animalID] = an.name
                 else:
                     logging.error('An entry in the animallist was not a NewAnimal object, skipping!')
-                if self.kw['debug_messages'] > 0:
+                if self.kw['debug_messages']:
                     logging.info('Added pedigree entry for animal %s' % an.originalID)
             _retval = True
         else:
@@ -2556,7 +2556,7 @@ class NewPedigree:
                 else:
                     self.pedigree = pyp_utils.reorder(self.pedigree, missingparent=self.kw['missing_parent'],
                                                       max_rounds=self.kw['reorder_max_rounds'])
-            if self.kw['renumber'] == 1:
+            if self.kw['renumber']:
                 self.renumber()
             if self.kw['set_generations']:
                 pyp_utils.set_generation(self)
@@ -2826,7 +2826,7 @@ class NewPedigree:
             _pedholder[i] = SimAnimal(males[i - _snd], 0, 0, 'm', 0)
 
         #
-        # Start of big. long generate animal loop.
+        # Start of big, long generate animal loop.
         #
         # Loop over number of generations:
         for g in range(_sng):
@@ -2870,7 +2870,7 @@ class NewPedigree:
                         _ds = _pedholder[_d].sireID
                         _sd = _pedholder[_s].damID
                         _ss = _pedholder[_s].sireID
-                        _tryagain = 0
+                        _tryagain = False
                         # If offspring-parent matings are not allowed, check to see if both parents are known. If one
                         # or both is unknown, draw new samples until they are either (i) known or (ii) simulate_pmd
                         # (simulate parent max draws) is reached. If _smpd is reached, set the parents to unknown even
@@ -2878,20 +2878,20 @@ class NewPedigree:
                         if not _spo:
                             if _d > 0 and _sd == _d:
                                 # Draw a new dam
-                                _tryagain = 1
+                                _tryagain = True
                             if _s > 0 and _ss == _s:
                                 # Draw a new sire
-                                _tryagain = 1
+                                _tryagain = True
                         # If no full-sib matings are allowed, make sure
                         # that the parents aren't brother and sister.
                         if not _sfs:
                             if _ss > 0 and _sd == 0:
                                 if _ss == _ds and _sd == _dd:
-                                    _tryagain = 1
+                                    _tryagain = True
                         if _tryagain:
                             _ntry = _ntry + 1
                         if _ntry > _spmd:
-                            _tryagain = 0
+                            _tryagain = True
                             _seldam = 0
                             _selsire = 0
                         # If we met the MP, PO, and FS conditions we're done and can exit the loop.
@@ -3052,7 +3052,7 @@ class SimAnimal:
                                            self.damID, self.sex, self.gen)
             return mystring
         except:
-            return 0
+            return False
 
 
 ##
@@ -3748,7 +3748,7 @@ class LightAnimal:
         except:
             # If we have some sort of problem with the MD5 hash then try this.
             # WARNING -- This algorithm was broken on Mac OS/X and Windows,
-            # but not on 9some) Linuxes. The problem may have been related to
+            # but not on some) Linuxes. The problem may have been related to
             # platform-specific values of sys.maxint, so I've hard-coded that
             # as sys.maxint from a 64-bit system. It gets cast to a long on 32-
             # bit platforms, but I haven't found that to be a problem -- yet.
@@ -4078,12 +4078,13 @@ class NewAMatrix:
                     print '[INFO]: Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix() at %s.' % \
                           pyp_utils.pyp_nice_time()
                 logging.info('Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix()')
+                return True
             except:
                 if self.kw['messages'] == 'verbose':
                     print '[ERROR]: Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix() at %s.' % \
                           pyp_utils.pyp_nice_time()
                 logging.error('Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix()')
-                return 0
+                return False
         # Otherwise try and form the NRM where COI are adjusted for the inbreeding
         # of parents.
         else:
@@ -4093,12 +4094,13 @@ class NewAMatrix:
                     print '[INFO]: Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix_r() at %s.' % \
                           pyp_utils.pyp_nice_time()
                 logging.info('Formed A-matrix from pedigree using pyp_nrm.fast_a_matrix_r()')
+                return True
             except:
                 if self.kw['messages'] == 'verbose':
                     print '[ERROR]: Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix_r() at %s.' % \
                           pyp_utils.pyp_nice_time()
                 logging.error('Unable to form A-matrix from pedigree using pyp_nrm.fast_a_matrix_r()')
-                return 0
+                return False
 
     ##
     # load() uses the Numarray Array Function "fromfile()" to load an array from a
@@ -4122,13 +4124,13 @@ class NewAMatrix:
                 print '[INFO]: A-matrix successfully loaded from file %s at %s.' % (nrm_filename,
                                                                                     pyp_utils.pyp_nice_time())
             logging.info('A-matrix successfully loaded from file %s', nrm_filename)
-            return 1
+            return True
         except:
             if self.kw['messages'] == 'verbose':
                 print '[ERROR]: Unable to load A-matrix from file %s at %s.' % (nrm_filename,
                                                                                 pyp_utils.pyp_nice_time())
             logging.error('Unable to load A-matrix from file %s', nrm_filename)
-            return 0
+            return False
 
     ##
     # save() uses the Numarray method "tofile()" to save an array to a binary file.
@@ -4157,12 +4159,12 @@ class NewAMatrix:
                 print '[INFO]: A-matrix successfully saved to file %s at %s.' % (nrm_filename,
                                                                                  pyp_utils.pyp_nice_time())
             logging.info('A-matrix successfully saved to file %s', nrm_filename)
-            return 1
+            return True
         except:
             if self.kw['messages'] == 'verbose':
                 print '[ERROR]: Unable to save A-matrix to file %s at %s.' % (nrm_filename, pyp_utils.pyp_nice_time())
             logging.error('Unable to save A-matrix to file %s', nrm_filename)
-            return 0
+            return False
 
     ##
     # printme() prints the NRM to the screen.

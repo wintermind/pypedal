@@ -11,6 +11,14 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+''' 06/28/2022  Fixed a bug in pyp_metrics/a_effective_founders_lacy() where it was ignoring the 'half' flag for
+    processing half-founders.
+''' 06/28/2022  Removed the 'debug' parameter from pyp_metrics/a_effective_founders_lacy() because it can use the
+    'debug_messages' keyword from the pedobj instead.
+''' 06/28/2022  Updated everything in pyp_newclasses to replaces 1 with True and 0 with False when those values were
+    being used solely to indicate success/faile, yes/no, or do/do not. This means that the documentation is incorrect
+    for the moment. I *think* that existing pedigree options will still work because 1s will evaluate to True and 0s
+    will evaluate to False, needs test.
 ''' 06/27/2022  Lots of small cleanups to pyp_graphics. Docstrings added to all functions.
 ??? 06/27/2022  pyp_graphics/closest_colour() depends on the webcolors library, but it looks like it no longer
     supports Python 2.x, only 3.x. An older version can be used, but this is more pressure to get the Python 3

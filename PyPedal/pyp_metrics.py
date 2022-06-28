@@ -2,8 +2,8 @@
 
 ###############################################################################
 # NAME: pyp_metrics.py
-# VERSION: 2.0.0 (29SEPTEMBER2010)
-# AUTHOR: John B. Cole, PhD (john.cole@ars.usda.gov)
+# VERSION: 2.0.4 (28JUNE2022)
+# AUTHOR: John B. Cole (john.b.cole@gmail.com)
 # LICENSE: LGPL
 ###############################################################################
 # FUNCTIONS:
@@ -31,12 +31,6 @@
 #   ballou_ancestral_inbreeding()
 ###############################################################################
 
-import copy
-import logging
-import numpy
-import pyp_nrm
-import pyp_utils
-
 ## @package pyp_metrics
 # pyp_metrics contains a set of procedures for calculating metrics on PyPedal
 # pedigree objects.  These metrics include coefficients of inbreeding and
@@ -44,7 +38,14 @@ import pyp_utils
 # and effective ancestor number.
 ##
 
-import copy, logging, numpy, os, pickle, random, string, sys
+import copy
+import logging
+import numpy
+# import os
+# import pickle
+import random
+# import string
+# import sys
 import pyp_io
 import pyp_network
 import pyp_nrm
@@ -57,28 +58,32 @@ from numpy import random
 # zero are not included.
 # @param pedobj A PyPedal pedigree object.
 # @param a A numerator relationship matrix (optional).
-# @param n An integer (optional, default is 10).
+# @param n An integer (optional, default is 10) number of coefficients to return (e.g., 10 smallest/largest).
 # @param forma If A must be formed should dense or sparse matrices be used?
-# @retval Lists of the individuals with the n largest and the  n smallest CoI in the pedigree as (ID, CoI) tuples.
+# @retval Lists of the n largest and n smallest CoI in the pedigree, or False on failure.
 def min_max_f(pedobj, a='', n=10, forma='dense'):
     """
     Given a pedigree or relationship matrix, return a list of the
     individuals with the n largest and n smallest coefficients of
     inbreeding; individuals with CoI of zero are not included.
+    :param pedobj: A PyPedal pedigree object.
+    :param a: A numerator relationship matrix (optional).
+    :param n: An integer (optional, default is 10) number of coefficients to return (e.g., 10 smallest/largest).
+    :param forma: If A must be formed should dense or sparse matrices be used?
+    :return: Lists of the n largest and the  n smallest CoI in the pedigree, or False on failure.
     """
-    try: logging.info('Entered min_max_f()')
-    except: pass
-    if forma not in ['dense','sparse']:
-        format = 'dense'
+    logging.info('Entered min_max_f()')
+    if forma not in ['dense', 'sparse']:
+        forma = 'dense'
     if not pedobj.kw['form_nrm'] and not a:
-        #if forma == 'sparse':
-        #    a = pyp_nrm.fast_a_matrix_sparse(pedobj.pedigree,pedobj.kw)
-        #else:
-        #    a = pyp_nrm.fast_a_matrix(pedobj.pedigree,pedobj.kw)
-        a = pyp_nrm.fast_a_matrix(pedobj.pedigree,pedobj.kw,method=forma)
-        print a
-        individual_coi = fast_a_coefficients(pedobj,a=a)
-        print individual_coi
+        a = pyp_nrm.fast_a_matrix(pedobj.pedigree, pedobj.kw, method=forma)
+        if pedobj.kw['debug_messages']:
+            print 'Value of matrix a in pyp_metrics/min_max_f():'
+            print a
+        individual_coi = fast_a_coefficients(pedobj, a=a)
+        if pedobj.kw['debug_messages']:
+            print 'Value of individual_coi in pyp_metrics/min_max_f():'
+            print individual_coi
     else:
         individual_coi = fast_a_coefficients(pedobj)
 
@@ -91,11 +96,13 @@ def min_max_f(pedobj, a='', n=10, forma='dense'):
     if n > len(_mycoi):
         old_n = n
         if len(_mycoi) % 2 == 0:
-            n = int( round( float( len(_mycoi) )/2., 0 ) )
+            n = int(round(float(len(_mycoi))/2., 0))
         else:
-            n = int( round( float( len(_mycoi) )/2. - 1.0, 0 ) )
-        print '[INFO]: You asked for more high and low COI, %s, than there are animals in the pedigree with non-zero COI, %s.  n was adjusted from %s to %s.' % (old_n,len(_mycoi),old_n,n)
-        logging.info('[INFO]: You asked for more high and low COI, %s, than there are animals in the pedigree with non-zero COI, %s.  n was adjusted from %s to %s.',old_n,len(_mycoi),old_n,n)
+            n = int(round(float(len(_mycoi))/2. - 1.0, 0))
+        print '[INFO]: You asked for more high and low COI, %s, than there are animals in the pedigree with ' \
+              'non-zero COI, %s. n was adjusted from %s to %s.' % (old_n, len(_mycoi), old_n, n)
+        logging.info('[INFO]: You asked for more high and low COI, %s, than there are animals in the pedigree '
+                     'with non-zero COI, %s. n was adjusted from %s to %s.',old_n, len(_mycoi), old_n, n)
 
     high_coi = []
     low_coi = []
@@ -104,9 +111,11 @@ def min_max_f(pedobj, a='', n=10, forma='dense'):
         high_coi.append(_mycoi[len(_mycoi)-_i-1])
         low_coi.append(_mycoi[_i])
 
-    try: logging.info('Exited min_max_f()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Exited min_max_f()')
+
     return high_coi, low_coi
+
 
 ##
 # a_effective_founders_lacy() calculates the number of effective founders in a
@@ -115,66 +124,67 @@ def min_max_f(pedobj, a='', n=10, forma='dense'):
 # @param a A numerator relationship matrix (optional).
 # @param half Use half founders or not, default is to use only full founders (Boolean, optional).
 # @retval A dictionary of results, including the effective founder number.
-def a_effective_founders_lacy(pedobj, a='', half=False, debug=False):
+def a_effective_founders_lacy(pedobj, a='', half=False):
     """
     Calculate the number of effective founders in a pedigree using the exact method of Lacy.
+    :param pedobj: A PyPedal pedigree object.
+    :param a: A numerator relationship matrix (optional).
+    :param half: Use half founders or not, default is to use only full founders (Boolean, optional).
+    :return: A dictionary of results, including the effective founder number.
     """
-    try: logging.info('Entered a_effective_founders_lacy()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Entered a_effective_founders_lacy()')
     if not a:
         try:
-            a = pyp_nrm.fast_a_matrix(pedobj.pedigree,pedobj.kw)
+            a = pyp_nrm.fast_a_matrix(pedobj.pedigree, pedobj.kw)
         except:
             return -999.9
-    l = len(pedobj.pedigree)
-    mp = pedobj.kw['missing_parent']
+    lenped = len(pedobj.pedigree)
     # form lists of founders and descendants
     out_dict = {}
     n_f = 0
     n_d = 0
     fs = []
     ds = []
-    for i in range(l):
+    for i in range(lenped):
         animalid = int(pedobj.pedigree[i].animalID)
-	sireid = int(pedobj.pedigree[i].sireID)
-	damid = int(pedobj.pedigree[i].damID)
+        sireid = int(pedobj.pedigree[i].sireID)
+        damid = int(pedobj.pedigree[i].damID)
         #
-        if pedobj.pedigree[i].founder == 'y' and animalid != mp:
+        if pedobj.pedigree[i].founder == 'y' and animalid != pedobj.kw['missing_parent']:
             n_f = n_f + 1
             fs.append(animalid)
-	# An animal with a missing parent is a half-founder. Note that this
-	# is not a part of Lacy's original derivation, and I haven't proven
-	# it works, either. This is a strictly heuristic approach at the
-	# moment. An alternative approach might be to create metafounders
-	# in place of half founders.
-	elif pedobj.pedigree[i].founder == 'n' and ( sireid == mp or damid == mp ):
-		if debug:
-	                print '[pyp_metrics]: Animal % is a half-founder...' % ( animalid )
-		#n_f = n_f + 0.5
-		# Can't be 0.5 b/c of table below listing relationship between founders and descendants
-		n_f += 1
-            	fs.append(animalid)
-	#elif animalid != 0:
-        elif str(animalid) != mp:
+        # An animal with a missing parent is a half-founder. Note that this is not a part of Lacy's original
+        # derivation, and I haven't proven it works, either. This is a strictly heuristic approach at the
+        # moment. An alternative approach might be to create metafounders in place of half founders.
+        elif half and pedobj.pedigree[i].founder == 'n' and (sireid == pedobj.kw['missing_parent'] or
+                                                             damid == pedobj.kw['missing_parent']):
+            if pedobj.kw['debug_messages']:
+                print '[pyp_metrics]: Animal % is a half-founder...' % animalid
+            # n_f = n_f + 0.5
+            # Can't be 0.5 b/c of table below listing relationship between founders and descendants
+            n_f += 1
+            fs.append(animalid)
+        elif animalid != pedobj.kw['missing_parent']:
             n_d = n_d + 1
             ds.append(animalid)
         else:
             pass
-    #print 'fs : %s' % (fs)
-    #print 'ds : %s' % (ds)
-    p = numpy.zeros([n_d,n_f],'d')
+    # print 'fs : %s' % fs
+    # print 'ds : %s' % ds
+    p = numpy.zeros([n_d, n_f], 'd')
     # create a table listing relationship between founders and descendants
     for row in range(n_d):
         for col in range(n_f):
-            p[row,col] = a[fs[col]-1,ds[row]-1]
-    #print 'p : %s' % (p)
+            p[row, col] = a[fs[col]-1, ds[row]-1]
+    # print 'p : %s' % p
     # sum each column
-    p_sums= []
+    p_sums = []
     for col in range(n_f):
         p_sum = 0.
         for row in range(n_d):
-            if p[row,col] != 0:
-                p_sum = p_sum + p[row,col]
+            if p[row, col] != 0:
+                p_sum = p_sum + p[row, col]
         p_sums.append(p_sum)
     # weight sums by counts to get relative contributions
     rel_p = []
@@ -187,17 +197,17 @@ def a_effective_founders_lacy(pedobj, a='', half=False, debug=False):
     for i in range(len(rel_p_sq)):
         sum_rel_p_sq = sum_rel_p_sq + rel_p_sq[i]
     print '='*60
-    #print 'p_sums:\t%s' % (p_sums)
-    #print 'rel_ps:\t%s' % (rel_p)
+    # print 'p_sums:\t%s' % p_sums
+    # print 'rel_ps:\t%s' % rel_p
     if sum_rel_p_sq == 0.:
         f_e = 0.
     else:
         f_e = 1. / sum_rel_p_sq
     if pedobj.kw['messages'] == 'verbose':
-        print 'animals:\t%s' % (len(fs)+len(ds))
-        print 'founders:\t%s' % (n_f)
-        print 'descendants:\t%s' % (n_d)
-        print 'f_e:\t\t%5.3f' % (f_e)
+        print 'animals:\t%s' % len(fs)+len(ds)
+        print 'founders:\t%s' % n_f
+        print 'descendants:\t%s' % n_d
+        print 'f_e:\t\t%5.3f' % f_e
         print '='*60
 
     out_dict['fa_animal_count'] = len(fs) + len(ds)
@@ -206,21 +216,22 @@ def a_effective_founders_lacy(pedobj, a='', half=False, debug=False):
     out_dict['fa_effective_founders'] = f_e
 
     # write some output to a file for later use
-    outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_fe_lacy_','.dat')
-    aout = open(outputfile,'w')
+    outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_fe_lacy_', '.dat')
+    aout = open(outputfile, 'w')
     line = '='*60+'\n'
     aout.write('%s\n' % line)
-    aout.write('%s animals\n' % l)
-    aout.write('%s founders: %s\n' % n_f,fs)
-    aout.write('%s descendants: %s\n' % n_d,ds)
+    aout.write('%s animals\n' % lenped)
+    aout.write('%s founders: %s\n' % (n_f, fs))
+    aout.write('%s descendants: %s\n' % (n_d, ds))
     aout.write('effective number of founders: %s\n' % f_e)
     aout.write('%s\n' % line)
     aout.close()
 
-    try: logging.info('Exited a_effective_founders_lacy()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Exited a_effective_founders_lacy()')
 
     return out_dict
+
 
 ##
 # effective_founders_lacy() calculates the number of effective founders in a pedigree
