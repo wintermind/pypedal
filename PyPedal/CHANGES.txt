@@ -11,6 +11,18 @@ PyPedal 2 CHANGELOG
 
 CHANGES in PyPedal 2.0.4 (Vetinari)
 ===================================
+??? 06/28/2022  There might still be some lurking issues with comparison of animal IDs to missing_parent attributes in
+    some of the pyp_metrics code. I think everything needs to be cast to a str() for that comparison to work the right
+    way, so fixing it as I go.
+''' 06/28/2022  Lots of cleanup in pyp_metrics. Added docstrings to all functions. Switched tests and return values
+    using 1/0 to True/False. Replaced some weird coding for logging messages. Replaced some vague variable names, such
+    as 'l', with more informative names, like 'lenped'.
+''' 06/28/2022  Fixed a bug in pyp_metrics/a_effective_ancestors_indefinite() when processing animals with a known sire
+    and an unknown dam.
+''' 06/28/2022  Fixed a bug in pyp_metrics/a_effective_ancestors_definite() when processing animals with a known sire
+    and an unknown dam.
+''' 06/28/2022  Fixed a bug in pyp_metrics/a_effective_founders_boichard() when processing animals with a known sire
+    and an unknown dam.
 ''' 06/28/2022  Fixed a bug in pyp_metrics/a_effective_founders_lacy() where it was ignoring the 'half' flag for
     processing half-founders.
 ''' 06/28/2022  Removed the 'debug' parameter from pyp_metrics/a_effective_founders_lacy() because it can use the

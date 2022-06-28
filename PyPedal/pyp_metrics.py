@@ -236,27 +236,32 @@ def a_effective_founders_lacy(pedobj, a='', half=False):
 ##
 # effective_founders_lacy() calculates the number of effective founders in a pedigree
 # using the exact method of Lacy.  This version of the routine a_effective_founders_lacy()
-# is designed to work with larger pedigrees as it forms "familywise" relationship matrices
-# rather than a "populationwise" relationship matrix.
+# is designed to work with larger pedigrees as it forms "family-wise" relationship matrices
+# rather than a "population-wise" relationship matrix.
 # @param pedobj A PyPedal pedigree object.
 # @retval A dictionary of results, including the effective founder number.
 def effective_founders_lacy(pedobj):
     """
     Calculate the number of effective founders in a pedigree using the exact method of Lacy.
+    :param pedobj: A PyPedal pedigree object.
+    :return: A dictionary of results, including the effective founder number.
     """
-    try: logging.info('Entered effective_founders_lacy()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Entered effective_founders_lacy()')
+
     caller = 'pyp_metrics.effective_founders_lacy'
     out_dict = {}
 
     # founder_descendants is expecting a renumbered pedigree.
-#     print 'pedobj.kw[\'pedigree_is_renumbered\'] = %s' % ( pedobj.kw['pedigree_is_renumbered'] )
-    if pedobj.kw['pedigree_is_renumbered'] == 0:
-#         print '[NOTE]: The pedigree passed to pyp_metrics/effective_founders_lacy() is not renumbered!  Fixing...'
-        pedobj.kw['renumber'] = 1
+    # print 'pedobj.kw[\'pedigree_is_renumbered\'] = %s' % ( pedobj.kw['pedigree_is_renumbered'] )
+    if not pedobj.kw['pedigree_is_renumbered']:
+        if pedobj.kw['debug_messages']:
+            print '[NOTE]: The pedigree passed to pyp_metrics/effective_founders_lacy() is not renumbered! Fixing...'
         pedobj.renumber()
+        pedobj.kw['renumber'] = True        # Set this last in case renumbering fails to avoid inconsistent state.
     else:
-#         print '[NOTE]: The pedigree passed to pyp_metrics/effective_founders_lacy() is renumbered!'
+        if pedobj.kw['debug_messages']:
+            print '[NOTE]: The pedigree passed to pyp_metrics/effective_founders_lacy() is renumbered!'
         pass
 
     _f_peds = founder_descendants(pedobj)
@@ -269,26 +274,25 @@ def effective_founders_lacy(pedobj):
         # Note that the "pedigrees" returned by founder_descendants are really
         # just dictionaries of dictionaries.  We need to form real pedigrees from
         # them before we can continue.
-        #print 'Working on animal %s' % ( pedobj.idmap[f] )
-        l = len(_f_peds[f])
+        # print 'Working on animal %s' % ( pedobj.idmap[f] )
+        # lenped = len(_f_peds[f])
         _r = []
-        for _k,_v in _f_peds[f].iteritems():
+        for _k, _v in _f_peds[f].iteritems():
             _r.append(copy.deepcopy(pedobj.pedigree[int(_k)-1]))
         # Don't forget to add the founder to the pedigree!
         _r.append(copy.deepcopy(pedobj.pedigree[int(pedobj.idmap[f])-1]))
-        _tag = '%s_%s' % (pedobj.kw['filetag'],pedobj.idmap[f])
-        _r = pyp_utils.fast_reorder(_r,_tag)      # Reorder the pedigree
-        _s = pyp_utils.renumber(_r,_tag)          # Renumber the pedigree
+        _tag = '%s_%s' % (pedobj.kw['filetag'], pedobj.idmap[f])
+        _r = pyp_utils.fast_reorder(_r, _tag)       # Reorder the pedigree
+        _s = pyp_utils.renumber(_r, _tag)           # Renumber the pedigree
         _opts = copy.deepcopy(pedobj.kw)
         _opts['filetag'] = _tag
-        _a = pyp_nrm.fast_a_matrix(_s,_opts)       # Form the NRM w/the tabular method
-        #_a = pyp_nrm.fast_a_matrix(_s,_tag)       # Form the NRM w/the tabular method
-        _map = pyp_utils.load_id_map(_tag)        # Load the ID map from the renumbering
-                                                # procedure so that the CoIs are assigned
-                                                # to the correct animals.
+        _a = pyp_nrm.fast_a_matrix(_s, _opts)       # Form the NRM w/the tabular method
+        _map = pyp_utils.load_id_map(_tag)          # Load the ID map from the renumbering
+                                                    # procedure so that the CoIs are assigned
+                                                    # to the correct animals.
         # We are going to sum over each slice to get the (unweighted) founder
         # contribution associated with founder f.
-        _f_contribs[f] = _a[0,1:].sum()
+        _f_contribs[f] = _a[0, 1:].sum()
         _f_contribs_sum = _f_contribs_sum + _f_contribs[f]
         # Clean up the subpedigree ID maps that we are not going to use again.
         pyp_utils.delete_id_map(_tag)
@@ -302,31 +306,31 @@ def effective_founders_lacy(pedobj):
             _f_contribs_weighted[_k] = _v / _f_contribs_sum
         except ZeroDivisionError:
             _f_contribs_weighted[_k] = 0.0
-        _f_contribs_weighted_sum_sq = _f_contribs_weighted_sum_sq + ( _f_contribs_weighted[_k] ** 2 )
+        _f_contribs_weighted_sum_sq = _f_contribs_weighted_sum_sq + (_f_contribs_weighted[_k] ** 2)
     try:
         _f_e = 1. / _f_contribs_weighted_sum_sq
     except ZeroDivisionError:
         _f_e = 0.0
 
     if pedobj.kw['messages'] == 'verbose':
-        print '\tFounder contributions: %s' % (_f_contribs)
-        print '\tProportional founder contributions: %s' % (_f_contribs_weighted)
-        print '\tSum of founder contributions: %s' % (_f_contribs_sum)
-        print '\tSum of squared proportional founder contributions: %s' % (_f_contribs_weighted_sum_sq)
-        print 'Effective founder number (f_e): %s' % (_f_e)
+        print '\tFounder contributions: %s' % _f_contribs
+        print '\tProportional founder contributions: %s' % _f_contribs_weighted
+        print '\tSum of founder contributions: %s' % _f_contribs_sum
+        print '\tSum of squared proportional founder contributions: %s' % _f_contribs_weighted_sum_sq
+        print 'Effective founder number (f_e): %s' % _f_e
 
     # write some output to a file for later use
-    outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_fe_lacy','.dat')
-    aout = open(outputfile,'w')
-    pyp_io.pyp_file_header(aout,caller)
+    outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_fe_lacy', '.dat')
+    aout = open(outputfile, 'w')
+    pyp_io.pyp_file_header(aout, caller)
     aout.write('%s animals in pedigree\n' % (len(pedobj.pedigree)))
     aout.write('%s founders: %s\n' % (pedobj.metadata.num_unique_founders,pedobj.metadata.unique_founder_list))
-    aout.write('Founder contributions: %s\n' % (_f_contribs))
-    aout.write('Proportional founder contributions: %s\n' % (_f_contribs_weighted))
-    aout.write('Sum of founder contributions: %s\n' % (_f_contribs_sum))
-    aout.write('Sum of squared proportional founder contributions: %s\n' % (_f_contribs_weighted_sum_sq))
-    aout.write('Effective founder number: %s\n' % (_f_e))
-    pyp_io.pyp_file_footer(aout,caller)
+    aout.write('Founder contributions: %s\n' % _f_contribs)
+    aout.write('Proportional founder contributions: %s\n' % _f_contribs_weighted)
+    aout.write('Sum of founder contributions: %s\n' % _f_contribs_sum)
+    aout.write('Sum of squared proportional founder contributions: %s\n' % _f_contribs_weighted_sum_sq)
+    aout.write('Effective founder number: %s\n' % _f_e)
+    pyp_io.pyp_file_footer(aout, caller)
     aout.close()
 
     out_dict['fa_animal_count'] = len(pedobj.pedigree)
@@ -334,11 +338,11 @@ def effective_founders_lacy(pedobj):
     out_dict['fa_descendant_count'] = len(pedobj.pedigree) - pedobj.metadata.num_unique_founders
     out_dict['fa_effective_founders'] = _f_e
 
-    try: logging.info('Exited effective_founders_lacy()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Exited effective_founders_lacy()')
 
-    #return _f_e
     return out_dict
+
 
 ##
 # a_effective_founders_boichard() uses the algorithm in Appendix A of Boichard et al.
@@ -358,15 +362,21 @@ def a_effective_founders_boichard(pedobj, a='', gen=''):
     a_effective_founders_boichard() implements that algorithm (successfully, I hope).
     Note that answers from this function will not necessarily match those from
     a_effective_founders_lacy().
+    :param pedobj: A PyPedal pedigree object.
+    :param a: A numerator relationship matrix (optional).
+    :param gen: Generation of interest.
+    :return: A dictionary of results, including the effective founder number.
     """
-    try: logging.info('Entered a_effective_founders_boichard()')
-    except: pass
+
+    if pedobj.kw['debug_messages']:
+        logging.info('Entered a_effective_founders_boichard()')
+
     if not a:
         try:
             a = pyp_nrm.fast_a_matrix(pedobj.pedigree,pedobj.kw)
         except:
             return -999.9
-    l = len(pedobj.pedigree)
+    lenped = len(pedobj.pedigree)
     # count founders and descendants
     n_f = 0
     n_d = 0
@@ -374,20 +384,19 @@ def a_effective_founders_boichard(pedobj, a='', gen=''):
     ds = []
     gens = []
     ngen = 0    # number of individuals in the most recent generation
-    mp = str(pedobj.kw['missing_parent'])
     # loop through the pedigree quickly and count founders and descendants
     # also, make a list of generations present in the pedigree
-    for i in range(l):
+    for i in range(lenped):
         animalid = int(pedobj.pedigree[i].animalID)
-        if pedobj.pedigree[i].founder == 'y' and str(animalid) != mp:
+        if pedobj.pedigree[i].founder == 'y' and str(animalid) != str(pedobj.kw['missing_parent']):
             n_f = n_f + 1
             fs.append(animalid)
-        elif animalid != mp:
+        elif animalid != str(pedobj.kw['missing_parent']):
             n_d = n_d + 1
             ds.append(animalid)
         else:
             pass
-        #g = int(pedobj.pedigree[i].gen)
+        # g = int(pedobj.pedigree[i].gen)
         g = pedobj.pedigree[i].gen
         if g in gens:
             pass
@@ -396,9 +405,9 @@ def a_effective_founders_boichard(pedobj, a='', gen=''):
     # OK - now we have a list of generations sorted in reverse (descending) order
     gens.sort()
     gens.reverse()
-    #print 'gens : %s' % (gens)
-    #print 'fs : %s' % (fs)
-    #print 'ds : %s' % (ds)
+    # print 'gens : %s' % (gens)
+    # print 'fs : %s' % (fs)
+    # print 'ds : %s' % (ds)
     # make a copy of pedobj.pedigree
     tempped = pedobj.pedigree[:]
     # reverse the elements of tempped in place
@@ -407,10 +416,10 @@ def a_effective_founders_boichard(pedobj, a='', gen=''):
     # form q, a vector of that will contain the probabilities of gene origin when we are done
     # We are going to initialize a vector of numpy.zeros to form q, and then we will add ones to q that
     # correspond to members of the youngest generation.
-    q = numpy.zeros([l],'d')
-    for i in range(l):
+    q = numpy.zeros([lenped], 'd')
+    for i in range(lenped):
         # If the user did not explicitly ask for an analysis of a particular generation then use
-    # the most recent generation.
+        # the most recent generation.
         if not gen:
             gen = gens[0]
         if pedobj.pedigree[i].gen == gens[0]:
@@ -420,87 +429,86 @@ def a_effective_founders_boichard(pedobj, a='', gen=''):
             ngen = ngen + 1
         else:
             pass
-    #print 'DEBUG (e_f_b): q : %s' % (q)
+    # print 'DEBUG (e_f_b): q : %s' % (q)
     # loop through the pedigree and form the final version of q (the vector of
     # individual contributions)
-    for i in range(l):
+    for i in range(lenped):
         animalid = int(tempped[i].animalID)
         sireid = int(tempped[i].sireID)
         damid = int(tempped[i].damID)
-        if sireid == mp and damid == mp:
+        if sireid == str(pedobj.kw['missing_parent']) and damid == str(pedobj.kw['missing_parent']):
             # both parents unknown
             pass
-        elif str(sireid) == mp:
+        elif str(sireid) == str(pedobj.kw['missing_parent']):
             # sire unknown, dam known
             q[i] = q[animalid-1] * 0.5
             q[damid-1] = q[damid-1] + (0.5 * q[animalid-1])
-        elif str(damid) == mp:
+        elif str(damid) == str(pedobj.kw['missing_parent']):
             # sire known, dam unknown
-            q[animalid-1] * 0.5
+            q[i] = q[animalid-1] * 0.5
             q[sireid-1] = q[sireid-1] + (0.5 * q[animalid-1])
         else:
             # both parents known
             q[sireid-1] = q[sireid-1] + (0.5 * q[animalid-1])
             q[damid-1] = q[damid-1] + (0.5 * q[animalid-1])
-    #print q
+    # print q
     # divide the elements of q by the number of individuals in the pedigree.  this should
     # ensure that the founder contributions sum to 1.
     q = q / ngen
-    #print 'DEBUG (e_f_b): q : %s' % (q)
+    # print 'DEBUG (e_f_b): q : %s' % (q)
     # accumulate the sum of squared founder contributions
     sum_sq = 0.
     sum_fn = 0.
-    #print fs
+    # print fs
     for i in fs:
-        sum_sq = sum_sq + ( q[i-1] * q[i-1] )
+        sum_sq = sum_sq + (q[i-1] * q[i-1])
         sum_fn = sum_fn + q[i-1]
-    #print '='*60
-    #print 'sum_fn:\t%s' % (sum_fn)
-    #print 'sum_sq:\t%s' % (sum_sq)
+    # print '='*60
+    # print 'sum_fn:\t%s' % (sum_fn)
+    # print 'sum_sq:\t%s' % (sum_sq)
     if sum_sq == 0.:
         f_e = 0.
     else:
         f_e = 1. / sum_sq
     if pedobj.kw['messages'] == 'verbose':
         print '='*60
-        print 'animals:\t%s' % (l)
-        print 'founders:\t%s' % (n_f)
-        print 'descendants:\t%s' % (n_d)
-        print 'f_e:\t\t%5.3f' % (f_e)
+        print 'animals:\t%s' % lenped
+        print 'founders:\t%s' % n_f
+        print 'descendants:\t%s' % n_d
+        print 'f_e:\t\t%5.3f' % f_e
         print '='*60
 
     # write some output to a file for later use
-    outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_fe_boichard_','.dat')
-    aout = open(outputfile,'w')
+    outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_fe_boichard_', '.dat')
+    aout = open(outputfile, 'w')
     line = '='*60+'\n'
     aout.write('%s\n' % line)
     aout.write('q: %s\n' % q)
-    aout.write('%s founders: %s\n' % (n_f,fs))
-    aout.write('%s descendants: %s\n' % (n_d,ds))
+    aout.write('%s founders: %s\n' % (n_f, fs))
+    aout.write('%s descendants: %s\n' % (n_d, ds))
     aout.write('generations: %s\n' % gens)
-    aout.write('%s animals in generation %s\n' % (ngen,gens[0]))
+    aout.write('%s animals in generation %s\n' % (ngen, gens[0]))
     aout.write('effective number of founders: %s\n' % f_e)
     aout.write('%s\n' % line)
     aout.close()
 
-    try: logging.info('Exited a_effective_founders_boichard()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Exited a_effective_founders_boichard()')
+
     return f_e
 
+
 ##
-# a_effective_ancestors_definite() uses the algorithm in Appendix B of Boichard et al.
-# (1996) to compute the effective ancestor number for a myped pedigree.
-# NOTE: One problem here is that if you pass a pedigree WITHOUT generations an error
-# is not thrown.  You simply end up wth a list of generations that contains the default
-# value for Animal() objects, 0.
-# Boichard's algorithm requires information about the GENERATION of animals.  If you
-# do not provide an input pedigree with generations things may not work.  By default
-# the most recent generation -- the generation with the largest generation ID -- will
-# be used as the reference population.
+# a_effective_ancestors_definite() uses the algorithm in Appendix B of Boichard et al. (1996) to compute the effective
+# ancestor number for a myped pedigree. NOTE: One problem here is that if you pass a pedigree WITHOUT generations an
+# error is not thrown. You simply end up wth a list of generations that contains the default value for Animal() objects,
+# 0. Boichard's algorithm requires information about the GENERATION of animals.  If you do not provide an input pedigree
+# with generations things may not work. By default the most recent generation -- the generation with the largest
+# generation ID -- will be used as the reference population.
 # @param pedobj A PyPedal pedigree object.
 # @param a A numerator relationship matrix (optional).
 # @param gen Generation of interest.
-# @retval The effective ancestor number.
+# @retval The effective ancestor number, False on failure.
 def a_effective_ancestors_definite(pedobj, a='', gen=''):
     """
     The algorithm in Appendix B of Boichard et al. (1996) is not very well written.
@@ -509,17 +517,20 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
     NOTE: One problem here is that if you pass a pedigree WITHOUT generations an error
     is not thrown.  You simply end up wth a list of generations that contains the
     default value for Animal() objects, 0.
+    :param pedobj: A PyPedal pedigree object.
+    :param a: A numerator relationship matrix (optional).
+    :param gen: Generation of interest.
+    :return: The effective ancestor number, False on failure.
     """
-    #try:
-    logging.info('Entered a_effective_ancestors_definite()')
-    #except: pass
-    #print '='*80
+    if pedobj.kw['debug_messages']:
+        logging.info('Entered a_effective_ancestors_definite()')
+
     if not a:
         try:
-            a = pyp_nrm.fast_a_matrix(pedobj.pedigree,pedobj.kw)
+            a = pyp_nrm.fast_a_matrix(pedobj.pedigree, pedobj.kw)
         except:
-            return -999.9
-    l = len(pedobj.pedigree)  # number of animals in the pedigree file
+            return False
+    lenped = len(pedobj.pedigree)  # number of animals in the pedigree file
     # count founders and descendants
     n_f = 0     # number of founders
     n_d = 0     # number of descendants
@@ -529,23 +540,22 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
     ancestors = []  # list of ancestors already processed
     contribs = {}   # ancestor contributions
     ngen = 0        # number of individuals in the most recent generation
-    mp = str(pedobj.kw['missing_parent'])
     # Loop through the pedigree quickly and count founders and descendants
     # also, make a list of generations present in the pedigree
-    for i in range(l):
+    for i in range(lenped):
         g = pedobj.pedigree[i].gen
         if g in gens:
             pass
         else:
             gens.append(g)
     gens.sort()
-    #print '[DEBUG]: gens: %s' % (gens)
+    # print '[DEBUG]: gens: %s' % gens
     if int(gens[-1]) == -999:
-        #try:
-        logging.warning('pyp_metrics/a_effective_ancestors_definite() assumes that generations are defined in the pedigree.  That is not the case with %s.  Solutions from this routine may be inaccurate or nonsensical.', pedobj.kw['pedname'])
-        #except: pass
-    for i in range(l):
-        #print 'DEBUG: Animal: %s\tGen: %s' % (pedobj.pedigree[i].animalID,pedobj.pedigree[i].gen)
+        logging.warning('pyp_metrics/a_effective_ancestors_definite() assumes that generations are defined in the '
+                        'pedigree. That is not the case with %s. Solutions from this routine may be inaccurate or '
+                        'nonsensical.', pedobj.kw['pedname'])
+    for i in range(lenped):
+        # print 'DEBUG: Animal: %s\tGen: %s' % (pedobj.pedigree[i].animalID, pedobj.pedigree[i].gen)
         if pedobj.pedigree[i].gen != gens[len(gens)-1]:
             n_f = n_f + 1
             fs.append(int(pedobj.pedigree[i].animalID))
@@ -555,8 +565,8 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
     # OK - now we have a list of generations sorted in reverse (descending) order
     ngen = len(gens)
     gens.sort()
-    #print 'DEBUG: gens: %s' % (gens)
-    #print 'DEBUG: ancestors: %s' % (fs)
+    # print 'DEBUG: gens: %s' % gens
+    # print 'DEBUG: ancestors: %s' % fs
     gens.reverse()
     # make a copy of pedobj.pedigree - note that tempped = pedobj.pedigree would only have created a reference to
     # pedobj.pedigree, not an actual separate copy of pedobj.pedigree.
@@ -567,38 +577,38 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
     # We are going to initialize a vector of numpy.zeros to form q, and then we will add ones to q that
     # correspond to members of the youngest generation.
     younglist = []
-    q = numpy.zeros([l],'d')
-    for i in range(l):
+    q = numpy.zeros([lenped], 'd')
+    for i in range(lenped):
         # If the user did not explicitly ask for an analysis of a particular generation then use
         # the most recent generation.
         if not gen:
             gen = gens[0]
-        #print 'DEBUG: Most recent generation = %s' % (gen)
+        # print 'DEBUG: Most recent generation = %s' % gen
         if pedobj.pedigree[i].gen == gen:
             q[i] = 1.
             younglist.append(pedobj.pedigree[i].animalID)
     ngen = len(younglist)
-    #print 'DEBUG: Young animals (n=%s) = %s' % (ngen,younglist)
+    # print 'DEBUG: Young animals (n=%s) = %s' % (ngen, younglist)
     #
     # Algorithm B, Step 1
     #
-    #print 'DEBUG: q : %s' % (q)
+    # print 'DEBUG: q : %s' % q
     # loop through the pedigree and form the final version of q (the vector of
     # individual contributions)
-    for i in range(l):
+    for i in range(lenped):
         animalid = int(tempped[i].animalID)
         sireid = int(tempped[i].sireID)
         damid = int(tempped[i].damID)
-        if str(sireid) == mp and str(damid) == mp:
+        if str(sireid) == str(pedobj.kw['missing_parent']) and str(damid) == str(pedobj.kw['missing_parent']):
             # both parents unknown
             pass
-        elif str(sireid) == mp:
+        elif str(sireid) == str(pedobj.kw['missing_parent']):
             # sire unknown, dam known
             q[i] = q[animalid-1] * 0.5
             q[damid-1] = q[damid-1] + (0.5 * q[animalid-1])
-        elif str(damid) == mp:
+        elif str(damid) == str(pedobj.kw['missing_parent']):
             # sire known, dam unknown
-            q[animalid-1] * 0.5
+            q[i] = q[animalid-1] * 0.5
             q[sireid-1] = q[sireid-1] + (0.5 * q[animalid-1])
         else:
             # both parents known
@@ -608,149 +618,155 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
     # ensure that the founder contributions sum to 1.
     for y in younglist:
         q[int(y)-1] = 0.
-    #print 'DEBUG: Uncorrected q: %s' % (q)
+    # print 'DEBUG: Uncorrected q: %s' % q
     q = q / ngen
-    #print 'DEBUG: q: %s' % (q)
+    # print 'DEBUG: q: %s' % q
 
     # Find largest value of q
     max_p_index = numpy.argmax(q)
     max_p = q[max_p_index]
-    #print 'DEBUG: Animal %s had the largest marginal contribution (%s) (index: %s) this round.' % (tempped[l-max_p_index-1].animalID,max_p,max_p_index)
+    # print 'DEBUG: Animal %s had the largest marginal contribution (%s) (index: %s) this round.' % \
+    #       (tempped[l-max_p_index-1].animalID, max_p,max_p_index)
     contribs[pedobj.pedigree[max_p_index].animalID] = max_p
     picked = []
-    picked.append(l-max_p_index-1)
-    #print '\t\tWas sire: %s, dam %s' % (tempped[l-max_p_index-1].sireID,tempped[l-max_p_index-1].damID)
-    tempped[l-max_p_index-1].sireID = pedobj.kw['missing_parent']          # delete sire in pedobj.pedigree (forward order)
-    tempped[l-max_p_index-1].damID = pedobj.kw['missing_parent']           # delete dam in pedobj.pedigree (forward order)
-    #print '\t\tNow sire: %s, dam %s' % (tempped[l-max_p_index-1].sireID,tempped[l-max_p_index-1].damID)
-    ancestors.append(pedobj.pedigree[max_p_index].animalID)   # add the animal with largest q to the
-                                                    # list of ancestors
+    picked.append(lenped-max_p_index-1)
+    # print '\t\tWas sire: %s, dam %s' % (tempped[lenped-max_p_index-1].sireID, tempped[lenped-max_p_index-1].damID)
+    tempped[lenped-max_p_index-1].sireID = pedobj.kw['missing_parent']      # delete sire in pedobj.pedigree
+                                                                            # (forward order)
+    tempped[lenped-max_p_index-1].damID = pedobj.kw['missing_parent']       # delete dam in pedobj.pedigree
+                                                                            # (forward order)
+    # print '\t\tNow sire: %s, dam %s' % (tempped[lenped-max_p_index-1].sireID,tempped[lenped-max_p_index-1].damID)
+    ancestors.append(pedobj.pedigree[max_p_index].animalID)         # add the animal with largest q to the
+                                                                    # list of ancestors
 
     for j in range(n_f-1):
-        #print '-'*60
-
         # form q, the vector of contributions we are going to use
-        q = numpy.zeros([l],'d')
-        a = numpy.zeros([l],'d')
-        for i in range(l):
+        q = numpy.zeros([lenped], 'd')
+        a = numpy.zeros([lenped], 'd')
+        for i in range(lenped):
             if pedobj.pedigree[i].gen == gens[0]:
                 q[int(pedobj.pedigree[i].animalID)-1] = 1.
         for j in ancestors:
             a[int(j)-1] = 1.
-        #print 'DEBUG: a: %s' % (a)
+        # print 'DEBUG: a: %s' % a
 
         # Loop through pedigree to process q
-        #-- q must be processed from YOUNGEST to OLDEST
+        # q must be processed from YOUNGEST to OLDEST
         for i in range(len(tempped)):
-            if int(tempped[i].sireID) == pedobj.kw['missing_parent'] and int(tempped[i].damID) == pedobj.kw['missing_parent']:
+            if str(tempped[i].sireID) == str(pedobj.kw['missing_parent']) and \
+                    str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                 # both parents unknown
                 pass
-            elif int(tempped[i].sireID) == pedobj.kw['missing_parent']:
+            elif str(tempped[i].sireID) == str(pedobj.kw['missing_parent']):
                 # sire unknown, dam known
                 q[int(tempped[i].damID)-1] = q[int(tempped[i].damID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
-            elif int(tempped[i].damID) == pedobj.kw['missing_parent']:
+            elif str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                 # sire known, dam unknown
                 q[int(tempped[i].sireID)-1] = q[int(tempped[i].sireID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
             else:
                 # both parents known
                 q[int(tempped[i].sireID)-1] = q[int(tempped[i].sireID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
                 q[int(tempped[i].damID)-1] = q[int(tempped[i].damID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
-        #-- a must be processed from OLDEST to YOUNGEST
+        # a must be processed from OLDEST to YOUNGEST
         tempped.reverse()
         for i in range(len(tempped)):
-            #print '[DEBUG]: animal: %s, sire: %s, dam %s' % (tempped[i].animalID,tempped[i].sireID,tempped[i].damID)
-            if int(tempped[i].sireID) == pedobj.kw['missing_parent'] and int(tempped[i].damID) == pedobj.kw['missing_parent']:
+            # print '[DEBUG]: animal: %s, sire: %s, dam %s' % (tempped[i].animalID, tempped[i].sireID, tempped[i].damID)
+            if str(tempped[i].sireID) == str(pedobj.kw['missing_parent']) and \
+                    str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                 # both parents unknown
                 pass
-            elif int(tempped[i].sireID) == pedobj.kw['missing_parent']:
+            elif str(tempped[i].sireID) == str(pedobj.kw['missing_parent']):
                 # sire unknown, dam known
-                a[i] = a[i] + ( 0.5 * a[int(pedobj.pedigree[i].damID)-1] )
-            elif int(tempped[i].damID) == pedobj.kw['missing_parent']:
+                a[i] = a[i] + (0.5 * a[int(pedobj.pedigree[i].damID)-1])
+            elif str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                 # sire known, dam unknown
-                a[i] = a[i] + ( 0.5 * a[int(tempped[i].sireID)-1] )
+                a[i] = a[i] + (0.5 * a[int(tempped[i].sireID)-1])
             else:
                 # both parents known
-                a[i] = a[i] + ( 0.5 * a[int(tempped[i].sireID)-1] )
-                a[i] = a[i] + ( 0.5 * a[int(tempped[i].damID)-1] )
+                a[i] = a[i] + (0.5 * a[int(tempped[i].sireID)-1])
+                a[i] = a[i] + (0.5 * a[int(tempped[i].damID)-1])
         tempped.reverse()
         for y in younglist:
-                q[int(y)-1] = 0.
+            q[int(y)-1] = 0.
 
-        #print 'DEBUG: post q: %s' % (q)
-        #print 'DEBUG: post a: %s' % (a)
+        # print 'DEBUG: post q: %s' % q
+        # print 'DEBUG: post a: %s' % a
         # Loop through the pedigree to process p
-        p = numpy.zeros([l],'d')
-        for i in range(l):
-            p[i] = q[i] * ( 1. - a[i] )
-            #print 'DEBUG: p[%s] = q[%s]*(1.-a[%s]) = %s*(1-%s) = %s' % (i,i,i,q[i],a[i],p[i]/ngen)
+        p = numpy.zeros([lenped], 'd')
+        for i in range(lenped):
+            p[i] = q[i] * (1. - a[i])
+            # print 'DEBUG: p[%s] = q[%s]*(1.-a[%s]) = %s*(1-%s) = %s' % (i, i, i, q[i], a[i], p[i]/ngen)
         p = p / ngen
 
         # Find largest p
         p_temp = p[:]
-        #print 'DEBUG: p_temp: %s' % (p_temp)
+        # print 'DEBUG: p_temp: %s' % p_temp
         for y in younglist:
             p_temp[int(y)-1] = -1.
         p_temp = p_temp[::-1]
-        #print 'DEBUG: picked: %s' % (picked)
+        # print 'DEBUG: picked: %s' % picked
         for c in picked:
             p_temp[int(c)] = -1.
-            #print 'DEBUG: p_temp: %s' % (p_temp)
+            # print 'DEBUG: p_temp: %s' % p_temp
             max_p_index = numpy.argmax(p_temp)
             max_p = p_temp[max_p_index]
-        #print 'DEBUG: Animal %s had the largest marginal contribution (%s) this round.' % (tempped[max_p_index].animalID,max_p)
+        # print 'DEBUG: Animal %s had the largest marginal contribution (%s) this round.' % \
+        #       (tempped[max_p_index].animalID, max_p)
         contribs[tempped[max_p_index].animalID] = max_p
         picked.append(max_p_index)
 
         # Delete the pedigree info for the animal with largest q
-        #print 'DEBUG: Deleting parent information for animal %s' % (tempped[max_p_index].animalID)
-        #print '\t\tWas sire: %s, dam %s' % (tempped[max_p_index].sireID,tempped[max_p_index].damID)
-        tempped[max_p_index].sireID = pedobj.kw['missing_parent']          # delete sire in pedobj.pedigree (forward order)
-        tempped[max_p_index].damID = pedobj.kw['missing_parent']           # delete dam in pedobj.pedigree (forward order)
-        #print '\t\tNow sire: %s, dam %s' % (tempped[max_p_index].sireID,tempped[max_p_index].damID)
-        ancestors.append(tempped[max_p_index].animalID)   # add the animal with largest q to the
-                                                        # list of ancestors
-        #print '[DEBUG]: ancestors: %s' % (ancestors)
-
-    #print '[DEBUG]: contribs: %s' % (contribs)
+        # print 'DEBUG: Deleting parent information for animal %s' % (tempped[max_p_index].animalID)
+        # print '\t\tWas sire: %s, dam %s' % (tempped[max_p_index].sireID,tempped[max_p_index].damID)
+        tempped[max_p_index].sireID = pedobj.kw['missing_parent']       # delete sire in pedobj.pedigree
+                                                                        # (forward order)
+        tempped[max_p_index].damID = pedobj.kw['missing_parent']        # delete dam in pedobj.pedigree
+                                                                        # (forward order)
+        # print '\t\tNow sire: %s, dam %s' % (tempped[max_p_index].sireID,tempped[max_p_index].damID)
+        ancestors.append(tempped[max_p_index].animalID)     # add the animal with largest q to the
+                                                            # list of ancestors
+        # print '[DEBUG]: ancestors: %s' % (ancestors)
+    # print '[DEBUG]: contribs: %s' % (contribs)
     sum_p_sq = 0.
     for i in contribs.values():
-        sum_p_sq = sum_p_sq + ( i * i )
+        sum_p_sq = sum_p_sq + (i * i)
     try:
         f_a = 1. / sum_p_sq
     except:
         f_a = 0.0
     if pedobj.kw['messages'] == 'verbose':
         print '='*60
-        print 'animals:\t%s' % (l)
-        print 'ancestors:\t%s' % (n_f)
-        print 'descendants:\t%s' % (n_d)
-        print 'f_a:\t\t%5.3f' % (f_a)
+        print 'animals:\t%s' % lenped
+        print 'ancestors:\t%s' % n_f
+        print 'descendants:\t%s' % n_d
+        print 'f_a:\t\t%5.3f' % f_a
         print '='*60
-    if pedobj.kw['debug_messages'] == 'verbose':
-        print 'generations: %s' % (gens)
-        print '%s animals in generation %s' % (ngen,gen)
-        print 'ancestors: %s' % (ancestors)
-        print 'ancestor contributions: %s' % (contribs)
-        print 'DEBUG: f_a: %s' % (f_a)
+    if pedobj.kw['messages'] == 'verbose':
+        print 'generations: %s' % gens
+        print '%s animals in generation %s' % (ngen, gen)
+        print 'ancestors: %s' % ancestors
+        print 'ancestor contributions: %s' % contribs
+        print 'DEBUG: f_a: %s' % f_a
     # write some output to a file for later use
-    outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_fa_boichard_definite_','.dat')
-    aout = open(outputfile,'w')
+    outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_fa_boichard_definite_', '.dat')
+    aout = open(outputfile, 'w')
     line = '='*60+'\n'
     aout.write('%s\n' % line)
-    aout.write('%s ancestors: %s\n' % (n_f,fs))
-    aout.write('%s descendants: %s\n' % (n_d,ds))
+    aout.write('%s ancestors: %s\n' % (n_f, fs))
+    aout.write('%s descendants: %s\n' % (n_d, ds))
     aout.write('generations: %s\n' % gens)
-    aout.write('%s animals in generation %s\n' % (ngen,gens[0]))
+    aout.write('%s animals in generation %s\n' % (ngen, gens[0]))
     aout.write('effective number of ancestors: %s\n' % f_a)
     aout.write('ancestors: %s\n' % ancestors)
     aout.write('ancestor contributions: %s\n' % contribs)
     aout.write('%s\n' % line)
     aout.close()
 
-    #try:
-    logging.info('Exited a_effective_ancestors_definite()')
-    #except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Exited a_effective_ancestors_definite()')
+
     return f_a
+
 
 ##
 # a_effective_ancestors_indefinite() uses the approach outlined on pages 9 and 10 of
@@ -771,22 +787,29 @@ def a_effective_ancestors_definite(pedobj, a='', gen=''):
 # @param a A numerator relationship matrix (optional).
 # @param gen Generation of interest.
 # @param n The number of rounds to iterate for solutions.
-# @retval The effective ancestor number.
+# @retval The effective ancestor number, or False on failure.
 def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     """
     a_effective_ancestors_indefinite() uses the approach outlined on pages 9 and 10 of
     Boichard et al. (1996) to compute approximate upper and lower bounds for f_a.  This
     is much more tractable for large pedigrees than the exact computation provided in
     a_effective_ancestors_definite().
+    :param pedobj: A PyPedal pedigree object.
+    :param a: A numerator relationship matrix (optional).
+    :param gen: Generation of interest.
+    :param n: The number of rounds to iterate for solutions.
+    :return: The effective ancestor number, or False on failure.
     """
-    try: logging.info('Entered a_effective_ancestors_indefinite()')
-    except: pass
+
+    if pedobj.kw['debug_messages']:
+        logging.info('Entered a_effective_ancestors_indefinite()')
+
     if not a:
         try:
-            a = pyp_nrm.fast_a_matrix(pedobj.pedigree,pedobj.kw)
+            a = pyp_nrm.fast_a_matrix(pedobj.pedigree, pedobj.kw)
         except:
-            return -999.9, -999.9
-    l = len(pedobj.pedigree)  # number of animals in the pedigree file
+            return False
+    lenped = len(pedobj.pedigree)  # number of animals in the pedigree file
     # count founders and descendants
     n_f = 0     # number of founders
     n_d = 0     # number of descendants
@@ -798,7 +821,7 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     ngen = 0        # number of individuals in the most recent generation
     # Loop through the pedigree quickly and count founders and descendants
     # also, make a list of generations present in the pedigree
-    for i in range(l):
+    for i in range(lenped):
         g = pedobj.pedigree[i].gen
         if g in gens:
             pass
@@ -808,7 +831,7 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     # 05/15/2018: This code is supposed to quickly count founders and descendants, but it's not actually doing that.
     #             What it's really doing is counting the number of animals in the earliest generation and calling
     #             them founders, while all other animals are labeled as descendants.
-    for i in range(l):
+    for i in range(lenped):
         if pedobj.pedigree[i].gen != gens[len(gens)-1]:
             n_f = n_f + 1
             fs.append(int(pedobj.pedigree[i].animalID))
@@ -828,8 +851,8 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     # We are going to initialize a vector of numpy.zeros to form q, and then we will add ones to q that
     # correspond to members of the youngest generation.
     younglist = []
-    q = numpy.zeros([l],'d')
-    for i in range(l):
+    q = numpy.zeros([lenped], 'd')
+    for i in range(lenped):
         # If the user did not explicitly ask for an analysis of a particular generation then use
         # the most recent generation.
         if not gen:
@@ -840,17 +863,18 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     ngen = len(younglist)
     # loop through the pedigree and form the final version of q (the vector of
     # individual contributions)
-    for i in range(l):
-        if tempped[i].sireID == pedobj.kw['missing_parent'] and tempped[i].damID == pedobj.kw['missing_parent']:
+    for i in range(lenped):
+        if str(tempped[i].sireID) == str(pedobj.kw['missing_parent']) and \
+                str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
             # both parents unknown
             pass
-        elif tempped[i].sireID == pedobj.kw['missing_parent']:
+        elif str(tempped[i].sireID) == str(pedobj.kw['missing_parent']):
             # sire unknown, dam known
             q[i] = q[tempped[i].animalID-1] * 0.5
             q[tempped[i].damID-1] = q[tempped[i].damID-1] + (0.5 * q[tempped[i].animalID-1])
-        elif tempped[i].damID == pedobj.kw['missing_parent']:
+        elif str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
             # sire known, dam unknown
-            q[tempped[i].animalID-1] * 0.5
+            q[i] = q[tempped[i].animalID-1] * 0.5
             q[tempped[i].sireID-1] = q[tempped[i].sireID-1] + (0.5 * q[tempped[i].animalID-1])
         else:
             # both parents known
@@ -867,20 +891,23 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     max_p = q[max_p_index]
     contribs[pedobj.pedigree[max_p_index].animalID] = max_p
     picked = []
-    picked.append(l-max_p_index-1)
-    tempped[l-max_p_index-1].sireID = pedobj.kw['missing_parent']          # delete sire in pedobj.pedigree (forward order)
-    tempped[l-max_p_index-1].damID = pedobj.kw['missing_parent']           # delete dam in pedobj.pedigree (forward order)
-    ancestors.append(pedobj.pedigree[max_p_index].animalID)                # add the animal with largest q to the
-                                                                           # list of ancestors
+    picked.append(lenped-max_p_index-1)
+    tempped[lenped-max_p_index-1].sireID = pedobj.kw['missing_parent']          # delete sire in pedobj.pedigree
+                                                                                # (forward order)
+    tempped[lenped-max_p_index-1].damID = pedobj.kw['missing_parent']           # delete dam in pedobj.pedigree
+                                                                                # (forward order)
+    ancestors.append(pedobj.pedigree[max_p_index].animalID)                     # add the animal with largest q to the
+                                                                                # list of ancestors
 
     # Tricky here... now we have to deal with the fact that we may not want as many contributions are there
     # are ancestors.
     print 'Number of founders in the pedigree file:    ', n
-    print 'Number of animals in the pedigree file:     ', l
+    print 'Number of animals in the pedigree file:     ', lenped
     print 'Number of descendants in the pedigree file: ', n_d
-    if n >= ( l - n_d ):
+    if n >= (lenped - n_d):
         print '-'*60
-        print 'WARNING: (pyp_metrics/a_effective_ancestors_indefinite()): Setting n (%s) to be equal to the actual number of founders (%s) in the pedigree!' % (n, n_f)
+        print 'WARNING: (pyp_metrics/a_effective_ancestors_indefinite()): Setting n (%s) to be equal to the actual ' \
+              'number of founders (%s) in the pedigree!' % (n, n_f)
         n = n - 1
     if n_f > n:
         _this_many = n
@@ -889,54 +916,56 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     for _t in range(_this_many-1):
         for j in range(n_f-1):
             # form q, the vector of contributions we are going to use
-            q = numpy.zeros([l],'d')
-            a = numpy.zeros([l],'d')
-            for i in range(l):
+            q = numpy.zeros([lenped], 'd')
+            a = numpy.zeros([lenped], 'd')
+            for i in range(lenped):
                 if pedobj.pedigree[i].gen == gens[0]:
                     q[int(pedobj.pedigree[i].animalID)-1] = 1.
             for j in ancestors:
                 a[int(j)-1] = 1.
 
             # Loop through pedigree to process q
-            #-- q must be processed from YOUNGEST to OLDEST
+            # q must be processed from YOUNGEST to OLDEST
             for i in range(len(tempped)):
-                if int(tempped[i].sireID) == pedobj.kw['missing_parent'] and int(tempped[i].damID) == pedobj.kw['missing_parent']:
+                if str(tempped[i].sireID) == str(pedobj.kw['missing_parent']) and \
+                        str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                     # both parents unknown
                     pass
-                elif int(tempped[i].sireID) == pedobj.kw['missing_parent']:
+                elif str(tempped[i].sireID) == str(pedobj.kw['missing_parent']):
                     # sire unknown, dam known
                     q[int(tempped[i].damID)-1] = q[int(tempped[i].damID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
-                elif int(tempped[i].damID) == pedobj.kw['missing_parent']:
+                elif str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                     # sire known, dam unknown
                     q[int(tempped[i].sireID)-1] = q[int(tempped[i].sireID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
                 else:
                     # both parents known
                     q[int(tempped[i].sireID)-1] = q[int(tempped[i].sireID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
                     q[int(tempped[i].damID)-1] = q[int(tempped[i].damID)-1] + (0.5 * q[int(tempped[i].animalID)-1])
-            #-- a must be processed from OLDEST to YOUNGEST
+            # a must be processed from OLDEST to YOUNGEST
             tempped.reverse()
             for i in range(len(tempped)):
-                if int(tempped[i].sireID) == pedobj.kw['missing_parent'] and int(tempped[i].damID) == pedobj.kw['missing_parent']:
+                if str(tempped[i].sireID) == str(pedobj.kw['missing_parent']) and \
+                        str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                     # both parents unknown
                     pass
-                elif int(tempped[i].sireID) == pedobj.kw['missing_parent']:
+                elif str(tempped[i].sireID) == str(pedobj.kw['missing_parent']):
                     # sire unknown, dam known
-                    a[i] = a[i] + ( 0.5 * a[int(pedobj.pedigree[i].damID)-1] )
-                elif int(tempped[i].damID) == pedobj.kw['missing_parent']:
+                    a[i] = a[i] + (0.5 * a[int(pedobj.pedigree[i].damID)-1])
+                elif str(tempped[i].damID) == str(pedobj.kw['missing_parent']):
                     # sire known, dam unknown
-                    a[i] = a[i] + ( 0.5 * a[int(tempped[i].sireID)-1] )
+                    a[i] = a[i] + (0.5 * a[int(tempped[i].sireID)-1])
                 else:
                     # both parents known
-                    a[i] = a[i] + ( 0.5 * a[int(tempped[i].sireID)-1] )
-                    a[i] = a[i] + ( 0.5 * a[int(tempped[i].damID)-1] )
+                    a[i] = a[i] + (0.5 * a[int(tempped[i].sireID)-1])
+                    a[i] = a[i] + (0.5 * a[int(tempped[i].damID)-1])
             tempped.reverse()
             for y in younglist:
                 q[int(y)-1] = 0.
 
             # Loop through the pedigree to process p
-            p = numpy.zeros([l],'d')
-            for i in range(l):
-                p[i] = q[i] * ( 1. - a[i] )
+            p = numpy.zeros([lenped], 'd')
+            for i in range(lenped):
+                p[i] = q[i] * (1. - a[i])
             p = p / ngen
 
             # Find largest p
@@ -953,14 +982,16 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
             picked.append(max_p_index)
 
             # Delete the pedigree info for the animal with largest q
-            tempped[max_p_index].sireID = pedobj.kw['missing_parent']          # delete sire in pedobj.pedigree (forward order)
-            tempped[max_p_index].damID = pedobj.kw['missing_parent']           # delete dam in pedobj.pedigree (forward order)
+            tempped[max_p_index].sireID = pedobj.kw['missing_parent']       # delete sire in pedobj.pedigree
+                                                                            # (forward order)
+            tempped[max_p_index].damID = pedobj.kw['missing_parent']        # delete dam in pedobj.pedigree
+                                                                            # (forward order)
             ancestors.append(tempped[max_p_index].animalID)     # add the animal with largest q to the
-                                        # list of ancestors
+                                                                # list of ancestors
 
     # Now compute the upper and lower bounds for f_a based on the founder contributions.
-    #print 'DEBUG: n: %s, n_f: %s' % (n, n_f)
-    #print 'DEBUG: contribs.values(): %s' % (contribs.values())
+    # print 'DEBUG: n: %s, n_f: %s' % (n, n_f)
+    # print 'DEBUG: contribs.values(): %s' % contribs.values()
     n_contrib = len(contribs.values())-1
     _c = 0.
     sum_p_sq = 0.
@@ -968,14 +999,14 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     for i in contribs.values():
         if i >= 0.0:
             _c = _c + i
-        sum_p_sq = sum_p_sq + ( i * i )
-    #print 'DEBUG: _c: %s' % (_c)
+        sum_p_sq = sum_p_sq + (i * i)
+    # print 'DEBUG: _c: %s' % _c
     try:
         if n_f <= n_f:
             _df = 1
         else:
             _df = n_f - n
-        f_u =  1. / ( sum_p_sq + ( ( (1. - _c) ** 2) / _df ) )
+        f_u =  1. / (sum_p_sq + (((1. - _c) ** 2) / _df))
     except:
         f_u = 0.
     # Compute f_l, the lower bound of f_a
@@ -984,31 +1015,31 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
         for i in contribs.values():
             _p_sq = i ** 2
             try:
-                _m = ( (1. - _c) / i )
+                _m = ((1. - _c) / i)
             except:
                 _m = 0.
-            _denom = _denom + ( _p_sq + ( _m * ( i ** 2) ) )
+            _denom = _denom + (_p_sq + (_m * (i ** 2)))
         f_l = 1. / _denom
     except:
         f_l = 0.
     if pedobj.kw['messages'] == 'verbose':
         print '='*60
-        print 'animals:\t%s' % (l)
-        print 'founders:\t%s' % (n_f)
-        print 'descendants:\t%s' % (n_d)
-        print 'f_l:\t\t%5.3f' % (f_l)
-        print 'f_u:\t\t%5.3f' % (f_u)
+        print 'animals:\t%s' % lenped
+        print 'founders:\t%s' % n_f
+        print 'descendants:\t%s' % n_d
+        print 'f_l:\t\t%5.3f' % f_l
+        print 'f_u:\t\t%5.3f' % f_u
         print '='*60
 
     # write some output to a file for later use
-    outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_fa_boichard_indefinite_','.dat')
-    aout = open(outputfile,'w')
+    outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_fa_boichard_indefinite_', '.dat')
+    aout = open(outputfile, 'w')
     line = '='*60+'\n'
     aout.write('%s\n' % line)
-    aout.write('%s founders: %s\n' % (n_f,fs))
-    aout.write('%s descendants: %s\n' % (n_d,ds))
+    aout.write('%s founders: %s\n' % (n_f, fs))
+    aout.write('%s descendants: %s\n' % (n_d, ds))
     aout.write('generations: %s\n' % gens)
-    aout.write('%s animals in generation %s\n' % (ngen,gens[0]))
+    aout.write('%s animals in generation %s\n' % (ngen, gens[0]))
     aout.write('f_l:\t\t%5.3f' % f_l)
     aout.write('f_u:\t\t%5.3f' % f_u)
     aout.write('ancestors: %s\n' % ancestors)
@@ -1016,9 +1047,10 @@ def a_effective_ancestors_indefinite(pedobj, a='', gen='', n=25):
     aout.write('%s\n' % line)
     aout.close()
 
-    try: logging.info('Exited a_effective_ancestors_indefinite()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Exited a_effective_ancestors_indefinite()')
     return f_l, f_u
+
 
 ##
 # a_coefficients() writes population average coefficients of inbreeding and
@@ -1038,24 +1070,24 @@ def a_coefficients(pedobj, a='', method='nrm'):
     -- an array that large cannot be allocated due to memory restrictions -- and will
     result in a value of -999.9 for all outputs.
     """
-    try: logging.info('Entered a_coefficients()')
-    except: pass
-    if method not in ['nrm','frm']:
+
+    if pedobj.kw['debug_messages']:
+        logging.info('Entered a_coefficients()')
+
+    if method not in ['nrm', 'frm']:
         method = 'nrm'
     if pedobj.kw['form_nrm']:
         a = pedobj.nrm.nrm
     if not pedobj.kw['form_nrm'] and not a:
         try:
             if method == 'nrm':
-                a = pyp_nrm.fast_a_matrix(pedobj.pedigree,pedobj.kw)
+                a = pyp_nrm.fast_a_matrix(pedobj.pedigree, pedobj.kw)
             else:
-                a = pyp_nrm.fast_a_matrix_r(pedobj.pedigree,pedobj.kw)
+                a = pyp_nrm.fast_a_matrix_r(pedobj.pedigree, pedobj.kw)
         except:
-            a = []
-            a.append(-999.9)
-            return a
-    #print a
-    l = len(pedobj.pedigree)
+            return False
+    # print a
+    lenped = len(pedobj.pedigree)
     f_avg = f_sum = f_n = 0.
     fnz_avg = fnz_sum = fnz_n = 0.
     r_avg = r_sum = r_n = 0.
@@ -1065,35 +1097,35 @@ def a_coefficients(pedobj, a='', method='nrm'):
     individual_coi = {}
 
     # calculate average coefficients of inbreeding
-    for row in range(l):
-        f_sum = f_sum + a[row,row] - 1.
-        f_n = f_n + 1
+    for row in range(lenped):
+        f_sum = f_sum + a[row, row] - 1.
+        f_n = f_n + 1.
     f_avg = f_sum / f_n
 
     # calculate average non-zero coefficients of inbreeding
-    for row in range(l):
-        if ( a[row,row] > 1. ):
-            fnz_sum = fnz_sum + a[row,row] - 1.
-            fnz_n = fnz_n + 1
-            individual_coi[pedobj.pedigree[row].animalID] = a[row,row]-1.
+    for row in range(lenped):
+        if a[row, row] > 1.:
+            fnz_sum = fnz_sum + a[row, row] - 1.
+            fnz_n = fnz_n + 1.
+            individual_coi[pedobj.pedigree[row].animalID] = a[row, row]-1.
     if fnz_sum > 0.:
         fnz_avg = fnz_sum / fnz_n
     else:
-        fnz_avg = 0
+        fnz_avg = 0.
 
     # calculate average coefficients of relationship
-    for row in range(l):
+    for row in range(lenped):
         for col in range(row):
-            r_sum = r_sum + a[row,col]
-            r_n = r_n + 1
+            r_sum = r_sum + a[row, col]
+            r_n = r_n + 1.
     r_avg = r_sum / r_n
 
     # calculate average non-zero coefficients of relationship
-    for row in range(l):
+    for row in range(lenped):
         for col in range(row):
-            if ( a[row,col] > 0. ):
-                rnz_sum = rnz_sum + a[row,col]
-                rnz_n = rnz_n + 1
+            if a[row, col] > 0.:
+                rnz_sum = rnz_sum + a[row, col]
+                rnz_n = rnz_n + 1.
     if rnz_sum > 0.:
         rnz_avg = rnz_sum / rnz_n
     else:
@@ -1101,24 +1133,24 @@ def a_coefficients(pedobj, a='', method='nrm'):
 
     # calculate the average relationship between each individual in the population
     # and all other animals in the population and write it to a file
-    outputfile2 = '%s%s%s' % (pedobj.kw['filetag'],'_rel_to_pop_','.dat')
-    aout2 = open(outputfile2,'w')
+    outputfile2 = '%s%s%s' % (pedobj.kw['filetag'], '_rel_to_pop_', '.dat')
+    aout2 = open(outputfile2, 'w')
     line1_2 = '# Average relationship to population (renumbered ID, r)\n'
-    for row in range(l):
+    for row in range(lenped):
         r_pop_avg = 0.
-        for col in range(l):
-            if ( row == col ):
+        for col in range(lenped):
+            if row == col:
                 pass
             else:
-                r_pop_avg = r_pop_avg + a[row,col]
-        r_pop_avg = r_pop_avg / l
-        line = '%s %s\n' % (pedobj.pedigree[row].animalID,r_pop_avg)
+                r_pop_avg = r_pop_avg + a[row, col]
+        r_pop_avg = r_pop_avg / lenped
+        line = '%s %s\n' % (pedobj.pedigree[row].animalID, r_pop_avg)
         aout2.write(line)
     aout2.close()
 
     # output population average coefficients
-    outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_population_coefficients_','.dat')
-    aout = open(outputfile,'w')
+    outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_population_coefficients_', '.dat')
+    aout = open(outputfile, 'w')
     line = '='*60+'\n'
     aout.write('%s\n' % line)
     aout.write('# Population average coefficients of inbreeding and relationship\n')
@@ -1128,24 +1160,26 @@ def a_coefficients(pedobj, a='', method='nrm'):
     aout.write('#   r_avg [rnz_avg] = average [nonzero] coefficient of relationship\n')
     aout.write('#   r_n [rnz_n] = number of [non-zero] elements in the upper off-diagonal of A\n')
     aout.write('#   r_sum [rnz_sum] = sum of [non-zero] elements in the upper off-diagonal of A\n')
-    aout.write('f_n: %s\nf_sum: %s\nf_avg: %5.3f\n' % (f_n,f_sum,f_avg))
-    aout.write('fnz_n: %s\nfnz_sum: %s\nfnz_avg: %5.3f\n' % (fnz_n,fnz_sum,fnz_avg))
-    aout.write('r_n: %s\nr_sum: %s\nr_avg: %5.3f\n' % (r_n,r_sum,r_avg))
-    aout.write('rnz_n: %s\nrnz_sum: %s\nrnz_avg: %5.3f\n' % (rnz_n,rnz_sum,rnz_avg))
+    aout.write('f_n: %s\nf_sum: %s\nf_avg: %5.3f\n' % (f_n, f_sum, f_avg))
+    aout.write('fnz_n: %s\nfnz_sum: %s\nfnz_avg: %5.3f\n' % (fnz_n, fnz_sum, fnz_avg))
+    aout.write('r_n: %s\nr_sum: %s\nr_avg: %5.3f\n' % (r_n, r_sum, r_avg))
+    aout.write('rnz_n: %s\nrnz_sum: %s\nrnz_avg: %5.3f\n' % (rnz_n, rnz_sum, rnz_avg))
     aout.write('%s\n' % line)
     aout.close()
     # output individual coefficients of inbreeding
-    outputfile = '%s%s%s' % (pedobj.kw['filetag'],'_individual_coefficients_','.dat')
-    aout = open(outputfile,'w')
+    outputfile = '%s%s%s' % (pedobj.kw['filetag'], '_individual_coefficients_', '.dat')
+    aout = open(outputfile, 'w')
     aout.write('# individual coefficients of inbreeding\n')
     aout.write('# animalID f_a\n')
-    for row in range(l):
-        aout.write('%s\t%6.4f\n' % pedobj.pedigree[row].animalID,a[row,row]-1.)
+    for row in range(lenped):
+        aout.write('%s\t%6.4f\n' % pedobj.pedigree[row].animalID, a[row, row]-1.)
     aout.close()
 
-    try: logging.info('Exited a_coefficients()')
-    except: pass
+    if pedobj.kw['debug_messages']:
+        logging.info('Exited a_coefficients()')
+
     return individual_coi
+
 
 ##
 # a_fast_coefficients() writes population average coefficients of inbreeding and
